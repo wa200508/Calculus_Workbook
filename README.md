@@ -3,8 +3,8 @@
 An open review book with explicit notation, visible algebra, complete worked
 solutions, and help one step at a time.
 
-**Alpha development — no stable release:** notation standard, curriculum, literature review, and two
-complete pilot examples. Full chapters are still being written. Material is
+**Alpha development — no stable release:** notation standard, curriculum, literature review, a scalar differentiation chapter, and two
+further pilot examples. Full chapters are still being written. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Read and preview locally
@@ -29,6 +29,7 @@ pnpm preview   # serve the production output
 
 - [Notation standard](NOTATION_STANDARD.md)
 - [Curriculum and reading routes](CURRICULUM.md)
+- [Scalar differentiation chapter](DIFFERENTIATION_SCALARS.md)
 - [Pilot problems, hints, and solutions](PILOT_EXAMPLES.md)
 - [Literature review](NOTATION_REVIEW.md)
 
@@ -44,7 +45,8 @@ to GitHub Pages after its source is set to GitHub Actions. Pull requests provide
 site artifact for review. A separate workflow produces a PDF artifact. The
 repository name determines the Pages base path automatically.
 
-No remote URL is configured yet. See [development and publishing](docs/DEVELOPMENT.md),
+The SSH remote is `git@github.com:wa200508/Calculus_Workbook.git`. Work is pushed
+incrementally on `main`; no stable release has been tagged. See [development and publishing](docs/DEVELOPMENT.md),
 [contributing](CONTRIBUTING.md), and [project status](PROJECT_STATUS.md).
 
 ## Licenses

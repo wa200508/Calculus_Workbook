@@ -8,10 +8,12 @@ so you can practice making those choices yourself.
 
 1. Read [the notation standard](/generated/notation), especially types, dependencies,
    and which inputs stay fixed.
-2. Try [D2-001: the chain rule](/problems/d2-001). Read the question and attempt it
-   before opening a hint.
-3. Try [I2-001: substitution](/problems/i2-001). Notice how it reverses the chain-rule pattern.
-4. Use [the curriculum](/generated/curriculum) to choose your next reading route.
+2. Read [D1: scalar differentiation foundations](/generated/scalar-derivatives)
+   and try [D1-001](/problems/d1-001) through [D1-003](/problems/d1-003).
+3. Attempt the remaining D1 problems to practice domain checks, limits, and method selection.
+4. Try [D2-001: the chain rule](/problems/d2-001), then
+   [I2-001: substitution](/problems/i2-001) to see how integration reverses the pattern.
+5. Use [the curriculum](/generated/curriculum) to choose your next reading route.
 
 ## What the step labels mean
 

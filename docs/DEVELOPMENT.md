@@ -24,9 +24,10 @@ ignored by Git. Avoid committing credentials or local runtime folders.
 
 ## GitHub connection
 
-The local repository uses `main`. No remote is configured yet. Once the intended
-empty public repository URL is supplied, add it as `origin` and push the initial
-history. Inspect and reconcile any existing remote history before pushing; do not
+The local repository uses `main`, with SSH remote
+`git@github.com:wa200508/Calculus_Workbook.git`. Save and push small, tested
+checkpoints during development. The initial remote license commit has been
+preserved by merging its history. Inspect and reconcile any existing remote history before pushing; do not
 force-push over existing work.
 
 Set GitHub **Settings → Pages → Build and deployment → Source: GitHub Actions**.

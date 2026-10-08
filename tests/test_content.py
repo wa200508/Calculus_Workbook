@@ -29,6 +29,21 @@ class ContentTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'matching'):
             content.problem_sections(head + '## Complete solutions' + tail.replace('### I2-001', '### I2-002'))
 
+    def test_all_chapters_have_complete_problem_sets(self):
+        manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
+        groups = content.collect_problems(manuscripts)
+        self.assertEqual(len(groups['Problems']), 8)
+        for identifier, (_, solution) in groups['Complete solutions'].items():
+            self.assertIn('CHECK', solution, identifier)
+            self.assertIn('SETUP', solution, identifier)
+            self.assertIn('CHOICE', solution, identifier)
+
+    def test_duplicate_problem_ids_across_chapters_are_rejected(self):
+        manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
+        manuscripts['DIFFERENTIATION_SCALARS.md'] = manuscripts['PILOT_EXAMPLES.md']
+        with self.assertRaisesRegex(ValueError, 'multiple manuscripts'):
+            content.collect_problems(manuscripts)
+
     def test_latex_preserves_absolute_value_in_table_cell(self):
         tex = content.markdown_to_tex('# Test\n\n| Meaning | Formula |\n|---|---|\n| Magnitude | $|x|$ |\n')
         self.assertIn(r'\(|x|\)', tex)

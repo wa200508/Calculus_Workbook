@@ -9,28 +9,28 @@ Updated October 7, 2026. Stage: alpha development; no stable release.
 - Root Markdown manuscript generates the site and LaTeX book.
 - Educational content: CC BY-SA 4.0. Software: MIT. Correctness is not guaranteed.
 - Static VitePress site, local search, build-time MathJax, and practice pages.
-- GitHub Pages hosting after the intended public repository is supplied.
+- SSH remote: `git@github.com:wa200508/Calculus_Workbook.git`; incremental pushes on `main`.
 
 ## Current content
 
-Notation standard, literature review, proposed curriculum, and two complete pilots:
-D2-001 (chain rule) and I2-001 (definite substitution). The full curriculum is planned;
+Notation standard, literature review, proposed curriculum, D1 scalar differentiation
+with six complete problems, and two pilots: D2-001 (chain rule) and I2-001
+(definite substitution). The full curriculum is planned;
 the site does not imply all chapters are already written.
 
 ## Next steps
 
-1. Obtain and connect the intended public repository and enable Pages via GitHub Actions.
+1. Enable GitHub Pages using GitHub Actions in the repository settings.
 2. Observe the first hosted site and PDF builds and review their output.
-3. Develop D1 and D2 as representative chapters with practice variants and solutions.
+3. Extend the scalar foundation and develop D2 product, quotient, and chain-rule practice.
 4. Review the PDF layout and provide a public milestone PDF download.
 
 See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules.
 
-## Local validation
+## Validation
 
-Six content tests pass. Production builds pass for both `/` and a repository
-subpath. Internal links, assets, anchors, and 292 rendered math expressions on
-12 pages pass the built-site checks. Browser review confirmed equation rendering,
-search, hint/solution disclosure, and dark blue algebra blocks. Local PDF
-compilation remains blocked by the editor compiler's unavailable TeX bundle;
-the GitHub PDF workflow awaits its first hosted run.
+Eight content tests pass. The expanded production site builds, and 688 rendered
+math expressions on 19 pages pass internal-link, asset, anchor, and rendering checks.
+The first GitHub site build and PDF build succeeded. Pages deployment returned
+404 because Pages is not yet enabled; the user has been asked to enable GitHub
+Actions as its source. The available browser is signed out of GitHub.

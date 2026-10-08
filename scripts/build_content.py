@@ -3,13 +3,21 @@
 from pathlib import Path
 import re
 import shutil
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "NOTATION_STANDARD.md": "notation",
     "CURRICULUM.md": "curriculum",
-    "NOTATION_REVIEW.md": "references",
+    "DIFFERENTIATION_SCALARS.md": "scalar-derivatives",
     "PILOT_EXAMPLES.md": "examples",
+    "NOTATION_REVIEW.md": "references",
+}
+PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "PILOT_EXAMPLES.md")
+CHAPTER_TITLES = {
+    "D1": "Scalar differentiation foundations",
+    "D2": "Compositions: a chain-rule pilot",
+    "I2": "Substitution: an integration pilot",
 }
 
 
@@ -51,6 +59,18 @@ def site_links(text):
     for filename, slug in SOURCES.items():
         text = text.replace(f"]({filename})", f"](/generated/{slug})")
     return text
+
+
+def collect_problems(content):
+    combined = {name: {} for name in ("Problems", "Hint ladders", "Complete solutions")}
+    for filename in PROBLEM_SOURCES:
+        groups = problem_sections(content[filename])
+        for name, items in groups.items():
+            duplicates = combined[name].keys() & items.keys()
+            if duplicates:
+                raise ValueError(f"Problem IDs occur in multiple manuscripts: {sorted(duplicates)}")
+            combined[name].update(items)
+    return combined
 
 
 def tex_escape(text):
@@ -158,32 +178,41 @@ def markdown_to_tex(text):
 
 def build():
     content = {name: (ROOT / name).read_text() for name in SOURCES}
-    problems = problem_sections(content["PILOT_EXAMPLES.md"])
+    problems = collect_problems(content)
     for directory in ("site/generated", "site/problems", "site/public/downloads", "site/public/licenses"):
         (ROOT / directory).mkdir(parents=True, exist_ok=True)
     for name, slug in SOURCES.items():
-        notice = '> **Developing edition.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
+        notice = '> **Alpha development.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
         text = site_links(content[name])
         first, rest = text.split("\n", 1)
         (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + style_algebra(rest))
         shutil.copyfile(ROOT / name, ROOT / "site/public/downloads" / name)
+    index = []
     for identifier, (title, prompt) in problems["Problems"].items():
         hints = problems["Hint ladders"][identifier][1]
         hint_list = re.findall(r"^\d+\. (.*)$", hints, flags=re.M)
         if not hint_list:
             raise ValueError(f"No hints for {identifier}")
         solution = problems["Complete solutions"][identifier][1]
-        page = f'# {identifier} — {title}\n\n<p class="problem-meta">Pilot example · Full solution and check · CC BY-SA 4.0</p>\n\n## Your problem\n\n{prompt}\n\n## Hints\n\n'
+        chapter = identifier.split('-')[0]
+        index.append({'id': identifier, 'title': title, 'chapter': chapter,
+                      'chapterTitle': CHAPTER_TITLES[chapter], 'link': f'/problems/{identifier.lower()}'})
+        page = f'# {identifier} — {title}\n\n<p class="problem-meta">{chapter} · Alpha development · Full solution and check · CC BY-SA 4.0</p>\n\n## Your problem\n\n{prompt}\n\n## Hints\n\n'
         for number, hint in enumerate(hint_list, 1):
             page += f'::: details Hint {number}\n\n{hint}\n\n:::\n\n'
         page += '## Complete solution\n\n<details class="solution"><summary>Open the complete worked solution</summary>\n\n' + style_algebra(solution) + '\n\n</details>\n\n'
         page += f'## Ask a tutor\n\n“Help me with {identifier}. I am stuck at step __. Use the notation standard, show all function inputs, and give me one next step at a time.”\n\n[Read the notation standard](/generated/notation) · [Choose another problem](/practice)\n'
         (ROOT / "site/problems" / f"{identifier.lower()}.md").write_text(site_links(page))
+    (ROOT / 'site/generated/problem-index.json').write_text(json.dumps(index, indent=2) + '\n')
+    table = '| Problem | Chapter | Help available |\n|---|---|---|\n'
+    for item in index:
+        table += f"| [{item['id']} — {item['title']}]({item['link']}) | {item['chapter']} | Three hints, full solution, and check |\n"
+    (ROOT / 'site/generated/practice-table.inc').write_text(table)
     for source, target in (("LICENSE", "MIT.txt"), ("LICENSES/CC-BY-SA-4.0.txt", "CC-BY-SA-4.0.txt")):
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble
-    for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("CURRICULUM.md", "The curriculum"), ("PILOT_EXAMPLES.md", "Pilot problems and worked solutions")):
+    for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("CURRICULUM.md", "The curriculum"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("PILOT_EXAMPLES.md", "Pilot problems and worked solutions")):
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Literature review and notation decisions}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
     (ROOT / "calculus_workbook.tex").write_text(manuscript)
@@ -191,7 +220,7 @@ def build():
     combined = '# Calculus: A Worked Review\n\nCC BY-SA 4.0 · Provided as-is; correctness is not guaranteed.\n\n'
     combined += "\n\n---\n\n".join(content.values())
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
-    print(f"Generated four reference pages, {len(problems['Problems'])} practice pages, downloads, and LaTeX.")
+    print(f"Generated {len(SOURCES)} reading pages, {len(index)} practice pages, downloads, and LaTeX.")
 
 
 if __name__ == "__main__":

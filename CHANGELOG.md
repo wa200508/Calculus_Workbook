@@ -10,5 +10,8 @@ The manuscript, notation explanations, and site are expected to change.
 - Added the reading site, pilot problem pages, open licenses, and build workflows.
 - Added explicit alpha notices to the reading interface and manuscript.
 
-Work is saved in small Git commits. Remote pushes begin once the intended public
-repository URL is supplied; there is currently no configured remote.
+- Added D1 scalar differentiation foundations with six fully worked problems.
+- Grouped navigation and the practice index automatically by chapter.
+
+Work is saved and pushed in small commits to `wa200508/Calculus_Workbook` on
+`main`. No stable or major-version release has been tagged.

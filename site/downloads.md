@@ -10,6 +10,7 @@ These downloads are generated from the same manuscript used for the site.
 - <a :href="withBase('/downloads/calculus_workbook.tex')" download>Standalone LaTeX source</a>
 - <a :href="withBase('/downloads/NOTATION_STANDARD.md')" download>Notation standard</a>
 - <a :href="withBase('/downloads/CURRICULUM.md')" download>Curriculum</a>
+- <a :href="withBase('/downloads/DIFFERENTIATION_SCALARS.md')" download>Scalar differentiation chapter</a>
 - <a :href="withBase('/downloads/PILOT_EXAMPLES.md')" download>Pilot examples, hints, and solutions</a>
 - <a :href="withBase('/downloads/NOTATION_REVIEW.md')" download>Literature review</a>
 

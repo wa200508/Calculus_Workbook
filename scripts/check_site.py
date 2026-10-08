@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import os
 import sys
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,7 +61,9 @@ def check(dist, base='/'):
                 errors.append(f'{path.name}: missing internal target {link}')
             elif url.fragment and destination in pages and unquote(url.fragment) not in pages[destination].ids:
                 errors.append(f'{path.name}: missing anchor {link}')
-    for name in ('generated/notation.html', 'problems/d2-001.html', 'problems/i2-001.html'):
+    index = json.loads((ROOT / 'site/generated/problem-index.json').read_text())
+    required = ['generated/notation.html'] + [item['link'].lstrip('/') + '.html' for item in index]
+    for name in required:
         page = pages.get((dist / name).resolve())
         if not page or not page.math_count:
             errors.append(f'{name}: expected rendered math is missing')

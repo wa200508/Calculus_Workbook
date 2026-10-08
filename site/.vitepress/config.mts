@@ -1,4 +1,20 @@
 import { defineConfig } from 'vitepress'
+import { readFileSync } from 'node:fs'
+
+const problems = JSON.parse(readFileSync(new URL('../generated/problem-index.json', import.meta.url), 'utf8')) as Array<{
+  id: string, title: string, chapter: string, chapterTitle: string, link: string
+}>
+const chapters = [...new Set(problems.map(problem => problem.chapter))]
+const chapterSidebar = chapters.map(chapter => ({
+  text: `${chapter} · ${problems.find(problem => problem.chapter === chapter)!.chapterTitle}`,
+  collapsed: chapter !== 'D1',
+  items: [
+    ...(chapter === 'D1' ? [{ text: 'Chapter guide & rules', link: '/generated/scalar-derivatives' }] : []),
+    ...problems.filter(problem => problem.chapter === chapter).map(problem => ({
+      text: `${problem.id} · ${problem.title}`, link: problem.link
+    }))
+  ]
+}))
 
 const repo = process.env.GITHUB_REPOSITORY
 const owner = repo?.split('/')[0]
@@ -30,11 +46,8 @@ export default defineConfig({
         { text: 'Notation standard', link: '/generated/notation' },
         { text: 'Curriculum & reading routes', link: '/generated/curriculum' }
       ] },
-      { text: 'Practice with full solutions', items: [
-        { text: 'Problem collection', link: '/practice' },
-        { text: 'D2-001 · The chain rule', link: '/problems/d2-001' },
-        { text: 'I2-001 · Substitution', link: '/problems/i2-001' }
-      ] },
+      { text: 'Practice', items: [{ text: 'All problems', link: '/practice' }] },
+      ...chapterSidebar,
       { text: 'Reference & project', items: [
         { text: 'Literature & notation decisions', link: '/generated/references' },
         { text: 'Complete worked examples', link: '/generated/examples' },
