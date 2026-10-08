@@ -1,0 +1,21 @@
+name: Mathematical correction or unclear step
+description: Report an error or a step that is difficult to follow.
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Problem ID or section and step
+      placeholder: I2-001, Step 6
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What seems incorrect or unclear?
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction or reasoning
+      description: Include assumptions, calculations, or a primary reference when helpful.

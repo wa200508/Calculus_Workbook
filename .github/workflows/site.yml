@@ -1,0 +1,72 @@
+name: Build, check, and publish the reading site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pnpm install --frozen-lockfile
+      - name: Determine the Pages path
+        shell: bash
+        run: |
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          owner="${GITHUB_REPOSITORY%/*}"
+          if [ "$repo_name" = "$owner.github.io" ]; then
+            printf 'SITE_BASE=/\n' >> "$GITHUB_ENV"
+          else
+            printf 'SITE_BASE=/%s/\n' "$repo_name" >> "$GITHUB_ENV"
+          fi
+      - run: pnpm check
+      - name: Require the committed LaTeX to match the manuscript
+        run: git diff --exit-code -- calculus_workbook.tex
+      - name: Save reviewable site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: reading-site
+          path: site/.vitepress/dist
+          retention-days: 14
+      - name: Prepare Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/.vitepress/dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

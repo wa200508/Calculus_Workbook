@@ -1,0 +1,23 @@
+{
+  "name": "calculus-workbook",
+  "version": "0.2.0",
+  "private": true,
+  "description": "An open calculus review book with explicit notation and complete worked solutions.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.11.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "content": "python3 scripts/build_content.py",
+    "dev": "pnpm content && vitepress dev site --host 127.0.0.1",
+    "build": "pnpm content && vitepress build site",
+    "preview": "vitepress preview site --host 127.0.0.1",
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py'",
+    "check:site": "python3 scripts/check_site.py",
+    "check": "pnpm test && pnpm build && pnpm check:site"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4",
+    "markdown-it-mathjax3": "4.3.2"
+  }
+}

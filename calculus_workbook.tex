@@ -1,0 +1,755 @@
+% Layout source for the generated book. Educational prose: CC BY-SA 4.0; TeX layout code: MIT.
+\documentclass[11pt,oneside,openany]{book}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,inner=1.0in,outer=1.0in,top=0.9in,bottom=0.95in,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor,array,longtable,enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\definecolor{AlgebraBlue}{HTML}{244A73}
+\definecolor{Ink}{HTML}{172D40}
+\hypersetup{colorlinks=true,linkcolor=AlgebraBlue,urlcolor=AlgebraBlue,pdftitle={Calculus: A Worked Review},pdfauthor={}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt}
+\setlength{\emergencystretch}{3em}
+\setlist{itemsep=4pt,topsep=4pt,leftmargin=*}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily Calculus: A Worked Review}
+\fancyhead[R]{\small\sffamily\thepage}
+\fancyfoot[L]{\small\sffamily Draft 0.2 | Notation and worked-example prototypes}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\color{Ink}
+\vspace*{0.7in}
+{\sffamily\large A PERSONAL PROBLEM-SOLVING REFERENCE\par}
+\vspace{0.5in}
+{\sffamily\bfseries\fontsize{40}{46}\selectfont Calculus\par}
+\vspace{0.15in}
+{\sffamily\LARGE A Worked Review\par}
+\vspace{0.45in}
+{\Large Explicit notation. Visible reasoning.\par}
+{\Large Every dependency accounted for.\par}
+\vfill
+{\sffamily\large Open foundation edition 0.2\par}
+\medskip
+Notation standard, curriculum, and two complete pilot examples.\\
+Website foundation prepared October 7, 2026.
+\end{titlepage}
+\chapter*{How this book will work}
+This is a review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
+
+Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Color supplements the labels, so a grayscale copy remains usable.
+
+This foundation draft establishes the notation and tests it on two examples. It does not yet contain the full curriculum. The proposed main parts are Differentiation and differentials, and Integration. The notation recommendations now incorporate a targeted literature review, documented in the appendix.
+
+Try a question before reading its hints. Use the stable problem ID and step number when asking a tutor for help. The tutor should keep this notation and work from the last step you understand.
+\chapter*{Sharing and accuracy}
+Copyright \copyright{} 2026 Calculus Workbook contributors, to the extent copyright applies. Original educational content is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). You may share and adapt it, including commercially, subject to attribution, an indication of changes, ShareAlike, and the license's other terms.
+
+\url{https://creativecommons.org/licenses/by-sa/4.0/}
+
+This developing book is provided as-is. Mathematical correctness, completeness, and suitability for a particular purpose are not guaranteed. The license's warranty disclaimer and liability limits apply to the extent permitted by law. Corrections are welcome. Linked references retain their own rights.
+
+\tableofcontents
+\mainmatter
+
+\chapter{The notation standard}
+
+Status: recommended standard, version 0.2, revised October 5, 2026 after a targeted literature review. This is a consistent selection of established conventions, with explicit teaching annotations. It is not a claim that all fields use one universal notation.
+
+\section{1. Reading contract}
+
+Use \textbf{Leibniz operator notation with full arguments}, ordinary parentheses for grouping, and explicit type and dependency declarations. Avoid inventing symbols to replace established calculus notation. The literature basis and reasons for the choices are recorded in the literature review.
+
+Every problem and solution begins with four items:
+
+\begin{enumerate}
+\item \textbf{Objects and types:} scalar, vector with dimension, matrix with dimensions, or tensor with order, space, and component shape.
+\item \textbf{Dependencies:} independent inputs, dependent outputs, intermediate functions, and fixed parameters.
+\item \textbf{Domain and assumptions:} allowed inputs, excluded values, and regularity or sign conditions used.
+\item \textbf{Operation and output:} what is being differentiated or integrated, with respect to which variable, what stays fixed, and the output type.
+
+\end{enumerate}
+Repeat declarations in the solution so it can be read independently. Full function arguments stay visible in calculus expressions. A vector or matrix argument may be written as a single object only when its components and dependencies are displayed locally. Long expressions are split into named, fully defined steps rather than compressed into unexplained symbols.
+
+\section{2. Delimiters, types, and dependencies}
+
+\subsection{Give delimiters predictable jobs}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
+Notation & Meaning in this book & Safeguard \\[5pt]
+\hline\endhead
+\(f(x,y)\) & Function value at the listed inputs & Parentheses immediately after a function name contain its arguments \\[5pt]
+\((a+b)\) & Grouping & Larger parentheses group the entire operand of a derivative \\[5pt]
+A displayed bracketed column or rectangular array & Vector or matrix representation & State its type and shape; do not use a one-line tuple as an unexplained vector \\[5pt]
+\([a,b]\) & Closed interval & Preserve this standard meaning; in first uses also write \(a\leq x\leq b\) \\[5pt]
+\(\{x: x>0\}\) & Set & Braces are not the default grouping delimiter \\[5pt]
+\(A_{ij}(t)\), \(T_{ijk}(t)\) & Scalar components & Declare the parent object, basis, index ranges, and dependencies \\[5pt]
+\end{longtable}
+
+Square brackets do not universally mean “tensor.” They also conventionally denote intervals and sometimes operator arguments. Our deliberate local convention is to avoid square brackets for derivative operands and ordinary algebraic grouping. We retain them for arrays and closed intervals because changing those conventions would introduce a different confusion.
+
+For nested grouping, use parentheses of different sizes. If a formula becomes hard to track, break it into displayed steps. Delimiters alone never determine an object's type.
+
+\subsection{Object typography}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
+Object & Convention & Example declaration \\[5pt]
+\hline\endhead
+Scalar & Ordinary italic & \(x\in\mathbb R\): independent real scalar \\[5pt]
+Scalar-valued function & Ordinary letter, all inputs visible & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
+Vector & Bold lowercase & \(\mathbf r(t)\in\mathbb R^3\): column vector depending on scalar \(t\) \\[5pt]
+Matrix & Bold uppercase & \(\mathbf A(t)\in\mathbb R^{m\times n}\): matrix depending on scalar \(t\) \\[5pt]
+Tensor of order three or higher & Bold calligraphic uppercase & \(\boldsymbol{\mathcal T}(t)\): tensor with declared space, order, basis, and component shape \\[5pt]
+\end{longtable}
+
+These typography conventions are established choices, not universal rules. Scalar entries use ordinary type: \(r_i(t)\), \(A_{ij}(t)\), and \(T_{ijk}(t)\). Tensor order is not called tensor rank: rank has other meanings.
+
+For this book, a function name and a function value are distinct: \(f\) names the function; \(f(x,y)\) supplies its inputs. We do not write \(z=f\) when we mean \(z=f(x,y)\).
+
+Fixed parameters appear after a semicolon, as in \(f(x;a)=ax^2\), and are also described in words. This semicolon is an organizational convention, not a different calculus operation. If a parameter starts varying, announce that fact and write its dependence explicitly.
+
+For independent scalar coordinates \(x,y\) and a dependent scalar \(z=f(x,y)\), say that \(x\) and \(y\) vary independently. For motion along a path, display instead
+
+\[
+t\longmapsto (x(t),y(t))\longmapsto z(t)=f(x(t),y(t)).
+\]
+
+Here \(t\) is the independent scalar parameter; \(x(t)\) and \(y(t)\) are dependent scalar coordinates; \(z(t)\) is a dependent scalar output. The parenthesized coordinate pair is a point, not an undeclared column vector.
+
+\section{3. Derivatives}
+
+\subsection{One independent scalar variable}
+
+Our normal form is
+
+\[
+\frac{d}{dx}\left(f(x)\right).
+\]
+
+Read it as “differentiate the parenthesized expression with respect to \(x\).” The derivative operator is not enclosed in another pair of parentheses. No prime marks, time dots, bare function names as operands, or implicit differentiation variables appear in worked calculations.
+
+For second derivatives, use the established higher-order operator and expand it where introduced:
+
+\[
+\frac{d^2}{dx^2}\left(f(x)\right)
+=
+\frac{d}{dx}\left(\frac{d}{dx}\left(f(x)\right)\right).
+\]
+
+The superscript \(2\) means “differentiate twice,” not “square the derivative.” Every worked higher-derivative calculation shows the intermediate first derivative. This is clearer than requiring ever-deeper nesting in every formula.
+
+Differentiate first and evaluate second:
+
+\[
+\left.\frac{d}{dx}\left(f(x)\right)\right|_{x=a}.
+\]
+
+Always calculate the derivative before substituting the specified input.
+
+\subsection{Several independent scalar variables}
+
+Use the established partial-derivative operator and put the held-fixed instruction beside it:
+
+\[
+\frac{\partial}{\partial x}\left(f(x,y)\right),
+\qquad y\text{ held fixed}.
+\]
+
+A nearby sentence lists all other independent inputs and fixed parameters. This avoids putting a paragraph into an operator subscript. If which quantity stays fixed changes the answer, state it on each affected line. A bar with a subscript is reserved for evaluation, so it is not also used to mean “hold this variable fixed.”
+
+Keep ordinary \(d\) and partial \(\partial\) distinct. Partial differentiation changes one independent coordinate while holding the others fixed. Ordinary differentiation applies when the expression has one independent scalar input, including a whole path-dependent composition.
+
+For a differentiable scalar-valued function \(f(x,y)\) and differentiable scalar paths \(x(t),y(t)\), write
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(f(x(t),y(t))\right)
+={}&\left.\frac{\partial}{\partial x}\left(f(x,y)\right)
+\right|_{x=x(t),\,y=y(t)}
+\frac{d}{dt}\left(x(t)\right)\\
+&+\left.\frac{\partial}{\partial y}\left(f(x,y)\right)
+\right|_{x=x(t),\,y=y(t)}
+\frac{d}{dt}\left(y(t)\right).
+\end{aligned}
+\]
+
+In the first partial derivative hold \(y\) fixed; in the second hold \(x\) fixed. Calculate each partial derivative with independent coordinates, evaluate it on the path, and only then multiply by the corresponding input rate.
+
+Mixed partial derivatives are initially written as nested operations, with the order stated in words. Do not assume that reversing the order gives the same result without appropriate hypotheses.
+
+\subsection{Vector and matrix outputs}
+
+For a single scalar input, differentiate component by component in a fixed basis. For example, \(\mathbf r(t)\) is a two-component column vector, and \(r_1(t),r_2(t)\) are scalar functions:
+
+\[
+\mathbf r(t)=\begin{bmatrix}r_1(t)\\r_2(t)\end{bmatrix},
+\qquad
+\frac{d}{dt}\left(\mathbf r(t)\right)
+=\begin{bmatrix}
+\frac{d}{dt}\left(r_1(t)\right)\\
+\frac{d}{dt}\left(r_2(t)\right)
+\end{bmatrix}.
+\]
+
+This separates the round derivative-operand delimiters from the square vector-display delimiters. Matrix and tensor examples likewise declare the derivative's shape.
+
+For vector inputs, introduce named scalar coordinates first. Let \(\mathbf F(x_1,\ldots,x_n)\in\mathbb R^m\) be differentiable. Its Jacobian is the \(m\times n\) matrix with scalar entries
+
+\[
+J_{ij}(x_1,\ldots,x_n)
+=\frac{\partial}{\partial x_j}\left(F_i(x_1,\ldots,x_n)\right).
+\]
+
+All \(x_k\) with \(k\ne j\) are held fixed. Index \(i\) selects an output, \(1\leq i\leq m\); index \(j\) selects an input, \(1\leq j\leq n\). In concrete examples list the actual coordinates instead of using ellipses.
+
+For a differentiable scalar function \(f(x,y)\) in ordinary Euclidean coordinates, define the gradient explicitly:
+
+\[
+\nabla f(x,y)=
+\begin{bmatrix}
+\frac{\partial}{\partial x}\left(f(x,y)\right)\\
+\frac{\partial}{\partial y}\left(f(x,y)\right)
+\end{bmatrix}.
+\]
+
+Hold the other coordinate fixed in each entry. The gradient is a column vector; the scalar function's Jacobian is its transpose, a one-row matrix. We do not use an unexplained fraction “with respect to a vector” for both objects. The superscript \(\mathsf T\) means transpose, never a derivative.
+
+\subsection{Matrix inputs and tensor inputs}
+
+Start with derivatives with respect to individual scalar entries. For a scalar function \(\phi(\mathbf A)\) of a real \(m\times n\) matrix with independently variable entries, the matrix gradient \(\nabla_{\mathbf A}\phi(\mathbf A)\) has the same shape as \(\mathbf A\). Its \((i,j)\) entry is the scalar partial derivative with respect to \(A_{ij}\), holding all other entries fixed. If the matrix is symmetric or otherwise constrained, identify its independent parameters before differentiating; its entries cannot all be treated as independent.
+
+For a general differentiable matrix-valued function \(\mathbf F(\mathbf A)\), use the established derivative-map form \(\mathrm D\mathbf F(\mathbf A)(\mathbf H)\) after defining it: it is the derivative at input \(\mathbf A\), applied to the increment matrix \(\mathbf H\). Declare both matrices' shapes, the output shape, and all parameters. This is a linear map applied to an increment, not matrix division. The final parentheses replace the square argument brackets used in some references.
+
+Tensor calculations specify the tensor space, basis, component indices, and index ranges. For geometric tensors, upper and lower indices have distinct roles and must be explained; no implicit summation is allowed. Fixed-basis component differentiation is introduced first. Moving bases require additional terms.
+
+\section{4. Integrals}
+
+Use the usual definite-integral form:
+
+\[
+\int_a^b f(x)\,dx.
+\]
+
+Immediately identify \(x\) as the scalar integration variable, with lower limit \(x=a\) and upper limit \(x=b\). The differential \(dx\) remains on every integral. Parentheses group a sum when needed; a simple integrand does not need an extra wrapper. We do not routinely write \(x=\) inside the bounds: the nearby variable-and-bounds statement supplies that clarity while keeping the expression familiar.
+
+The symbol \(x\) inside a definite integral is a bound integration variable. If the bounds are fixed and there are no other inputs, the result is a scalar number, not a function of \(x\).
+
+For an indefinite integral on an appropriate interval,
+
+\[
+\int f(x)\,dx=F(x)+C,
+\qquad \frac{d}{dx}\left(F(x)\right)=f(x).
+\]
+
+Here \(C\) is an arbitrary scalar constant independent of \(x\). For vector and matrix outputs, the arbitrary constant has the output's shape.
+
+With other inputs held fixed,
+
+\[
+\int f(x,y)\,dx=F(x,y)+C(y),\qquad y\text{ held fixed}.
+\]
+
+The integration constant may depend on the input that was not integrated over. Definite integration over \(x\) can likewise leave a function of \(y\).
+
+Write endpoint evaluation without another set of square brackets:
+
+\[
+\left.F(x)\right|_{x=a}^{x=b}=F(b)-F(a).
+\]
+
+Always show the subtraction. For multiple integrals, specify the order in words and give each integral its own bounds and differential. For curve, surface, and volume integrals, specify domain, measure, parameterization when used, and orientation when relevant. Arc length \(ds\), surface area \(dS\), and a vector displacement are different objects, each introduced with a definition and component formula.
+
+\section{5. Substitution without hidden steps}
+
+Introduce scalar functions \(g(x)\) and \(h(u)\) and a new scalar coordinate \(u=g(x)\). Before the substitution, \(u\) depends on \(x\); in the transformed integral, \(u\) is the integration variable.
+
+For continuously differentiable \(g\) on \([a,b]\) and continuous \(h\) on an interval containing its image,
+
+\[
+\int_a^b h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx
+=\int_{g(a)}^{g(b)}h(u)\,du.
+\]
+
+On the left, integrate over \(x\) from \(a\) to \(b\). On the right, integrate over \(u\) from \(g(a)\) to \(g(b)\). This form does not require an inverse for \(g\). A substitution using an inverse may need domain restrictions and a branch choice.
+
+Required steps: define the substitution; compute its derivative; match every factor; transform both bounds; write the complete new integral; evaluate; check. For indefinite integration, substitute back and verify by differentiation.
+
+Differential notation such as \(du=2x\,dx\) is conventional, not inherently invalid. We teach its meaning before using it: when \(u=g(x)=x^2+1\), the differential of \(u\) is the derivative of \(g(x)\) multiplied by the differential of \(x\). In early worked solutions the full substitution formula remains visible. Never present canceling the letters \(d\) and \(x\) as a proof, and never divide by a possibly zero derivative without justification.
+
+\section{6. Other notation collisions to prevent}
+
+\begin{itemize}
+\item \textbf{Finite change versus differential:} \(\Delta x\) is a finite scalar increment. A differential gives the linear part of a change; it is not automatically the exact finite change. Introduce \(\mathrm Df(x,y)(\Delta x,\Delta y)\) by its full partial-derivative formula before using it.
+\item \textbf{Function inverse versus reciprocal:} write \(1/f(x)\) for a reciprocal and \(f^{-1}(y)\) only for a defined inverse function. Use \(\arcsin(x)\) rather than \(\sin^{-1}(x)\).
+\item \textbf{Function powers:} write \((\sin(x))^2\), not the compressed \(\sin^2 x\). Every elementary function shows its input.
+\item \textbf{Matrix inverse versus reciprocal:} \(\mathbf A^{-1}\) is a matrix inverse when it exists; entrywise reciprocals are defined separately. Do not use matrix “division.”
+\item \textbf{Absolute value versus determinant:} use \(|s|\) for a scalar absolute value, \(\det(\mathbf A)\) for a determinant, and \(\lVert\mathbf v\rVert\) for a vector norm. Define the chosen norm.
+\item \textbf{Products:} scalar multiplication, vector dot products, cross products, matrix products, tensor products, and contractions are named when introduced. Matrix factors retain their order. Entrywise products are explicitly identified.
+\item \textbf{Summations:} write every summation sign and its limits. State free-index ranges. Expand all terms in first small examples. Einstein summation is explained in the translation guide only.
+\item \textbf{Tensor meaning:} multilinear tensors and multidimensional data arrays are related through chosen representations but are not silently treated as identical concepts.
+\item \textbf{Equality versus approximation:} use \(=\) for exact equality and \(\approx\) for approximation. State the approximation's conditions and error estimate, or explicitly say that no error bound has been established.
+
+\end{itemize}
+\section{7. Worked-solution presentation}
+
+Every solution uses numbered steps and textual labels:
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
+Label & Meaning & Planned print styling \\[5pt]
+\hline\endhead
+SETUP & Types, dependencies, domain, target & Normal text \\[5pt]
+CHOICE & Why this method applies; cues to recognize it & Normal text \\[5pt]
+CALCULUS & Derivative or integral rule being applied & Black math with a named rule \\[5pt]
+ALGEBRA & Expansion, factoring, cancellation, solving, rearrangement & Dark blue \texttt{\#244A73} with an ALGEBRA label \\[5pt]
+IDENTITY & Trigonometric, exponential, logarithmic, or other exact identity & Same dark blue with an IDENTITY label \\[5pt]
+APPROXIMATION & A deliberately approximate replacement & Same dark blue with an APPROXIMATION label and conditions \\[5pt]
+CHECK & Verification, dimensions, units, domain, or plausibility & Normal text \\[5pt]
+\end{longtable}
+
+Color is supplementary: the labels survive grayscale printing and text-only tutoring. Do not make algebra light gray or low contrast. Markdown pilot files use the labels; the typeset book will apply the color styles centrally.
+
+Separate calculus from algebra into distinct lines. Give the unsimplified result before simplifying. Explain each factor, sign, and canceled term. State conditions for division and cancellation. Name an identity and show its general form before substituting the problem's expressions.
+
+Each problem has a stable ID, a problem-only prompt, a graduated hint ladder, a separate complete solution, a verification, a method-recognition note, and a nearby practice variant. Solutions must not sit beside the question in the final page layout.
+
+\section{8. Tutor contract}
+
+When asked to help with a problem, the tutor uses its ID and this standard. Begin at the learner's last understood step, ask for one manageable next action, and wait. Explain a needed prerequisite locally. Do not skip algebra or switch notation to save space. Give the full solution when requested; otherwise reveal only the next requested hint or step. A valid alternative method is welcome if its assumptions and dependencies are equally explicit.
+
+\section{9. Editorial acceptance checklist}
+
+\begin{itemize}
+\item Can the reader identify every object's type and every function input locally?
+\item Is the differentiation/integration variable explicit, including what is held fixed?
+\item Are intermediate dependencies, bounds, domains, and arbitrary constants correct?
+\item Is each equation exact, or explicitly marked approximate?
+\item Are calculus rules distinguished from algebra and identities?
+\item Can every transition be reproduced without a hidden manipulation?
+\item Is there a check appropriate to the problem and a cue explaining the method choice?
+\item Do the question, hints, and solution share one stable problem ID?
+\end{itemize}
+
+\chapter{The curriculum}
+
+The book is a review and problem-solving manual. Short concept refreshers support worked problems; readers are not expected to remember a formula or an algebraic manipulation merely because they once took a class.
+
+The two main parts are \textbf{Differentiation and differentials} and \textbf{Integration}. Within each part, complexity grows from scalar variables and outputs to vector, matrix, and tensor objects. Input dimension and integration geometry form a second organizing axis: an object's type alone does not determine the calculus method.
+
+\section{Entry toolkit: how to read and use the book}
+
+\begin{enumerate}
+\item The notation standard, dependency diagrams, types, shapes, domains, and units.
+\item A diagnostic set for fractions, powers, roots, logarithms, exponentials, factoring, completing the square, equations, inequalities, and trigonometry.
+\item A referenced toolbox of exact identities and approximation rules. Each entry has conditions, a worked example, and links to problems using it.
+\item Essential reminders about limits, continuity, and what a derivative or integral asks for. Revisit limits later where a method needs them.
+
+\end{enumerate}
+Diagnostic results direct readers to local refreshers; they do not block access to calculus chapters.
+
+\section{Part I: Differentiation and differentials}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
+Chapter & Scope & Problem-solving focus \\[5pt]
+\hline\endhead
+D1 & Scalar input, scalar output & Read dependencies; use elementary, sum, and constant-multiple rules; check from the definition in selected examples \\[5pt]
+D2 & Products, quotients, and compositions & Recognize structure; choose whether to simplify first; fully expose the chain rule \\[5pt]
+D3 & Implicit, inverse, and parametric relationships & Decide what depends on what; solve for a requested rate; handle logarithmic differentiation and domain restrictions \\[5pt]
+D4 & Higher derivatives, local approximation, and optimization & Repeated operations, linearization, Taylor polynomials with errors, critical points, and endpoint checks \\[5pt]
+D5 & Several scalar inputs, scalar output & Partial derivatives, gradients, directional derivatives, Hessians, tangent approximations, and constrained optimization \\[5pt]
+D6 & Vector outputs and vector inputs & Velocity and acceleration; Jacobians; multivariable compositions; derivative as a linear map \\[5pt]
+D7 & Matrix inputs and outputs & Entrywise time derivatives; products and inverses; scalar functions of matrices; explicit index conventions and shape checks \\[5pt]
+D8 & Tensor-valued functions and contractions & Fixed-basis component derivatives; multilinear structure; tensor products and contractions; careful separation of tensor meaning from array storage \\[5pt]
+\end{longtable}
+
+An optional extension follows D8: changing bases, curvilinear coordinates, and covariant derivatives. This is a separate prerequisite-bearing topic, not a silent extension of componentwise differentiation.
+
+\section{Part II: Integration}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
+Chapter & Scope & Problem-solving focus \\[5pt]
+\hline\endhead
+I1 & Scalar antiderivatives and definite integrals & Meaning, fundamental theorem, bounds, constants, signed accumulation, and basic rules \\[5pt]
+I2 & Change of variable in one dimension & Recognize a composition and its derivative; transform bounds; handle inverse branches and domain restrictions \\[5pt]
+I3 & Integration by parts & Choose factors; expose product-rule origins; repeat operations and solve for a recurring integral \\[5pt]
+I4 & Algebraic and trigonometric methods & Polynomial division, partial fractions, completing the square, trig identities, and trig substitution \\[5pt]
+I5 & Choosing a method for unfamiliar integrals & Mixed practice without method labels; compare valid routes; recognize when elementary antiderivatives are unavailable \\[5pt]
+I6 & Improper integrals and numerical approximation & Limits at singularities and infinity; convergence before evaluation; quadrature and error bounds \\[5pt]
+I7 & Vector, matrix, and tensor outputs over a scalar variable & Component integrals; initial conditions; shape preservation; fixed-basis assumptions and limits of componentwise reasoning \\[5pt]
+I8 & Double and triple integrals & Regions, bounds, order changes, signed and nonnegative integrands, and conditions for interchanging integrals \\[5pt]
+I9 & Multivariable changes of coordinates & Jacobian determinants, absolute values, transformed regions, polar/cylindrical/spherical examples \\[5pt]
+I10 & Curves: scalar accumulation and vector work & Parameterizations, arc-length measure, tangents, orientation, and distinguishing two kinds of line integral \\[5pt]
+I11 & Surfaces: scalar accumulation and vector flux & Surface measure, normal direction, parameterization, and orientation \\[5pt]
+I12 & Connecting local derivatives with global integrals & Green's, divergence, and Stokes' theorems; choose the easier side and check hypotheses \\[5pt]
+I13 & Integrals depending on parameters and mixed objects & Differentiate under an integral with stated conditions; vector/matrix/tensor integrands over regions; explicit contractions \\[5pt]
+\end{longtable}
+
+Optional advanced extensions: differential forms and generalized Stokes; integration on manifolds; matrix exponentials and systems of differential equations; higher-order tensors in applications. These are scoped separately so the core review remains usable.
+
+\section{Dependencies and reading routes}
+
+\begin{itemize}
+\item The quickest scalar review is D1--D4 followed by I1--I6.
+\item I2 uses the chain rule from D2; I3 uses the product rule from D2.
+\item I7 can follow the scalar integration chapters once component notation is understood.
+\item I8 needs scalar integration and elementary multivariable functions; I9 also needs the Jacobian from D6 and determinant algebra.
+\item I10--I12 draw on D5--D6 and the relevant integration chapters. Introduce divergence and curl explicitly before their theorems.
+\item D7--D8 and the tensor portions of I7/I13 have short linear-algebra prerequisite modules. Their unfamiliar concepts are taught locally rather than assumed.
+
+\end{itemize}
+\section{Repeated chapter structure}
+
+\begin{enumerate}
+\item A short concept refresher and a “what can vary?” map.
+\item A rule sheet using only the book's notation, with conditions and output types.
+\item Fully worked anchor problems, starting with a single new idea.
+\item Near-transfer practice: a changed sign, exponent, bound, dependency, or dimension.
+\item Mixed problems with the method name withheld.
+\item Failure-analysis problems: diagnose a plausible wrong step.
+\item A method-selection page: cues, necessary checks, and common dead ends.
+\item Hints and full solutions in separate, clearly indexed sections.
+
+\end{enumerate}
+Every practice problem will have a complete solution. Every approximation will identify its regime of validity. Checks include reverse differentiation for antiderivatives, shape and unit checks where applicable, and independent evaluations when useful.
+
+The eventual book should provide both a printable reading experience and stable problem/step references suitable for an LLM tutor. First settle the notation using the pilots, then develop one representative scalar chapter before expanding to the remaining chapters.
+
+\chapter{Pilot problems and worked solutions}
+
+These examples use notation standard version 0.2 and test the solution granularity. Textual labels indicate the future color styling. Question and solution sections are separate here; typesetting will place solutions on separate pages.
+
+\section{Problems}
+
+\subsection{D2-001 --- Differentiate a composition}
+
+\textbf{Objects and dependencies.} \(x\in\mathbb R\) is an independent scalar variable. The scalar-valued function \(f:\mathbb R\to\mathbb R\) is
+
+\[
+f(x)=(3x^2+1)^4.
+\]
+
+There are no other variables or parameters. Find the scalar-valued derivative
+
+\[
+\frac{d}{dx}\left(f(x)\right).
+\]
+
+\subsection{I2-001 --- Evaluate a definite integral}
+
+\textbf{Objects and dependencies.} \(x\) is a scalar integration variable in \([0,1]\). Define the scalar-valued function \(q(x)=2x(x^2+1)^3\). All quantities are real. Integrate with respect to \(x\), with lower limit \(x=0\) and upper limit \(x=1\). Find the scalar number
+
+\[
+\int_{0}^{1} q(x)\,dx
+=\int_{0}^{1} 2x(x^2+1)^3\,dx.
+\]
+
+\section{Hint ladders}
+
+\subsection{D2-001}
+
+\begin{enumerate}
+\item Which expression is raised to the fourth power?
+\item Define the inner function \(g(x)=3x^2+1\), and the outer function \(h(u)=u^4\). Then \(f(x)=h(g(x))\).
+\item Differentiate \(h(u)\) with respect to \(u\), evaluate at \(u=g(x)\), and multiply by the derivative of \(g(x)\) with respect to \(x\).
+
+\end{enumerate}
+\subsection{I2-001}
+
+\begin{enumerate}
+\item Compare the factor \(2x\) with the derivative of the expression \(x^2+1\).
+\item Try the new scalar coordinate \(u=g(x)=x^2+1\).
+\item The original endpoints \(x=0\) and \(x=1\) become \(u=1\) and \(u=2\). The transformed integrand is \(u^3\).
+
+\end{enumerate}
+\clearpage
+\section{Complete solutions}
+
+\subsection{D2-001}
+
+\textbf{Step 1 --- SETUP.} The independent input \(x\) is scalar. The output \(f(x)=(3x^2+1)^4\) is scalar and is defined for all real \(x\). Introduce scalar-valued functions
+
+\[
+g(x)=3x^2+1,\qquad h(u)=u^4,\qquad f(x)=h(g(x)).
+\]
+
+Here \(u\) is an independent scalar input when defining and differentiating \(h(u)\). In the composition, set \(u=g(x)\), so the inner value depends on \(x\).
+
+\textbf{Step 2 --- CHOICE.} A fourth power surrounds a changing inner expression. The chain rule accounts for both the outer power and the inner rate of change.
+
+\textbf{Step 3 --- CALCULUS: differentiate the outer function.} The power rule gives
+
+\[
+\frac{d}{du}\left(h(u)\right)
+=\frac{d}{du}\left(u^4\right)
+=4u^3.
+\]
+
+\textbf{Step 4 --- CALCULUS: differentiate the inner function.} Use the sum rule, constant-multiple rule, power rule, and derivative of a constant:
+
+\[
+\begin{aligned}
+\frac{d}{dx}\left(g(x)\right)
+&=\frac{d}{dx}\left(3x^2+1\right)\\
+&=3\frac{d}{dx}\left(x^2\right)+\frac{d}{dx}\left(1\right)\\
+&=3(2x)+0.
+\end{aligned}
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA.} Multiply the numerical factors and remove the zero:
+
+\[
+3(2x)+0=(3\cdot2)x+0=6x+0=6x.
+\]
+
+\endgroup
+\textbf{Step 6 --- CALCULUS: assemble the chain rule.}
+
+\[
+\begin{aligned}
+\frac{d}{dx}\left(f(x)\right)
+&=\left.\frac{d}{du}\left(h(u)\right)\right|_{u=g(x)}
+\frac{d}{dx}\left(g(x)\right)\\
+&=\left.\left(4u^3\right)\right|_{u=3x^2+1}(6x)\\
+&=4(3x^2+1)^3(6x).
+\end{aligned}
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 7 --- ALGEBRA.} All factors are scalar, so they may be reordered:
+
+\[
+4(3x^2+1)^3(6x)=(4\cdot6)x(3x^2+1)^3=24x(3x^2+1)^3.
+\]
+
+\endgroup
+\textbf{Result.}
+
+\[
+\boxed{\frac{d}{dx}\left(f(x)\right)=24x(3x^2+1)^3.}
+\]
+
+\textbf{Step 8 --- CHECK.} At \(x=0\), the formula gives \(24(0)(1)^3=0\). Independently, the derivative definition at zero is
+
+\[
+\lim_{\varepsilon\to0}\frac{f(\varepsilon)-f(0)}{\varepsilon}.
+\]
+
+Here \(\varepsilon\) is a nonzero scalar increment tending to zero. For the check, the binomial identity
+\((a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4\), with \(a=1\), \(b=3\varepsilon^2\), gives the following \textbf{IDENTITY and ALGEBRA} steps:
+
+\[
+\begin{aligned}
+f(\varepsilon)&=1+4(3\varepsilon^2)+6(3\varepsilon^2)^2+4(3\varepsilon^2)^3+(3\varepsilon^2)^4\\
+&=1+12\varepsilon^2+54\varepsilon^4+108\varepsilon^6+81\varepsilon^8,\\
+f(0)&=1,\\
+\frac{f(\varepsilon)-f(0)}{\varepsilon}
+&=\frac{12\varepsilon^2+54\varepsilon^4+108\varepsilon^6+81\varepsilon^8}{\varepsilon}\\
+&=12\varepsilon+54\varepsilon^3+108\varepsilon^5+81\varepsilon^7.
+\end{aligned}
+\]
+
+Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
+
+\textbf{Recognition cue.} Find the outside operation, then identify every input it receives. The inner derivative is required even when the inner expression looks simple.
+
+\subsection{I2-001}
+
+\textbf{Step 1 --- SETUP.} The original scalar variable is \(x\in[0,1]\), and the scalar integrand is \(q(x)=2x(x^2+1)^3\). Introduce
+
+\[
+g(x)=x^2+1,\qquad u=g(x),\qquad h(u)=u^3.
+\]
+
+Both \(g\) and \(h\) are scalar-valued functions. The new coordinate \(u\) depends on \(x\) until we rewrite the integral in terms of \(u\). Polynomials have the continuity and differentiability needed for the substitution theorem.
+
+\textbf{Step 2 --- CHOICE.} The integrand contains a power of \(x^2+1\) and the factor \(2x\), which is the derivative of \(x^2+1\). This is the reverse of the chain-rule pattern.
+
+\textbf{Step 3 --- CALCULUS.}
+
+\[
+\begin{aligned}
+\frac{d}{dx}\left(g(x)\right)
+&=\frac{d}{dx}\left(x^2+1\right)\\
+&=\frac{d}{dx}\left(x^2\right)+\frac{d}{dx}\left(1\right)\\
+&=2x+0=2x.
+\end{aligned}
+\]
+
+The last removal of \(+0\) is an \textbf{ALGEBRA} simplification.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: match the integrand.} Since the factors are scalars,
+
+\[
+2x(x^2+1)^3=(x^2+1)^3(2x)
+=h(g(x))\frac{d}{dx}\left(g(x)\right).
+\]
+
+\endgroup
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: transform both bounds.}
+
+\[
+\begin{aligned}
+x=0&\quad\Longrightarrow\quad u=g(0)=0^2+1=0+1=1,\\
+x=1&\quad\Longrightarrow\quad u=g(1)=1^2+1=1+1=2.
+\end{aligned}
+\]
+
+\endgroup
+\textbf{Step 6 --- CALCULUS: apply the substitution theorem.}
+
+\[
+\begin{aligned}
+\int_{0}^{1} 2x(x^2+1)^3\,dx
+&=\int_{0}^{1}
+\left(h(g(x))\frac{d}{dx}\left(g(x)\right)\right)\,dx\\
+&=\int_{g(0)}^{g(1)} h(u)\,du\\
+&=\int_{1}^{2} u^3\,du.
+\end{aligned}
+\]
+
+The whole integral changes coordinates, including the integration variable and both bounds. The derivative factor is accounted for by the theorem.
+
+\textbf{Step 7 --- CALCULUS: find an antiderivative.} The power rule for integration is
+
+\[
+\int u^p\,du=\frac{u^{p+1}}{p+1}+C,\qquad p\ne-1,
+\]
+
+on an interval where the powers and this rule are defined. Here \(p=3\) is a fixed scalar exponent and \(u\in[1,2]\). Choose one antiderivative \(H(u)\):
+
+\[
+H(u)=\frac{u^{3+1}}{3+1}=\frac{u^4}{4}.
+\]
+
+The exponent and denominator simplifications are \textbf{ALGEBRA}. A definite integral needs one antiderivative; any added constant cancels in the endpoint difference.
+
+\textbf{Step 8 --- CALCULUS: evaluate at the endpoints.}
+
+\[
+\int_{1}^{2} u^3\,du=H(2)-H(1)=\frac{2^4}{4}-\frac{1^4}{4}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 9 --- ALGEBRA.}
+
+\[
+\begin{aligned}
+2^4&=2\cdot2\cdot2\cdot2=16,\\
+1^4&=1\cdot1\cdot1\cdot1=1,\\
+\frac{2^4}{4}-\frac{1^4}{4}
+&=\frac{16}{4}-\frac{1}{4}
+=\frac{16-1}{4}
+=\frac{15}{4}.
+\end{aligned}
+\]
+
+\endgroup
+\textbf{Result.}
+
+\[
+\boxed{\int_{0}^{1} 2x(x^2+1)^3\,dx=\frac{15}{4}.}
+\]
+
+\textbf{Step 10 --- CHECK: differentiate the original-variable antiderivative.} Define the scalar-valued function \(Q(x)=(x^2+1)^4/4\). The constant-multiple and chain rules give
+
+\[
+\frac{d}{dx}\left(Q(x)\right)
+=\frac14\,4(x^2+1)^3(2x).
+\]
+
+\textbf{ALGEBRA:} \((1/4)\cdot4=1\), so this becomes \(2x(x^2+1)^3=q(x)\), the original integrand. Also,
+
+\[
+Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
+=\frac{2^4}{4}-\frac{1^4}{4}=\frac{15}{4}.
+\]
+
+\textbf{Recognition cue.} Look for an inner expression whose derivative appears as a multiplying factor. A near match may need a constant adjustment, which must be written explicitly.
+
+\section{Tutor entry point}
+
+Example request: “Help me with I2-001, Step 6. I understand the new bounds but not what happened to the factor \(2x\). Use the notation standard and give me one step at a time.”
+
+\section{Review questions before drafting full chapters}
+
+\begin{itemize}
+\item Are the round grouping parentheses and nearby “held fixed” statements easy to follow?
+\item Do the pilot algebra steps give enough detail, or should common arithmetic move into expandable side explanations in a digital edition?
+\item Does the outer-function/inner-function setup make substitution and the chain rule easier to follow?
+
+\end{itemize}
+Practice variants and their complete solutions will be added when these pilots become chapter material.
+
+\appendix
+\chapter{Literature review and notation decisions}
+
+Reviewed October 5, 2026. Scope: selected introductory calculus textbook sections, a university matrix-calculus course, a matrix-calculus reference, a tensor survey, and continuum-mechanics notes. This is a targeted notation review, not an exhaustive survey or a study demonstrating that one notation improves learning for everyone.
+
+\section{Recommendation}
+
+Use established Leibniz operator notation with round grouping parentheses and complete function arguments. Pair it with local type declarations, dependency statements, and explicit held-fixed instructions. The symbols should transfer to other books; the extra explanation should reduce reliance on memory.
+
+The recommendation is an editorial judgment tailored to this reader. The references establish usage and mathematical distinctions, not a uniquely “best” personal notation.
+
+\section{Findings and decisions}
+
+\subsection{R1 --- Ordinary derivatives}
+
+OpenStax explicitly lists the operator form \(\frac{d}{dx}\left(f(x)\right)\) alongside prime and quotient-style notation. It also discusses higher derivatives. \textbf{Decision:} adopt that operator form; retain \(d^2/dx^2\) with an initial nested expansion. Prime and dot notation belong in a translation guide, not worked calculations. \href{https://openstax.org/books/calculus-volume-1/pages/3-2-the-derivative-as-a-function}{OpenStax, Calculus Volume 1, §3.2}.
+
+\subsection{R2 --- Partial derivatives}
+
+OpenStax defines partial derivatives by changing one coordinate while the other stays fixed, and uses both fraction and subscript notation. \textbf{Decision:} retain the standard partial symbol, show all function arguments, and state the held-fixed inputs in nearby text. Our insistence on repeating the instruction is a teaching convention. \href{https://openstax.org/books/calculus-volume-3/pages/4-3-partial-derivatives}{OpenStax, Calculus Volume 3, §4.3}.
+
+\subsection{R3 --- Dependencies and the chain rule}
+
+OpenStax's multivariable chain rule distinguishes independent, intermediate, and dependent variables and uses dependency trees. \textbf{Decision:} show \(z(t)=f(x(t),y(t))\) explicitly and show where each partial derivative is evaluated. A partial derivative in independent coordinates must not be confused with a derivative along a path. \href{https://openstax.org/books/calculus-volume-3/pages/4-5-the-chain-rule}{OpenStax, Calculus Volume 3, §4.5}.
+
+\subsection{R4 --- Substitution and integrals}
+
+OpenStax uses ordinary integral bounds and differentials, supplies a definite-substitution theorem, and demonstrates changing endpoints. \textbf{Decision:} use conventional integral notation with an adjacent variable-and-bounds statement. Explain differential identities before using them. Our earlier blanket exclusion of differential notation was unnecessarily restrictive; fully explained notation can remain standard. \href{https://openstax.org/books/calculus-volume-1/pages/5-5-substitution}{OpenStax, Calculus Volume 1, §5.5}.
+
+\subsection{R5 --- Gradients, Jacobians, and derivative maps}
+
+MIT's course treats derivatives as linear operators. For a map from \(n\) inputs to \(m\) outputs, the Jacobian is \(m\times n\). For a scalar output in Euclidean coordinates, the gradient is a column vector and the derivative is represented by its transpose. \textbf{Decision:} keep these objects distinct, explicitly state shapes, and introduce derivative maps for general matrix-valued functions. We choose \(\mathrm D\) instead of the course's prime notation, with round parentheses for the increment argument. \href{https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/pages/lecture-notes-and-readings/}{MIT 18.S096, Lecture Notes and Readings, Lecture 1}.
+
+\subsection{R6 --- Matrix derivatives and constraints}
+
+The Matrix Cookbook defines a scalar function's matrix derivative through derivatives with respect to entries. Its structured-matrix section distinguishes constrained entries from independent entries. \textbf{Decision:} show entry derivatives first, specify the matrix-gradient shape, and name independent parameters for constrained matrices. Do not import an unexplained matrix derivative fraction from another source. \href{https://math.uwaterloo.ca/~hwolkowi/matrixcookbook}{Petersen and Pedersen, The Matrix Cookbook, November 15, 2012, §§2 and 2.8}.
+
+\subsection{R7 --- Tensor typography and index meaning}
+
+Kolda and Bader use bold lowercase vectors, bold uppercase matrices, and bold script higher-order tensors, with ordinary scalar component symbols. They distinguish order from rank and note alternative conventions. \textbf{Decision:} adopt that visual distinction, using the available bold calligraphic font, while explicitly declaring tensor spaces and bases when discussing geometric tensors. Typography alone cannot explain the object. \href{https://www.kolda.net/publication/TensorReview.pdf}{Kolda and Bader, Tensor Decompositions and Applications, SIAM Review 51(3), 2009, §2}.
+
+\subsection{R8 --- Summation shorthand}
+
+Stanford continuum-mechanics notes place explicit sums beside their Einstein-convention equivalents and expand the component equations. \textbf{Decision:} retain explicit sums and limits in our solutions; teach the implicit convention only as a way to read outside references. This is an intentional accessibility choice within ordinary mathematics. \href{https://biomechanics.stanford.edu/me338/me338_n01.pdf}{Stanford ME338A, Continuum Mechanics, Lecture Notes 01, §1.1.1.1}.
+
+\section{Delimiter and symbol policy}
+
+These are editorial decisions informed by the review:
+
+\begin{itemize}
+\item Round parentheses group derivative operands. Square brackets display vectors and matrices. Closed intervals retain their conventional square brackets, with endpoint inequalities spelled out when introduced.
+\item Tensor components use declared indices. Square brackets are not a universal tensor marker.
+\item Ordinary integrands do not receive decorative wrappers. Group sums only where grouping clarifies the expression.
+\item Evaluation bars mean substitution at specified inputs. “Held fixed” appears in words, so those two instructions cannot be mistaken for one another.
+\item Use \(\arcsin(x)\) for the inverse sine and \(1/\sin(x)\) for its reciprocal. Use \((\sin(x))^2\) to expose a function power.
+\item Use \(\det(\mathbf A)\) for a determinant and absolute-value bars for scalar magnitude.
+\item A short translation guide will expose outside shorthand without changing the notation used in the book's worked steps.
+
+\end{itemize}
+\section{Changes from version 0.1}
+
+Round derivative operands replace square operands; redundant parentheses around the operator are removed. Ordinary integral bounds replace variable-tagged bounds, with explicit endpoint statements retained in prose. Held-fixed prose replaces bulky operator subscripts. Higher-order operator notation is taught through expansion rather than excluded. Differential substitution notation is explained rather than treated as intrinsically suspect. The new standard also addresses inverse, norm, determinant, index, and shape ambiguities.
+\end{document}
