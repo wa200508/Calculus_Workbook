@@ -1,6 +1,6 @@
 # Project status
 
-Updated October 7, 2026.
+Updated October 7, 2026. Stage: alpha development; no stable release.
 
 ## Established decisions
 
@@ -19,7 +19,7 @@ the site does not imply all chapters are already written.
 
 ## Next steps
 
-1. Connect the provided public repository and enable Pages via GitHub Actions.
+1. Obtain and connect the intended public repository and enable Pages via GitHub Actions.
 2. Observe the first hosted site and PDF builds and review their output.
 3. Develop D1 and D2 as representative chapters with practice variants and solutions.
 4. Review the PDF layout and provide a public milestone PDF download.

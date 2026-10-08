@@ -17,7 +17,7 @@ export default defineConfig({
   head: [['meta', { name: 'theme-color', content: '#244a73' }]],
   markdown: { math: true },
   themeConfig: {
-    siteTitle: 'Calculus Workbook',
+    siteTitle: 'Calculus Workbook · Alpha',
     nav: [
       { text: 'Read', link: '/start' },
       { text: 'Practice', link: '/practice' },

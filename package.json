@@ -1,12 +1,14 @@
 {
   "name": "calculus-workbook",
-  "version": "0.2.0",
+  "version": "0.2.0-alpha.1",
   "private": true,
   "description": "An open calculus review book with explicit notation and complete worked solutions.",
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@10.11.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "content": "python3 scripts/build_content.py",
     "dev": "pnpm content && vitepress dev site --host 127.0.0.1",

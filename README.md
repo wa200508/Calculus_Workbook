@@ -3,7 +3,7 @@
 An open review book with explicit notation, visible algebra, complete worked
 solutions, and help one step at a time.
 
-**Developing edition:** notation standard, curriculum, literature review, and two
+**Alpha development — no stable release:** notation standard, curriculum, literature review, and two
 complete pilot examples. Full chapters are still being written. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 

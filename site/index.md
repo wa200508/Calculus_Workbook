@@ -23,9 +23,9 @@ features:
     link: /practice
 ---
 
-## A book we can keep improving
+## Alpha development: a book we can keep improving
 
 The current edition contains the notation standard, curriculum, and two complete
 pilot problems. Chapters will grow from scalar calculus into vector, matrix, and
-tensor examples. This is a developing review book, provided as-is; mathematical
+tensor examples. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).

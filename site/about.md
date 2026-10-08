@@ -1,8 +1,8 @@
 # Sharing, accuracy, and contributions
 
-## A developing open book
+## Alpha development
 
-Calculus Workbook is a solutions-manual-style review text built around explicit
+Calculus Workbook is in alpha development, with no stable release. It is a solutions-manual-style review text built around explicit
 notation and visible intermediate steps. Its source is designed to remain useful
 for reading, printing, tutoring, and adaptation.
 
