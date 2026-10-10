@@ -15,7 +15,10 @@ Updated October 7, 2026. Stage: alpha development; no stable release.
 
 Notation standard, literature review, proposed curriculum, D1 scalar differentiation
 with six complete problems, and two pilots: D2-001 (chain rule) and I2-001
-(definite substitution). The full curriculum is planned;
+(definite substitution). The purple supporting-tools appendix covers Euler identities,
+Taylor expansions with error bounds, binomial expansion, completing the square,
+rationalization, and logarithm identities. Substitution remains a core calculus method.
+The full curriculum is planned;
 the site does not imply all chapters are already written.
 
 ## Next steps
@@ -29,8 +32,8 @@ See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules
 
 ## Validation
 
-Eight content tests pass. The expanded production site builds, and 688 rendered
-math expressions on 19 pages pass internal-link, asset, anchor, and rendering checks.
+Nine content tests pass. The expanded production site builds and passes
+internal-link, asset, anchor, and math-rendering checks.
 The first GitHub site build and PDF build succeeded. Pages deployment returned
 404 because Pages is not yet enabled; the user has been asked to enable GitHub
 Actions as its source. The available browser is signed out of GitHub.

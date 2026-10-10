@@ -59,6 +59,15 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(page.math_count, 1)
         self.assertTrue(page.errors)
 
+    def test_supporting_tricks_are_distinct_from_algebra(self):
+        sample = '# Example\n\n**Step 1 — TRICK: identity.**\n\n$x=x$\n\n**Step 2 — ALGEBRA.**\n\n$x+0=x$\n'
+        html = content.style_algebra(sample)
+        self.assertIn('class="trick-step"', html)
+        self.assertIn('class="algebra-step"', html)
+        tex = content.markdown_to_tex(sample)
+        self.assertIn(r'\color{TrickPurple}', tex)
+        self.assertIn(r'\color{AlgebraBlue}', tex)
+
     def test_closed_solution_and_individual_hints_are_generated(self):
         content.build()
         page = (ROOT / 'site/problems/i2-001.md').read_text()

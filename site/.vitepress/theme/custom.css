@@ -6,8 +6,10 @@
   --vp-font-family-base: 'Segoe UI', system-ui, sans-serif;
   --vp-home-hero-name-color: #244a73;
   --vp-home-hero-image-background-image: none;
+  --trick-color: #6f398e;
+  --trick-background: #f6f0fa;
 }
-.dark { --vp-c-brand-1: #aaccef; --vp-c-brand-2: #90b9e2; }
+.dark { --vp-c-brand-1: #aaccef; --vp-c-brand-2: #90b9e2; --trick-color: #dab4f2; --trick-background: #31243c; }
 .alpha-notice { border-left: 3px solid var(--vp-c-brand-1); padding: .65rem 1rem; margin: 0 0 1.5rem; background: var(--vp-c-brand-soft); font-size: .85rem; line-height: 1.6; }
 .alpha-notice strong { display: block; color: var(--vp-c-brand-1); }
 .vp-doc { font-size: 17px; line-height: 1.85; }
@@ -24,6 +26,10 @@
   border-radius: 0 6px 6px 0;
 }
 .dark .vp-doc .algebra-step { color: #c1dcf7; background: #202d3a; }
+.vp-doc .trick-step { border-left: 3px solid var(--trick-color); padding: .5rem 1rem; margin: 1.5rem 0; color: var(--trick-color); background: var(--trick-background); border-radius: 0 6px 6px 0; }
+.vp-doc .tricks-appendix { color: var(--trick-color); }
+.vp-doc .tricks-appendix h2, .vp-doc .tricks-appendix h3, .vp-doc .tricks-appendix a { color: var(--trick-color); }
+.vp-doc .tricks-appendix .algebra-step { color: var(--trick-color); background: var(--trick-background); border-color: var(--trick-color); }
 .vp-doc details { border: 1px solid var(--vp-c-divider); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
 .vp-doc summary { cursor: pointer; font-weight: 600; color: var(--vp-c-brand-1); }
 .vp-doc summary:focus-visible { outline: 3px solid var(--vp-c-brand-1); outline-offset: 4px; }
@@ -32,5 +38,6 @@
   .VPNav, .VPSidebar, .VPDocAside, .VPDocFooter, .VPLocalNav { display: none !important; }
   .VPContent, .VPDoc .container, .VPDoc .content { padding: 0 !important; margin: 0 !important; max-width: none !important; }
   .vp-doc .algebra-step { color: #244a73; background: transparent; break-inside: avoid; }
+  .vp-doc .tricks-appendix, .vp-doc .trick-step, .vp-doc .tricks-appendix .algebra-step { color: #6f398e; background: transparent; }
   .vp-doc { font-size: 11pt; }
 }

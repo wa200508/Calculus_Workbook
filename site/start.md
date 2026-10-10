@@ -24,11 +24,15 @@ so you can practice making those choices yourself.
 | CALCULUS | A named derivative or integral rule |
 | ALGEBRA | Multiplication, expansion, rearrangement, or cancellation |
 | IDENTITY | An exact trigonometric or other identity |
+| TRICK | A purple supporting tool from the tricks appendix |
 | APPROXIMATION | A replacement that needs conditions and an error discussion |
 | CHECK | A way to test the result |
 
 Algebra steps use dark blue text and a margin rule. Text labels remain visible in
 grayscale. Large equations can scroll horizontally on narrow screens.
+Supporting tools are purple and labeled TRICK. The [tricks appendix](/generated/tricks)
+includes Euler identities, Taylor expansions with error bounds, and useful algebraic
+rewrites. Substitution and integration by parts remain main calculus methods.
 
 ## Getting help from a tutor
 

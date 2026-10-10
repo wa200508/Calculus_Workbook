@@ -11,6 +11,7 @@ These downloads are generated from the same manuscript used for the site.
 - <a :href="withBase('/downloads/NOTATION_STANDARD.md')" download>Notation standard</a>
 - <a :href="withBase('/downloads/CURRICULUM.md')" download>Curriculum</a>
 - <a :href="withBase('/downloads/DIFFERENTIATION_SCALARS.md')" download>Scalar differentiation chapter</a>
+- <a :href="withBase('/downloads/TRICKS_APPENDIX.md')" download>Tricks and identities appendix</a>
 - <a :href="withBase('/downloads/PILOT_EXAMPLES.md')" download>Pilot examples, hints, and solutions</a>
 - <a :href="withBase('/downloads/NOTATION_REVIEW.md')" download>Literature review</a>
 

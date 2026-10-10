@@ -239,12 +239,18 @@ Every solution uses numbered steps and textual labels:
 | CALCULUS | Derivative or integral rule being applied | Black math with a named rule |
 | ALGEBRA | Expansion, factoring, cancellation, solving, rearrangement | Dark blue `#244A73` with an ALGEBRA label |
 | IDENTITY | Trigonometric, exponential, logarithmic, or other exact identity | Same dark blue with an IDENTITY label |
+| TRICK | A supporting identity, rewrite, or approximation tool from the tricks appendix | Purple `#6F398E`, with a TRICK label and an appendix reference |
 | APPROXIMATION | A deliberately approximate replacement | Same dark blue with an APPROXIMATION label and conditions |
 | CHECK | Verification, dimensions, units, domain, or plausibility | Normal text |
 
 Color is supplementary: the labels survive grayscale printing and text-only tutoring. Do not make algebra light gray or low contrast. Markdown pilot files use the labels; the typeset book will apply the color styles centrally.
 
 Separate calculus from algebra into distinct lines. Give the unsimplified result before simplifying. Explain each factor, sign, and canceled term. State conditions for division and cancellation. Name an identity and show its general form before substituting the problem's expressions.
+
+When a step invokes a supporting tool from [the tricks appendix](TRICKS_APPENDIX.md),
+TRICK styling takes precedence over IDENTITY or APPROXIMATION styling. Supporting
+tools in that appendix are purple; algebra in the main chapters remains dark blue.
+Substitution and integration by parts are main calculus methods and are not labeled TRICK.
 
 Each problem has a stable ID, a problem-only prompt, a graduated hint ladder, a separate complete solution, a verification, a method-recognition note, and a nearby practice variant. Solutions must not sit beside the question in the final page layout.
 

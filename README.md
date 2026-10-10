@@ -4,7 +4,7 @@ An open review book with explicit notation, visible algebra, complete worked
 solutions, and help one step at a time.
 
 **Alpha development — no stable release:** notation standard, curriculum, literature review, a scalar differentiation chapter, and two
-further pilot examples. Full chapters are still being written. Material is
+further pilot examples, plus a purple appendix of supporting tools. Full chapters are still being written. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Read and preview locally
@@ -31,6 +31,7 @@ pnpm preview   # serve the production output
 - [Curriculum and reading routes](CURRICULUM.md)
 - [Scalar differentiation chapter](DIFFERENTIATION_SCALARS.md)
 - [Pilot problems, hints, and solutions](PILOT_EXAMPLES.md)
+- [Tricks and identities appendix](TRICKS_APPENDIX.md)
 - [Literature review](NOTATION_REVIEW.md)
 
 These Markdown files are authoritative. The build generates site pages, downloads,

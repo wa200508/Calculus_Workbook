@@ -416,7 +416,8 @@ $f(x)=(x^2-9)/(x-3)$ is scalar. The original definition excludes $x=3$.
 **Step 2 — CHOICE.** Factor before choosing a quotient rule. The numerator has
 a difference-of-squares form.
 
-**Step 3 — IDENTITY: difference of squares.** For scalar expressions $r,s$,
+**Step 3 — TRICK: difference of squares.** Use the identity in
+[T-005](TRICKS_APPENDIX.md#t-005-rationalization). For scalar expressions $r,s$,
 
 $$
 r^2-s^2=(r-s)(r+s).
@@ -490,7 +491,8 @@ $$
 =\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
 $$
 
-**Step 4 — IDENTITY: expand the shifted square.** The scalar identity
+**Step 4 — TRICK: expand the shifted square.** Use
+[T-003](TRICKS_APPENDIX.md#t-003-binomial-expansion). The scalar identity
 $(r+s)^2=r^2+2rs+s^2$, with $r=x$ and $s=h$, gives
 
 $$
@@ -619,7 +621,8 @@ is the scalar number $7$.
 as a nonzero scalar increment tending to zero, small enough that $2+h\ne0$.
 Using the equivalent formula, $f(2)=2(2)^2-3+4/2=8-3+2=7$.
 
-**Step 9 — IDENTITY: expand the square at the shifted input.**
+**Step 9 — TRICK: expand the square at the shifted input.** See
+[T-003](TRICKS_APPENDIX.md#t-003-binomial-expansion).
 
 $$
 (2+h)^2=2^2+2(2)h+h^2=4+4h+h^2.

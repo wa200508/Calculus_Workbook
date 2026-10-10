@@ -38,6 +38,7 @@ export default defineConfig({
       { text: 'Read', link: '/start' },
       { text: 'Practice', link: '/practice' },
       { text: 'Notation', link: '/generated/notation' },
+      { text: 'Tricks', link: '/generated/tricks' },
       { text: 'About', link: '/about' }
     ],
     sidebar: [
@@ -49,6 +50,7 @@ export default defineConfig({
       { text: 'Practice', items: [{ text: 'All problems', link: '/practice' }] },
       ...chapterSidebar,
       { text: 'Reference & project', items: [
+        { text: 'Tricks & identities · Purple appendix', link: '/generated/tricks' },
         { text: 'Literature & notation decisions', link: '/generated/references' },
         { text: 'Complete worked examples', link: '/generated/examples' },
         { text: 'Downloads', link: '/downloads' },

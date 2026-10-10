@@ -12,6 +12,8 @@ The manuscript, notation explanations, and site are expected to change.
 
 - Added D1 scalar differentiation foundations with six fully worked problems.
 - Grouped navigation and the practice index automatically by chapter.
+- Added a purple tricks appendix: Euler identities, Taylor expansions and errors,
+  binomial expansion, completing the square, rationalization, and logarithm identities.
 
 Work is saved and pushed in small commits to `wa200508/Calculus_Workbook` on
 `main`. No stable or major-version release has been tagged.

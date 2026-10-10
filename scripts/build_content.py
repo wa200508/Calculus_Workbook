@@ -11,6 +11,7 @@ SOURCES = {
     "CURRICULUM.md": "curriculum",
     "DIFFERENTIATION_SCALARS.md": "scalar-derivatives",
     "PILOT_EXAMPLES.md": "examples",
+    "TRICKS_APPENDIX.md": "tricks",
     "NOTATION_REVIEW.md": "references",
 }
 PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "PILOT_EXAMPLES.md")
@@ -49,8 +50,10 @@ def style_algebra(text):
     chunks = re.split(r"(?=^\*\*(?:Step \d+|Result\.|Recognition cue\.))", text, flags=re.M)
     styled = []
     for chunk in chunks:
-        if re.match(r"\*\*Step \d+ — (ALGEBRA|IDENTITY|APPROXIMATION)", chunk):
-            chunk = '<div class="algebra-step">\n\n' + chunk.strip() + '\n\n</div>\n'
+        kind = re.match(r"\*\*Step \d+ — (ALGEBRA|IDENTITY|APPROXIMATION|TRICK)", chunk)
+        if kind:
+            css_class = 'trick-step' if kind[1] == 'TRICK' else 'algebra-step'
+            chunk = f'<div class="{css_class}">\n\n' + chunk.strip() + '\n\n</div>\n'
         styled.append(chunk)
     return "\n".join(styled)
 
@@ -58,6 +61,7 @@ def style_algebra(text):
 def site_links(text):
     for filename, slug in SOURCES.items():
         text = text.replace(f"]({filename})", f"](/generated/{slug})")
+        text = text.replace(f"]({filename}#", f"](/generated/{slug}#")
     return text
 
 
@@ -98,7 +102,7 @@ def tex_inline(text):
     return "".join(result)
 
 
-def markdown_to_tex(text):
+def markdown_to_tex(text, algebra_color='AlgebraBlue'):
     lines = text.splitlines()[1:]
     output, index, in_math, list_kind, colored = [], 0, False, None, False
 
@@ -157,8 +161,10 @@ def markdown_to_tex(text):
             continue
         if re.match(r"\*\*(?:Step \d+|Result\.|Recognition cue\.)", line):
             end_list(); end_color()
-            if re.match(r"\*\*Step \d+ — (ALGEBRA|IDENTITY|APPROXIMATION)", line):
-                output.append(r"\begingroup\color{AlgebraBlue}")
+            kind = re.match(r"\*\*Step \d+ — (ALGEBRA|IDENTITY|APPROXIMATION|TRICK)", line)
+            if kind:
+                color = 'TrickPurple' if kind[1] == 'TRICK' else algebra_color
+                output.append(r"\begingroup\color{" + color + "}")
                 colored = True
         item = re.match(r"^(- |\d+\. )(.*)", line)
         if item:
@@ -185,7 +191,10 @@ def build():
         notice = '> **Alpha development.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
         text = site_links(content[name])
         first, rest = text.split("\n", 1)
-        (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + style_algebra(rest))
+        styled = style_algebra(rest)
+        if slug == 'tricks':
+            styled = '<div class="tricks-appendix">\n\n' + styled + '\n\n</div>\n'
+        (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + styled)
         shutil.copyfile(ROOT / name, ROOT / "site/public/downloads" / name)
     index = []
     for identifier, (title, prompt) in problems["Problems"].items():
@@ -214,7 +223,9 @@ def build():
     manuscript = preamble
     for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("CURRICULUM.md", "The curriculum"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("PILOT_EXAMPLES.md", "Pilot problems and worked solutions")):
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
-    manuscript += "\n\\appendix\n\\chapter{Literature review and notation decisions}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
+    manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
+    manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
+    manuscript += "\n\\chapter{Literature review and notation decisions}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
     (ROOT / "calculus_workbook.tex").write_text(manuscript)
     shutil.copyfile(ROOT / "calculus_workbook.tex", ROOT / "site/public/downloads/calculus_workbook.tex")
     combined = '# Calculus: A Worked Review\n\nCC BY-SA 4.0 · Provided as-is; correctness is not guaranteed.\n\n'
