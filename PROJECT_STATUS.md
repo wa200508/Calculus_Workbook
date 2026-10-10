@@ -47,4 +47,7 @@ and rendered mathematics. All 80 numerical spot checks pass and run in CI.
 The first expanded PDF is 90 pages; all 26 new chapter and appendix pages were
 rendered for visual review. Site run 38016766667 and PDF run 38016767823
 completed successfully. The live practice page was checked with a hint and
-complete solution expanded. The explicit-operator polish is publishing as alpha.2.
+complete solution expanded. The explicit-operator polish is published as alpha.2. Site run 38017047683
+and tagged PDF run 38017048899 both completed successfully. The final PDF
+remains 90 pages; changed pages were re-rendered and checked. The production
+site check reports 4,375 rendered math expressions.
