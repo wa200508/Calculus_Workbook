@@ -43,6 +43,6 @@ Ten content tests pass. The expanded production site has 38 HTML pages and
 2,674 rendered math expressions and passes internal-link, asset, anchor, and
 math-rendering checks. The tagged PDF compilation and prerelease publication
 succeeded; rendered pages were reviewed for layout and the appendix color.
-Site workflow run 38014427477 and tagged PDF workflow run 38014442081
+Site workflow run 38014711463 and tagged PDF workflow run 38014712828
 completed successfully. The public complete-book page returned HTTP 200 and was checked in the
 browser with rendered math and alpha notices.
