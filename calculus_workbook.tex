@@ -41,7 +41,7 @@
 {\sffamily\large Alpha development edition 0.3\par}
 \medskip
 Notation standard, forty worked problems, and supporting tools.\\
-Alpha edition 0.3.0-alpha.1, October 9, 2026.
+Alpha edition 0.3.0-alpha.2, October 9, 2026.
 \end{titlepage}
 \chapter*{About this book}
 This is a graduate-oriented review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Elementary examples establish a method before field, geometry, and convergence problems expose its less obvious conditions. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
@@ -1824,7 +1824,7 @@ smooth when this particular graph representation fails.
 \beta(\omega)=\frac{1}{c}\sqrt{\omega^2-\omega_c^2},\qquad \omega\ge\omega_c.
 \]
 
-Find \(\frac{d}{d\omega}(\beta(\omega))\) on its differentiability domain, the right-hand behavior at cutoff, and the group velocity \(v_g(\omega)=1/[\frac{d}{d\omega}(\beta(\omega))]\) for \(\omega>\omega_c\). Describe why extending this real formula below cutoff is invalid.
+Find \(\frac{d}{d\omega}(\beta(\omega))\) on its differentiability domain, the right-hand behavior at cutoff, and the group velocity \(v_g(\omega)=\frac{1}{\frac{d}{d\omega}\left(\beta(\omega)\right)}\) for \(\omega>\omega_c\). Describe why extending this real formula below cutoff is invalid.
 
 \subsection{D3-002 --- Spatial gradient of a complex Green kernel}
 
@@ -3068,7 +3068,7 @@ including \(\Delta=0\), and obtain a form that makes its magnitude and phase cen
 P(\rho;L)=\int_{-L}^L\frac{1}{\sqrt{\rho^2+s^2}}\,ds.
 \]
 
-Evaluate \(P(\rho;L)\), find \(\frac{d}{d\rho}(P(\rho;L))\) both from the closed form and under the integral sign, and describe the limit \(\rho\downarrow0\). A constant charge and permittivity prefactor would convert \(P\) into an electrostatic potential.
+Evaluate \(P(\rho;L)\), find \(\frac{\partial}{\partial\rho}\left(P(\rho;L)\right)\) with \(L\) held fixed both from the closed form and under the integral sign, and describe the limit \(\rho\downarrow0\). A constant charge and permittivity prefactor would convert \(P\) into an electrostatic potential.
 
 \subsection{I3-007 --- A weakly singular CEM panel integral}
 
@@ -3208,9 +3208,9 @@ Find the real scalar area \(S(U;\ell)\) of this band on \(x^2+y^2-z^2=\ell^2\). 
 
 \textbf{Step 1 --- SETUP.} \(x\) is a real length coordinate, \(k\) and \(L\) are fixed, and the integral is a real dimensionless scalar. The defining formula at \(x>0\) has a continuous extension \(q(0;k)=k\), including \(k=0\).
 
-\textbf{Step 2 --- CHOICE.} The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For \(k\ne0\), \(u=kx\) is a valid invertible linear coordinate.
+\textbf{Step 2 --- CHOICE.} The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For \(k\ne0\), \(u=g(x;k)=kx\) is a valid invertible linear coordinate, with real scalar inverse \(x=h(u;k)=u/k\).
 
-\textbf{Step 3 --- CALCULUS.} Its derivative is \(du/dx=k\), its inverse derivative is \(dx/du=1/k\), and its bounds are \(u=0\) to \(u=kL\). Thus
+\textbf{Step 3 --- CALCULUS.} With \(k\) held fixed, the coordinate derivatives are \(\frac{\partial}{\partial x}\left(g(x;k)\right)=k\) and \(\frac{\partial}{\partial u}\left(h(u;k)\right)=1/k\). The transformed bounds are \(u=0\) to \(u=kL\). Thus
 
 \[
 J(k,L)=\int_0^{kL}\frac{\sin u}{u}\,du=\operatorname{Si}(kL).
@@ -3542,7 +3542,7 @@ S(U;\ell)=2\pi\ell^2\int_{-U}^U\cosh u\sqrt{1+2\sinh^2u}\,du.
 The coordinate \(t=g(u)=\sinh u\) is globally increasing, with derivative \(\cosh u>0\). Its bounds are \(-T,T\), where the fixed real scalar \(T=\sinh U\ge0\).
 
 \endgroup
-\textbf{Step 5 --- CALCULUS.} The transformed integral is \(2\pi\ell^2\int_{-T}^T\sqrt{1+2t^2}\,dt\). A further real coordinate \(w\) with \(t=\sinh w/\sqrt2\) gives \(dt/dw=\cosh w/\sqrt2\) and \(\sqrt{1+2t^2}=\cosh w\). The identity \(\cosh^2w=(1+\cosh(2w))/2\) then gives the primitive
+\textbf{Step 5 --- CALCULUS.} The transformed integral is \(2\pi\ell^2\int_{-T}^T\sqrt{1+2t^2}\,dt\). A further real coordinate \(w\) with \(t=h(w)=\sinh w/\sqrt2\) gives \(\frac{d}{dw}\left(h(w)\right)=\cosh w/\sqrt2\) and \(\sqrt{1+2t^2}=\cosh w\). The identity \(\cosh^2w=(1+\cosh(2w))/2\) then gives the primitive
 
 \[
 B(t)=\frac{t}{2}\sqrt{1+2t^2}+\frac{1}{2\sqrt2}\operatorname{arsinh}(\sqrt2t).

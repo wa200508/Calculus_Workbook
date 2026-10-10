@@ -28,7 +28,7 @@ removed from that chapter; internal guidance is in `docs/NOTATION_AUTHORING.md`.
 Notation standard, 40 fully worked problems in six subject chapters, purple
 supporting-tools appendix, and notation literature review. The editorial outline
 is kept in the repository for development and is excluded from reading pages,
-downloads, and the compiled PDF. Alpha edition 0.3.0-alpha.1 adds 16 graduate-review
+downloads, and the compiled PDF. Alpha edition 0.3.0-alpha.2 adds 16 graduate-review
 problems in D3 and I3, with primary references and explicit domain arguments.
 
 ## Next steps
@@ -42,4 +42,9 @@ See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules
 
 Ten content tests pass. The numerical check script compares advanced formulas
 against independent finite differences, quadrature, and tangent orthogonality.
-Publication and visual verification for the expanded edition are in progress.
+The expanded site passes checks for 56 HTML pages, internal links, assets, anchors,
+and rendered mathematics. All 80 numerical spot checks pass and run in CI.
+The first expanded PDF is 90 pages; all 26 new chapter and appendix pages were
+rendered for visual review. Site run 38016766667 and PDF run 38016767823
+completed successfully. The live practice page was checked with a hint and
+complete solution expanded. The explicit-operator polish is publishing as alpha.2.

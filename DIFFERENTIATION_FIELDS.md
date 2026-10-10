@@ -31,7 +31,7 @@ $$
 \beta(\omega)=\frac{1}{c}\sqrt{\omega^2-\omega_c^2},\qquad \omega\ge\omega_c.
 $$
 
-Find $\frac{d}{d\omega}(\beta(\omega))$ on its differentiability domain, the right-hand behavior at cutoff, and the group velocity $v_g(\omega)=1/[\frac{d}{d\omega}(\beta(\omega))]$ for $\omega>\omega_c$. Describe why extending this real formula below cutoff is invalid.
+Find $\frac{d}{d\omega}(\beta(\omega))$ on its differentiability domain, the right-hand behavior at cutoff, and the group velocity $v_g(\omega)=\frac{1}{\frac{d}{d\omega}\left(\beta(\omega)\right)}$ for $\omega>\omega_c$. Describe why extending this real formula below cutoff is invalid.
 
 ### D3-002 — Spatial gradient of a complex Green kernel
 

@@ -1,5 +1,10 @@
 # Development log
 
+## 0.3.0-alpha.2
+
+- Replace coordinate-derivative shorthand with explicit operators and function inputs.
+- Keep the line-source derivative notation consistent about its fixed length parameter.
+
 ## 0.3.0-alpha.1
 
 - Add 16 original, fully worked graduate-review problems with three hints each.

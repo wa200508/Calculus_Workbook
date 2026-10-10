@@ -31,5 +31,5 @@ The advanced chapters cover electromagnetic kernels, waveguide cutoff, phase,
 matrix sensitivity, ellipsoids, hyperboloids, and convergence. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.1)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.2)
 or [read the entire current manuscript on one page](/generated/book).

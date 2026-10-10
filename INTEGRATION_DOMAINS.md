@@ -65,7 +65,7 @@ $$
 P(\rho;L)=\int_{-L}^L\frac{1}{\sqrt{\rho^2+s^2}}\,ds.
 $$
 
-Evaluate $P(\rho;L)$, find $\frac{d}{d\rho}(P(\rho;L))$ both from the closed form and under the integral sign, and describe the limit $\rho\downarrow0$. A constant charge and permittivity prefactor would convert $P$ into an electrostatic potential.
+Evaluate $P(\rho;L)$, find $\frac{\partial}{\partial\rho}\left(P(\rho;L)\right)$ with $L$ held fixed both from the closed form and under the integral sign, and describe the limit $\rho\downarrow0$. A constant charge and permittivity prefactor would convert $P$ into an electrostatic potential.
 
 ### I3-007 — A weakly singular CEM panel integral
 
@@ -184,9 +184,9 @@ $$
 
 **Step 1 — SETUP.** $x$ is a real length coordinate, $k$ and $L$ are fixed, and the integral is a real dimensionless scalar. The defining formula at $x>0$ has a continuous extension $q(0;k)=k$, including $k=0$.
 
-**Step 2 — CHOICE.** The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For $k\ne0$, $u=kx$ is a valid invertible linear coordinate.
+**Step 2 — CHOICE.** The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For $k\ne0$, $u=g(x;k)=kx$ is a valid invertible linear coordinate, with real scalar inverse $x=h(u;k)=u/k$.
 
-**Step 3 — CALCULUS.** Its derivative is $du/dx=k$, its inverse derivative is $dx/du=1/k$, and its bounds are $u=0$ to $u=kL$. Thus
+**Step 3 — CALCULUS.** With $k$ held fixed, the coordinate derivatives are $\frac{\partial}{\partial x}\left(g(x;k)\right)=k$ and $\frac{\partial}{\partial u}\left(h(u;k)\right)=1/k$. The transformed bounds are $u=0$ to $u=kL$. Thus
 
 $$
 J(k,L)=\int_0^{kL}\frac{\sin u}{u}\,du=\operatorname{Si}(kL).
@@ -500,7 +500,7 @@ $$
 
 The coordinate $t=g(u)=\sinh u$ is globally increasing, with derivative $\cosh u>0$. Its bounds are $-T,T$, where the fixed real scalar $T=\sinh U\ge0$.
 
-**Step 5 — CALCULUS.** The transformed integral is $2\pi\ell^2\int_{-T}^T\sqrt{1+2t^2}\,dt$. A further real coordinate $w$ with $t=\sinh w/\sqrt2$ gives $dt/dw=\cosh w/\sqrt2$ and $\sqrt{1+2t^2}=\cosh w$. The identity $\cosh^2w=(1+\cosh(2w))/2$ then gives the primitive
+**Step 5 — CALCULUS.** The transformed integral is $2\pi\ell^2\int_{-T}^T\sqrt{1+2t^2}\,dt$. A further real coordinate $w$ with $t=h(w)=\sinh w/\sqrt2$ gives $\frac{d}{dw}\left(h(w)\right)=\cosh w/\sqrt2$ and $\sqrt{1+2t^2}=\cosh w$. The identity $\cosh^2w=(1+\cosh(2w))/2$ then gives the primitive
 
 $$
 B(t)=\frac{t}{2}\sqrt{1+2t^2}+\frac{1}{2\sqrt2}\operatorname{arsinh}(\sqrt2t).

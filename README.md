@@ -10,7 +10,7 @@ provided as-is; mathematical correctness is not guaranteed. See [the accuracy no
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
-on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.1)
+on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.2)
 for a fixed, compiled edition of all material written so far.
 
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
@@ -28,7 +28,7 @@ The single-page edition is at `/generated/book.html`; its compiled HTML file is
 site with `pnpm preview` so its styles and math assets load correctly.
 
 The PDF workflow builds every manuscript checkpoint. Pushing an alpha version
-tag such as `v0.3.0-alpha.1` also publishes the PDF as a GitHub prerelease.
+tag such as `v0.3.0-alpha.2` also publishes the PDF as a GitHub prerelease.
 
 ```sh
 pnpm check     # tests, production build, and internal-link/math checks
