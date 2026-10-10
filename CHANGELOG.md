@@ -1,5 +1,13 @@
 # Development log
 
+## 0.3.0-alpha.1
+
+- Add 16 original, fully worked graduate-review problems with three hints each.
+- Add field, phase, geometry, and matrix-sensitivity differentiation examples.
+- Add oscillatory, improper, principal-value, singular-panel, and curved-domain integrals.
+- State branch choices, excluded points, convergence, and interchange conditions explicitly.
+- Include primary application references from MIT, NIST DLMF, and CEM research.
+
 ## 0.2.0-alpha.4
 
 - Correct the notation chapter’s numbered list in the compiled PDF.

@@ -397,6 +397,7 @@ Their textual labels and colors distinguish the roles of those operations.
 | IDENTITY | An exact identity applied to the expression | Dark blue with an IDENTITY label |
 | TRICK | A supporting identity, rewrite, or approximation from the tricks appendix | Purple with a TRICK label and an appendix reference |
 | APPROXIMATION | A replacement with stated validity conditions | Dark blue with an APPROXIMATION label |
+| DOMAIN | Excluded points, branch choices, convergence, and conditions for an operation | Ordinary text |
 | CHECK | Verification of the result, domain, dimensions, or plausibility | Ordinary text |
 
 Color supplements the textual labels, which remain meaningful in grayscale.

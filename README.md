@@ -1,16 +1,16 @@
 # Calculus: A Worked Review
 
-An open review book with explicit notation, visible algebra, complete worked
+An open, graduate-oriented review book with explicit notation, visible algebra, complete worked
 solutions, and help one step at a time.
 
-**Alpha development — no stable release:** notation standard, 24 worked problems across four calculus chapters,
+**Alpha development — no stable release:** notation standard, 40 worked problems across six calculus chapters,
 and a purple appendix of supporting tools. Full chapters are still being written. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
-on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4)
+on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.1)
 for a fixed, compiled edition of all material written so far.
 
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
@@ -28,10 +28,11 @@ The single-page edition is at `/generated/book.html`; its compiled HTML file is
 site with `pnpm preview` so its styles and math assets load correctly.
 
 The PDF workflow builds every manuscript checkpoint. Pushing an alpha version
-tag such as `v0.2.0-alpha.4` also publishes the PDF as a GitHub prerelease.
+tag such as `v0.3.0-alpha.1` also publishes the PDF as a GitHub prerelease.
 
 ```sh
 pnpm check     # tests, production build, and internal-link/math checks
+python3 scripts/check_advanced_math.py  # independent numeric spot checks
 pnpm preview   # serve the production output
 ```
 
@@ -40,8 +41,10 @@ pnpm preview   # serve the production output
 - [Notation standard](NOTATION_STANDARD.md)
 - [Scalar differentiation chapter](DIFFERENTIATION_SCALARS.md)
 - [Products, quotients, and compositions](DIFFERENTIATION_RULES.md)
+- [Fields, phase, and geometric domains](DIFFERENTIATION_FIELDS.md)
 - [Scalar antiderivatives and definite integrals](INTEGRATION_SCALARS.md)
 - [Substitution](INTEGRATION_SUBSTITUTION.md)
+- [Oscillation, singularities, and curved domains](INTEGRATION_DOMAINS.md)
 - [Tricks and identities appendix](TRICKS_APPENDIX.md)
 - [Literature review](NOTATION_REVIEW.md)
 

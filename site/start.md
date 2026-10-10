@@ -26,6 +26,7 @@ so you can practice making those choices yourself.
 | IDENTITY | An exact trigonometric or other identity |
 | TRICK | A purple supporting tool from the tricks appendix |
 | APPROXIMATION | A replacement that needs conditions and an error discussion |
+| DOMAIN | Excluded points, branch choices, convergence, and conditions for an operation |
 | CHECK | A way to test the result |
 
 Algebra steps use dark blue text and a margin rule. Text labels remain visible in

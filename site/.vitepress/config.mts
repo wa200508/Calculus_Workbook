@@ -9,7 +9,7 @@ const chapterSidebar = chapters.map(chapter => ({
   text: `${chapter} · ${problems.find(problem => problem.chapter === chapter)!.chapterTitle}`,
   collapsed: chapter !== 'D1',
   items: [
-    { text: 'Chapter guide & rules', link: `/generated/${({ D1: 'scalar-derivatives', D2: 'derivative-rules', I1: 'scalar-integrals', I2: 'substitution' } as Record<string,string>)[chapter]}` },
+    { text: 'Chapter guide & rules', link: `/generated/${({ D1: 'scalar-derivatives', D2: 'derivative-rules', D3: 'fields-and-geometry', I1: 'scalar-integrals', I2: 'substitution', I3: 'oscillation-and-domains' } as Record<string,string>)[chapter]}` },
     ...problems.filter(problem => problem.chapter === chapter).map(problem => ({
       text: `${problem.id} · ${problem.title}`, link: problem.link
     }))

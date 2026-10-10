@@ -25,9 +25,11 @@ features:
 
 ## Alpha development: a book we can keep improving
 
-The current edition contains the notation standard, 24 worked problems across
-four differentiation and integration chapters, and a purple tricks appendix. This is an alpha development review book, provided as-is; mathematical
+The current edition contains the notation standard, 40 worked problems across
+six differentiation and integration chapters, and a purple tricks appendix.
+The advanced chapters cover electromagnetic kernels, waveguide cutoff, phase,
+matrix sensitivity, ellipsoids, hyperboloids, and convergence. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.1)
 or [read the entire current manuscript on one page](/generated/book).

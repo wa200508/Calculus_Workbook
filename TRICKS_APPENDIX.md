@@ -489,6 +489,53 @@ would instead be $3\ln(x^2+1)-2\ln(|x|)$. The absolute value keeps the real
 logarithm's input positive; the expression $\ln(x)$ must not be carried into a
 negative-input domain.
 
+## T-007 Hyperbolic identities and real branches
+
+For a real scalar $u$, the scalar functions are defined by
+
+$$
+\cosh(u)=\frac{\exp(u)+\exp(-u)}{2},\qquad
+\sinh(u)=\frac{\exp(u)-\exp(-u)}{2}.
+$$
+
+Expansion of the squares and cancellation of their common terms give
+
+$$
+\cosh^2(u)-\sinh^2(u)=1,\qquad
+\cosh^2(u)+\sinh^2(u)=1+2\sinh^2(u),\qquad
+\cosh^2(u)=\frac{1+\cosh(2u)}{2}.
+$$
+
+The first identity converts a difference of squares into a hyperboloid equation;
+the second and third simplify its surface-area factor. These are supporting
+identities. The coordinate substitution and the integral rule remain calculus
+operations in the main chapters.
+
+### Worked use: a square root with its sign accounted for
+
+Let $t$ be a real independent scalar, and let $u$ be the real scalar coordinate
+related by $t=\sinh(u)$. Then
+
+$$
+\sqrt{1+t^2}=\sqrt{1+\sinh^2(u)}
+=\sqrt{\cosh^2(u)}=|\cosh(u)|=\cosh(u).
+$$
+
+The final equality is valid because $\cosh(u)\ge1$ for real $u$. In general,
+$\sqrt{h^2}=|h|$ for a real scalar $h$, and replacement by $h$ alone is justified
+only when $h\ge0$. The real inverse
+
+$$
+u=\operatorname{arsinh}(t)=\ln\left(t+\sqrt{1+t^2}\right)
+$$
+
+exists for every real $t$: $\sinh(u)$ is strictly increasing, and the logarithm's
+argument is positive even when $t<0$. By contrast, $\cosh(u)$ is even and is
+not one-to-one on all real inputs. Its nonnegative inverse branch
+$\operatorname{arcosh}(t)=\ln(t+\sqrt{t^2-1})$ is defined for $t\ge1$.
+The expressions with inverse hyperbolic functions used in I3-006 and I3-009
+refer to these real conventions.
+
 ## Use a trick deliberately
 
 Identify the structure it matches, check its domain, show the exact replacement,

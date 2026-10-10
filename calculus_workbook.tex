@@ -21,7 +21,7 @@
 \fancyhf{}
 \fancyhead[L]{\small\sffamily Calculus: A Worked Review}
 \fancyhead[R]{\small\sffamily\thepage}
-\fancyfoot[L]{\small\sffamily Alpha 0.2 | Notation and worked-example prototypes}
+\fancyfoot[L]{\small\sffamily Alpha 0.3 | Notation and worked-example prototypes}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0pt}
 \begin{document}
@@ -38,17 +38,17 @@
 {\Large Explicit notation. Visible reasoning.\par}
 {\Large Every dependency accounted for.\par}
 \vfill
-{\sffamily\large Alpha development edition 0.2\par}
+{\sffamily\large Alpha development edition 0.3\par}
 \medskip
-Notation standard, twenty-four worked problems, and supporting tools.\\
-Alpha edition 0.2.0-alpha.4, October 9, 2026.
+Notation standard, forty worked problems, and supporting tools.\\
+Alpha edition 0.3.0-alpha.1, October 9, 2026.
 \end{titlepage}
 \chapter*{About this book}
-This is a review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
+This is a graduate-oriented review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Elementary examples establish a method before field, geometry, and convergence problems expose its less obvious conditions. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
 Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
-This alpha development edition develops scalar differentiation and integration through worked problems and a supporting tricks appendix. Use the table of contents to find a topic or example. The notation recommendations incorporate a targeted literature review, documented in the references.
+This alpha development edition develops scalar calculus, field and matrix derivatives, oscillatory and singular integrals, and curved-domain geometry through worked problems. Topics and examples are listed in the table of contents. The notation recommendations incorporate a targeted literature review, documented in the references.
 
 Problem statements, graduated hints, and complete solutions are presented separately. Stable problem identifiers and numbered solution steps provide references to individual calculations.
 \chapter*{Sharing and accuracy}
@@ -485,6 +485,7 @@ ALGEBRA & Expansion, factoring, cancellation, or rearrangement & Dark blue with 
 IDENTITY & An exact identity applied to the expression & Dark blue with an IDENTITY label \\[5pt]
 TRICK & A supporting identity, rewrite, or approximation from the tricks appendix & Purple with a TRICK label and an appendix reference \\[5pt]
 APPROXIMATION & A replacement with stated validity conditions & Dark blue with an APPROXIMATION label \\[5pt]
+DOMAIN & Excluded points, branch choices, convergence, and conditions for an operation & Ordinary text \\[5pt]
 CHECK & Verification of the result, domain, dimensions, or plausibility & Ordinary text \\[5pt]
 \end{longtable}
 
@@ -1790,6 +1791,443 @@ This expression is even in \(h\) and differentiable,
 so its derivative at \(h=0\) is zero. This checks the evaluated slope; the chain-rule
 calculation establishes the general formula.
 
+\chapter{D3: Fields, phase, and geometric domains}
+
+A derivative may be formally correct and still be used outside its domain. In
+field calculations, the source point may be excluded, a square root may change
+from real to imaginary, and a smooth surface may fail to be a graph in the
+chosen coordinates. These examples progress from a scalar waveguide parameter
+to vector fields, implicit geometry, and matrix-valued sensitivity.
+
+\section{Rules and conventions}
+
+All spatial coordinates and differentiation parameters below are real scalars.
+A complex scalar output is differentiated with respect to a real input by
+differentiating its real and imaginary parts. The symbol \(\mathrm{i}\) denotes
+the fixed imaginary unit, with \(\mathrm{i}^2=-1\); it is not an index.
+The Euclidean gradient of a scalar field \(f(x,y,z)\) is a real or complex column
+vector of its three coordinate partial derivatives. The other two independent
+coordinates are held fixed in each entry.
+
+For a scalar level set \(F(x,y,z)=0\), a local graph \(z=g(x,y)\) is guaranteed near
+a point only when \(F\) is continuously differentiable there and
+\(\frac{\partial}{\partial z}(F(x,y,z))\ne0\) at that point. A surface can remain
+smooth when this particular graph representation fails.
+
+\section{Problems}
+
+\subsection{D3-001 --- Waveguide sensitivity at cutoff}
+
+\textbf{Objects and dependencies.} \(\omega>0\) is an independent real scalar angular frequency. The real scalars \(c>0\) (wave speed) and \(\omega_c>0\) (cutoff frequency) are fixed. Define the nonnegative real scalar propagation constant
+
+\[
+\beta(\omega)=\frac{1}{c}\sqrt{\omega^2-\omega_c^2},\qquad \omega\ge\omega_c.
+\]
+
+Find \(\frac{d}{d\omega}(\beta(\omega))\) on its differentiability domain, the right-hand behavior at cutoff, and the group velocity \(v_g(\omega)=1/[\frac{d}{d\omega}(\beta(\omega))]\) for \(\omega>\omega_c\). Describe why extending this real formula below cutoff is invalid.
+
+\subsection{D3-002 --- Spatial gradient of a complex Green kernel}
+
+\textbf{Objects and dependencies.} \(x,y,z\) are independent real scalar observation coordinates. Fixed real scalars \(x_s,y_s,z_s\) locate a source. The fixed real scalar wavenumber is \(k\ge0\). Define
+
+\[
+R(x,y,z)=\sqrt{(x-x_s)^2+(y-y_s)^2+(z-z_s)^2},\qquad
+G(x,y,z)=\frac{\exp(-\mathrm{i}kR(x,y,z))}{4\pi R(x,y,z)}.
+\]
+
+The real distance satisfies \(R(x,y,z)>0\); \(G(x,y,z)\) is complex scalar-valued. Find the complex column vector \(\nabla_{x,y,z}G(x,y,z)\), with the source and \(k\) held fixed. State its behavior as the source is approached.
+
+\subsection{D3-003 --- RF phase and the branch cut}
+
+\textbf{Objects and dependencies.} \(\omega\) is an independent real scalar. \(X(\omega),Y(\omega)\) are differentiable real scalar functions; \(H(\omega)=X(\omega)+\mathrm{i}Y(\omega)\) is a complex scalar response. The principal phase \(\phi(\omega)=\operatorname{atan2}(Y(\omega),X(\omega))\) takes values in \((-\pi,\pi]\). Find its derivative away from zeros and the principal branch cut, and apply the result to \(H(\omega)=\exp(\mathrm{i}\omega)\) near \(\omega=\pi\). Distinguish principal phase from a locally unwrapped phase.
+
+\subsection{D3-004 --- An ellipsoid is smooth where its height graph fails}
+
+\textbf{Objects and dependencies.} Fixed real semiaxes \(a,b,c\) are positive. \(x,y,z\) are independent real coordinates of the scalar level function
+
+\[
+F(x,y,z)=\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}-1.
+\]
+
+On the upper ellipsoid, the dependent real scalar height is
+\(z=g(x,y)=c\sqrt{1-x^2/a^2-y^2/b^2}\). Find its two partial derivatives on their open domain. Find the outward real unit normal to the full ellipsoid, including the equator, and explain the difference between a graph singularity and a surface singularity.
+
+\subsection{D3-005 --- Hyperboloid normal and an indefinite quadratic form}
+
+\textbf{Objects and dependencies.} Fixed real scalars \(a,c>0\) are lengths. \(u\in\mathbb R\) and \(v\in[0,2\pi)\) are independent dimensionless real parameters. Define the real column vector
+
+\[
+\mathbf r(u,v)=\begin{bmatrix}a\cosh(u)\cos(v)\\a\cosh(u)\sin(v)\\c\sinh(u)\end{bmatrix}.
+\]
+
+Find the tangent vectors, their cross product, and a unit normal pointing away from the axis on the one-sheet hyperboloid \(x^2/a^2+y^2/a^2-z^2/c^2=1\). Decide whether any finite parameter value makes the surface singular. The interval in \(v\) identifies the same angular seam at its ends.
+
+\subsection{D3-006 --- A matrix-defined anisotropic scalar field}
+
+\textbf{Objects and dependencies.} \(\mathbf x\in\mathbb R^3\) is an independent real column vector with coordinates \(x_1,x_2,x_3\). \(\mathbf Q\) is a fixed real symmetric positive-definite \(3\times3\) matrix; \(\mathbf x^{\mathsf T}\) is its input's row transpose. Define the real scalar functions
+
+\[
+q(\mathbf x)=\mathbf x^{\mathsf T}\mathbf Q\mathbf x,\qquad
+\Phi(\mathbf x)=q(\mathbf x)^{-1/2},\qquad \mathbf x\ne\mathbf0.
+\]
+
+Find the real column vector \(\nabla_{\mathbf x}\Phi(\mathbf x)\) with \(\mathbf Q\) held fixed, showing the component differentiation of \(q(\mathbf x)\). Explain what changes if positive definiteness is replaced by an indefinite symmetric matrix.
+
+\subsection{D3-007 --- Sensitivity of a CEM matrix solve near singularity}
+
+\textbf{Objects and dependencies.} \(t\) is an independent dimensionless real scalar. A fixed complex column vector is \(\mathbf b=[b_1,b_2]^{\mathsf T}\). Define the real \(2\times2\) matrix and dependent complex column vector
+
+\[
+\mathbf A(t)=\begin{bmatrix}1&t\\t&1\end{bmatrix},\qquad
+\mathbf j(t)=\mathbf A(t)^{-1}\mathbf b,\qquad t\ne-1,1.
+\]
+
+Find \(\frac{d}{dt}(\mathbf j(t))\) without treating matrix division as scalar division. Also find the component formulas and determine the behavior near \(t=1\) for \(\mathbf b=[1,0]^{\mathsf T}\) and \(\mathbf b=[1,1]^{\mathsf T}\). This small system models a parameter-dependent discretized field equation; it is not a full electromagnetic solver.
+
+\section{Hint ladders}
+
+\subsection{D3-001}
+
+\begin{enumerate}
+\item The radicand is positive only above cutoff; the derivative of a square root includes its reciprocal.
+\item Differentiation gives a factor \(2\omega\), which cancels the square root rule's two.
+\item At cutoff, the difference quotient scales as the reciprocal square root of the frequency increment.
+
+\end{enumerate}
+\subsection{D3-002}
+
+\begin{enumerate}
+\item The observation coordinates enter the kernel through the scalar distance.
+\item Differentiate \(\exp(-\mathrm{i}kR)/(4\pi R)\) first with respect to a separate scalar distance variable.
+\item Each coordinate derivative of the distance is a displacement component divided by the distance.
+
+\end{enumerate}
+\subsection{D3-003}
+
+\begin{enumerate}
+\item A local angle derivative can be computed without selecting a global inverse tangent.
+\item On a chart with \(X(\omega)\ne0\), differentiate \(\arctan(Y(\omega)/X(\omega))\) plus a locally constant multiple of \(\pi\).
+\item The resulting denominator is \(X(\omega)^2+Y(\omega)^2\); the principal phase still jumps on the negative real axis.
+
+\end{enumerate}
+\subsection{D3-004}
+
+\begin{enumerate}
+\item The square root's argument is strictly positive on the interior of the projected ellipse.
+\item Implicit differentiation gives the same height derivative when the \(z\) partial derivative of \(F(x,y,z)\) is nonzero.
+\item The full gradient of \(F(x,y,z)\) never vanishes on the ellipsoid, even when its \(z\) component vanishes.
+
+\end{enumerate}
+\subsection{D3-005}
+
+\begin{enumerate}
+\item Differentiate each of the three components with respect to one parameter at a time.
+\item The cross product can be expanded using its three scalar components.
+\item Compare its direction with the gradient of the hyperboloid's level function.
+
+\end{enumerate}
+\subsection{D3-006}
+
+\begin{enumerate}
+\item Expand the quadratic form as a double sum over matrix entries.
+\item Differentiating with respect to \(x_\ell\) produces one contribution from each occurrence of \(\mathbf x\).
+\item Symmetry combines the contributions into \(2(\mathbf Q\mathbf x)_\ell\) before the outer chain rule is applied.
+
+\end{enumerate}
+\subsection{D3-007}
+
+\begin{enumerate}
+\item The identity \(\mathbf A(t)\mathbf j(t)=\mathbf b\) can be differentiated while \(\mathbf b\) is fixed.
+\item Multiplication by \(\mathbf A(t)^{-1}\) is on the left; the order of the matrices matters.
+\item The determinant is \(1-t^2\). A compatible right-hand side can cancel a pole in the solution, although the matrix remains singular at the excluded value.
+
+\end{enumerate}
+\clearpage
+\section{Complete solutions}
+
+\subsection{D3-001}
+
+\textbf{Step 1 --- SETUP.} The variable is the real scalar \(\omega\); \(c\) and \(\omega_c\) are fixed. The output \(\beta(\omega)\) is real on \([\omega_c,\infty)\) and smooth on \((\omega_c,\infty)\). The derivative is sought on that open interval first.
+
+\textbf{Step 2 --- CHOICE.} The square root is a composition. Its derivative rule requires a strictly positive radicand here; the endpoint therefore needs a separate limit.
+
+\textbf{Step 3 --- CALCULUS.} With respect to \(\omega\),
+
+\[
+\frac{d}{d\omega}\left(\beta(\omega)\right)
+=\frac{1}{c}\frac{1}{2\sqrt{\omega^2-\omega_c^2}}\frac{d}{d\omega}\left(\omega^2-\omega_c^2\right)
+=\frac{\omega}{c\sqrt{\omega^2-\omega_c^2}}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} For \(\omega>\omega_c\) the derivative is positive, so its reciprocal is defined:
+
+\[
+v_g(\omega)=\frac{c\sqrt{\omega^2-\omega_c^2}}{\omega}
+=c\sqrt{1-\frac{\omega_c^2}{\omega^2}}.
+\]
+
+\endgroup
+\textbf{Step 5 --- DOMAIN.} For a real scalar increment \(h>0\),
+
+\[
+\frac{\beta(\omega_c+h)-\beta(\omega_c)}{h}
+=\frac{\sqrt{2\omega_c h+h^2}}{ch}
+=\frac{\sqrt{2\omega_c+h}}{c\sqrt h}\longrightarrow+\infty.
+\]
+
+There is no finite right derivative at cutoff. Below cutoff the radicand is negative. In the convention \(\exp(\mathrm{i}\omega t-\mathrm{i}\beta z)\), a decaying field for \(z>0\) has \(\beta=-\mathrm{i}\alpha\), where \(\alpha=\sqrt{\omega_c^2-\omega^2}/c>0\) is a real attenuation constant. That is a different branch and a different physical regime.
+
+\textbf{Step 6 --- CHECK.} The derivative has units of inverse velocity. The limits are \(v_g(\omega)\to0\) as \(\omega\downarrow\omega_c\) and \(v_g(\omega)\to c\) as \(\omega\to\infty\). Large sensitivity near cutoff is expected; a high-frequency approximation is unreliable there.
+
+\textbf{Recognition cue.} A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
+
+\subsection{D3-002}
+
+\textbf{Step 1 --- SETUP.} The observation coordinates are independent real scalars, the source and \(k\) are fixed, and \(G(x,y,z)\) is a complex scalar on the punctured space \(R(x,y,z)>0\). The derivative output is a complex \(3\times1\) vector.
+
+\textbf{Step 2 --- CHOICE.} Dependence through distance separates the radial derivative from the coordinate derivatives. A separate positive real scalar \(\rho\) gives \(g(\rho)=\exp(-\mathrm{i}k\rho)/(4\pi\rho)\) and \(G(x,y,z)=g(R(x,y,z))\).
+
+\textbf{Step 3 --- CALCULUS.} The product rule and chain rule give
+
+\[
+\begin{aligned}
+\frac{d}{d\rho}\left(g(\rho)\right)
+&=\frac{1}{4\pi}\left((-\mathrm{i}k)\exp(-\mathrm{i}k\rho)\rho^{-1}-\exp(-\mathrm{i}k\rho)\rho^{-2}\right),\\
+\frac{\partial}{\partial x}\left(R(x,y,z)\right)&=\frac{x-x_s}{R(x,y,z)},\\
+\frac{\partial}{\partial y}\left(R(x,y,z)\right)&=\frac{y-y_s}{R(x,y,z)},\\
+\frac{\partial}{\partial z}\left(R(x,y,z)\right)&=\frac{z-z_s}{R(x,y,z)}.
+\end{aligned}
+\]
+
+In each partial derivative the other two coordinates are held fixed.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Factoring the radial derivative gives
+
+\[
+\frac{d}{d\rho}\left(g(\rho)\right)
+=-\frac{\exp(-\mathrm{i}k\rho)(1+\mathrm{i}k\rho)}{4\pi\rho^2}.
+\]
+
+Multiplication by the distance gradient yields
+
+\[
+\nabla_{x,y,z}G(x,y,z)
+=-\frac{\exp(-\mathrm{i}kR(x,y,z))(1+\mathrm{i}kR(x,y,z))}{4\pi R(x,y,z)^3}
+\begin{bmatrix}x-x_s\\y-y_s\\z-z_s\end{bmatrix}.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK.} For \(k=0\), the Coulomb-kernel gradient is recovered. The displacement vector has magnitude \(R(x,y,z)\), so the gradient magnitude behaves as \(1/(4\pi R(x,y,z)^2)\) near the source. The kernel itself behaves as \(1/(4\pi R(x,y,z))\). Neither formula defines a value at the source. A distributional source equation cannot be inferred by simply substituting \(R=0\) into these classical derivatives.
+
+\textbf{Recognition cue.} A radial chain rule reduces component work, but it preserves the excluded source point. Differentiation strengthens the singularity and can change whether a later integral exists.
+
+\subsection{D3-003}
+
+\textbf{Step 1 --- SETUP.} The input is a real scalar \(\omega\), and the output phase is real. A smooth local phase requires \(H(\omega)\ne0\) and a chart avoiding the selected branch cut. \(X(\omega)\) and \(Y(\omega)\) both depend on \(\omega\).
+
+\textbf{Step 2 --- CHOICE.} On a local chart with \(X(\omega)\ne0\), a constant angular correction distinguishes \(\operatorname{atan2}\) from \(\arctan(Y/X)\). The correction has zero derivative on that chart.
+
+\textbf{Step 3 --- CALCULUS.} The chain and quotient rules give
+
+\[
+\frac{d}{d\omega}\left(\phi(\omega)\right)
+=\frac{1}{1+(Y(\omega)/X(\omega))^2}
+\frac{X(\omega)\frac{d}{d\omega}(Y(\omega))-Y(\omega)\frac{d}{d\omega}(X(\omega))}{X(\omega)^2}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Since \(1+(Y/X)^2=(X^2+Y^2)/X^2\) on this chart,
+
+\[
+\frac{d}{d\omega}\left(\phi(\omega)\right)
+=\frac{X(\omega)\frac{d}{d\omega}(Y(\omega))-Y(\omega)\frac{d}{d\omega}(X(\omega))}{X(\omega)^2+Y(\omega)^2}.
+\]
+
+A chart using \(Y(\omega)\ne0\) gives the same expression. The expression therefore applies at \(X=0,Y\ne0\) too, when the local phase is smooth.
+
+\endgroup
+\begingroup\color{TrickPurple}
+\textbf{Step 5 --- TRICK: Euler identity.} The supporting identity is listed in T-001. For \(H(\omega)=\exp(\mathrm{i}\omega)\), \(X(\omega)=\cos\omega\) and \(Y(\omega)=\sin\omega\). The numerator is \(\cos^2\omega+\sin^2\omega=1\), and the denominator is also one. Every smooth local phase has derivative one.
+
+\endgroup
+\textbf{Step 6 --- DOMAIN AND CHECK.} The principal phase approaches \(\pi\) from the left at \(\omega=\pi\), but approaches \(-\pi\) from the right. It is discontinuous there and has no derivative there. The unwrapped choice \(\widetilde\phi(\omega)=\omega\) is smooth through that point, with derivative one. At a zero of \(H(\omega)\), no phase is defined at all. A group-delay calculation based on phase differentiation depends on both a nonzero response and a consistent local phase choice.
+
+\textbf{Recognition cue.} A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
+
+\subsection{D3-004}
+
+\textbf{Step 1 --- SETUP.} The graph uses independent real \(x,y\) in \(x^2/a^2+y^2/b^2<1\). Its dependent scalar \(g(x,y)>0\) is the upper height. The full level surface also contains the lower half and equator.
+
+\textbf{Step 2 --- CHOICE.} The graph chain rule gives derivatives in its open domain. The level-set gradient gives a normal without selecting an upper or lower height branch.
+
+\textbf{Step 3 --- CALCULUS.} Holding \(y\) fixed and then \(x\) fixed gives
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial x}\left(g(x,y)\right)&=-\frac{cx}{a^2\sqrt{1-x^2/a^2-y^2/b^2}},\\
+\frac{\partial}{\partial y}\left(g(x,y)\right)&=-\frac{cy}{b^2\sqrt{1-x^2/a^2-y^2/b^2}}.
+\end{aligned}
+\]
+
+For the level function, each of \(x,y,z\) is independent during differentiation:
+
+\[
+\nabla_{x,y,z}F(x,y,z)=\begin{bmatrix}2x/a^2\\2y/b^2\\2z/c^2\end{bmatrix}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Dividing this real vector by its Euclidean length cancels its common factor two:
+
+\[
+\mathbf n(x,y,z)=\frac{\begin{bmatrix}x/a^2\\y/b^2\\z/c^2\end{bmatrix}}
+{\sqrt{x^2/a^4+y^2/b^4+z^2/c^4}}.
+\]
+
+It points outward since \(F\) increases away from the ellipsoid.
+
+\endgroup
+\textbf{Step 5 --- DOMAIN AND CHECK.} At the equator \(z=0\), the \(z\) partial derivative of \(F\) vanishes, so the implicit-function theorem does not provide a height graph there. For example, at \((a,0,0)\) the \(x\) partial derivative is \(2/a\ne0\), and a smooth graph of \(x\) in terms of \(y,z\) is available. The full gradient could vanish only at \((0,0,0)\), which is not on the ellipsoid. The unit normal is defined at every surface point and has length one.
+
+\textbf{Recognition cue.} The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
+
+\subsection{D3-005}
+
+\textbf{Step 1 --- SETUP.} Independent parameters \(u,v\) are real scalars. Both tangent derivatives and their cross product are real \(3\times1\) vectors. The fixed parameters \(a,c\) are positive.
+
+\textbf{Step 2 --- CHOICE.} Parametric tangent vectors avoid solving the hyperboloid for a single height branch. Their cross product supplies an oriented normal when it is nonzero.
+
+\textbf{Step 3 --- CALCULUS.} Component differentiation gives
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial u}\left(\mathbf r(u,v)\right)&=\begin{bmatrix}a\sinh(u)\cos(v)\\a\sinh(u)\sin(v)\\c\cosh(u)\end{bmatrix},\\
+\frac{\partial}{\partial v}\left(\mathbf r(u,v)\right)&=\begin{bmatrix}-a\cosh(u)\sin(v)\\a\cosh(u)\cos(v)\\0\end{bmatrix}.
+\end{aligned}
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} In the order \(u\) tangent crossed with \(v\) tangent, the three components are
+
+\[
+\mathbf w(u,v)=\begin{bmatrix}
+0-ac\cosh^2(u)\cos(v)\\
+-ac\cosh^2(u)\sin(v)-0\\
+a^2\sinh(u)\cosh(u)(\cos^2(v)+\sin^2(v))
+\end{bmatrix}.
+\]
+
+\endgroup
+\begingroup\color{TrickPurple}
+\textbf{Step 5 --- TRICK: hyperbolic identity.} The real identities are listed in T-007. The identity \(\cosh^2(u)-\sinh^2(u)=1\) establishes the surface equation. The identity \(\cos^2(v)+\sin^2(v)=1\) and the positivity of \(\cosh(u)\) give
+
+\[
+\|\mathbf w(u,v)\|=a\cosh(u)\sqrt{c^2\cosh^2(u)+a^2\sinh^2(u)}>0.
+\]
+
+\endgroup
+\textbf{Step 6 --- RESULT AND CHECK.} \(\mathbf w\) points toward the axis, so the requested real unit normal is
+
+\[
+\mathbf n(u,v)=\frac{\begin{bmatrix}c\cosh(u)\cos(v)\\c\cosh(u)\sin(v)\\-a\sinh(u)\end{bmatrix}}
+{\sqrt{c^2\cosh^2(u)+a^2\sinh^2(u)}}.
+\]
+
+Its dot product with each tangent is zero; its length is one. At \(u=0\) it is the horizontal radial unit vector. No finite \(u,v\) makes the tangent cross product zero. Periodicity at the angular seam is a coordinate identification rather than a singularity.
+
+\textbf{Recognition cue.} The sign in an indefinite quadratic form changes the geometry, while normal orientation still depends on the order of a cross product.
+
+\subsection{D3-006}
+
+\textbf{Step 1 --- SETUP.} Independent input \(\mathbf x\) has three real scalar coordinates. The symmetric matrix \(\mathbf Q\) is fixed. Positive definiteness gives \(q(\mathbf x)>0\) whenever \(\mathbf x\ne\mathbf0\), so the real scalar reciprocal square root is differentiable there.
+
+\textbf{Step 2 --- CHOICE.} Component expansion resolves the two appearances of the input before the outer scalar chain rule is applied. The output gradient is a real \(3\times1\) column vector.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} With independent indices \(i,j\) from one to three,
+
+\[
+q(\mathbf x)=\sum_{i=1}^3\sum_{j=1}^3 x_i Q_{ij}x_j.
+\]
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} Differentiation with respect to the scalar coordinate \(x_\ell\), with the other coordinates held fixed, gives
+
+\[
+\frac{\partial}{\partial x_\ell}\left(q(\mathbf x)\right)
+=\sum_{j=1}^3Q_{\ell j}x_j+\sum_{i=1}^3x_iQ_{i\ell}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA.} Symmetry gives \(Q_{i\ell}=Q_{\ell i}\), so both sums are the same component of \(\mathbf Q\mathbf x\). Thus \(\nabla_{\mathbf x}q(\mathbf x)=2\mathbf Q\mathbf x\). Without symmetry the result would instead be \((\mathbf Q+\mathbf Q^{\mathsf T})\mathbf x\).
+
+\endgroup
+\textbf{Step 6 --- CALCULUS.} The scalar outer derivative is \(-(1/2)q^{-3/2}\), hence
+
+\[
+\nabla_{\mathbf x}\Phi(\mathbf x)
+=-\frac{\mathbf Q\mathbf x}{(\mathbf x^{\mathsf T}\mathbf Q\mathbf x)^{3/2}}.
+\]
+
+\textbf{Step 7 --- DOMAIN AND CHECK.} For \(\mathbf Q=\mathbf I\), the expression becomes \(-\mathbf x/\|\mathbf x\|^3\). For an indefinite symmetric \(\mathbf Q\), the same real formula is valid only in the open set \(q(\mathbf x)>0\); nonzero inputs on the cone \(q(\mathbf x)=0\) are also singular. Inputs with \(q(\mathbf x)<0\) do not define this real scalar field. Matrix symmetry simplifies differentiation; positive definiteness supplies a separate domain guarantee.
+
+\textbf{Recognition cue.} A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
+
+\subsection{D3-007}
+
+\textbf{Step 1 --- SETUP.} The variable is the real scalar \(t\); \(\mathbf b\) is fixed and complex. \(\mathbf A(t)\) is a real matrix and \(\mathbf j(t)\) a complex \(2\times1\) vector. The matrix is invertible exactly when \(1-t^2\ne0\).
+
+\textbf{Step 2 --- CHOICE.} Differentiation of the defining linear system preserves multiplication order and avoids a nonexistent rule for scalar-style matrix division.
+
+\textbf{Step 3 --- CALCULUS.} The matrix product rule is applied entry by entry:
+
+\[
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf j(t)
++\mathbf A(t)\frac{d}{dt}\left(\mathbf j(t)\right)=\mathbf0,
+\qquad \frac{d}{dt}\left(\mathbf A(t)\right)=\begin{bmatrix}0&1\\1&0\end{bmatrix}.
+\]
+
+Multiplication on the left by the inverse gives
+
+\[
+\frac{d}{dt}\left(\mathbf j(t)\right)
+=-\mathbf A(t)^{-1}\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf A(t)^{-1}\mathbf b.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} The explicit inverse and solution are
+
+\[
+\mathbf A(t)^{-1}=\frac{1}{1-t^2}\begin{bmatrix}1&-t\\-t&1\end{bmatrix},\qquad
+\mathbf j(t)=\frac{1}{1-t^2}\begin{bmatrix}b_1-tb_2\\b_2-tb_1\end{bmatrix}.
+\]
+
+The quotient rule and numerator expansion produce
+
+\[
+\frac{d}{dt}\left(\mathbf j(t)\right)
+=\frac{1}{(1-t^2)^2}\begin{bmatrix}
+-b_2(1-t^2)+2t(b_1-tb_2)\\
+-b_1(1-t^2)+2t(b_2-tb_1)
+\end{bmatrix}
+=\frac{1}{(1-t^2)^2}\begin{bmatrix}2tb_1-(1+t^2)b_2\\2tb_2-(1+t^2)b_1\end{bmatrix}.
+\]
+
+\endgroup
+\textbf{Step 5 --- DOMAIN AND CHECK.} For \(\mathbf b=[1,0]^{\mathsf T}\), the solution diverges at \(t=1\), and the singular system there is inconsistent. For \(\mathbf b=[1,1]^{\mathsf T}\), cancellation on \(t\ne\pm1\) gives \(\mathbf j(t)=[1,1]^{\mathsf T}/(1+t)\) and derivative \(-[1,1]^{\mathsf T}/(1+t)^2\). This solution branch has a finite extension at \(t=1\), but the matrix inverse still does not exist there; the singular system has infinitely many solutions. Substitution into the original nonsingular system verifies both component formulas.
+
+\textbf{Recognition cue.} The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
+
+\section{Application references}
+
+These are original review problems. The waveguide model is motivated by
+\href{https://www.ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/d9425aa2b1acd0c1fc121965ad7eafec_MIT6_013S09_lec16.pdf}{MIT 6.013, Lecture 16}.
+Singular Green kernels and discretized field systems occur in the integral-equation
+work discussed by \href{https://arxiv.org/abs/1911.12660}{Tihon and Craeye, All-analytical evaluation of the singular integrals involved in the Method of Moments}.
+The small scalar and matrix models isolate calculus issues; their solutions do
+not constitute full waveguide or antenna designs.
+
 \chapter{I1: Scalar antiderivatives and definite integrals}
 
 An indefinite integral asks for a family of antiderivatives. A definite integral
@@ -2563,6 +3001,575 @@ Preserve the endpoint order when mapping to the new variable.
 \(F(0)-F(1)=\ln(1)-\ln(2)\). In addition, \(q(x)\ge0\) on \([0,1]\) and
 \(q(x)>0\) for \(0<x\le1\), so reversing that interval must give a negative integral.
 
+\chapter{I3: Oscillation, singularities, and curved domains}
+
+The existence of an integral is part of the problem. Oscillation can produce
+conditional convergence, a coordinate map can fold an interval onto itself,
+and a singular kernel can become integrable because of the area or volume
+measure. A formal antiderivative does not settle any of these questions.
+The first example uses an elementary sine; the later examples connect the
+same care with domains to RF field integrals and curved geometry.
+
+\section{Rules and conventions}
+
+A finite integral of a continuous scalar function is an ordinary integral.
+At an excluded point, an improper integral is defined by separate one-sided
+limits. A Cauchy principal value instead prescribes a coupled, symmetric
+limiting process; it is identified explicitly and is not substituted for an
+ordinary integral without a reason.
+
+For a real coordinate map from \((u,v)\) to \((x(u,v),y(u,v))\), the Jacobian matrix
+is the \(2\times2\) matrix of coordinate partial derivatives. The area factor is
+the absolute value of its determinant. In three dimensions the volume factor
+is the absolute determinant of the \(3\times3\) coordinate Jacobian. A surface
+map \(\mathbf r(u,v)\in\mathbb R^3\) instead has area factor
+\(\|\frac{\partial}{\partial u}(\mathbf r(u,v))\times\frac{\partial}{\partial v}(\mathbf r(u,v))\|\).
+These factors measure different objects.
+
+\section{Problems}
+
+\subsection{I3-001 --- Why a sine substitution can erase a nonzero integral}
+
+\textbf{Objects and dependencies.} \(x\in[0,\pi]\) is an independent real scalar angle in radians and the integration variable. The real scalar integrand is \(q(x)=\sin x\). Evaluate \(\int_0^\pi q(x)\,dx\) using \(u=g(x)=\sin x\). Explain why replacing both endpoints by \(u=0\) in one integral gives a false answer.
+
+\subsection{I3-002 --- A sine integral with a removable singularity}
+
+\textbf{Objects and dependencies.} \(x\in[0,L]\) is a real scalar integration coordinate. The fixed length \(L>0\) and fixed real wavenumber \(k\) satisfy \(kx\) dimensionless. For \(x>0\) let \(q(x;k)=\sin(kx)/x\). Evaluate the real scalar number \(J(k,L)=\int_0^Lq(x;k)\,dx\), stating the extension at \(x=0\), the case \(k=0\), and a small-\(|kL|\) approximation with an error bound. The semicolon separates the varying coordinate from the fixed parameter inside the integrand.
+
+\subsection{I3-003 --- Damping a conditionally convergent oscillatory integral}
+
+\textbf{Objects and dependencies.} \(x\ge0\) is the real integration coordinate; \(k>0\) is a fixed real wavenumber. The real scalar damping parameter \(\epsilon>0\) has the same units as \(k\). The scalar integrand has its removable value \(k\) at zero. Define
+
+\[
+F(\epsilon;k)=\int_0^\infty \exp(-\epsilon x)\frac{\sin(kx)}{x}\,dx.
+\]
+
+Evaluate \(F(\epsilon;k)\) using differentiation with respect to \(\epsilon\). Determine the ordinary improper integral with \(\epsilon=0\), and distinguish its convergence from absolute convergence. Any interchange of a derivative or a limit with the integral requires a stated justification.
+
+\subsection{I3-004 --- A finite aperture integral at phase matching}
+
+\textbf{Objects and dependencies.} \(z\in[0,L]\) is a real integration coordinate and \(L>0\) a fixed length. The independent real scalar \(\Delta\) is a wavenumber mismatch. \(\mathrm{i}^2=-1\) is fixed. Evaluate the complex scalar amplitude
+
+\[
+A(\Delta;L)=\int_0^L\exp(\mathrm{i}\Delta z)\,dz
+\]
+
+including \(\Delta=0\), and obtain a form that makes its magnitude and phase center apparent. Explain why division by \(\Delta\) does not establish a singular physical amplitude at phase matching.
+
+\subsection{I3-005 --- A pole inside the interval: improper integral or principal value}
+
+\textbf{Objects and dependencies.} \(x\) is a dimensionless real integration coordinate on \([-1,1]\). A fixed real scalar \(a\) satisfies \(-1<a<1\). The real scalar function \(q(x;a)=1/(x-a)\) is undefined at \(x=a\). Determine whether \(\int_{-1}^1q(x;a)\,dx\) exists as an ordinary improper integral, and evaluate its Cauchy principal value with equal exclusions \(a-\delta,a+\delta\) for real \(\delta>0\) small enough. Describe what happens when \(a\) is an endpoint.
+
+\subsection{I3-006 --- Near a line source: differentiation under an integral}
+
+\textbf{Objects and dependencies.} \(s\in[-L,L]\) is a real scalar source coordinate, with fixed real length \(L>0\). The independent real scalar observation distance is \(\rho>0\). The real dimensionless scalar kernel integral is
+
+\[
+P(\rho;L)=\int_{-L}^L\frac{1}{\sqrt{\rho^2+s^2}}\,ds.
+\]
+
+Evaluate \(P(\rho;L)\), find \(\frac{d}{d\rho}(P(\rho;L))\) both from the closed form and under the integral sign, and describe the limit \(\rho\downarrow0\). A constant charge and permittivity prefactor would convert \(P\) into an electrostatic potential.
+
+\subsection{I3-007 --- A weakly singular CEM panel integral}
+
+\textbf{Objects and dependencies.} Independent real dimensionless coordinates \(x,y\) describe the triangle \(T=\{(x,y):0\le y\le x\le1\}\). The real scalar integrand is \(q(x,y)=1/\sqrt{x^2+y^2}\) away from \((0,0)\). Evaluate
+
+\[
+K=\int_0^1\int_0^x\frac{1}{\sqrt{x^2+y^2}}\,dy\,dx
+\]
+
+as a nonnegative improper area integral using \(x=u\), \(y=uv\). The new independent real coordinates satisfy \(0<u\le1\), \(0\le v\le1\). Find the Jacobian explicitly. Compare this with replacing the denominator by \(x^2+y^2\).
+
+\subsection{I3-008 --- A Gaussian-weighted integral inside an ellipsoid}
+
+\textbf{Objects and dependencies.} Fixed real lengths \(a,b,c>0\) define the ellipsoid \(E=\{(x,y,z):x^2/a^2+y^2/b^2+z^2/c^2\le1\}\). The independent real coordinates are \(x,y,z\). Define the real dimensionless scalar \(q(x,y,z)=x^2/a^2+y^2/b^2+z^2/c^2\). Evaluate the real scalar weighted volume
+
+\[
+W(a,b,c)=\iiint_E\exp(-q(x,y,z))\,dx\,dy\,dz.
+\]
+
+The error function, if needed, is defined for real scalar \(s\) by \(\operatorname{erf}(s)=\frac{2}{\sqrt\pi}\int_0^s\exp(-t^2)\,dt\), where \(t\) is a dummy real integration variable. Show the transformed domain and the volume Jacobian, not only the transformed exponential.
+
+\subsection{I3-009 --- Finite and infinite surface area of a hyperboloid}
+
+\textbf{Objects and dependencies.} The fixed real length is \(\ell>0\) and the fixed real cutoff parameter is \(U\ge0\). Independent dimensionless real parameters satisfy \(-U\le u\le U\), \(0\le v<2\pi\). Define the real column vector
+
+\[
+\mathbf r(u,v)=\begin{bmatrix}\ell\cosh(u)\cos(v)\\\ell\cosh(u)\sin(v)\\\ell\sinh(u)\end{bmatrix}.
+\]
+
+Find the real scalar area \(S(U;\ell)\) of this band on \(x^2+y^2-z^2=\ell^2\). Determine whether the complete one-sheet hyperboloid has finite area. The angular seam is counted once.
+
+\section{Hint ladders}
+
+\subsection{I3-001}
+
+\begin{enumerate}
+\item The map \(u=\sin x\) increases on the first half of the interval and decreases on the second.
+\item The inverse branch is \(x=\arcsin u\) on the first half and \(x=\pi-\arcsin u\) on the second.
+\item Both branches contribute positively after their different orientations are accounted for.
+
+\end{enumerate}
+\subsection{I3-002}
+
+\begin{enumerate}
+\item The limit \(\sin(kx)/x\to k\) removes the apparent endpoint singularity.
+\item For \(k\ne0\), the coordinate \(u=kx\) changes the integral to the defining sine integral.
+\item A Taylor remainder for \(\sin(kx)\), divided by \(x\) and integrated, bounds the error.
+
+\end{enumerate}
+\subsection{I3-003}
+
+\begin{enumerate}
+\item For positive damping, differentiation with respect to \(\epsilon\) removes the factor \(1/x\).
+\item The remaining damped sine integral equals \(k/(\epsilon^2+k^2)\).
+\item The constant is fixed by \(F(\epsilon;k)\to0\) as \(\epsilon\to\infty\). Undamped tails need an oscillatory estimate rather than absolute domination.
+
+\end{enumerate}
+\subsection{I3-004}
+
+\begin{enumerate}
+\item For \(\Delta\ne0\), the complex exponential has an elementary antiderivative in \(z\).
+\item Factoring the numerator about \(z=L/2\) leads to a sine divided by its argument.
+\item At \(\Delta=0\), the original integrand is identically one.
+
+\end{enumerate}
+\subsection{I3-005}
+
+\begin{enumerate}
+\item The two sides of the pole must have finite limits separately for the ordinary improper integral to exist.
+\item The antiderivative on either side is \(\ln|x-a|\).
+\item Equal logarithmic divergences cancel only under the specified principal-value prescription.
+
+\end{enumerate}
+\subsection{I3-006}
+
+\begin{enumerate}
+\item The scalar substitution \(s=\rho\sinh u\) removes the square root for \(\rho>0\).
+\item Its endpoints depend on \(\rho\); the resulting closed form is twice an inverse hyperbolic sine.
+\item Under differentiation with respect to \(\rho\), the kernel becomes \(-\rho(\rho^2+s^2)^{-3/2}\).
+
+\end{enumerate}
+\subsection{I3-007}
+
+\begin{enumerate}
+\item On the triangle, \(v=y/x\) runs from zero to one for \(x>0\).
+\item The absolute determinant of the coordinate Jacobian is \(u\).
+\item One power of \(u\) cancels the \(1/R\) singularity. A \(1/R^2\) kernel retains a logarithmically divergent \(u\) integral.
+
+\end{enumerate}
+\subsection{I3-008}
+
+\begin{enumerate}
+\item Scaling by the three semiaxes maps the ellipsoid to the unit ball.
+\item Spherical coordinates on that ball contribute a further factor \(r^2\sin\theta\).
+\item Integration by parts reduces \(\int_0^1r^2\exp(-r^2)\,dr\) to a boundary term and an error-function integral.
+
+\end{enumerate}
+\subsection{I3-009}
+
+\begin{enumerate}
+\item The surface area measure is the length of the tangent cross product.
+\item The identity \(\cosh^2u=1+\sinh^2u\) makes \(t=\sinh u\) useful.
+\item The area becomes an integral of \(\sqrt{1+2t^2}\) on a finite symmetric interval, whose size grows without bound as \(U\) increases.
+
+\end{enumerate}
+\clearpage
+\section{Complete solutions}
+
+\subsection{I3-001}
+
+\textbf{Step 1 --- SETUP.} The input and integration variable is the real angle \(x\in[0,\pi]\), and the output integral is a real number. The function \(\sin x\) is continuous throughout this interval.
+
+\textbf{Step 2 --- CHOICE.} The map \(g(x)=\sin x\) is not one-to-one on the full interval. The substitution rule for an integrand \(h(g(x))\frac{d}{dx}(g(x))\) cannot be applied directly: the original integrand is \(\sin x\), not \(h(\sin x)\cos x\) for a single globally defined \(h\) here. An inverse-coordinate substitution instead needs two branches.
+
+\textbf{Step 3 --- CALCULUS.} On \(0\le x<\pi/2\), the inverse is \(x_1(u)=\arcsin u\), with derivative \(1/\sqrt{1-u^2}\) and limits \(u=0\) to \(u=1\). On \(\pi/2<x\le\pi\), the inverse is \(x_2(u)=\pi-\arcsin u\), with derivative \(-1/\sqrt{1-u^2}\) and limits \(u=1\) to \(u=0\). The inverse derivatives are singular at \(u=1\), so both transformed integrals are improper there:
+
+\[
+\int_0^\pi\sin x\,dx
+=\int_0^1\frac{u}{\sqrt{1-u^2}}\,du
++\int_1^0\frac{-u}{\sqrt{1-u^2}}\,du.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Reversing the second integral's limits changes its sign. The total is twice the first integral. A primitive on \(0<u<1\) is \(-\sqrt{1-u^2}\), so
+
+\[
+\int_0^\pi\sin x\,dx
+=2\lim_{b\uparrow1}\left(-\sqrt{1-b^2}+1\right)=2.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK.} Direct integration gives \([-\cos x]_0^\pi=2\). Nonnegative area cannot vanish merely because a coordinate returns to its initial value. By contrast, \(\int_0^\pi\sin x\cos x\,dx=0\) legitimately follows from the direct chain-rule substitution, which does not require an inverse map.
+
+\textbf{Recognition cue.} Equal transformed endpoints are meaningful only after the transformed integrand and the applicable substitution theorem have been identified. A folding coordinate map can conceal multiplicity and orientation.
+
+\subsection{I3-002}
+
+\textbf{Step 1 --- SETUP.} \(x\) is a real length coordinate, \(k\) and \(L\) are fixed, and the integral is a real dimensionless scalar. The defining formula at \(x>0\) has a continuous extension \(q(0;k)=k\), including \(k=0\).
+
+\textbf{Step 2 --- CHOICE.} The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For \(k\ne0\), \(u=kx\) is a valid invertible linear coordinate.
+
+\textbf{Step 3 --- CALCULUS.} Its derivative is \(du/dx=k\), its inverse derivative is \(dx/du=1/k\), and its bounds are \(u=0\) to \(u=kL\). Thus
+
+\[
+J(k,L)=\int_0^{kL}\frac{\sin u}{u}\,du=\operatorname{Si}(kL).
+\]
+
+Here the real sine integral is defined by \(\operatorname{Si}(s)=\int_0^s\sin(u)/u\,du\) with the limiting integrand value one at zero. For \(k<0\) the oriented limits already include the sign. For \(k=0\), the original integrand is zero everywhere and \(J(0,L)=0\); no division by zero is used.
+
+\begingroup\color{TrickPurple}
+\textbf{Step 4 --- TRICK: Taylor expansion with remainder.} The supporting expansion and error convention are described in T-002. For real \(k,x\), Taylor's theorem gives
+
+\[
+\sin(kx)=kx-\frac{(kx)^3}{6}+r(x;k),\qquad |r(x;k)|\le\frac{|kx|^5}{120}.
+\]
+
+Dividing by \(x>0\) and integrating over the finite interval gives
+
+\[
+J(k,L)=kL-\frac{k^3L^3}{18}+E(k,L),\qquad
+|E(k,L)|\le\frac{|k|^5L^5}{600}.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK.} With respect to the real endpoint \(L\), the fundamental theorem gives \(\frac{\partial}{\partial L}(J(k,L))=\sin(kL)/L\) for \(L>0\). This agrees with the special-function expression. The integral is odd in \(k\), and the approximation preserves that property. Small \(|kL|\) controls the stated error; a small value of \(k\) alone is insufficient when \(L\) is large.
+
+\textbf{Recognition cue.} A familiar sine inside a ratio need not have an elementary antiderivative. A special-function definition and a controlled approximation are valid, distinct forms of a solution.
+
+\subsection{I3-003}
+
+\textbf{Step 1 --- SETUP.} The integration coordinate is real \(x\ge0\), while \(k>0\) is fixed and \(\epsilon>0\) varies. The integrand is bounded at zero after extension and is absolutely integrable at infinity when \(\epsilon>0\).
+
+\textbf{Step 2 --- CHOICE.} Differentiation with respect to damping removes \(1/x\). Near any fixed \(\epsilon_0>0\), the absolute value of the differentiated integrand is bounded by \(\exp(-\epsilon_0x/2)\) for \(\epsilon\ge\epsilon_0/2\). This integrable bound justifies differentiation under the integral sign locally.
+
+\textbf{Step 3 --- CALCULUS.} With \(k\) held fixed,
+
+\[
+\frac{\partial}{\partial\epsilon}\left(F(\epsilon;k)\right)
+=-\int_0^\infty\exp(-\epsilon x)\sin(kx)\,dx.
+\]
+
+\begingroup\color{TrickPurple}
+\textbf{Step 4 --- TRICK: Euler identity.} The supporting identity is listed in T-001. The imaginary part of \(\exp((-\epsilon+\mathrm{i}k)x)\) is \(\exp(-\epsilon x)\sin(kx)\). Since \(\epsilon>0\), its boundary value at infinity is zero, and
+
+\[
+\int_0^\infty\exp((-\epsilon+\mathrm{i}k)x)\,dx
+=\frac{1}{\epsilon-\mathrm{i}k}
+=\frac{\epsilon+\mathrm{i}k}{\epsilon^2+k^2}.
+\]
+
+The imaginary part is \(k/(\epsilon^2+k^2)\).
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} Integration with respect to the real damping parameter gives \(F(\epsilon;k)=-\arctan(\epsilon/k)+C(k)\), where the scalar \(C(k)\) is independent of \(\epsilon\).
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA.} The estimate \(|\sin(kx)|/x\le k\) gives \(|F(\epsilon;k)|\le k/\epsilon\), hence \(F\to0\) as \(\epsilon\to\infty\). Therefore
+
+\[
+F(\epsilon;k)=\frac{\pi}{2}-\arctan(\epsilon/k)=\arctan(k/\epsilon).
+\]
+
+\endgroup
+\textbf{Step 7 --- DOMAIN: the undamped limit.} Absolute domination by \(|\sin(kx)|/x\) is unavailable on the infinite interval. For any real \(A>0\), let \(f_\epsilon(x)=\exp(-\epsilon x)/x\), including \(\epsilon=0\). This positive function decreases to zero. Integration by parts against the bounded primitive \(-\cos(kx)/k\) gives, for \(B>A\),
+
+\[
+\left|\int_A^B f_\epsilon(x)\sin(kx)\,dx\right|
+\le\frac{f_\epsilon(A)+f_\epsilon(B)+\int_A^B|\frac{d}{dx}(f_\epsilon(x))|\,dx}{k}
+=\frac{2f_\epsilon(A)}{k}\le\frac{2}{kA}.
+\]
+
+The same uniform tail bound holds as \(B\to\infty\). On the finite interval \([0,A]\), the integrands converge under a bounded domination as \(\epsilon\downarrow0\). Finite-interval convergence plus the uniform tail bound justifies the limit:
+
+\[
+\int_0^\infty\frac{\sin(kx)}{x}\,dx
+=\lim_{\epsilon\downarrow0}F(\epsilon;k)=\frac{\pi}{2},\qquad k>0.
+\]
+
+\textbf{Step 8 --- CHECK: absolute convergence fails.} In the coordinate \(u=kx\), each interval \([n\pi+\pi/6,n\pi+5\pi/6]\) has \(|\sin u|\ge1/2\). For integers \(n\ge1\), its contribution to \(\int|\sin u|/u\,du\) is at least \(1/[3(n+1)]\). The harmonic lower bound diverges. Thus the undamped integral is conditionally convergent. Its differentiated damping integral at \(\epsilon=0\) would contain \(\int_0^\infty\sin(kx)\,dx\), whose ordinary limit does not exist. The interchange valid for positive damping is not valid at the endpoint.
+
+\textbf{Recognition cue.} Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
+
+\subsection{I3-004}
+
+\textbf{Step 1 --- SETUP.} The real coordinate \(z\) is integrated from zero to the fixed length \(L\). The mismatch \(\Delta\) is a real parameter. The amplitude is complex scalar-valued and has units of length.
+
+\textbf{Step 2 --- CHOICE.} A complex exponential can be integrated componentwise with respect to the real coordinate. The case \(\Delta=0\) is separated before division by the parameter.
+
+\textbf{Step 3 --- CALCULUS.} For \(\Delta\ne0\), a primitive in \(z\) is \(\exp(\mathrm{i}\Delta z)/(\mathrm{i}\Delta)\), so
+
+\[
+A(\Delta;L)=\frac{\exp(\mathrm{i}\Delta L)-1}{\mathrm{i}\Delta}.
+\]
+
+For \(\Delta=0\), integration of one gives \(A(0;L)=L\) directly.
+
+\begingroup\color{TrickPurple}
+\textbf{Step 4 --- TRICK: Euler identity.} The supporting identity is listed in T-001. Factoring about the midpoint gives
+
+\[
+\exp(\mathrm{i}\Delta L)-1
+=\exp(\mathrm{i}\Delta L/2)\left(\exp(\mathrm{i}\Delta L/2)-\exp(-\mathrm{i}\Delta L/2)\right)
+=2\mathrm{i}\exp(\mathrm{i}\Delta L/2)\sin(\Delta L/2).
+\]
+
+\endgroup
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA.} Define the real scalar function \(\operatorname{sinc}_0(s)=\sin(s)/s\) for \(s\ne0\), with \(\operatorname{sinc}_0(0)=1\). The subscript distinguishes this unnormalized convention from \(\sin(\pi s)/(\pi s)\). Then
+
+\[
+A(\Delta;L)=L\exp(\mathrm{i}\Delta L/2)\operatorname{sinc}_0(\Delta L/2),\qquad
+|A(\Delta;L)|=L|\operatorname{sinc}_0(\Delta L/2)|.
+\]
+
+\endgroup
+\textbf{Step 6 --- CHECK.} The limiting value at zero is \(L\), and \(|A|\le L\) follows independently from the triangle inequality for the original integral. The exponential locates the phase center at the midpoint; when the real sinc factor is negative it contributes an additional phase of \(\pi\). At its zeros the amplitude is zero and its phase is undefined.
+
+\textbf{Recognition cue.} A quotient singularity introduced by a parameterized antiderivative may be removable even though the formula with division is undefined there. Phase still needs separate treatment at amplitude zeros.
+
+\subsection{I3-005}
+
+\textbf{Step 1 --- SETUP.} \(x\) is the integration variable; the fixed real pole location \(a\) is inside \((-1,1)\). The scalar function is continuous on each side of \(a\) but not at \(a\).
+
+\textbf{Step 2 --- CHOICE.} The ordinary improper integral requires two separate finite limits. The antiderivative \(\ln|x-a|\) is valid on each connected side, and does not justify crossing the pole in one endpoint subtraction.
+
+\textbf{Step 3 --- CALCULUS.} For positive real cutoffs \(\delta_-,\delta_+\),
+
+\[
+\begin{aligned}
+\int_{-1}^{a-\delta_-}\frac{1}{x-a}\,dx&=\ln\delta_- -\ln(1+a)\longrightarrow-\infty,\\
+\int_{a+\delta_+}^{1}\frac{1}{x-a}\,dx&=\ln(1-a)-\ln\delta_+\longrightarrow+\infty.
+\end{aligned}
+\]
+
+The ordinary integral does not exist. The expression \(-\infty+\infty\) has no assigned value.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: the specified principal value.} Setting both cutoffs equal to a real scalar \(\delta\) before taking the limit gives
+
+\[
+\operatorname{PV}\int_{-1}^{1}\frac{1}{x-a}\,dx
+=\lim_{\delta\downarrow0}\left(\ln\delta-\ln(1+a)+\ln(1-a)-\ln\delta\right)
+=\ln\left(\frac{1-a}{1+a}\right).
+\]
+
+The ratio is positive for \(-1<a<1\).
+
+\endgroup
+\textbf{Step 5 --- CHECK.} At \(a=0\), the principal value is zero by odd symmetry. If instead \(\delta_-=\lambda\delta_+\) with a fixed real \(\lambda>0\), the coupled limit differs by \(\ln\lambda\). This shows why a limiting prescription matters. At \(a=1\) or \(a=-1\), only a one-sided endpoint divergence remains and the stated interior symmetric principal value is unavailable. A finite-part regularization would be another explicitly defined operation.
+
+\textbf{Recognition cue.} Cancellation of divergences is a prescription, not proof that an ordinary improper integral exists. Symmetry is useful only after the definition of the integral is fixed.
+
+\subsection{I3-006}
+
+\textbf{Step 1 --- SETUP.} The source coordinate \(s\) is integrated over the fixed finite interval \([-L,L]\). The parameter \(\rho>0\) is a real distance, and \(P(\rho;L)\) is a real dimensionless scalar. The kernel is continuous for every such parameter.
+
+\textbf{Step 2 --- CHOICE.} The hyperbolic coordinate \(s=h(u;\rho)=\rho\sinh u\) is one-to-one for fixed \(\rho>0\). It turns \(\sqrt{\rho^2+s^2}\) into \(\rho\cosh u\); positivity prevents an absolute-value ambiguity.
+
+\textbf{Step 3 --- CALCULUS.} Holding \(\rho\) fixed during the substitution,
+
+\[
+\frac{\partial}{\partial u}\left(h(u;\rho)\right)=\rho\cosh u,\qquad
+u_-=-\operatorname{arsinh}(L/\rho),\quad u_+=\operatorname{arsinh}(L/\rho).
+\]
+
+The integral is therefore
+
+\[
+P(\rho;L)=\int_{u_-}^{u_+}1\,du=2\operatorname{arsinh}(L/\rho)
+=2\ln\left(\frac{L+\sqrt{L^2+\rho^2}}{\rho}\right).
+\]
+
+The logarithm's argument is dimensionless and positive. The bounds in the transformed coordinate depend on \(\rho\) even though the original bounds do not.
+
+\textbf{Step 4 --- CALCULUS.} Differentiating the closed form with \(L\) fixed gives
+
+\[
+\frac{\partial}{\partial\rho}\left(P(\rho;L)\right)
+=\frac{2}{\sqrt{1+(L/\rho)^2}}\left(-\frac{L}{\rho^2}\right)
+=-\frac{2L}{\rho\sqrt{\rho^2+L^2}}.
+\]
+
+\textbf{Step 5 --- CALCULUS: differentiation under the integral.} On a neighborhood of any fixed \(\rho_0>0\), the kernel and its \(\rho\) derivative are continuous and bounded on the finite source interval. This justifies
+
+\[
+\frac{\partial}{\partial\rho}\left(P(\rho;L)\right)
+=-\int_{-L}^{L}\frac{\rho}{(\rho^2+s^2)^{3/2}}\,ds.
+\]
+
+The derivative with respect to \(s\) of \(s/\sqrt{\rho^2+s^2}\) is \(\rho^2/(\rho^2+s^2)^{3/2}\), with \(\rho\) fixed. Endpoint evaluation thus gives
+
+\[
+-\frac{1}{\rho}\left[\frac{s}{\sqrt{\rho^2+s^2}}\right]_{s=-L}^{s=L}
+=-\frac{2L}{\rho\sqrt{\rho^2+L^2}}.
+\]
+
+The square brackets here delimit endpoint evaluation, not a derivative operand or an object type.
+
+\textbf{Step 6 --- CHECK AND DOMAIN.} For small positive \(\rho/L\), the potential grows like \(2\ln(2L/\rho)\) and its derivative like \(-2/\rho\). At \(\rho=0\) the original kernel is \(1/|s|\) and its integral diverges. The positive-distance justification is not uniform through the line source. For large \(\rho/L\), \(P(\rho;L)\) behaves like \(2L/\rho\), as expected from the nearly constant kernel across the short source segment.
+
+\textbf{Recognition cue.} A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
+
+\subsection{I3-007}
+
+\textbf{Step 1 --- SETUP.} The integral is a real nonnegative area integral on the triangle, with the origin excluded and approached by a limit. The dimensionless map is \(x(u,v)=u\), \(y(u,v)=uv\). It is one-to-one for \(u>0\), with inverse \(u=x\), \(v=y/x\).
+
+\textbf{Step 2 --- CHOICE.} The new coordinate \(u\) measures distance toward the singular vertex while \(v\) describes direction inside the triangle. The Jacobian may compensate the kernel's singularity. The edge \(u=0\) collapses to the vertex and is handled by a limit.
+
+\textbf{Step 3 --- CALCULUS.} The real \(2\times2\) coordinate Jacobian is
+
+\[
+\mathbf J(u,v)=\begin{bmatrix}
+\frac{\partial}{\partial u}(x(u,v))&\frac{\partial}{\partial v}(x(u,v))\\
+\frac{\partial}{\partial u}(y(u,v))&\frac{\partial}{\partial v}(y(u,v))
+\end{bmatrix}
+=\begin{bmatrix}1&0\\v&u\end{bmatrix},\qquad |\det\mathbf J(u,v)|=u.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Since \(u>0\), the distance is \(\sqrt{u^2+u^2v^2}=u\sqrt{1+v^2}\). On the truncated triangle \(x\ge\delta>0\), both kernel and Jacobian are regular. Their product gives
+
+\[
+K=\lim_{\delta\downarrow0}\int_\delta^1\int_0^1
+\frac{u}{u\sqrt{1+v^2}}\,dv\,du
+=\int_0^1\frac{1}{\sqrt{1+v^2}}\,dv
+=\operatorname{arsinh}(1)=\ln(1+\sqrt2).
+\]
+
+Nonnegativity ensures that this increasing truncation gives the improper area integral, independent of the way nested neighborhoods of the vertex are removed.
+
+\endgroup
+\textbf{Step 5 --- DOMAIN.} For the stronger scalar kernel \(1/(x^2+y^2)\), the transformed integral is instead
+
+\[
+\lim_{\delta\downarrow0}\int_\delta^1\frac{1}{u}\,du\int_0^1\frac{1}{1+v^2}\,dv
+=\lim_{\delta\downarrow0}(-\ln\delta)\frac{\pi}{4}=+\infty.
+\]
+
+No oscillatory or signed cancellation is available in this nonnegative example.
+
+\textbf{Step 6 --- CHECK.} The transformed \(1/R\) integrand is bounded between \(1/\sqrt2\) and one on a unit square, so the answer lies between those numbers; \(\ln(1+\sqrt2)\) does. This vertex example illustrates the Duffy coordinate idea used in singular panel integration. More general CEM kernels, interior source positions, and vector testing functions require their own transformations and convergence analysis.
+
+\textbf{Recognition cue.} The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
+
+\subsection{I3-008}
+
+\textbf{Step 1 --- SETUP.} The independent Cartesian coordinates are real. The integrand is a positive scalar and the answer has units of volume. All semiaxes are fixed and positive, so the domain is compact with no integrand singularity.
+
+\textbf{Step 2 --- CHOICE.} The ellipsoidal quadratic form suggests scaling to the unit ball, followed by spherical coordinates. The transformed domain and measure are changed along with the function.
+
+\textbf{Step 3 --- CALCULUS: coordinate map.} Independent real coordinates satisfy \(0\le r\le1\), \(0\le\theta\le\pi\), \(0\le\varphi<2\pi\). Define
+
+\[
+\begin{aligned}
+x(r,\theta,\varphi)&=ar\sin\theta\cos\varphi,\\
+y(r,\theta,\varphi)&=br\sin\theta\sin\varphi,\\
+z(r,\theta,\varphi)&=cr\cos\theta.
+\end{aligned}
+\]
+
+The real \(3\times3\) Jacobian has columns given by partial differentiation with respect to \(r,\theta,\varphi\):
+
+\[
+\mathbf J(r,\theta,\varphi)=\begin{bmatrix}
+a\sin\theta\cos\varphi&ar\cos\theta\cos\varphi&-ar\sin\theta\sin\varphi\\
+b\sin\theta\sin\varphi&br\cos\theta\sin\varphi&br\sin\theta\cos\varphi\\
+c\cos\theta&-cr\sin\theta&0
+\end{bmatrix}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Factoring \(a,b,c\) from the rows and \(r\) from each of the last two columns leaves determinant \(\sin\theta\). Thus \(|\det\mathbf J|=abc\,r^2\sin\theta\). Substitution into \(q\) gives
+
+\[
+q(x(r,\theta,\varphi),y(r,\theta,\varphi),z(r,\theta,\varphi))
+=r^2\bigl(\sin^2\theta(\cos^2\varphi+\sin^2\varphi)+\cos^2\theta\bigr)=r^2.
+\]
+
+The coordinate singularities at the center, poles, and seam occupy sets of zero volume; the map is regular and one-to-one in the interior away from those sets.
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} The full transformed integral is
+
+\[
+W(a,b,c)=abc\int_0^{2\pi}\int_0^\pi\int_0^1\exp(-r^2)r^2\sin\theta\,dr\,d\theta\,d\varphi
+=4\pi abc\int_0^1r^2\exp(-r^2)\,dr.
+\]
+
+For integration by parts in \(r\), the factor \(r\exp(-r^2)\) has primitive \(-(1/2)\exp(-r^2)\), while the remaining factor \(r\) has derivative one. Therefore
+
+\[
+\int_0^1r^2\exp(-r^2)\,dr
+=-\frac{1}{2\exp(1)}+\frac12\int_0^1\exp(-r^2)\,dr
+=-\frac{1}{2\exp(1)}+\frac{\sqrt\pi}{4}\operatorname{erf}(1).
+\]
+
+\textbf{Step 6 --- RESULT AND CHECK.} The weighted volume is
+
+\[
+W(a,b,c)=abc\left(\pi^{3/2}\operatorname{erf}(1)-\frac{2\pi}{\exp(1)}\right).
+\]
+
+On the ellipsoid, \(0\le q\le1\), so the result must lie between \(4\pi abc/(3\exp(1))\) and the unweighted volume \(4\pi abc/3\). The dimensionless coefficient is approximately \(2.381\), within those bounds. A determinant without its absolute value would incorrectly make volume depend on orientation if a coordinate direction were reversed.
+
+\textbf{Recognition cue.} A nonlinear integrand can become radial after a linear geometric change. The Jacobian supplies the volume scale and the radial power; dropping either changes the problem.
+
+\subsection{I3-009}
+
+\textbf{Step 1 --- SETUP.} The real independent parameters are \(u,v\); \(\ell\) and \(U\) are fixed. The output is real scalar surface area with units of length squared. The band is compact for finite \(U\); the full hyperboloid is not.
+
+\textbf{Step 2 --- CHOICE.} The area is computed from the tangent cross product rather than from a volume Jacobian or a single height graph. The calculation in D3-005 applies with \(a=c=\ell\).
+
+\textbf{Step 3 --- CALCULUS.} The two tangent vectors are
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial u}\left(\mathbf r(u,v)\right)&=\ell\begin{bmatrix}\sinh u\cos v\\\sinh u\sin v\\\cosh u\end{bmatrix},\\
+\frac{\partial}{\partial v}\left(\mathbf r(u,v)\right)&=\ell\begin{bmatrix}-\cosh u\sin v\\\cosh u\cos v\\0\end{bmatrix}.
+\end{aligned}
+\]
+
+Their cross product is \(\ell^2[-\cosh^2u\cos v,-\cosh^2u\sin v,\sinh u\cosh u]^{\mathsf T}\), so its length is \(\ell^2\cosh u\sqrt{\cosh^2u+\sinh^2u}\). The length is positive for every finite \(u\).
+
+\begingroup\color{TrickPurple}
+\textbf{Step 4 --- TRICK: hyperbolic identity.} The real identities are listed in T-007. Since \(\cosh^2u+\sinh^2u=1+2\sinh^2u\),
+
+\[
+S(U;\ell)=2\pi\ell^2\int_{-U}^U\cosh u\sqrt{1+2\sinh^2u}\,du.
+\]
+
+The coordinate \(t=g(u)=\sinh u\) is globally increasing, with derivative \(\cosh u>0\). Its bounds are \(-T,T\), where the fixed real scalar \(T=\sinh U\ge0\).
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} The transformed integral is \(2\pi\ell^2\int_{-T}^T\sqrt{1+2t^2}\,dt\). A further real coordinate \(w\) with \(t=\sinh w/\sqrt2\) gives \(dt/dw=\cosh w/\sqrt2\) and \(\sqrt{1+2t^2}=\cosh w\). The identity \(\cosh^2w=(1+\cosh(2w))/2\) then gives the primitive
+
+\[
+B(t)=\frac{t}{2}\sqrt{1+2t^2}+\frac{1}{2\sqrt2}\operatorname{arsinh}(\sqrt2t).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA.} The function \(B(t)\) is odd. Endpoint subtraction yields
+
+\[
+S(U;\ell)=2\pi\ell^2\left(T\sqrt{1+2T^2}+\frac{\operatorname{arsinh}(\sqrt2T)}{\sqrt2}\right),\qquad T=\sinh U.
+\]
+
+\endgroup
+\textbf{Step 7 --- CHECK AND DOMAIN.} Differentiation of \(B(t)\) with respect to \(t\) gives \(\sqrt{1+2t^2}\), verifying the primitive. At \(U=0\) the area is zero, and for small \(U\) it behaves as \(4\pi\ell^2U\). As \(U\to\infty\), \(T\to\infty\) and already \(T\sqrt{1+2T^2}\to\infty\), so the complete surface has infinite area. The finite-band calculation cannot supply a finite area for the unbounded surface by leaving off its limits.
+
+\textbf{Recognition cue.} A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
+
+\section{Application references}
+
+The problems and solutions here are original. The real sine integral is defined
+in \href{https://dlmf.nist.gov/6.2}{NIST DLMF, Section 6.2}.
+The singular-panel example illustrates a basic coordinate mechanism related to
+\href{https://arxiv.org/abs/1312.1703}{Reid, Johnson, and White, Generalized Taylor-Duffy Method for Efficient Evaluation of Galerkin Integrals in Boundary-Element Method Computations}.
+That paper concerns more general CEM integrals than this single-triangle model.
+The geometric measure conventions follow the change-of-variables framework in
+\href{https://ocw.mit.edu/ans7870/18/18.013a/textbook/chapter24/section02.html}{MIT, Calculus with Applications, Section 24.2}.
+
 \appendix
 \chapter{Tricks and identities}
 \begingroup\color{TrickPurple}
@@ -3089,6 +4096,53 @@ For a version declared on \(x\ne0\), including negative inputs, the last express
 would instead be \(3\ln(x^2+1)-2\ln(|x|)\). The absolute value keeps the real
 logarithm's input positive; the expression \(\ln(x)\) must not be carried into a
 negative-input domain.
+
+\section{T-007 Hyperbolic identities and real branches}
+
+For a real scalar \(u\), the scalar functions are defined by
+
+\[
+\cosh(u)=\frac{\exp(u)+\exp(-u)}{2},\qquad
+\sinh(u)=\frac{\exp(u)-\exp(-u)}{2}.
+\]
+
+Expansion of the squares and cancellation of their common terms give
+
+\[
+\cosh^2(u)-\sinh^2(u)=1,\qquad
+\cosh^2(u)+\sinh^2(u)=1+2\sinh^2(u),\qquad
+\cosh^2(u)=\frac{1+\cosh(2u)}{2}.
+\]
+
+The first identity converts a difference of squares into a hyperboloid equation;
+the second and third simplify its surface-area factor. These are supporting
+identities. The coordinate substitution and the integral rule remain calculus
+operations in the main chapters.
+
+\subsection{Worked use: a square root with its sign accounted for}
+
+Let \(t\) be a real independent scalar, and let \(u\) be the real scalar coordinate
+related by \(t=\sinh(u)\). Then
+
+\[
+\sqrt{1+t^2}=\sqrt{1+\sinh^2(u)}
+=\sqrt{\cosh^2(u)}=|\cosh(u)|=\cosh(u).
+\]
+
+The final equality is valid because \(\cosh(u)\ge1\) for real \(u\). In general,
+\(\sqrt{h^2}=|h|\) for a real scalar \(h\), and replacement by \(h\) alone is justified
+only when \(h\ge0\). The real inverse
+
+\[
+u=\operatorname{arsinh}(t)=\ln\left(t+\sqrt{1+t^2}\right)
+\]
+
+exists for every real \(t\): \(\sinh(u)\) is strictly increasing, and the logarithm's
+argument is positive even when \(t<0\). By contrast, \(\cosh(u)\) is even and is
+not one-to-one on all real inputs. Its nonnegative inverse branch
+\(\operatorname{arcosh}(t)=\ln(t+\sqrt{t^2-1})\) is defined for \(t\ge1\).
+The expressions with inverse hyperbolic functions used in I3-006 and I3-009
+refer to these real conventions.
 
 \section{Use a trick deliberately}
 

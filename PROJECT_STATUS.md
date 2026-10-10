@@ -3,8 +3,8 @@
 Updated October 9, 2026. Stage: alpha development; no stable release.
 
 October 9 publishing update: a complete single-page HTML edition is generated
-at `site/.vitepress/dist/generated/book.html`. The 64-page compiled PDF is
-published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4
+at `site/.vitepress/dist/generated/book.html`. The latest fixed PDF edition is
+published through GitHub Releases
 and saved locally as `build/calculus_workbook.pdf`. Alpha version tags build and
 publish a compiled PDF through GitHub Releases. GitHub Pages is enabled with
 GitHub Actions and the complete book is live at
@@ -25,10 +25,11 @@ removed from that chapter; internal guidance is in `docs/NOTATION_AUTHORING.md`.
 
 ## Current content
 
-Notation standard, 24 fully worked problems in four subject chapters, purple
+Notation standard, 40 fully worked problems in six subject chapters, purple
 supporting-tools appendix, and notation literature review. The editorial outline
 is kept in the repository for development and is excluded from reading pages,
-downloads, and the compiled PDF. Alpha edition 0.2.0-alpha.2 adds 16 problems.
+downloads, and the compiled PDF. Alpha edition 0.3.0-alpha.1 adds 16 graduate-review
+problems in D3 and I3, with primary references and explicit domain arguments.
 
 ## Next steps
 
@@ -39,10 +40,6 @@ See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules
 
 ## Validation
 
-Ten content tests pass. The expanded production site has 38 HTML pages and
-2,674 rendered math expressions and passes internal-link, asset, anchor, and
-math-rendering checks. The tagged PDF compilation and prerelease publication
-succeeded; rendered pages were reviewed for layout and the appendix color.
-Site workflow run 38014711463 and tagged PDF workflow run 38014712828
-completed successfully. The public complete-book page returned HTTP 200 and was checked in the
-browser with rendered math and alpha notices.
+Ten content tests pass. The numerical check script compares advanced formulas
+against independent finite differences, quadrature, and tangent orthogonality.
+Publication and visual verification for the expanded edition are in progress.

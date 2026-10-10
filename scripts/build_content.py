@@ -10,17 +10,21 @@ SOURCES = {
     "NOTATION_STANDARD.md": "notation",
     "DIFFERENTIATION_SCALARS.md": "scalar-derivatives",
     "DIFFERENTIATION_RULES.md": "derivative-rules",
+    "DIFFERENTIATION_FIELDS.md": "fields-and-geometry",
     "INTEGRATION_SCALARS.md": "scalar-integrals",
     "INTEGRATION_SUBSTITUTION.md": "substitution",
+    "INTEGRATION_DOMAINS.md": "oscillation-and-domains",
     "TRICKS_APPENDIX.md": "tricks",
     "NOTATION_REVIEW.md": "references",
 }
-PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "DIFFERENTIATION_RULES.md", "INTEGRATION_SCALARS.md", "INTEGRATION_SUBSTITUTION.md")
+PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "DIFFERENTIATION_RULES.md", "DIFFERENTIATION_FIELDS.md", "INTEGRATION_SCALARS.md", "INTEGRATION_SUBSTITUTION.md", "INTEGRATION_DOMAINS.md")
 CHAPTER_TITLES = {
     "D1": "Scalar differentiation foundations",
     "D2": "Products, quotients, and compositions",
+    "D3": "Fields, phase, and geometric domains",
     "I1": "Scalar antiderivatives and definite integrals",
     "I2": "Substitution with every dependency visible",
+    "I3": "Oscillation, singularities, and curved domains",
 }
 
 
@@ -226,7 +230,7 @@ def build():
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble
-    for filename, title in (("NOTATION_STANDARD.md", "Notational conventions"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible")):
+    for filename, title in (("NOTATION_STANDARD.md", "Notational conventions"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("DIFFERENTIATION_FIELDS.md", "D3: Fields, phase, and geometric domains"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible"), ("INTEGRATION_DOMAINS.md", "I3: Oscillation, singularities, and curved domains")):
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
     manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
@@ -238,7 +242,7 @@ def build():
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
     book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
     book += '> **Alpha development.** This is the current manuscript, including all solutions. Content is CC BY-SA 4.0 and provided as-is.\n\n'
-    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4) · [Practice with hidden solutions](/practice)\n\n'
+    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.1) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
         chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
         chapter = style_algebra(site_links(chapter))
