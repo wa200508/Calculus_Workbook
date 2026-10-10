@@ -2,6 +2,11 @@
 
 Updated October 7, 2026. Stage: alpha development; no stable release.
 
+October 9 publishing update: a complete single-page HTML edition is generated
+at `site/.vitepress/dist/generated/book.html`. Alpha version tags build and
+publish a compiled PDF through GitHub Releases. Pages still requires its
+repository source setting to be enabled as GitHub Actions.
+
 ## Established decisions
 
 - Explicit review text with complete worked solutions and one-step-at-a-time tutoring.

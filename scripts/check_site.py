@@ -62,7 +62,7 @@ def check(dist, base='/'):
             elif url.fragment and destination in pages and unquote(url.fragment) not in pages[destination].ids:
                 errors.append(f'{path.name}: missing anchor {link}')
     index = json.loads((ROOT / 'site/generated/problem-index.json').read_text())
-    required = ['generated/notation.html', 'generated/tricks.html'] + [item['link'].lstrip('/') + '.html' for item in index]
+    required = ['generated/book.html', 'generated/notation.html', 'generated/tricks.html'] + [item['link'].lstrip('/') + '.html' for item in index]
     for name in required:
         page = pages.get((dist / name).resolve())
         if not page or not page.math_count:

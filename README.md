@@ -9,6 +9,10 @@ provided as-is; mathematical correctness is not guaranteed. See [the accuracy no
 
 ## Read and preview locally
 
+[Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
+once GitHub Pages is enabled. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
+for a fixed, compiled edition of all material written so far.
+
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
 
 ```sh
@@ -19,6 +23,12 @@ pnpm dev
 Open the printed local URL. The site includes rendered math, local search, reading
 routes, individual hints, complete solutions, dark mode, and source downloads.
 After a manuscript edit, run `pnpm content` to refresh the generated pages.
+The single-page edition is at `/generated/book.html`; its compiled HTML file is
+`site/.vitepress/dist/generated/book.html` after `pnpm build`. Serve the built
+site with `pnpm preview` so its styles and math assets load correctly.
+
+The PDF workflow builds every manuscript checkpoint. Pushing an alpha version
+tag such as `v0.2.0-alpha.1` also publishes the PDF as a GitHub prerelease.
 
 ```sh
 pnpm check     # tests, production build, and internal-link/math checks

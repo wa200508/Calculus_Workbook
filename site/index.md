@@ -6,8 +6,8 @@ hero:
   tagline: A review book for rebuilding confidence. Explicit dependencies, visible algebra, and complete worked solutions—at your pace.
   actions:
     - theme: brand
-      text: Start reading
-      link: /start
+      text: Read the full book
+      link: /generated/book
     - theme: alt
       text: Try a problem
       link: /practice
@@ -30,3 +30,6 @@ differentiation chapter with six worked problems, and two further pilot problems
 Chapters will grow from scalar calculus into vector, matrix, and
 tensor examples. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
+
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
+or [read the entire current manuscript on one page](/generated/book).

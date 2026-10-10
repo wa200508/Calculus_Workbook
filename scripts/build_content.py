@@ -231,6 +231,16 @@ def build():
     combined = '# Calculus: A Worked Review\n\nCC BY-SA 4.0 · Provided as-is; correctness is not guaranteed.\n\n'
     combined += "\n\n---\n\n".join(content.values())
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
+    book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
+    book += '> **Alpha development.** This is the complete current manuscript, including all solutions. The planned curriculum is still incomplete. Content is CC BY-SA 4.0 and provided as-is.\n\n'
+    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1) · [Practice with hidden solutions](/practice)\n\n'
+    for filename, slug in SOURCES.items():
+        chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
+        chapter = style_algebra(site_links(chapter))
+        if slug == 'tricks':
+            chapter = '<div class="tricks-appendix">\n\n' + chapter + '\n\n</div>\n'
+        book += '\n\n' + chapter
+    (ROOT / 'site/generated/book.md').write_text(book)
     print(f"Generated {len(SOURCES)} reading pages, {len(index)} practice pages, downloads, and LaTeX.")
 
 
