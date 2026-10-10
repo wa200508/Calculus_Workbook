@@ -10,7 +10,7 @@ provided as-is; mathematical correctness is not guaranteed. See [the accuracy no
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
-once GitHub Pages is enabled. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
+on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
 for a fixed, compiled edition of all material written so far.
 
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
