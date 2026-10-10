@@ -41,16 +41,16 @@
 {\sffamily\large Alpha development edition 0.2\par}
 \medskip
 Notation standard, twenty-four worked problems, and supporting tools.\\
-Alpha edition 0.2.0-alpha.2, October 9, 2026.
+Alpha edition 0.2.0-alpha.3, October 9, 2026.
 \end{titlepage}
-\chapter*{How this book will work}
+\chapter*{About this book}
 This is a review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
 Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
 This alpha development edition develops scalar differentiation and integration through worked problems and a supporting tricks appendix. Use the table of contents to find a topic or example. The notation recommendations incorporate a targeted literature review, documented in the references.
 
-Try a question before reading its hints. Use the stable problem ID and step number when asking a tutor for help. The tutor should keep this notation and work from the last step you understand.
+Problem statements, graduated hints, and complete solutions are presented separately. Stable problem identifiers and numbered solution steps provide references to individual calculations.
 \chapter*{Sharing and accuracy}
 Copyright \copyright{} 2026 Calculus Workbook contributors, to the extent copyright applies. Original educational content is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). You may share and adapt it, including commercially, subject to attribution, an indication of changes, ShareAlike, and the license's other terms.
 
@@ -63,41 +63,67 @@ This developing book is provided as-is. Mathematical correctness, completeness, 
 
 \chapter{The notation standard}
 
-Status: recommended standard, version 0.2, revised October 5, 2026 after a targeted literature review. This is a consistent selection of established conventions, with explicit teaching annotations. It is not a claim that all fields use one universal notation.
+The notation in this book is based on established conventions of calculus and
+linear algebra. Function arguments, variable dependencies, object types, and
+operation domains are stated explicitly. A consistent selection of conventions
+is adopted throughout; uniform usage across all mathematical disciplines is
+not presumed. The literature underlying these choices is discussed in
+the notation review.
 
-\section{1. Reading contract}
+\section{1. Objects, domains, and dependencies}
 
-Use \textbf{Leibniz operator notation with full arguments}, ordinary parentheses for grouping, and explicit type and dependency declarations. Avoid inventing symbols to replace established calculus notation. The literature basis and reasons for the choices are recorded in the literature review.
+Leibniz operator notation is used for derivatives, with complete function
+arguments and ordinary parentheses enclosing the operand. The type of each
+object is identified by both its notation and its accompanying definition.
 
-Every problem and solution begins with four items:
+Four kinds of information are provided in the statements and solutions of
+worked problems:
 
 \begin{enumerate}
-\item \textbf{Objects and types:} scalar, vector with dimension, matrix with dimensions, or tensor with order, space, and component shape.
-\item \textbf{Dependencies:} independent inputs, dependent outputs, intermediate functions, and fixed parameters.
-\item \textbf{Domain and assumptions:} allowed inputs, excluded values, and regularity or sign conditions used.
-\item \textbf{Operation and output:} what is being differentiated or integrated, with respect to which variable, what stays fixed, and the output type.
-
+\item \textbf{Objects and types:} scalar quantities; vectors with a specified dimension;
 \end{enumerate}
-Repeat declarations in the solution so it can be read independently. Full function arguments stay visible in calculus expressions. A vector or matrix argument may be written as a single object only when its components and dependencies are displayed locally. Long expressions are split into named, fully defined steps rather than compressed into unexplained symbols.
+   matrices with specified dimensions; and tensors with a specified order,
+   space, basis, and component shape.
+\begin{enumerate}
+\item \textbf{Dependencies:} independent inputs, dependent outputs, intermediate
+\end{enumerate}
+   functions, and fixed parameters.
+\begin{enumerate}
+\item \textbf{Domains and assumptions:} admissible inputs, excluded values, and the
+\end{enumerate}
+   regularity or sign conditions relevant to the calculation.
+\begin{enumerate}
+\item \textbf{Operations and outputs:} the variable of differentiation or integration,
+\end{enumerate}
+   quantities held fixed, and the type of the resulting object.
 
-\section{2. Delimiters, types, and dependencies}
+These declarations are repeated where a solution is presented independently
+of its problem statement. Function arguments remain explicit in calculus
+expressions. A vector or matrix may appear as a single argument when its
+components and dependencies have been defined locally. Lengthy expressions
+are presented as a sequence of fully defined intermediate expressions.
 
-\subsection{Give delimiters predictable jobs}
+\section{2. Delimiters and object typography}
+
+\subsection{Delimiters}
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Notation & Meaning in this book & Safeguard \\[5pt]
+Notation & Meaning in this book & Associated convention \\[5pt]
 \hline\endhead
-\(f(x,y)\) & Function value at the listed inputs & Parentheses immediately after a function name contain its arguments \\[5pt]
-\((a+b)\) & Grouping & Larger parentheses group the entire operand of a derivative \\[5pt]
-A displayed bracketed column or rectangular array & Vector or matrix representation & State its type and shape; do not use a one-line tuple as an unexplained vector \\[5pt]
-\([a,b]\) & Closed interval & Preserve this standard meaning; in first uses also write \(a\leq x\leq b\) \\[5pt]
-\(\{x: x>0\}\) & Set & Braces are not the default grouping delimiter \\[5pt]
-\(A_{ij}(t)\), \(T_{ijk}(t)\) & Scalar components & Declare the parent object, basis, index ranges, and dependencies \\[5pt]
+\(f(x,y)\) & Function value at the listed inputs & Parentheses immediately following a function name enclose its arguments \\[5pt]
+\((a+b)\) & Grouping & The complete operand of a derivative is enclosed in parentheses \\[5pt]
+A displayed bracketed column or rectangular array & Vector or matrix representation & The object's type and shape are stated with the array \\[5pt]
+\([a,b]\) & Closed interval & Its scalar input satisfies \(a\leq x\leq b\) \\[5pt]
+\(\{x:x>0\}\) & Set & Braces delimit a set rather than an ordinary algebraic group \\[5pt]
+\(A_{ij}(t)\), \(T_{ijk}(t)\) & Scalar components & The parent object, basis, index ranges, and dependencies are specified locally \\[5pt]
 \end{longtable}
 
-Square brackets do not universally mean “tensor.” They also conventionally denote intervals and sometimes operator arguments. Our deliberate local convention is to avoid square brackets for derivative operands and ordinary algebraic grouping. We retain them for arrays and closed intervals because changing those conventions would introduce a different confusion.
-
-For nested grouping, use parentheses of different sizes. If a formula becomes hard to track, break it into displayed steps. Delimiters alone never determine an object's type.
+Square brackets have several established meanings, including closed intervals
+and array representations. They therefore do not, by themselves, identify a
+tensor. In this book they are retained for arrays and closed intervals;
+parentheses are used for derivative operands and algebraic grouping. Nested
+groups are distinguished by parentheses of different sizes. Object type is
+established by a definition rather than by delimiters alone.
 
 \subsection{Object typography}
 
@@ -105,70 +131,110 @@ For nested grouping, use parentheses of different sizes. If a formula becomes ha
 Object & Convention & Example declaration \\[5pt]
 \hline\endhead
 Scalar & Ordinary italic & \(x\in\mathbb R\): independent real scalar \\[5pt]
-Scalar-valued function & Ordinary letter, all inputs visible & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
+Scalar-valued function & Ordinary letter with displayed inputs & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
 Vector & Bold lowercase & \(\mathbf r(t)\in\mathbb R^3\): column vector depending on scalar \(t\) \\[5pt]
 Matrix & Bold uppercase & \(\mathbf A(t)\in\mathbb R^{m\times n}\): matrix depending on scalar \(t\) \\[5pt]
-Tensor of order three or higher & Bold calligraphic uppercase & \(\boldsymbol{\mathcal T}(t)\): tensor with declared space, order, basis, and component shape \\[5pt]
+Tensor of order three or higher & Bold calligraphic uppercase & \(\boldsymbol{\mathcal T}(t)\): tensor with a specified space, order, basis, and component shape \\[5pt]
 \end{longtable}
 
-These typography conventions are established choices, not universal rules. Scalar entries use ordinary type: \(r_i(t)\), \(A_{ij}(t)\), and \(T_{ijk}(t)\). Tensor order is not called tensor rank: rank has other meanings.
+Scalar entries are denoted in ordinary type: \(r_i(t)\), \(A_{ij}(t)\), and
+\(T_{ijk}(t)\). Tensor order is distinguished from tensor rank, which has other
+mathematical meanings. The typography in the table represents the convention
+adopted for this book rather than a universal convention.
 
-For this book, a function name and a function value are distinct: \(f\) names the function; \(f(x,y)\) supplies its inputs. We do not write \(z=f\) when we mean \(z=f(x,y)\).
+\subsection{Function arguments and fixed parameters}
 
-Fixed parameters appear after a semicolon, as in \(f(x;a)=ax^2\), and are also described in words. This semicolon is an organizational convention, not a different calculus operation. If a parameter starts varying, announce that fact and write its dependence explicitly.
+A function and a value of that function are distinct objects. The symbol \(f\)
+denotes a function; \(f(x,y)\) denotes its value at the displayed inputs.
+Accordingly, a dependent scalar output is written as \(z=f(x,y)\) rather than
+\(z=f\).
 
-For independent scalar coordinates \(x,y\) and a dependent scalar \(z=f(x,y)\), say that \(x\) and \(y\) vary independently. For motion along a path, display instead
+Fixed parameters are separated from variable inputs by a semicolon. For
+example, in the real scalar function \(f(x;a)=ax^2\), \(x\) is an independent real
+scalar input and \(a\) is a fixed real scalar parameter. The semicolon records
+this distinction; it does not denote an additional calculus operation.
+When a quantity varies with an input, its dependence is displayed explicitly,
+as in \(a(x)\).
+
+For a real scalar function \(z=f(x,y)\) of two independent real scalar
+coordinates, \(x\) and \(y\) vary independently. A dependence on a single path
+parameter is represented instead by
 
 \[
 t\longmapsto (x(t),y(t))\longmapsto z(t)=f(x(t),y(t)).
 \]
 
-Here \(t\) is the independent scalar parameter; \(x(t)\) and \(y(t)\) are dependent scalar coordinates; \(z(t)\) is a dependent scalar output. The parenthesized coordinate pair is a point, not an undeclared column vector.
+Here \(t\) is the independent real scalar parameter; \(x(t)\) and \(y(t)\) are
+dependent real scalar coordinates; and \(z(t)\) is the dependent real scalar
+output. The parenthesized coordinate pair represents a point and is
+separate from the bracketed column-vector representation.
 
 \section{3. Derivatives}
 
 \subsection{One independent scalar variable}
 
-Our normal form is
+For a differentiable real scalar-valued function \(f(x)\) of an independent
+real scalar input \(x\), the derivative is denoted by
 
 \[
 \frac{d}{dx}\left(f(x)\right).
 \]
 
-Read it as “differentiate the parenthesized expression with respect to \(x\).” The derivative operator is not enclosed in another pair of parentheses. No prime marks, time dots, bare function names as operands, or implicit differentiation variables appear in worked calculations.
+The operator \(d/dx\) denotes differentiation with respect to \(x\); the
+parenthesized expression is its operand. The differentiation variable and
+the function's input are therefore visible in the same expression. Prime
+marks and time dots are replaced by this operator notation in worked
+calculations. An additional pair of parentheses around the operator itself
+is not part of the adopted convention.
 
-For second derivatives, use the established higher-order operator and expand it where introduced:
+The second derivative is represented by the established higher-order
+operator, whose repeated-operation meaning is
 
 \[
 \frac{d^2}{dx^2}\left(f(x)\right)
-=
-\frac{d}{dx}\left(\frac{d}{dx}\left(f(x)\right)\right).
+=\frac{d}{dx}\left(\frac{d}{dx}\left(f(x)\right)\right).
 \]
 
-The superscript \(2\) means “differentiate twice,” not “square the derivative.” Every worked higher-derivative calculation shows the intermediate first derivative. This is clearer than requiring ever-deeper nesting in every formula.
+The superscript \(2\) indicates two successive differentiations rather than
+the square of the derivative. Intermediate derivatives are displayed in
+worked higher-order calculations.
 
-Differentiate first and evaluate second:
+Evaluation of the derivative at a fixed real scalar input \(a\) is denoted by
 
 \[
 \left.\frac{d}{dx}\left(f(x)\right)\right|_{x=a}.
 \]
 
-Always calculate the derivative before substituting the specified input.
+The vertical bar denotes evaluation of the differentiated expression.
+Differentiation precedes substitution of the specified input. This
+operation differs from differentiation of the constant value \(f(a)\).
 
 \subsection{Several independent scalar variables}
 
-Use the established partial-derivative operator and put the held-fixed instruction beside it:
+For a differentiable real scalar function \(f(x,y)\) of independent real
+scalar inputs \(x,y\), partial differentiation is written as
 
 \[
 \frac{\partial}{\partial x}\left(f(x,y)\right),
 \qquad y\text{ held fixed}.
 \]
 
-A nearby sentence lists all other independent inputs and fixed parameters. This avoids putting a paragraph into an operator subscript. If which quantity stays fixed changes the answer, state it on each affected line. A bar with a subscript is reserved for evaluation, so it is not also used to mean “hold this variable fixed.”
+The variable of differentiation is given in the denominator of the
+operator. The other independent inputs and fixed parameters are identified
+in accompanying text. Where different choices of fixed quantities lead to
+different results, the held-fixed quantities are stated with each relevant
+expression. A subscripted evaluation bar is reserved for evaluation and is
+not also used to denote a held-fixed quantity.
 
-Keep ordinary \(d\) and partial \(\partial\) distinct. Partial differentiation changes one independent coordinate while holding the others fixed. Ordinary differentiation applies when the expression has one independent scalar input, including a whole path-dependent composition.
+The symbols \(d\) and \(\partial\) distinguish ordinary and partial
+differentiation. In a partial derivative, one independent coordinate varies
+while the others are held fixed. Ordinary differentiation applies to an
+expression with one independent scalar input, including a composition
+whose coordinates depend on a single path parameter.
 
-For a differentiable scalar-valued function \(f(x,y)\) and differentiable scalar paths \(x(t),y(t)\), write
+For a differentiable real scalar function \(f(x,y)\) and differentiable real
+scalar paths \(x(t),y(t)\) with independent real scalar parameter \(t\), the
+path derivative is represented by
 
 \[
 \begin{aligned}
@@ -182,13 +248,21 @@ For a differentiable scalar-valued function \(f(x,y)\) and differentiable scalar
 \end{aligned}
 \]
 
-In the first partial derivative hold \(y\) fixed; in the second hold \(x\) fixed. Calculate each partial derivative with independent coordinates, evaluate it on the path, and only then multiply by the corresponding input rate.
+In the first partial derivative \(y\) is held fixed; in the second \(x\) is
+held fixed. Each partial derivative is formed in the independent
+coordinates, evaluated on the path, and multiplied by the corresponding
+coordinate rate. The resulting path derivative is scalar-valued.
 
-Mixed partial derivatives are initially written as nested operations, with the order stated in words. Do not assume that reversing the order gives the same result without appropriate hypotheses.
+Mixed partial derivatives are initially represented as nested operations,
+with their order stated in words. Equality after reversal of that order
+requires appropriate hypotheses and is not implied by the notation.
 
 \subsection{Vector and matrix outputs}
 
-For a single scalar input, differentiate component by component in a fixed basis. For example, \(\mathbf r(t)\) is a two-component column vector, and \(r_1(t),r_2(t)\) are scalar functions:
+For a single scalar input, differentiation of vector components is
+performed in a fixed basis. For example, \(t\) is an independent real scalar,
+\(\mathbf r(t)\) is a two-component real column vector, and \(r_1(t),r_2(t)\)
+are differentiable real scalar component functions:
 
 \[
 \mathbf r(t)=\begin{bmatrix}r_1(t)\\r_2(t)\end{bmatrix},
@@ -200,18 +274,29 @@ For a single scalar input, differentiate component by component in a fixed basis
 \end{bmatrix}.
 \]
 
-This separates the round derivative-operand delimiters from the square vector-display delimiters. Matrix and tensor examples likewise declare the derivative's shape.
+The derivative is a column vector with the same number of components.
+Round derivative-operand delimiters are thereby distinguished from square
+vector-display delimiters. Matrix and tensor derivatives are accompanied
+by the corresponding shape declarations.
 
-For vector inputs, introduce named scalar coordinates first. Let \(\mathbf F(x_1,\ldots,x_n)\in\mathbb R^m\) be differentiable. Its Jacobian is the \(m\times n\) matrix with scalar entries
+For a differentiable real vector-valued function
+\(\mathbf F(x_1,\ldots,x_n)\in\mathbb R^m\) of independent real scalar
+coordinates \(x_1,\ldots,x_n\), the Jacobian is an \(m\times n\) matrix with
+real scalar entries
 
 \[
 J_{ij}(x_1,\ldots,x_n)
 =\frac{\partial}{\partial x_j}\left(F_i(x_1,\ldots,x_n)\right).
 \]
 
-All \(x_k\) with \(k\ne j\) are held fixed. Index \(i\) selects an output, \(1\leq i\leq m\); index \(j\) selects an input, \(1\leq j\leq n\). In concrete examples list the actual coordinates instead of using ellipses.
+The positive integers \(m,n\) specify the output and input dimensions.
+All coordinates \(x_k\) with \(k\ne j\) are held fixed. Index \(i\) selects an
+output, with \(1\leq i\leq m\); index \(j\) selects an input, with
+\(1\leq j\leq n\). Ellipses denote the general coordinate list; actual
+coordinates are enumerated in concrete examples.
 
-For a differentiable scalar function \(f(x,y)\) in ordinary Euclidean coordinates, define the gradient explicitly:
+For a differentiable real scalar function \(f(x,y)\) in ordinary Euclidean
+coordinates, the gradient is the column vector
 
 \[
 \nabla f(x,y)=
@@ -221,128 +306,213 @@ For a differentiable scalar function \(f(x,y)\) in ordinary Euclidean coordinate
 \end{bmatrix}.
 \]
 
-Hold the other coordinate fixed in each entry. The gradient is a column vector; the scalar function's Jacobian is its transpose, a one-row matrix. We do not use an unexplained fraction “with respect to a vector” for both objects. The superscript \(\mathsf T\) means transpose, never a derivative.
+The other coordinate is held fixed in each entry. The scalar function's
+Jacobian is the transpose of this gradient and is a one-row matrix. These
+objects are distinguished by their defined shapes rather than denoted by
+an ambiguous fraction with respect to a vector. The superscript
+\(\mathsf T\) denotes transpose.
 
-\subsection{Matrix inputs and tensor inputs}
+\subsection{Matrix and tensor inputs}
 
-Start with derivatives with respect to individual scalar entries. For a scalar function \(\phi(\mathbf A)\) of a real \(m\times n\) matrix with independently variable entries, the matrix gradient \(\nabla_{\mathbf A}\phi(\mathbf A)\) has the same shape as \(\mathbf A\). Its \((i,j)\) entry is the scalar partial derivative with respect to \(A_{ij}\), holding all other entries fixed. If the matrix is symmetric or otherwise constrained, identify its independent parameters before differentiating; its entries cannot all be treated as independent.
+Derivatives with respect to matrix inputs are described first in terms of
+individual scalar entries. For a real scalar function \(\phi(\mathbf A)\) of
+a real \(m\times n\) matrix with independently variable entries, the matrix
+gradient \(\nabla_{\mathbf A}\phi(\mathbf A)\) has the same shape as
+\(\mathbf A\). Its \((i,j)\) entry is the scalar partial derivative with
+respect to \(A_{ij}\), with all other entries held fixed. For a symmetric or
+otherwise constrained matrix, the independent parameters are identified
+separately; all entries cannot then be regarded as independent inputs.
 
-For a general differentiable matrix-valued function \(\mathbf F(\mathbf A)\), use the established derivative-map form \(\mathrm D\mathbf F(\mathbf A)(\mathbf H)\) after defining it: it is the derivative at input \(\mathbf A\), applied to the increment matrix \(\mathbf H\). Declare both matrices' shapes, the output shape, and all parameters. This is a linear map applied to an increment, not matrix division. The final parentheses replace the square argument brackets used in some references.
+For a differentiable matrix-valued function \(\mathbf F(\mathbf A)\), the
+notation \(\mathrm D\mathbf F(\mathbf A)(\mathbf H)\) denotes the derivative
+at the matrix input \(\mathbf A\), applied to the increment matrix
+\(\mathbf H\). The shapes of both matrices and of the output are specified
+with the definition. This expression represents a linear map applied to
+an increment rather than matrix division. Parentheses around the
+increment argument are used in place of the square brackets found in
+some references.
 
-Tensor calculations specify the tensor space, basis, component indices, and index ranges. For geometric tensors, upper and lower indices have distinct roles and must be explained; no implicit summation is allowed. Fixed-basis component differentiation is introduced first. Moving bases require additional terms.
+For tensor inputs and outputs, the tensor space, basis, component indices,
+and index ranges are specified. In geometric tensor notation, upper and
+lower indices have distinct meanings, which are defined with the objects.
+Summations are written explicitly. Component differentiation is initially
+represented in a fixed basis; variation of the basis introduces additional
+terms.
 
 \section{4. Integrals}
 
-Use the usual definite-integral form:
+For a real scalar-valued integrand \(f(x)\) and fixed real scalar endpoints
+\(a,b\), definite integration with respect to the real scalar variable \(x\)
+is represented by
 
 \[
 \int_a^b f(x)\,dx.
 \]
 
-Immediately identify \(x\) as the scalar integration variable, with lower limit \(x=a\) and upper limit \(x=b\). The differential \(dx\) remains on every integral. Parentheses group a sum when needed; a simple integrand does not need an extra wrapper. We do not routinely write \(x=\) inside the bounds: the nearby variable-and-bounds statement supplies that clarity while keeping the expression familiar.
+The differential \(dx\) identifies the integration variable. The lower
+limit is \(x=a\) and the upper limit is \(x=b\). These endpoint statements
+accompany the integral; the bounds themselves contain \(a\) and \(b\).
+Parentheses delimit a sum or other compound integrand where necessary.
 
-The symbol \(x\) inside a definite integral is a bound integration variable. If the bounds are fixed and there are no other inputs, the result is a scalar number, not a function of \(x\).
+Within a definite integral, \(x\) is a bound integration variable. When
+both limits and all parameters are fixed, the result is a real scalar
+number rather than a function of \(x\).
 
-For an indefinite integral on an appropriate interval,
+For an indefinite integral on an interval where an antiderivative exists,
 
 \[
 \int f(x)\,dx=F(x)+C,
 \qquad \frac{d}{dx}\left(F(x)\right)=f(x).
 \]
 
-Here \(C\) is an arbitrary scalar constant independent of \(x\). For vector and matrix outputs, the arbitrary constant has the output's shape.
+The real scalar constant \(C\) is independent of \(x\). For vector and matrix
+outputs, the arbitrary constant has the corresponding output shape.
 
-With other inputs held fixed,
+For a real scalar function with another input \(y\) held fixed,
 
 \[
 \int f(x,y)\,dx=F(x,y)+C(y),\qquad y\text{ held fixed}.
 \]
 
-The integration constant may depend on the input that was not integrated over. Definite integration over \(x\) can likewise leave a function of \(y\).
+The integration constant may depend on the input over which integration
+was not performed. Definite integration over \(x\) may likewise leave a
+function of \(y\).
 
-Write endpoint evaluation without another set of square brackets:
+Endpoint evaluation of an antiderivative is denoted by
 
 \[
 \left.F(x)\right|_{x=a}^{x=b}=F(b)-F(a).
 \]
 
-Always show the subtraction. For multiple integrals, specify the order in words and give each integral its own bounds and differential. For curve, surface, and volume integrals, specify domain, measure, parameterization when used, and orientation when relevant. Arc length \(ds\), surface area \(dS\), and a vector displacement are different objects, each introduced with a definition and component formula.
+The upper-endpoint value is followed by subtraction of the lower-endpoint
+value. Multiple integrals are accompanied by a stated order of integration,
+with bounds and a differential for each integration variable. Curve,
+surface, and volume integrals have specified domains, measures,
+parameterizations where applicable, and orientations where relevant.
+Arc-length measure \(ds\), surface-area measure \(dS\), and vector displacement
+are distinct objects and are defined separately.
 
-\section{5. Substitution without hidden steps}
+\section{5. Change-of-variable notation}
 
-Introduce scalar functions \(g(x)\) and \(h(u)\) and a new scalar coordinate \(u=g(x)\). Before the substitution, \(u\) depends on \(x\); in the transformed integral, \(u\) is the integration variable.
+In a scalar change of variable, the new coordinate is written as
+\(u=g(x)\), where \(g(x)\) is a real scalar function of the original real
+scalar variable \(x\). Before substitution, \(u\) depends on \(x\); within the
+transformed integral, \(u\) is the integration variable. The expression
+\(h(u)\) denotes a real scalar function at that new input.
 
-For continuously differentiable \(g\) on \([a,b]\) and continuous \(h\) on an interval containing its image,
+For a continuously differentiable function \(g(x)\) on the interval between
+fixed real scalar endpoints \(a,b\), and a continuous function \(h(u)\) on an
+interval containing its image, the change of variable is represented by
 
 \[
 \int_a^b h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx
 =\int_{g(a)}^{g(b)}h(u)\,du.
 \]
 
-On the left, integrate over \(x\) from \(a\) to \(b\). On the right, integrate over \(u\) from \(g(a)\) to \(g(b)\). This form does not require an inverse for \(g\). A substitution using an inverse may need domain restrictions and a branch choice.
+On the left, the variable is \(x\) and the endpoints are \(a,b\). On the
+right, the variable is \(u\) and the endpoints are \(g(a),g(b)\). An inverse
+of \(g(x)\) is not required by this form of the substitution theorem. A
+formulation involving an inverse may require domain restrictions and a
+specified branch.
 
-Required steps: define the substitution; compute its derivative; match every factor; transform both bounds; write the complete new integral; evaluate; check. For indefinite integration, substitute back and verify by differentiation.
+The substitution, its derivative, the matching factors, and both
+transformed endpoints are displayed in worked definite-integral
+calculations. In indefinite-integral results, the original input is
+restored and the antiderivative relation is verified by differentiation.
 
-Differential notation such as \(du=2x\,dx\) is conventional, not inherently invalid. We teach its meaning before using it: when \(u=g(x)=x^2+1\), the differential of \(u\) is the derivative of \(g(x)\) multiplied by the differential of \(x\). In early worked solutions the full substitution formula remains visible. Never present canceling the letters \(d\) and \(x\) as a proof, and never divide by a possibly zero derivative without justification.
+The differential identity \(du=2x\,dx\) corresponds to the real scalar
+relation \(u=g(x)=x^2+1\). The differential of \(u\) is the derivative of
+\(g(x)\) multiplied by the differential of \(x\). This notation expresses a
+differential relation; cancellation of the letters \(d\) and \(x\) is not
+its justification. Division by a derivative is valid only where that
+derivative is nonzero.
 
-\section{6. Other notation collisions to prevent}
+\section{6. Related symbols and distinctions}
 
 \begin{itemize}
-\item \textbf{Finite change versus differential:} \(\Delta x\) is a finite scalar increment. A differential gives the linear part of a change; it is not automatically the exact finite change. Introduce \(\mathrm Df(x,y)(\Delta x,\Delta y)\) by its full partial-derivative formula before using it.
-\item \textbf{Function inverse versus reciprocal:} write \(1/f(x)\) for a reciprocal and \(f^{-1}(y)\) only for a defined inverse function. Use \(\arcsin(x)\) rather than \(\sin^{-1}(x)\).
-\item \textbf{Function powers:} write \((\sin(x))^2\), not the compressed \(\sin^2 x\). Every elementary function shows its input.
-\item \textbf{Matrix inverse versus reciprocal:} \(\mathbf A^{-1}\) is a matrix inverse when it exists; entrywise reciprocals are defined separately. Do not use matrix “division.”
-\item \textbf{Absolute value versus determinant:} use \(|s|\) for a scalar absolute value, \(\det(\mathbf A)\) for a determinant, and \(\lVert\mathbf v\rVert\) for a vector norm. Define the chosen norm.
-\item \textbf{Products:} scalar multiplication, vector dot products, cross products, matrix products, tensor products, and contractions are named when introduced. Matrix factors retain their order. Entrywise products are explicitly identified.
-\item \textbf{Summations:} write every summation sign and its limits. State free-index ranges. Expand all terms in first small examples. Einstein summation is explained in the translation guide only.
-\item \textbf{Tensor meaning:} multilinear tensors and multidimensional data arrays are related through chosen representations but are not silently treated as identical concepts.
-\item \textbf{Equality versus approximation:} use \(=\) for exact equality and \(\approx\) for approximation. State the approximation's conditions and error estimate, or explicitly say that no error bound has been established.
-
+\item \textbf{Finite change and differential.} \(\Delta x\) denotes a finite real scalar
 \end{itemize}
-\section{7. Worked-solution presentation}
+  increment. A differential represents the linear part of a change and
+  need not equal the exact finite change. The derivative-map expression
+  \(\mathrm Df(x,y)(\Delta x,\Delta y)\) is accompanied by its defining
+  partial-derivative formula.
+\begin{itemize}
+\item \textbf{Function inverse and reciprocal.} \(1/f(x)\) denotes a reciprocal where
+\end{itemize}
+  \(f(x)\ne0\). The expression \(f^{-1}(y)\) denotes a defined inverse function.
+  The inverse sine is written as \(\arcsin(x)\).
+\begin{itemize}
+\item \textbf{Function powers.} The square of a sine value is written as
+\end{itemize}
+  \((\sin(x))^2\). The function's input and the power applied to its value
+  are thereby displayed separately.
+\begin{itemize}
+\item \textbf{Matrix inverse and reciprocal.} \(\mathbf A^{-1}\) denotes a matrix
+\end{itemize}
+  inverse when it exists. Entrywise reciprocals are defined separately;
+  a matrix quotient is not part of the adopted notation.
+\begin{itemize}
+\item \textbf{Absolute value, determinant, and norm.} \(|s|\) denotes the absolute
+\end{itemize}
+  value of a scalar \(s\); \(\det(\mathbf A)\) denotes the determinant of a
+  square matrix; and \(\lVert\mathbf v\rVert\) denotes a specified norm of
+  a vector. The chosen norm is defined with its use.
+\begin{itemize}
+\item \textbf{Products.} Scalar multiplication, dot products, cross products,
+\end{itemize}
+  matrix products, tensor products, and contractions are identified
+  when introduced. The order of matrix factors is retained. Entrywise
+  products are explicitly identified.
+\begin{itemize}
+\item \textbf{Summations.} Summation signs and their limits are displayed, with
+\end{itemize}
+  stated ranges for free indices. Individual terms are expanded in
+  initial low-dimensional examples. Implicit Einstein summation is not
+  used in worked calculations.
+\begin{itemize}
+\item \textbf{Tensors and arrays.} Multilinear tensors and multidimensional data
+\end{itemize}
+  arrays are related through specified representations; they are not
+  treated as identical objects without a definition of that relation.
+\begin{itemize}
+\item \textbf{Equality and approximation.} The symbol \(=\) denotes exact equality;
+\end{itemize}
+  \(\approx\) denotes an approximation. An approximation is accompanied
+  by its validity conditions and an error estimate, or by a statement
+  that no error bound has been established.
 
-Every solution uses numbered steps and textual labels:
+\section{7. Labels and color conventions}
+
+Numbered steps identify the successive operations in worked solutions.
+Their textual labels and colors distinguish the roles of those operations.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Label & Meaning & Planned print styling \\[5pt]
+Label & Meaning & Appearance \\[5pt]
 \hline\endhead
-SETUP & Types, dependencies, domain, target & Normal text \\[5pt]
-CHOICE & Why this method applies; cues to recognize it & Normal text \\[5pt]
-CALCULUS & Derivative or integral rule being applied & Black math with a named rule \\[5pt]
-ALGEBRA & Expansion, factoring, cancellation, solving, rearrangement & Dark blue \texttt{\#244A73} with an ALGEBRA label \\[5pt]
-IDENTITY & Trigonometric, exponential, logarithmic, or other exact identity & Same dark blue with an IDENTITY label \\[5pt]
-TRICK & A supporting identity, rewrite, or approximation tool from the tricks appendix & Purple \texttt{\#6F398E}, with a TRICK label and an appendix reference \\[5pt]
-APPROXIMATION & A deliberately approximate replacement & Same dark blue with an APPROXIMATION label and conditions \\[5pt]
-CHECK & Verification, dimensions, units, domain, or plausibility & Normal text \\[5pt]
+SETUP & Types, dependencies, domain, and target & Ordinary text \\[5pt]
+CHOICE & The reason a method applies to the given expression & Ordinary text \\[5pt]
+CALCULUS & A named derivative or integral rule & Ordinary mathematical text \\[5pt]
+ALGEBRA & Expansion, factoring, cancellation, or rearrangement & Dark blue with an ALGEBRA label \\[5pt]
+IDENTITY & An exact identity applied to the expression & Dark blue with an IDENTITY label \\[5pt]
+TRICK & A supporting identity, rewrite, or approximation from the tricks appendix & Purple with a TRICK label and an appendix reference \\[5pt]
+APPROXIMATION & A replacement with stated validity conditions & Dark blue with an APPROXIMATION label \\[5pt]
+CHECK & Verification of the result, domain, dimensions, or plausibility & Ordinary text \\[5pt]
 \end{longtable}
 
-Color is supplementary: the labels survive grayscale printing and text-only tutoring. Do not make algebra light gray or low contrast. Markdown pilot files use the labels; the typeset book will apply the color styles centrally.
+Color supplements the textual labels, which remain meaningful in grayscale.
+Calculus operations and algebraic simplifications are presented on separate
+lines. Unsimplified expressions precede their simplified forms; factors,
+signs, and conditions for cancellation are displayed explicitly.
 
-Separate calculus from algebra into distinct lines. Give the unsimplified result before simplifying. Explain each factor, sign, and canceled term. State conditions for division and cancellation. Name an identity and show its general form before substituting the problem's expressions.
+Supporting tools from the tricks appendix are denoted
+in purple, including instances that could also be classified as identities
+or approximations. Algebra in the main chapters is denoted in dark blue.
+Substitution and integration by parts are classified as main calculus
+methods rather than supporting tricks.
 
-When a step invokes a supporting tool from the tricks appendix,
-TRICK styling takes precedence over IDENTITY or APPROXIMATION styling. Supporting
-tools in that appendix are purple; algebra in the main chapters remains dark blue.
-Substitution and integration by parts are main calculus methods and are not labeled TRICK.
-
-Each problem has a stable ID, a problem-only prompt, a graduated hint ladder, a separate complete solution, a verification, a method-recognition note, and a nearby practice variant. Solutions must not sit beside the question in the final page layout.
-
-\section{8. Tutor contract}
-
-When asked to help with a problem, the tutor uses its ID and this standard. Begin at the learner's last understood step, ask for one manageable next action, and wait. Explain a needed prerequisite locally. Do not skip algebra or switch notation to save space. Give the full solution when requested; otherwise reveal only the next requested hint or step. A valid alternative method is welcome if its assumptions and dependencies are equally explicit.
-
-\section{9. Editorial acceptance checklist}
-
-\begin{itemize}
-\item Can the reader identify every object's type and every function input locally?
-\item Is the differentiation/integration variable explicit, including what is held fixed?
-\item Are intermediate dependencies, bounds, domains, and arbitrary constants correct?
-\item Is each equation exact, or explicitly marked approximate?
-\item Are calculus rules distinguished from algebra and identities?
-\item Can every transition be reproduced without a hidden manipulation?
-\item Is there a check appropriate to the problem and a cue explaining the method choice?
-\item Do the question, hints, and solution share one stable problem ID?
-\end{itemize}
+Each problem is identified by a stable code, such as D2-001. Its statement,
+hints, and complete solution are presented in separate sections. Numbered
+solution steps provide references to particular stages of the calculation.
 
 \chapter{D1: Scalar differentiation foundations}
 

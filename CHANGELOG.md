@@ -1,5 +1,12 @@
 # Development log
 
+## 0.2.0-alpha.3
+
+- Recast the notation chapter in descriptive academic prose.
+- Removed reader commands, the tutor contract, and editorial acceptance checklist from the chapter.
+- Preserved authoring guidance in internal notes and retained the mathematical conventions.
+
+
 ## 0.2.0-alpha.2
 
 - Removed the editorial outline chapter and its reader-facing links.

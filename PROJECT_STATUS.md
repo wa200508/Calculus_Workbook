@@ -4,7 +4,7 @@ Updated October 9, 2026. Stage: alpha development; no stable release.
 
 October 9 publishing update: a complete single-page HTML edition is generated
 at `site/.vitepress/dist/generated/book.html`. The 63-page compiled PDF is
-published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.2
+published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.3
 and saved locally as `build/calculus_workbook.pdf`. Alpha version tags build and
 publish a compiled PDF through GitHub Releases. GitHub Pages is enabled with
 GitHub Actions and the complete book is live at
@@ -18,6 +18,10 @@ https://wa200508.github.io/Calculus_Workbook/generated/book.html.
 - Educational content: CC BY-SA 4.0. Software: MIT. Correctness is not guaranteed.
 - Static VitePress site, local search, build-time MathJax, and practice pages.
 - SSH remote: `git@github.com:wa200508/Calculus_Workbook.git`; incremental pushes on `main`.
+
+October 9 editorial update: the notation chapter is a descriptive account of
+the book's conventions. Reader commands and chatbot/editorial guidance were
+removed from that chapter; internal guidance is in `docs/NOTATION_AUTHORING.md`.
 
 ## Current content
 
