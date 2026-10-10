@@ -3,9 +3,9 @@
 Updated October 9, 2026. Stage: alpha development; no stable release.
 
 October 9 publishing update: a complete single-page HTML edition is generated
-at `site/.vitepress/dist/generated/book.html`. The 49-page compiled PDF is
-published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1
-for that fixed edition. The expanded 0.2.0-alpha.2 PDF is built from the new manuscript. Alpha version tags build and
+at `site/.vitepress/dist/generated/book.html`. The 63-page compiled PDF is
+published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.2
+and saved locally as `build/calculus_workbook.pdf`. Alpha version tags build and
 publish a compiled PDF through GitHub Releases. GitHub Pages is enabled with
 GitHub Actions and the complete book is live at
 https://wa200508.github.io/Calculus_Workbook/generated/book.html.
@@ -36,9 +36,9 @@ See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules
 ## Validation
 
 Ten content tests pass. The expanded production site has 38 HTML pages and
-passes rendered-math checks and passes internal-link, asset, anchor, and
+2,642 rendered math expressions and passes internal-link, asset, anchor, and
 math-rendering checks. The tagged PDF compilation and prerelease publication
 succeeded; rendered pages were reviewed for layout and the appendix color.
-Site workflow run 38011359027 completed successfully after the user enabled
-Pages. The public complete-book page returned HTTP 200 and was checked in the
+Site workflow run 38012075113 and tagged PDF workflow run 38012087353
+completed successfully. The public complete-book page returned HTTP 200 and was checked in the
 browser with rendered math and alpha notices.
