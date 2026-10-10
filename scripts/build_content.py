@@ -226,7 +226,7 @@ def build():
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble
-    for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible")):
+    for filename, title in (("NOTATION_STANDARD.md", "Notational conventions"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible")):
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
     manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
@@ -238,7 +238,7 @@ def build():
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
     book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
     book += '> **Alpha development.** This is the current manuscript, including all solutions. Content is CC BY-SA 4.0 and provided as-is.\n\n'
-    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.3) · [Practice with hidden solutions](/practice)\n\n'
+    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
         chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
         chapter = style_algebra(site_links(chapter))

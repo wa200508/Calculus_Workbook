@@ -29,5 +29,5 @@ The current edition contains the notation standard, 24 worked problems across
 four differentiation and integration chapters, and a purple tricks appendix. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.3)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.4)
 or [read the entire current manuscript on one page](/generated/book).

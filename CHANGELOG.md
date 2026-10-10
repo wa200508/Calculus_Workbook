@@ -1,5 +1,10 @@
 # Development log
 
+## 0.2.0-alpha.4
+
+- Correct the notation chapter’s numbered list in the compiled PDF.
+- Align the PDF chapter title with “Notational conventions” on the site.
+
 ## 0.2.0-alpha.3
 
 - Recast the notation chapter in descriptive academic prose.

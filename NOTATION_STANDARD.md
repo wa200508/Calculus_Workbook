@@ -16,15 +16,10 @@ object is identified by both its notation and its accompanying definition.
 Four kinds of information are provided in the statements and solutions of
 worked problems:
 
-1. **Objects and types:** scalar quantities; vectors with a specified dimension;
-   matrices with specified dimensions; and tensors with a specified order,
-   space, basis, and component shape.
-2. **Dependencies:** independent inputs, dependent outputs, intermediate
-   functions, and fixed parameters.
-3. **Domains and assumptions:** admissible inputs, excluded values, and the
-   regularity or sign conditions relevant to the calculation.
-4. **Operations and outputs:** the variable of differentiation or integration,
-   quantities held fixed, and the type of the resulting object.
+1. **Objects and types:** scalar quantities; vectors with a specified dimension; matrices with specified dimensions; and tensors with a specified order, space, basis, and component shape.
+2. **Dependencies:** independent inputs, dependent outputs, intermediate functions, and fixed parameters.
+3. **Domains and assumptions:** admissible inputs, excluded values, and the regularity or sign conditions relevant to the calculation.
+4. **Operations and outputs:** the variable of differentiation or integration, quantities held fixed, and the type of the resulting object.
 
 These declarations are repeated where a solution is presented independently
 of its problem statement. Function arguments remain explicit in calculus
