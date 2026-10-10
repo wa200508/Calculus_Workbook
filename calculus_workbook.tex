@@ -40,15 +40,15 @@
 \vfill
 {\sffamily\large Alpha development edition 0.2\par}
 \medskip
-Notation standard, curriculum, eight worked problems, and supporting tools.\\
-Website foundation prepared October 7, 2026.
+Notation standard, twenty-four worked problems, and supporting tools.\\
+Alpha edition 0.2.0-alpha.2, October 9, 2026.
 \end{titlepage}
 \chapter*{How this book will work}
 This is a review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
 Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
-This alpha development edition establishes the notation with a scalar differentiation chapter, two further pilot problems, and a supporting tricks appendix. It does not yet contain the full curriculum. The proposed main parts are Differentiation and differentials, and Integration. The notation recommendations incorporate a targeted literature review, documented in the references.
+This alpha development edition develops scalar differentiation and integration through worked problems and a supporting tricks appendix. Use the table of contents to find a topic or example. The notation recommendations incorporate a targeted literature review, documented in the references.
 
 Try a question before reading its hints. Use the stable problem ID and step number when asking a tutor for help. The tutor should keep this notation and work from the last step you understand.
 \chapter*{Sharing and accuracy}
@@ -344,95 +344,11 @@ When asked to help with a problem, the tutor uses its ID and this standard. Begi
 \item Do the question, hints, and solution share one stable problem ID?
 \end{itemize}
 
-\chapter{The curriculum}
-
-The book is a review and problem-solving manual. Short concept refreshers support worked problems; readers are not expected to remember a formula or an algebraic manipulation merely because they once took a class.
-
-The two main parts are \textbf{Differentiation and differentials} and \textbf{Integration}. Within each part, complexity grows from scalar variables and outputs to vector, matrix, and tensor objects. Input dimension and integration geometry form a second organizing axis: an object's type alone does not determine the calculus method.
-
-\section{Entry toolkit: how to read and use the book}
-
-\begin{enumerate}
-\item The notation standard, dependency diagrams, types, shapes, domains, and units.
-\item A diagnostic set for fractions, powers, roots, logarithms, exponentials, factoring, completing the square, equations, inequalities, and trigonometry.
-\item A referenced toolbox of exact identities and approximation rules. Each entry has conditions, a worked example, and links to problems using it.
-\item Essential reminders about limits, continuity, and what a derivative or integral asks for. Revisit limits later where a method needs them.
-
-\end{enumerate}
-Diagnostic results direct readers to local refreshers; they do not block access to calculus chapters.
-
-\section{Part I: Differentiation and differentials}
-
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Chapter & Scope & Problem-solving focus \\[5pt]
-\hline\endhead
-D1 & Scalar input, scalar output & Read dependencies; use elementary, sum, and constant-multiple rules; check from the definition in selected examples \\[5pt]
-D2 & Products, quotients, and compositions & Recognize structure; choose whether to simplify first; fully expose the chain rule \\[5pt]
-D3 & Implicit, inverse, and parametric relationships & Decide what depends on what; solve for a requested rate; handle logarithmic differentiation and domain restrictions \\[5pt]
-D4 & Higher derivatives, local approximation, and optimization & Repeated operations, linearization, Taylor polynomials with errors, critical points, and endpoint checks \\[5pt]
-D5 & Several scalar inputs, scalar output & Partial derivatives, gradients, directional derivatives, Hessians, tangent approximations, and constrained optimization \\[5pt]
-D6 & Vector outputs and vector inputs & Velocity and acceleration; Jacobians; multivariable compositions; derivative as a linear map \\[5pt]
-D7 & Matrix inputs and outputs & Entrywise time derivatives; products and inverses; scalar functions of matrices; explicit index conventions and shape checks \\[5pt]
-D8 & Tensor-valued functions and contractions & Fixed-basis component derivatives; multilinear structure; tensor products and contractions; careful separation of tensor meaning from array storage \\[5pt]
-\end{longtable}
-
-An optional extension follows D8: changing bases, curvilinear coordinates, and covariant derivatives. This is a separate prerequisite-bearing topic, not a silent extension of componentwise differentiation.
-
-\section{Part II: Integration}
-
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Chapter & Scope & Problem-solving focus \\[5pt]
-\hline\endhead
-I1 & Scalar antiderivatives and definite integrals & Meaning, fundamental theorem, bounds, constants, signed accumulation, and basic rules \\[5pt]
-I2 & Change of variable in one dimension & Recognize a composition and its derivative; transform bounds; handle inverse branches and domain restrictions \\[5pt]
-I3 & Integration by parts & Choose factors; expose product-rule origins; repeat operations and solve for a recurring integral \\[5pt]
-I4 & Algebraic and trigonometric methods & Polynomial division, partial fractions, completing the square, trig identities, and trig substitution \\[5pt]
-I5 & Choosing a method for unfamiliar integrals & Mixed practice without method labels; compare valid routes; recognize when elementary antiderivatives are unavailable \\[5pt]
-I6 & Improper integrals and numerical approximation & Limits at singularities and infinity; convergence before evaluation; quadrature and error bounds \\[5pt]
-I7 & Vector, matrix, and tensor outputs over a scalar variable & Component integrals; initial conditions; shape preservation; fixed-basis assumptions and limits of componentwise reasoning \\[5pt]
-I8 & Double and triple integrals & Regions, bounds, order changes, signed and nonnegative integrands, and conditions for interchanging integrals \\[5pt]
-I9 & Multivariable changes of coordinates & Jacobian determinants, absolute values, transformed regions, polar/cylindrical/spherical examples \\[5pt]
-I10 & Curves: scalar accumulation and vector work & Parameterizations, arc-length measure, tangents, orientation, and distinguishing two kinds of line integral \\[5pt]
-I11 & Surfaces: scalar accumulation and vector flux & Surface measure, normal direction, parameterization, and orientation \\[5pt]
-I12 & Connecting local derivatives with global integrals & Green's, divergence, and Stokes' theorems; choose the easier side and check hypotheses \\[5pt]
-I13 & Integrals depending on parameters and mixed objects & Differentiate under an integral with stated conditions; vector/matrix/tensor integrands over regions; explicit contractions \\[5pt]
-\end{longtable}
-
-Optional advanced extensions: differential forms and generalized Stokes; integration on manifolds; matrix exponentials and systems of differential equations; higher-order tensors in applications. These are scoped separately so the core review remains usable.
-
-\section{Dependencies and reading routes}
-
-\begin{itemize}
-\item The quickest scalar review is D1--D4 followed by I1--I6.
-\item I2 uses the chain rule from D2; I3 uses the product rule from D2.
-\item I7 can follow the scalar integration chapters once component notation is understood.
-\item I8 needs scalar integration and elementary multivariable functions; I9 also needs the Jacobian from D6 and determinant algebra.
-\item I10--I12 draw on D5--D6 and the relevant integration chapters. Introduce divergence and curl explicitly before their theorems.
-\item D7--D8 and the tensor portions of I7/I13 have short linear-algebra prerequisite modules. Their unfamiliar concepts are taught locally rather than assumed.
-
-\end{itemize}
-\section{Repeated chapter structure}
-
-\begin{enumerate}
-\item A short concept refresher and a “what can vary?” map.
-\item A rule sheet using only the book's notation, with conditions and output types.
-\item Fully worked anchor problems, starting with a single new idea.
-\item Near-transfer practice: a changed sign, exponent, bound, dependency, or dimension.
-\item Mixed problems with the method name withheld.
-\item Failure-analysis problems: diagnose a plausible wrong step.
-\item A method-selection page: cues, necessary checks, and common dead ends.
-\item Hints and full solutions in separate, clearly indexed sections.
-
-\end{enumerate}
-Every practice problem will have a complete solution. Every approximation will identify its regime of validity. Checks include reverse differentiation for antiderivatives, shape and unit checks where applicable, and independent evaluations when useful.
-
-The eventual book should provide both a printable reading experience and stable problem/step references suitable for an LLM tutor. First settle the notation using the pilots, then develop one representative scalar chapter before expanding to the remaining chapters.
-
 \chapter{D1: Scalar differentiation foundations}
 
 Alpha chapter. This chapter develops powers, sums, fixed parameters, domains, and
-evaluation. Exponential, logarithmic, and trigonometric derivatives will extend
-this foundation in later material. Every problem below has hints, a complete
+evaluation. Products, quotients, and compositions
+extends this foundation with exponential, logarithmic, and trigonometric examples. Every problem below has hints, a complete
 solution, and a check.
 
 \section{What this chapter trains}
@@ -1155,9 +1071,54 @@ Inspect the algebra before selecting a differentiation rule.
 The next chapter will develop product, quotient, and chain-rule choices using
 these same declarations and visible algebra steps.
 
-\chapter{Pilot problems and worked solutions}
+\chapter{D2: Products, quotients, and compositions}
 
-These examples use notation standard version 0.2 and test the solution granularity. Textual labels indicate the future color styling. Question and solution sections are separate here; typesetting will place solutions on separate pages.
+Look at the whole expression before choosing a rule. A product has two changing
+factors; a quotient has a changing denominator; a composition feeds one function
+into another. The examples show how to recognize and combine these structures.
+
+\section{Rules to consult}
+
+Here \(x\) is an independent real scalar. \(u(x)\) and \(v(x)\) are differentiable real
+scalar functions. Each derivative below is a real scalar output. At inputs where
+\(v(x)\ne0\), the product and quotient rules are
+
+\[
+\frac{d}{dx}\left(u(x)v(x)\right)
+=\frac{d}{dx}\left(u(x)\right)v(x)+u(x)\frac{d}{dx}\left(v(x)\right),
+\]
+
+\[
+\frac{d}{dx}\left(\frac{u(x)}{v(x)}\right)
+=\frac{\frac{d}{dx}\left(u(x)\right)v(x)-u(x)\frac{d}{dx}\left(v(x)\right)}{(v(x))^2}.
+\]
+
+The product rule itself does not require \(v(x)\ne0\). For a composition
+\(f(x)=h(g(x))\), let \(t\) be an auxiliary independent real scalar input for \(h(t)\).
+Assuming both derivatives exist at the inputs used, the chain rule is
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=\left.\frac{d}{dt}\left(h(t)\right)\right|_{t=g(x)}
+\frac{d}{dx}\left(g(x)\right).
+\]
+
+Differentiate the outer function in its own input, evaluate that derivative at
+the inner function, and multiply by the inner derivative. Repeat this process
+for nested compositions. The elementary rules needed below are
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(\exp(t)\right)&=\exp(t),\\
+\frac{d}{dt}\left(\ln(t)\right)&=\frac1t,\qquad t>0,\\
+\frac{d}{dt}\left(\sin(t)\right)&=\cos(t),\\
+\frac{d}{dt}\left(\cos(t)\right)&=-\sin(t).
+\end{aligned}
+\]
+
+Sine and cosine inputs are in radians. The exponential has every real input;
+the real logarithm requires a positive input. Powers use the rules and domains
+from scalar differentiation foundations.
 
 \section{Problems}
 
@@ -1175,14 +1136,42 @@ There are no other variables or parameters. Find the scalar-valued derivative
 \frac{d}{dx}\left(f(x)\right).
 \]
 
-\subsection{I2-001 --- Evaluate a definite integral}
+\subsection{D2-002 --- A polynomial times a sine}
 
-\textbf{Objects and dependencies.} \(x\) is a scalar integration variable in \([0,1]\). Define the scalar-valued function \(q(x)=2x(x^2+1)^3\). All quantities are real. Integrate with respect to \(x\), with lower limit \(x=0\) and upper limit \(x=1\). Find the scalar number
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar angle in radians.
+The real scalar function \(f(x)=x^2\sin(x)\) is defined for all real \(x\). No parameters
+vary. Find \(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=\pi\), where \(\pi\) is
+the fixed circle constant.
 
-\[
-\int_{0}^{1} q(x)\,dx
-=\int_{0}^{1} 2x(x^2+1)^3\,dx.
-\]
+\subsection{D2-003 --- A quotient with an excluded input}
+
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar with \(x\ne1\).
+The real scalar function is \(f(x)=(x^2+1)/(x-1)\). Find the scalar-valued derivative
+\(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=2\).
+
+\subsection{D2-004 --- An exponential of a quadratic}
+
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar. Define the real
+scalar function \(f(x)=\exp(2x^2-3)\) on all real inputs. Find
+\(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=0\).
+
+\subsection{D2-005 --- A logarithm with a changing input}
+
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar. Define the real
+scalar function \(f(x)=\ln(1+x^2)\) on all real inputs, since \(1+x^2>0\).
+Find \(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=1\).
+
+\subsection{D2-006 --- A root with a changing input}
+
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar. Define the real
+scalar function \(f(x)=\sqrt{1+x^2}\), taking the nonnegative square root. Find
+\(\frac{d}{dx}\left(f(x)\right)\) for every real \(x\) and evaluate at \(x=0\).
+
+\subsection{D2-007 --- Three layers of dependence}
+
+\textbf{Objects and dependencies.} \(x\) is an independent real scalar angle in radians.
+The real scalar function is \(f(x)=(\sin(2x))^3\). Find
+\(\frac{d}{dx}\left(f(x)\right)\) for all real \(x\) and evaluate at \(x=\pi/4\).
 
 \section{Hint ladders}
 
@@ -1194,12 +1183,52 @@ There are no other variables or parameters. Find the scalar-valued derivative
 \item Differentiate \(h(u)\) with respect to \(u\), evaluate at \(u=g(x)\), and multiply by the derivative of \(g(x)\) with respect to \(x\).
 
 \end{enumerate}
-\subsection{I2-001}
+\subsection{D2-002}
 
 \begin{enumerate}
-\item Compare the factor \(2x\) with the derivative of the expression \(x^2+1\).
-\item Try the new scalar coordinate \(u=g(x)=x^2+1\).
-\item The original endpoints \(x=0\) and \(x=1\) become \(u=1\) and \(u=2\). The transformed integrand is \(u^3\).
+\item Both factors change with \(x\); use the product rule.
+\item Differentiate \(x^2\) and \(\sin(x)\) separately.
+\item Keep the unchanged factor in each product-rule term; then substitute \(x=\pi\).
+
+\end{enumerate}
+\subsection{D2-003}
+
+\begin{enumerate}
+\item The numerator and denominator have different rates of change.
+\item Use the quotient rule with numerator \(u(x)=x^2+1\) and denominator \(v(x)=x-1\).
+\item Expand \(2x(x-1)-(x^2+1)\) before evaluating.
+
+\end{enumerate}
+\subsection{D2-004}
+
+\begin{enumerate}
+\item The exponential's input is a changing quadratic.
+\item Set \(g(x)=2x^2-3\) and \(h(t)=\exp(t)\).
+\item Multiply \(\exp(g(x))\) by the derivative of \(g(x)\).
+
+\end{enumerate}
+\subsection{D2-005}
+
+\begin{enumerate}
+\item The derivative of a logarithm must include its inner rate of change.
+\item Set \(g(x)=1+x^2\) and \(h(t)=\ln(t)\), with \(t>0\).
+\item Evaluate \(1/t\) at \(t=g(x)\) and multiply by \(2x\).
+
+\end{enumerate}
+\subsection{D2-006}
+
+\begin{enumerate}
+\item Rewrite the square root as a power of its entire input.
+\item Differentiate \(h(t)=t^{1/2}\) on \(t>0\) and \(g(x)=1+x^2\).
+\item Simplify \((1/2)(1+x^2)^{-1/2}(2x)\).
+
+\end{enumerate}
+\subsection{D2-007}
+
+\begin{enumerate}
+\item There is an outer cube, a sine, and an inner multiplication by two.
+\item Differentiate \(g(x)=2x\), then \(u(x)=\sin(g(x))\).
+\item Differentiate the cube of \(u(x)\) and retain the inner factor two.
 
 \end{enumerate}
 \clearpage
@@ -1293,6 +1322,793 @@ f(0)&=1,\\
 Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
 
 \textbf{Recognition cue.} Find the outside operation, then identify every input it receives. The inner derivative is required even when the inner expression looks simple.
+
+\subsection{D2-002}
+
+\textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar angle in radians.
+\(f(x)=x^2\sin(x)\) is real scalar-valued. Let \(u(x)=x^2\) and \(v(x)=\sin(x)\);
+both are real scalar functions on all real inputs. The output derivative is scalar.
+
+\textbf{Step 2 --- CHOICE.} This is a product of two changing factors. Differentiating
+both and multiplying would omit the product rule's two terms.
+
+\textbf{Step 3 --- CALCULUS: differentiate each factor and apply the product rule.}
+
+\[
+\frac{d}{dx}\left(u(x)\right)=2x,\qquad
+\frac{d}{dx}\left(v(x)\right)=\cos(x),
+\]
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=(2x)\sin(x)+x^2\cos(x).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: evaluate after differentiating.} Since \(\sin(\pi)=0\) and
+\(\cos(\pi)=-1\),
+
+\[
+\left.\frac{d}{dx}\left(f(x)\right)\right|_{x=\pi}
+=(2\pi)(0)+\pi^2(-1)=0-\pi^2=-\pi^2.
+\]
+
+\endgroup
+\begingroup\color{TrickPurple}
+\textbf{Step 5 --- TRICK: use an angle-addition identity.} For real scalar angles
+\(a,b\) in radians,
+
+\[
+\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b).
+\]
+
+Taking \(a=\pi\) and \(b=h\), with real scalar increment \(h\), gives
+\(\sin(\pi+h)=0\cos(h)+(-1)\sin(h)=-\sin(h)\).
+This identity follows from the Euler identities.
+
+\endgroup
+\textbf{Step 6 --- CHECK.} The difference quotient at this input, with real scalar
+increment \(h\ne0\), is
+
+\[
+\frac{f(\pi+h)-f(\pi)}h
+=(\pi+h)^2\frac{\sin(\pi+h)}h.
+\]
+
+Using the identity from Step 5, the limit as
+\(h\to0\) is \(\pi^2(-1)=-\pi^2\), using \(\lim_{h\to0}\sin(h)/h=1\) in radians.
+This independently verifies the requested evaluated derivative.
+
+\subsection{D2-003}
+
+\textbf{Step 1 --- SETUP.} \(x\ne1\) is an independent real scalar and
+\(f(x)=(x^2+1)/(x-1)\) is real scalar-valued. Let \(u(x)=x^2+1\) and \(v(x)=x-1\).
+All coefficients are fixed. The derivative is scalar-valued on this domain.
+
+\textbf{Step 2 --- CHOICE.} The denominator changes and does not cancel. Use the quotient rule.
+
+\textbf{Step 3 --- CALCULUS: retain the quotient rule's subtraction.}
+
+\[
+\frac{d}{dx}\left(u(x)\right)=2x,\qquad
+\frac{d}{dx}\left(v(x)\right)=1,
+\]
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=\frac{(2x)(x-1)-(x^2+1)(1)}{(x-1)^2}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: expand the numerator.}
+
+\[
+(2x)(x-1)-(x^2+1)(1)
+=2x^2-2x-x^2-1=(2-1)x^2-2x-1=x^2-2x-1.
+\]
+
+Therefore
+
+\[
+\frac{d}{dx}\left(f(x)\right)=\frac{x^2-2x-1}{(x-1)^2},\qquad x\ne1.
+\]
+
+At \(x=2\), the scalar value is
+
+\[
+\frac{2^2-2(2)-1}{(2-1)^2}=
+\frac{4-4-1}{1^2}=\frac{-1}{1}=-1.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK: differentiate an equivalent rewrite.} Since
+\((x-1)(x+1)+2=x^2-1+2=x^2+1\),
+
+\[
+f(x)=x+1+\frac{2}{x-1},\qquad x\ne1.
+\]
+
+The chain and sum rules give
+
+\[
+\frac{d}{dx}\left(f(x)\right)=1-\frac{2}{(x-1)^2}
+=\frac{(x-1)^2-2}{(x-1)^2}
+=\frac{x^2-2x+1-2}{(x-1)^2}.
+\]
+
+This matches the result. The excluded input remains excluded.
+
+\subsection{D2-004}
+
+\textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar;
+\(f(x)=\exp(2x^2-3)\) is real scalar-valued on all real inputs. Define
+\(g(x)=2x^2-3\) and \(h(t)=\exp(t)\), where \(t\) is an independent real scalar
+input for the outer function. In \(f(x)=h(g(x))\), its input depends on \(x\).
+
+\textbf{Step 2 --- CHOICE.} Differentiate the exponential at its inner input, then
+account for how that input changes.
+
+\textbf{Step 3 --- CALCULUS: calculate both derivatives.}
+
+\[
+\frac{d}{dt}\left(h(t)\right)=\exp(t),\qquad
+\frac{d}{dx}\left(g(x)\right)=2(2x)-0.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: simplify the inner derivative.}
+
+\[
+2(2x)-0=(2\cdot2)x=4x.
+\]
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: apply the chain rule.}
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=\left.\exp(t)\right|_{t=2x^2-3}(4x)
+=\exp(2x^2-3)(4x).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: evaluate.} At \(x=0\), \(2(0)^2-3=-3\) and \(4(0)=0\);
+the value is \(\exp(-3)(0)=0\).
+
+\endgroup
+\textbf{Step 7 --- CHECK.} \(f(-x)=\exp(2(-x)^2-3)=f(x)\), so the differentiable graph
+is symmetric about zero and has derivative zero there. Also \(\exp(2x^2-3)>0\),
+so the derivative has the sign of \(x\), consistent with a minimum at zero.
+These are plausibility checks; the chain rule establishes the formula.
+
+\subsection{D2-005}
+
+\textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar and
+\(f(x)=\ln(1+x^2)\) is real scalar-valued. Define \(g(x)=1+x^2\) and \(h(t)=\ln(t)\)
+for independent real scalar \(t>0\). Since \(g(x)\ge1\), every real \(x\) is allowed.
+
+\textbf{Step 2 --- CHOICE.} The logarithm rule is applied to \(t\), then evaluated at
+\(t=g(x)\). Its input has a separate derivative.
+
+\textbf{Step 3 --- CALCULUS: differentiate both layers.}
+
+\[
+\frac{d}{dt}\left(h(t)\right)=\frac1t,\qquad
+\frac{d}{dx}\left(g(x)\right)=0+2x=2x,
+\]
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=\left.\frac1t\right|_{t=1+x^2}(2x)=\frac{1}{1+x^2}(2x).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: simplify and evaluate.}
+
+\[
+\frac{1}{1+x^2}(2x)=\frac{2x}{1+x^2},\qquad
+\left.\frac{d}{dx}\left(f(x)\right)\right|_{x=1}
+=\frac{2(1)}{1+1^2}=\frac2{1+1}=\frac22=1.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK.} The denominator is always positive. The derivative vanishes
+at zero and changes from negative to positive there, consistent with
+\(f(x)\ge\ln(1)=0=f(0)\). Do not replace \(\ln(1+x^2)\) by \(\ln(1)+\ln(x^2)\):
+logarithm rules separate products, not sums.
+
+\subsection{D2-006}
+
+\textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar. The real scalar functions
+are \(g(x)=1+x^2\), \(h(t)=t^{1/2}\) for independent real scalar \(t>0\), and
+\(f(x)=h(g(x))\). The inner value is at least one, so all real \(x\) are allowed.
+
+\textbf{Step 2 --- CHOICE.} The root is a power of a changing expression; use the
+power rule for the outer input and the chain rule for the composition.
+
+\textbf{Step 3 --- CALCULUS: differentiate both layers.}
+
+\[
+\frac{d}{dt}\left(h(t)\right)=\frac12t^{1/2-1},\qquad
+\frac{d}{dx}\left(g(x)\right)=2x.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: subtract the exponents.}
+
+\[
+\frac12-1=\frac12-\frac22=-\frac12,
+\qquad t^{-1/2}=\frac1{\sqrt t},\quad t>0.
+\]
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: assemble the chain rule.}
+
+\[
+\frac{d}{dx}\left(f(x)\right)=\frac1{2\sqrt{1+x^2}}(2x).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: simplify and evaluate.}
+
+\[
+\frac{2x}{2\sqrt{1+x^2}}=\frac{x}{\sqrt{1+x^2}},\qquad
+\left.\frac{d}{dx}\left(f(x)\right)\right|_{x=0}
+=\frac0{\sqrt{1+0}}=\frac01=0.
+\]
+
+\endgroup
+\textbf{Step 7 --- CHECK: differentiate a defining relation.} Since \((f(x))^2=1+x^2\),
+the chain rule implies
+
+\[
+2f(x)\frac{d}{dx}\left(f(x)\right)=2x.
+\]
+
+Dividing by \(2f(x)>0\) gives \(x/f(x)=x/\sqrt{1+x^2}\), which agrees.
+
+\subsection{D2-007}
+
+\textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar angle in radians.
+Let \(g(x)=2x\), \(u(x)=\sin(g(x))\), and \(f(x)=(u(x))^3\); all outputs are real
+scalars. Use auxiliary independent real scalar inputs \(t\) for \(h(t)=\sin(t)\)
+and \(s\) for \(p(s)=s^3\). All real \(x\) are allowed.
+
+\textbf{Step 2 --- CHOICE.} Track the three operations from the inside out: multiply
+by two, take a sine, and take a cube.
+
+\textbf{Step 3 --- CALCULUS: differentiate the inner composition.}
+
+\[
+\frac{d}{dx}\left(g(x)\right)=2,\qquad
+\frac{d}{dt}\left(h(t)\right)=\cos(t),
+\]
+
+\[
+\frac{d}{dx}\left(u(x)\right)
+=\left.\cos(t)\right|_{t=2x}(2)=2\cos(2x).
+\]
+
+\textbf{Step 4 --- CALCULUS: differentiate the outer cube.}
+
+\[
+\frac{d}{ds}\left(p(s)\right)=3s^2,
+\]
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=\left.3s^2\right|_{s=\sin(2x)}\left(2\cos(2x)\right).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: multiply constants and evaluate.}
+
+\[
+3(\sin(2x))^2(2\cos(2x))
+=(3\cdot2)(\sin(2x))^2\cos(2x)
+=6(\sin(2x))^2\cos(2x).
+\]
+
+At \(x=\pi/4\), \(2x=2(\pi/4)=\pi/2\), \(\sin(\pi/2)=1\), and
+\(\cos(\pi/2)=0\). The derivative's value is \(6(1)^2(0)=0\).
+
+\endgroup
+\begingroup\color{TrickPurple}
+\textbf{Step 6 --- TRICK: use the angle-addition identity.} For real scalar angles
+\(a,b\) in radians, \(\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b)\).
+At \(a=\pi/2\) and \(b=2h\), for real scalar increment \(h\),
+
+\[
+\sin(\pi/2+2h)=1\cos(2h)+0\sin(2h)=\cos(2h).
+\]
+
+This is another use of the Euler identities.
+
+\endgroup
+\textbf{Step 7 --- CHECK.} Substitution into the original function gives
+\(f(\pi/4+h)=(\sin(\pi/2+2h))^3=(\cos(2h))^3\).
+This expression is even in \(h\) and differentiable,
+so its derivative at \(h=0\) is zero. This checks the evaluated slope; the chain-rule
+calculation establishes the general formula.
+
+\chapter{I1: Scalar antiderivatives and definite integrals}
+
+An indefinite integral asks for a family of antiderivatives. A definite integral
+asks for a scalar number when its endpoints and all parameters are fixed. Begin
+by identifying which task is requested, then keep the integration variable visible.
+
+\section{Rules to consult}
+
+For independent real scalar \(x\) on an interval where the expressions are defined,
+and fixed real scalar exponent \(p\ne-1\),
+
+\[
+\int x^p\,dx=\frac{x^{p+1}}{p+1}+C.
+\]
+
+The real scalar constant \(C\) is independent of \(x\). In each example the derivative
+of the proposed antiderivative is checked. On a connected interval excluding zero,
+
+\[
+\int\frac1x\,dx=\ln(|x|)+C.
+\]
+
+For a continuous real scalar function \(q(x)\) on a closed interval with fixed
+real endpoints \(a,b\), and an antiderivative \(F(x)\),
+
+\[
+\int_a^b q(x)\,dx=F(b)-F(a),\qquad
+\frac{d}{dx}\left(F(x)\right)=q(x).
+\]
+
+When the upper limit is smaller than the lower limit, reverse the sign.
+The definite integral is signed accumulation; it does not automatically equal area.
+
+\section{Problems}
+
+\subsection{I1-001 --- Integrate a polynomial term by term}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable and
+\(q(x)=6x^2-4x+5\) is a real scalar function. Find the real scalar antiderivative
+family \(\int q(x)\,dx\) on all real inputs. State which quantity is constant.
+
+\subsection{I1-002 --- The reciprocal rule and two separate intervals}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable with
+\(x\ne0\). The real scalar function is \(q(x)=3/x\). Find \(\int q(x)\,dx\) on each
+of the intervals \(x>0\) and \(x<0\). Explain whether the arbitrary constants must match.
+
+\subsection{I1-003 --- Evaluate at both endpoints}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable.
+\(q(x)=2x+3\) is real scalar-valued. Find the real scalar number
+\(\int_{-1}^{2}q(x)\,dx\), with lower limit \(x=-1\) and upper limit \(x=2\).
+
+\subsection{I1-004 --- Reverse an exponential chain rule}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable and
+\(q(x)=\exp(3x)\) is a real scalar function on all real inputs. Find
+\(\int q(x)\,dx\) and verify the coefficient of the antiderivative.
+
+\subsection{I1-005 --- Integrate a trigonometric sum}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar angle in radians and is the
+integration variable. The real scalar function is \(q(x)=2\cos(x)-3\sin(x)\).
+Find \(\int q(x)\,dx\) on all real inputs.
+
+\subsection{I1-006 --- Signed accumulation versus area}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable on
+\([-1,1]\). The real scalar function is \(q(x)=x\). Find both real scalar numbers
+\(\int_{-1}^{1}q(x)\,dx\) and \(\int_{-1}^{1}|q(x)|\,dx\).
+
+\section{Hint ladders}
+
+\subsection{I1-001}
+
+\begin{enumerate}
+\item Integrate the three terms separately.
+\item Raise each power by one and divide by that new exponent.
+\item Keep one arbitrary constant for the combined family; differentiate to check.
+
+\end{enumerate}
+\subsection{I1-002}
+
+\begin{enumerate}
+\item The exponent minus one is excluded from the ordinary power rule.
+\item On positive inputs use \(\ln(x)\); on negative inputs use \(\ln(-x)\).
+\item The derivative of \(\ln(|x|)\) is \(1/x\) on either interval, but neither interval crosses zero.
+
+\end{enumerate}
+\subsection{I1-003}
+
+\begin{enumerate}
+\item Find one antiderivative of \(2x+3\).
+\item Evaluate at \(x=2\) and \(x=-1\) separately.
+\item Subtract the lower-endpoint value, including its sign.
+
+\end{enumerate}
+\subsection{I1-004}
+
+\begin{enumerate}
+\item Differentiating \(\exp(3x)\) produces an extra factor three.
+\item Try a fixed multiple of \(\exp(3x)\).
+\item Choose the multiple that makes the derivative's coefficient exactly one.
+
+\end{enumerate}
+\subsection{I1-005}
+
+\begin{enumerate}
+\item The derivative of \(\sin(x)\) is \(\cos(x)\).
+\item The derivative of \(\cos(x)\) is \(-\sin(x)\).
+\item Check both coefficients and the minus sign by differentiation.
+
+\end{enumerate}
+\subsection{I1-006}
+
+\begin{enumerate}
+\item The positive and negative parts can cancel in a signed integral.
+\item For the absolute value, use \(|x|=-x\) on \([-1,0]\) and \(|x|=x\) on \([0,1]\).
+\item Evaluate the two nonnegative contributions separately and add them.
+
+\end{enumerate}
+\clearpage
+\section{Complete solutions}
+
+\subsection{I1-001}
+
+\textbf{Step 1 --- SETUP.} \(x\) is the real scalar integration variable;
+\(q(x)=6x^2-4x+5\) has real scalar output. The antiderivative is scalar-valued
+and has a fixed real scalar constant \(C\) independent of \(x\).
+
+\textbf{Step 2 --- CHOICE.} Each term is a constant multiple of a power of \(x\).
+Use linearity and the power rule.
+
+\textbf{Step 3 --- CALCULUS: keep each exponent and denominator visible.}
+
+\[
+\int q(x)\,dx
+=6\frac{x^{2+1}}{2+1}-4\frac{x^{1+1}}{1+1}+5x+C.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: simplify coefficients.}
+
+\[
+2+1=3,\qquad 1+1=2,\qquad \frac63=2,\qquad \frac42=2,
+\]
+
+\[
+\int q(x)\,dx=2x^3-2x^2+5x+C.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK: differentiate the full family.}
+
+\[
+\frac{d}{dx}\left(2x^3-2x^2+5x+C\right)
+=2(3x^2)-2(2x)+5(1)+0=6x^2-4x+5=q(x).
+\]
+
+The derivative of \(C\) is zero precisely because \(C\) is independent of \(x\).
+
+\subsection{I1-002}
+
+\textbf{Step 1 --- SETUP.} \(x\ne0\) is the real scalar integration variable and
+\(q(x)=3/x\) is real scalar-valued. Work separately on the two connected intervals.
+Let \(C_+\) and \(C_-\) be fixed real scalar constants independent of \(x\).
+
+\textbf{Step 2 --- CHOICE.} The ordinary power antiderivative would divide by
+\(-1+1=0\). Use the logarithm rule instead.
+
+\textbf{Step 3 --- CALCULUS: give the families on their own intervals.}
+
+\[
+\int q(x)\,dx=
+\begin{cases}
+3\ln(x)+C_+,&x>0,\\
+3\ln(-x)+C_-,&x<0.
+\end{cases}
+\]
+
+Equivalently, the antiderivative is \(3\ln(|x|)\) plus a constant on each interval.
+There is no requirement that \(C_+=C_-\): the original domain is disconnected.
+
+\textbf{Step 4 --- CHECK: differentiate on both intervals.} For \(x>0\),
+
+\[
+\frac{d}{dx}\left(3\ln(x)+C_+\right)=3\frac1x+0=\frac3x.
+\]
+
+For \(x<0\), the input \(-x\) of the logarithm is positive. The chain rule gives
+
+\[
+\frac{d}{dx}\left(3\ln(-x)+C_-\right)
+=3\frac1{-x}(-1)+0.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: simplify the negative-input check.}
+
+\[
+3\frac{-1}{-x}=3\frac1x=\frac3x=q(x).
+\]
+
+Neither family defines an antiderivative across \(x=0\), where the integrand is undefined.
+
+\endgroup
+\subsection{I1-003}
+
+\textbf{Step 1 --- SETUP.} Integrate the real scalar function \(q(x)=2x+3\) with respect
+to real scalar \(x\) from \(-1\) to \(2\). The endpoints are fixed and the output is a number.
+
+\textbf{Step 2 --- CHOICE.} The integrand is continuous; use an antiderivative and
+subtract the endpoint values.
+
+\textbf{Step 3 --- CALCULUS: find one antiderivative.} Choose the real scalar function
+
+\[
+F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.
+\]
+
+The arbitrary constant can be set to zero because it cancels in the endpoint subtraction.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: calculate the endpoints separately.}
+
+\[
+F(2)=2^2+3(2)=4+6=10,
+\]
+
+\[
+F(-1)=(-1)^2+3(-1)=1-3=-2.
+\]
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: subtract the lower value.}
+
+\[
+\int_{-1}^{2}q(x)\,dx=F(2)-F(-1)=10-(-2).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: remove the double negative.} \(10-(-2)=10+2=12\).
+
+\endgroup
+\textbf{Step 7 --- CHECK.} \(\frac{d}{dx}\left(F(x)\right)=2x+3=q(x)\).
+Also the straight-line graph has endpoint heights \(q(-1)=1\) and \(q(2)=7\).
+Its trapezoid area is \(((1+7)/2)(2-(-1))=(8/2)(3)=12\), agreeing with the integral.
+
+\subsection{I1-004}
+
+\textbf{Step 1 --- SETUP.} \(x\) is a real scalar integration variable;
+\(q(x)=\exp(3x)\) is real scalar-valued on all real inputs. Let \(A\) be a fixed
+real scalar coefficient to determine and let \(C\) be independent of \(x\).
+
+\textbf{Step 2 --- CHOICE.} Try \(F(x)=A\exp(3x)\) and choose \(A\) so its derivative
+matches the integrand. The inner function \(g(x)=3x\) has derivative three.
+
+\textbf{Step 3 --- CALCULUS: differentiate the candidate.}
+
+\[
+\frac{d}{dx}\left(F(x)\right)=A\exp(3x)\frac{d}{dx}\left(3x\right)
+=A\exp(3x)(3).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: match coefficients.} To make this equal to \(q(x)\),
+solve \(3A=1\), giving \(A=1/3\) because three is nonzero.
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: state the family.}
+
+\[
+\int q(x)\,dx=\frac13\exp(3x)+C.
+\]
+
+\textbf{Step 6 --- CHECK.}
+
+\[
+\frac{d}{dx}\left(\frac13\exp(3x)+C\right)
+=\frac13\exp(3x)(3)+0
+=\left(\frac13\cdot3\right)\exp(3x)=q(x).
+\]
+
+Omitting the coefficient \(1/3\) would give three times the required integrand.
+
+\subsection{I1-005}
+
+\textbf{Step 1 --- SETUP.} \(x\) is a real scalar integration variable in radians;
+\(q(x)=2\cos(x)-3\sin(x)\) is real scalar-valued. The constant \(C\) is a real
+scalar independent of \(x\). All real inputs are allowed.
+
+\textbf{Step 2 --- CHOICE.} Use linearity, the sine derivative, and the cosine derivative.
+Keep the negative sign of the cosine derivative visible.
+
+\textbf{Step 3 --- CALCULUS: integrate each term.}
+
+\[
+\int q(x)\,dx=2\sin(x)+3\cos(x)+C.
+\]
+
+\textbf{Step 4 --- CHECK: differentiate before simplifying signs.}
+
+\[
+\frac{d}{dx}\left(2\sin(x)+3\cos(x)+C\right)
+=2\cos(x)+3(-\sin(x))+0.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: simplify the sign.}
+
+\[
+2\cos(x)+3(-\sin(x))+0=2\cos(x)-3\sin(x)=q(x).
+\]
+
+The positive coefficient on \(\cos(x)\) in the antiderivative is needed to
+produce the negative sine term in the integrand.
+
+\endgroup
+\subsection{I1-006}
+
+\textbf{Step 1 --- SETUP.} \(x\) is a real scalar integration variable on \([-1,1]\).
+\(q(x)=x\) is real scalar-valued. Both requested integrals have fixed limits and
+real scalar number outputs.
+
+\textbf{Step 2 --- CHOICE.} Integrate \(x\) directly for signed accumulation; split
+at zero before integrating \(|x|\).
+
+\textbf{Step 3 --- CALCULUS: evaluate the signed integral.}
+
+\[
+\int_{-1}^{1}q(x)\,dx
+=\left.\frac{x^2}{2}\right|_{x=-1}^{x=1}
+=\frac{1^2}{2}-\frac{(-1)^2}{2}.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: show the cancellation.}
+
+\[
+\frac{1^2}{2}-\frac{(-1)^2}{2}=\frac12-\frac12=0.
+\]
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: split the nonnegative integral.}
+
+\[
+\begin{aligned}
+\int_{-1}^{1}|q(x)|\,dx
+&=\int_{-1}^{0}(-x)\,dx+\int_0^1 x\,dx\\
+&=\left.-\frac{x^2}{2}\right|_{x=-1}^{x=0}
++\left.\frac{x^2}{2}\right|_{x=0}^{x=1}.
+\end{aligned}
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: subtract each lower endpoint.}
+
+\[
+\left(-\frac{0^2}{2}-\left(-\frac{(-1)^2}{2}\right)\right)
++\left(\frac{1^2}{2}-\frac{0^2}{2}\right)
+=\left(0+\frac12\right)+\left(\frac12-0\right)=1.
+\]
+
+\endgroup
+\textbf{Step 7 --- CHECK.} The absolute-value graph consists of two right triangles,
+each of base one and height one. Their total area is
+\(2(1\cdot1/2)=1\). The signed integral is zero because the negative triangle
+and positive triangle have opposite signed contributions.
+
+\chapter{I2: Substitution with every dependency visible}
+
+Substitution is a main integration method. Identify an inner function and its
+derivative, account for any fixed coefficient, and change both bounds in a definite
+integral. For an indefinite integral, substitute back into the original variable.
+
+\section{Rule to consult}
+
+Here \(x\) is a real scalar integration variable, \(g(x)\) is a continuously
+differentiable real scalar function, and \(h(u)\) is a continuous real scalar
+function on the image of the interval used. The new real scalar coordinate
+\(u=g(x)\) depends on \(x\) before the change of variable. Inside the transformed
+integral, \(u\) is the integration variable. For fixed real endpoints \(a,b\),
+
+\[
+\int_a^b h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx
+=\int_{g(a)}^{g(b)}h(u)\,du.
+\]
+
+The bounds on the right are computed with the same function \(g(x)\).
+Do not carry the old bounds into the new variable. For an indefinite integral,
+if \(H(u)\) is an antiderivative of \(h(u)\), then
+
+\[
+\int h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx=H(g(x))+C,
+\]
+
+where the real scalar \(C\) is independent of \(x\). Check the result by the chain rule.
+
+\section{Problems}
+
+\subsection{I2-001 --- Evaluate a definite integral}
+
+\textbf{Objects and dependencies.} \(x\) is a scalar integration variable in \([0,1]\). Define the scalar-valued function \(q(x)=2x(x^2+1)^3\). All quantities are real. Integrate with respect to \(x\), with lower limit \(x=0\) and upper limit \(x=1\). Find the scalar number
+
+\[
+\int_{0}^{1} q(x)\,dx
+=\int_{0}^{1} 2x(x^2+1)^3\,dx.
+\]
+
+\subsection{I2-002 --- A derivative match needing a fixed multiplier}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable;
+\(q(x)=x(1+x^2)^4\) is real scalar-valued on all real inputs. Find the scalar
+antiderivative family \(\int q(x)\,dx\).
+
+\subsection{I2-003 --- A cubic inside an exponential}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable from
+\(x=0\) to \(x=1\). The real scalar function is \(q(x)=3x^2\exp(x^3)\).
+Find the real scalar number \(\int_0^1q(x)\,dx\).
+
+\subsection{I2-004 --- A trigonometric input inside a reciprocal}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar angle in radians and is the
+integration variable. Define \(q(x)=\cos(x)/(2+\sin(x))\) with real scalar output.
+The denominator is at least one, so every real input is allowed. Find
+\(\int q(x)\,dx\).
+
+\subsection{I2-005 --- Transforming reversed endpoints}
+
+\textbf{Objects and dependencies.} \(x\) is a real scalar integration variable with
+lower limit \(x=1\) and upper limit \(x=0\). The real scalar function is
+\(q(x)=2x/(1+x^2)\). Find the real scalar number \(\int_1^0q(x)\,dx\).
+
+\section{Hint ladders}
+
+\subsection{I2-001}
+
+\begin{enumerate}
+\item Compare the factor \(2x\) with the derivative of the expression \(x^2+1\).
+\item Try the new scalar coordinate \(u=g(x)=x^2+1\).
+\item The original endpoints \(x=0\) and \(x=1\) become \(u=1\) and \(u=2\). The transformed integrand is \(u^3\).
+
+\end{enumerate}
+\subsection{I2-002}
+
+\begin{enumerate}
+\item The inner expression is \(1+x^2\), whose derivative is \(2x\).
+\item Write \(x=(1/2)(2x)\) rather than dropping the missing two.
+\item Integrate \((1/2)u^4\) and replace \(u\) by \(1+x^2\) afterward.
+
+\end{enumerate}
+\subsection{I2-003}
+
+\begin{enumerate}
+\item Compare \(3x^2\) with the derivative of \(x^3\).
+\item With \(u=g(x)=x^3\), the new bounds are \(u=0\) and \(u=1\).
+\item An antiderivative of \(\exp(u)\) is \(\exp(u)\).
+
+\end{enumerate}
+\subsection{I2-004}
+
+\begin{enumerate}
+\item The denominator's derivative is the numerator.
+\item Set \(u=g(x)=2+\sin(x)\); its values are positive.
+\item Integrate \(1/u\) and then display the original input of the logarithm.
+
+\end{enumerate}
+\subsection{I2-005}
+
+\begin{enumerate}
+\item The derivative of the denominator matches the numerator.
+\item The old lower endpoint \(x=1\) becomes \(u=2\), and the old upper endpoint \(x=0\) becomes \(u=1\).
+\item Subtract the value at \(u=2\) from the value at \(u=1\).
+
+\end{enumerate}
+\clearpage
+\section{Complete solutions}
 
 \subsection{I2-001}
 
@@ -1410,19 +2226,183 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 
 \textbf{Recognition cue.} Look for an inner expression whose derivative appears as a multiplying factor. A near match may need a constant adjustment, which must be written explicitly.
 
-\section{Tutor entry point}
+\subsection{I2-002}
 
-Example request: “Help me with I2-001, Step 6. I understand the new bounds but not what happened to the factor \(2x\). Use the notation standard and give me one step at a time.”
+\textbf{Step 1 --- SETUP.} \(x\) is the real scalar integration variable and
+\(q(x)=x(1+x^2)^4\) is real scalar-valued. Let \(g(x)=1+x^2\) and
+\(h(u)=u^4\), with independent real scalar input \(u\) when defining \(h(u)\).
+Before substitution \(u=g(x)\) is dependent on \(x\). All real \(x\) are allowed.
 
-\section{Review questions before drafting full chapters}
+\textbf{Step 2 --- CHOICE.} The factor \(x\) is one half of the inner derivative.
+Keep that adjustment outside the integral.
 
-\begin{itemize}
-\item Are the round grouping parentheses and nearby “held fixed” statements easy to follow?
-\item Do the pilot algebra steps give enough detail, or should common arithmetic move into expandable side explanations in a digital edition?
-\item Does the outer-function/inner-function setup make substitution and the chain rule easier to follow?
+\textbf{Step 3 --- CALCULUS: compute the inner derivative.}
 
-\end{itemize}
-Practice variants and their complete solutions will be added when these pilots become chapter material.
+\[
+\frac{d}{dx}\left(g(x)\right)=\frac{d}{dx}\left(1+x^2\right)=0+2x=2x.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: match every factor.}
+
+\[
+x(1+x^2)^4=\frac12(2x)(1+x^2)^4
+=\frac12h(g(x))\frac{d}{dx}\left(g(x)\right).
+\]
+
+No division by \(x\) was used; the identity holds at \(x=0\) too.
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: change variable and integrate.}
+
+\[
+\int q(x)\,dx=\frac12\int u^4\,du
+=\frac12\frac{u^{4+1}}{4+1}+C.
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: simplify and substitute back.}
+
+\[
+4+1=5,\qquad \frac12\frac{u^5}{5}=\frac{u^5}{2\cdot5}=\frac{u^5}{10},
+\]
+
+\[
+\int q(x)\,dx=\frac{(1+x^2)^5}{10}+C.
+\]
+
+The real scalar constant \(C\) is independent of \(x\).
+
+\endgroup
+\textbf{Step 7 --- CHECK.} By the chain rule,
+
+\[
+\frac{d}{dx}\left(\frac{(1+x^2)^5}{10}+C\right)
+=\frac1{10}5(1+x^2)^4(2x)+0.
+\]
+
+The fixed coefficient is \((1/10)\cdot5\cdot2=10/10=1\), so the derivative
+is \(x(1+x^2)^4=q(x)\).
+
+\subsection{I2-003}
+
+\textbf{Step 1 --- SETUP.} \(x\) is the real scalar integration variable from zero to one.
+\(q(x)=3x^2\exp(x^3)\) has real scalar output. Let \(g(x)=x^3\) and
+\(h(u)=\exp(u)\), with auxiliary independent real scalar input \(u\).
+All functions used are smooth on the interval; the result is a number.
+
+\textbf{Step 2 --- CHOICE.} The numerator factor \(3x^2\) is exactly the derivative
+of the exponential's inner input.
+
+\textbf{Step 3 --- CALCULUS: compute the derivative and new bounds.}
+
+\[
+\frac{d}{dx}\left(g(x)\right)=3x^2,\qquad
+u=g(0)=0^3=0,\qquad u=g(1)=1^3=1.
+\]
+
+\textbf{Step 4 --- CALCULUS: transform the whole integral.}
+
+\[
+\int_0^1q(x)\,dx
+=\int_0^1h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx
+=\int_0^1\exp(u)\,du.
+\]
+
+The numerical bounds happen to agree, but the variable and its meaning changed.
+
+\textbf{Step 5 --- CALCULUS: evaluate the antiderivative.}
+
+\[
+\int_0^1\exp(u)\,du=\exp(1)-\exp(0).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: simplify the constant value.} Since \(\exp(0)=1\), the
+answer is \(\exp(1)-1\). The notation \(e=\exp(1)\) denotes a fixed real constant.
+
+\endgroup
+\textbf{Step 7 --- CHECK.} Define the real scalar function \(F(x)=\exp(x^3)\).
+Its derivative is \(\exp(x^3)(3x^2)=q(x)\). Also
+\(F(1)-F(0)=\exp(1)-1\). This verifies both the integrand match and endpoint result.
+
+\subsection{I2-004}
+
+\textbf{Step 1 --- SETUP.} \(x\) is a real scalar integration variable in radians.
+\(q(x)=\cos(x)/(2+\sin(x))\) is real scalar-valued for all real inputs.
+Let \(g(x)=2+\sin(x)\) and \(h(u)=1/u\) for independent real scalar \(u>0\).
+The actual inner values satisfy \(1\le g(x)\le3\).
+
+\textbf{Step 2 --- CHOICE.} The denominator's derivative appears in the numerator.
+Use a reciprocal antiderivative after the change of variable.
+
+\textbf{Step 3 --- CALCULUS: differentiate the inner function.}
+
+\[
+\frac{d}{dx}\left(g(x)\right)=0+\cos(x)=\cos(x).
+\]
+
+\textbf{Step 4 --- CALCULUS: transform and integrate.}
+
+\[
+\int q(x)\,dx=\int\frac1u\,du=\ln(u)+C,\qquad u>0.
+\]
+
+The scalar constant \(C\) is independent of the original input \(x\).
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: restore the original input.}
+
+\[
+\int q(x)\,dx=\ln(2+\sin(x))+C.
+\]
+
+No absolute value is needed because the logarithm's input is always positive.
+
+\endgroup
+\textbf{Step 6 --- CHECK: differentiate the complete answer.}
+
+\[
+\frac{d}{dx}\left(\ln(2+\sin(x))+C\right)
+=\frac1{2+\sin(x)}(\cos(x))+0
+=\frac{\cos(x)}{2+\sin(x)}=q(x).
+\]
+
+The substitution theorem does not require \(g(x)\) to be one-to-one. A vanishing
+inner derivative at some inputs does not invalidate this antiderivative.
+
+\subsection{I2-005}
+
+\textbf{Step 1 --- SETUP.} \(x\) is the real scalar integration variable, with fixed
+lower limit one and upper limit zero. The real scalar function is
+\(q(x)=2x/(1+x^2)\). Let \(g(x)=1+x^2\) and \(h(u)=1/u\) for independent real scalar
+\(u>0\). The result is a real scalar number.
+
+\textbf{Step 2 --- CHOICE.} The derivative factor matches the denominator's rate.
+Preserve the endpoint order when mapping to the new variable.
+
+\textbf{Step 3 --- CALCULUS: compute the derivative and endpoint map.}
+
+\[
+\frac{d}{dx}\left(g(x)\right)=2x,
+\qquad u=g(1)=1+1^2=2,\qquad u=g(0)=1+0^2=1.
+\]
+
+\textbf{Step 4 --- CALCULUS: transform the bounds with the variable.}
+
+\[
+\int_1^0q(x)\,dx=\int_2^1\frac1u\,du=\ln(1)-\ln(2).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 5 --- ALGEBRA: simplify the sign.} \(\ln(1)=0\), so the value is
+\(0-\ln(2)=-\ln(2)\).
+
+\endgroup
+\textbf{Step 6 --- CHECK.} The real scalar function \(F(x)=\ln(1+x^2)\) has derivative
+\(2x/(1+x^2)=q(x)\) by the chain rule. The original endpoints give
+\(F(0)-F(1)=\ln(1)-\ln(2)\). In addition, \(q(x)\ge0\) on \([0,1]\) and
+\(q(x)>0\) for \(0<x\le1\), so reversing that interval must give a negative integral.
 
 \appendix
 \chapter{Tricks and identities}

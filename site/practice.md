@@ -9,7 +9,8 @@ Read [D1's method guide and rule sheet](/generated/scalar-derivatives), then att
 D1-001 through D1-003. D1-004 through D1-006 introduce domain traps, a derivation
 from the definition, and a mixed-method choice. Try each before opening a hint.
 
-The chain-rule and substitution pilots show where this foundation leads next.
+Continue with products, quotients, and compositions in D2; then practice
+antiderivatives and definite integrals in I1 and substitutions in I2.
 This collection is in alpha development; additional chapters and practice variants
 are still being written.
 
@@ -17,4 +18,4 @@ are still being written.
 
 <!--@include: ./generated/practice-table.inc-->
 
-[Browse the planned curriculum](/generated/curriculum).
+[Read all chapters and solutions](/generated/book).

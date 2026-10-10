@@ -8,17 +8,19 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "NOTATION_STANDARD.md": "notation",
-    "CURRICULUM.md": "curriculum",
     "DIFFERENTIATION_SCALARS.md": "scalar-derivatives",
-    "PILOT_EXAMPLES.md": "examples",
+    "DIFFERENTIATION_RULES.md": "derivative-rules",
+    "INTEGRATION_SCALARS.md": "scalar-integrals",
+    "INTEGRATION_SUBSTITUTION.md": "substitution",
     "TRICKS_APPENDIX.md": "tricks",
     "NOTATION_REVIEW.md": "references",
 }
-PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "PILOT_EXAMPLES.md")
+PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "DIFFERENTIATION_RULES.md", "INTEGRATION_SCALARS.md", "INTEGRATION_SUBSTITUTION.md")
 CHAPTER_TITLES = {
     "D1": "Scalar differentiation foundations",
-    "D2": "Compositions: a chain-rule pilot",
-    "I2": "Substitution: an integration pilot",
+    "D2": "Products, quotients, and compositions",
+    "I1": "Scalar antiderivatives and definite integrals",
+    "I2": "Substitution with every dependency visible",
 }
 
 
@@ -187,6 +189,9 @@ def build():
     problems = collect_problems(content)
     for directory in ("site/generated", "site/problems", "site/public/downloads", "site/public/licenses"):
         (ROOT / directory).mkdir(parents=True, exist_ok=True)
+    for obsolete in ('site/generated/curriculum.md', 'site/generated/examples.md',
+                     'site/public/downloads/CURRICULUM.md', 'site/public/downloads/PILOT_EXAMPLES.md'):
+        (ROOT / obsolete).unlink(missing_ok=True)
     for name, slug in SOURCES.items():
         notice = '> **Alpha development.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
         text = site_links(content[name])
@@ -221,7 +226,7 @@ def build():
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble
-    for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("CURRICULUM.md", "The curriculum"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("PILOT_EXAMPLES.md", "Pilot problems and worked solutions")):
+    for filename, title in (("NOTATION_STANDARD.md", "The notation standard"), ("DIFFERENTIATION_SCALARS.md", "D1: Scalar differentiation foundations"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible")):
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
     manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
@@ -232,8 +237,8 @@ def build():
     combined += "\n\n---\n\n".join(content.values())
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
     book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
-    book += '> **Alpha development.** This is the complete current manuscript, including all solutions. The planned curriculum is still incomplete. Content is CC BY-SA 4.0 and provided as-is.\n\n'
-    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1) · [Practice with hidden solutions](/practice)\n\n'
+    book += '> **Alpha development.** This is the current manuscript, including all solutions. Content is CC BY-SA 4.0 and provided as-is.\n\n'
+    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.2) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
         chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
         chapter = style_algebra(site_links(chapter))

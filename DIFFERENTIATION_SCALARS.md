@@ -1,8 +1,8 @@
 # D1 · Scalar differentiation foundations
 
 Alpha chapter. This chapter develops powers, sums, fixed parameters, domains, and
-evaluation. Exponential, logarithmic, and trigonometric derivatives will extend
-this foundation in later material. Every problem below has hints, a complete
+evaluation. [Products, quotients, and compositions](DIFFERENTIATION_RULES.md)
+extends this foundation with exponential, logarithmic, and trigonometric examples. Every problem below has hints, a complete
 solution, and a check.
 
 ## What this chapter trains
@@ -29,7 +29,7 @@ specified input gives a scalar number.
 
 A sum of constant multiples of powers of the independent variable fits this
 chapter. A changing expression raised to a power, such as $(x^2+1)^4$, requires
-the chain rule introduced in [D2-001](PILOT_EXAMPLES.md). A product of changing
+the chain rule introduced in [D2-001](DIFFERENTIATION_RULES.md). A product of changing
 factors or a quotient that does not simplify may require the product or quotient
 rule. Never differentiate the factors of a product separately and multiply the
 results.

@@ -32,7 +32,7 @@ class ContentTests(unittest.TestCase):
     def test_all_chapters_have_complete_problem_sets(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
         groups = content.collect_problems(manuscripts)
-        self.assertEqual(len(groups['Problems']), 8)
+        self.assertEqual(len(groups['Problems']), 24)
         for identifier, (_, solution) in groups['Complete solutions'].items():
             self.assertIn('CHECK', solution, identifier)
             self.assertIn('SETUP', solution, identifier)
@@ -40,7 +40,7 @@ class ContentTests(unittest.TestCase):
 
     def test_duplicate_problem_ids_across_chapters_are_rejected(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
-        manuscripts['DIFFERENTIATION_SCALARS.md'] = manuscripts['PILOT_EXAMPLES.md']
+        manuscripts['DIFFERENTIATION_SCALARS.md'] = manuscripts['DIFFERENTIATION_RULES.md']
         with self.assertRaisesRegex(ValueError, 'multiple manuscripts'):
             content.collect_problems(manuscripts)
 
@@ -75,6 +75,13 @@ class ContentTests(unittest.TestCase):
         self.assertNotIn('<details class="solution" open', page)
         self.assertEqual(page.count('::: details Hint '), 3)
         self.assertIn('algebra-step', page)
+
+    def test_editorial_outline_is_not_published(self):
+        content.build()
+        self.assertNotIn('curriculum', (ROOT / 'site/generated/book.md').read_text().lower())
+        self.assertNotIn('curriculum', (ROOT / 'calculus_workbook.tex').read_text().lower())
+        self.assertFalse((ROOT / 'site/generated/curriculum.md').exists())
+        self.assertFalse((ROOT / 'site/public/downloads/CURRICULUM.md').exists())
 
 
 if __name__ == '__main__':

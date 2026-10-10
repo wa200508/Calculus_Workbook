@@ -9,7 +9,7 @@ const chapterSidebar = chapters.map(chapter => ({
   text: `${chapter} · ${problems.find(problem => problem.chapter === chapter)!.chapterTitle}`,
   collapsed: chapter !== 'D1',
   items: [
-    ...(chapter === 'D1' ? [{ text: 'Chapter guide & rules', link: '/generated/scalar-derivatives' }] : []),
+    { text: 'Chapter guide & rules', link: `/generated/${({ D1: 'scalar-derivatives', D2: 'derivative-rules', I1: 'scalar-integrals', I2: 'substitution' } as Record<string,string>)[chapter]}` },
     ...problems.filter(problem => problem.chapter === chapter).map(problem => ({
       text: `${problem.id} · ${problem.title}`, link: problem.link
     }))
@@ -47,14 +47,12 @@ export default defineConfig({
         { text: 'How to use this book', link: '/start' },
         { text: 'Complete book · One page', link: '/generated/book' },
         { text: 'Notation standard', link: '/generated/notation' },
-        { text: 'Curriculum & reading routes', link: '/generated/curriculum' }
       ] },
       { text: 'Practice', items: [{ text: 'All problems', link: '/practice' }] },
       ...chapterSidebar,
       { text: 'Reference & project', items: [
         { text: 'Tricks & identities · Purple appendix', link: '/generated/tricks' },
         { text: 'Literature & notation decisions', link: '/generated/references' },
-        { text: 'Complete worked examples', link: '/generated/examples' },
         { text: 'Downloads', link: '/downloads' },
         { text: 'Sharing, accuracy & contributions', link: '/about' }
       ] }

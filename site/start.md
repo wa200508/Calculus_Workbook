@@ -13,7 +13,7 @@ so you can practice making those choices yourself.
 3. Attempt the remaining D1 problems to practice domain checks, limits, and method selection.
 4. Try [D2-001: the chain rule](/problems/d2-001), then
    [I2-001: substitution](/problems/i2-001) to see how integration reverses the pattern.
-5. Use [the curriculum](/generated/curriculum) to choose your next reading route.
+5. Use the table of contents to find more examples on the topic you are practicing.
 
 ## What the step labels mean
 
@@ -50,7 +50,6 @@ The full question and solution can be copied from [the downloadable Markdown](/d
 Use the navigation to browse or the search button to find a problem ID, method,
 or notation. The site includes light and dark themes. Open the solution before
 printing a practice page if you want the solution included; use the complete
-worked-examples page for an uninterrupted printable version.
+[complete book](/generated/book) for an uninterrupted printable version.
 
-This edition is a foundation, not a complete calculus course. Check the chapter
-scope in the curriculum and consult the [accuracy notice](/about#accuracy).
+Consult the [accuracy notice](/about#accuracy) when using this alpha edition.

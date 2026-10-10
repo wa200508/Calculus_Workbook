@@ -25,11 +25,9 @@ features:
 
 ## Alpha development: a book we can keep improving
 
-The current edition contains the notation standard, curriculum, a scalar
-differentiation chapter with six worked problems, and two further pilot problems.
-Chapters will grow from scalar calculus into vector, matrix, and
-tensor examples. This is an alpha development review book, provided as-is; mathematical
+The current edition contains the notation standard, 24 worked problems across
+four differentiation and integration chapters, and a purple tricks appendix. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.2)
 or [read the entire current manuscript on one page](/generated/book).

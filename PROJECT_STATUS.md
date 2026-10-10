@@ -5,7 +5,7 @@ Updated October 9, 2026. Stage: alpha development; no stable release.
 October 9 publishing update: a complete single-page HTML edition is generated
 at `site/.vitepress/dist/generated/book.html`. The 49-page compiled PDF is
 published at https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1
-and saved locally as `build/calculus_workbook.pdf`. Alpha version tags build and
+for that fixed edition. The expanded 0.2.0-alpha.2 PDF is built from the new manuscript. Alpha version tags build and
 publish a compiled PDF through GitHub Releases. GitHub Pages is enabled with
 GitHub Actions and the complete book is live at
 https://wa200508.github.io/Calculus_Workbook/generated/book.html.
@@ -21,25 +21,22 @@ https://wa200508.github.io/Calculus_Workbook/generated/book.html.
 
 ## Current content
 
-Notation standard, literature review, proposed curriculum, D1 scalar differentiation
-with six complete problems, and two pilots: D2-001 (chain rule) and I2-001
-(definite substitution). The purple supporting-tools appendix covers Euler identities,
-Taylor expansions with error bounds, binomial expansion, completing the square,
-rationalization, and logarithm identities. Substitution remains a core calculus method.
-The full curriculum is planned;
-the site does not imply all chapters are already written.
+Notation standard, 24 fully worked problems in four subject chapters, purple
+supporting-tools appendix, and notation literature review. The editorial outline
+is kept in the repository for development and is excluded from reading pages,
+downloads, and the compiled PDF. Alpha edition 0.2.0-alpha.2 adds 16 problems.
 
 ## Next steps
 
-1. Extend the scalar foundation and develop D2 product, quotient, and chain-rule practice.
+1. Add more mixed-method practice and integration by parts.
 2. Continue developing the manuscript and publish further alpha PDF editions at reviewed milestones.
 
 See docs/DEVELOPMENT.md and CONTRIBUTING.md for the workflow and editorial rules.
 
 ## Validation
 
-Nine content tests pass. The expanded production site has 21 HTML pages and
-1,432 rendered math expressions and passes internal-link, asset, anchor, and
+Ten content tests pass. The expanded production site has 38 HTML pages and
+passes rendered-math checks and passes internal-link, asset, anchor, and
 math-rendering checks. The tagged PDF compilation and prerelease publication
 succeeded; rendered pages were reviewed for layout and the appendix color.
 Site workflow run 38011359027 completed successfully after the user enabled

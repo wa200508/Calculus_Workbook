@@ -1,5 +1,13 @@
 # Development log
 
+## 0.2.0-alpha.2
+
+- Removed the editorial outline chapter and its reader-facing links.
+- Expanded to 24 fully worked problems across scalar differentiation, derivative rules, antiderivatives, and substitution.
+- Moved the original two examples into their subject chapters.
+- Published the expanded single-page book and compiled alpha PDF.
+
+
 ## 0.2.0-alpha.1
 
 No stable release or major-version release has been published. Version

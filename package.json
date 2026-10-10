@@ -1,6 +1,6 @@
 {
   "name": "calculus-workbook",
-  "version": "0.2.0-alpha.1",
+  "version": "0.2.0-alpha.2",
   "private": true,
   "description": "An open calculus review book with explicit notation and complete worked solutions.",
   "license": "MIT",

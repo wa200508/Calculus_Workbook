@@ -51,9 +51,9 @@ jobs:
         shell: bash
         run: |
           cat > notes.md <<'EOF'
-          Complete current manuscript in a single compiled PDF. **Alpha development:** the planned curriculum is incomplete, the material may contain errors, and mathematical correctness is not guaranteed.
+          Complete current manuscript in a single compiled PDF. **Alpha development:** the material may contain errors, and mathematical correctness is not guaranteed.
 
-          Includes the notation standard, curriculum, eight fully worked problems, supporting tricks appendix, and notation literature review. Supporting tricks are purple; algebra in the main chapters is dark blue.
+          Includes the notation standard, worked differentiation and integration chapters, supporting tricks appendix, and notation literature review. Every included practice problem has hints, a complete solution, and a check. Supporting tricks are purple; algebra in the main chapters is dark blue.
 
           Educational content: CC BY-SA 4.0. Software: MIT. See the repository's licenses and accuracy notice.
           EOF

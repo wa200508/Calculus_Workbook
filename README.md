@@ -3,14 +3,14 @@
 An open review book with explicit notation, visible algebra, complete worked
 solutions, and help one step at a time.
 
-**Alpha development — no stable release:** notation standard, curriculum, literature review, a scalar differentiation chapter, and two
-further pilot examples, plus a purple appendix of supporting tools. Full chapters are still being written. Material is
+**Alpha development — no stable release:** notation standard, 24 worked problems across four calculus chapters,
+and a purple appendix of supporting tools. Full chapters are still being written. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
-on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.1)
+on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.2.0-alpha.2)
 for a fixed, compiled edition of all material written so far.
 
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
@@ -28,7 +28,7 @@ The single-page edition is at `/generated/book.html`; its compiled HTML file is
 site with `pnpm preview` so its styles and math assets load correctly.
 
 The PDF workflow builds every manuscript checkpoint. Pushing an alpha version
-tag such as `v0.2.0-alpha.1` also publishes the PDF as a GitHub prerelease.
+tag such as `v0.2.0-alpha.2` also publishes the PDF as a GitHub prerelease.
 
 ```sh
 pnpm check     # tests, production build, and internal-link/math checks
@@ -38,9 +38,10 @@ pnpm preview   # serve the production output
 ## Manuscript
 
 - [Notation standard](NOTATION_STANDARD.md)
-- [Curriculum and reading routes](CURRICULUM.md)
 - [Scalar differentiation chapter](DIFFERENTIATION_SCALARS.md)
-- [Pilot problems, hints, and solutions](PILOT_EXAMPLES.md)
+- [Products, quotients, and compositions](DIFFERENTIATION_RULES.md)
+- [Scalar antiderivatives and definite integrals](INTEGRATION_SCALARS.md)
+- [Substitution](INTEGRATION_SUBSTITUTION.md)
 - [Tricks and identities appendix](TRICKS_APPENDIX.md)
 - [Literature review](NOTATION_REVIEW.md)
 
