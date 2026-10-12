@@ -25,7 +25,7 @@
 \fancyhf{}
 \fancyhead[L]{\small\sffamily Calculus: A Worked Review}
 \fancyhead[R]{\small\sffamily\thepage}
-\fancyfoot[L]{\small\sffamily Alpha 0.3 | Notation and worked-example prototypes}
+\fancyfoot[L]{\small\sffamily Alpha 0.4 | Mixed problems and complete solutions}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0pt}
 \begin{document}
@@ -42,13 +42,13 @@
 {\Large Explicit notation. Visible reasoning.\par}
 {\Large Every dependency accounted for.\par}
 \vfill
-{\sffamily\large Alpha development edition 0.3\par}
+{\sffamily\large Alpha development edition 0.4\par}
 \medskip
-Notation standard, forty worked problems, and supporting tools.\\
-Alpha edition 0.3.0-alpha.3, October 11, 2026.
+Notation, methods reference, fifty-two worked problems, and supporting tools.\\
+Alpha edition 0.4.0-alpha.1, October 12, 2026.
 \end{titlepage}
 \chapter*{About this book}
-This graduate review assumes prior study of calculus. Worked examples document method selection, functional dependencies, domain analysis, and the sequence of calculations leading to a result. Elementary reference cases isolate a technique; field, geometry, and convergence problems develop its less immediate applications. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
+This graduate review assumes prior study of calculus. Worked examples document method selection, functional dependencies, domain analysis, and the sequence of calculations leading to a result. The introduction concludes with a consolidated methods reference. Four mixed problem sets follow immediately, with twenty-eight problems involving nonlinear functions, fields, geometry, and convergence. Twenty-four simpler reference exercises are retained in the appendices. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
 Method-choice blocks identify the structure motivating a calculation. Domain blocks identify exclusions, branches, convergence, and conditions for interchanging operations. Worked solutions retain intermediate algebra as calculation checkpoints. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
@@ -518,6 +518,49 @@ All fixed parameters are held fixed in the displayed operations.
 
 \section{Differentiation and local representations}
 
+\subsection{Elementary derivatives and primitives}
+
+The independent input \(x\) and the fixed parameter \(p\) are real scalars. The
+following formulas apply on the indicated real domains. Each primitive is
+understood on a connected interval of that domain; \(C\) is an arbitrary constant
+on that interval.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}@{}}
+Scalar expression & Derivative with respect to \(x\) & Primitive with respect to \(x\) & Real-domain restriction \\[5pt]
+\hline\endhead
+\(x^p\) & \(\frac{d}{dx}(x^p)=px^{p-1}\) & \(\int x^p\,dx=\frac{x^{p+1}}{p+1}+C\), \(p\ne-1\) & \(x>0\) suffices for arbitrary real \(p\); integer powers may have larger domains \\[5pt]
+\(1/x\) & \(\frac{d}{dx}(1/x)=-1/x^2\) & \(\int (1/x)\,dx=\ln|x|+C\) & \(x\ne0\) \\[5pt]
+\(\exp(x)\) & \(\frac{d}{dx}(\exp(x))=\exp(x)\) & \(\int\exp(x)\,dx=\exp(x)+C\) & All real \(x\) \\[5pt]
+\(\ln(x)\) & \(\frac{d}{dx}(\ln(x))=1/x\) & \(\int\ln(x)\,dx=x\ln(x)-x+C\) & \(x>0\) \\[5pt]
+\(\sin(x)\) & \(\frac{d}{dx}(\sin(x))=\cos(x)\) & \(\int\sin(x)\,dx=-\cos(x)+C\) & All real \(x\) \\[5pt]
+\(\cos(x)\) & \(\frac{d}{dx}(\cos(x))=-\sin(x)\) & \(\int\cos(x)\,dx=\sin(x)+C\) & All real \(x\) \\[5pt]
+\(\tan(x)\) & \(\frac{d}{dx}(\tan(x))=1/\cos^2(x)\) & \(\int\tan(x)\,dx=-\ln|\cos(x)|+C\) & \(\cos(x)\ne0\) \\[5pt]
+\(\sinh(x)\) & \(\frac{d}{dx}(\sinh(x))=\cosh(x)\) & \(\int\sinh(x)\,dx=\cosh(x)+C\) & All real \(x\) \\[5pt]
+\(\cosh(x)\) & \(\frac{d}{dx}(\cosh(x))=\sinh(x)\) & \(\int\cosh(x)\,dx=\sinh(x)+C\) & All real \(x\) \\[5pt]
+\(\tanh(x)\) & \(\frac{d}{dx}(\tanh(x))=1/\cosh^2(x)\) & \(\int\tanh(x)\,dx=\ln(\cosh(x))+C\) & All real \(x\) \\[5pt]
+\end{longtable}
+
+Inverse-function derivatives often identify a primitive more efficiently than
+algebraic expansion. With the standard real branches,
+
+\[
+\begin{aligned}
+\frac{d}{dx}(\arcsin(x))&=\frac{1}{\sqrt{1-x^2}},&&-1<x<1,\\
+\frac{d}{dx}(\arccos(x))&=-\frac{1}{\sqrt{1-x^2}},&&-1<x<1,\\
+\frac{d}{dx}(\arctan(x))&=\frac{1}{1+x^2},&&x\in\mathbb R,\\
+\frac{d}{dx}(\operatorname{arsinh}(x))&=\frac{1}{\sqrt{1+x^2}},&&x\in\mathbb R,\\
+\frac{d}{dx}(\operatorname{arcosh}(x))&=\frac{1}{\sqrt{x^2-1}},&&x>1,\\
+\frac{d}{dx}(\operatorname{artanh}(x))&=\frac{1}{1-x^2},&&-1<x<1.
+\end{aligned}
+\]
+
+The square roots in these real formulas are nonnegative. Endpoint continuity
+of an inverse function does not imply a finite endpoint derivative. The
+antiderivative of \(1/(1-x^2)\) also has real branches outside \((-1,1)\):
+\(\frac12\ln|(1+x)/(1-x)|+C\) applies on each interval excluding \(x=\pm1\).
+Arguments such as \(g(x)\) require the corresponding chain factor or substitution;
+the displayed formulas do not remove that dependence.
+
 \subsection{Linearity, products, quotients, and compositions}
 
 For an independent real scalar \(x\), fixed scalars \(a,b\), and differentiable
@@ -637,7 +680,7 @@ An unmatched derivative factor cannot be discarded.
 
 \subsection{Integration by parts and recurrences}
 
-For differentiable scalar functions \(u(x),v(x)\) on a finite interval,
+For continuously differentiable scalar functions \(u(x),v(x)\) on a finite interval,
 
 \[
 \int_a^b u(x)\frac{d}{dx}\left(v(x)\right)\,dx

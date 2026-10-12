@@ -7,16 +7,21 @@ import { withBase } from 'vitepress'
 These downloads are generated from the same manuscript used for the site.
 
 - [Read the complete current book on one HTML page](/generated/book)
-- [Download the compiled alpha PDF from GitHub](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.3.0-alpha.3/calculus_workbook.pdf)
-- [Alpha release notes and files](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.3)
+- [Download the compiled alpha PDF from GitHub](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.1/calculus_workbook.pdf)
+- [Alpha release notes and files](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.1)
 - <a :href="withBase('/downloads/calculus-workbook.md')" download>Complete Markdown manuscript</a>
 - <a :href="withBase('/downloads/calculus_workbook.tex')" download>Standalone LaTeX source</a>
 - <a :href="withBase('/downloads/NOTATION_STANDARD.md')" download>Notation standard</a>
-- <a :href="withBase('/downloads/DIFFERENTIATION_SCALARS.md')" download>Scalar differentiation chapter</a>
+- <a :href="withBase('/downloads/METHODS_REFERENCE.md')" download>Calculus methods reference</a>
+- <a :href="withBase('/downloads/DIFFERENTIATION_MIXED.md')" download>Nonlinear scalar and parameter problems</a>
+- <a :href="withBase('/downloads/DIFFERENTIATION_FIELDS.md')" download>Fields and geometric constraints</a>
+- <a :href="withBase('/downloads/INTEGRATION_MIXED.md')" download>Parameter integrals and geometric accumulation</a>
+- <a :href="withBase('/downloads/INTEGRATION_DOMAINS.md')" download>Oscillatory and singular integrals</a>
+- <a :href="withBase('/downloads/DIFFERENTIATION_SCALARS.md')" download>Scalar derivative reference exercises</a>
 - <a :href="withBase('/downloads/TRICKS_APPENDIX.md')" download>Tricks and identities appendix</a>
-- <a :href="withBase('/downloads/DIFFERENTIATION_RULES.md')" download>Products, quotients, and compositions</a>
-- <a :href="withBase('/downloads/INTEGRATION_SCALARS.md')" download>Scalar antiderivatives and definite integrals</a>
-- <a :href="withBase('/downloads/INTEGRATION_SUBSTITUTION.md')" download>Substitution</a>
+- <a :href="withBase('/downloads/DIFFERENTIATION_RULES.md')" download>Composition reference exercises</a>
+- <a :href="withBase('/downloads/INTEGRATION_SCALARS.md')" download>Antiderivative reference exercises</a>
+- <a :href="withBase('/downloads/INTEGRATION_SUBSTITUTION.md')" download>Coordinate reference exercises</a>
 - <a :href="withBase('/downloads/NOTATION_REVIEW.md')" download>Literature review</a>
 
 The original content is CC BY-SA 4.0. See [sharing and accuracy](/about).

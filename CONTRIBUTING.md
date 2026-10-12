@@ -18,8 +18,11 @@ with the content license and a recorded attribution.
 
 The audience is assumed to have studied calculus. Mathematical terminology is
 used precisely: independent variables, dependent quantities, fixed parameters,
-coefficients, connected components, and coordinate branches. Introductions
-identify method-selection issues rather than reintroduce elementary concepts.
+coefficients, connected components, and coordinate branches. The introductory methods reference collects formulas and hypotheses. Main
+chapters begin with mixed problem sets, without preliminary lessons or a prescribed
+technique. Problem setups are direct; difficulty belongs in method selection,
+domain management, and sustained calculation. Titles do not disclose the method.
+Simpler isolated exercises belong in the optional reference appendices.
 Algebra remains explicit as a calculation checkpoint. CHOICE and DOMAIN steps
 state the structure and hypotheses relevant to the actual problem.
 

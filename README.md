@@ -3,14 +3,14 @@
 An open, graduate-oriented review book with explicit notation, method selection, domain analysis,
 and explicit intermediate calculations. Prior study of calculus is assumed.
 
-**Alpha development — no stable release:** notation standard, 40 worked problems across six calculus chapters,
-and a purple appendix of supporting tools. Full chapters are still being written. Material is
+**Alpha development — no stable release:** notation conventions, a comprehensive calculus methods reference,
+28 problems in four mixed sets, 24 optional reference exercises, and a purple appendix of supporting tools. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
-on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.3)
+on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.1)
 for a fixed, compiled edition of all material written so far.
 
 Requirements: Node.js 22+, Python 3.10+, and pnpm 10.11.0.
@@ -28,7 +28,7 @@ The single-page edition is at `/generated/book.html`; its compiled HTML file is
 site with `pnpm preview` so its styles and math assets load correctly.
 
 The PDF workflow builds every manuscript checkpoint. Pushing an alpha version
-tag such as `v0.3.0-alpha.3` also publishes the PDF as a GitHub prerelease.
+tag such as `v0.4.0-alpha.1` also publishes the PDF as a GitHub prerelease.
 
 ```sh
 pnpm check     # tests, production build, and internal-link/math checks
@@ -39,13 +39,15 @@ pnpm preview   # serve the production output
 ## Manuscript
 
 - [Notation standard](NOTATION_STANDARD.md)
-- [Scalar differentiation chapter](DIFFERENTIATION_SCALARS.md)
-- [Products, quotients, and compositions](DIFFERENTIATION_RULES.md)
-- [Fields, phase, and geometric domains](DIFFERENTIATION_FIELDS.md)
-- [Scalar antiderivatives and definite integrals](INTEGRATION_SCALARS.md)
-- [Substitution](INTEGRATION_SUBSTITUTION.md)
-- [Oscillation, singularities, and curved domains](INTEGRATION_DOMAINS.md)
+- [Introductory calculus methods reference](METHODS_REFERENCE.md)
+- [Nonlinear scalar and parameter problems](DIFFERENTIATION_MIXED.md)
+- [Fields and geometric constraints](DIFFERENTIATION_FIELDS.md)
+- [Parameter integrals and geometric accumulation](INTEGRATION_MIXED.md)
+- [Oscillatory and singular integrals](INTEGRATION_DOMAINS.md)
 - [Tricks and identities appendix](TRICKS_APPENDIX.md)
+- Optional reference exercises: [scalar derivatives](DIFFERENTIATION_SCALARS.md),
+  [compositions](DIFFERENTIATION_RULES.md), [antiderivatives](INTEGRATION_SCALARS.md),
+  and [coordinate changes](INTEGRATION_SUBSTITUTION.md)
 - [Literature review](NOTATION_REVIEW.md)
 
 These Markdown files are authoritative. The build generates site pages, downloads,

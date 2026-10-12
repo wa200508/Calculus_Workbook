@@ -1,5 +1,12 @@
 # Development log
 
+## 0.4.0-alpha.1
+
+- Consolidate calculus formulas and applicability conditions into an introductory reference.
+- Replace method-led main chapters with four mixed problem sets; retain simpler exercises in optional appendices and preserve existing IDs.
+- Add twelve complete nonlinear, parameter-integral, and geometric problems, including moving endpoints, phase branches, weighted logarithms, source-enclosing flux, and a near-source panel.
+- Preserve full algebra, three graduated hints, and domain arguments.
+
 ## 0.3.0-alpha.3
 
 - Revise introductions, problem titles, and method-choice commentary for graduate review.

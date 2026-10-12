@@ -8,6 +8,47 @@ All fixed parameters are held fixed in the displayed operations.
 
 ## Differentiation and local representations
 
+### Elementary derivatives and primitives
+
+The independent input $x$ and the fixed parameter $p$ are real scalars. The
+following formulas apply on the indicated real domains. Each primitive is
+understood on a connected interval of that domain; $C$ is an arbitrary constant
+on that interval.
+
+| Scalar expression | Derivative with respect to $x$ | Primitive with respect to $x$ | Real-domain restriction |
+|---|---|---|---|
+| $x^p$ | $\frac{d}{dx}(x^p)=px^{p-1}$ | $\int x^p\,dx=\frac{x^{p+1}}{p+1}+C$, $p\ne-1$ | $x>0$ suffices for arbitrary real $p$; integer powers may have larger domains |
+| $1/x$ | $\frac{d}{dx}(1/x)=-1/x^2$ | $\int (1/x)\,dx=\ln|x|+C$ | $x\ne0$ |
+| $\exp(x)$ | $\frac{d}{dx}(\exp(x))=\exp(x)$ | $\int\exp(x)\,dx=\exp(x)+C$ | All real $x$ |
+| $\ln(x)$ | $\frac{d}{dx}(\ln(x))=1/x$ | $\int\ln(x)\,dx=x\ln(x)-x+C$ | $x>0$ |
+| $\sin(x)$ | $\frac{d}{dx}(\sin(x))=\cos(x)$ | $\int\sin(x)\,dx=-\cos(x)+C$ | All real $x$ |
+| $\cos(x)$ | $\frac{d}{dx}(\cos(x))=-\sin(x)$ | $\int\cos(x)\,dx=\sin(x)+C$ | All real $x$ |
+| $\tan(x)$ | $\frac{d}{dx}(\tan(x))=1/\cos^2(x)$ | $\int\tan(x)\,dx=-\ln|\cos(x)|+C$ | $\cos(x)\ne0$ |
+| $\sinh(x)$ | $\frac{d}{dx}(\sinh(x))=\cosh(x)$ | $\int\sinh(x)\,dx=\cosh(x)+C$ | All real $x$ |
+| $\cosh(x)$ | $\frac{d}{dx}(\cosh(x))=\sinh(x)$ | $\int\cosh(x)\,dx=\sinh(x)+C$ | All real $x$ |
+| $\tanh(x)$ | $\frac{d}{dx}(\tanh(x))=1/\cosh^2(x)$ | $\int\tanh(x)\,dx=\ln(\cosh(x))+C$ | All real $x$ |
+
+Inverse-function derivatives often identify a primitive more efficiently than
+algebraic expansion. With the standard real branches,
+
+$$
+\begin{aligned}
+\frac{d}{dx}(\arcsin(x))&=\frac{1}{\sqrt{1-x^2}},&&-1<x<1,\\
+\frac{d}{dx}(\arccos(x))&=-\frac{1}{\sqrt{1-x^2}},&&-1<x<1,\\
+\frac{d}{dx}(\arctan(x))&=\frac{1}{1+x^2},&&x\in\mathbb R,\\
+\frac{d}{dx}(\operatorname{arsinh}(x))&=\frac{1}{\sqrt{1+x^2}},&&x\in\mathbb R,\\
+\frac{d}{dx}(\operatorname{arcosh}(x))&=\frac{1}{\sqrt{x^2-1}},&&x>1,\\
+\frac{d}{dx}(\operatorname{artanh}(x))&=\frac{1}{1-x^2},&&-1<x<1.
+\end{aligned}
+$$
+
+The square roots in these real formulas are nonnegative. Endpoint continuity
+of an inverse function does not imply a finite endpoint derivative. The
+antiderivative of $1/(1-x^2)$ also has real branches outside $(-1,1)$:
+$\frac12\ln|(1+x)/(1-x)|+C$ applies on each interval excluding $x=\pm1$.
+Arguments such as $g(x)$ require the corresponding chain factor or substitution;
+the displayed formulas do not remove that dependence.
+
 ### Linearity, products, quotients, and compositions
 
 For an independent real scalar $x$, fixed scalars $a,b$, and differentiable
@@ -127,7 +168,7 @@ An unmatched derivative factor cannot be discarded.
 
 ### Integration by parts and recurrences
 
-For differentiable scalar functions $u(x),v(x)$ on a finite interval,
+For continuously differentiable scalar functions $u(x),v(x)$ on a finite interval,
 
 $$
 \int_a^b u(x)\frac{d}{dx}\left(v(x)\right)\,dx

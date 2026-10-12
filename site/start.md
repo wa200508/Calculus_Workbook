@@ -1,4 +1,4 @@
-# Structure of the worked review
+# Structure of the workbook
 
 This book assumes prior study of calculus. Its purpose is to document the path
 from an unfamiliar expression to an appropriate method, a valid calculation,
@@ -29,10 +29,13 @@ blocks have a neutral background. Domain blocks have an amber margin. Supporting
 identities and approximations from the [tricks appendix](/generated/tricks) are
 purple. The labels preserve these distinctions in grayscale.
 
-Rule sheets provide local reference formulas and hypotheses. They are not a
-replacement for the assumed prior course. The worked examples emphasize why a
-rule applies to the particular problem, which representation makes the
-calculation tractable, and where a proposed operation would fail.
+The introduction contains the notation conventions and a consolidated
+[calculus methods reference](/generated/methods). Four mixed problem sets follow
+immediately, with 28 complete worked problems. Their titles do not announce the
+method needed for the calculation. Another 24 optional reference exercises appear
+in the appendices, alongside the supporting tricks and literature references.
+The worked solutions document the approach and intermediate calculations;
+familiarity with the underlying concepts is assumed.
 
 ## References and discussion
 
