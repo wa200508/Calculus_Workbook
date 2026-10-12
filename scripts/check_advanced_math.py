@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent numerical spot checks for D3/I3 formulas.
+"""Independent numerical spot checks for advanced and mixed-set formulas.
 
 Finite differences and quadrature check selected nonsingular inputs; they do
 not establish the domain and convergence proofs given in the manuscript.
@@ -97,4 +97,71 @@ for pole in [-.4,0,.3]:
     delta=.05
     val=integral(lambda x:1/(x-pole),-1,pole-delta)+integral(lambda x:1/(x-pole),pole+delta,1)
     near(val,math.log((1-pole)/(1+pole)))
+
+# D4-001: simultaneous base/exponent dependence, on both domain components.
+for x in [-2,-.3,.2,1.4]:
+    f=lambda t:math.exp(math.atan(t)*math.log(math.log1p(t*t)))
+    answer=f(x)*(math.log(math.log1p(x*x))/(1+x*x)+2*x*math.atan(x)/((1+x*x)*math.log1p(x*x)))
+    near(derivative(f,x),answer)
+# D4-002/003: inverse branches and the conjugate-radical simplification.
+for x in [-3,-.4,.6,2]:
+    near(derivative(lambda t:math.acos(math.tanh(t)),x),-1/math.cosh(x))
+    near(derivative(lambda t:-1/math.cosh(t),x),math.sinh(x)/math.cosh(x)**2)
+    near(derivative(lambda t:math.log((math.sqrt(1+t*t)+t)/(math.sqrt(1+t*t)-t)),x),2/math.sqrt(1+x*x))
+# D4-004: independent graph partials and derivative along the constrained path.
+g=lambda x,y:(-x+math.sqrt(2-x*x-2*y*y))/2
+for x,y in [(.2,.3),(-.6,.4),(.8,-.2)]:
+    D=2-x*x-2*y*y
+    near(derivative(lambda v:g(v,y),x),-.5-x/(2*math.sqrt(D)))
+    near(derivative(lambda v:g(x,v),y),-y/math.sqrt(D))
+for t in [.2,1.4,3.6]:
+    near(derivative(lambda v:g(math.cos(v),math.sin(v)/math.sqrt(2)),t),math.sin(t)/2)
+# D4-005: complex derivative determines the continuous phase derivative.
+for w,tau,T in [(-2,.5,.2),(.3,2,1),(3,1,0)]:
+    H=lambda v:(1+1j*v*tau)/(1-1j*v*tau)*cmath.exp(-1j*v*T)
+    near((derivative(H,w)/H(w)).imag,2*tau/(1+w*w*tau*tau)-T)
+# D4-006: finite differences of the original moving-bound integral.
+F=lambda t:integral(lambda z:math.exp(-t*z*z)/(1+z*z),t*t,math.exp(t),n=1000)
+for t in [-.4,0,.5]:
+    answer=math.exp(t)*math.exp(-t*math.exp(2*t))/(1+math.exp(2*t))-2*t*math.exp(-t**5)/(1+t**4)-integral(lambda z:z*z*math.exp(-t*z*z)/(1+z*z),t*t,math.exp(t),n=1000)
+    near(derivative(F,t),answer)
+near(derivative(F,0),math.pi/4-.5)
+# I4-001: cancellation at zero is evaluated with expm1 for quadrature.
+for a,b in [(.4,2),(3,.7),(1,1)]:
+    f=lambda x:math.exp(-a*x)*(-math.expm1(-(b-a)*x))/x if x else b-a
+    near(integral(f,0,40/min(a,b)),math.log(b/a),tol=2e-7)
+# I4-002: original logarithmic integral, parameter derivative, and series.
+J=lambda a:integral(lambda x:math.log1p(a*x)/x if x else a,0,1,n=1000)
+for a in [-.7,0,.5,3]:
+    near(derivative(J,a),math.log1p(a)/a if a else 1)
+for a in [-.5,.6]:
+    near(J(a),sum((-1)**(n+1)*a**n/n**2 for n in range(1,100)))
+# I4-003: original damped oscillatory difference, rather than its derivative.
+for a,b,c in [(.7,1,2),(2,0,3),(.4,2,2)]:
+    f=lambda x:math.exp(-a*x)*(-2*math.sin((b+c)*x/2)*math.sin((b-c)*x/2))/x if x else 0
+    near(integral(f,0,40/a),.5*math.log((a*a+c*c)/(a*a+b*b)))
+# I4-004: angular quadrature handles the original endpoint weight.
+W=lambda lam:integral(lambda theta:math.log1p(lam*math.cos(theta)),0,math.pi,n=2000)
+for lam in [-.95,-.3,0,.5,.98]:
+    near(W(lam),math.pi*math.log((1+math.sqrt(1-lam*lam))/2))
+# I4-005: direct parametric surface flux on a nonspherical ellipsoid.
+# The area vector is the cofactor of the linear sphere map, including sin(theta).
+for d,expected in [(0,4*math.pi),(.3,4*math.pi),(3,0)]:
+    a,b,c=1,1.3,.8
+    def ring(theta):
+        def flux(phi):
+            x=d+a*math.sin(theta)*math.cos(phi);y=b*math.sin(theta)*math.sin(phi);z=c*math.cos(theta)
+            r=math.sqrt(x*x+y*y+z*z)
+            area=[b*c*math.sin(theta)**2*math.cos(phi),a*c*math.sin(theta)**2*math.sin(phi),a*b*math.sin(theta)*math.cos(theta)]
+            return (x*area[0]+y*area[1]+z*area[2])/r**3
+        return integral(flux,0,2*math.pi,n=200)
+    near(integral(ring,0,math.pi,n=200),expected,tol=2e-7)
+# I4-006: integrate the original Cartesian kernel in y analytically, then x numerically.
+K=lambda h:math.asinh(1/math.sqrt(1+h*h))+h*math.atan(h/math.sqrt(2+h*h))-math.pi*h/4
+for h in [.01,.2,1,4]:
+    near(integral(lambda x:math.asinh(x/math.sqrt(x*x+h*h)),0,1),K(h))
+    error=K(h)-math.log1p(math.sqrt(2))+math.pi*h/4
+    assert -1e-14<=error<=h*h/(2*math.sqrt(2))+1e-14
+    checks+=1
+near((K(1e-6)-math.log1p(math.sqrt(2)))/1e-6,-math.pi/4,tol=1e-6)
 print(f'{checks} independent finite-difference, quadrature, and geometric checks passed.')

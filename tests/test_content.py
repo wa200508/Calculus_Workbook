@@ -40,6 +40,24 @@ class ContentTests(unittest.TestCase):
             hints = groups['Hint ladders'][identifier][1]
             self.assertEqual(len(content.re.findall(r'^\d+\. ', hints, flags=content.re.M)), 3, identifier)
 
+    def test_main_sets_begin_with_problems_and_reference_exercises_are_separate(self):
+        main_count = reference_count = 0
+        for collection, is_reference in [(content.MAIN_SETS, False), (content.REFERENCE_SETS, True)]:
+            for filename, _, _, _ in collection:
+                manuscript = (ROOT / filename).read_text()
+                introductory_lines = manuscript.split('## Problems')[0].strip().splitlines()
+                self.assertEqual(len(introductory_lines), 1, filename)
+                count = len(content.problem_sections(manuscript)['Problems'])
+                if is_reference:
+                    reference_count += count
+                else:
+                    main_count += count
+        self.assertEqual((main_count, reference_count), (28, 24))
+        filenames = list(content.SOURCES)
+        self.assertLess(filenames.index('METHODS_REFERENCE.md'), filenames.index(content.MAIN_SETS[0][0]))
+        self.assertLess(filenames.index(content.MAIN_SETS[-1][0]), filenames.index('TRICKS_APPENDIX.md'))
+        self.assertLess(filenames.index('TRICKS_APPENDIX.md'), filenames.index(content.REFERENCE_SETS[0][0]))
+
     def test_duplicate_problem_ids_across_chapters_are_rejected(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
         manuscripts['DIFFERENTIATION_SCALARS.md'] = manuscripts['DIFFERENTIATION_RULES.md']
