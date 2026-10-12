@@ -26,8 +26,17 @@ to 52. Every problem has three hints, a complete solution, and a check.
 The full reading edition is published through GitHub Actions at
 https://wa200508.github.io/Calculus_Workbook/generated/book.html.
 Main-branch checkpoints build both the site and PDF; alpha version tags publish
-a fixed PDF prerelease. Edition 0.4.0-alpha.1 is being validated for publication.
-The previous fixed PDF, 0.3.0-alpha.3, has 90 pages. Current numerical, site, and
-PDF results will be recorded after the new edition is built and inspected.
+a fixed PDF prerelease. Edition 0.4.0-alpha.1 is published as a 111-page PDF, including eight pages of
+introductory methods reference. The new reference and problem pages were rendered
+for visual inspection; PDF text bounds show no horizontal margin overflow.
+
+Twelve content tests and 141 independent numerical checks pass. Production checks
+cover 72 HTML pages, internal links, assets, anchors, and 5,428 rendered math
+expressions. The live mixed-set index and a new problem's hint and complete-solution
+disclosures were verified in the browser. Site run 38324715403 and tagged PDF run
+38324714616 completed successfully.
+
+The restructuring, reading-page update, and mathematical validation were pushed
+as separate checkpoints (d17bbf5, 80837b1, and 24e9f08), followed by the alpha tag.
 
 See docs/DEVELOPMENT.md and CONTRIBUTING.md for the development workflow.
