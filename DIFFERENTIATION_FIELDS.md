@@ -1,25 +1,4 @@
-# D3 · Fields, phase, and geometric domains
-
-A derivative may be formally correct and still be used outside its domain. In
-field calculations, the source point may be excluded, a square root may change
-from real to imaginary, and a smooth surface may fail to be a graph in the
-chosen coordinates. These examples progress from a scalar waveguide parameter
-to vector fields, implicit geometry, and matrix-valued sensitivity.
-
-## Rules and conventions
-
-All spatial coordinates and differentiation parameters below are real scalars.
-A complex scalar output is differentiated with respect to a real input by
-differentiating its real and imaginary parts. The symbol $\mathrm{i}$ denotes
-the fixed imaginary unit, with $\mathrm{i}^2=-1$; it is not an index.
-The Euclidean gradient of a scalar field $f(x,y,z)$ is a real or complex column
-vector of its three coordinate partial derivatives. The other two independent
-coordinates are held fixed in each entry.
-
-For a scalar level set $F(x,y,z)=0$, a local graph $z=g(x,y)$ is guaranteed near
-a point only when $F$ is continuously differentiable there and
-$\frac{\partial}{\partial z}(F(x,y,z))\ne0$ at that point. A surface can remain
-smooth when this particular graph representation fails.
+# D3 · Fields and geometric constraints
 
 ## Problems
 
@@ -48,7 +27,7 @@ The real distance satisfies $R(x,y,z)>0$; $G(x,y,z)$ is complex scalar-valued. F
 
 **Objects and dependencies.** $\omega$ is an independent real scalar. $X(\omega),Y(\omega)$ are differentiable real scalar functions; $H(\omega)=X(\omega)+\mathrm{i}Y(\omega)$ is a complex scalar response. The principal phase $\phi(\omega)=\operatorname{atan2}(Y(\omega),X(\omega))$ takes values in $(-\pi,\pi]$. Find its derivative away from zeros and the principal branch cut, and apply the result to $H(\omega)=\exp(\mathrm{i}\omega)$ near $\omega=\pi$. Distinguish principal phase from a locally unwrapped phase.
 
-### D3-004 — An ellipsoid is smooth where its height graph fails
+### D3-004 — Ellipsoid height and surface normal
 
 **Objects and dependencies.** Fixed real semiaxes $a,b,c$ are positive. $x,y,z$ are independent real coordinates of the scalar level function
 
@@ -59,7 +38,7 @@ $$
 On the upper ellipsoid, the dependent real scalar height is
 $z=g(x,y)=c\sqrt{1-x^2/a^2-y^2/b^2}$. Find its two partial derivatives on their open domain. Find the outward real unit normal to the full ellipsoid, including the equator, and explain the difference between a graph singularity and a surface singularity.
 
-### D3-005 — Hyperboloid normal and an indefinite quadratic form
+### D3-005 — A one-sheet hyperboloid
 
 **Objects and dependencies.** Fixed real scalars $a,c>0$ are lengths. $u\in\mathbb R$ and $v\in[0,2\pi)$ are independent dimensionless real parameters. Define the real column vector
 
@@ -80,7 +59,7 @@ $$
 
 Find the real column vector $\nabla_{\mathbf x}\Phi(\mathbf x)$ with $\mathbf Q$ held fixed, showing the component differentiation of $q(\mathbf x)$. Explain what changes if positive definiteness is replaced by an indefinite symmetric matrix.
 
-### D3-007 — Sensitivity of a CEM matrix solve near singularity
+### D3-007 — A coupled field response
 
 **Objects and dependencies.** $t$ is an independent dimensionless real scalar. A fixed complex column vector is $\mathbf b=[b_1,b_2]^{\mathsf T}$. Define the real $2\times2$ matrix and dependent complex column vector
 

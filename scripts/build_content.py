@@ -6,26 +6,25 @@ import shutil
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = {
-    "NOTATION_STANDARD.md": "notation",
-    "DIFFERENTIATION_SCALARS.md": "scalar-derivatives",
-    "DIFFERENTIATION_RULES.md": "derivative-rules",
-    "DIFFERENTIATION_FIELDS.md": "fields-and-geometry",
-    "INTEGRATION_SCALARS.md": "scalar-integrals",
-    "INTEGRATION_SUBSTITUTION.md": "substitution",
-    "INTEGRATION_DOMAINS.md": "oscillation-and-domains",
-    "TRICKS_APPENDIX.md": "tricks",
-    "NOTATION_REVIEW.md": "references",
-}
-PROBLEM_SOURCES = ("DIFFERENTIATION_SCALARS.md", "DIFFERENTIATION_RULES.md", "DIFFERENTIATION_FIELDS.md", "INTEGRATION_SCALARS.md", "INTEGRATION_SUBSTITUTION.md", "INTEGRATION_DOMAINS.md")
-CHAPTER_TITLES = {
-    "D1": "Scalar differentiation: powers, parameters, and domains",
-    "D2": "Products, quotients, and compositions",
-    "D3": "Fields, phase, and geometric domains",
-    "I1": "Scalar antiderivatives and definite integrals",
-    "I2": "Substitution with every dependency visible",
-    "I3": "Oscillation, singularities, and curved domains",
-}
+INTRO_SOURCES = (("NOTATION_STANDARD.md", "notation", "Notational conventions"),
+                 ("METHODS_REFERENCE.md", "methods", "Calculus methods reference"))
+MAIN_SETS = (("DIFFERENTIATION_MIXED.md", "nonlinear-scalars", "D4", "Nonlinear scalar and parameter problems"),
+             ("DIFFERENTIATION_FIELDS.md", "fields-and-geometry", "D3", "Fields and geometric constraints"),
+             ("INTEGRATION_MIXED.md", "parameter-integrals", "I4", "Parameter integrals and geometric accumulation"),
+             ("INTEGRATION_DOMAINS.md", "oscillation-and-domains", "I3", "Oscillatory and singular integrals"))
+REFERENCE_SETS = (("DIFFERENTIATION_SCALARS.md", "scalar-derivatives", "D1", "Scalar reference exercises"),
+                  ("DIFFERENTIATION_RULES.md", "derivative-rules", "D2", "Composition reference exercises"),
+                  ("INTEGRATION_SCALARS.md", "scalar-integrals", "I1", "Antiderivative reference exercises"),
+                  ("INTEGRATION_SUBSTITUTION.md", "substitution", "I2", "Coordinate reference exercises"))
+SOURCES = {name: slug for name, slug, _ in INTRO_SOURCES}
+SOURCES.update({name: slug for name, slug, _, _ in MAIN_SETS})
+SOURCES["TRICKS_APPENDIX.md"] = "tricks"
+SOURCES.update({name: slug for name, slug, _, _ in REFERENCE_SETS})
+SOURCES["NOTATION_REVIEW.md"] = "references"
+PROBLEM_SOURCES = tuple(item[0] for item in MAIN_SETS + REFERENCE_SETS)
+CHAPTER_TITLES = {code: title for _, _, code, title in MAIN_SETS + REFERENCE_SETS}
+CHAPTER_SLUGS = {code: slug for _, slug, code, _ in MAIN_SETS + REFERENCE_SETS}
+REFERENCE_CODES = {item[2] for item in REFERENCE_SETS}
 
 
 def problem_sections(text):
@@ -238,7 +237,7 @@ def build():
         solution = problems["Complete solutions"][identifier][1]
         chapter = identifier.split('-')[0]
         index.append({'id': identifier, 'title': title, 'chapter': chapter,
-                      'chapterTitle': CHAPTER_TITLES[chapter], 'link': f'/problems/{identifier.lower()}'})
+                      'chapterTitle': CHAPTER_TITLES[chapter], 'chapterLink': '/generated/' + CHAPTER_SLUGS[chapter], 'reference': chapter in REFERENCE_CODES, 'link': f'/problems/{identifier.lower()}'})
         page = f'# {identifier} — {title}\n\n<p class="problem-meta">{chapter} · Alpha development · Full solution and check · CC BY-SA 4.0</p>\n\n## Your problem\n\n{prompt}\n\n## Hints\n\n'
         for number, hint in enumerate(hint_list, 1):
             page += f'::: details Hint {number}\n\n{hint}\n\n:::\n\n'
@@ -246,18 +245,24 @@ def build():
         page += f'## Ask a tutor\n\n“Help me with {identifier}. I am stuck at step __. Use the notation standard, show all function inputs, and give me one next step at a time.”\n\n[Read the notation standard](/generated/notation) · [Choose another problem](/practice)\n'
         (ROOT / "site/problems" / f"{identifier.lower()}.md").write_text(site_links(page))
     (ROOT / 'site/generated/problem-index.json').write_text(json.dumps(index, indent=2) + '\n')
-    table = '| Problem | Chapter | Help available |\n|---|---|---|\n'
-    for item in index:
-        table += f"| [{item['id']} — {item['title']}]({item['link']}) | {item['chapter']} | Three hints, full solution, and check |\n"
-    (ROOT / 'site/generated/practice-table.inc').write_text(table)
+    for reference, target in ((False, 'practice-table.inc'), (True, 'reference-table.inc')):
+        table = '| Problem | Set | Help available |\n|---|---|---|\n'
+        for item in index:
+            if item['reference'] == reference:
+                table += f"| [{item['id']} — {item['title']}]({item['link']}) | {item['chapter']} | Three hints, full solution, and check |\n"
+        (ROOT / 'site/generated' / target).write_text(table)
     for source, target in (("LICENSE", "MIT.txt"), ("LICENSES/CC-BY-SA-4.0.txt", "CC-BY-SA-4.0.txt")):
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble
-    for filename, title in (("NOTATION_STANDARD.md", "Notational conventions"), ("DIFFERENTIATION_SCALARS.md", "D1: Powers, parameters, and domains"), ("DIFFERENTIATION_RULES.md", "D2: Products, quotients, and compositions"), ("DIFFERENTIATION_FIELDS.md", "D3: Fields, phase, and geometric domains"), ("INTEGRATION_SCALARS.md", "I1: Scalar antiderivatives and definite integrals"), ("INTEGRATION_SUBSTITUTION.md", "I2: Substitution with every dependency visible"), ("INTEGRATION_DOMAINS.md", "I3: Oscillation, singularities, and curved domains")):
+    for filename, _, title in INTRO_SOURCES:
+        manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
+    for filename, _, _, title in MAIN_SETS:
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
     manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
+    for filename, _, code, title in REFERENCE_SETS:
+        manuscript += "\n\\chapter{" + code + ": " + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     manuscript += "\n\\chapter{Literature review and notation decisions}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
     (ROOT / "calculus_workbook.tex").write_text(manuscript)
     shutil.copyfile(ROOT / "calculus_workbook.tex", ROOT / "site/public/downloads/calculus_workbook.tex")

@@ -32,7 +32,7 @@ class ContentTests(unittest.TestCase):
     def test_all_chapters_have_complete_problem_sets(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
         groups = content.collect_problems(manuscripts)
-        self.assertEqual(len(groups['Problems']), 40)
+        self.assertEqual(len(groups['Problems']), 52)
         for identifier, (_, solution) in groups['Complete solutions'].items():
             self.assertIn('CHECK', solution, identifier)
             self.assertIn('SETUP', solution, identifier)

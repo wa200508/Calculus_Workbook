@@ -1,35 +1,4 @@
-# I1 · Scalar antiderivatives and definite integrals
-
-The examples compare antiderivative construction, endpoint evaluation, and
-piecewise integration. The emphasis is on coefficient matching, constants on
-connected components, and sign conventions in definite integrals.
-
-## Rules to consult
-
-For independent real scalar $x$ on an interval where the expressions are defined,
-and fixed real scalar exponent $p\ne-1$,
-
-$$
-\int x^p\,dx=\frac{x^{p+1}}{p+1}+C.
-$$
-
-The real scalar constant $C$ is independent of $x$. In each example the derivative
-of the proposed antiderivative is checked. On a connected interval excluding zero,
-
-$$
-\int\frac1x\,dx=\ln(|x|)+C.
-$$
-
-For a continuous real scalar function $q(x)$ on a closed interval with fixed
-real endpoints $a,b$, and an antiderivative $F(x)$,
-
-$$
-\int_a^b q(x)\,dx=F(b)-F(a),\qquad
-\frac{d}{dx}\left(F(x)\right)=q(x).
-$$
-
-When the upper limit is smaller than the lower limit, reverse the sign.
-The definite integral is signed accumulation; it does not automatically equal area.
+# I1 · Antiderivative reference exercises
 
 ## Problems
 

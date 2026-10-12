@@ -1,32 +1,4 @@
-# I2 · Substitution with every dependency visible
-
-Substitution is selected from a derivative factor in the integrand. The
-examples retain the coordinate dependence, coefficient adjustment, and
-orientation of transformed bounds. Inverse-coordinate substitutions with
-multiple branches are treated in [I3-001](INTEGRATION_DOMAINS.md).
-
-## Rule to consult
-
-Here $x$ is a real scalar integration variable, $g(x)$ is a continuously
-differentiable real scalar function, and $h(u)$ is a continuous real scalar
-function on the image of the interval used. The new real scalar coordinate
-$u=g(x)$ depends on $x$ before the change of variable. Inside the transformed
-integral, $u$ is the integration variable. For fixed real endpoints $a,b$,
-
-$$
-\int_a^b h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx
-=\int_{g(a)}^{g(b)}h(u)\,du.
-$$
-
-The bounds on the right are computed with the same function $g(x)$.
-Do not carry the old bounds into the new variable. For an indefinite integral,
-if $H(u)$ is an antiderivative of $h(u)$, then
-
-$$
-\int h(g(x))\frac{d}{dx}\left(g(x)\right)\,dx=H(g(x))+C,
-$$
-
-where the real scalar $C$ is independent of $x$. Check the result by the chain rule.
+# I2 · Coordinate reference exercises
 
 ## Problems
 

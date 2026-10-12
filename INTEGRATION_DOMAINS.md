@@ -1,35 +1,12 @@
-# I3 · Oscillation, singularities, and curved domains
-
-The existence of an integral is part of the problem. Oscillation can produce
-conditional convergence, a coordinate map can fold an interval onto itself,
-and a singular kernel can become integrable because of the area or volume
-measure. A formal antiderivative does not settle any of these questions.
-The first example uses an elementary sine; the later examples connect the
-same care with domains to RF field integrals and curved geometry.
-
-## Rules and conventions
-
-A finite integral of a continuous scalar function is an ordinary integral.
-At an excluded point, an improper integral is defined by separate one-sided
-limits. A Cauchy principal value instead prescribes a coupled, symmetric
-limiting process; it is identified explicitly and is not substituted for an
-ordinary integral without a reason.
-
-For a real coordinate map from $(u,v)$ to $(x(u,v),y(u,v))$, the Jacobian matrix
-is the $2\times2$ matrix of coordinate partial derivatives. The area factor is
-the absolute value of its determinant. In three dimensions the volume factor
-is the absolute determinant of the $3\times3$ coordinate Jacobian. A surface
-map $\mathbf r(u,v)\in\mathbb R^3$ instead has area factor
-$\|\frac{\partial}{\partial u}(\mathbf r(u,v))\times\frac{\partial}{\partial v}(\mathbf r(u,v))\|$.
-These factors measure different objects.
+# I3 · Oscillatory and singular integrals
 
 ## Problems
 
-### I3-001 — Why a sine substitution can erase a nonzero integral
+### I3-001 — Sine over a half-period
 
-**Objects and dependencies.** $x\in[0,\pi]$ is an independent real scalar angle in radians and the integration variable. The real scalar integrand is $q(x)=\sin x$. Evaluate $\int_0^\pi q(x)\,dx$ using $u=g(x)=\sin x$. Explain why replacing both endpoints by $u=0$ in one integral gives a false answer.
+**Objects and dependencies.** $x\in[0,\pi]$ is an independent real scalar angle in radians and the integration variable. The real scalar integrand is $q(x)=\sin x$. Evaluate $\int_0^\pi q(x)\,dx$. Assess whether the coordinate $u=g(x)=\sin x$ permits evaluation over one transformed interval without a branch partition.
 
-### I3-002 — A sine integral with a removable singularity
+### I3-002 — An oscillatory ratio on a finite interval
 
 **Objects and dependencies.** $x\in[0,L]$ is a real scalar integration coordinate. The fixed length $L>0$ and fixed real wavenumber $k$ satisfy $kx$ dimensionless. For $x>0$ let $q(x;k)=\sin(kx)/x$. Evaluate the real scalar number $J(k,L)=\int_0^Lq(x;k)\,dx$, stating the extension at $x=0$, the case $k=0$, and a small-$|kL|$ approximation with an error bound. The semicolon separates the varying coordinate from the fixed parameter inside the integrand.
 
@@ -53,7 +30,7 @@ $$
 
 including $\Delta=0$, and obtain a form that makes its magnitude and phase center apparent. Explain why division by $\Delta$ does not establish a singular physical amplitude at phase matching.
 
-### I3-005 — A pole inside the interval: improper integral or principal value
+### I3-005 — A reciprocal kernel with an interior pole
 
 **Objects and dependencies.** $x$ is a dimensionless real integration coordinate on $[-1,1]$. A fixed real scalar $a$ satisfies $-1<a<1$. The real scalar function $q(x;a)=1/(x-a)$ is undefined at $x=a$. Determine whether $\int_{-1}^1q(x;a)\,dx$ exists as an ordinary improper integral, and evaluate its Cauchy principal value with equal exclusions $a-\delta,a+\delta$ for real $\delta>0$ small enough. Describe what happens when $a$ is an endpoint.
 
@@ -77,7 +54,7 @@ $$
 
 as a nonnegative improper area integral using $x=u$, $y=uv$. The new independent real coordinates satisfy $0<u\le1$, $0\le v\le1$. Find the Jacobian explicitly. Compare this with replacing the denominator by $x^2+y^2$.
 
-### I3-008 — A Gaussian-weighted integral inside an ellipsoid
+### I3-008 — An ellipsoidal weighted volume
 
 **Objects and dependencies.** Fixed real lengths $a,b,c>0$ define the ellipsoid $E=\{(x,y,z):x^2/a^2+y^2/b^2+z^2/c^2\le1\}$. The independent real coordinates are $x,y,z$. Define the real dimensionless scalar $q(x,y,z)=x^2/a^2+y^2/b^2+z^2/c^2$. Evaluate the real scalar weighted volume
 

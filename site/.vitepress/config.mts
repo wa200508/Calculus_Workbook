@@ -2,19 +2,21 @@ import { defineConfig } from 'vitepress'
 import { readFileSync } from 'node:fs'
 
 const problems = JSON.parse(readFileSync(new URL('../generated/problem-index.json', import.meta.url), 'utf8')) as Array<{
-  id: string, title: string, chapter: string, chapterTitle: string, link: string
+  id: string, title: string, chapter: string, chapterTitle: string, chapterLink: string, reference: boolean, link: string
 }>
 const chapters = [...new Set(problems.map(problem => problem.chapter))]
-const chapterSidebar = chapters.map(chapter => ({
-  text: `${chapter} · ${problems.find(problem => problem.chapter === chapter)!.chapterTitle}`,
-  collapsed: chapter !== 'D1',
-  items: [
-    { text: 'Chapter guide & rules', link: `/generated/${({ D1: 'scalar-derivatives', D2: 'derivative-rules', D3: 'fields-and-geometry', I1: 'scalar-integrals', I2: 'substitution', I3: 'oscillation-and-domains' } as Record<string,string>)[chapter]}` },
-    ...problems.filter(problem => problem.chapter === chapter).map(problem => ({
-      text: `${problem.id} · ${problem.title}`, link: problem.link
-    }))
-  ]
-}))
+const chapterSidebar = (reference: boolean) => chapters
+  .filter(chapter => problems.find(problem => problem.chapter === chapter)!.reference === reference)
+  .map(chapter => ({
+    text: problems.find(problem => problem.chapter === chapter)!.chapterTitle,
+    collapsed: true,
+    items: [
+      { text: reference ? 'Reference exercises' : 'Problem set', link: problems.find(problem => problem.chapter === chapter)!.chapterLink },
+      ...problems.filter(problem => problem.chapter === chapter).map(problem => ({
+        text: `${problem.id} · ${problem.title}`, link: problem.link
+      }))
+    ]
+  }))
 
 const repo = process.env.GITHUB_REPOSITORY
 const owner = repo?.split('/')[0]
@@ -38,6 +40,7 @@ export default defineConfig({
       { text: 'Full book', link: '/generated/book' },
       { text: 'Read', link: '/start' },
       { text: 'Practice', link: '/practice' },
+      { text: 'Methods', link: '/generated/methods' },
       { text: 'Notation', link: '/generated/notation' },
       { text: 'Tricks', link: '/generated/tricks' },
       { text: 'About', link: '/about' }
@@ -47,9 +50,11 @@ export default defineConfig({
         { text: 'How to use this book', link: '/start' },
         { text: 'Complete book · One page', link: '/generated/book' },
         { text: 'Notation standard', link: '/generated/notation' },
+        { text: 'Calculus methods reference', link: '/generated/methods' },
       ] },
       { text: 'Practice', items: [{ text: 'All problems', link: '/practice' }] },
-      ...chapterSidebar,
+      ...chapterSidebar(false),
+      { text: 'Optional reference exercises', collapsed: true, items: [{ text: 'Reference collection', link: '/reference-exercises' }, ...chapterSidebar(true)] },
       { text: 'Reference & project', items: [
         { text: 'Tricks & identities · Purple appendix', link: '/generated/tricks' },
         { text: 'Literature & notation decisions', link: '/generated/references' },
