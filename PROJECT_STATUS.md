@@ -56,4 +56,8 @@ October 11 editorial update: informal problem titles and pedagogical introductio
 were revised for graduate review. Algebra is retained as calculation checkpoints;
 CHOICE and DOMAIN steps are highlighted consistently on the site and in the PDF.
 The 40 problem IDs and mathematical calculations are preserved. Alpha.3 publication
-and layout verification are in progress.
+and layout verification are complete. Site run 38189661462 and tagged PDF
+run 38189662649 succeeded. Eleven content tests and 80 numerical checks pass;
+the site has 56 HTML pages and 4,385 rendered math expressions. The PDF remains
+90 pages. Sampled method and domain blocks were rendered for review, and the
+PDF text bounds showed no margin overflow.
