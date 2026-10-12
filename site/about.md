@@ -2,8 +2,8 @@
 
 ## Alpha development
 
-Calculus Workbook is in alpha development, with no stable release. It is a solutions-manual-style review text built around explicit
-notation and visible intermediate steps. Its source is designed to remain useful
+Calculus Workbook is in alpha development, with no stable release. It is a graduate review text built around method selection, explicit
+notation, and intermediate calculations. Prior study of calculus is assumed. Its source is designed to remain useful
 for reading, printing, tutoring, and adaptation.
 
 ## Sharing
@@ -36,8 +36,7 @@ Corrections and clearer explanations are welcome. For a mathematical correction,
 identify the problem ID or section, the affected step, and your reasoning. Preserve
 the notation standard and include types, dependencies, assumptions, full algebra,
 and a check in new examples. The repository's CONTRIBUTING.md explains development
-and licensing. Once the public repository is connected, its link will appear in
-the navigation.
+and licensing. The repository is linked in the navigation.
 
 ## Sources
 

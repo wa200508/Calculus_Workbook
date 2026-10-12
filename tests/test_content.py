@@ -78,6 +78,20 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(page.count('::: details Hint '), 3)
         self.assertIn('algebra-step', page)
 
+    def test_method_and_domain_blocks_end_before_the_next_operation(self):
+        sample = '# Example\n\n**Step 1 — CHOICE.** Method selection.\n\n**Step 2 — CALCULUS.** An operation.\n\n**Step 3 — CHECK AND DOMAIN.** Domain verification.\n\n**Recognition cue.** Conditions.\n'
+        html = content.style_algebra(sample)
+        self.assertIn('class="choice-step"', html)
+        self.assertIn('class="domain-step"', html)
+        self.assertEqual(html.count('</div>'), 2)
+        tex = content.markdown_to_tex(sample)
+        self.assertEqual(tex.count(r'\begin{ChoiceStep}'), 1)
+        self.assertEqual(tex.count(r'\end{ChoiceStep}'), 1)
+        self.assertEqual(tex.count(r'\begin{DomainStep}'), 1)
+        self.assertEqual(tex.count(r'\end{DomainStep}'), 1)
+        self.assertLess(tex.index(r'\end{ChoiceStep}'), tex.index('Step 2'))
+        self.assertLess(tex.index(r'\end{DomainStep}'), tex.index('Recognition cue'))
+
     def test_editorial_outline_is_not_published(self):
         content.build()
         self.assertNotIn('curriculum', (ROOT / 'site/generated/book.md').read_text().lower())

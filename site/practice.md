@@ -1,36 +1,34 @@
-# Practice with help when you need it
+# Calculus problem collection
 
-Start with the question. Reveal one hint at a time. The complete solution remains
-closed until you choose to open it.
+This collection is intended for graduate review. The problems emphasize method
+selection, management of functional dependencies, and the conditions under which
+an operation is valid. Three graduated hints and a complete worked solution are
+available separately for each problem.
 
-## Start with scalar differentiation
+The algebra blocks preserve intermediate expressions so that coefficient errors,
+sign changes, and invalid cancellations can be located without interrupting the
+mathematical argument. Method-choice blocks identify the structure motivating a
+calculation; domain blocks identify exclusions, branches, convergence conditions,
+and admissible interchanges of operations.
 
-Read [D1's method guide and rule sheet](/generated/scalar-derivatives), then attempt
-D1-001 through D1-003. D1-004 through D1-006 introduce domain traps, a derivation
-from the definition, and a mixed-method choice. Try each before opening a hint.
+## Selected problems
 
-Continue with products, quotients, and compositions in D2; then practice
-antiderivatives and definite integrals in I1 and substitutions in I2.
-D3 adds field derivatives, phase branches, quadric geometry, and matrix sensitivity.
-I3 adds oscillatory integrals, singular kernels, and geometric measures.
-[Graduate field and geometry problems](/generated/fields-and-geometry) and
-[oscillation and domain problems](/generated/oscillation-and-domains) have the same
-three-hint and complete-solution format as the foundations.
+- [Nonmonotone substitution and inverse branches](/problems/i3-001)
+- [Conditional convergence and differentiation under an integral](/problems/i3-003)
+- [Singular CEM panel integration and the coordinate Jacobian](/problems/i3-007)
+- [Waveguide sensitivity at cutoff](/problems/d3-001)
+- [Implicit differentiation and ellipsoid coordinate charts](/problems/d3-004)
+- [Surface measure on a hyperboloid](/problems/i3-009)
 
-This collection is in alpha development; additional chapters and practice variants
-are still being written.
+The reference examples in D1, D2, I1, and I2 isolate rule selection and algebraic
+structure. D3 and I3 extend those calculations to fields, matrix sensitivity,
+oscillation, singular kernels, and curved domains. Familiarity with the underlying
+calculus is assumed; the worked solutions document the reasoning and intermediate
+calculations rather than present a first exposition of the concepts.
 
-## Graduate review examples
-
-- [A sine substitution that folds the interval](/problems/i3-001)
-- [Conditionally convergent oscillation](/problems/i3-003)
-- [A singular CEM panel and its Jacobian](/problems/i3-007)
-- [Waveguide cutoff sensitivity](/problems/d3-001)
-- [An ellipsoid chart and its normal](/problems/d3-004)
-- [A hyperboloid surface integral](/problems/i3-009)
-
-## Problem collection
+## All problems
 
 <!--@include: ./generated/practice-table.inc-->
 
-[Read all chapters and solutions](/generated/book).
+The [complete manuscript](/generated/book) includes every problem and solution.
+This collection remains in alpha development.

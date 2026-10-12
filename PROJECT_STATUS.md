@@ -1,6 +1,6 @@
 # Project status
 
-Updated October 9, 2026. Stage: alpha development; no stable release.
+Updated October 11, 2026. Stage: alpha development; no stable release.
 
 October 9 publishing update: a complete single-page HTML edition is generated
 at `site/.vitepress/dist/generated/book.html`. The latest fixed PDF edition is
@@ -28,7 +28,7 @@ removed from that chapter; internal guidance is in `docs/NOTATION_AUTHORING.md`.
 Notation standard, 40 fully worked problems in six subject chapters, purple
 supporting-tools appendix, and notation literature review. The editorial outline
 is kept in the repository for development and is excluded from reading pages,
-downloads, and the compiled PDF. Alpha edition 0.3.0-alpha.2 adds 16 graduate-review
+downloads, and the compiled PDF. Alpha edition 0.3.0-alpha.3 adds 16 graduate-review
 problems in D3 and I3, with primary references and explicit domain arguments.
 
 ## Next steps
@@ -51,3 +51,9 @@ complete solution expanded. The explicit-operator polish is published as alpha.2
 and tagged PDF run 38017048899 both completed successfully. The final PDF
 remains 90 pages; changed pages were re-rendered and checked. The production
 site check reports 4,375 rendered math expressions.
+
+October 11 editorial update: informal problem titles and pedagogical introductions
+were revised for graduate review. Algebra is retained as calculation checkpoints;
+CHOICE and DOMAIN steps are highlighted consistently on the site and in the PDF.
+The 40 problem IDs and mathematical calculations are preserved. Alpha.3 publication
+and layout verification are in progress.

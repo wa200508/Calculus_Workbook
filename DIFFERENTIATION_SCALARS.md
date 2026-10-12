@@ -1,38 +1,25 @@
-# D1 · Scalar differentiation foundations
+# D1 · Scalar differentiation: powers, parameters, and domains
 
-Alpha chapter. This chapter develops powers, sums, fixed parameters, domains, and
-evaluation. [Products, quotients, and compositions](DIFFERENTIATION_RULES.md)
-extends this foundation with exponential, logarithmic, and trigonometric examples. Every problem below has hints, a complete
-solution, and a check.
+The examples in this chapter isolate differentiation by linearity, treatment of
+fixed parameters, and algebraic reduction with preservation of the original
+domain. The elementary expressions serve as reference cases for the more
+involved compositions in [D2](DIFFERENTIATION_RULES.md) and field calculations in
+[D3](DIFFERENTIATION_FIELDS.md).
 
-## What this chapter trains
+## Method selection
 
-Before reaching for a rule, identify the independent variable and inspect the
-expression. Sometimes rewriting the algebra makes the calculus much simpler.
-Your goal is to produce both a derivative and a statement of where it is valid.
+The independent variable, fixed parameters, and admissible domain determine
+which differentiation rules apply. Algebraic reduction may replace a quotient
+rule calculation with differentiation of a sum of powers, provided the original
+exclusions are retained. A nonconstant inner function introduces a chain-rule
+factor; a product of nonconstant factors requires the product rule unless an
+algebraic expansion has first reduced the expression to a sum.
 
-All functions here have scalar inputs and scalar outputs. A derivative with
-respect to a scalar input is a scalar-valued function; evaluating it at a
-specified input gives a scalar number.
-
-### A repeatable approach
-
-1. **Declare:** identify the function, its inputs, fixed parameters, and domain.
-2. **Inspect:** separate sums; distinguish fixed coefficients from changing expressions.
-3. **Rewrite if useful:** turn roots and reciprocals into powers, or simplify a fraction without losing its original domain.
-4. **Differentiate:** name each rule and retain the function arguments.
-5. **Simplify:** show the coefficient and exponent arithmetic.
-6. **Evaluate if requested:** substitute only after calculating the derivative.
-7. **Check:** compare with the definition, check a sign, or use another valid calculation. State what that check actually establishes.
-
-### When these rules are sufficient
-
-A sum of constant multiples of powers of the independent variable fits this
-chapter. A changing expression raised to a power, such as $(x^2+1)^4$, requires
-the chain rule introduced in [D2-001](DIFFERENTIATION_RULES.md). A product of changing
-factors or a quotient that does not simplify may require the product or quotient
-rule. Never differentiate the factors of a product separately and multiply the
-results.
+The solutions separate rule application from coefficient simplification and
+parameter evaluation. Algebra blocks preserve the intermediate expressions at
+which a sign, factor, or domain restriction could otherwise be lost. Checks are
+identified by their scope: agreement at one input verifies that evaluation,
+whereas an identity on a domain verifies a function formula on that domain.
 
 ## Rules with their assumptions
 
@@ -49,9 +36,9 @@ $$
 =c\frac{d}{dx}\left(u(x)\right).
 $$
 
-“Constant” means independent of the chosen variable. A letter such as $a$ can be
-a constant with respect to $x$ even though different problems assign it different
-values. A function such as $a(x)$ is not a fixed coefficient.
+A parameter $a$ held fixed with respect to $x$ is treated as a constant in this
+operation. An explicitly dependent coefficient $a(x)$ instead contributes its
+own derivative. The parameter declaration determines which calculation applies.
 
 ### Sum and difference rules
 
@@ -103,7 +90,7 @@ The problems and worked explanations below are original to this workbook.
 
 ## Problems
 
-### D1-001 — A polynomial, term by term
+### D1-001 — Polynomial differentiation by linearity
 
 **Objects and dependencies.** $x\in\mathbb R$ is the independent scalar variable.
 The scalar function is $f(x)=4x^3-5x^2+7x-9$, defined for every real $x$.
@@ -113,7 +100,7 @@ $$
 \frac{d}{dx}\left(f(x)\right).
 $$
 
-### D1-002 — A root and a reciprocal
+### D1-002 — Radicals and negative powers
 
 **Objects and dependencies.** $x$ is an independent real scalar with $x>0$.
 The scalar function is
@@ -125,7 +112,7 @@ $$
 The square root is the nonnegative real square root. All coefficients are fixed
 scalars. Find the derivative with respect to $x$ and evaluate it at $x=4$.
 
-### D1-003 — Letters that stay fixed
+### D1-003 — Differentiation with fixed parameters
 
 **Objects and dependencies.** $x\in\mathbb R$ is the independent scalar variable.
 $a,b\in\mathbb R$ are fixed scalar parameters. The scalar output is
@@ -137,7 +124,7 @@ $$
 Differentiate with respect to $x$, holding $a$ and $b$ fixed. Then evaluate the
 derivative at $x=3$ with parameter values $a=2$ and $b=-1$.
 
-### D1-004 — Simplification with a missing input
+### D1-004 — Cancellation and a removable singularity
 
 **Objects and dependencies.** $x$ is an independent real scalar with $x\ne3$.
 The scalar function is
@@ -150,7 +137,7 @@ Find its derivative on its domain. A student cancels a factor and concludes that
 this original function has derivative $1$ at $x=3$ too. Explain whether that
 conclusion follows.
 
-### D1-005 — Build a derivative from its definition
+### D1-005 — Difference-quotient derivation
 
 **Objects and dependencies.** $x\in\mathbb R$ is the independent scalar variable.
 The scalar function is $f(x)=x^2+2x$. Use the limit definition to calculate its
@@ -160,7 +147,7 @@ derivative at $x=-1$.
 During the calculation, $h\in\mathbb R$ is a nonzero scalar increment that tends
 to zero; it is not a new input of $f$.
 
-### D1-006 — Choose a method for a rational expression
+### D1-006 — Algebraic reduction before differentiation
 
 **Objects and dependencies.** $x$ is an independent real scalar with $x\ne0$.
 The scalar function is
@@ -189,7 +176,7 @@ Choose and explain your method before calculating.
 ### D1-003
 
 1. The symbols $a$ and $b$ are fixed with respect to $x$; they are not functions $a(x)$ and $b(x)$.
-2. Treat $a$ just as you would treat the coefficient $4$ in D1-001; treat $b$ just as you would treat $7$.
+2. The constant-multiple rule applies to the fixed parameters $a,b$ in the same way as to numerical coefficients.
 3. Obtain the derivative with its parameters visible, then substitute $x=3$, $a=2$, and $b=-1$.
 
 ### D1-004
@@ -219,7 +206,7 @@ is scalar. The coefficients do not vary with $x$. A polynomial is differentiable
 at every real input.
 
 **Step 2 — CHOICE.** This is a sum of constant multiples of powers of $x$.
-Use sum, difference, constant-multiple, power, and constant rules.
+Linearity and the power rule apply directly; no product or chain-rule decomposition is required.
 
 **Step 3 — CALCULUS: separate the terms.**
 
@@ -273,8 +260,8 @@ $$
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
-**Recognition cue.** Separate a sum term by term, but keep the signs. A fixed
-coefficient stays as a multiplier; a standalone constant contributes zero.
+**Recognition cue.** Linearity preserves each signed coefficient.
+Constants and constant multiples are distinguished before rule application.
 
 ### D1-002
 
@@ -283,7 +270,7 @@ $f(x)=5\sqrt{x}-3/x^2+2$ is scalar, with fixed coefficients. The positive domain
 both defines the root smoothly and excludes division by zero.
 
 **Step 2 — CHOICE.** Rewriting the root and reciprocal as powers makes the power
-rule available for both changing terms.
+rule applicable to both nonconstant terms.
 
 **Step 3 — ALGEBRA: rewrite the function on its domain.**
 
@@ -345,7 +332,7 @@ and $-3/x^2$ becomes less negative as $x$ increases. The derivative formula also
 retains the restriction $x>0$. This sign check catches a likely sign mistake; it
 does not establish the exact magnitude by itself.
 
-**Recognition cue.** Convert roots and reciprocal powers before calculating.
+**Recognition cue.** A power representation unifies the radical and reciprocal terms.
 Subtracting a term whose power-rule coefficient is negative produces a positive
 term; write the multiplication to see why.
 
@@ -355,8 +342,8 @@ term; write the multiplication to see why.
 $a,b\in\mathbb R$ are fixed scalar parameters. The output $f(x;a,b)=ax^2+bx+4$
 is scalar. Its derivative with respect to $x$ is taken with both parameters fixed.
 
-**Step 2 — CHOICE.** Apply the same constant-multiple rules as for numerical
-coefficients. A parameter's value is not required to perform this derivative.
+**Step 2 — CHOICE.** The constant-multiple rule applies because $a,b$ are independent of $x$.
+Symbolic parameter values can be retained throughout the differentiation.
 
 **Step 3 — CALCULUS.** Holding $a$ and $b$ fixed,
 
@@ -413,8 +400,8 @@ differentiation, not a requirement that the symbol be a numeral.
 **Step 1 — SETUP.** $x\ne3$ is the independent real scalar and
 $f(x)=(x^2-9)/(x-3)$ is scalar. The original definition excludes $x=3$.
 
-**Step 2 — CHOICE.** Factor before choosing a quotient rule. The numerator has
-a difference-of-squares form.
+**Step 2 — CHOICE.** The difference-of-squares factorization permits cancellation on the stated
+domain, reducing the derivative calculation to a linear function.
 
 **Step 3 — TRICK: difference of squares.** Use the identity in
 [T-005](TRICKS_APPENDIX.md#t-005-rationalization). For scalar expressions $r,s$,
@@ -453,7 +440,7 @@ The last addition is **ALGEBRA**.
 
 **Result.** The derivative is $1$ for $x\ne3$. The original function has no
 derivative at $x=3$ because it has no value there. Defining a new scalar function
-$\widetilde f(x)=x+3$ for every real $x$ fills that hole; this extension has a
+$\widetilde f(x)=x+3$ for every real $x$ defines a continuous extension at the excluded point. This extension has a
 derivative at $3$, but it is a different function with a different domain.
 
 **Step 6 — CHECK: keep the domain in the difference quotient.** For an allowed
@@ -468,12 +455,12 @@ $$
 =\frac{h}{h}=1.
 $$
 
-**Step 8 — CHECK.** The quotient's limit is $1$ at every allowed input.
+**Step 8 — CHECK AND DOMAIN.** The quotient's limit is $1$ at every allowed input.
 This verifies the derivative on the original domain and supplies no derivative
 at the excluded input. The student's claim confuses the function with its extension.
 
-**Recognition cue.** Simplification may shorten a formula while leaving a hole
-in its domain. Carry the domain alongside the simplified expression.
+**Recognition cue.** Cancellation preserves the excluded point in the original domain.
+The reduced expression and its continuous extension represent different functions.
 
 ### D1-005
 
@@ -481,8 +468,8 @@ in its domain. Carry the domain alongside the simplified expression.
 and $h\ne0$ is a real scalar increment tending to zero. All inputs $x+h$ are
 allowed because the function is defined on all of $\mathbb R$.
 
-**Step 2 — CHOICE.** Use the limit definition. The order is substitution,
-expansion, subtraction, division, and then the limit.
+**Step 2 — CHOICE.** The difference quotient is reduced algebraically for nonzero increments
+before its limit is taken. This ordering prevents division by zero.
 
 **Step 3 — CALCULUS: write the definition with the full function.**
 
@@ -553,11 +540,13 @@ $$
 
 The coefficient simplification is **ALGEBRA**. This agrees with the definition
 calculation. Replacing $x$ by $-1$ before differentiating would give the constant
-expression $-1$, whose zero derivative would not tell you the general derivative
-or justify the slope calculation. Here it would accidentally match the slope.
+expression $-1$, whose zero derivative does not determine the derivative function
+or justify evaluation of its slope. The agreement at this particular input is coincidental and does not validate
+that order of operations.
 
-**Recognition cue.** Subtract the entire old function value in parentheses.
-Cancellation of the increment is allowed only while it is nonzero.
+**Recognition cue.** Parentheses preserve the subtraction of the complete
+reference value in the difference quotient. Increment cancellation is valid
+only before the limiting operation, while the increment is nonzero.
 
 ### D1-006
 
@@ -565,9 +554,9 @@ Cancellation of the increment is allowed only while it is nonzero.
 $f(x)=(2x^3-3x+4)/x$ is scalar. The requested slope at $x=2$ is valid because
 $2\ne0$. There are no varying parameters.
 
-**Step 2 — CHOICE.** Every numerator term can be divided by the simple
-denominator $x$. Rewrite as powers and use sum and power rules. This avoids
-introducing an unnecessary quotient-rule calculation.
+**Step 2 — CHOICE.** The monomial denominator permits termwise division on $x\ne0$.
+The reduced sum of powers can be differentiated by linearity, avoiding a
+quotient-rule expansion while retaining the original exclusion.
 
 **Step 3 — ALGEBRA: divide each term without discarding the restriction.**
 
@@ -656,16 +645,12 @@ $$
 The last arithmetic is **ALGEBRA**. This independently verifies the requested
 slope at $2$, while the differentiation rules supply the general formula.
 
-**Recognition cue.** A rational-looking expression may become a sum of powers.
-Inspect the algebra before selecting a differentiation rule.
+**Recognition cue.** Algebraic reduction can expose a sum of powers inside a rational
+expression. Rule selection follows the reduced structure and its preserved domain.
 
-## What to carry into the next chapter
+## Related method choices
 
-- A changing inner expression needs its own derivative; see the chain-rule pilot.
-- A product of changing factors requires a product rule unless you first expand it validly.
-- Fixed parameters remain fixed only when the setup says so.
-- A simplified formula does not automatically enlarge the original domain.
-- A check at one input verifies that input, not every value of the derivative.
-
-The next chapter will develop product, quotient, and chain-rule choices using
-these same declarations and visible algebra steps.
+[D2](DIFFERENTIATION_RULES.md) develops product, quotient, and composition
+calculations. The parameter declarations and domain restrictions remain part
+of each calculation, including after an algebraic simplification. A local check
+is distinguished from a verification of the derivative on its entire domain.

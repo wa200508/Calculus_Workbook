@@ -1,8 +1,8 @@
 # I1 · Scalar antiderivatives and definite integrals
 
-An indefinite integral asks for a family of antiderivatives. A definite integral
-asks for a scalar number when its endpoints and all parameters are fixed. Begin
-by identifying which task is requested, then keep the integration variable visible.
+The examples compare antiderivative construction, endpoint evaluation, and
+piecewise integration. The emphasis is on coefficient matching, constants on
+connected components, and sign conventions in definite integrals.
 
 ## Rules to consult
 
@@ -33,7 +33,7 @@ The definite integral is signed accumulation; it does not automatically equal ar
 
 ## Problems
 
-### I1-001 — Integrate a polynomial term by term
+### I1-001 — Polynomial antiderivatives by linearity
 
 **Objects and dependencies.** $x$ is a real scalar integration variable and
 $q(x)=6x^2-4x+5$ is a real scalar function. Find the real scalar antiderivative
@@ -92,7 +92,7 @@ $\int_{-1}^{1}q(x)\,dx$ and $\int_{-1}^{1}|q(x)|\,dx$.
 ### I1-004
 
 1. Differentiating $\exp(3x)$ produces an extra factor three.
-2. Try a fixed multiple of $\exp(3x)$.
+2. A constant multiple of $\exp(3x)$ provides a candidate primitive.
 3. Choose the multiple that makes the derivative's coefficient exactly one.
 
 ### I1-005
@@ -116,7 +116,8 @@ $q(x)=6x^2-4x+5$ has real scalar output. The antiderivative is scalar-valued
 and has a fixed real scalar constant $C$ independent of $x$.
 
 **Step 2 — CHOICE.** Each term is a constant multiple of a power of $x$.
-Use linearity and the power rule.
+Linearity reduces the calculation to power antiderivatives, with their
+coefficients retained until the algebraic simplification.
 
 **Step 3 — CALCULUS: keep each exponent and denominator visible.**
 
@@ -150,10 +151,11 @@ The derivative of $C$ is zero precisely because $C$ is independent of $x$.
 $q(x)=3/x$ is real scalar-valued. Work separately on the two connected intervals.
 Let $C_+$ and $C_-$ be fixed real scalar constants independent of $x$.
 
-**Step 2 — CHOICE.** The ordinary power antiderivative would divide by
-$-1+1=0$. Use the logarithm rule instead.
+**Step 2 — CHOICE.** The power-antiderivative formula excludes exponent $-1$.
+A logarithmic primitive is therefore required, separately on each connected
+component of the domain.
 
-**Step 3 — CALCULUS: give the families on their own intervals.**
+**Step 3 — CALCULUS AND DOMAIN: primitives on connected components.**
 
 $$
 \int q(x)\,dx=
@@ -192,8 +194,9 @@ Neither family defines an antiderivative across $x=0$, where the integrand is un
 **Step 1 — SETUP.** Integrate the real scalar function $q(x)=2x+3$ with respect
 to real scalar $x$ from $-1$ to $2$. The endpoints are fixed and the output is a number.
 
-**Step 2 — CHOICE.** The integrand is continuous; use an antiderivative and
-subtract the endpoint values.
+**Step 2 — CHOICE.** Continuity on the closed interval permits application of the
+fundamental theorem of calculus. Separate endpoint evaluation preserves the
+sign of the lower-endpoint contribution.
 
 **Step 3 — CALCULUS: find one antiderivative.** Choose the real scalar function
 
@@ -231,8 +234,9 @@ Its trapezoid area is $((1+7)/2)(2-(-1))=(8/2)(3)=12$, agreeing with the integra
 $q(x)=\exp(3x)$ is real scalar-valued on all real inputs. Let $A$ be a fixed
 real scalar coefficient to determine and let $C$ be independent of $x$.
 
-**Step 2 — CHOICE.** Try $F(x)=A\exp(3x)$ and choose $A$ so its derivative
-matches the integrand. The inner function $g(x)=3x$ has derivative three.
+**Step 2 — CHOICE.** The candidate primitive $F(x)=A\exp(3x)$ has the same exponential
+dependence as the integrand. Coefficient matching compensates for the
+chain-rule factor from $g(x)=3x$.
 
 **Step 3 — CALCULUS: differentiate the candidate.**
 
@@ -266,8 +270,9 @@ Omitting the coefficient $1/3$ would give three times the required integrand.
 $q(x)=2\cos(x)-3\sin(x)$ is real scalar-valued. The constant $C$ is a real
 scalar independent of $x$. All real inputs are allowed.
 
-**Step 2 — CHOICE.** Use linearity, the sine derivative, and the cosine derivative.
-Keep the negative sign of the cosine derivative visible.
+**Step 2 — CHOICE.** Linearity reduces the integrand to trigonometric primitives.
+The sign from differentiation of cosine determines the coefficient of the
+cosine term in the antiderivative.
 
 **Step 3 — CALCULUS: integrate each term.**
 
@@ -297,8 +302,9 @@ produce the negative sine term in the integrand.
 $q(x)=x$ is real scalar-valued. Both requested integrals have fixed limits and
 real scalar number outputs.
 
-**Step 2 — CHOICE.** Integrate $x$ directly for signed accumulation; split
-at zero before integrating $|x|$.
+**Step 2 — CHOICE.** The first integral has an odd integrand on a symmetric interval.
+The absolute-value integrand instead requires a piecewise representation,
+with the interval partitioned at its sign change.
 
 **Step 3 — CALCULUS: evaluate the signed integral.**
 

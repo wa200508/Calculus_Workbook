@@ -41,3 +41,16 @@
   .vp-doc .tricks-appendix, .vp-doc .trick-step, .vp-doc .tricks-appendix .algebra-step { color: #6f398e; background: transparent; }
   .vp-doc { font-size: 11pt; }
 }
+
+.vp-doc .choice-step, .vp-doc .domain-step {
+  border-left: 3px solid var(--vp-c-text-3);
+  padding: .5rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+  background: var(--vp-c-bg-soft);
+}
+.vp-doc .domain-step { border-color: #8a540d; background: #fbf6ec; }
+.dark .vp-doc .domain-step { border-color: #e1b977; background: #302b22; }
+@media print {
+  .vp-doc .choice-step, .vp-doc .domain-step { background: transparent; }
+}

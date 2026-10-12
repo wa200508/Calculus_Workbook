@@ -5,11 +5,15 @@
 \usepackage[letterpaper,inner=1.0in,outer=1.0in,top=0.9in,bottom=0.95in,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor,array,longtable,enumitem}
+\usepackage[breakable,skins]{tcolorbox}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \definecolor{AlgebraBlue}{HTML}{244A73}
 \definecolor{TrickPurple}{HTML}{6F398E}
 \definecolor{Ink}{HTML}{172D40}
+\definecolor{DomainAmber}{HTML}{8A540D}
+\newtcolorbox{DomainStep}{enhanced,breakable,colback=DomainAmber!5!white,colframe=DomainAmber,boxrule=0pt,borderline west={1.2pt}{0pt}{DomainAmber},arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=8pt,after skip=8pt}
+\newtcolorbox{ChoiceStep}{enhanced,breakable,colback=black!3!white,colframe=black!35!white,boxrule=0pt,borderline west={1pt}{0pt}{black!35!white},arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=8pt,after skip=8pt}
 \hypersetup{colorlinks=true,linkcolor=AlgebraBlue,urlcolor=AlgebraBlue,pdftitle={Calculus: A Worked Review},pdfauthor={}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt}
@@ -41,12 +45,12 @@
 {\sffamily\large Alpha development edition 0.3\par}
 \medskip
 Notation standard, forty worked problems, and supporting tools.\\
-Alpha edition 0.3.0-alpha.2, October 9, 2026.
+Alpha edition 0.3.0-alpha.3, October 11, 2026.
 \end{titlepage}
 \chapter*{About this book}
-This is a graduate-oriented review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Elementary examples establish a method before field, geometry, and convergence problems expose its less obvious conditions. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
+This graduate review assumes prior study of calculus. Worked examples document method selection, functional dependencies, domain analysis, and the sequence of calculations leading to a result. Elementary reference cases isolate a technique; field, geometry, and convergence problems develop its less immediate applications. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
-Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
+Method-choice blocks identify the structure motivating a calculation. Domain blocks identify exclusions, branches, convergence, and conditions for interchanging operations. Worked solutions retain intermediate algebra as calculation checkpoints. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
 This alpha development edition develops scalar calculus, field and matrix derivatives, oscillatory and singular integrals, and curved-domain geometry through worked problems. Topics and examples are listed in the table of contents. The notation recommendations incorporate a targeted literature review, documented in the references.
 
@@ -120,7 +124,7 @@ established by a definition rather than by delimiters alone.
 Object & Convention & Example declaration \\[5pt]
 \hline\endhead
 Scalar & Ordinary italic & \(x\in\mathbb R\): independent real scalar \\[5pt]
-Scalar-valued function & Ordinary letter with displayed inputs & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
+Scalar-valued function & Ordinary mathematical type with explicit arguments & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
 Vector & Bold lowercase & \(\mathbf r(t)\in\mathbb R^3\): column vector depending on scalar \(t\) \\[5pt]
 Matrix & Bold uppercase & \(\mathbf A(t)\in\mathbb R^{m\times n}\): matrix depending on scalar \(t\) \\[5pt]
 Tensor of order three or higher & Bold calligraphic uppercase & \(\boldsymbol{\mathcal T}(t)\): tensor with a specified space, order, basis, and component shape \\[5pt]
@@ -412,7 +416,7 @@ restored and the antiderivative relation is verified by differentiation.
 The differential identity \(du=2x\,dx\) corresponds to the real scalar
 relation \(u=g(x)=x^2+1\). The differential of \(u\) is the derivative of
 \(g(x)\) multiplied by the differential of \(x\). This notation expresses a
-differential relation; cancellation of the letters \(d\) and \(x\) is not
+differential relation; cancellation of the symbols \(d\) and \(x\) is not
 its justification. Division by a derivative is valid only where that
 derivative is nonzero.
 
@@ -479,13 +483,13 @@ Their textual labels and colors distinguish the roles of those operations.
 Label & Meaning & Appearance \\[5pt]
 \hline\endhead
 SETUP & Types, dependencies, domain, and target & Ordinary text \\[5pt]
-CHOICE & The reason a method applies to the given expression & Ordinary text \\[5pt]
+CHOICE & The reason a method applies to the given expression & Neutral method-choice block \\[5pt]
 CALCULUS & A named derivative or integral rule & Ordinary mathematical text \\[5pt]
 ALGEBRA & Expansion, factoring, cancellation, or rearrangement & Dark blue with an ALGEBRA label \\[5pt]
 IDENTITY & An exact identity applied to the expression & Dark blue with an IDENTITY label \\[5pt]
 TRICK & A supporting identity, rewrite, or approximation from the tricks appendix & Purple with a TRICK label and an appendix reference \\[5pt]
 APPROXIMATION & A replacement with stated validity conditions & Dark blue with an APPROXIMATION label \\[5pt]
-DOMAIN & Excluded points, branch choices, convergence, and conditions for an operation & Ordinary text \\[5pt]
+DOMAIN & Excluded points, branch choices, convergence, and conditions for an operation & Domain block with an amber margin \\[5pt]
 CHECK & Verification of the result, domain, dimensions, or plausibility & Ordinary text \\[5pt]
 \end{longtable}
 
@@ -504,43 +508,28 @@ Each problem is identified by a stable code, such as D2-001. Its statement,
 hints, and complete solution are presented in separate sections. Numbered
 solution steps provide references to particular stages of the calculation.
 
-\chapter{D1: Scalar differentiation foundations}
+\chapter{D1: Powers, parameters, and domains}
 
-Alpha chapter. This chapter develops powers, sums, fixed parameters, domains, and
-evaluation. Products, quotients, and compositions
-extends this foundation with exponential, logarithmic, and trigonometric examples. Every problem below has hints, a complete
-solution, and a check.
+The examples in this chapter isolate differentiation by linearity, treatment of
+fixed parameters, and algebraic reduction with preservation of the original
+domain. The elementary expressions serve as reference cases for the more
+involved compositions in D2 and field calculations in
+D3.
 
-\section{What this chapter trains}
+\section{Method selection}
 
-Before reaching for a rule, identify the independent variable and inspect the
-expression. Sometimes rewriting the algebra makes the calculus much simpler.
-Your goal is to produce both a derivative and a statement of where it is valid.
+The independent variable, fixed parameters, and admissible domain determine
+which differentiation rules apply. Algebraic reduction may replace a quotient
+rule calculation with differentiation of a sum of powers, provided the original
+exclusions are retained. A nonconstant inner function introduces a chain-rule
+factor; a product of nonconstant factors requires the product rule unless an
+algebraic expansion has first reduced the expression to a sum.
 
-All functions here have scalar inputs and scalar outputs. A derivative with
-respect to a scalar input is a scalar-valued function; evaluating it at a
-specified input gives a scalar number.
-
-\subsection{A repeatable approach}
-
-\begin{enumerate}
-\item \textbf{Declare:} identify the function, its inputs, fixed parameters, and domain.
-\item \textbf{Inspect:} separate sums; distinguish fixed coefficients from changing expressions.
-\item \textbf{Rewrite if useful:} turn roots and reciprocals into powers, or simplify a fraction without losing its original domain.
-\item \textbf{Differentiate:} name each rule and retain the function arguments.
-\item \textbf{Simplify:} show the coefficient and exponent arithmetic.
-\item \textbf{Evaluate if requested:} substitute only after calculating the derivative.
-\item \textbf{Check:} compare with the definition, check a sign, or use another valid calculation. State what that check actually establishes.
-
-\end{enumerate}
-\subsection{When these rules are sufficient}
-
-A sum of constant multiples of powers of the independent variable fits this
-chapter. A changing expression raised to a power, such as \((x^2+1)^4\), requires
-the chain rule introduced in D2-001. A product of changing
-factors or a quotient that does not simplify may require the product or quotient
-rule. Never differentiate the factors of a product separately and multiply the
-results.
+The solutions separate rule application from coefficient simplification and
+parameter evaluation. Algebra blocks preserve the intermediate expressions at
+which a sign, factor, or domain restriction could otherwise be lost. Checks are
+identified by their scope: agreement at one input verifies that evaluation,
+whereas an identity on a domain verifies a function formula on that domain.
 
 \section{Rules with their assumptions}
 
@@ -557,9 +546,9 @@ inputs under consideration. The output of each derivative is scalar.
 =c\frac{d}{dx}\left(u(x)\right).
 \]
 
-“Constant” means independent of the chosen variable. A letter such as \(a\) can be
-a constant with respect to \(x\) even though different problems assign it different
-values. A function such as \(a(x)\) is not a fixed coefficient.
+A parameter \(a\) held fixed with respect to \(x\) is treated as a constant in this
+operation. An explicitly dependent coefficient \(a(x)\) instead contributes its
+own derivative. The parameter declaration determines which calculation applies.
 
 \subsection{Sum and difference rules}
 
@@ -611,7 +600,7 @@ The problems and worked explanations below are original to this workbook.
 
 \section{Problems}
 
-\subsection{D1-001 --- A polynomial, term by term}
+\subsection{D1-001 --- Polynomial differentiation by linearity}
 
 \textbf{Objects and dependencies.} \(x\in\mathbb R\) is the independent scalar variable.
 The scalar function is \(f(x)=4x^3-5x^2+7x-9\), defined for every real \(x\).
@@ -621,7 +610,7 @@ All coefficients are fixed real scalars. Find the scalar-valued function
 \frac{d}{dx}\left(f(x)\right).
 \]
 
-\subsection{D1-002 --- A root and a reciprocal}
+\subsection{D1-002 --- Radicals and negative powers}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar with \(x>0\).
 The scalar function is
@@ -633,7 +622,7 @@ f(x)=5\sqrt{x}-\frac{3}{x^2}+2.
 The square root is the nonnegative real square root. All coefficients are fixed
 scalars. Find the derivative with respect to \(x\) and evaluate it at \(x=4\).
 
-\subsection{D1-003 --- Letters that stay fixed}
+\subsection{D1-003 --- Differentiation with fixed parameters}
 
 \textbf{Objects and dependencies.} \(x\in\mathbb R\) is the independent scalar variable.
 \(a,b\in\mathbb R\) are fixed scalar parameters. The scalar output is
@@ -645,7 +634,7 @@ f(x;a,b)=ax^2+bx+4.
 Differentiate with respect to \(x\), holding \(a\) and \(b\) fixed. Then evaluate the
 derivative at \(x=3\) with parameter values \(a=2\) and \(b=-1\).
 
-\subsection{D1-004 --- Simplification with a missing input}
+\subsection{D1-004 --- Cancellation and a removable singularity}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar with \(x\ne3\).
 The scalar function is
@@ -658,7 +647,7 @@ Find its derivative on its domain. A student cancels a factor and concludes that
 this original function has derivative \(1\) at \(x=3\) too. Explain whether that
 conclusion follows.
 
-\subsection{D1-005 --- Build a derivative from its definition}
+\subsection{D1-005 --- Difference-quotient derivation}
 
 \textbf{Objects and dependencies.} \(x\in\mathbb R\) is the independent scalar variable.
 The scalar function is \(f(x)=x^2+2x\). Use the limit definition to calculate its
@@ -668,7 +657,7 @@ derivative at \(x=-1\).
 During the calculation, \(h\in\mathbb R\) is a nonzero scalar increment that tends
 to zero; it is not a new input of \(f\).
 
-\subsection{D1-006 --- Choose a method for a rational expression}
+\subsection{D1-006 --- Algebraic reduction before differentiation}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar with \(x\ne0\).
 The scalar function is
@@ -702,7 +691,7 @@ Choose and explain your method before calculating.
 
 \begin{enumerate}
 \item The symbols \(a\) and \(b\) are fixed with respect to \(x\); they are not functions \(a(x)\) and \(b(x)\).
-\item Treat \(a\) just as you would treat the coefficient \(4\) in D1-001; treat \(b\) just as you would treat \(7\).
+\item The constant-multiple rule applies to the fixed parameters \(a,b\) in the same way as to numerical coefficients.
 \item Obtain the derivative with its parameters visible, then substitute \(x=3\), \(a=2\), and \(b=-1\).
 
 \end{enumerate}
@@ -739,9 +728,11 @@ Choose and explain your method before calculating.
 is scalar. The coefficients do not vary with \(x\). A polynomial is differentiable
 at every real input.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} This is a sum of constant multiples of powers of \(x\).
-Use sum, difference, constant-multiple, power, and constant rules.
+Linearity and the power rule apply directly; no product or chain-rule decomposition is required.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: separate the terms.}
 
 \[
@@ -798,8 +789,8 @@ formula gives \(12(0)^2-10(0)+7=7\). For a nonzero scalar increment \(h\),
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
-\textbf{Recognition cue.} Separate a sum term by term, but keep the signs. A fixed
-coefficient stays as a multiplier; a standalone constant contributes zero.
+\textbf{Recognition cue.} Linearity preserves each signed coefficient.
+Constants and constant multiples are distinguished before rule application.
 
 \subsection{D1-002}
 
@@ -807,9 +798,11 @@ coefficient stays as a multiplier; a standalone constant contributes zero.
 \(f(x)=5\sqrt{x}-3/x^2+2\) is scalar, with fixed coefficients. The positive domain
 both defines the root smoothly and excludes division by zero.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Rewriting the root and reciprocal as powers makes the power
-rule available for both changing terms.
+rule applicable to both nonconstant terms.
 
+\end{ChoiceStep}
 \begingroup\color{AlgebraBlue}
 \textbf{Step 3 --- ALGEBRA: rewrite the function on its domain.}
 
@@ -876,7 +869,7 @@ and \(-3/x^2\) becomes less negative as \(x\) increases. The derivative formula 
 retains the restriction \(x>0\). This sign check catches a likely sign mistake; it
 does not establish the exact magnitude by itself.
 
-\textbf{Recognition cue.} Convert roots and reciprocal powers before calculating.
+\textbf{Recognition cue.} A power representation unifies the radical and reciprocal terms.
 Subtracting a term whose power-rule coefficient is negative produces a positive
 term; write the multiplication to see why.
 
@@ -886,9 +879,11 @@ term; write the multiplication to see why.
 \(a,b\in\mathbb R\) are fixed scalar parameters. The output \(f(x;a,b)=ax^2+bx+4\)
 is scalar. Its derivative with respect to \(x\) is taken with both parameters fixed.
 
-\textbf{Step 2 --- CHOICE.} Apply the same constant-multiple rules as for numerical
-coefficients. A parameter's value is not required to perform this derivative.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The constant-multiple rule applies because \(a,b\) are independent of \(x\).
+Symbolic parameter values can be retained throughout the differentiation.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} Holding \(a\) and \(b\) fixed,
 
 \[
@@ -948,9 +943,11 @@ differentiation, not a requirement that the symbol be a numeral.
 \textbf{Step 1 --- SETUP.} \(x\ne3\) is the independent real scalar and
 \(f(x)=(x^2-9)/(x-3)\) is scalar. The original definition excludes \(x=3\).
 
-\textbf{Step 2 --- CHOICE.} Factor before choosing a quotient rule. The numerator has
-a difference-of-squares form.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The difference-of-squares factorization permits cancellation on the stated
+domain, reducing the derivative calculation to a linear function.
 
+\end{ChoiceStep}
 \begingroup\color{TrickPurple}
 \textbf{Step 3 --- TRICK: difference of squares.} Use the identity in
 T-005. For scalar expressions \(r,s\),
@@ -992,7 +989,7 @@ The last addition is \textbf{ALGEBRA}.
 
 \textbf{Result.} The derivative is \(1\) for \(x\ne3\). The original function has no
 derivative at \(x=3\) because it has no value there. Defining a new scalar function
-\(\widetilde f(x)=x+3\) for every real \(x\) fills that hole; this extension has a
+\(\widetilde f(x)=x+3\) for every real \(x\) defines a continuous extension at the excluded point. This extension has a
 derivative at \(3\), but it is a different function with a different domain.
 
 \textbf{Step 6 --- CHECK: keep the domain in the difference quotient.} For an allowed
@@ -1009,12 +1006,14 @@ input \(x\ne3\), take a nonzero scalar increment \(h\) small enough that \(x+h\n
 \]
 
 \endgroup
-\textbf{Step 8 --- CHECK.} The quotient's limit is \(1\) at every allowed input.
+\begin{DomainStep}
+\textbf{Step 8 --- CHECK AND DOMAIN.} The quotient's limit is \(1\) at every allowed input.
 This verifies the derivative on the original domain and supplies no derivative
 at the excluded input. The student's claim confuses the function with its extension.
 
-\textbf{Recognition cue.} Simplification may shorten a formula while leaving a hole
-in its domain. Carry the domain alongside the simplified expression.
+\end{DomainStep}
+\textbf{Recognition cue.} Cancellation preserves the excluded point in the original domain.
+The reduced expression and its continuous extension represent different functions.
 
 \subsection{D1-005}
 
@@ -1022,9 +1021,11 @@ in its domain. Carry the domain alongside the simplified expression.
 and \(h\ne0\) is a real scalar increment tending to zero. All inputs \(x+h\) are
 allowed because the function is defined on all of \(\mathbb R\).
 
-\textbf{Step 2 --- CHOICE.} Use the limit definition. The order is substitution,
-expansion, subtraction, division, and then the limit.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The difference quotient is reduced algebraically for nonzero increments
+before its limit is taken. This ordering prevents division by zero.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: write the definition with the full function.}
 
 \[
@@ -1102,11 +1103,13 @@ different quantity from its slope.
 
 The coefficient simplification is \textbf{ALGEBRA}. This agrees with the definition
 calculation. Replacing \(x\) by \(-1\) before differentiating would give the constant
-expression \(-1\), whose zero derivative would not tell you the general derivative
-or justify the slope calculation. Here it would accidentally match the slope.
+expression \(-1\), whose zero derivative does not determine the derivative function
+or justify evaluation of its slope. The agreement at this particular input is coincidental and does not validate
+that order of operations.
 
-\textbf{Recognition cue.} Subtract the entire old function value in parentheses.
-Cancellation of the increment is allowed only while it is nonzero.
+\textbf{Recognition cue.} Parentheses preserve the subtraction of the complete
+reference value in the difference quotient. Increment cancellation is valid
+only before the limiting operation, while the increment is nonzero.
 
 \subsection{D1-006}
 
@@ -1114,10 +1117,12 @@ Cancellation of the increment is allowed only while it is nonzero.
 \(f(x)=(2x^3-3x+4)/x\) is scalar. The requested slope at \(x=2\) is valid because
 \(2\ne0\). There are no varying parameters.
 
-\textbf{Step 2 --- CHOICE.} Every numerator term can be divided by the simple
-denominator \(x\). Rewrite as powers and use sum and power rules. This avoids
-introducing an unnecessary quotient-rule calculation.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The monomial denominator permits termwise division on \(x\ne0\).
+The reduced sum of powers can be differentiated by linearity, avoiding a
+quotient-rule expansion while retaining the original exclusion.
 
+\end{ChoiceStep}
 \begingroup\color{AlgebraBlue}
 \textbf{Step 3 --- ALGEBRA: divide each term without discarding the restriction.}
 
@@ -1215,27 +1220,23 @@ f(2+h)-f(2)&=5+8h+2h^2+\frac4{2+h}-7\\
 The last arithmetic is \textbf{ALGEBRA}. This independently verifies the requested
 slope at \(2\), while the differentiation rules supply the general formula.
 
-\textbf{Recognition cue.} A rational-looking expression may become a sum of powers.
-Inspect the algebra before selecting a differentiation rule.
+\textbf{Recognition cue.} Algebraic reduction can expose a sum of powers inside a rational
+expression. Rule selection follows the reduced structure and its preserved domain.
 
-\section{What to carry into the next chapter}
+\section{Related method choices}
 
-\begin{itemize}
-\item A changing inner expression needs its own derivative; see the chain-rule pilot.
-\item A product of changing factors requires a product rule unless you first expand it validly.
-\item Fixed parameters remain fixed only when the setup says so.
-\item A simplified formula does not automatically enlarge the original domain.
-\item A check at one input verifies that input, not every value of the derivative.
-
-\end{itemize}
-The next chapter will develop product, quotient, and chain-rule choices using
-these same declarations and visible algebra steps.
+D2 develops product, quotient, and composition
+calculations. The parameter declarations and domain restrictions remain part
+of each calculation, including after an algebraic simplification. A local check
+is distinguished from a verification of the derivative on its entire domain.
 
 \chapter{D2: Products, quotients, and compositions}
 
-Look at the whole expression before choosing a rule. A product has two changing
-factors; a quotient has a changing denominator; a composition feeds one function
-into another. The examples show how to recognize and combine these structures.
+The examples compare product, quotient, and chain-rule decompositions. Rule
+selection follows the expression's factorization and functional dependencies;
+its domain determines whether cancellations and derivative formulas remain
+valid. Intermediate algebra is retained where signs and chain-rule factors
+are susceptible to error.
 
 \section{Rules to consult}
 
@@ -1278,7 +1279,7 @@ for nested compositions. The elementary rules needed below are
 
 Sine and cosine inputs are in radians. The exponential has every real input;
 the real logarithm requires a positive input. Powers use the rules and domains
-from scalar differentiation foundations.
+from scalar differentiation: powers, parameters, and domains.
 
 \section{Problems}
 
@@ -1315,19 +1316,19 @@ The real scalar function is \(f(x)=(x^2+1)/(x-1)\). Find the scalar-valued deriv
 scalar function \(f(x)=\exp(2x^2-3)\) on all real inputs. Find
 \(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=0\).
 
-\subsection{D2-005 --- A logarithm with a changing input}
+\subsection{D2-005 --- Logarithmic composition}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar. Define the real
 scalar function \(f(x)=\ln(1+x^2)\) on all real inputs, since \(1+x^2>0\).
 Find \(\frac{d}{dx}\left(f(x)\right)\) and its value at \(x=1\).
 
-\subsection{D2-006 --- A root with a changing input}
+\subsection{D2-006 --- Square-root composition}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar. Define the real
 scalar function \(f(x)=\sqrt{1+x^2}\), taking the nonnegative square root. Find
 \(\frac{d}{dx}\left(f(x)\right)\) for every real \(x\) and evaluate at \(x=0\).
 
-\subsection{D2-007 --- Three layers of dependence}
+\subsection{D2-007 --- Nested trigonometric composition}
 
 \textbf{Objects and dependencies.} \(x\) is an independent real scalar angle in radians.
 The real scalar function is \(f(x)=(\sin(2x))^3\). Find
@@ -1362,7 +1363,7 @@ The real scalar function is \(f(x)=(\sin(2x))^3\). Find
 \subsection{D2-004}
 
 \begin{enumerate}
-\item The exponential's input is a changing quadratic.
+\item The exponential's argument is a nonconstant quadratic function.
 \item Set \(g(x)=2x^2-3\) and \(h(t)=\exp(t)\).
 \item Multiply \(\exp(g(x))\) by the derivative of \(g(x)\).
 
@@ -1404,8 +1405,10 @@ g(x)=3x^2+1,\qquad h(u)=u^4,\qquad f(x)=h(g(x)).
 
 Here \(u\) is an independent scalar input when defining and differentiating \(h(u)\). In the composition, set \(u=g(x)\), so the inner value depends on \(x\).
 
-\textbf{Step 2 --- CHOICE.} A fourth power surrounds a changing inner expression. The chain rule accounts for both the outer power and the inner rate of change.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The fourth power is a composition with the nonconstant inner function \(g(x)\). The chain rule supplies the outer derivative evaluated at \(g(x)\) and the derivative of \(g(x)\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate the outer function.} The power rule gives
 
 \[
@@ -1481,7 +1484,7 @@ f(0)&=1,\\
 
 Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
 
-\textbf{Recognition cue.} Find the outside operation, then identify every input it receives. The inner derivative is required even when the inner expression looks simple.
+\textbf{Recognition cue.} A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
 
 \subsection{D2-002}
 
@@ -1489,9 +1492,11 @@ Each term tends to zero, so the limit is zero. This checks the answer at one inp
 \(f(x)=x^2\sin(x)\) is real scalar-valued. Let \(u(x)=x^2\) and \(v(x)=\sin(x)\);
 both are real scalar functions on all real inputs. The output derivative is scalar.
 
-\textbf{Step 2 --- CHOICE.} This is a product of two changing factors. Differentiating
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Both factors depend on \(x\); the product rule is therefore applicable. Differentiating
 both and multiplying would omit the product rule's two terms.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate each factor and apply the product rule.}
 
 \[
@@ -1545,8 +1550,10 @@ This independently verifies the requested evaluated derivative.
 \(f(x)=(x^2+1)/(x-1)\) is real scalar-valued. Let \(u(x)=x^2+1\) and \(v(x)=x-1\).
 All coefficients are fixed. The derivative is scalar-valued on this domain.
 
-\textbf{Step 2 --- CHOICE.} The denominator changes and does not cancel. Use the quotient rule.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The nonconstant denominator does not cancel against the numerator. The quotient rule applies on the domain excluding its zero.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: retain the quotient rule's subtraction.}
 
 \[
@@ -1605,9 +1612,11 @@ This matches the result. The excluded input remains excluded.
 \(g(x)=2x^2-3\) and \(h(t)=\exp(t)\), where \(t\) is an independent real scalar
 input for the outer function. In \(f(x)=h(g(x))\), its input depends on \(x\).
 
-\textbf{Step 2 --- CHOICE.} Differentiate the exponential at its inner input, then
-account for how that input changes.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The exponential composition requires the derivative of the outer
+function evaluated at \(g(x)\), multiplied by the derivative of \(g(x)\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: calculate both derivatives.}
 
 \[
@@ -1647,9 +1656,11 @@ These are plausibility checks; the chain rule establishes the formula.
 \(f(x)=\ln(1+x^2)\) is real scalar-valued. Define \(g(x)=1+x^2\) and \(h(t)=\ln(t)\)
 for independent real scalar \(t>0\). Since \(g(x)\ge1\), every real \(x\) is allowed.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The logarithm rule is applied to \(t\), then evaluated at
 \(t=g(x)\). Its input has a separate derivative.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate both layers.}
 
 \[
@@ -1683,9 +1694,12 @@ logarithm rules separate products, not sums.
 are \(g(x)=1+x^2\), \(h(t)=t^{1/2}\) for independent real scalar \(t>0\), and
 \(f(x)=h(g(x))\). The inner value is at least one, so all real \(x\) are allowed.
 
-\textbf{Step 2 --- CHOICE.} The root is a power of a changing expression; use the
-power rule for the outer input and the chain rule for the composition.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The square root is a power of the nonconstant function \(g(x)\).
+The power rule applies to the outer argument, while the chain rule retains
+the derivative of \(g(x)\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate both layers.}
 
 \[
@@ -1734,9 +1748,12 @@ Let \(g(x)=2x\), \(u(x)=\sin(g(x))\), and \(f(x)=(u(x))^3\); all outputs are rea
 scalars. Use auxiliary independent real scalar inputs \(t\) for \(h(t)=\sin(t)\)
 and \(s\) for \(p(s)=s^3\). All real \(x\) are allowed.
 
-\textbf{Step 2 --- CHOICE.} Track the three operations from the inside out: multiply
-by two, take a sine, and take a cube.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The nested composition has three derivative factors: the linear
+argument, the sine function, and the outer cubic power. Their dependencies
+are represented separately before the factors are assembled.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate the inner composition.}
 
 \[
@@ -1949,8 +1966,10 @@ Find \(\frac{d}{dt}(\mathbf j(t))\) without treating matrix division as scalar d
 
 \textbf{Step 1 --- SETUP.} The variable is the real scalar \(\omega\); \(c\) and \(\omega_c\) are fixed. The output \(\beta(\omega)\) is real on \([\omega_c,\infty)\) and smooth on \((\omega_c,\infty)\). The derivative is sought on that open interval first.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The square root is a composition. Its derivative rule requires a strictly positive radicand here; the endpoint therefore needs a separate limit.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} With respect to \(\omega\),
 
 \[
@@ -1968,6 +1987,7 @@ v_g(\omega)=\frac{c\sqrt{\omega^2-\omega_c^2}}{\omega}
 \]
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 5 --- DOMAIN.} For a real scalar increment \(h>0\),
 
 \[
@@ -1978,6 +1998,7 @@ v_g(\omega)=\frac{c\sqrt{\omega^2-\omega_c^2}}{\omega}
 
 There is no finite right derivative at cutoff. Below cutoff the radicand is negative. In the convention \(\exp(\mathrm{i}\omega t-\mathrm{i}\beta z)\), a decaying field for \(z>0\) has \(\beta=-\mathrm{i}\alpha\), where \(\alpha=\sqrt{\omega_c^2-\omega^2}/c>0\) is a real attenuation constant. That is a different branch and a different physical regime.
 
+\end{DomainStep}
 \textbf{Step 6 --- CHECK.} The derivative has units of inverse velocity. The limits are \(v_g(\omega)\to0\) as \(\omega\downarrow\omega_c\) and \(v_g(\omega)\to c\) as \(\omega\to\infty\). Large sensitivity near cutoff is expected; a high-frequency approximation is unreliable there.
 
 \textbf{Recognition cue.} A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
@@ -1986,8 +2007,10 @@ There is no finite right derivative at cutoff. Below cutoff the radicand is nega
 
 \textbf{Step 1 --- SETUP.} The observation coordinates are independent real scalars, the source and \(k\) are fixed, and \(G(x,y,z)\) is a complex scalar on the punctured space \(R(x,y,z)>0\). The derivative output is a complex \(3\times1\) vector.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Dependence through distance separates the radial derivative from the coordinate derivatives. A separate positive real scalar \(\rho\) gives \(g(\rho)=\exp(-\mathrm{i}k\rho)/(4\pi\rho)\) and \(G(x,y,z)=g(R(x,y,z))\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The product rule and chain rule give
 
 \[
@@ -2027,8 +2050,10 @@ Multiplication by the distance gradient yields
 
 \textbf{Step 1 --- SETUP.} The input is a real scalar \(\omega\), and the output phase is real. A smooth local phase requires \(H(\omega)\ne0\) and a chart avoiding the selected branch cut. \(X(\omega)\) and \(Y(\omega)\) both depend on \(\omega\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} On a local chart with \(X(\omega)\ne0\), a constant angular correction distinguishes \(\operatorname{atan2}\) from \(\arctan(Y/X)\). The correction has zero derivative on that chart.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The chain and quotient rules give
 
 \[
@@ -2052,16 +2077,20 @@ A chart using \(Y(\omega)\ne0\) gives the same expression. The expression theref
 \textbf{Step 5 --- TRICK: Euler identity.} The supporting identity is listed in T-001. For \(H(\omega)=\exp(\mathrm{i}\omega)\), \(X(\omega)=\cos\omega\) and \(Y(\omega)=\sin\omega\). The numerator is \(\cos^2\omega+\sin^2\omega=1\), and the denominator is also one. Every smooth local phase has derivative one.
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 6 --- DOMAIN AND CHECK.} The principal phase approaches \(\pi\) from the left at \(\omega=\pi\), but approaches \(-\pi\) from the right. It is discontinuous there and has no derivative there. The unwrapped choice \(\widetilde\phi(\omega)=\omega\) is smooth through that point, with derivative one. At a zero of \(H(\omega)\), no phase is defined at all. A group-delay calculation based on phase differentiation depends on both a nonzero response and a consistent local phase choice.
 
+\end{DomainStep}
 \textbf{Recognition cue.} A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
 
 \subsection{D3-004}
 
 \textbf{Step 1 --- SETUP.} The graph uses independent real \(x,y\) in \(x^2/a^2+y^2/b^2<1\). Its dependent scalar \(g(x,y)>0\) is the upper height. The full level surface also contains the lower half and equator.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The graph chain rule gives derivatives in its open domain. The level-set gradient gives a normal without selecting an upper or lower height branch.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} Holding \(y\) fixed and then \(x\) fixed gives
 
 \[
@@ -2088,16 +2117,20 @@ For the level function, each of \(x,y,z\) is independent during differentiation:
 It points outward since \(F\) increases away from the ellipsoid.
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 5 --- DOMAIN AND CHECK.} At the equator \(z=0\), the \(z\) partial derivative of \(F\) vanishes, so the implicit-function theorem does not provide a height graph there. For example, at \((a,0,0)\) the \(x\) partial derivative is \(2/a\ne0\), and a smooth graph of \(x\) in terms of \(y,z\) is available. The full gradient could vanish only at \((0,0,0)\), which is not on the ellipsoid. The unit normal is defined at every surface point and has length one.
 
+\end{DomainStep}
 \textbf{Recognition cue.} The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
 
 \subsection{D3-005}
 
 \textbf{Step 1 --- SETUP.} Independent parameters \(u,v\) are real scalars. Both tangent derivatives and their cross product are real \(3\times1\) vectors. The fixed parameters \(a,c\) are positive.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Parametric tangent vectors avoid solving the hyperboloid for a single height branch. Their cross product supplies an oriented normal when it is nonzero.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} Component differentiation gives
 
 \[
@@ -2142,8 +2175,10 @@ Its dot product with each tangent is zero; its length is one. At \(u=0\) it is t
 
 \textbf{Step 1 --- SETUP.} Independent input \(\mathbf x\) has three real scalar coordinates. The symmetric matrix \(\mathbf Q\) is fixed. Positive definiteness gives \(q(\mathbf x)>0\) whenever \(\mathbf x\ne\mathbf0\), so the real scalar reciprocal square root is differentiable there.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Component expansion resolves the two appearances of the input before the outer scalar chain rule is applied. The output gradient is a real \(3\times1\) column vector.
 
+\end{ChoiceStep}
 \begingroup\color{AlgebraBlue}
 \textbf{Step 3 --- ALGEBRA.} With independent indices \(i,j\) from one to three,
 
@@ -2170,16 +2205,20 @@ q(\mathbf x)=\sum_{i=1}^3\sum_{j=1}^3 x_i Q_{ij}x_j.
 =-\frac{\mathbf Q\mathbf x}{(\mathbf x^{\mathsf T}\mathbf Q\mathbf x)^{3/2}}.
 \]
 
+\begin{DomainStep}
 \textbf{Step 7 --- DOMAIN AND CHECK.} For \(\mathbf Q=\mathbf I\), the expression becomes \(-\mathbf x/\|\mathbf x\|^3\). For an indefinite symmetric \(\mathbf Q\), the same real formula is valid only in the open set \(q(\mathbf x)>0\); nonzero inputs on the cone \(q(\mathbf x)=0\) are also singular. Inputs with \(q(\mathbf x)<0\) do not define this real scalar field. Matrix symmetry simplifies differentiation; positive definiteness supplies a separate domain guarantee.
 
+\end{DomainStep}
 \textbf{Recognition cue.} A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
 
 \subsection{D3-007}
 
 \textbf{Step 1 --- SETUP.} The variable is the real scalar \(t\); \(\mathbf b\) is fixed and complex. \(\mathbf A(t)\) is a real matrix and \(\mathbf j(t)\) a complex \(2\times1\) vector. The matrix is invertible exactly when \(1-t^2\ne0\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Differentiation of the defining linear system preserves multiplication order and avoids a nonexistent rule for scalar-style matrix division.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The matrix product rule is applied entry by entry:
 
 \[
@@ -2215,8 +2254,10 @@ The quotient rule and numerator expansion produce
 \]
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 5 --- DOMAIN AND CHECK.} For \(\mathbf b=[1,0]^{\mathsf T}\), the solution diverges at \(t=1\), and the singular system there is inconsistent. For \(\mathbf b=[1,1]^{\mathsf T}\), cancellation on \(t\ne\pm1\) gives \(\mathbf j(t)=[1,1]^{\mathsf T}/(1+t)\) and derivative \(-[1,1]^{\mathsf T}/(1+t)^2\). This solution branch has a finite extension at \(t=1\), but the matrix inverse still does not exist there; the singular system has infinitely many solutions. Substitution into the original nonsingular system verifies both component formulas.
 
+\end{DomainStep}
 \textbf{Recognition cue.} The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
 
 \section{Application references}
@@ -2230,9 +2271,9 @@ not constitute full waveguide or antenna designs.
 
 \chapter{I1: Scalar antiderivatives and definite integrals}
 
-An indefinite integral asks for a family of antiderivatives. A definite integral
-asks for a scalar number when its endpoints and all parameters are fixed. Begin
-by identifying which task is requested, then keep the integration variable visible.
+The examples compare antiderivative construction, endpoint evaluation, and
+piecewise integration. The emphasis is on coefficient matching, constants on
+connected components, and sign conventions in definite integrals.
 
 \section{Rules to consult}
 
@@ -2263,7 +2304,7 @@ The definite integral is signed accumulation; it does not automatically equal ar
 
 \section{Problems}
 
-\subsection{I1-001 --- Integrate a polynomial term by term}
+\subsection{I1-001 --- Polynomial antiderivatives by linearity}
 
 \textbf{Objects and dependencies.} \(x\) is a real scalar integration variable and
 \(q(x)=6x^2-4x+5\) is a real scalar function. Find the real scalar antiderivative
@@ -2329,7 +2370,7 @@ Find \(\int q(x)\,dx\) on all real inputs.
 
 \begin{enumerate}
 \item Differentiating \(\exp(3x)\) produces an extra factor three.
-\item Try a fixed multiple of \(\exp(3x)\).
+\item A constant multiple of \(\exp(3x)\) provides a candidate primitive.
 \item Choose the multiple that makes the derivative's coefficient exactly one.
 
 \end{enumerate}
@@ -2358,9 +2399,12 @@ Find \(\int q(x)\,dx\) on all real inputs.
 \(q(x)=6x^2-4x+5\) has real scalar output. The antiderivative is scalar-valued
 and has a fixed real scalar constant \(C\) independent of \(x\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Each term is a constant multiple of a power of \(x\).
-Use linearity and the power rule.
+Linearity reduces the calculation to power antiderivatives, with their
+coefficients retained until the algebraic simplification.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: keep each exponent and denominator visible.}
 
 \[
@@ -2395,10 +2439,14 @@ The derivative of \(C\) is zero precisely because \(C\) is independent of \(x\).
 \(q(x)=3/x\) is real scalar-valued. Work separately on the two connected intervals.
 Let \(C_+\) and \(C_-\) be fixed real scalar constants independent of \(x\).
 
-\textbf{Step 2 --- CHOICE.} The ordinary power antiderivative would divide by
-\(-1+1=0\). Use the logarithm rule instead.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The power-antiderivative formula excludes exponent \(-1\).
+A logarithmic primitive is therefore required, separately on each connected
+component of the domain.
 
-\textbf{Step 3 --- CALCULUS: give the families on their own intervals.}
+\end{ChoiceStep}
+\begin{DomainStep}
+\textbf{Step 3 --- CALCULUS AND DOMAIN: primitives on connected components.}
 
 \[
 \int q(x)\,dx=
@@ -2411,6 +2459,7 @@ Let \(C_+\) and \(C_-\) be fixed real scalar constants independent of \(x\).
 Equivalently, the antiderivative is \(3\ln(|x|)\) plus a constant on each interval.
 There is no requirement that \(C_+=C_-\): the original domain is disconnected.
 
+\end{DomainStep}
 \textbf{Step 4 --- CHECK: differentiate on both intervals.} For \(x>0\),
 
 \[
@@ -2439,9 +2488,12 @@ Neither family defines an antiderivative across \(x=0\), where the integrand is 
 \textbf{Step 1 --- SETUP.} Integrate the real scalar function \(q(x)=2x+3\) with respect
 to real scalar \(x\) from \(-1\) to \(2\). The endpoints are fixed and the output is a number.
 
-\textbf{Step 2 --- CHOICE.} The integrand is continuous; use an antiderivative and
-subtract the endpoint values.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Continuity on the closed interval permits application of the
+fundamental theorem of calculus. Separate endpoint evaluation preserves the
+sign of the lower-endpoint contribution.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: find one antiderivative.} Choose the real scalar function
 
 \[
@@ -2482,9 +2534,12 @@ Its trapezoid area is \(((1+7)/2)(2-(-1))=(8/2)(3)=12\), agreeing with the integ
 \(q(x)=\exp(3x)\) is real scalar-valued on all real inputs. Let \(A\) be a fixed
 real scalar coefficient to determine and let \(C\) be independent of \(x\).
 
-\textbf{Step 2 --- CHOICE.} Try \(F(x)=A\exp(3x)\) and choose \(A\) so its derivative
-matches the integrand. The inner function \(g(x)=3x\) has derivative three.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The candidate primitive \(F(x)=A\exp(3x)\) has the same exponential
+dependence as the integrand. Coefficient matching compensates for the
+chain-rule factor from \(g(x)=3x\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate the candidate.}
 
 \[
@@ -2519,9 +2574,12 @@ Omitting the coefficient \(1/3\) would give three times the required integrand.
 \(q(x)=2\cos(x)-3\sin(x)\) is real scalar-valued. The constant \(C\) is a real
 scalar independent of \(x\). All real inputs are allowed.
 
-\textbf{Step 2 --- CHOICE.} Use linearity, the sine derivative, and the cosine derivative.
-Keep the negative sign of the cosine derivative visible.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Linearity reduces the integrand to trigonometric primitives.
+The sign from differentiation of cosine determines the coefficient of the
+cosine term in the antiderivative.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: integrate each term.}
 
 \[
@@ -2552,9 +2610,12 @@ produce the negative sine term in the integrand.
 \(q(x)=x\) is real scalar-valued. Both requested integrals have fixed limits and
 real scalar number outputs.
 
-\textbf{Step 2 --- CHOICE.} Integrate \(x\) directly for signed accumulation; split
-at zero before integrating \(|x|\).
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The first integral has an odd integrand on a symmetric interval.
+The absolute-value integrand instead requires a piecewise representation,
+with the interval partitioned at its sign change.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: evaluate the signed integral.}
 
 \[
@@ -2599,9 +2660,10 @@ and positive triangle have opposite signed contributions.
 
 \chapter{I2: Substitution with every dependency visible}
 
-Substitution is a main integration method. Identify an inner function and its
-derivative, account for any fixed coefficient, and change both bounds in a definite
-integral. For an indefinite integral, substitute back into the original variable.
+Substitution is selected from a derivative factor in the integrand. The
+examples retain the coordinate dependence, coefficient adjustment, and
+orientation of transformed bounds. Inverse-coordinate substitutions with
+multiple branches are treated in I3-001.
 
 \section{Rule to consult}
 
@@ -2668,7 +2730,7 @@ lower limit \(x=1\) and upper limit \(x=0\). The real scalar function is
 
 \begin{enumerate}
 \item Compare the factor \(2x\) with the derivative of the expression \(x^2+1\).
-\item Try the new scalar coordinate \(u=g(x)=x^2+1\).
+\item The derivative match suggests the scalar coordinate \(u=g(x)=x^2+1\).
 \item The original endpoints \(x=0\) and \(x=1\) become \(u=1\) and \(u=2\). The transformed integrand is \(u^3\).
 
 \end{enumerate}
@@ -2717,8 +2779,10 @@ g(x)=x^2+1,\qquad u=g(x),\qquad h(u)=u^3.
 
 Both \(g\) and \(h\) are scalar-valued functions. The new coordinate \(u\) depends on \(x\) until we rewrite the integral in terms of \(u\). Polynomials have the continuity and differentiability needed for the substitution theorem.
 
-\textbf{Step 2 --- CHOICE.} The integrand contains a power of \(x^2+1\) and the factor \(2x\), which is the derivative of \(x^2+1\). This is the reverse of the chain-rule pattern.
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The integrand contains a power of \(x^2+1\) and the factor \(2x\), which is the derivative of \(x^2+1\). This derivative match identifies the direct substitution theorem.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.}
 
 \[
@@ -2821,7 +2885,7 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 =\frac{2^4}{4}-\frac{1^4}{4}=\frac{15}{4}.
 \]
 
-\textbf{Recognition cue.} Look for an inner expression whose derivative appears as a multiplying factor. A near match may need a constant adjustment, which must be written explicitly.
+\textbf{Recognition cue.} A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
 
 \subsection{I2-002}
 
@@ -2830,9 +2894,11 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 \(h(u)=u^4\), with independent real scalar input \(u\) when defining \(h(u)\).
 Before substitution \(u=g(x)\) is dependent on \(x\). All real \(x\) are allowed.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The factor \(x\) is one half of the inner derivative.
-Keep that adjustment outside the integral.
+The compensating multiplier is retained outside the transformed integral.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: compute the inner derivative.}
 
 \[
@@ -2888,9 +2954,11 @@ is \(x(1+x^2)^4=q(x)\).
 \(h(u)=\exp(u)\), with auxiliary independent real scalar input \(u\).
 All functions used are smooth on the interval; the result is a number.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The numerator factor \(3x^2\) is exactly the derivative
 of the exponential's inner input.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: compute the derivative and new bounds.}
 
 \[
@@ -2930,9 +2998,11 @@ Its derivative is \(\exp(x^3)(3x^2)=q(x)\). Also
 Let \(g(x)=2+\sin(x)\) and \(h(u)=1/u\) for independent real scalar \(u>0\).
 The actual inner values satisfy \(1\le g(x)\le3\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The denominator's derivative appears in the numerator.
 Use a reciprocal antiderivative after the change of variable.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: differentiate the inner function.}
 
 \[
@@ -2975,9 +3045,11 @@ lower limit one and upper limit zero. The real scalar function is
 \(q(x)=2x/(1+x^2)\). Let \(g(x)=1+x^2\) and \(h(u)=1/u\) for independent real scalar
 \(u>0\). The result is a real scalar number.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The derivative factor matches the denominator's rate.
 Preserve the endpoint order when mapping to the new variable.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: compute the derivative and endpoint map.}
 
 \[
@@ -3181,8 +3253,10 @@ Find the real scalar area \(S(U;\ell)\) of this band on \(x^2+y^2-z^2=\ell^2\). 
 
 \textbf{Step 1 --- SETUP.} The input and integration variable is the real angle \(x\in[0,\pi]\), and the output integral is a real number. The function \(\sin x\) is continuous throughout this interval.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The map \(g(x)=\sin x\) is not one-to-one on the full interval. The substitution rule for an integrand \(h(g(x))\frac{d}{dx}(g(x))\) cannot be applied directly: the original integrand is \(\sin x\), not \(h(\sin x)\cos x\) for a single globally defined \(h\) here. An inverse-coordinate substitution instead needs two branches.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} On \(0\le x<\pi/2\), the inverse is \(x_1(u)=\arcsin u\), with derivative \(1/\sqrt{1-u^2}\) and limits \(u=0\) to \(u=1\). On \(\pi/2<x\le\pi\), the inverse is \(x_2(u)=\pi-\arcsin u\), with derivative \(-1/\sqrt{1-u^2}\) and limits \(u=1\) to \(u=0\). The inverse derivatives are singular at \(u=1\), so both transformed integrals are improper there:
 
 \[
@@ -3208,8 +3282,10 @@ Find the real scalar area \(S(U;\ell)\) of this band on \(x^2+y^2-z^2=\ell^2\). 
 
 \textbf{Step 1 --- SETUP.} \(x\) is a real length coordinate, \(k\) and \(L\) are fixed, and the integral is a real dimensionless scalar. The defining formula at \(x>0\) has a continuous extension \(q(0;k)=k\), including \(k=0\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The numerator's derivative does not match a substitution that turns this into an elementary sine primitive. The ratio leads to a special function instead. For \(k\ne0\), \(u=g(x;k)=kx\) is a valid invertible linear coordinate, with real scalar inverse \(x=h(u;k)=u/k\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} With \(k\) held fixed, the coordinate derivatives are \(\frac{\partial}{\partial x}\left(g(x;k)\right)=k\) and \(\frac{\partial}{\partial u}\left(h(u;k)\right)=1/k\). The transformed bounds are \(u=0\) to \(u=kL\). Thus
 
 \[
@@ -3241,8 +3317,10 @@ J(k,L)=kL-\frac{k^3L^3}{18}+E(k,L),\qquad
 
 \textbf{Step 1 --- SETUP.} The integration coordinate is real \(x\ge0\), while \(k>0\) is fixed and \(\epsilon>0\) varies. The integrand is bounded at zero after extension and is absolutely integrable at infinity when \(\epsilon>0\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Differentiation with respect to damping removes \(1/x\). Near any fixed \(\epsilon_0>0\), the absolute value of the differentiated integrand is bounded by \(\exp(-\epsilon_0x/2)\) for \(\epsilon\ge\epsilon_0/2\). This integrable bound justifies differentiation under the integral sign locally.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} With \(k\) held fixed,
 
 \[
@@ -3272,6 +3350,7 @@ F(\epsilon;k)=\frac{\pi}{2}-\arctan(\epsilon/k)=\arctan(k/\epsilon).
 \]
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 7 --- DOMAIN: the undamped limit.} Absolute domination by \(|\sin(kx)|/x\) is unavailable on the infinite interval. For any real \(A>0\), let \(f_\epsilon(x)=\exp(-\epsilon x)/x\), including \(\epsilon=0\). This positive function decreases to zero. Integration by parts against the bounded primitive \(-\cos(kx)/k\) gives, for \(B>A\),
 
 \[
@@ -3287,6 +3366,7 @@ The same uniform tail bound holds as \(B\to\infty\). On the finite interval \([0
 =\lim_{\epsilon\downarrow0}F(\epsilon;k)=\frac{\pi}{2},\qquad k>0.
 \]
 
+\end{DomainStep}
 \textbf{Step 8 --- CHECK: absolute convergence fails.} In the coordinate \(u=kx\), each interval \([n\pi+\pi/6,n\pi+5\pi/6]\) has \(|\sin u|\ge1/2\). For integers \(n\ge1\), its contribution to \(\int|\sin u|/u\,du\) is at least \(1/[3(n+1)]\). The harmonic lower bound diverges. Thus the undamped integral is conditionally convergent. Its differentiated damping integral at \(\epsilon=0\) would contain \(\int_0^\infty\sin(kx)\,dx\), whose ordinary limit does not exist. The interchange valid for positive damping is not valid at the endpoint.
 
 \textbf{Recognition cue.} Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
@@ -3295,8 +3375,10 @@ The same uniform tail bound holds as \(B\to\infty\). On the finite interval \([0
 
 \textbf{Step 1 --- SETUP.} The real coordinate \(z\) is integrated from zero to the fixed length \(L\). The mismatch \(\Delta\) is a real parameter. The amplitude is complex scalar-valued and has units of length.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} A complex exponential can be integrated componentwise with respect to the real coordinate. The case \(\Delta=0\) is separated before division by the parameter.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} For \(\Delta\ne0\), a primitive in \(z\) is \(\exp(\mathrm{i}\Delta z)/(\mathrm{i}\Delta)\), so
 
 \[
@@ -3332,8 +3414,10 @@ A(\Delta;L)=L\exp(\mathrm{i}\Delta L/2)\operatorname{sinc}_0(\Delta L/2),\qquad
 
 \textbf{Step 1 --- SETUP.} \(x\) is the integration variable; the fixed real pole location \(a\) is inside \((-1,1)\). The scalar function is continuous on each side of \(a\) but not at \(a\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The ordinary improper integral requires two separate finite limits. The antiderivative \(\ln|x-a|\) is valid on each connected side, and does not justify crossing the pole in one endpoint subtraction.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} For positive real cutoffs \(\delta_-,\delta_+\),
 
 \[
@@ -3365,8 +3449,10 @@ The ratio is positive for \(-1<a<1\).
 
 \textbf{Step 1 --- SETUP.} The source coordinate \(s\) is integrated over the fixed finite interval \([-L,L]\). The parameter \(\rho>0\) is a real distance, and \(P(\rho;L)\) is a real dimensionless scalar. The kernel is continuous for every such parameter.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The hyperbolic coordinate \(s=h(u;\rho)=\rho\sinh u\) is one-to-one for fixed \(\rho>0\). It turns \(\sqrt{\rho^2+s^2}\) into \(\rho\cosh u\); positivity prevents an absolute-value ambiguity.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} Holding \(\rho\) fixed during the substitution,
 
 \[
@@ -3407,16 +3493,20 @@ The derivative with respect to \(s\) of \(s/\sqrt{\rho^2+s^2}\) is \(\rho^2/(\rh
 
 The square brackets here delimit endpoint evaluation, not a derivative operand or an object type.
 
+\begin{DomainStep}
 \textbf{Step 6 --- CHECK AND DOMAIN.} For small positive \(\rho/L\), the potential grows like \(2\ln(2L/\rho)\) and its derivative like \(-2/\rho\). At \(\rho=0\) the original kernel is \(1/|s|\) and its integral diverges. The positive-distance justification is not uniform through the line source. For large \(\rho/L\), \(P(\rho;L)\) behaves like \(2L/\rho\), as expected from the nearly constant kernel across the short source segment.
 
+\end{DomainStep}
 \textbf{Recognition cue.} A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
 
 \subsection{I3-007}
 
 \textbf{Step 1 --- SETUP.} The integral is a real nonnegative area integral on the triangle, with the origin excluded and approached by a limit. The dimensionless map is \(x(u,v)=u\), \(y(u,v)=uv\). It is one-to-one for \(u>0\), with inverse \(u=x\), \(v=y/x\).
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The new coordinate \(u\) measures distance toward the singular vertex while \(v\) describes direction inside the triangle. The Jacobian may compensate the kernel's singularity. The edge \(u=0\) collapses to the vertex and is handled by a limit.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The real \(2\times2\) coordinate Jacobian is
 
 \[
@@ -3440,6 +3530,7 @@ K=\lim_{\delta\downarrow0}\int_\delta^1\int_0^1
 Nonnegativity ensures that this increasing truncation gives the improper area integral, independent of the way nested neighborhoods of the vertex are removed.
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 5 --- DOMAIN.} For the stronger scalar kernel \(1/(x^2+y^2)\), the transformed integral is instead
 
 \[
@@ -3449,6 +3540,7 @@ Nonnegativity ensures that this increasing truncation gives the improper area in
 
 No oscillatory or signed cancellation is available in this nonnegative example.
 
+\end{DomainStep}
 \textbf{Step 6 --- CHECK.} The transformed \(1/R\) integrand is bounded between \(1/\sqrt2\) and one on a unit square, so the answer lies between those numbers; \(\ln(1+\sqrt2)\) does. This vertex example illustrates the Duffy coordinate idea used in singular panel integration. More general CEM kernels, interior source positions, and vector testing functions require their own transformations and convergence analysis.
 
 \textbf{Recognition cue.} The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
@@ -3457,8 +3549,10 @@ No oscillatory or signed cancellation is available in this nonnegative example.
 
 \textbf{Step 1 --- SETUP.} The independent Cartesian coordinates are real. The integrand is a positive scalar and the answer has units of volume. All semiaxes are fixed and positive, so the domain is compact with no integrand singularity.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The ellipsoidal quadratic form suggests scaling to the unit ball, followed by spherical coordinates. The transformed domain and measure are changed along with the function.
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS: coordinate map.} Independent real coordinates satisfy \(0\le r\le1\), \(0\le\theta\le\pi\), \(0\le\varphi<2\pi\). Define
 
 \[
@@ -3519,8 +3613,10 @@ On the ellipsoid, \(0\le q\le1\), so the result must lie between \(4\pi abc/(3\e
 
 \textbf{Step 1 --- SETUP.} The real independent parameters are \(u,v\); \(\ell\) and \(U\) are fixed. The output is real scalar surface area with units of length squared. The band is compact for finite \(U\); the full hyperboloid is not.
 
+\begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} The area is computed from the tangent cross product rather than from a volume Jacobian or a single height graph. The calculation in D3-005 applies with \(a=c=\ell\).
 
+\end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The two tangent vectors are
 
 \[
@@ -3556,8 +3652,10 @@ S(U;\ell)=2\pi\ell^2\left(T\sqrt{1+2T^2}+\frac{\operatorname{arsinh}(\sqrt2T)}{\
 \]
 
 \endgroup
+\begin{DomainStep}
 \textbf{Step 7 --- CHECK AND DOMAIN.} Differentiation of \(B(t)\) with respect to \(t\) gives \(\sqrt{1+2t^2}\), verifying the primitive. At \(U=0\) the area is zero, and for small \(U\) it behaves as \(4\pi\ell^2U\). As \(U\to\infty\), \(T\to\infty\) and already \(T\sqrt{1+2T^2}\to\infty\), so the complete surface has infinite area. The finite-band calculation cannot supply a finite area for the unbounded surface by leaving off its limits.
 
+\end{DomainStep}
 \textbf{Recognition cue.} A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
 
 \section{Application references}
@@ -3579,11 +3677,11 @@ and approximation tools to consult while working through problems. Main calculus
 methods such as substitution, integration by parts, and differentiation rules
 belong in the main chapters.
 
-\textbf{Purple means a supporting trick.} The label TRICK remains visible in grayscale.
+\textbf{Purple identifies a supporting identity or approximation.} The label TRICK remains visible in grayscale.
 The main chapters use dark blue for algebra, black for calculus rules, and purple
 when invoking a supporting tool from this appendix.
 
-\section{Find a useful tool}
+\section{Supporting tools and applicability}
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
 Tool & When to consider it & What it gives \\[5pt]
@@ -3591,7 +3689,7 @@ Tool & When to consider it & What it gives \\[5pt]
 T-001 Euler identities & Trigonometric products or oscillations & Exact conversions between complex exponentials and real trigonometric functions \\[5pt]
 T-002 Taylor expansions & A local approximation near a known input & A polynomial plus an error term; an infinite identity only when convergence is justified \\[5pt]
 T-003 Binomial expansion & Powers of a sum & A finite exact expansion for nonnegative integer powers \\[5pt]
-T-004 Completing the square & A quadratic is hard to interpret or manipulate & An exact shifted-square form \\[5pt]
+T-004 Completing the square & A quadratic form requires translation or factorization & An exact shifted-square form \\[5pt]
 T-005 Rationalization & A difference of roots causes cancellation & An exact equivalent expression on a stated domain \\[5pt]
 T-006 Logarithm identities & Products, quotients, and powers inside a logarithm & Exact sums and differences under real positivity assumptions \\[5pt]
 \end{longtable}
@@ -3862,7 +3960,7 @@ the actual sine are zero at the expansion center. These plausibility checks
 supplement the theorem's error bound.
 
 \textbf{When it helps.} Expand around an input where function values and derivatives
-are simple. A polynomial without an error discussion is an incomplete numerical
+admit elementary evaluation. A polynomial without an error discussion is an incomplete numerical
 approximation.
 
 \section{T-003 Binomial expansion}

@@ -5,18 +5,18 @@ and approximation tools to consult while working through problems. Main calculus
 methods such as substitution, integration by parts, and differentiation rules
 belong in the main chapters.
 
-**Purple means a supporting trick.** The label TRICK remains visible in grayscale.
+**Purple identifies a supporting identity or approximation.** The label TRICK remains visible in grayscale.
 The main chapters use dark blue for algebra, black for calculus rules, and purple
 when invoking a supporting tool from this appendix.
 
-## Find a useful tool
+## Supporting tools and applicability
 
 | Tool | When to consider it | What it gives |
 |---|---|---|
 | [T-001 Euler identities](#t-001-euler-identities) | Trigonometric products or oscillations | Exact conversions between complex exponentials and real trigonometric functions |
 | [T-002 Taylor expansions](#t-002-taylor-expansions) | A local approximation near a known input | A polynomial plus an error term; an infinite identity only when convergence is justified |
 | [T-003 Binomial expansion](#t-003-binomial-expansion) | Powers of a sum | A finite exact expansion for nonnegative integer powers |
-| [T-004 Completing the square](#t-004-completing-the-square) | A quadratic is hard to interpret or manipulate | An exact shifted-square form |
+| [T-004 Completing the square](#t-004-completing-the-square) | A quadratic form requires translation or factorization | An exact shifted-square form |
 | [T-005 Rationalization](#t-005-rationalization) | A difference of roots causes cancellation | An exact equivalent expression on a stated domain |
 | [T-006 Logarithm identities](#t-006-logarithm-identities) | Products, quotients, and powers inside a logarithm | Exact sums and differences under real positivity assumptions |
 
@@ -272,7 +272,7 @@ the actual sine are zero at the expansion center. These plausibility checks
 supplement the theorem's error bound.
 
 **When it helps.** Expand around an input where function values and derivatives
-are simple. A polynomial without an error discussion is an incomplete numerical
+admit elementary evaluation. A polynomial without an error discussion is an incomplete numerical
 approximation.
 
 ## T-003 Binomial expansion

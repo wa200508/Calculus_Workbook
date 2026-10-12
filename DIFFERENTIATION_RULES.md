@@ -1,8 +1,10 @@
 # D2 · Products, quotients, and compositions
 
-Look at the whole expression before choosing a rule. A product has two changing
-factors; a quotient has a changing denominator; a composition feeds one function
-into another. The examples show how to recognize and combine these structures.
+The examples compare product, quotient, and chain-rule decompositions. Rule
+selection follows the expression's factorization and functional dependencies;
+its domain determines whether cancellations and derivative formulas remain
+valid. Intermediate algebra is retained where signs and chain-rule factors
+are susceptible to error.
 
 ## Rules to consult
 
@@ -45,7 +47,7 @@ $$
 
 Sine and cosine inputs are in radians. The exponential has every real input;
 the real logarithm requires a positive input. Powers use the rules and domains
-from [scalar differentiation foundations](DIFFERENTIATION_SCALARS.md).
+from [scalar differentiation: powers, parameters, and domains](DIFFERENTIATION_SCALARS.md).
 
 ## Problems
 
@@ -82,19 +84,19 @@ $\frac{d}{dx}\left(f(x)\right)$ and its value at $x=2$.
 scalar function $f(x)=\exp(2x^2-3)$ on all real inputs. Find
 $\frac{d}{dx}\left(f(x)\right)$ and its value at $x=0$.
 
-### D2-005 — A logarithm with a changing input
+### D2-005 — Logarithmic composition
 
 **Objects and dependencies.** $x$ is an independent real scalar. Define the real
 scalar function $f(x)=\ln(1+x^2)$ on all real inputs, since $1+x^2>0$.
 Find $\frac{d}{dx}\left(f(x)\right)$ and its value at $x=1$.
 
-### D2-006 — A root with a changing input
+### D2-006 — Square-root composition
 
 **Objects and dependencies.** $x$ is an independent real scalar. Define the real
 scalar function $f(x)=\sqrt{1+x^2}$, taking the nonnegative square root. Find
 $\frac{d}{dx}\left(f(x)\right)$ for every real $x$ and evaluate at $x=0$.
 
-### D2-007 — Three layers of dependence
+### D2-007 — Nested trigonometric composition
 
 **Objects and dependencies.** $x$ is an independent real scalar angle in radians.
 The real scalar function is $f(x)=(\sin(2x))^3$. Find
@@ -122,7 +124,7 @@ $\frac{d}{dx}\left(f(x)\right)$ for all real $x$ and evaluate at $x=\pi/4$.
 
 ### D2-004
 
-1. The exponential's input is a changing quadratic.
+1. The exponential's argument is a nonconstant quadratic function.
 2. Set $g(x)=2x^2-3$ and $h(t)=\exp(t)$.
 3. Multiply $\exp(g(x))$ by the derivative of $g(x)$.
 
@@ -156,7 +158,7 @@ $$
 
 Here $u$ is an independent scalar input when defining and differentiating $h(u)$. In the composition, set $u=g(x)$, so the inner value depends on $x$.
 
-**Step 2 — CHOICE.** A fourth power surrounds a changing inner expression. The chain rule accounts for both the outer power and the inner rate of change.
+**Step 2 — CHOICE.** The fourth power is a composition with the nonconstant inner function $g(x)$. The chain rule supplies the outer derivative evaluated at $g(x)$ and the derivative of $g(x)$.
 
 **Step 3 — CALCULUS: differentiate the outer function.** The power rule gives
 
@@ -229,7 +231,7 @@ $$
 
 Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
 
-**Recognition cue.** Find the outside operation, then identify every input it receives. The inner derivative is required even when the inner expression looks simple.
+**Recognition cue.** A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
 
 ### D2-002
 
@@ -237,7 +239,7 @@ Each term tends to zero, so the limit is zero. This checks the answer at one inp
 $f(x)=x^2\sin(x)$ is real scalar-valued. Let $u(x)=x^2$ and $v(x)=\sin(x)$;
 both are real scalar functions on all real inputs. The output derivative is scalar.
 
-**Step 2 — CHOICE.** This is a product of two changing factors. Differentiating
+**Step 2 — CHOICE.** Both factors depend on $x$; the product rule is therefore applicable. Differentiating
 both and multiplying would omit the product rule's two terms.
 
 **Step 3 — CALCULUS: differentiate each factor and apply the product rule.**
@@ -289,7 +291,7 @@ This independently verifies the requested evaluated derivative.
 $f(x)=(x^2+1)/(x-1)$ is real scalar-valued. Let $u(x)=x^2+1$ and $v(x)=x-1$.
 All coefficients are fixed. The derivative is scalar-valued on this domain.
 
-**Step 2 — CHOICE.** The denominator changes and does not cancel. Use the quotient rule.
+**Step 2 — CHOICE.** The nonconstant denominator does not cancel against the numerator. The quotient rule applies on the domain excluding its zero.
 
 **Step 3 — CALCULUS: retain the quotient rule's subtraction.**
 
@@ -347,8 +349,8 @@ $f(x)=\exp(2x^2-3)$ is real scalar-valued on all real inputs. Define
 $g(x)=2x^2-3$ and $h(t)=\exp(t)$, where $t$ is an independent real scalar
 input for the outer function. In $f(x)=h(g(x))$, its input depends on $x$.
 
-**Step 2 — CHOICE.** Differentiate the exponential at its inner input, then
-account for how that input changes.
+**Step 2 — CHOICE.** The exponential composition requires the derivative of the outer
+function evaluated at $g(x)$, multiplied by the derivative of $g(x)$.
 
 **Step 3 — CALCULUS: calculate both derivatives.**
 
@@ -419,8 +421,9 @@ logarithm rules separate products, not sums.
 are $g(x)=1+x^2$, $h(t)=t^{1/2}$ for independent real scalar $t>0$, and
 $f(x)=h(g(x))$. The inner value is at least one, so all real $x$ are allowed.
 
-**Step 2 — CHOICE.** The root is a power of a changing expression; use the
-power rule for the outer input and the chain rule for the composition.
+**Step 2 — CHOICE.** The square root is a power of the nonconstant function $g(x)$.
+The power rule applies to the outer argument, while the chain rule retains
+the derivative of $g(x)$.
 
 **Step 3 — CALCULUS: differentiate both layers.**
 
@@ -466,8 +469,9 @@ Let $g(x)=2x$, $u(x)=\sin(g(x))$, and $f(x)=(u(x))^3$; all outputs are real
 scalars. Use auxiliary independent real scalar inputs $t$ for $h(t)=\sin(t)$
 and $s$ for $p(s)=s^3$. All real $x$ are allowed.
 
-**Step 2 — CHOICE.** Track the three operations from the inside out: multiply
-by two, take a sine, and take a cube.
+**Step 2 — CHOICE.** The nested composition has three derivative factors: the linear
+argument, the sine function, and the outer cubic power. Their dependencies
+are represented separately before the factors are assembled.
 
 **Step 3 — CALCULUS: differentiate the inner composition.**
 

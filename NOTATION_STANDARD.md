@@ -52,7 +52,7 @@ established by a definition rather than by delimiters alone.
 | Object | Convention | Example declaration |
 |---|---|---|
 | Scalar | Ordinary italic | $x\in\mathbb R$: independent real scalar |
-| Scalar-valued function | Ordinary letter with displayed inputs | $z=f(x,y)\in\mathbb R$: dependent scalar output |
+| Scalar-valued function | Ordinary mathematical type with explicit arguments | $z=f(x,y)\in\mathbb R$: dependent scalar output |
 | Vector | Bold lowercase | $\mathbf r(t)\in\mathbb R^3$: column vector depending on scalar $t$ |
 | Matrix | Bold uppercase | $\mathbf A(t)\in\mathbb R^{m\times n}$: matrix depending on scalar $t$ |
 | Tensor of order three or higher | Bold calligraphic uppercase | $\boldsymbol{\mathcal T}(t)$: tensor with a specified space, order, basis, and component shape |
@@ -343,7 +343,7 @@ restored and the antiderivative relation is verified by differentiation.
 The differential identity $du=2x\,dx$ corresponds to the real scalar
 relation $u=g(x)=x^2+1$. The differential of $u$ is the derivative of
 $g(x)$ multiplied by the differential of $x$. This notation expresses a
-differential relation; cancellation of the letters $d$ and $x$ is not
+differential relation; cancellation of the symbols $d$ and $x$ is not
 its justification. Division by a derivative is valid only where that
 derivative is nonzero.
 
@@ -391,13 +391,13 @@ Their textual labels and colors distinguish the roles of those operations.
 | Label | Meaning | Appearance |
 |---|---|---|
 | SETUP | Types, dependencies, domain, and target | Ordinary text |
-| CHOICE | The reason a method applies to the given expression | Ordinary text |
+| CHOICE | The reason a method applies to the given expression | Neutral method-choice block |
 | CALCULUS | A named derivative or integral rule | Ordinary mathematical text |
 | ALGEBRA | Expansion, factoring, cancellation, or rearrangement | Dark blue with an ALGEBRA label |
 | IDENTITY | An exact identity applied to the expression | Dark blue with an IDENTITY label |
 | TRICK | A supporting identity, rewrite, or approximation from the tricks appendix | Purple with a TRICK label and an appendix reference |
 | APPROXIMATION | A replacement with stated validity conditions | Dark blue with an APPROXIMATION label |
-| DOMAIN | Excluded points, branch choices, convergence, and conditions for an operation | Ordinary text |
+| DOMAIN | Excluded points, branch choices, convergence, and conditions for an operation | Domain block with an amber margin |
 | CHECK | Verification of the result, domain, dimensions, or plausibility | Ordinary text |
 
 Color supplements the textual labels, which remain meaningful in grayscale.

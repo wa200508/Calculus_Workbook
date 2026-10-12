@@ -5,11 +5,15 @@
 \usepackage[letterpaper,inner=1.0in,outer=1.0in,top=0.9in,bottom=0.95in,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor,array,longtable,enumitem}
+\usepackage[breakable,skins]{tcolorbox}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \definecolor{AlgebraBlue}{HTML}{244A73}
 \definecolor{TrickPurple}{HTML}{6F398E}
 \definecolor{Ink}{HTML}{172D40}
+\definecolor{DomainAmber}{HTML}{8A540D}
+\newtcolorbox{DomainStep}{enhanced,breakable,colback=DomainAmber!5!white,colframe=DomainAmber,boxrule=0pt,borderline west={1.2pt}{0pt}{DomainAmber},arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=8pt,after skip=8pt}
+\newtcolorbox{ChoiceStep}{enhanced,breakable,colback=black!3!white,colframe=black!35!white,boxrule=0pt,borderline west={1pt}{0pt}{black!35!white},arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=8pt,after skip=8pt}
 \hypersetup{colorlinks=true,linkcolor=AlgebraBlue,urlcolor=AlgebraBlue,pdftitle={Calculus: A Worked Review},pdfauthor={}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt}
@@ -41,12 +45,12 @@
 {\sffamily\large Alpha development edition 0.3\par}
 \medskip
 Notation standard, forty worked problems, and supporting tools.\\
-Alpha edition 0.3.0-alpha.2, October 9, 2026.
+Alpha edition 0.3.0-alpha.3, October 11, 2026.
 \end{titlepage}
 \chapter*{About this book}
-This is a graduate-oriented review book for readers who have encountered calculus but want a dependable way to approach unfamiliar problems. Elementary examples establish a method before field, geometry, and convergence problems expose its less obvious conditions. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
+This graduate review assumes prior study of calculus. Worked examples document method selection, functional dependencies, domain analysis, and the sequence of calculations leading to a result. Elementary reference cases isolate a technique; field, geometry, and convergence problems develop its less immediate applications. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
-Worked solutions expose the choices as well as the calculations. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
+Method-choice blocks identify the structure motivating a calculation. Domain blocks identify exclusions, branches, convergence, and conditions for interchanging operations. Worked solutions retain intermediate algebra as calculation checkpoints. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
 
 This alpha development edition develops scalar calculus, field and matrix derivatives, oscillatory and singular integrals, and curved-domain geometry through worked problems. Topics and examples are listed in the table of contents. The notation recommendations incorporate a targeted literature review, documented in the references.
 

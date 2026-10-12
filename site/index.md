@@ -2,8 +2,8 @@
 layout: home
 hero:
   name: Calculus Workbook
-  text: See every step.
-  tagline: A review book for rebuilding confidence. Explicit dependencies, visible algebra, and complete worked solutions—at your pace.
+  text: Methods, calculations, and conditions.
+  tagline: A calculus review for graduates. Explicit dependencies, method selection, domain analysis, and complete worked calculations.
   actions:
     - theme: brand
       text: Read the full book
@@ -12,14 +12,14 @@ hero:
       text: Try a problem
       link: /practice
 features:
-  - title: Know what changes
+  - title: Functional dependencies
     details: Every function shows its inputs. Every operation identifies its variable. Scalars, vectors, matrices, and tensors are declared explicitly.
     link: /generated/notation
-  - title: Follow the reasoning
-    details: Calculus rules and method choices are explained. Algebra and identity steps appear in dark blue with labels you can follow in grayscale too.
+  - title: Method and domain analysis
+    details: Method choices and domain conditions are highlighted. Intermediate algebra is displayed in dark blue; supporting identities and approximations are purple.
     link: /problems/d2-001
-  - title: Ask for just enough help
-    details: Attempt the question, reveal one hint, and open the complete solution when you need it. Stable problem IDs make tutoring easier.
+  - title: Graduated problem support
+    details: Problem statements, three graduated hints, and complete solutions are presented separately. Stable identifiers support precise references to individual calculations.
     link: /practice
 ---
 
@@ -31,5 +31,5 @@ The advanced chapters cover electromagnetic kernels, waveguide cutoff, phase,
 matrix sensitivity, ellipsoids, hyperboloids, and convergence. This is an alpha development review book, provided as-is; mathematical
 correctness is not guaranteed. [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.2)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.3)
 or [read the entire current manuscript on one page](/generated/book).

@@ -1,8 +1,9 @@
 # I2 · Substitution with every dependency visible
 
-Substitution is a main integration method. Identify an inner function and its
-derivative, account for any fixed coefficient, and change both bounds in a definite
-integral. For an indefinite integral, substitute back into the original variable.
+Substitution is selected from a derivative factor in the integrand. The
+examples retain the coordinate dependence, coefficient adjustment, and
+orientation of transformed bounds. Inverse-coordinate substitutions with
+multiple branches are treated in [I3-001](INTEGRATION_DOMAINS.md).
 
 ## Rule to consult
 
@@ -68,7 +69,7 @@ $q(x)=2x/(1+x^2)$. Find the real scalar number $\int_1^0q(x)\,dx$.
 ### I2-001
 
 1. Compare the factor $2x$ with the derivative of the expression $x^2+1$.
-2. Try the new scalar coordinate $u=g(x)=x^2+1$.
+2. The derivative match suggests the scalar coordinate $u=g(x)=x^2+1$.
 3. The original endpoints $x=0$ and $x=1$ become $u=1$ and $u=2$. The transformed integrand is $u^3$.
 
 ### I2-002
@@ -107,7 +108,7 @@ $$
 
 Both $g$ and $h$ are scalar-valued functions. The new coordinate $u$ depends on $x$ until we rewrite the integral in terms of $u$. Polynomials have the continuity and differentiability needed for the substitution theorem.
 
-**Step 2 — CHOICE.** The integrand contains a power of $x^2+1$ and the factor $2x$, which is the derivative of $x^2+1$. This is the reverse of the chain-rule pattern.
+**Step 2 — CHOICE.** The integrand contains a power of $x^2+1$ and the factor $2x$, which is the derivative of $x^2+1$. This derivative match identifies the direct substitution theorem.
 
 **Step 3 — CALCULUS.**
 
@@ -205,7 +206,7 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 =\frac{2^4}{4}-\frac{1^4}{4}=\frac{15}{4}.
 $$
 
-**Recognition cue.** Look for an inner expression whose derivative appears as a multiplying factor. A near match may need a constant adjustment, which must be written explicitly.
+**Recognition cue.** A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
 
 ### I2-002
 
@@ -215,7 +216,7 @@ $h(u)=u^4$, with independent real scalar input $u$ when defining $h(u)$.
 Before substitution $u=g(x)$ is dependent on $x$. All real $x$ are allowed.
 
 **Step 2 — CHOICE.** The factor $x$ is one half of the inner derivative.
-Keep that adjustment outside the integral.
+The compensating multiplier is retained outside the transformed integral.
 
 **Step 3 — CALCULUS: compute the inner derivative.**
 

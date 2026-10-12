@@ -16,6 +16,13 @@ the error, and show the corrected reasoning. Cite primary references when needed
 Do not copy a published problem set or illustration without permission compatible
 with the content license and a recorded attribution.
 
+The audience is assumed to have studied calculus. Mathematical terminology is
+used precisely: independent variables, dependent quantities, fixed parameters,
+coefficients, connected components, and coordinate branches. Introductions
+identify method-selection issues rather than reintroduce elementary concepts.
+Algebra remains explicit as a calculation checkpoint. CHOICE and DOMAIN steps
+state the structure and hypotheses relevant to the actual problem.
+
 ## Development
 
 Use Node.js 22 or later, Python 3.10 or later, and pnpm 10.11.0. Run `pnpm install

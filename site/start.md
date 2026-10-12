@@ -1,56 +1,50 @@
-# How to use this book
+# Structure of the worked review
 
-You may remember the concepts from a class and still feel uncertain when a problem
-looks unfamiliar. This book makes the choices and intermediate calculations visible
-so you can practice making those choices yourself.
+This book assumes prior study of calculus. Its purpose is to document the path
+from an unfamiliar expression to an appropriate method, a valid calculation,
+and a result with its domain of applicability stated.
 
-## A first reading session
+Problem statements, graduated hints, and complete solutions are presented
+separately. Stable problem identifiers and numbered solution steps provide
+references for independent work and discussion. The table of contents and
+[problem collection](/practice) provide access by topic and problem identifier.
 
-1. Read [the notation standard](/generated/notation), especially types, dependencies,
-   and which inputs stay fixed.
-2. Read [D1: scalar differentiation foundations](/generated/scalar-derivatives)
-   and try [D1-001](/problems/d1-001) through [D1-003](/problems/d1-003).
-3. Attempt the remaining D1 problems to practice domain checks, limits, and method selection.
-4. Try [D2-001: the chain rule](/problems/d2-001), then
-   [I2-001: substitution](/problems/i2-001) to see how integration reverses the pattern.
-5. Use the table of contents to find more examples on the topic you are practicing.
+## Functions of the solution steps
 
-## What the step labels mean
-
-| Label | What to look for |
+| Label | Role in the calculation |
 |---|---|
-| SETUP | Objects, types, dependencies, domains, and the target |
-| CHOICE | Why this method fits the problem |
-| CALCULUS | A named derivative or integral rule |
-| ALGEBRA | Multiplication, expansion, rearrangement, or cancellation |
-| IDENTITY | An exact trigonometric or other identity |
-| TRICK | A purple supporting tool from the tricks appendix |
-| APPROXIMATION | A replacement that needs conditions and an error discussion |
-| DOMAIN | Excluded points, branch choices, convergence, and conditions for an operation |
-| CHECK | A way to test the result |
+| SETUP | Object types, functional dependencies, fixed parameters, and the target |
+| CHOICE | Structural reasons for selecting a method or reformulation |
+| CALCULUS | Application of a derivative, integral, or limit theorem |
+| ALGEBRA | Intermediate expansions, coefficient reductions, and cancellations |
+| IDENTITY | Application of an exact identity with its assumptions stated |
+| TRICK | A supporting identity or approximation from the purple appendix |
+| APPROXIMATION | A replacement with its validity conditions and error estimate |
+| DOMAIN | Exclusions, inverse branches, convergence, and interchange conditions |
+| CHECK | Independent verification or a stated plausibility test |
 
-Algebra steps use dark blue text and a margin rule. Text labels remain visible in
-grayscale. Large equations can scroll horizontally on narrow screens.
-Supporting tools are purple and labeled TRICK. The [tricks appendix](/generated/tricks)
-includes Euler identities, Taylor expansions with error bounds, and useful algebraic
-rewrites. Substitution and integration by parts remain main calculus methods.
+Algebra is displayed in dark blue; the intermediate expressions prevent a lost
+sign, factor, or restriction from obscuring the main argument. Method-choice
+blocks have a neutral background. Domain blocks have an amber margin. Supporting
+identities and approximations from the [tricks appendix](/generated/tricks) are
+purple. The labels preserve these distinctions in grayscale.
 
-## Getting help from a tutor
+Rule sheets provide local reference formulas and hypotheses. They are not a
+replacement for the assumed prior course. The worked examples emphasize why a
+rule applies to the particular problem, which representation makes the
+calculation tractable, and where a proposed operation would fail.
 
-Give your tutor the problem ID, the question, and the last step you understand.
-Ask it to use this notation and help one step at a time. For example:
+## References and discussion
 
-> Help me with I2-001, Step 6. I understand the new bounds but not what happened to
-> the factor 2x. Show the function arguments and integration variable, and give me
-> one manageable next step.
-
-The full question and solution can be copied from [the downloadable Markdown](/downloads).
+The [notation chapter](/generated/notation) describes the conventions for object
+types, arguments, and operators. A problem identifier and solution-step number
+locate a calculation precisely for discussion with a tutor. The questions and
+solutions are also available in [downloadable Markdown](/downloads).
 
 ## Reading and printing
 
-Use the navigation to browse or the search button to find a problem ID, method,
-or notation. The site includes light and dark themes. Open the solution before
-printing a practice page if you want the solution included; use the complete
-[complete book](/generated/book) for an uninterrupted printable version.
-
-Consult the [accuracy notice](/about#accuracy) when using this alpha edition.
+The site provides local search, light and dark themes, and horizontally scrollable
+large equations. The [complete book](/generated/book) presents an uninterrupted
+reading edition; the [PDF release](/downloads) provides a fixed typeset edition.
+Practice-page solutions remain collapsed until opened, including for printing.
+The [accuracy notice](/about#accuracy) describes the status of this alpha edition.

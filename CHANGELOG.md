@@ -1,5 +1,11 @@
 # Development log
 
+## 0.3.0-alpha.3
+
+- Revise introductions, problem titles, and method-choice commentary for graduate review.
+- Replace informal terminology with fixed parameters, functional dependencies, and domain restrictions.
+- Highlight method selection and domain analysis in the site and PDF, retaining explicit algebra and stable problem IDs.
+
 ## 0.3.0-alpha.2
 
 - Replace coordinate-derivative shorthand with explicit operators and function inputs.
