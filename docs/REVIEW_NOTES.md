@@ -43,6 +43,8 @@ references. All 141 independent finite-difference, quadrature, and geometric spo
 checks pass. These numerical checks cover selected nonsingular inputs; they do
 not replace the domain and convergence arguments in the manuscript.
 
-Production site and PDF layout results are recorded in PROJECT_STATUS.md after
-publication. The PDF requires visual inspection of the introduction, the first
-worked problem, continuation headers, hints, and the longer revised calculations.
+Production site and PDF layout results are recorded in PROJECT_STATUS.md. The
+published 130-page alpha.4 PDF was inspected for statement/solution pairing,
+continuation headers, resolved hint references, and equation margins. Visual
+inspection included the introduction, the first worked problem, hints, and the
+longer revised calculations.

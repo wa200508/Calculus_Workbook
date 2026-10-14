@@ -223,7 +223,7 @@ def worked_chapter_to_tex(text):
             r'\section{' + tex_inline(identifier + ' — ' + title) + '}',
             r'\label{problem:' + identifier + '}',
             r'\markright{' + identifier + '}',
-            r'{\small Hints: page~\pageref{hints:' + identifier + '}.}\par\medskip',
+            r'{\small Hints: page~\pageref{hints:' + identifier + r'}.}\par\medskip',
             markdown_to_tex('# Statement\n\n' + prompt),
             r'\subsection*{Worked solution}',
             markdown_to_tex('# Solution\n\n' + groups['Complete solutions'][identifier][1]),
