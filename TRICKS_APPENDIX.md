@@ -59,7 +59,7 @@ These formulas are recorded in [NIST DLMF §4.2](https://dlmf.nist.gov/4.2).
 **Step 1 — SETUP.** The same real scalar $\theta$ supplies every angle below.
 All expressions containing $\mathrm i$ are complex scalars.
 
-**Step 2 — TRICK: use the exponential addition identity.** The complex
+**Step 2 — TRICK: the exponential addition identity.** The complex
 exponential satisfies $\exp(z+w)=\exp(z)\exp(w)$ for complex scalar inputs $z,w$.
 With $z=w=\mathrm i\theta$,
 
@@ -69,7 +69,7 @@ $$
 =\left(\cos(\theta)+\mathrm i\sin(\theta)\right)^2.
 $$
 
-**Step 3 — ALGEBRA: expand and use the imaginary unit's square.**
+**Step 3 — ALGEBRA: expansion with the imaginary unit.**
 
 $$
 \begin{aligned}
@@ -82,7 +82,7 @@ $$
 \end{aligned}
 $$
 
-**Step 4 — TRICK: compare the real and imaginary parts.** Euler's formula also
+**Step 4 — TRICK: comparison of real and imaginary parts.** Euler's formula also
 gives $\exp(2\mathrm i\theta)=\cos(2\theta)+\mathrm i\sin(2\theta)$.
 Equal complex numbers have equal real parts and equal imaginary parts:
 
@@ -214,7 +214,7 @@ are useful even when the full infinite series is not needed.
 angle $x$ in radians. The expansion has center $a=0$ and order $N=4$. The target input is
 $x=1/10$ radians. There are no varying parameters.
 
-**Step 2 — CALCULUS: list the derivatives used by the tool.**
+**Step 2 — CALCULUS: the required derivatives.**
 
 $$
 \begin{aligned}
@@ -231,7 +231,7 @@ At $t=0$, the value and first four derivatives are respectively $0,1,0,-1,0$.
 The derivative formulas are listed in the methods reference; here their values
 at zero supply the expansion coefficients.
 
-**Step 3 — ALGEBRA: build the polynomial and remove zero terms.**
+**Step 3 — ALGEBRA: the Taylor polynomial.**
 
 $$
 \begin{aligned}
@@ -246,7 +246,7 @@ $$
 Although this polynomial's highest nonzero power is three, it is also the
 fourth-order Taylor polynomial because its fourth-order coefficient is zero.
 
-**Step 4 — APPROXIMATION: retain the fifth-derivative error bound.** Since
+**Step 4 — APPROXIMATION: the fifth-derivative remainder bound.** Since
 $|\cos(t)|\leq1$ for real $t$, the fixed scalar bound $M=1$ is valid:
 
 $$
@@ -254,7 +254,7 @@ $$
 \qquad |R_4(x;0)|\leq\frac{|x|^5}{5!}.
 $$
 
-**Step 5 — ALGEBRA: evaluate the polynomial exactly.**
+**Step 5 — ALGEBRA: exact evaluation of the polynomial.**
 
 $$
 \begin{aligned}
@@ -266,7 +266,7 @@ P_4(1/10;0)
 \end{aligned}
 $$
 
-**Step 6 — APPROXIMATION: report the result with its bound.**
+**Step 6 — APPROXIMATION: the approximation and its error bound.**
 
 $$
 \sin(1/10)\approx\frac{599}{6000},
@@ -313,7 +313,7 @@ requires a different, generally infinite expansion with convergence conditions.
 **Step 1 — SETUP.** $x$ is an independent real scalar. $h$ is a real scalar
 increment. The choices $r=x$, $s=h$, and $n=3$ give the cubic expansion.
 
-**Step 2 — ALGEBRA: calculate the coefficients.**
+**Step 2 — ALGEBRA: the binomial coefficients.**
 
 $$
 \begin{aligned}
@@ -324,7 +324,7 @@ $$
 \end{aligned}
 $$
 
-**Step 3 — TRICK: write every term.**
+**Step 3 — TRICK: the full expansion.**
 
 $$
 \begin{aligned}
@@ -358,20 +358,20 @@ $$
 **Step 1 — SETUP.** The real scalar function is $q(x)=2x^2-8x+11$ for all
 real $x$. The coefficients $2,-8,11$ are fixed.
 
-**Step 2 — ALGEBRA: factor the quadratic coefficient.**
+**Step 2 — ALGEBRA: the quadratic coefficient.**
 
 $$
 q(x)=2(x^2-4x)+11.
 $$
 
-**Step 3 — TRICK: add and subtract the missing square.** Since
+**Step 3 — TRICK: completion of the square.** Since
 $(x-2)^2=x^2-4x+4$,
 
 $$
 x^2-4x=(x-2)^2-4.
 $$
 
-**Step 4 — ALGEBRA: substitute and simplify.**
+**Step 4 — ALGEBRA: substitution and simplification.**
 
 $$
 \begin{aligned}
@@ -381,7 +381,7 @@ q(x)&=2\left((x-2)^2-4\right)+11\\
 \end{aligned}
 $$
 
-**Step 5 — CHECK: expand back.**
+**Step 5 — CHECK: expansion of the result.**
 
 $$
 2(x-2)^2+3=2(x^2-4x+4)+3
@@ -419,14 +419,14 @@ $$
 The square root is the nonnegative real root. On this domain,
 $\sqrt{1+x}+1>0$, so the conjugate multiplier is not zero.
 
-**Step 2 — TRICK: multiply by one in a useful form.**
+**Step 2 — TRICK: the conjugate multiplier.**
 
 $$
 f(x)=\frac{\sqrt{1+x}-1}{x}
 \frac{\sqrt{1+x}+1}{\sqrt{1+x}+1}.
 $$
 
-**Step 3 — ALGEBRA: multiply the numerators and cancel on the allowed domain.**
+**Step 3 — ALGEBRA: cancellation on the stated domain.**
 
 $$
 \begin{aligned}
@@ -476,13 +476,13 @@ $$
 On this domain, $x^2+1>0$ and $x^2>0$, so both logarithms introduced below
 have positive arguments.
 
-**Step 2 — TRICK: separate the quotient.**
+**Step 2 — TRICK: the logarithm of a quotient.**
 
 $$
 q(x)=\ln\left((x^2+1)^3\right)-\ln(x^2).
 $$
 
-**Step 3 — TRICK: move the fixed powers outside.**
+**Step 3 — TRICK: the logarithm power identity.**
 
 $$
 q(x)=3\ln(x^2+1)-2\ln(x),\qquad x>0.

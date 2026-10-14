@@ -88,14 +88,14 @@ and has a fixed real scalar constant $C$ independent of $x$.
 Linearity reduces the calculation to power antiderivatives, with their
 coefficients retained until the algebraic simplification.
 
-**Step 3 — CALCULUS: keep each exponent and denominator visible.**
+**Step 3 — CALCULUS: the unsimplified primitives.**
 
 $$
 \int q(x)\,dx
 =6\frac{x^{2+1}}{2+1}-4\frac{x^{1+1}}{1+1}+5x+C.
 $$
 
-**Step 4 — ALGEBRA: simplify coefficients.**
+**Step 4 — ALGEBRA: the coefficients.**
 
 $$
 2+1=3,\qquad 1+1=2,\qquad \frac63=2,\qquad \frac42=2,
@@ -105,7 +105,7 @@ $$
 \int q(x)\,dx=2x^3-2x^2+5x+C.
 $$
 
-**Step 5 — CHECK: differentiate the full family.**
+**Step 5 — CHECK: derivative of the full family.**
 
 $$
 \frac{d}{dx}\left(2x^3-2x^2+5x+C\right)
@@ -137,7 +137,7 @@ $$
 Equivalently, the antiderivative is $3\ln(|x|)$ plus a constant on each interval.
 There is no requirement that $C_+=C_-$: the original domain is disconnected.
 
-**Step 4 — CHECK: differentiate on both intervals.** For $x>0$,
+**Step 4 — CHECK: derivatives on the two intervals.** For $x>0$,
 
 $$
 \frac{d}{dx}\left(3\ln(x)+C_+\right)=3\frac1x+0=\frac3x.
@@ -150,7 +150,7 @@ $$
 =3\frac1{-x}(-1)+0.
 $$
 
-**Step 5 — ALGEBRA: simplify the negative-input check.**
+**Step 5 — ALGEBRA: the negative-input case.**
 
 $$
 3\frac{-1}{-x}=3\frac1x=\frac3x=q(x).
@@ -167,7 +167,7 @@ to real scalar $x$ from $-1$ to $2$. The endpoints are fixed and the output is a
 fundamental theorem of calculus. Separate endpoint evaluation preserves the
 sign of the lower-endpoint contribution.
 
-**Step 3 — CALCULUS: find one antiderivative.** One antiderivative is the real scalar function
+**Step 3 — CALCULUS: one antiderivative.** One antiderivative is the real scalar function
 
 $$
 F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.
@@ -175,7 +175,7 @@ $$
 
 The arbitrary constant can be set to zero because it cancels in the endpoint subtraction.
 
-**Step 4 — ALGEBRA: calculate the endpoints separately.**
+**Step 4 — ALGEBRA: the two endpoint values.**
 
 $$
 F(2)=2^2+3(2)=4+6=10,
@@ -185,13 +185,13 @@ $$
 F(-1)=(-1)^2+3(-1)=1-3=-2.
 $$
 
-**Step 5 — CALCULUS: subtract the lower value.**
+**Step 5 — CALCULUS: endpoint subtraction.**
 
 $$
 \int_{-1}^{2}q(x)\,dx=F(2)-F(-1)=10-(-2).
 $$
 
-**Step 6 — ALGEBRA: remove the double negative.** $10-(-2)=10+2=12$.
+**Step 6 — ALGEBRA: the resulting sign.** $10-(-2)=10+2=12$.
 
 **Step 7 — CHECK.** $\frac{d}{dx}\left(F(x)\right)=2x+3=q(x)$.
 Also the straight-line graph has endpoint heights $q(-1)=1$ and $q(2)=7$.
@@ -207,17 +207,17 @@ real scalar coefficient to determine and let $C$ be independent of $x$.
 dependence as the integrand. Coefficient matching compensates for the
 chain-rule factor from $g(x)=3x$.
 
-**Step 3 — CALCULUS: differentiate the candidate.**
+**Step 3 — CALCULUS: derivative of the candidate.**
 
 $$
 \frac{d}{dx}\left(F(x)\right)=A\exp(3x)\frac{d}{dx}\left(3x\right)
 =A\exp(3x)(3).
 $$
 
-**Step 4 — ALGEBRA: match coefficients.** To make this equal to $q(x)$,
+**Step 4 — ALGEBRA: coefficient comparison.** To make this equal to $q(x)$,
 solve $3A=1$, giving $A=1/3$ because three is nonzero.
 
-**Step 5 — CALCULUS: state the family.**
+**Step 5 — CALCULUS: the family of primitives.**
 
 $$
 \int q(x)\,dx=\frac13\exp(3x)+C.
@@ -243,20 +243,20 @@ scalar independent of $x$. All real inputs are allowed.
 The sign from differentiation of cosine determines the coefficient of the
 cosine term in the antiderivative.
 
-**Step 3 — CALCULUS: integrate each term.**
+**Step 3 — CALCULUS: termwise integration.**
 
 $$
 \int q(x)\,dx=2\sin(x)+3\cos(x)+C.
 $$
 
-**Step 4 — CHECK: differentiate before simplifying signs.**
+**Step 4 — CHECK: the unsimplified derivative.**
 
 $$
 \frac{d}{dx}\left(2\sin(x)+3\cos(x)+C\right)
 =2\cos(x)+3(-\sin(x))+0.
 $$
 
-**Step 5 — ALGEBRA: simplify the sign.**
+**Step 5 — ALGEBRA: the resulting sign.**
 
 $$
 2\cos(x)+3(-\sin(x))+0=2\cos(x)-3\sin(x)=q(x).
@@ -275,7 +275,7 @@ real scalar number outputs.
 The absolute-value integrand instead requires a piecewise representation,
 with the interval partitioned at its sign change.
 
-**Step 3 — CALCULUS: evaluate the signed integral.**
+**Step 3 — CALCULUS: the signed integral.**
 
 $$
 \int_{-1}^{1}q(x)\,dx
@@ -283,13 +283,13 @@ $$
 =\frac{1^2}{2}-\frac{(-1)^2}{2}.
 $$
 
-**Step 4 — ALGEBRA: show the cancellation.**
+**Step 4 — ALGEBRA: cancellation.**
 
 $$
 \frac{1^2}{2}-\frac{(-1)^2}{2}=\frac12-\frac12=0.
 $$
 
-**Step 5 — CALCULUS: split the nonnegative integral.**
+**Step 5 — CALCULUS: partition of the nonnegative integral.**
 
 $$
 \begin{aligned}
@@ -300,7 +300,7 @@ $$
 \end{aligned}
 $$
 
-**Step 6 — ALGEBRA: subtract each lower endpoint.**
+**Step 6 — ALGEBRA: endpoint subtraction on each interval.**
 
 $$
 \left(-\frac{0^2}{2}-\left(-\frac{(-1)^2}{2}\right)\right)

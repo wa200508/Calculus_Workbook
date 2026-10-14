@@ -111,7 +111,7 @@ Here $u$ is an independent scalar input when defining and differentiating $h(u)$
 
 **Step 2 — CHOICE.** The fourth power is a composition with the nonconstant inner function $g(x)$. The chain rule supplies the outer derivative evaluated at $g(x)$ and the derivative of $g(x)$.
 
-**Step 3 — CALCULUS: differentiate the outer function.** The power rule gives
+**Step 3 — CALCULUS: the outer derivative.** The power rule gives
 
 $$
 \frac{d}{du}\left(h(u)\right)
@@ -119,7 +119,7 @@ $$
 =4u^3.
 $$
 
-**Step 4 — CALCULUS: differentiate the inner function.** Linearity and the power rule give the inner derivative:
+**Step 4 — CALCULUS: the inner derivative.** Linearity and the power rule give the inner derivative:
 
 $$
 \begin{aligned}
@@ -136,7 +136,7 @@ $$
 3(2x)+0=(3\cdot2)x+0=6x+0=6x.
 $$
 
-**Step 6 — CALCULUS: assemble the chain rule.**
+**Step 6 — CALCULUS: the complete chain-rule expression.**
 
 $$
 \begin{aligned}
@@ -193,7 +193,7 @@ both are real scalar functions on all real inputs. The output derivative is scal
 **Step 2 — CHOICE.** Both factors depend on $x$; the product rule is therefore applicable. Differentiating
 both and multiplying would omit the product rule's two terms.
 
-**Step 3 — CALCULUS: differentiate each factor and apply the product rule.**
+**Step 3 — CALCULUS: the product derivative.**
 
 $$
 \frac{d}{dx}\left(u(x)\right)=2x,\qquad
@@ -205,7 +205,7 @@ $$
 =(2x)\sin(x)+x^2\cos(x).
 $$
 
-**Step 4 — ALGEBRA: evaluate after differentiating.** Since $\sin(\pi)=0$ and
+**Step 4 — ALGEBRA: evaluation of the derivative.** Since $\sin(\pi)=0$ and
 $\cos(\pi)=-1$,
 
 $$
@@ -213,7 +213,7 @@ $$
 =(2\pi)(0)+\pi^2(-1)=0-\pi^2=-\pi^2.
 $$
 
-**Step 5 — TRICK: use an angle-addition identity.** For real scalar angles
+**Step 5 — TRICK: an angle-addition identity.** For real scalar angles
 $a,b$ in radians,
 
 $$
@@ -244,7 +244,7 @@ All coefficients are fixed. The derivative is scalar-valued on this domain.
 
 **Step 2 — CHOICE.** The nonconstant denominator does not cancel against the numerator. The quotient rule applies on the domain excluding its zero.
 
-**Step 3 — CALCULUS: retain the quotient rule's subtraction.**
+**Step 3 — CALCULUS: the quotient-rule numerator.**
 
 $$
 \frac{d}{dx}\left(u(x)\right)=2x,\qquad
@@ -256,7 +256,7 @@ $$
 =\frac{(2x)(x-1)-(x^2+1)(1)}{(x-1)^2}.
 $$
 
-**Step 4 — ALGEBRA: expand the numerator.**
+**Step 4 — ALGEBRA: expansion of the numerator.**
 
 $$
 (2x)(x-1)-(x^2+1)(1)
@@ -276,7 +276,7 @@ $$
 \frac{4-4-1}{1^2}=\frac{-1}{1}=-1.
 $$
 
-**Step 5 — CHECK: differentiate an equivalent rewrite.** Since
+**Step 5 — CHECK: derivative of an equivalent expression.** Since
 $(x-1)(x+1)+2=x^2-1+2=x^2+1$,
 
 $$
@@ -303,20 +303,20 @@ input for the outer function. In $f(x)=h(g(x))$, its input depends on $x$.
 **Step 2 — CHOICE.** The exponential composition requires the derivative of the outer
 function evaluated at $g(x)$, multiplied by the derivative of $g(x)$.
 
-**Step 3 — CALCULUS: calculate both derivatives.**
+**Step 3 — CALCULUS: the two factor derivatives.**
 
 $$
 \frac{d}{dt}\left(h(t)\right)=\exp(t),\qquad
 \frac{d}{dx}\left(g(x)\right)=2(2x)-0.
 $$
 
-**Step 4 — ALGEBRA: simplify the inner derivative.**
+**Step 4 — ALGEBRA: simplification of the inner derivative.**
 
 $$
 2(2x)-0=(2\cdot2)x=4x.
 $$
 
-**Step 5 — CALCULUS: apply the chain rule.**
+**Step 5 — CALCULUS: the chain rule.**
 
 $$
 \frac{d}{dx}\left(f(x)\right)
@@ -324,7 +324,7 @@ $$
 =\exp(2x^2-3)(4x).
 $$
 
-**Step 6 — ALGEBRA: evaluate.** At $x=0$, $2(0)^2-3=-3$ and $4(0)=0$;
+**Step 6 — ALGEBRA: evaluation.** At $x=0$, $2(0)^2-3=-3$ and $4(0)=0$;
 the value is $\exp(-3)(0)=0$.
 
 **Step 7 — CHECK.** $f(-x)=\exp(2(-x)^2-3)=f(x)$, so the differentiable graph
@@ -341,7 +341,7 @@ for independent real scalar $t>0$. Since $g(x)\ge1$, every real $x$ is allowed.
 **Step 2 — CHOICE.** The logarithm rule is applied to $t$, then evaluated at
 $t=g(x)$. Its input has a separate derivative.
 
-**Step 3 — CALCULUS: differentiate both layers.**
+**Step 3 — CALCULUS: the two dependent layers.**
 
 $$
 \frac{d}{dt}\left(h(t)\right)=\frac1t,\qquad
@@ -353,7 +353,7 @@ $$
 =\left.\frac1t\right|_{t=1+x^2}(2x)=\frac{1}{1+x^2}(2x).
 $$
 
-**Step 4 — ALGEBRA: simplify and evaluate.**
+**Step 4 — ALGEBRA: simplification and evaluation.**
 
 $$
 \frac{1}{1+x^2}(2x)=\frac{2x}{1+x^2},\qquad
@@ -376,27 +376,27 @@ $f(x)=h(g(x))$. The inner value is at least one, so all real $x$ are allowed.
 The power rule applies to the outer argument, while the chain rule retains
 the derivative of $g(x)$.
 
-**Step 3 — CALCULUS: differentiate both layers.**
+**Step 3 — CALCULUS: the two dependent layers.**
 
 $$
 \frac{d}{dt}\left(h(t)\right)=\frac12t^{1/2-1},\qquad
 \frac{d}{dx}\left(g(x)\right)=2x.
 $$
 
-**Step 4 — ALGEBRA: subtract the exponents.**
+**Step 4 — ALGEBRA: subtraction of exponents.**
 
 $$
 \frac12-1=\frac12-\frac22=-\frac12,
 \qquad t^{-1/2}=\frac1{\sqrt t},\quad t>0.
 $$
 
-**Step 5 — CALCULUS: assemble the chain rule.**
+**Step 5 — CALCULUS: the complete chain-rule expression.**
 
 $$
 \frac{d}{dx}\left(f(x)\right)=\frac1{2\sqrt{1+x^2}}(2x).
 $$
 
-**Step 6 — ALGEBRA: simplify and evaluate.**
+**Step 6 — ALGEBRA: simplification and evaluation.**
 
 $$
 \frac{2x}{2\sqrt{1+x^2}}=\frac{x}{\sqrt{1+x^2}},\qquad
@@ -404,7 +404,7 @@ $$
 =\frac0{\sqrt{1+0}}=\frac01=0.
 $$
 
-**Step 7 — CHECK: differentiate a defining relation.** Since $(f(x))^2=1+x^2$,
+**Step 7 — CHECK: derivative of the defining relation.** Since $(f(x))^2=1+x^2$,
 the chain rule implies
 
 $$
@@ -424,7 +424,7 @@ and $s$ for $p(s)=s^3$. All real $x$ are allowed.
 argument, the sine function, and the outer cubic power. Their dependencies
 are represented separately before the factors are assembled.
 
-**Step 3 — CALCULUS: differentiate the inner composition.**
+**Step 3 — CALCULUS: derivative of the inner composition.**
 
 $$
 \frac{d}{dx}\left(g(x)\right)=2,\qquad
@@ -436,7 +436,7 @@ $$
 =\left.\cos(t)\right|_{t=2x}(2)=2\cos(2x).
 $$
 
-**Step 4 — CALCULUS: differentiate the outer cube.**
+**Step 4 — CALCULUS: derivative of the outer cube.**
 
 $$
 \frac{d}{ds}\left(p(s)\right)=3s^2,
@@ -447,7 +447,7 @@ $$
 =\left.3s^2\right|_{s=\sin(2x)}\left(2\cos(2x)\right).
 $$
 
-**Step 5 — ALGEBRA: multiply constants and evaluate.**
+**Step 5 — ALGEBRA: constant factors and evaluation.**
 
 $$
 3(\sin(2x))^2(2\cos(2x))
@@ -458,7 +458,7 @@ $$
 At $x=\pi/4$, $2x=2(\pi/4)=\pi/2$, $\sin(\pi/2)=1$, and
 $\cos(\pi/2)=0$. The derivative's value is $6(1)^2(0)=0$.
 
-**Step 6 — TRICK: use the angle-addition identity.** For real scalar angles
+**Step 6 — TRICK: the angle-addition identity.** For real scalar angles
 $a,b$ in radians, $\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b)$.
 At $a=\pi/2$ and $b=2h$, for real scalar increment $h$,
 

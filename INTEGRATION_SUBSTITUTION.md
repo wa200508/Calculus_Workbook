@@ -95,14 +95,14 @@ $$
 
 The last removal of $+0$ is an **ALGEBRA** simplification.
 
-**Step 4 — ALGEBRA: match the integrand.** Since the factors are scalars,
+**Step 4 — ALGEBRA: the required derivative factor.** Since the factors are scalars,
 
 $$
 2x(x^2+1)^3=(x^2+1)^3(2x)
 =h(g(x))\frac{d}{dx}\left(g(x)\right).
 $$
 
-**Step 5 — ALGEBRA: transform both bounds.**
+**Step 5 — ALGEBRA: the transformed bounds.**
 
 $$
 \begin{aligned}
@@ -111,7 +111,7 @@ x=1&\quad\Longrightarrow\quad u=g(1)=1^2+1=1+1=2.
 \end{aligned}
 $$
 
-**Step 6 — CALCULUS: apply the substitution theorem.**
+**Step 6 — CALCULUS: the substitution theorem.**
 
 $$
 \begin{aligned}
@@ -125,7 +125,7 @@ $$
 
 The whole integral changes coordinates, including the integration variable and both bounds. The derivative factor is accounted for by the theorem.
 
-**Step 7 — CALCULUS: find an antiderivative.** The power rule for integration is
+**Step 7 — CALCULUS: an antiderivative.** The power rule for integration is
 
 $$
 \int u^p\,du=\frac{u^{p+1}}{p+1}+C,\qquad p\ne-1,
@@ -139,7 +139,7 @@ $$
 
 The exponent and denominator simplifications are **ALGEBRA**. A definite integral needs one antiderivative; any added constant cancels in the endpoint difference.
 
-**Step 8 — CALCULUS: evaluate at the endpoints.**
+**Step 8 — CALCULUS: endpoint evaluation.**
 
 $$
 \int_{1}^{2} u^3\,du=H(2)-H(1)=\frac{2^4}{4}-\frac{1^4}{4}.
@@ -164,7 +164,7 @@ $$
 \boxed{\int_{0}^{1} 2x(x^2+1)^3\,dx=\frac{15}{4}.}
 $$
 
-**Step 10 — CHECK: differentiate the original-variable antiderivative.** The candidate antiderivative is the scalar function $Q(x)=(x^2+1)^4/4$. The constant-multiple and chain rules give
+**Step 10 — CHECK: derivative in the original variable.** The candidate antiderivative is the scalar function $Q(x)=(x^2+1)^4/4$. The constant-multiple and chain rules give
 
 $$
 \frac{d}{dx}\left(Q(x)\right)
@@ -190,13 +190,13 @@ Before substitution $u=g(x)$ is dependent on $x$. All real $x$ are allowed.
 **Step 2 — CHOICE.** The factor $x$ is one half of the inner derivative.
 The compensating multiplier is retained outside the transformed integral.
 
-**Step 3 — CALCULUS: compute the inner derivative.**
+**Step 3 — CALCULUS: the inner derivative.**
 
 $$
 \frac{d}{dx}\left(g(x)\right)=\frac{d}{dx}\left(1+x^2\right)=0+2x=2x.
 $$
 
-**Step 4 — ALGEBRA: match every factor.**
+**Step 4 — ALGEBRA: the transformed factors.**
 
 $$
 x(1+x^2)^4=\frac12(2x)(1+x^2)^4
@@ -205,14 +205,14 @@ $$
 
 No division by $x$ was used; the identity holds at $x=0$ too.
 
-**Step 5 — CALCULUS: change variable and integrate.**
+**Step 5 — CALCULUS: integration in the new variable.**
 
 $$
 \int q(x)\,dx=\frac12\int u^4\,du
 =\frac12\frac{u^{4+1}}{4+1}+C.
 $$
 
-**Step 6 — ALGEBRA: simplify and substitute back.**
+**Step 6 — ALGEBRA: return to the original variable.**
 
 $$
 4+1=5,\qquad \frac12\frac{u^5}{5}=\frac{u^5}{2\cdot5}=\frac{u^5}{10},
@@ -244,14 +244,14 @@ All functions used are smooth on the interval; the result is a number.
 **Step 2 — CHOICE.** The numerator factor $3x^2$ is exactly the derivative
 of the exponential's inner input.
 
-**Step 3 — CALCULUS: compute the derivative and new bounds.**
+**Step 3 — CALCULUS: the coordinate derivative and bounds.**
 
 $$
 \frac{d}{dx}\left(g(x)\right)=3x^2,\qquad
 u=g(0)=0^3=0,\qquad u=g(1)=1^3=1.
 $$
 
-**Step 4 — CALCULUS: transform the whole integral.**
+**Step 4 — CALCULUS: the transformed integral.**
 
 $$
 \int_0^1q(x)\,dx
@@ -261,13 +261,13 @@ $$
 
 The numerical bounds happen to agree, but the variable and its meaning changed.
 
-**Step 5 — CALCULUS: evaluate the antiderivative.**
+**Step 5 — CALCULUS: evaluation of the primitive.**
 
 $$
 \int_0^1\exp(u)\,du=\exp(1)-\exp(0).
 $$
 
-**Step 6 — ALGEBRA: simplify the constant value.** Since $\exp(0)=1$, the
+**Step 6 — ALGEBRA: the constant value.** Since $\exp(0)=1$, the
 answer is $\exp(1)-1$. The notation $e=\exp(1)$ denotes a fixed real constant.
 
 **Step 7 — CHECK.** The proposed antiderivative is the real scalar function $F(x)=\exp(x^3)$.
@@ -284,13 +284,13 @@ The actual inner values satisfy $1\le g(x)\le3$.
 **Step 2 — CHOICE.** The denominator's derivative appears in the numerator.
 Use a reciprocal antiderivative after the change of variable.
 
-**Step 3 — CALCULUS: differentiate the inner function.**
+**Step 3 — CALCULUS: the inner derivative.**
 
 $$
 \frac{d}{dx}\left(g(x)\right)=0+\cos(x)=\cos(x).
 $$
 
-**Step 4 — CALCULUS: transform and integrate.**
+**Step 4 — CALCULUS: integration in the new variable.**
 
 $$
 \int q(x)\,dx=\int\frac1u\,du=\ln(u)+C,\qquad u>0.
@@ -298,7 +298,7 @@ $$
 
 The scalar constant $C$ is independent of the original input $x$.
 
-**Step 5 — ALGEBRA: restore the original input.**
+**Step 5 — ALGEBRA: return to the original variable.**
 
 $$
 \int q(x)\,dx=\ln(2+\sin(x))+C.
@@ -306,7 +306,7 @@ $$
 
 No absolute value is needed because the logarithm's input is always positive.
 
-**Step 6 — CHECK: differentiate the complete answer.**
+**Step 6 — CHECK: derivative of the complete answer.**
 
 $$
 \frac{d}{dx}\left(\ln(2+\sin(x))+C\right)
@@ -327,20 +327,20 @@ $u>0$. The result is a real scalar number.
 **Step 2 — CHOICE.** The derivative factor matches the denominator's rate.
 Preserve the endpoint order when mapping to the new variable.
 
-**Step 3 — CALCULUS: compute the derivative and endpoint map.**
+**Step 3 — CALCULUS: the coordinate derivative and endpoint map.**
 
 $$
 \frac{d}{dx}\left(g(x)\right)=2x,
 \qquad u=g(1)=1+1^2=2,\qquad u=g(0)=1+0^2=1.
 $$
 
-**Step 4 — CALCULUS: transform the bounds with the variable.**
+**Step 4 — CALCULUS: the transformed bounds.**
 
 $$
 \int_1^0q(x)\,dx=\int_2^1\frac1u\,du=\ln(1)-\ln(2).
 $$
 
-**Step 5 — ALGEBRA: simplify the sign.** $\ln(1)=0$, so the value is
+**Step 5 — ALGEBRA: the resulting sign.** $\ln(1)=0$, so the value is
 $0-\ln(2)=-\ln(2)$.
 
 **Step 6 — CHECK.** The real scalar function $F(x)=\ln(1+x^2)$ has derivative

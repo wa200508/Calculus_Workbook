@@ -120,7 +120,7 @@ at every real input.
 **Step 2 — CHOICE.** This is a sum of constant multiples of powers of $x$.
 Linearity and the power rule apply directly; no product or chain-rule decomposition is required.
 
-**Step 3 — CALCULUS: separate the terms.**
+**Step 3 — CALCULUS: termwise differentiation.**
 
 $$
 \begin{aligned}
@@ -134,7 +134,7 @@ $$
 \end{aligned}
 $$
 
-**Step 4 — ALGEBRA: simplify exponents and coefficients.**
+**Step 4 — ALGEBRA: exponents and coefficients.**
 
 $$
 \begin{aligned}
@@ -152,11 +152,11 @@ $$
 \qquad x\in\mathbb R.}
 $$
 
-**Step 5 — CHECK: compare at one input with the definition.** At $x=0$, the
+**Step 5 — CHECK: comparison with the definition at one input.** At $x=0$, the
 formula gives $12(0)^2-10(0)+7=7$. For a nonzero scalar increment $h$,
 $f(h)=4h^3-5h^2+7h-9$ and $f(0)=-9$.
 
-**Step 6 — ALGEBRA: form the check's difference quotient.**
+**Step 6 — ALGEBRA: the difference quotient.**
 
 $$
 \begin{aligned}
@@ -168,7 +168,7 @@ $$
 \end{aligned}
 $$
 
-**Step 7 — CHECK: take the limit.** As $h\to0$, the expression tends to $7$,
+**Step 7 — CHECK: the limit.** As $h\to0$, the expression tends to $7$,
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
@@ -184,14 +184,14 @@ both defines the root smoothly and excludes division by zero.
 **Step 2 — CHOICE.** Rewriting the root and reciprocal as powers makes the power
 rule applicable to both nonconstant terms.
 
-**Step 3 — ALGEBRA: rewrite the function on its domain.**
+**Step 3 — ALGEBRA: an equivalent expression on the original domain.**
 
 $$
 \sqrt{x}=x^{1/2},\qquad \frac{1}{x^2}=x^{-2},\qquad
 f(x)=5x^{1/2}-3x^{-2}+2,\qquad x>0.
 $$
 
-**Step 4 — CALCULUS: apply the rules before simplifying.**
+**Step 4 — CALCULUS: the unsimplified derivative.**
 
 $$
 \begin{aligned}
@@ -204,7 +204,7 @@ $$
 \end{aligned}
 $$
 
-**Step 5 — ALGEBRA: handle the signs and powers.**
+**Step 5 — ALGEBRA: signs and powers.**
 
 $$
 \begin{aligned}
@@ -216,14 +216,14 @@ $$
 \end{aligned}
 $$
 
-**Step 6 — CALCULUS: evaluate the already calculated derivative.**
+**Step 6 — CALCULUS: evaluation of the derivative.**
 
 $$
 \left.\frac{d}{dx}\left(f(x)\right)\right|_{x=4}
 =\frac{5}{2\sqrt{4}}+\frac{6}{4^3}.
 $$
 
-**Step 7 — ALGEBRA: combine the fractions.**
+**Step 7 — ALGEBRA: a common denominator.**
 
 $$
 \begin{aligned}
@@ -275,7 +275,7 @@ $$
 a(2x)+b(1)+0=2ax+b.
 $$
 
-**Step 5 — CALCULUS: substitute the input and parameter values.**
+**Step 5 — CALCULUS: evaluation at the specified input and parameters.**
 
 $$
 \left.\frac{d}{dx}\left(f(x;a,b)\right)
@@ -292,7 +292,7 @@ $$
 **Result.** The derivative is $2ax+b$, with $a,b$ fixed, for all real $x$.
 The requested evaluated slope is the scalar number $11$.
 
-**Step 7 — CHECK: differentiate after fixing the same parameters.** First define
+**Step 7 — CHECK: differentiation with the parameters fixed.** First define
 the scalar function $g(x)=f(x;2,-1)=2x^2-x+4$. Its derivative is
 
 $$
@@ -328,7 +328,7 @@ $$
 x^2-9=x^2-3^2=(x-3)(x+3).
 $$
 
-**Step 4 — ALGEBRA: cancel only on the original domain.**
+**Step 4 — ALGEBRA: cancellation on the original domain.**
 
 $$
 \begin{aligned}
@@ -338,7 +338,7 @@ f(x)&=\frac{(x-3)(x+3)}{x-3}\\
 \end{aligned}
 $$
 
-**Step 5 — CALCULUS: differentiate the equivalent local formula.** At each
+**Step 5 — CALCULUS: derivative of the equivalent local formula.** At each
 allowed input $x\ne3$, the function agrees with $x+3$ in a neighborhood:
 
 $$
@@ -355,7 +355,7 @@ derivative at $x=3$ because it has no value there. Defining a new scalar functio
 $\widetilde f(x)=x+3$ for every real $x$ defines a continuous extension at the excluded point. This extension has a
 derivative at $3$, but it is a different function with a different domain.
 
-**Step 6 — CHECK: keep the domain in the difference quotient.** For an allowed
+**Step 6 — CHECK: the difference quotient on its domain.** For an allowed
 input $x\ne3$, take a nonzero scalar increment $h$ small enough that $x+h\ne3$.
 
 **Step 7 — ALGEBRA.**
@@ -383,7 +383,7 @@ allowed because the function is defined on all of $\mathbb R$.
 **Step 2 — CHOICE.** The difference quotient is reduced algebraically for nonzero increments
 before its limit is taken. This ordering prevents division by zero.
 
-**Step 3 — CALCULUS: write the definition with the full function.**
+**Step 3 — CALCULUS: the derivative definition.**
 
 $$
 \frac{d}{dx}\left(f(x)\right)
@@ -400,7 +400,7 @@ $$
 
 The distribution $2(x+h)=2x+2h$ is an **ALGEBRA** step.
 
-**Step 5 — ALGEBRA: subtract the entire original value.**
+**Step 5 — ALGEBRA: subtraction of the original value.**
 
 $$
 \begin{aligned}
@@ -413,7 +413,7 @@ f(x+h)-f(x)
 \end{aligned}
 $$
 
-**Step 6 — ALGEBRA: divide before letting the increment tend to zero.**
+**Step 6 — ALGEBRA: division for a nonzero increment.**
 
 $$
 \frac{f(x+h)-f(x)}{h}
@@ -421,7 +421,7 @@ $$
 =2x+h+2,\qquad h\ne0.
 $$
 
-**Step 7 — CALCULUS: take the limit and then evaluate the derivative.** In the
+**Step 7 — CALCULUS: the limiting derivative and its value.** In the
 limit, $x$ stays fixed and $h\to0$:
 
 $$
@@ -442,7 +442,7 @@ $$
 is the scalar number $0$. The value $f(-1)=1-2=-1$ is a function value, a
 different quantity from its slope.
 
-**Step 9 — CHECK: compare with the power-rule calculation.**
+**Step 9 — CHECK: comparison with the power rule.**
 
 $$
 \frac{d}{dx}\left(x^2+2x\right)
@@ -470,7 +470,7 @@ $2\ne0$. There are no varying parameters.
 The reduced sum of powers can be differentiated by linearity, avoiding a
 quotient-rule expansion while retaining the original exclusion.
 
-**Step 3 — ALGEBRA: divide each term without discarding the restriction.**
+**Step 3 — ALGEBRA: termwise division on the original domain.**
 
 $$
 \begin{aligned}
@@ -480,7 +480,7 @@ f(x)&=\frac{2x^3}{x}-\frac{3x}{x}+\frac4x\\
 \end{aligned}
 $$
 
-**Step 4 — CALCULUS: differentiate the rewritten function.**
+**Step 4 — CALCULUS: derivative of the rewritten function.**
 
 $$
 \begin{aligned}
@@ -502,7 +502,7 @@ $$
 \end{aligned}
 $$
 
-**Step 6 — CALCULUS: evaluate at the specified input.**
+**Step 6 — CALCULUS: evaluation at the specified input.**
 
 $$
 \left.\frac{d}{dx}\left(f(x)\right)\right|_{x=2}
@@ -518,18 +518,18 @@ $$
 **Result.** The derivative is $4x-4/x^2$ for $x\ne0$, and the slope at $2$
 is the scalar number $7$.
 
-**Step 8 — CHECK: verify the slope with a difference quotient.** Declare $h$
+**Step 8 — CHECK: the slope from a difference quotient.** Declare $h$
 as a nonzero scalar increment tending to zero, small enough that $2+h\ne0$.
 Using the equivalent formula, $f(2)=2(2)^2-3+4/2=8-3+2=7$.
 
-**Step 9 — TRICK: expand the square at the shifted input.** See
+**Step 9 — TRICK: the shifted-square expansion.** See
 [T-003](TRICKS_APPENDIX.md#t-003-binomial-expansion).
 
 $$
 (2+h)^2=2^2+2(2)h+h^2=4+4h+h^2.
 $$
 
-**Step 10 — ALGEBRA: form and simplify the quotient.**
+**Step 10 — ALGEBRA: simplification of the quotient.**
 
 $$
 \begin{aligned}
@@ -547,7 +547,7 @@ f(2+h)-f(2)&=5+8h+2h^2+\frac4{2+h}-7\\
 \end{aligned}
 $$
 
-**Step 11 — CHECK: take the limit.**
+**Step 11 — CHECK: the limit.**
 
 $$
 \lim_{h\to0}\frac{f(2+h)-f(2)}h

@@ -94,9 +94,25 @@ Determine its derivative for finite real $t$ and evaluate it at zero. The integr
 
 **Step 1 — SETUP.** The real base $a(x)=\ln(1+x^2)$ is positive for $x\ne0$. The real exponent is $b(x)=\arctan x$, and the output $f(x)>0$ is differentiable on each component of the punctured real line.
 
-**Step 2 — CHOICE.** The variable exponent prevents direct use of the fixed-exponent power rule. The representation $f(x)=\exp(b(x)\ln(a(x)))$ separates the two dependencies.
+**Step 2 — CHOICE.** Both the base and the exponent vary with $x$, so differentiating the power involves two contributions. Taking a logarithm turns the power into the product $b(x)\ln(a(x))$. Equivalently, $f(x)=\exp(b(x)\ln(a(x)))$; either representation keeps both contributions visible.
 
-**Step 3 — CALCULUS.** The chain and product rules give
+**Step 3 — CALCULUS.** The two inner derivatives are
+
+$$
+\frac{d}{dx}(a(x))=\frac{2x}{1+x^2},
+\qquad
+\frac{d}{dx}(b(x))=\frac{1}{1+x^2}.
+$$
+
+Differentiation of $\ln(f(x))=b(x)\ln(a(x))$ gives
+
+$$
+\frac{1}{f(x)}\frac{d}{dx}(f(x))
+=\frac{d}{dx}(b(x))\ln(a(x))
++\frac{b(x)}{a(x)}\frac{d}{dx}(a(x)).
+$$
+
+Multiplication by $f(x)$ and substitution of the two derivatives yield
 
 $$
 \frac{d}{dx}\left(f(x)\right)
@@ -252,7 +268,7 @@ For $T\ge2\tau$ it is nonnegative everywhere, with equality at zero when $T=2\ta
 
 **Step 5 — DOMAIN.** A principal phase agrees locally with this phase plus an integer multiple of $2\pi$. Its derivative agrees on each smooth chart, but it is undefined at any branch jump. No causality or passivity assumption has been imposed on this mathematical frequency response; such physical conditions cannot be inferred from its unit magnitude.
 
-**Step 6 — CHECK.** The quotient rule or a complex logarithmic derivative gives $\frac{\partial}{\partial\omega}(H)/H=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)$, a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
+**Step 6 — CHECK.** The quotient rule or a complex logarithmic derivative gives $\frac{\partial}{\partial\omega}(H(\omega;\tau,T))/H(\omega;\tau,T)=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)$, a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
 
 **Discussion.** A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
 
@@ -273,7 +289,7 @@ $$
 \end{aligned}
 $$
 
-**Step 4 — DOMAIN.** On a neighborhood of any finite $t$, the endpoints and integrand partial are contained in a compact rectangle and remain bounded. The local differentiation theorem therefore applies for every real $t$, including values at which the endpoints coincide or reverse order.
+**Step 4 — DOMAIN.** For $t$ in a sufficiently small closed interval around any finite value, every integration interval lies inside one bounded interval of $s$. The resulting rectangle in $(s,t)$ is compact. The kernel and its parameter derivative are continuous there and hence bounded. The local differentiation theorem therefore applies for every real $t$, including values at which the endpoints coincide or reverse order.
 
 **Step 5 — ALGEBRA.** At $t=0$ the boundary terms reduce to $1/2$ and zero. The remaining integral is
 

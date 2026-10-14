@@ -1,5 +1,13 @@
 # Development log
 
+## 0.4.0-alpha.2
+
+- Rewrite the introduction and reference prose around sustained mathematical practice.
+- Pair all 52 printed statements immediately with their worked solutions, add problem identifiers to continuation headers, and collect hints in a page-referenced appendix.
+- Expand compressed derivative, substitution, series, and endpoint arguments; define remainder notation and correct ambiguous terminology.
+- Generate the introduction from one manuscript source and derive the full-book PDF link from the package version.
+- Record 32 concrete proposals for future problems in the development backlog.
+
 ## 0.4.0-alpha.1
 
 - Consolidate calculus formulas and applicability conditions into an introductory reference.

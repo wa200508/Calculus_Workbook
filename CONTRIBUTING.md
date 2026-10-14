@@ -23,7 +23,10 @@ chapters begin with mixed problem sets, without preliminary lessons or a prescri
 technique. Problem setups are direct; difficulty belongs in method selection,
 domain management, and sustained calculation. Titles do not disclose the method.
 Simpler isolated exercises belong in the optional reference appendices.
-Algebra remains explicit as a calculation checkpoint. CHOICE and DOMAIN steps
+The prose explains why a step advances the calculation, using connected sentences
+rather than instructions to an author or a tutor. Commands remain appropriate in
+problem statements and optional hints; worked solutions describe the calculation
+as it is carried out. Algebra remains explicit as a calculation checkpoint. CHOICE and DOMAIN steps
 state the structure and hypotheses relevant to the actual problem.
 
 ## Development
@@ -41,3 +44,10 @@ By submitting work you own and intend to contribute, you agree it can be distrib
 under CC BY-SA 4.0 for educational content and MIT for software, as specified in
 LICENSE-CONTENT.md and LICENSE. You retain your copyright. No contributor license
 agreement or copyright assignment is required.
+
+Printed chapters pair each statement with its complete solution. Hints are
+generated into a separate appendix with page references. The grouped Markdown
+source sections support the website disclosure controls and are not the print
+reading order. Proposed future problems are recorded in
+[the development backlog](docs/PROBLEM_BACKLOG.md); they are not published as solved
+problems until their derivations and checks are complete.

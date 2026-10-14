@@ -46,7 +46,7 @@
 {\sffamily\large Alpha development edition 0.4\par}
 \medskip
 Notation, methods reference, fifty-two worked problems, and supporting tools.\\
-Alpha edition 0.4.0-alpha.1, October 12, 2026.
+Alpha edition 0.4.0-alpha.2, October 13, 2026.
 \end{titlepage}
 \chapter*{About this book}
 
@@ -964,10 +964,26 @@ Determine its derivative on its domain and whether it has a continuous, differen
 \textbf{Step 1 --- SETUP.} The real base \(a(x)=\ln(1+x^2)\) is positive for \(x\ne0\). The real exponent is \(b(x)=\arctan x\), and the output \(f(x)>0\) is differentiable on each component of the punctured real line.
 
 \begin{ChoiceStep}
-\textbf{Step 2 --- CHOICE.} The variable exponent prevents direct use of the fixed-exponent power rule. The representation \(f(x)=\exp(b(x)\ln(a(x)))\) separates the two dependencies.
+\textbf{Step 2 --- CHOICE.} Both the base and the exponent vary with \(x\), so differentiating the power involves two contributions. Taking a logarithm turns the power into the product \(b(x)\ln(a(x))\). Equivalently, \(f(x)=\exp(b(x)\ln(a(x)))\); either representation keeps both contributions visible.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS.} The chain and product rules give
+\textbf{Step 3 --- CALCULUS.} The two inner derivatives are
+
+\[
+\frac{d}{dx}(a(x))=\frac{2x}{1+x^2},
+\qquad
+\frac{d}{dx}(b(x))=\frac{1}{1+x^2}.
+\]
+
+Differentiation of \(\ln(f(x))=b(x)\ln(a(x))\) gives
+
+\[
+\frac{1}{f(x)}\frac{d}{dx}(f(x))
+=\frac{d}{dx}(b(x))\ln(a(x))
++\frac{b(x)}{a(x)}\frac{d}{dx}(a(x)).
+\]
+
+Multiplication by \(f(x)\) and substitution of the two derivatives yield
 
 \[
 \frac{d}{dx}\left(f(x)\right)
@@ -1195,7 +1211,7 @@ For \(T\ge2\tau\) it is nonnegative everywhere, with equality at zero when \(T=2
 \textbf{Step 5 --- DOMAIN.} A principal phase agrees locally with this phase plus an integer multiple of \(2\pi\). Its derivative agrees on each smooth chart, but it is undefined at any branch jump. No causality or passivity assumption has been imposed on this mathematical frequency response; such physical conditions cannot be inferred from its unit magnitude.
 
 \end{DomainStep}
-\textbf{Step 6 --- CHECK.} The quotient rule or a complex logarithmic derivative gives \(\frac{\partial}{\partial\omega}(H)/H=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)\), a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
+\textbf{Step 6 --- CHECK.} The quotient rule or a complex logarithmic derivative gives \(\frac{\partial}{\partial\omega}(H(\omega;\tau,T))/H(\omega;\tau,T)=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)\), a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
 
 \textbf{Discussion.} A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
 \par\smallskip{\small Hints for D4-005 appear on page~\pageref{hints:D4-005}.}
@@ -1232,7 +1248,7 @@ Determine its derivative for finite real \(t\) and evaluate it at zero. The inte
 \]
 
 \begin{DomainStep}
-\textbf{Step 4 --- DOMAIN.} On a neighborhood of any finite \(t\), the endpoints and integrand partial are contained in a compact rectangle and remain bounded. The local differentiation theorem therefore applies for every real \(t\), including values at which the endpoints coincide or reverse order.
+\textbf{Step 4 --- DOMAIN.} For \(t\) in a sufficiently small closed interval around any finite value, every integration interval lies inside one bounded interval of \(s\). The resulting rectangle in \((s,t)\) is compact. The kernel and its parameter derivative are continuous there and hence bounded. The local differentiation theorem therefore applies for every real \(t\), including values at which the endpoints coincide or reverse order.
 
 \end{DomainStep}
 \begingroup\color{AlgebraBlue}
@@ -1705,7 +1721,7 @@ J(a)=\int_0^1\frac{\ln(1+ax)}{x}\,dx,
 with the continuous endpoint value at \(x=0\). Determine its parameter derivative, a convergent series for \(|a|<1\), and a real special-function representation for all \(a>-1\). Decide whether the integral remains finite at \(a=-1\) and whether its derivative has a finite limit there.
 \subsection*{Worked solution}
 
-\textbf{Step 1 --- SETUP.} For \(a>-1\), \(1+ax\) remains positive on the interval, and the kernel extends continuously to \(a\) at zero. The output is real and dimensionless.
+\textbf{Step 1 --- SETUP.} For \(a>-1\), \(1+ax\) remains positive on the interval, and the quotient has limiting value \(a\) as \(x\) tends to zero. The output is real and dimensionless.
 
 \begin{ChoiceStep}
 \textbf{Step 2 --- CHOICE.} Parameter differentiation removes the logarithm and supplies a useful representation even though an elementary primitive of the original kernel is unavailable.
@@ -1721,23 +1737,32 @@ with the continuous endpoint value at \(x=0\). Determine its parameter derivativ
 The zero-parameter value follows directly from the rational integral, without division by zero.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- TRICK: convergent series.} The logarithm expansion in T-002 is uniformly convergent in \(x\in[0,1]\) for each fixed \(|a|<1\). It gives
+\textbf{Step 4 --- TRICK: convergent series.} The logarithm expansion in T-002 is uniformly convergent in \(x\in[0,1]\) for each fixed \(|a|<1\). After division by \(x\), the \(n\)th term has absolute value at most \(|a|^n/n\) on \(0\le x\le1\). The sum of these bounds is finite for \(|a|<1\), so termwise integration is justified. In particular,
+
+\[
+\frac{\ln(1+ax)}{x}
+=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}a^n x^{n-1}}{n},
+\qquad
+\int_0^1x^{n-1}\,dx=\frac1n.
+\]
+
+Consequently,
 
 \[
 J(a)=\sum_{n=1}^\infty\frac{(-1)^{n+1}a^n}{n^2}.
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: special-function representation.} For a real scalar \(z<1\), define the real dilogarithm by
+\textbf{Step 5 --- CALCULUS: special-function representation.} For a real scalar \(z<1\), the real dilogarithm is defined by
 
 \[
 \operatorname{Li}_2(z)=-\int_0^z\frac{\ln(1-u)}{u}\,du,
 \]
 
-with limiting kernel value \(-1\) at zero. The coordinate \(u=-ax\) gives \(J(a)=-\operatorname{Li}_2(-a)\) for \(a\ne0\), and both expressions vanish at \(a=0\). This integral definition also covers \(a>1\), where the displayed power series cannot be used.
+where the quotient \(\ln(1-u)/u\) has limiting value \(-1\) at zero. The minus sign outside the integral is part of the definition. The coordinate \(u=-ax\) gives \(J(a)=-\operatorname{Li}_2(-a)\) for \(a\ne0\), and both expressions vanish at \(a=0\). This integral definition also covers \(a>1\), where the displayed power series cannot be used.
 
 \begin{DomainStep}
-\textbf{Step 6 --- DOMAIN AND CHECK.} At \(a=-1\), the logarithmic endpoint is integrable: near \(x=1\), \(1/x\) is bounded and \(|\ln(1-x)|\) has a finite integral. The series limit is \(J(-1)=-\sum_{n=1}^\infty1/n^2\). However, \(\ln(1+a)/a\to+\infty\) as \(a\downarrow-1\). A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows \href{https://dlmf.nist.gov/25.12}{NIST DLMF 25.12}.
+\textbf{Step 6 --- DOMAIN AND CHECK.} At \(a=-1\), the logarithmic endpoint is integrable: near \(x=1\), \(1/x\) is bounded and \(|\ln(1-x)|\) has a finite integral. For \(a=-r\) with \(0<r<1\), the nonnegative kernels \(-\ln(1-rx)/x\) increase as \(r\) tends to one. Monotone convergence therefore identifies the endpoint integral with the series limit \(J(-1)=-\sum_{n=1}^\infty1/n^2\). However, \(\ln(1+a)/a\to+\infty\) as \(a\downarrow-1\). A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows \href{https://dlmf.nist.gov/25.12}{NIST DLMF 25.12}.
 
 \end{DomainStep}
 \textbf{Discussion.} The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
@@ -1805,7 +1830,7 @@ Determine whether the integral extends to \(\lambda=\pm1\) and whether different
 \textbf{Step 1 --- SETUP.} For \(|\lambda|<1\), the logarithm has a positive argument throughout the interval. The square-root endpoint singularities are integrable. The output is a real scalar.
 
 \begin{ChoiceStep}
-\textbf{Step 2 --- CHOICE.} The coordinate \(x=\cos\theta\), with real \(0<\theta<\pi\), absorbs the weight. Subsequent parameter differentiation gives an integral tractable by a rational angular coordinate.
+\textbf{Step 2 --- CHOICE.} The denominator \(\sqrt{1-x^2}\) suggests \(x=\cos\theta\) on \(0<\theta<\pi\). On this interval the positive square root is \(\sin\theta\), which cancels the magnitude of the coordinate derivative. Differentiation with respect to \(\lambda\) then removes the logarithm, leaving an angular integral that can be converted to a rational one.
 
 \end{ChoiceStep}
 \textbf{Step 3 --- CALCULUS.} The reversed angular bounds and negative coordinate derivative give
@@ -1839,7 +1864,20 @@ J(\lambda)=\pi\ln\left(\frac{1+\sqrt{1-\lambda^2}}{2}\right),\qquad |\lambda|<1.
 Differentiation of this expression and multiplication by the conjugate of \(1+\sqrt{1-\lambda^2}\) verifies the derivative.
 
 \begin{DomainStep}
-\textbf{Step 6 --- DOMAIN.} At \(\lambda=1\), the angular logarithm near \(\theta=\pi\) behaves as \(2\ln(\pi-\theta)-\ln2\), which is integrable. At \(\lambda=-1\) the same occurs at zero. The limits of the interior integral equal the endpoint integrals: after the angular transformation, an integrable logarithmic endpoint bound is available locally. Both endpoint values are \(-\pi\ln2\). The derivative instead diverges negatively at \(\lambda\uparrow1\) and positively at \(\lambda\downarrow-1\); the derivative kernels are not integrable at the singular endpoint.
+\textbf{Step 6 --- DOMAIN.} At \(\lambda=1\), the angular logarithm near \(\theta=\pi\) behaves as \(2\ln(\pi-\theta)-\ln2\), which is integrable. At \(\lambda=-1\) the same occurs at zero. The limits of the interior integral equal the endpoint integrals: for \(1/2\le\lambda\le1\) and \(0\le\theta<\pi\),
+
+\[
+\frac{1+\cos\theta}{2}\le1+\lambda\cos\theta\le2.
+\]
+
+It follows that
+
+\[
+|\ln(1+\lambda\cos\theta)|
+\le\ln2+\left|\ln\left(\frac{1+\cos\theta}{2}\right)\right|.
+\]
+
+The right-hand side is integrable and independent of \(\lambda\). Dominated convergence justifies the limit at \(\lambda=1\); reflection gives the limit at \(\lambda=-1\). Both endpoint values are \(-\pi\ln2\). The derivative instead diverges negatively at \(\lambda\uparrow1\) and positively at \(\lambda\downarrow-1\); the derivative kernels are not integrable at the singular endpoint.
 
 \end{DomainStep}
 \textbf{Step 7 --- CHECK.} Reflection \(x\mapsto-x\) gives \(J(-\lambda)=J(\lambda)\). The answer is even and vanishes at zero. Expansion gives \(J(\lambda)=-\pi\lambda^2/4+O(\lambda^4)\), agreeing with the first nonzero term obtained by integrating the logarithm series against the even weight.
@@ -1930,7 +1968,27 @@ The lower radial endpoint contributes \(h\), since \(h>0\).
 =\left(1+\frac{h^2}{1+A\sinh^2t}\right)dt.
 \]
 
-The identities are those of T-007. With the additional coordinate \(w=\tanh t\), the residual primitive is \(h\arctan(hw)\).
+The identities are those of T-007. The additional coordinate \(w=\tanh t\) satisfies
+
+\[
+\frac{d}{dt}(w(t))=1-w(t)^2,
+\qquad
+\sinh^2t=\frac{w^2}{1-w^2}.
+\]
+
+Thus the remaining integral becomes
+
+\[
+\begin{aligned}
+\int\frac{h^2}{1+A\sinh^2t}\,dt
+&=\int\frac{h^2}{1+A w^2/(1-w^2)}\frac{1}{1-w^2}\,dw\\
+&=\int\frac{h^2}{1+(A-1)w^2}\,dw\\
+&=\int\frac{h^2}{1+h^2w^2}\,dw
+=h\arctan(hw)+C.
+\end{aligned}
+\]
+
+Here \(h>0\) is fixed during integration, and \(C\) is independent of \(w\).
 
 \endgroup
 \textbf{Step 5 --- CALCULUS.} Since \(t=\operatorname{arsinh}(v/\sqrt A)\) and \(w=v/\sqrt{A+v^2}\), endpoint evaluation gives
@@ -2553,7 +2611,7 @@ These formulas are recorded in \href{https://dlmf.nist.gov/4.2}{NIST DLMF §4.2}
 All expressions containing \(\mathrm i\) are complex scalars.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 2 --- TRICK: use the exponential addition identity.} The complex
+\textbf{Step 2 --- TRICK: the exponential addition identity.} The complex
 exponential satisfies \(\exp(z+w)=\exp(z)\exp(w)\) for complex scalar inputs \(z,w\).
 With \(z=w=\mathrm i\theta\),
 
@@ -2565,7 +2623,7 @@ With \(z=w=\mathrm i\theta\),
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- ALGEBRA: expand and use the imaginary unit's square.}
+\textbf{Step 3 --- ALGEBRA: expansion with the imaginary unit.}
 
 \[
 \begin{aligned}
@@ -2580,7 +2638,7 @@ With \(z=w=\mathrm i\theta\),
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- TRICK: compare the real and imaginary parts.} Euler's formula also
+\textbf{Step 4 --- TRICK: comparison of real and imaginary parts.} Euler's formula also
 gives \(\exp(2\mathrm i\theta)=\cos(2\theta)+\mathrm i\sin(2\theta)\).
 Equal complex numbers have equal real parts and equal imaginary parts:
 
@@ -2713,7 +2771,7 @@ are useful even when the full infinite series is not needed.
 angle \(x\) in radians. The expansion has center \(a=0\) and order \(N=4\). The target input is
 \(x=1/10\) radians. There are no varying parameters.
 
-\textbf{Step 2 --- CALCULUS: list the derivatives used by the tool.}
+\textbf{Step 2 --- CALCULUS: the required derivatives.}
 
 \[
 \begin{aligned}
@@ -2731,7 +2789,7 @@ The derivative formulas are listed in the methods reference; here their values
 at zero supply the expansion coefficients.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- ALGEBRA: build the polynomial and remove zero terms.}
+\textbf{Step 3 --- ALGEBRA: the Taylor polynomial.}
 
 \[
 \begin{aligned}
@@ -2748,7 +2806,7 @@ fourth-order Taylor polynomial because its fourth-order coefficient is zero.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- APPROXIMATION: retain the fifth-derivative error bound.} Since
+\textbf{Step 4 --- APPROXIMATION: the fifth-derivative remainder bound.} Since
 \(|\cos(t)|\leq1\) for real \(t\), the fixed scalar bound \(M=1\) is valid:
 
 \[
@@ -2758,7 +2816,7 @@ fourth-order Taylor polynomial because its fourth-order coefficient is zero.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 5 --- ALGEBRA: evaluate the polynomial exactly.}
+\textbf{Step 5 --- ALGEBRA: exact evaluation of the polynomial.}
 
 \[
 \begin{aligned}
@@ -2772,7 +2830,7 @@ P_4(1/10;0)
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 6 --- APPROXIMATION: report the result with its bound.}
+\textbf{Step 6 --- APPROXIMATION: the approximation and its error bound.}
 
 \[
 \sin(1/10)\approx\frac{599}{6000},
@@ -2821,7 +2879,7 @@ requires a different, generally infinite expansion with convergence conditions.
 increment. The choices \(r=x\), \(s=h\), and \(n=3\) give the cubic expansion.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 2 --- ALGEBRA: calculate the coefficients.}
+\textbf{Step 2 --- ALGEBRA: the binomial coefficients.}
 
 \[
 \begin{aligned}
@@ -2834,7 +2892,7 @@ increment. The choices \(r=x\), \(s=h\), and \(n=3\) give the cubic expansion.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- TRICK: write every term.}
+\textbf{Step 3 --- TRICK: the full expansion.}
 
 \[
 \begin{aligned}
@@ -2870,7 +2928,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+c-\frac{b^2}{4a}.
 real \(x\). The coefficients \(2,-8,11\) are fixed.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 2 --- ALGEBRA: factor the quadratic coefficient.}
+\textbf{Step 2 --- ALGEBRA: the quadratic coefficient.}
 
 \[
 q(x)=2(x^2-4x)+11.
@@ -2878,7 +2936,7 @@ q(x)=2(x^2-4x)+11.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- TRICK: add and subtract the missing square.} Since
+\textbf{Step 3 --- TRICK: completion of the square.} Since
 \((x-2)^2=x^2-4x+4\),
 
 \[
@@ -2887,7 +2945,7 @@ x^2-4x=(x-2)^2-4.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- ALGEBRA: substitute and simplify.}
+\textbf{Step 4 --- ALGEBRA: substitution and simplification.}
 
 \[
 \begin{aligned}
@@ -2898,7 +2956,7 @@ q(x)&=2\left((x-2)^2-4\right)+11\\
 \]
 
 \endgroup
-\textbf{Step 5 --- CHECK: expand back.}
+\textbf{Step 5 --- CHECK: expansion of the result.}
 
 \[
 2(x-2)^2+3=2(x^2-4x+4)+3
@@ -2937,7 +2995,7 @@ The square root is the nonnegative real root. On this domain,
 \(\sqrt{1+x}+1>0\), so the conjugate multiplier is not zero.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 2 --- TRICK: multiply by one in a useful form.}
+\textbf{Step 2 --- TRICK: the conjugate multiplier.}
 
 \[
 f(x)=\frac{\sqrt{1+x}-1}{x}
@@ -2946,7 +3004,7 @@ f(x)=\frac{\sqrt{1+x}-1}{x}
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- ALGEBRA: multiply the numerators and cancel on the allowed domain.}
+\textbf{Step 3 --- ALGEBRA: cancellation on the stated domain.}
 
 \[
 \begin{aligned}
@@ -2998,7 +3056,7 @@ On this domain, \(x^2+1>0\) and \(x^2>0\), so both logarithms introduced below
 have positive arguments.
 
 \begingroup\color{TrickPurple}
-\textbf{Step 2 --- TRICK: separate the quotient.}
+\textbf{Step 2 --- TRICK: the logarithm of a quotient.}
 
 \[
 q(x)=\ln\left((x^2+1)^3\right)-\ln(x^2).
@@ -3006,7 +3064,7 @@ q(x)=\ln\left((x^2+1)^3\right)-\ln(x^2).
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- TRICK: move the fixed powers outside.}
+\textbf{Step 3 --- TRICK: the logarithm power identity.}
 
 \[
 q(x)=3\ln(x^2+1)-2\ln(x),\qquad x>0.
@@ -3106,7 +3164,7 @@ at every real input.
 Linearity and the power rule apply directly; no product or chain-rule decomposition is required.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: separate the terms.}
+\textbf{Step 3 --- CALCULUS: termwise differentiation.}
 
 \[
 \begin{aligned}
@@ -3121,7 +3179,7 @@ Linearity and the power rule apply directly; no product or chain-rule decomposit
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: simplify exponents and coefficients.}
+\textbf{Step 4 --- ALGEBRA: exponents and coefficients.}
 
 \[
 \begin{aligned}
@@ -3140,12 +3198,12 @@ Linearity and the power rule apply directly; no product or chain-rule decomposit
 \qquad x\in\mathbb R.}
 \]
 
-\textbf{Step 5 --- CHECK: compare at one input with the definition.} At \(x=0\), the
+\textbf{Step 5 --- CHECK: comparison with the definition at one input.} At \(x=0\), the
 formula gives \(12(0)^2-10(0)+7=7\). For a nonzero scalar increment \(h\),
 \(f(h)=4h^3-5h^2+7h-9\) and \(f(0)=-9\).
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: form the check's difference quotient.}
+\textbf{Step 6 --- ALGEBRA: the difference quotient.}
 
 \[
 \begin{aligned}
@@ -3158,7 +3216,7 @@ formula gives \(12(0)^2-10(0)+7=7\). For a nonzero scalar increment \(h\),
 \]
 
 \endgroup
-\textbf{Step 7 --- CHECK: take the limit.} As \(h\to0\), the expression tends to \(7\),
+\textbf{Step 7 --- CHECK: the limit.} As \(h\to0\), the expression tends to \(7\),
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
@@ -3192,7 +3250,7 @@ rule applicable to both nonconstant terms.
 
 \end{ChoiceStep}
 \begingroup\color{AlgebraBlue}
-\textbf{Step 3 --- ALGEBRA: rewrite the function on its domain.}
+\textbf{Step 3 --- ALGEBRA: an equivalent expression on the original domain.}
 
 \[
 \sqrt{x}=x^{1/2},\qquad \frac{1}{x^2}=x^{-2},\qquad
@@ -3200,7 +3258,7 @@ f(x)=5x^{1/2}-3x^{-2}+2,\qquad x>0.
 \]
 
 \endgroup
-\textbf{Step 4 --- CALCULUS: apply the rules before simplifying.}
+\textbf{Step 4 --- CALCULUS: the unsimplified derivative.}
 
 \[
 \begin{aligned}
@@ -3214,7 +3272,7 @@ f(x)=5x^{1/2}-3x^{-2}+2,\qquad x>0.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: handle the signs and powers.}
+\textbf{Step 5 --- ALGEBRA: signs and powers.}
 
 \[
 \begin{aligned}
@@ -3227,7 +3285,7 @@ f(x)=5x^{1/2}-3x^{-2}+2,\qquad x>0.
 \]
 
 \endgroup
-\textbf{Step 6 --- CALCULUS: evaluate the already calculated derivative.}
+\textbf{Step 6 --- CALCULUS: evaluation of the derivative.}
 
 \[
 \left.\frac{d}{dx}\left(f(x)\right)\right|_{x=4}
@@ -3235,7 +3293,7 @@ f(x)=5x^{1/2}-3x^{-2}+2,\qquad x>0.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 7 --- ALGEBRA: combine the fractions.}
+\textbf{Step 7 --- ALGEBRA: a common denominator.}
 
 \[
 \begin{aligned}
@@ -3307,7 +3365,7 @@ a(2x)+b(1)+0=2ax+b.
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: substitute the input and parameter values.}
+\textbf{Step 5 --- CALCULUS: evaluation at the specified input and parameters.}
 
 \[
 \left.\frac{d}{dx}\left(f(x;a,b)\right)
@@ -3326,7 +3384,7 @@ a(2x)+b(1)+0=2ax+b.
 \textbf{Result.} The derivative is \(2ax+b\), with \(a,b\) fixed, for all real \(x\).
 The requested evaluated slope is the scalar number \(11\).
 
-\textbf{Step 7 --- CHECK: differentiate after fixing the same parameters.} First define
+\textbf{Step 7 --- CHECK: differentiation with the parameters fixed.} First define
 the scalar function \(g(x)=f(x;2,-1)=2x^2-x+4\). Its derivative is
 
 \[
@@ -3383,7 +3441,7 @@ x^2-9=x^2-3^2=(x-3)(x+3).
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: cancel only on the original domain.}
+\textbf{Step 4 --- ALGEBRA: cancellation on the original domain.}
 
 \[
 \begin{aligned}
@@ -3394,7 +3452,7 @@ f(x)&=\frac{(x-3)(x+3)}{x-3}\\
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: differentiate the equivalent local formula.} At each
+\textbf{Step 5 --- CALCULUS: derivative of the equivalent local formula.} At each
 allowed input \(x\ne3\), the function agrees with \(x+3\) in a neighborhood:
 
 \[
@@ -3411,7 +3469,7 @@ derivative at \(x=3\) because it has no value there. Defining a new scalar funct
 \(\widetilde f(x)=x+3\) for every real \(x\) defines a continuous extension at the excluded point. This extension has a
 derivative at \(3\), but it is a different function with a different domain.
 
-\textbf{Step 6 --- CHECK: keep the domain in the difference quotient.} For an allowed
+\textbf{Step 6 --- CHECK: the difference quotient on its domain.} For an allowed
 input \(x\ne3\), take a nonzero scalar increment \(h\) small enough that \(x+h\ne3\).
 
 \begingroup\color{AlgebraBlue}
@@ -3458,7 +3516,7 @@ allowed because the function is defined on all of \(\mathbb R\).
 before its limit is taken. This ordering prevents division by zero.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: write the definition with the full function.}
+\textbf{Step 3 --- CALCULUS: the derivative definition.}
 
 \[
 \frac{d}{dx}\left(f(x)\right)
@@ -3478,7 +3536,7 @@ The distribution \(2(x+h)=2x+2h\) is an \textbf{ALGEBRA} step.
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: subtract the entire original value.}
+\textbf{Step 5 --- ALGEBRA: subtraction of the original value.}
 
 \[
 \begin{aligned}
@@ -3493,7 +3551,7 @@ f(x+h)-f(x)
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: divide before letting the increment tend to zero.}
+\textbf{Step 6 --- ALGEBRA: division for a nonzero increment.}
 
 \[
 \frac{f(x+h)-f(x)}{h}
@@ -3502,7 +3560,7 @@ f(x+h)-f(x)
 \]
 
 \endgroup
-\textbf{Step 7 --- CALCULUS: take the limit and then evaluate the derivative.} In the
+\textbf{Step 7 --- CALCULUS: the limiting derivative and its value.} In the
 limit, \(x\) stays fixed and \(h\to0\):
 
 \[
@@ -3525,7 +3583,7 @@ limit, \(x\) stays fixed and \(h\to0\):
 is the scalar number \(0\). The value \(f(-1)=1-2=-1\) is a function value, a
 different quantity from its slope.
 
-\textbf{Step 9 --- CHECK: compare with the power-rule calculation.}
+\textbf{Step 9 --- CHECK: comparison with the power rule.}
 
 \[
 \frac{d}{dx}\left(x^2+2x\right)
@@ -3571,7 +3629,7 @@ quotient-rule expansion while retaining the original exclusion.
 
 \end{ChoiceStep}
 \begingroup\color{AlgebraBlue}
-\textbf{Step 3 --- ALGEBRA: divide each term without discarding the restriction.}
+\textbf{Step 3 --- ALGEBRA: termwise division on the original domain.}
 
 \[
 \begin{aligned}
@@ -3582,7 +3640,7 @@ f(x)&=\frac{2x^3}{x}-\frac{3x}{x}+\frac4x\\
 \]
 
 \endgroup
-\textbf{Step 4 --- CALCULUS: differentiate the rewritten function.}
+\textbf{Step 4 --- CALCULUS: derivative of the rewritten function.}
 
 \[
 \begin{aligned}
@@ -3606,7 +3664,7 @@ f(x)&=\frac{2x^3}{x}-\frac{3x}{x}+\frac4x\\
 \]
 
 \endgroup
-\textbf{Step 6 --- CALCULUS: evaluate at the specified input.}
+\textbf{Step 6 --- CALCULUS: evaluation at the specified input.}
 
 \[
 \left.\frac{d}{dx}\left(f(x)\right)\right|_{x=2}
@@ -3624,12 +3682,12 @@ f(x)&=\frac{2x^3}{x}-\frac{3x}{x}+\frac4x\\
 \textbf{Result.} The derivative is \(4x-4/x^2\) for \(x\ne0\), and the slope at \(2\)
 is the scalar number \(7\).
 
-\textbf{Step 8 --- CHECK: verify the slope with a difference quotient.} Declare \(h\)
+\textbf{Step 8 --- CHECK: the slope from a difference quotient.} Declare \(h\)
 as a nonzero scalar increment tending to zero, small enough that \(2+h\ne0\).
 Using the equivalent formula, \(f(2)=2(2)^2-3+4/2=8-3+2=7\).
 
 \begingroup\color{TrickPurple}
-\textbf{Step 9 --- TRICK: expand the square at the shifted input.} See
+\textbf{Step 9 --- TRICK: the shifted-square expansion.} See
 T-003.
 
 \[
@@ -3638,7 +3696,7 @@ T-003.
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 10 --- ALGEBRA: form and simplify the quotient.}
+\textbf{Step 10 --- ALGEBRA: simplification of the quotient.}
 
 \[
 \begin{aligned}
@@ -3657,7 +3715,7 @@ f(2+h)-f(2)&=5+8h+2h^2+\frac4{2+h}-7\\
 \]
 
 \endgroup
-\textbf{Step 11 --- CHECK: take the limit.}
+\textbf{Step 11 --- CHECK: the limit.}
 
 \[
 \lim_{h\to0}\frac{f(2+h)-f(2)}h
@@ -3703,7 +3761,7 @@ Here \(u\) is an independent scalar input when defining and differentiating \(h(
 \textbf{Step 2 --- CHOICE.} The fourth power is a composition with the nonconstant inner function \(g(x)\). The chain rule supplies the outer derivative evaluated at \(g(x)\) and the derivative of \(g(x)\).
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate the outer function.} The power rule gives
+\textbf{Step 3 --- CALCULUS: the outer derivative.} The power rule gives
 
 \[
 \frac{d}{du}\left(h(u)\right)
@@ -3711,7 +3769,7 @@ Here \(u\) is an independent scalar input when defining and differentiating \(h(
 =4u^3.
 \]
 
-\textbf{Step 4 --- CALCULUS: differentiate the inner function.} Linearity and the power rule give the inner derivative:
+\textbf{Step 4 --- CALCULUS: the inner derivative.} Linearity and the power rule give the inner derivative:
 
 \[
 \begin{aligned}
@@ -3730,7 +3788,7 @@ Here \(u\) is an independent scalar input when defining and differentiating \(h(
 \]
 
 \endgroup
-\textbf{Step 6 --- CALCULUS: assemble the chain rule.}
+\textbf{Step 6 --- CALCULUS: the complete chain-rule expression.}
 
 \[
 \begin{aligned}
@@ -3801,7 +3859,7 @@ both are real scalar functions on all real inputs. The output derivative is scal
 both and multiplying would omit the product rule's two terms.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate each factor and apply the product rule.}
+\textbf{Step 3 --- CALCULUS: the product derivative.}
 
 \[
 \frac{d}{dx}\left(u(x)\right)=2x,\qquad
@@ -3814,7 +3872,7 @@ both and multiplying would omit the product rule's two terms.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: evaluate after differentiating.} Since \(\sin(\pi)=0\) and
+\textbf{Step 4 --- ALGEBRA: evaluation of the derivative.} Since \(\sin(\pi)=0\) and
 \(\cos(\pi)=-1\),
 
 \[
@@ -3824,7 +3882,7 @@ both and multiplying would omit the product rule's two terms.
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 5 --- TRICK: use an angle-addition identity.} For real scalar angles
+\textbf{Step 5 --- TRICK: an angle-addition identity.} For real scalar angles
 \(a,b\) in radians,
 
 \[
@@ -3867,7 +3925,7 @@ All coefficients are fixed. The derivative is scalar-valued on this domain.
 \textbf{Step 2 --- CHOICE.} The nonconstant denominator does not cancel against the numerator. The quotient rule applies on the domain excluding its zero.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: retain the quotient rule's subtraction.}
+\textbf{Step 3 --- CALCULUS: the quotient-rule numerator.}
 
 \[
 \frac{d}{dx}\left(u(x)\right)=2x,\qquad
@@ -3880,7 +3938,7 @@ All coefficients are fixed. The derivative is scalar-valued on this domain.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: expand the numerator.}
+\textbf{Step 4 --- ALGEBRA: expansion of the numerator.}
 
 \[
 (2x)(x-1)-(x^2+1)(1)
@@ -3901,7 +3959,7 @@ At \(x=2\), the scalar value is
 \]
 
 \endgroup
-\textbf{Step 5 --- CHECK: differentiate an equivalent rewrite.} Since
+\textbf{Step 5 --- CHECK: derivative of an equivalent expression.} Since
 \((x-1)(x+1)+2=x^2-1+2=x^2+1\),
 
 \[
@@ -3939,7 +3997,7 @@ input for the outer function. In \(f(x)=h(g(x))\), its input depends on \(x\).
 function evaluated at \(g(x)\), multiplied by the derivative of \(g(x)\).
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: calculate both derivatives.}
+\textbf{Step 3 --- CALCULUS: the two factor derivatives.}
 
 \[
 \frac{d}{dt}\left(h(t)\right)=\exp(t),\qquad
@@ -3947,14 +4005,14 @@ function evaluated at \(g(x)\), multiplied by the derivative of \(g(x)\).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: simplify the inner derivative.}
+\textbf{Step 4 --- ALGEBRA: simplification of the inner derivative.}
 
 \[
 2(2x)-0=(2\cdot2)x=4x.
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: apply the chain rule.}
+\textbf{Step 5 --- CALCULUS: the chain rule.}
 
 \[
 \frac{d}{dx}\left(f(x)\right)
@@ -3963,7 +4021,7 @@ function evaluated at \(g(x)\), multiplied by the derivative of \(g(x)\).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: evaluate.} At \(x=0\), \(2(0)^2-3=-3\) and \(4(0)=0\);
+\textbf{Step 6 --- ALGEBRA: evaluation.} At \(x=0\), \(2(0)^2-3=-3\) and \(4(0)=0\);
 the value is \(\exp(-3)(0)=0\).
 
 \endgroup
@@ -3992,7 +4050,7 @@ for independent real scalar \(t>0\). Since \(g(x)\ge1\), every real \(x\) is all
 \(t=g(x)\). Its input has a separate derivative.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate both layers.}
+\textbf{Step 3 --- CALCULUS: the two dependent layers.}
 
 \[
 \frac{d}{dt}\left(h(t)\right)=\frac1t,\qquad
@@ -4005,7 +4063,7 @@ for independent real scalar \(t>0\). Since \(g(x)\ge1\), every real \(x\) is all
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: simplify and evaluate.}
+\textbf{Step 4 --- ALGEBRA: simplification and evaluation.}
 
 \[
 \frac{1}{1+x^2}(2x)=\frac{2x}{1+x^2},\qquad
@@ -4040,7 +4098,7 @@ The power rule applies to the outer argument, while the chain rule retains
 the derivative of \(g(x)\).
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate both layers.}
+\textbf{Step 3 --- CALCULUS: the two dependent layers.}
 
 \[
 \frac{d}{dt}\left(h(t)\right)=\frac12t^{1/2-1},\qquad
@@ -4048,7 +4106,7 @@ the derivative of \(g(x)\).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: subtract the exponents.}
+\textbf{Step 4 --- ALGEBRA: subtraction of exponents.}
 
 \[
 \frac12-1=\frac12-\frac22=-\frac12,
@@ -4056,14 +4114,14 @@ the derivative of \(g(x)\).
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: assemble the chain rule.}
+\textbf{Step 5 --- CALCULUS: the complete chain-rule expression.}
 
 \[
 \frac{d}{dx}\left(f(x)\right)=\frac1{2\sqrt{1+x^2}}(2x).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: simplify and evaluate.}
+\textbf{Step 6 --- ALGEBRA: simplification and evaluation.}
 
 \[
 \frac{2x}{2\sqrt{1+x^2}}=\frac{x}{\sqrt{1+x^2}},\qquad
@@ -4072,7 +4130,7 @@ the derivative of \(g(x)\).
 \]
 
 \endgroup
-\textbf{Step 7 --- CHECK: differentiate a defining relation.} Since \((f(x))^2=1+x^2\),
+\textbf{Step 7 --- CHECK: derivative of the defining relation.} Since \((f(x))^2=1+x^2\),
 the chain rule implies
 
 \[
@@ -4103,7 +4161,7 @@ argument, the sine function, and the outer cubic power. Their dependencies
 are represented separately before the factors are assembled.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate the inner composition.}
+\textbf{Step 3 --- CALCULUS: derivative of the inner composition.}
 
 \[
 \frac{d}{dx}\left(g(x)\right)=2,\qquad
@@ -4115,7 +4173,7 @@ are represented separately before the factors are assembled.
 =\left.\cos(t)\right|_{t=2x}(2)=2\cos(2x).
 \]
 
-\textbf{Step 4 --- CALCULUS: differentiate the outer cube.}
+\textbf{Step 4 --- CALCULUS: derivative of the outer cube.}
 
 \[
 \frac{d}{ds}\left(p(s)\right)=3s^2,
@@ -4127,7 +4185,7 @@ are represented separately before the factors are assembled.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: multiply constants and evaluate.}
+\textbf{Step 5 --- ALGEBRA: constant factors and evaluation.}
 
 \[
 3(\sin(2x))^2(2\cos(2x))
@@ -4140,7 +4198,7 @@ At \(x=\pi/4\), \(2x=2(\pi/4)=\pi/2\), \(\sin(\pi/2)=1\), and
 
 \endgroup
 \begingroup\color{TrickPurple}
-\textbf{Step 6 --- TRICK: use the angle-addition identity.} For real scalar angles
+\textbf{Step 6 --- TRICK: the angle-addition identity.} For real scalar angles
 \(a,b\) in radians, \(\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b)\).
 At \(a=\pi/2\) and \(b=2h\), for real scalar increment \(h\),
 
@@ -4180,7 +4238,7 @@ Linearity reduces the calculation to power antiderivatives, with their
 coefficients retained until the algebraic simplification.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: keep each exponent and denominator visible.}
+\textbf{Step 3 --- CALCULUS: the unsimplified primitives.}
 
 \[
 \int q(x)\,dx
@@ -4188,7 +4246,7 @@ coefficients retained until the algebraic simplification.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: simplify coefficients.}
+\textbf{Step 4 --- ALGEBRA: the coefficients.}
 
 \[
 2+1=3,\qquad 1+1=2,\qquad \frac63=2,\qquad \frac42=2,
@@ -4199,7 +4257,7 @@ coefficients retained until the algebraic simplification.
 \]
 
 \endgroup
-\textbf{Step 5 --- CHECK: differentiate the full family.}
+\textbf{Step 5 --- CHECK: derivative of the full family.}
 
 \[
 \frac{d}{dx}\left(2x^3-2x^2+5x+C\right)
@@ -4244,7 +4302,7 @@ Equivalently, the antiderivative is \(3\ln(|x|)\) plus a constant on each interv
 There is no requirement that \(C_+=C_-\): the original domain is disconnected.
 
 \end{DomainStep}
-\textbf{Step 4 --- CHECK: differentiate on both intervals.} For \(x>0\),
+\textbf{Step 4 --- CHECK: derivatives on the two intervals.} For \(x>0\),
 
 \[
 \frac{d}{dx}\left(3\ln(x)+C_+\right)=3\frac1x+0=\frac3x.
@@ -4258,7 +4316,7 @@ For \(x<0\), the input \(-x\) of the logarithm is positive. The chain rule gives
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: simplify the negative-input check.}
+\textbf{Step 5 --- ALGEBRA: the negative-input case.}
 
 \[
 3\frac{-1}{-x}=3\frac1x=\frac3x=q(x).
@@ -4287,7 +4345,7 @@ fundamental theorem of calculus. Separate endpoint evaluation preserves the
 sign of the lower-endpoint contribution.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: find one antiderivative.} One antiderivative is the real scalar function
+\textbf{Step 3 --- CALCULUS: one antiderivative.} One antiderivative is the real scalar function
 
 \[
 F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.
@@ -4296,7 +4354,7 @@ F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.
 The arbitrary constant can be set to zero because it cancels in the endpoint subtraction.
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: calculate the endpoints separately.}
+\textbf{Step 4 --- ALGEBRA: the two endpoint values.}
 
 \[
 F(2)=2^2+3(2)=4+6=10,
@@ -4307,14 +4365,14 @@ F(-1)=(-1)^2+3(-1)=1-3=-2.
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: subtract the lower value.}
+\textbf{Step 5 --- CALCULUS: endpoint subtraction.}
 
 \[
 \int_{-1}^{2}q(x)\,dx=F(2)-F(-1)=10-(-2).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: remove the double negative.} \(10-(-2)=10+2=12\).
+\textbf{Step 6 --- ALGEBRA: the resulting sign.} \(10-(-2)=10+2=12\).
 
 \endgroup
 \textbf{Step 7 --- CHECK.} \(\frac{d}{dx}\left(F(x)\right)=2x+3=q(x)\).
@@ -4342,7 +4400,7 @@ dependence as the integrand. Coefficient matching compensates for the
 chain-rule factor from \(g(x)=3x\).
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate the candidate.}
+\textbf{Step 3 --- CALCULUS: derivative of the candidate.}
 
 \[
 \frac{d}{dx}\left(F(x)\right)=A\exp(3x)\frac{d}{dx}\left(3x\right)
@@ -4350,11 +4408,11 @@ chain-rule factor from \(g(x)=3x\).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: match coefficients.} To make this equal to \(q(x)\),
+\textbf{Step 4 --- ALGEBRA: coefficient comparison.} To make this equal to \(q(x)\),
 solve \(3A=1\), giving \(A=1/3\) because three is nonzero.
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: state the family.}
+\textbf{Step 5 --- CALCULUS: the family of primitives.}
 
 \[
 \int q(x)\,dx=\frac13\exp(3x)+C.
@@ -4391,13 +4449,13 @@ The sign from differentiation of cosine determines the coefficient of the
 cosine term in the antiderivative.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: integrate each term.}
+\textbf{Step 3 --- CALCULUS: termwise integration.}
 
 \[
 \int q(x)\,dx=2\sin(x)+3\cos(x)+C.
 \]
 
-\textbf{Step 4 --- CHECK: differentiate before simplifying signs.}
+\textbf{Step 4 --- CHECK: the unsimplified derivative.}
 
 \[
 \frac{d}{dx}\left(2\sin(x)+3\cos(x)+C\right)
@@ -4405,7 +4463,7 @@ cosine term in the antiderivative.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: simplify the sign.}
+\textbf{Step 5 --- ALGEBRA: the resulting sign.}
 
 \[
 2\cos(x)+3(-\sin(x))+0=2\cos(x)-3\sin(x)=q(x).
@@ -4436,7 +4494,7 @@ The absolute-value integrand instead requires a piecewise representation,
 with the interval partitioned at its sign change.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: evaluate the signed integral.}
+\textbf{Step 3 --- CALCULUS: the signed integral.}
 
 \[
 \int_{-1}^{1}q(x)\,dx
@@ -4445,14 +4503,14 @@ with the interval partitioned at its sign change.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: show the cancellation.}
+\textbf{Step 4 --- ALGEBRA: cancellation.}
 
 \[
 \frac{1^2}{2}-\frac{(-1)^2}{2}=\frac12-\frac12=0.
 \]
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: split the nonnegative integral.}
+\textbf{Step 5 --- CALCULUS: partition of the nonnegative integral.}
 
 \[
 \begin{aligned}
@@ -4464,7 +4522,7 @@ with the interval partitioned at its sign change.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: subtract each lower endpoint.}
+\textbf{Step 6 --- ALGEBRA: endpoint subtraction on each interval.}
 
 \[
 \left(-\frac{0^2}{2}-\left(-\frac{(-1)^2}{2}\right)\right)
@@ -4520,7 +4578,7 @@ Both \(g\) and \(h\) are scalar-valued functions. The new coordinate \(u\) depen
 The last removal of \(+0\) is an \textbf{ALGEBRA} simplification.
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: match the integrand.} Since the factors are scalars,
+\textbf{Step 4 --- ALGEBRA: the required derivative factor.} Since the factors are scalars,
 
 \[
 2x(x^2+1)^3=(x^2+1)^3(2x)
@@ -4529,7 +4587,7 @@ The last removal of \(+0\) is an \textbf{ALGEBRA} simplification.
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: transform both bounds.}
+\textbf{Step 5 --- ALGEBRA: the transformed bounds.}
 
 \[
 \begin{aligned}
@@ -4539,7 +4597,7 @@ x=1&\quad\Longrightarrow\quad u=g(1)=1^2+1=1+1=2.
 \]
 
 \endgroup
-\textbf{Step 6 --- CALCULUS: apply the substitution theorem.}
+\textbf{Step 6 --- CALCULUS: the substitution theorem.}
 
 \[
 \begin{aligned}
@@ -4553,7 +4611,7 @@ x=1&\quad\Longrightarrow\quad u=g(1)=1^2+1=1+1=2.
 
 The whole integral changes coordinates, including the integration variable and both bounds. The derivative factor is accounted for by the theorem.
 
-\textbf{Step 7 --- CALCULUS: find an antiderivative.} The power rule for integration is
+\textbf{Step 7 --- CALCULUS: an antiderivative.} The power rule for integration is
 
 \[
 \int u^p\,du=\frac{u^{p+1}}{p+1}+C,\qquad p\ne-1,
@@ -4567,7 +4625,7 @@ H(u)=\frac{u^{3+1}}{3+1}=\frac{u^4}{4}.
 
 The exponent and denominator simplifications are \textbf{ALGEBRA}. A definite integral needs one antiderivative; any added constant cancels in the endpoint difference.
 
-\textbf{Step 8 --- CALCULUS: evaluate at the endpoints.}
+\textbf{Step 8 --- CALCULUS: endpoint evaluation.}
 
 \[
 \int_{1}^{2} u^3\,du=H(2)-H(1)=\frac{2^4}{4}-\frac{1^4}{4}.
@@ -4594,7 +4652,7 @@ The exponent and denominator simplifications are \textbf{ALGEBRA}. A definite in
 \boxed{\int_{0}^{1} 2x(x^2+1)^3\,dx=\frac{15}{4}.}
 \]
 
-\textbf{Step 10 --- CHECK: differentiate the original-variable antiderivative.} The candidate antiderivative is the scalar function \(Q(x)=(x^2+1)^4/4\). The constant-multiple and chain rules give
+\textbf{Step 10 --- CHECK: derivative in the original variable.} The candidate antiderivative is the scalar function \(Q(x)=(x^2+1)^4/4\). The constant-multiple and chain rules give
 
 \[
 \frac{d}{dx}\left(Q(x)\right)
@@ -4631,14 +4689,14 @@ Before substitution \(u=g(x)\) is dependent on \(x\). All real \(x\) are allowed
 The compensating multiplier is retained outside the transformed integral.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: compute the inner derivative.}
+\textbf{Step 3 --- CALCULUS: the inner derivative.}
 
 \[
 \frac{d}{dx}\left(g(x)\right)=\frac{d}{dx}\left(1+x^2\right)=0+2x=2x.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 4 --- ALGEBRA: match every factor.}
+\textbf{Step 4 --- ALGEBRA: the transformed factors.}
 
 \[
 x(1+x^2)^4=\frac12(2x)(1+x^2)^4
@@ -4648,7 +4706,7 @@ x(1+x^2)^4=\frac12(2x)(1+x^2)^4
 No division by \(x\) was used; the identity holds at \(x=0\) too.
 
 \endgroup
-\textbf{Step 5 --- CALCULUS: change variable and integrate.}
+\textbf{Step 5 --- CALCULUS: integration in the new variable.}
 
 \[
 \int q(x)\,dx=\frac12\int u^4\,du
@@ -4656,7 +4714,7 @@ No division by \(x\) was used; the identity holds at \(x=0\) too.
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: simplify and substitute back.}
+\textbf{Step 6 --- ALGEBRA: return to the original variable.}
 
 \[
 4+1=5,\qquad \frac12\frac{u^5}{5}=\frac{u^5}{2\cdot5}=\frac{u^5}{10},
@@ -4700,14 +4758,14 @@ All functions used are smooth on the interval; the result is a number.
 of the exponential's inner input.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: compute the derivative and new bounds.}
+\textbf{Step 3 --- CALCULUS: the coordinate derivative and bounds.}
 
 \[
 \frac{d}{dx}\left(g(x)\right)=3x^2,\qquad
 u=g(0)=0^3=0,\qquad u=g(1)=1^3=1.
 \]
 
-\textbf{Step 4 --- CALCULUS: transform the whole integral.}
+\textbf{Step 4 --- CALCULUS: the transformed integral.}
 
 \[
 \int_0^1q(x)\,dx
@@ -4717,14 +4775,14 @@ u=g(0)=0^3=0,\qquad u=g(1)=1^3=1.
 
 The numerical bounds happen to agree, but the variable and its meaning changed.
 
-\textbf{Step 5 --- CALCULUS: evaluate the antiderivative.}
+\textbf{Step 5 --- CALCULUS: evaluation of the primitive.}
 
 \[
 \int_0^1\exp(u)\,du=\exp(1)-\exp(0).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 6 --- ALGEBRA: simplify the constant value.} Since \(\exp(0)=1\), the
+\textbf{Step 6 --- ALGEBRA: the constant value.} Since \(\exp(0)=1\), the
 answer is \(\exp(1)-1\). The notation \(e=\exp(1)\) denotes a fixed real constant.
 
 \endgroup
@@ -4754,13 +4812,13 @@ The actual inner values satisfy \(1\le g(x)\le3\).
 Use a reciprocal antiderivative after the change of variable.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: differentiate the inner function.}
+\textbf{Step 3 --- CALCULUS: the inner derivative.}
 
 \[
 \frac{d}{dx}\left(g(x)\right)=0+\cos(x)=\cos(x).
 \]
 
-\textbf{Step 4 --- CALCULUS: transform and integrate.}
+\textbf{Step 4 --- CALCULUS: integration in the new variable.}
 
 \[
 \int q(x)\,dx=\int\frac1u\,du=\ln(u)+C,\qquad u>0.
@@ -4769,7 +4827,7 @@ Use a reciprocal antiderivative after the change of variable.
 The scalar constant \(C\) is independent of the original input \(x\).
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: restore the original input.}
+\textbf{Step 5 --- ALGEBRA: return to the original variable.}
 
 \[
 \int q(x)\,dx=\ln(2+\sin(x))+C.
@@ -4778,7 +4836,7 @@ The scalar constant \(C\) is independent of the original input \(x\).
 No absolute value is needed because the logarithm's input is always positive.
 
 \endgroup
-\textbf{Step 6 --- CHECK: differentiate the complete answer.}
+\textbf{Step 6 --- CHECK: derivative of the complete answer.}
 
 \[
 \frac{d}{dx}\left(\ln(2+\sin(x))+C\right)
@@ -4810,21 +4868,21 @@ lower limit one and upper limit zero. The real scalar function is
 Preserve the endpoint order when mapping to the new variable.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: compute the derivative and endpoint map.}
+\textbf{Step 3 --- CALCULUS: the coordinate derivative and endpoint map.}
 
 \[
 \frac{d}{dx}\left(g(x)\right)=2x,
 \qquad u=g(1)=1+1^2=2,\qquad u=g(0)=1+0^2=1.
 \]
 
-\textbf{Step 4 --- CALCULUS: transform the bounds with the variable.}
+\textbf{Step 4 --- CALCULUS: the transformed bounds.}
 
 \[
 \int_1^0q(x)\,dx=\int_2^1\frac1u\,du=\ln(1)-\ln(2).
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA: simplify the sign.} \(\ln(1)=0\), so the value is
+\textbf{Step 5 --- ALGEBRA: the resulting sign.} \(\ln(1)=0\), so the value is
 \(0-\ln(2)=-\ln(2)\).
 
 \endgroup

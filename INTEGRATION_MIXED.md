@@ -129,7 +129,7 @@ $$
 
 ### I4-002
 
-**Step 1 — SETUP.** For $a>-1$, $1+ax$ remains positive on the interval, and the kernel extends continuously to $a$ at zero. The output is real and dimensionless.
+**Step 1 — SETUP.** For $a>-1$, $1+ax$ remains positive on the interval, and the quotient has limiting value $a$ as $x$ tends to zero. The output is real and dimensionless.
 
 **Step 2 — CHOICE.** Parameter differentiation removes the logarithm and supplies a useful representation even though an elementary primitive of the original kernel is unavailable.
 
@@ -142,21 +142,30 @@ $$
 
 The zero-parameter value follows directly from the rational integral, without division by zero.
 
-**Step 4 — TRICK: convergent series.** The logarithm expansion in [T-002](TRICKS_APPENDIX.md#t-002-taylor-expansions) is uniformly convergent in $x\in[0,1]$ for each fixed $|a|<1$. It gives
+**Step 4 — TRICK: convergent series.** The logarithm expansion in [T-002](TRICKS_APPENDIX.md#t-002-taylor-expansions) is uniformly convergent in $x\in[0,1]$ for each fixed $|a|<1$. After division by $x$, the $n$th term has absolute value at most $|a|^n/n$ on $0\le x\le1$. The sum of these bounds is finite for $|a|<1$, so termwise integration is justified. In particular,
+
+$$
+\frac{\ln(1+ax)}{x}
+=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}a^n x^{n-1}}{n},
+\qquad
+\int_0^1x^{n-1}\,dx=\frac1n.
+$$
+
+Consequently,
 
 $$
 J(a)=\sum_{n=1}^\infty\frac{(-1)^{n+1}a^n}{n^2}.
 $$
 
-**Step 5 — CALCULUS: special-function representation.** For a real scalar $z<1$, define the real dilogarithm by
+**Step 5 — CALCULUS: special-function representation.** For a real scalar $z<1$, the real dilogarithm is defined by
 
 $$
 \operatorname{Li}_2(z)=-\int_0^z\frac{\ln(1-u)}{u}\,du,
 $$
 
-with limiting kernel value $-1$ at zero. The coordinate $u=-ax$ gives $J(a)=-\operatorname{Li}_2(-a)$ for $a\ne0$, and both expressions vanish at $a=0$. This integral definition also covers $a>1$, where the displayed power series cannot be used.
+where the quotient $\ln(1-u)/u$ has limiting value $-1$ at zero. The minus sign outside the integral is part of the definition. The coordinate $u=-ax$ gives $J(a)=-\operatorname{Li}_2(-a)$ for $a\ne0$, and both expressions vanish at $a=0$. This integral definition also covers $a>1$, where the displayed power series cannot be used.
 
-**Step 6 — DOMAIN AND CHECK.** At $a=-1$, the logarithmic endpoint is integrable: near $x=1$, $1/x$ is bounded and $|\ln(1-x)|$ has a finite integral. The series limit is $J(-1)=-\sum_{n=1}^\infty1/n^2$. However, $\ln(1+a)/a\to+\infty$ as $a\downarrow-1$. A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows [NIST DLMF 25.12](https://dlmf.nist.gov/25.12).
+**Step 6 — DOMAIN AND CHECK.** At $a=-1$, the logarithmic endpoint is integrable: near $x=1$, $1/x$ is bounded and $|\ln(1-x)|$ has a finite integral. For $a=-r$ with $0<r<1$, the nonnegative kernels $-\ln(1-rx)/x$ increase as $r$ tends to one. Monotone convergence therefore identifies the endpoint integral with the series limit $J(-1)=-\sum_{n=1}^\infty1/n^2$. However, $\ln(1+a)/a\to+\infty$ as $a\downarrow-1$. A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows [NIST DLMF 25.12](https://dlmf.nist.gov/25.12).
 
 **Discussion.** The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
 
@@ -192,7 +201,7 @@ $$
 
 **Step 1 — SETUP.** For $|\lambda|<1$, the logarithm has a positive argument throughout the interval. The square-root endpoint singularities are integrable. The output is a real scalar.
 
-**Step 2 — CHOICE.** The coordinate $x=\cos\theta$, with real $0<\theta<\pi$, absorbs the weight. Subsequent parameter differentiation gives an integral tractable by a rational angular coordinate.
+**Step 2 — CHOICE.** The denominator $\sqrt{1-x^2}$ suggests $x=\cos\theta$ on $0<\theta<\pi$. On this interval the positive square root is $\sin\theta$, which cancels the magnitude of the coordinate derivative. Differentiation with respect to $\lambda$ then removes the logarithm, leaving an angular integral that can be converted to a rational one.
 
 **Step 3 — CALCULUS.** The reversed angular bounds and negative coordinate derivative give
 
@@ -222,7 +231,20 @@ $$
 
 Differentiation of this expression and multiplication by the conjugate of $1+\sqrt{1-\lambda^2}$ verifies the derivative.
 
-**Step 6 — DOMAIN.** At $\lambda=1$, the angular logarithm near $\theta=\pi$ behaves as $2\ln(\pi-\theta)-\ln2$, which is integrable. At $\lambda=-1$ the same occurs at zero. The limits of the interior integral equal the endpoint integrals: after the angular transformation, an integrable logarithmic endpoint bound is available locally. Both endpoint values are $-\pi\ln2$. The derivative instead diverges negatively at $\lambda\uparrow1$ and positively at $\lambda\downarrow-1$; the derivative kernels are not integrable at the singular endpoint.
+**Step 6 — DOMAIN.** At $\lambda=1$, the angular logarithm near $\theta=\pi$ behaves as $2\ln(\pi-\theta)-\ln2$, which is integrable. At $\lambda=-1$ the same occurs at zero. The limits of the interior integral equal the endpoint integrals: for $1/2\le\lambda\le1$ and $0\le\theta<\pi$,
+
+$$
+\frac{1+\cos\theta}{2}\le1+\lambda\cos\theta\le2.
+$$
+
+It follows that
+
+$$
+|\ln(1+\lambda\cos\theta)|
+\le\ln2+\left|\ln\left(\frac{1+\cos\theta}{2}\right)\right|.
+$$
+
+The right-hand side is integrable and independent of $\lambda$. Dominated convergence justifies the limit at $\lambda=1$; reflection gives the limit at $\lambda=-1$. Both endpoint values are $-\pi\ln2$. The derivative instead diverges negatively at $\lambda\uparrow1$ and positively at $\lambda\downarrow-1$; the derivative kernels are not integrable at the singular endpoint.
 
 **Step 7 — CHECK.** Reflection $x\mapsto-x$ gives $J(-\lambda)=J(\lambda)$. The answer is even and vanishes at zero. Expansion gives $J(\lambda)=-\pi\lambda^2/4+O(\lambda^4)$, agreeing with the first nonzero term obtained by integrating the logarithm series against the even weight.
 
@@ -279,7 +301,27 @@ $$
 =\left(1+\frac{h^2}{1+A\sinh^2t}\right)dt.
 $$
 
-The identities are those of [T-007](TRICKS_APPENDIX.md#t-007-hyperbolic-identities-and-real-branches). With the additional coordinate $w=\tanh t$, the residual primitive is $h\arctan(hw)$.
+The identities are those of [T-007](TRICKS_APPENDIX.md#t-007-hyperbolic-identities-and-real-branches). The additional coordinate $w=\tanh t$ satisfies
+
+$$
+\frac{d}{dt}(w(t))=1-w(t)^2,
+\qquad
+\sinh^2t=\frac{w^2}{1-w^2}.
+$$
+
+Thus the remaining integral becomes
+
+$$
+\begin{aligned}
+\int\frac{h^2}{1+A\sinh^2t}\,dt
+&=\int\frac{h^2}{1+A w^2/(1-w^2)}\frac{1}{1-w^2}\,dw\\
+&=\int\frac{h^2}{1+(A-1)w^2}\,dw\\
+&=\int\frac{h^2}{1+h^2w^2}\,dw
+=h\arctan(hw)+C.
+\end{aligned}
+$$
+
+Here $h>0$ is fixed during integration, and $C$ is independent of $w$.
 
 **Step 5 — CALCULUS.** Since $t=\operatorname{arsinh}(v/\sqrt A)$ and $w=v/\sqrt{A+v^2}$, endpoint evaluation gives
 
