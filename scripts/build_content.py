@@ -212,6 +212,42 @@ def markdown_to_tex(text, algebra_color='AlgebraBlue'):
     return "\n".join(output)
 
 
+def worked_chapter_to_tex(text):
+    """Keep each statement and its solution together in the printed edition."""
+    groups = problem_sections(text)
+    output = []
+    for number, (identifier, (title, prompt)) in enumerate(groups['Problems'].items()):
+        if number:
+            output.append(r'\clearpage')
+        output.extend([
+            r'\section{' + tex_inline(identifier + ' — ' + title) + '}',
+            r'\label{problem:' + identifier + '}',
+            r'\markright{' + identifier + '}',
+            markdown_to_tex('# Statement\n\n' + prompt),
+            r'\subsection*{Worked solution}',
+            markdown_to_tex('# Solution\n\n' + groups['Complete solutions'][identifier][1]),
+            r'\par\smallskip{\small Hints for ' + identifier + r' appear on page~\pageref{hints:' + identifier + '}.}\n',
+        ])
+    # Chapter bibliographies belong after the calculations, not inside the last solution.
+    references = re.search(r'^## Application references\s*\n(.*)', text, flags=re.M | re.S)
+    if references:
+        output.append(markdown_to_tex('# References\n\n## Application references\n\n' + references[1]))
+    return '\n'.join(output)
+
+
+def hints_to_tex(problems):
+    output = [r'\chapter{Hints}', r'\markright{}',
+              'The hints provide progressively more of an approach. Each problem reference gives the page on which its statement and complete worked solution begin.']
+    for identifier, (title, _) in problems['Problems'].items():
+        output.extend([
+            r'\subsection*{' + tex_inline(identifier + ' — ' + title) + '}',
+            r'\label{hints:' + identifier + '}',
+            r'Problem and worked solution: page~\pageref{problem:' + identifier + '}.',
+            markdown_to_tex('# Hints\n\n' + problems['Hint ladders'][identifier][1]),
+        ])
+    return '\n'.join(output)
+
+
 def build():
     content = {name: (ROOT / name).read_text() for name in SOURCES}
     problems = collect_problems(content)
@@ -259,12 +295,13 @@ def build():
     for filename, _, title in INTRO_SOURCES:
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     for filename, _, _, title in MAIN_SETS:
-        manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
-    manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\begingroup\\color{TrickPurple}\n"
+        manuscript += "\n\\chapter{" + title + "}\n\\markright{}\n" + worked_chapter_to_tex(content[filename]) + "\n"
+    manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\markright{}\n\\begingroup\\color{TrickPurple}\n"
     manuscript += markdown_to_tex(content["TRICKS_APPENDIX.md"], algebra_color='TrickPurple') + '\n\\endgroup\n'
     for filename, _, code, title in REFERENCE_SETS:
-        manuscript += "\n\\chapter{" + code + ": " + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
-    manuscript += "\n\\chapter{Literature review and notation decisions}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
+        manuscript += "\n\\chapter{" + code + ": " + title + "}\n\\markright{}\n" + worked_chapter_to_tex(content[filename]) + "\n"
+    manuscript += "\n" + hints_to_tex(problems) + "\n"
+    manuscript += "\n\\chapter{Literature review and notation decisions}\n\\markright{}\n" + markdown_to_tex(content["NOTATION_REVIEW.md"]) + "\n\\end{document}\n"
     (ROOT / "calculus_workbook.tex").write_text(manuscript)
     shutil.copyfile(ROOT / "calculus_workbook.tex", ROOT / "site/public/downloads/calculus_workbook.tex")
     combined = '# Calculus: A Worked Review\n\nCC BY-SA 4.0 · Provided as-is; correctness is not guaranteed.\n\n'

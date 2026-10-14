@@ -58,6 +58,30 @@ class ContentTests(unittest.TestCase):
         self.assertLess(filenames.index(content.MAIN_SETS[-1][0]), filenames.index('TRICKS_APPENDIX.md'))
         self.assertLess(filenames.index('TRICKS_APPENDIX.md'), filenames.index(content.REFERENCE_SETS[0][0]))
 
+    def test_printed_problems_are_followed_by_their_own_solutions(self):
+        for filename in content.PROBLEM_SOURCES:
+            manuscript = (ROOT / filename).read_text()
+            groups = content.problem_sections(manuscript)
+            tex = content.worked_chapter_to_tex(manuscript)
+            self.assertNotIn(r'\section{Problems}', tex)
+            self.assertNotIn(r'\section{Complete solutions}', tex)
+            self.assertNotIn(r'\section{Hint ladders}', tex)
+            identifiers = list(groups['Problems'])
+            for i, identifier in enumerate(identifiers):
+                start = tex.index(r'\label{problem:' + identifier + '}')
+                end = tex.index(r'\label{problem:' + identifiers[i+1] + '}') if i+1 < len(identifiers) else len(tex)
+                block = tex[start:end]
+                prompt = content.markdown_to_tex('# Statement\n\n' + groups['Problems'][identifier][1])
+                solution = content.markdown_to_tex('# Solution\n\n' + groups['Complete solutions'][identifier][1])
+                self.assertIn(prompt, block)
+                self.assertIn(solution, block)
+                self.assertLess(block.index(prompt), block.index(solution))
+                self.assertIn(r'\pageref{hints:' + identifier + '}', block)
+        hints = content.hints_to_tex(groups)
+        for identifier in groups['Problems']:
+            self.assertIn(r'\label{hints:' + identifier + '}', hints)
+            self.assertIn(r'\pageref{problem:' + identifier + '}', hints)
+
     def test_duplicate_problem_ids_across_chapters_are_rejected(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
         manuscripts['DIFFERENTIATION_SCALARS.md'] = manuscripts['DIFFERENTIATION_RULES.md']
