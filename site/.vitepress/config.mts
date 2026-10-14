@@ -47,7 +47,7 @@ export default defineConfig({
     ],
     sidebar: [
       { text: 'Begin here', items: [
-        { text: 'How to use this book', link: '/start' },
+        { text: 'About the workbook', link: '/start' },
         { text: 'Complete book · One page', link: '/generated/book' },
         { text: 'Notation standard', link: '/generated/notation' },
         { text: 'Calculus methods reference', link: '/generated/methods' },

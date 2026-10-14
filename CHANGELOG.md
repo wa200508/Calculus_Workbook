@@ -1,5 +1,10 @@
 # Development log
 
+## 0.4.0-alpha.3
+
+- Move the fully specified RF logarithmic derivative to display math to prevent printed margin overflow.
+- Remove the duplicate development notice from the introduction and clarify its navigation label.
+
 ## 0.4.0-alpha.2
 
 - Rewrite the introduction and reference prose around sustained mathematical practice.

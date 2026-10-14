@@ -258,6 +258,8 @@ def build():
         (ROOT / obsolete).unlink(missing_ok=True)
     for name, slug in SOURCES.items():
         notice = '> **Alpha development.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
+        if name == 'INTRODUCTION.md':
+            notice = ''  # The site shell already displays the alpha notice.
         text = site_links(content[name])
         first, rest = text.split("\n", 1)
         styled = style_algebra(rest)

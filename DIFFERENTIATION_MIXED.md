@@ -268,7 +268,15 @@ For $T\ge2\tau$ it is nonnegative everywhere, with equality at zero when $T=2\ta
 
 **Step 5 — DOMAIN.** A principal phase agrees locally with this phase plus an integer multiple of $2\pi$. Its derivative agrees on each smooth chart, but it is undefined at any branch jump. No causality or passivity assumption has been imposed on this mathematical frequency response; such physical conditions cannot be inferred from its unit magnitude.
 
-**Step 6 — CHECK.** The quotient rule or a complex logarithmic derivative gives $\frac{\partial}{\partial\omega}(H(\omega;\tau,T))/H(\omega;\tau,T)=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)$, a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
+**Step 6 — CHECK.** The quotient rule, followed by division by the nonzero response, gives
+
+$$
+\frac{1}{H(\omega;\tau,T)}
+\frac{\partial}{\partial\omega}\left(H(\omega;\tau,T)\right)
+=\mathrm{i}\left(\frac{2\tau}{1+\omega^2\tau^2}-T\right).
+$$
+
+This logarithmic derivative is purely imaginary, consistent with the constant magnitude. The negative phase derivative has units of time.
 
 **Discussion.** A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
 
