@@ -33,5 +33,5 @@ ellipsoids, hyperboloids, singularities, and convergence. Supporting tricks are 
 This alpha workbook is provided as-is; mathematical correctness is not guaranteed.
 [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.3)
+[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.4)
 or [read the entire current manuscript on one page](/generated/book).

@@ -1,5 +1,9 @@
 # Development log
 
+## 0.4.0-alpha.4
+
+- Place each hint-page reference beside the problem heading so it cannot become a nearly empty continuation page after the solution.
+
 ## 0.4.0-alpha.3
 
 - Move the fully specified RF logarithmic derivative to display math to prevent printed margin overflow.

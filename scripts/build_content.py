@@ -223,10 +223,10 @@ def worked_chapter_to_tex(text):
             r'\section{' + tex_inline(identifier + ' — ' + title) + '}',
             r'\label{problem:' + identifier + '}',
             r'\markright{' + identifier + '}',
+            r'{\small Hints: page~\pageref{hints:' + identifier + '}.}\par\medskip',
             markdown_to_tex('# Statement\n\n' + prompt),
             r'\subsection*{Worked solution}',
             markdown_to_tex('# Solution\n\n' + groups['Complete solutions'][identifier][1]),
-            r'\par\smallskip{\small Hints for ' + identifier + r' appear on page~\pageref{hints:' + identifier + '}.}\n',
         ])
     # Chapter bibliographies belong after the calculations, not inside the last solution.
     references = re.search(r'^## Application references\s*\n(.*)', text, flags=re.M | re.S)
