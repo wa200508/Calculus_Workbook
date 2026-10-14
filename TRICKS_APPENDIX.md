@@ -1,13 +1,14 @@
 # Tricks and identities
 
-Alpha reference appendix. These are supporting identities, algebraic rewrites,
-and approximation tools to consult while working through problems. Main calculus
-methods such as substitution, integration by parts, and differentiation rules
-belong in the main chapters.
+An identity can change the form of a problem before any calculus is performed.
+A pair of trigonometric factors may become a sum of exponentials; a difference
+of radicals may become a well-behaved quotient; a local expansion may reveal the
+size of a term that is otherwise difficult to estimate. This appendix records
+such supporting tools, together with examples and their conditions of validity.
+The calculus methods themselves are collected in the introductory reference.
 
-**Purple identifies a supporting identity or approximation.** The label TRICK remains visible in grayscale.
-The main chapters use dark blue for algebra, black for calculus rules, and purple
-when invoking a supporting tool from this appendix.
+Supporting identities and approximations are marked in purple throughout the
+book. The label TRICK identifies the same passages in a monochrome copy.
 
 ## Supporting tools and applicability
 
@@ -18,6 +19,7 @@ when invoking a supporting tool from this appendix.
 | [T-003 Binomial expansion](#t-003-binomial-expansion) | Powers of a sum | A finite exact expansion for nonnegative integer powers |
 | [T-004 Completing the square](#t-004-completing-the-square) | A quadratic form requires translation or factorization | An exact shifted-square form |
 | [T-005 Rationalization](#t-005-rationalization) | A difference of roots causes cancellation | An exact equivalent expression on a stated domain |
+| [T-007 Hyperbolic identities](#t-007-hyperbolic-identities-and-real-branches) | Quadratic radicals and hyperbolic parametrizations | Exact identities with real inverse branches and root signs |
 | [T-006 Logarithm identities](#t-006-logarithm-identities) | Products, quotients, and powers inside a logarithm | Exact sums and differences under real positivity assumptions |
 
 ## T-001 Euler identities
@@ -29,7 +31,7 @@ $\operatorname{Re}(z)=a$ and $\operatorname{Im}(z)=b$.
 The complex exponential $\exp(z)$ is a scalar-valued function of a complex scalar
 input. Sine and cosine of real angles are real scalars.
 The usual notation $e^z$ means the same function as $\exp(z)$, where
-$e=\exp(1)$ is the fixed real Euler constant. We use $\exp(z)$ here to keep the
+$e=\exp(1)$ is the base of the natural logarithm. The form $\exp(z)$ keeps the
 input visible.
 
 **TRICK — exact identities.**
@@ -95,8 +97,7 @@ sine formula gives $0=2(1)(0)$. This checks one angle. The preceding exact
 identities establish the general result.
 
 **When it helps.** Converting trigonometric expressions into exponentials can
-make angle combinations easier to manipulate. Track real and imaginary parts
-explicitly when returning to a real-valued problem.
+make angle combinations easier to manipulate. The real and imaginary parts then recover the corresponding real identities.
 
 ## T-002 Taylor expansions
 
@@ -107,7 +108,7 @@ $t$ is an auxiliary real scalar input used when writing derivatives before
 evaluation. Both $f(t)$ and $f(x)$ are values of the same function at their
 displayed inputs. The factorial is $k!=1\cdot2\cdots k$ for $k\ge1$, with $0!=1$.
 
-**TRICK — Taylor polynomial.** Define the fixed scalar coefficients by
+**TRICK — Taylor polynomial.** The fixed scalar coefficients are
 
 $$
 c_0=f(a),\qquad
@@ -159,8 +160,7 @@ $$
 $$
 
 An infinite Taylor series equals $f(x)$ only where the remainder tends to zero
-as $N$ increases. Smoothness alone does not guarantee that equality. Keep a
-finite approximation marked $\approx$ unless the remainder is included.
+as $N$ increases. Smoothness alone does not guarantee that equality. A finite truncation is written with $\approx$ when its remainder is omitted.
 See [OpenStax, Calculus Volume 2, §6.3](https://openstax.org/books/calculus-volume-2/pages/6-3-taylor-and-maclaurin-series).
 
 ### Common infinite expansions and their valid inputs
@@ -192,13 +192,26 @@ $$
 $$
 
 Although the function $1/(1-x)$ exists at $x=2$, this series does not converge
-there. Check the series' convergence range before replacing a function by a
-series. See [OpenStax, Calculus Volume 2, §6.4](https://openstax.org/books/calculus-volume-2/pages/6-4-working-with-taylor-series).
+there. The convergence interval is therefore part of the representation. See [OpenStax, Calculus Volume 2, §6.4](https://openstax.org/books/calculus-volume-2/pages/6-4-working-with-taylor-series).
+
+Two further expansions occur repeatedly in the nonlinear and parameter-integral
+problems. For a real scalar $x$ with $|x|<1$,
+
+$$
+\ln(1+x)=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}x^n}{n},
+\qquad
+\arctan(x)=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1}.
+$$
+
+Here $n$ is an integer summation index. Both series converge uniformly on every
+closed interval $|x|\le r<1$. Consequently, their first terms give
+$\ln(1+x)=x+O(x^2)$ and $\arctan(x)=x+O(x^3)$ as $x\to0$. These local estimates
+are useful even when the full infinite series is not needed.
 
 ### Worked use: approximate a sine with a stated error
 
 **Step 1 — SETUP.** $f(x)=\sin(x)$ is a real scalar function, with real scalar
-angle $x$ in radians. Use center $a=0$ and degree $N=4$. The target input is
+angle $x$ in radians. The expansion has center $a=0$ and order $N=4$. The target input is
 $x=1/10$ radians. There are no varying parameters.
 
 **Step 2 — CALCULUS: list the derivatives used by the tool.**
@@ -215,8 +228,8 @@ f(t)&=\sin(t),\\
 $$
 
 At $t=0$, the value and first four derivatives are respectively $0,1,0,-1,0$.
-These trigonometric derivative rules are developed in the main calculus material;
-here their values supply the expansion coefficients.
+The derivative formulas are listed in the methods reference; here their values
+at zero supply the expansion coefficients.
 
 **Step 3 — ALGEBRA: build the polynomial and remove zero terms.**
 
@@ -234,7 +247,7 @@ Although this polynomial's highest nonzero power is three, it is also the
 fourth-order Taylor polynomial because its fourth-order coefficient is zero.
 
 **Step 4 — APPROXIMATION: retain the fifth-derivative error bound.** Since
-$|\cos(t)|\leq1$ for real $t$, choose the fixed scalar bound $M=1$:
+$|\cos(t)|\leq1$ for real $t$, the fixed scalar bound $M=1$ is valid:
 
 $$
 \sin(x)=x-\frac{x^3}{6}+R_4(x;0),
@@ -263,17 +276,17 @@ $$
 =\frac1{12\,000\,000}.
 $$
 
-This rational bound applies to the exact rational approximation shown. If you
-round it to a decimal, include the additional rounding error in the reported bound.
+This bound applies to the exact rational approximation shown. A rounded decimal
+value introduces an additional error that is separate from the Taylor remainder.
 
 **Step 7 — CHECK.** The correction $x^3/6$ is positive at $x=1/10$, so the
 polynomial estimate is slightly smaller than $x$. Also, both the polynomial and
 the actual sine are zero at the expansion center. These plausibility checks
 supplement the theorem's error bound.
 
-**When it helps.** Expand around an input where function values and derivatives
-admit elementary evaluation. A polynomial without an error discussion is an incomplete numerical
-approximation.
+**When it helps.** An expansion is particularly useful near an input where the
+function and its derivatives are easy to evaluate. The remainder estimate
+determines how far the resulting polynomial can be trusted.
 
 ## T-003 Binomial expansion
 
@@ -298,7 +311,7 @@ requires a different, generally infinite expansion with convergence conditions.
 ### Worked use: expand a shifted cubic
 
 **Step 1 — SETUP.** $x$ is an independent real scalar. $h$ is a real scalar
-increment. Here take $r=x$, $s=h$, and $n=3$.
+increment. The choices $r=x$, $s=h$, and $n=3$ give the cubic expansion.
 
 **Step 2 — ALGEBRA: calculate the coefficients.**
 
@@ -342,7 +355,7 @@ $$
 
 ### Worked use: expose a quadratic's shape
 
-**Step 1 — SETUP.** Let the real scalar function be $q(x)=2x^2-8x+11$ for all
+**Step 1 — SETUP.** The real scalar function is $q(x)=2x^2-8x+11$ for all
 real $x$. The coefficients $2,-8,11$ are fixed.
 
 **Step 2 — ALGEBRA: factor the quadratic coefficient.**
@@ -379,8 +392,7 @@ The square is nonnegative, so $q(x)\geq3$, with equality at $x=2$. The exact
 rewrite exposes that feature without requiring an optimization calculation.
 
 **When it helps.** A shifted-square denominator or root may reveal the right
-identity, domain, or later integration method. The rewrite itself does not choose
-the calculus method for you.
+identity, domain, or later integration method. The resulting form can suggest a substitution or make a sign restriction apparent.
 
 ## T-005 Rationalization
 
@@ -398,7 +410,7 @@ $r+s\ne0$.
 ### Worked use: remove a root difference
 
 **Step 1 — SETUP.** $x$ is an independent real scalar with $x>-1$ and $x\ne0$.
-Define the real scalar function
+The real scalar function under consideration is
 
 $$
 f(x)=\frac{\sqrt{1+x}-1}{x}.
@@ -486,8 +498,8 @@ of $x^2+1$ on $x$.
 
 For a version declared on $x\ne0$, including negative inputs, the last expression
 would instead be $3\ln(x^2+1)-2\ln(|x|)$. The absolute value keeps the real
-logarithm's input positive; the expression $\ln(x)$ must not be carried into a
-negative-input domain.
+logarithm's input positive. The expression $\ln(x)$ alone would exclude every
+negative input.
 
 ## T-007 Hyperbolic identities and real branches
 
@@ -513,8 +525,8 @@ operations in the main chapters.
 
 ### Worked use: a square root with its sign accounted for
 
-Let $t$ be a real independent scalar, and let $u$ be the real scalar coordinate
-related by $t=\sinh(u)$. Then
+The independent real scalar $t$ and the real coordinate $u$ are related by
+$t=\sinh(u)$. Thus
 
 $$
 \sqrt{1+t^2}=\sqrt{1+\sinh^2(u)}
@@ -536,9 +548,10 @@ $\operatorname{arcosh}(t)=\ln(t+\sqrt{t^2-1})$ is defined for $t\ge1$.
 The expressions with inverse hyperbolic functions used in I3-006 and I3-009
 refer to these real conventions.
 
-## Use a trick deliberately
+## Returning to the calculation
 
-Identify the structure it matches, check its domain, show the exact replacement,
-and then return to the calculus problem. Keep an error term or error bound when
-using an approximation. If a trick makes the expression longer or obscures its
-dependencies, keep the original form and choose another approach.
+A useful identity changes the representation without losing the original
+conditions. An approximation also introduces an error that becomes part of the
+answer. In the worked problems, the supporting calculation is followed by a
+return to the derivative, integral, or limit for which it was needed. This makes
+it possible to see both why the tool was chosen and what it accomplished.

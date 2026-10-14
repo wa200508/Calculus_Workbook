@@ -48,13 +48,52 @@ Notation, methods reference, fifty-two worked problems, and supporting tools.\\
 Alpha edition 0.4.0-alpha.1, October 12, 2026.
 \end{titlepage}
 \chapter*{About this book}
-This graduate review assumes prior study of calculus. Worked examples document method selection, functional dependencies, domain analysis, and the sequence of calculations leading to a result. The introduction concludes with a consolidated methods reference. Four mixed problem sets follow immediately, with twenty-eight problems involving nonlinear functions, fields, geometry, and convergence. Twenty-four simpler reference exercises are retained in the appendices. Every object has a declared type. Every function shows its inputs. Every derivative and integral identifies the variable being used.
 
-Method-choice blocks identify the structure motivating a calculation. Domain blocks identify exclusions, branches, convergence, and conditions for interchanging operations. Worked solutions retain intermediate algebra as calculation checkpoints. Algebra and identities carry explicit labels; dedicated algebra steps appear in \textcolor{AlgebraBlue}{dark blue}. Supporting tools from the tricks appendix appear in \textcolor{TrickPurple}{purple}. Color supplements the labels, so a grayscale copy remains usable.
+Knowing the rules of calculus and being able to carry a difficult calculation
+through to completion are different accomplishments. A familiar derivative can
+be hidden inside an unfamiliar expression. A promising substitution can fail at
+a turning point. Several pages of correct algebra can still lead to a result
+that is valid on only part of the original domain. These are the difficulties
+this workbook is intended to exercise.
 
-This alpha development edition develops scalar calculus, field and matrix derivatives, oscillatory and singular integrals, and curved-domain geometry through worked problems. Topics and examples are listed in the table of contents. The notation recommendations incorporate a targeted literature review, documented in the references.
+The reader is assumed to have studied calculus. The aim is sustained practice:
+choosing a way into a problem, developing it far enough to see whether it works,
+and accounting for the assumptions on which the result depends. Some solutions
+become short after a useful reformulation. Others remain long. Both kinds belong
+here. A complicated answer is acceptable when the calculation is sound and its
+meaning is clear.
 
-Problem statements, graduated hints, and complete solutions are presented separately. Stable problem identifiers and numbered solution steps provide references to individual calculations.
+Notation provides the common language for that work. The opening chapter records
+the conventions used throughout the book: what each quantity represents, which
+variables it depends on, and precisely which operation is being performed. Full
+function arguments and explicit derivative operators reduce the amount that has
+to be reconstructed from context. The methods reference that follows collects
+formulas and their conditions in one place, so a calculation can be resumed
+without relying on perfect recall.
+
+The main chapters contain mixed problems. A heading identifies the mathematical
+setting, but the choice of method is part of the problem. The worked solutions
+explain what made an approach promising, carry out the intermediate calculations,
+and examine the places where that approach could have failed. Algebra appears
+in dark blue so that a sign, coefficient, or cancellation can be checked without
+losing the thread of the argument. Domain discussions are marked in amber;
+supporting identities and approximations appear in purple. The labels remain
+useful in a monochrome printout.
+
+Each worked problem in the printed edition begins with its complete statement
+and continues directly into the solution. The problem identifiers and numbered
+steps make particular calculations easy to find again. Hints are collected in
+a separate appendix for readers who want a smaller amount of help first. On the
+website, the hints and solutions can be opened individually. Simpler reference
+exercises are retained in the appendices when a local calculation needs a more
+familiar example.
+
+The purpose of the answers is to make independent work possible, including the
+part of that work that involves becoming stuck. Consulting an identity, comparing
+two representations, or returning to an earlier line is part of solving a
+problem. Over time, repeated encounters with those decisions build a practical
+sense of which approaches are likely to succeed and which conditions deserve
+closer attention.
 \chapter*{Sharing and accuracy}
 Copyright \copyright{} 2026 Calculus Workbook contributors, to the extent copyright applies. Original educational content is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). You may share and adapt it, including commercially, subject to attribution, an indication of changes, ShareAlike, and the license's other terms.
 
@@ -67,34 +106,35 @@ This developing book is provided as-is. Mathematical correctness, completeness, 
 
 \chapter{Notational conventions}
 
-The notation in this book is based on established conventions of calculus and
-linear algebra. Function arguments, variable dependencies, object types, and
-operation domains are stated explicitly. A consistent selection of conventions
-is adopted throughout; uniform usage across all mathematical disciplines is
-not presumed. The literature underlying these choices is discussed in
-the notation review.
+A mathematical expression is easier to follow when its notation carries the
+information needed to interpret it. In this book, function arguments remain
+visible, the variable of each operation is named, and the types of the quantities
+involved are stated alongside their definitions. The conventions are drawn from
+established calculus and linear algebra notation. Where several conventions are
+common, one is used consistently here. Their sources and the reasons for these
+choices are discussed in the notation review.
 
 \section{1. Objects, domains, and dependencies}
 
-Leibniz operator notation is used for derivatives, with complete function
-arguments and ordinary parentheses enclosing the operand. The type of each
-object is identified by both its notation and its accompanying definition.
+Derivatives are written as Leibniz operators followed by a parenthesized
+expression. The operator names the differentiation variable; the expression
+shows the function and its arguments. This makes a derivative readable without
+having to recover an omitted dependency from an earlier paragraph.
 
-Four kinds of information are provided in the statements and solutions of
-worked problems:
+A problem statement establishes four aspects of the calculation:
 
 \begin{enumerate}
-\item \textbf{Objects and types:} scalar quantities; vectors with a specified dimension; matrices with specified dimensions; and tensors with a specified order, space, basis, and component shape.
-\item \textbf{Dependencies:} independent inputs, dependent outputs, intermediate functions, and fixed parameters.
-\item \textbf{Domains and assumptions:} admissible inputs, excluded values, and the regularity or sign conditions relevant to the calculation.
-\item \textbf{Operations and outputs:} the variable of differentiation or integration, quantities held fixed, and the type of the resulting object.
+\item \textbf{Objects and types.} A quantity may be a scalar, a vector of a stated dimension, a matrix of a stated shape, or a tensor whose space, basis, and component indices have been specified.
+\item \textbf{Dependencies.} Independent variables are distinguished from dependent quantities and fixed parameters. Intermediate functions are named when they make a long expression easier to follow.
+\item \textbf{Domains and assumptions.} The admissible inputs and excluded values are stated, together with relevant sign or regularity conditions.
+\item \textbf{Operations and outputs.} The variable of differentiation or integration is identified, as are the quantities held fixed and the type of the result.
 
 \end{enumerate}
-These declarations are repeated where a solution is presented independently
-of its problem statement. Function arguments remain explicit in calculus
-expressions. A vector or matrix may appear as a single argument when its
-components and dependencies have been defined locally. Lengthy expressions
-are presented as a sequence of fully defined intermediate expressions.
+The same information is repeated in a solution when it is needed to follow a
+particular step. A vector or matrix can serve as one function argument once its
+components and dependencies have been defined. This keeps the expressions
+manageable while preserving the distinction between a scalar input and a
+collection of inputs.
 
 \section{2. Delimiters and object typography}
 
@@ -474,6 +514,21 @@ derivative is nonzero.
   by its validity conditions and an error estimate, or by a statement
   that no error bound has been established.
 
+\subsection{Remainders and limiting behavior}
+
+The symbols \(O\) and \(o\) describe the size of an error in a stated limit. For real
+scalar functions \(r(x),g(x)\), with \(g(x)\ne0\) near the limiting point \(a\) except
+possibly at \(a\) itself, the statement \(r(x)=O(g(x))\) as \(x\to a\) means that
+\(|r(x)|\le M|g(x)|\) near \(a\) for some fixed finite constant \(M\). The statement
+\(r(x)=o(g(x))\) means that \(r(x)/g(x)\to0\). In particular, \(o(1)\) denotes a quantity
+that tends to zero. The domain determines whether a limit is two-sided or
+one-sided, and the direction is stated when it matters.
+
+An estimate such as \(r(x)=O(x^2)\) controls values of the remainder; it does not,
+by itself, justify differentiating that estimate. Bounds on derivatives require
+additional information. When an actual numerical error is needed, an explicit
+constant and interval are given rather than an order symbol alone.
+
 \section{7. Labels and color conventions}
 
 Numbered steps identify the successive operations in worked solutions.
@@ -504,17 +559,23 @@ or approximations. Algebra in the main chapters is denoted in dark blue.
 Substitution and integration by parts are classified as main calculus
 methods rather than supporting tricks.
 
-Each problem is identified by a stable code, such as D2-001. Its statement,
-hints, and complete solution are presented in separate sections. Numbered
+Each problem is identified by a stable code, such as D2-001. In the printed edition, its statement is followed immediately by the worked
+solution; hints are collected in an appendix. The website presents hints and
+solutions in separate disclosure panels. Numbered
 solution steps provide references to particular stages of the calculation.
 
 \chapter{Calculus methods reference}
 
-This reference concludes the introduction. Each method is presented with its
-operative form, applicability conditions, and useful structural indicators.
-The subsequent chapters contain mixed problem sets; no single method is assigned
-to a chapter. Scalars are real unless complex values are declared explicitly.
-All fixed parameters are held fixed in the displayed operations.
+A difficult calculation rarely announces which method will make it manageable.
+This reference brings together the formulas and conditions most often needed in
+the worked problems. Each entry describes the mathematical structure that makes
+a method useful and the restrictions that remain after it has been applied.
+The examples in the following chapters combine these methods in different ways.
+
+Unless stated otherwise, the quantities in this reference are real scalars.
+Parameters described as fixed remain constant during the displayed operation.
+The distinction matters when a later step differentiates an answer with respect
+to one of those parameters.
 
 \section{Differentiation and local representations}
 
@@ -582,7 +643,7 @@ function \(h(t)\), the chain rule is
 =\left.\frac{d}{dt}\left(h(t)\right)\right|_{t=g(x)}\frac{d}{dx}\left(g(x)\right).
 \]
 
-The inner value must lie in the differentiability domain of the outer function.
+The formula applies when the inner value lies in a domain where the outer function is differentiable.
 Factoring, polynomial division, or a different representation may reduce the
 number of rule applications. Cancellation preserves exclusions from the original
 domain. Several nested arguments may be represented by separately named functions.
@@ -691,7 +752,7 @@ This is useful when one factor simplifies under differentiation and another has
 an accessible primitive. Repeated applications can produce a recurrence for a
 family of integrals or an equation involving the original integral. On unbounded
 intervals, every boundary term and remainder integral requires its own limit.
-A boundary expression is not set to zero solely because the integrand decays.
+Decay of the integrand alone does not establish that a boundary term vanishes.
 
 \subsection{Rational functions and partial fractions}
 
@@ -793,8 +854,8 @@ measurable sequences. Tonelli's theorem permits rearrangement for nonnegative
 integrands; Fubini's theorem provides rearrangement under absolute integrability.
 Uniform convergence on a finite interval is a useful sufficient condition for
 termwise integration of a function series. Differentiation of a series requires
-additional control of the derivative series. A pointwise limit alone supplies
-none of these interchanges.
+additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
+can contribute to an integral even when they disappear at each fixed input.
 
 \subsection{Series, asymptotics, and special functions}
 
@@ -850,7 +911,7 @@ on a neighborhood of a bounded volume \(V\) with piecewise smooth boundary,
 
 The real vector \(\mathbf n(x,y,z)\) is the outward unit normal. A source singularity
 inside \(V\) violates the classical regularity hypothesis. Excision introduces an
-additional inner boundary whose orientation and flux must be included. Boundary
+additional inner boundary, with its own orientation and flux. Boundary
 conditions and topology can therefore determine an answer before a lengthy
 coordinate integration is attempted.
 
@@ -1026,7 +1087,7 @@ The error from the exponential, divided by \(x\), is \(O(|x|\ln^2|x|)\to0\). Thu
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} For \(x\ne0\), the original derivative formula divided by \(f(x)\) is the derivative of \(\ln(f(x))\). Its second term tends to two, while the first tends to \(-\infty\), consistent with the endpoint analysis. A finite function limit does not supply differentiability.
 
-\textbf{Recognition cue.} Variable powers require both derivatives and an explicit positive-base domain. Extension of the value and extension of a finite derivative are separate questions.
+\textbf{Discussion.} Variable powers require both derivatives and an explicit positive-base domain. Extension of the value and extension of a finite derivative are separate questions.
 
 \subsection{D4-002}
 
@@ -1069,7 +1130,7 @@ The error from the exponential, divided by \(x\), is \(O(|x|\ln^2|x|)\to0\). Thu
 \textbf{Step 7 --- CHECK AND DOMAIN.} \(\cosh x\ge1\) excludes finite denominator zeros. At \(x=0\), the angle is \(\pi/2\), its first derivative is \(-1\), and its second derivative is zero. The angle decreases from a limit of \(\pi\) to a limit of zero as \(x\) increases; those limiting angles are not attained at finite inputs.
 
 \end{DomainStep}
-\textbf{Recognition cue.} An inverse-function derivative can simplify considerably after the defining relation and branch sign are retained.
+\textbf{Discussion.} An inverse-function derivative can simplify considerably after the defining relation and branch sign are retained.
 
 \subsection{D4-003}
 
@@ -1108,7 +1169,7 @@ f(x)=2\ln(\sqrt{1+x^2}+x).
 \textbf{Step 6 --- TRICK AND CHECK.} The real inverse identity in T-007 gives \(f(x)=2\operatorname{arsinh}x\). For large positive \(x\) this representation avoids the small difference in the original denominator. For negative \(x\), oddness gives \(f(x)=-2\ln(\sqrt{1+x^2}-x)\), avoiding cancellation in the other factor. The reciprocal factors also show \(f(-x)=-f(x)\) directly.
 
 \endgroup
-\textbf{Recognition cue.} Algebraic equivalence can improve both differentiation and numerical evaluation. The stable representation depends on the sign of the input.
+\textbf{Discussion.} Algebraic equivalence can improve both differentiation and numerical evaluation. The stable representation depends on the sign of the input.
 
 \subsection{D4-004}
 
@@ -1153,7 +1214,7 @@ On this branch \(2x+4g(x,y)=2\sqrt{D(x,y)}\).
 
 \textbf{Step 7 --- CHECK.} Direct substitution gives \(g(x(t),y(t))=(1-\cos t)/2\), whose derivative agrees. Cancellation of the mixed path contributions is a consequence of this specific constraint, not permission to omit either coordinate derivative.
 
-\textbf{Recognition cue.} A complicated height formula may simplify on a constrained path. The graph domain and the path dependence are assessed separately.
+\textbf{Discussion.} A complicated height formula may simplify on a constrained path. The graph domain and the path dependence are assessed separately.
 
 \subsection{D4-005}
 
@@ -1187,7 +1248,7 @@ For \(T\ge2\tau\) it is nonnegative everywhere, with equality at zero when \(T=2
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} The quotient rule or a complex logarithmic derivative gives \(\frac{\partial}{\partial\omega}(H)/H=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)\), a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
 
-\textbf{Recognition cue.} A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
+\textbf{Discussion.} A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
 
 \subsection{D4-006}
 
@@ -1223,7 +1284,7 @@ For \(T\ge2\tau\) it is nonnegative everywhere, with equality at zero when \(T=2
 \endgroup
 \textbf{Step 6 --- RESULT AND CHECK.} The requested derivative is \(\frac{d}{dt}(F(t))|_{t=0}=\pi/4-1/2\). Also \(F(0)=\pi/4\). The first boundary contribution is positive at zero, while the interior contribution is negative; both are needed to obtain the stated slope. Independent finite differences of the original integral verify the value.
 
-\textbf{Recognition cue.} A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.
+\textbf{Discussion.} A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.
 
 \chapter{Fields and geometric constraints}
 
@@ -1397,7 +1458,7 @@ There is no finite right derivative at cutoff. Below cutoff the radicand is nega
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} The derivative has units of inverse velocity. The limits are \(v_g(\omega)\to0\) as \(\omega\downarrow\omega_c\) and \(v_g(\omega)\to c\) as \(\omega\to\infty\). Large sensitivity near cutoff is expected; a high-frequency approximation is unreliable there.
 
-\textbf{Recognition cue.} A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
+\textbf{Discussion.} A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
 
 \subsection{D3-002}
 
@@ -1440,7 +1501,7 @@ Multiplication by the distance gradient yields
 \endgroup
 \textbf{Step 5 --- CHECK.} For \(k=0\), the Coulomb-kernel gradient is recovered. The displacement vector has magnitude \(R(x,y,z)\), so the gradient magnitude behaves as \(1/(4\pi R(x,y,z)^2)\) near the source. The kernel itself behaves as \(1/(4\pi R(x,y,z))\). Neither formula defines a value at the source. A distributional source equation cannot be inferred by simply substituting \(R=0\) into these classical derivatives.
 
-\textbf{Recognition cue.} A radial chain rule reduces component work, but it preserves the excluded source point. Differentiation strengthens the singularity and can change whether a later integral exists.
+\textbf{Discussion.} A radial chain rule reduces component work, but it preserves the excluded source point. Differentiation strengthens the singularity and can change whether a later integral exists.
 
 \subsection{D3-003}
 
@@ -1477,7 +1538,7 @@ A chart using \(Y(\omega)\ne0\) gives the same expression. The expression theref
 \textbf{Step 6 --- DOMAIN AND CHECK.} The principal phase approaches \(\pi\) from the left at \(\omega=\pi\), but approaches \(-\pi\) from the right. It is discontinuous there and has no derivative there. The unwrapped choice \(\widetilde\phi(\omega)=\omega\) is smooth through that point, with derivative one. At a zero of \(H(\omega)\), no phase is defined at all. A group-delay calculation based on phase differentiation depends on both a nonzero response and a consistent local phase choice.
 
 \end{DomainStep}
-\textbf{Recognition cue.} A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
+\textbf{Discussion.} A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
 
 \subsection{D3-004}
 
@@ -1517,7 +1578,7 @@ It points outward since \(F\) increases away from the ellipsoid.
 \textbf{Step 5 --- DOMAIN AND CHECK.} At the equator \(z=0\), the \(z\) partial derivative of \(F\) vanishes, so the implicit-function theorem does not provide a height graph there. For example, at \((a,0,0)\) the \(x\) partial derivative is \(2/a\ne0\), and a smooth graph of \(x\) in terms of \(y,z\) is available. The full gradient could vanish only at \((0,0,0)\), which is not on the ellipsoid. The unit normal is defined at every surface point and has length one.
 
 \end{DomainStep}
-\textbf{Recognition cue.} The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
+\textbf{Discussion.} The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
 
 \subsection{D3-005}
 
@@ -1565,7 +1626,7 @@ a^2\sinh(u)\cosh(u)(\cos^2(v)+\sin^2(v))
 
 Its dot product with each tangent is zero; its length is one. At \(u=0\) it is the horizontal radial unit vector. No finite \(u,v\) makes the tangent cross product zero. Periodicity at the angular seam is a coordinate identification rather than a singularity.
 
-\textbf{Recognition cue.} The sign in an indefinite quadratic form changes the geometry, while normal orientation still depends on the order of a cross product.
+\textbf{Discussion.} The sign in an indefinite quadratic form changes the geometry, while normal orientation still depends on the order of a cross product.
 
 \subsection{D3-006}
 
@@ -1605,7 +1666,7 @@ q(\mathbf x)=\sum_{i=1}^3\sum_{j=1}^3 x_i Q_{ij}x_j.
 \textbf{Step 7 --- DOMAIN AND CHECK.} For \(\mathbf Q=\mathbf I\), the expression becomes \(-\mathbf x/\|\mathbf x\|^3\). For an indefinite symmetric \(\mathbf Q\), the same real formula is valid only in the open set \(q(\mathbf x)>0\); nonzero inputs on the cone \(q(\mathbf x)=0\) are also singular. Inputs with \(q(\mathbf x)<0\) do not define this real scalar field. Matrix symmetry simplifies differentiation; positive definiteness supplies a separate domain guarantee.
 
 \end{DomainStep}
-\textbf{Recognition cue.} A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
+\textbf{Discussion.} A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
 
 \subsection{D3-007}
 
@@ -1654,7 +1715,7 @@ The quotient rule and numerator expansion produce
 \textbf{Step 5 --- DOMAIN AND CHECK.} For \(\mathbf b=[1,0]^{\mathsf T}\), the solution diverges at \(t=1\), and the singular system there is inconsistent. For \(\mathbf b=[1,1]^{\mathsf T}\), cancellation on \(t\ne\pm1\) gives \(\mathbf j(t)=[1,1]^{\mathsf T}/(1+t)\) and derivative \(-[1,1]^{\mathsf T}/(1+t)^2\). This solution branch has a finite extension at \(t=1\), but the matrix inverse still does not exist there; the singular system has infinitely many solutions. Substitution into the original nonsingular system verifies both component formulas.
 
 \end{DomainStep}
-\textbf{Recognition cue.} The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
+\textbf{Discussion.} The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
 
 \section{Application references}
 
@@ -1809,7 +1870,7 @@ J(a,b)=\int_a^b\left(\int_0^\infty\exp(-sx)\,dx\right)ds
 \end{DomainStep}
 \textbf{Step 5 --- CHECK.} \(J(a,a)=0\) and \(J(a,b)=-J(b,a)\). For \(b>a\) the original integrand is nonnegative and the logarithm is positive. Differentiation with respect to \(b>0\) gives \(1/b\), also obtained directly by integrating \(\exp(-bx)\).
 
-\textbf{Recognition cue.} Cancellation within an integrand can be essential to its existence. Separating the canceled terms before integration can create two undefined quantities.
+\textbf{Discussion.} Cancellation within an integrand can be essential to its existence. Separating the canceled terms before integration can create two undefined quantities.
 
 \subsection{I4-002}
 
@@ -1848,7 +1909,7 @@ with limiting kernel value \(-1\) at zero. The coordinate \(u=-ax\) gives \(J(a)
 \textbf{Step 6 --- DOMAIN AND CHECK.} At \(a=-1\), the logarithmic endpoint is integrable: near \(x=1\), \(1/x\) is bounded and \(|\ln(1-x)|\) has a finite integral. The series limit is \(J(-1)=-\sum_{n=1}^\infty1/n^2\). However, \(\ln(1+a)/a\to+\infty\) as \(a\downarrow-1\). A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows \href{https://dlmf.nist.gov/25.12}{NIST DLMF 25.12}.
 
 \end{DomainStep}
-\textbf{Recognition cue.} The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
+\textbf{Discussion.} The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
 
 \subsection{I4-003}
 
@@ -1880,7 +1941,7 @@ K(a,b,c)=\int_b^c\frac{s}{a^2+s^2}\,ds
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} Interchanging \(b,c\) negates both the original integrand and the logarithmic answer. At equal frequencies both vanish. The logarithm's argument is positive for \(a>0\), including zero frequencies.
 
-\textbf{Recognition cue.} A difference of oscillatory kernels can regularize one endpoint while damping controls the other. Each endpoint and each zero-frequency case has a separate convergence argument.
+\textbf{Discussion.} A difference of oscillatory kernels can regularize one endpoint while damping controls the other. Each endpoint and each zero-frequency case has a separate convergence argument.
 
 \subsection{I4-004}
 
@@ -1926,7 +1987,7 @@ Differentiation of this expression and multiplication by the conjugate of \(1+\s
 \end{DomainStep}
 \textbf{Step 7 --- CHECK.} Reflection \(x\mapsto-x\) gives \(J(-\lambda)=J(\lambda)\). The answer is even and vanishes at zero. Expansion gives \(J(\lambda)=-\pi\lambda^2/4+O(\lambda^4)\), agreeing with the first nonzero term obtained by integrating the logarithm series against the even weight.
 
-\textbf{Recognition cue.} A geometric weight may identify a coordinate, while a parameter derivative identifies a second reduction. Existence of endpoint integrals does not establish endpoint derivative interchange.
+\textbf{Discussion.} A geometric weight may identify a coordinate, while a parameter derivative identifies a second reduction. Existence of endpoint integrals does not establish endpoint derivative interchange.
 
 \subsection{I4-005}
 
@@ -1936,7 +1997,7 @@ Differentiation of this expression and multiplication by the conjugate of \(1+\s
 \textbf{Step 2 --- CHOICE.} The geometric placement of the excluded source determines whether the classical divergence theorem applies directly. Surface parameterization would introduce unnecessary algebra without resolving that regularity issue.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS.} Let \(R(x,y,z)=\sqrt{x^2+y^2+z^2}>0\). Coordinate differentiation gives
+\textbf{Step 3 --- CALCULUS.} The distance from the origin is \(R(x,y,z)=\sqrt{x^2+y^2+z^2}>0\). Coordinate differentiation gives
 
 \[
 \nabla\cdot\mathbf F(x,y,z)
@@ -1958,7 +2019,7 @@ The inner boundary has the negative radial orientation relative to the punctured
 \end{DomainStep}
 \textbf{Step 5 --- RESULT AND CHECK.} The flux is \(4\pi\) for \(|d|<a\) and zero for \(|d|>a\). Consequently the limits at \(d=a\) are \(4\pi\) from below and zero from above. A continuous deformation preserving the source placement preserves the answer. At \(d=a\) the source reaches the surface and the ordinary smooth-field hypotheses used above fail; this excluded case is not assigned either value by substitution. The point-source flux principle is documented in \href{https://ocw.mit.edu/ans7870/18/18.013a/textbook/HTML/chapter28/section04.html}{MIT, Electrostatics and Potentials}.
 
-\textbf{Recognition cue.} A zero classical divergence away from a source does not imply zero flux through a surface enclosing that source. Domain topology and orientation can replace a difficult explicit surface integral.
+\textbf{Discussion.} A zero classical divergence away from a source does not imply zero flux through a surface enclosing that source. Domain topology and orientation can replace a difficult explicit surface integral.
 
 \subsection{I4-006}
 
@@ -1978,7 +2039,7 @@ K(h)=\int_0^1\int_0^1\frac{u}{\sqrt{u^2(1+v^2)+h^2}}\,du\,dv
 The lower radial endpoint contributes \(h\), since \(h>0\).
 
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- TRICK: hyperbolic representation.} Write \(A=1+h^2\), a fixed positive scalar during integration in \(v\). The coordinate \(v=\sqrt A\sinh t\) gives
+\textbf{Step 4 --- TRICK: hyperbolic representation.} The abbreviation \(A=1+h^2\) denotes a positive scalar that is fixed during integration in \(v\). The coordinate \(v=\sqrt A\sinh t\) gives
 
 \[
 \frac{\sqrt{A+v^2}}{1+v^2}\,dv
@@ -2018,7 +2079,7 @@ E(h)&=\int_0^1\frac{h^2}{(1+v^2)(\sqrt{1+v^2+h^2}+\sqrt{1+v^2})}\,dv,\\
 \textbf{Step 7 --- DOMAIN AND CHECK.} The extension has \(K(0)=\ln(1+\sqrt2)\) and right derivative \(-\pi/4\). At each positive \(h\), differentiation under the original finite area integral is valid and its kernel derivative is \(-h(x^2+y^2+h^2)^{-3/2}\). At every nonzero spatial point that derivative tends to zero as \(h\downarrow0\). Passing that pointwise limit through the area integral would give zero, contradicting the established slope. No integrable domination uniform through the source limit is available. Direct quadrature at fixed positive distances verifies the closed form; the remainder bound verifies the endpoint derivative without differentiating an asymptotic error symbol.
 
 \end{DomainStep}
-\textbf{Recognition cue.} Near-singular parameter limits can concentrate a derivative in an arbitrarily small spatial region. The coordinate reduction makes that contribution visible.
+\textbf{Discussion.} Near-singular parameter limits can concentrate a derivative in an arbitrarily small spatial region. The coordinate reduction makes that contribution visible.
 
 \chapter{Oscillatory and singular integrals}
 
@@ -2198,9 +2259,9 @@ Find the real scalar area \(S(U;\ell)\) of this band on \(x^2+y^2-z^2=\ell^2\). 
 \]
 
 \endgroup
-\textbf{Step 5 --- CHECK.} Direct integration gives \([-\cos x]_0^\pi=2\). Nonnegative area cannot vanish merely because a coordinate returns to its initial value. By contrast, \(\int_0^\pi\sin x\cos x\,dx=0\) legitimately follows from the direct chain-rule substitution, which does not require an inverse map.
+\textbf{Step 5 --- CHECK.} Direct integration gives \([-\cos x]_0^\pi=2\). The integral represents a positive area. The equal transformed endpoints arose because the coordinate map retraced its values, not because the two halves of the integral canceled. By contrast, \(\int_0^\pi\sin x\cos x\,dx=0\) legitimately follows from the direct chain-rule substitution, which does not require an inverse map.
 
-\textbf{Recognition cue.} Equal transformed endpoints are meaningful only after the transformed integrand and the applicable substitution theorem have been identified. A folding coordinate map can conceal multiplicity and orientation.
+\textbf{Discussion.} Equal transformed endpoints are meaningful only after the transformed integrand and the applicable substitution theorem have been identified. A folding coordinate map can conceal multiplicity and orientation.
 
 \subsection{I3-002}
 
@@ -2235,7 +2296,7 @@ J(k,L)=kL-\frac{k^3L^3}{18}+E(k,L),\qquad
 \endgroup
 \textbf{Step 5 --- CHECK.} With respect to the real endpoint \(L\), the fundamental theorem gives \(\frac{\partial}{\partial L}(J(k,L))=\sin(kL)/L\) for \(L>0\). This agrees with the special-function expression. The integral is odd in \(k\), and the approximation preserves that property. Small \(|kL|\) controls the stated error; a small value of \(k\) alone is insufficient when \(L\) is large.
 
-\textbf{Recognition cue.} A familiar sine inside a ratio need not have an elementary antiderivative. A special-function definition and a controlled approximation are valid, distinct forms of a solution.
+\textbf{Discussion.} A familiar sine inside a ratio need not have an elementary antiderivative. A special-function definition and a controlled approximation are valid, distinct forms of a solution.
 
 \subsection{I3-003}
 
@@ -2293,7 +2354,7 @@ The same uniform tail bound holds as \(B\to\infty\). On the finite interval \([0
 \end{DomainStep}
 \textbf{Step 8 --- CHECK: absolute convergence fails.} In the coordinate \(u=kx\), each interval \([n\pi+\pi/6,n\pi+5\pi/6]\) has \(|\sin u|\ge1/2\). For integers \(n\ge1\), its contribution to \(\int|\sin u|/u\,du\) is at least \(1/[3(n+1)]\). The harmonic lower bound diverges. Thus the undamped integral is conditionally convergent. Its differentiated damping integral at \(\epsilon=0\) would contain \(\int_0^\infty\sin(kx)\,dx\), whose ordinary limit does not exist. The interchange valid for positive damping is not valid at the endpoint.
 
-\textbf{Recognition cue.} Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
+\textbf{Discussion.} Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
 
 \subsection{I3-004}
 
@@ -2322,7 +2383,7 @@ For \(\Delta=0\), integration of one gives \(A(0;L)=L\) directly.
 
 \endgroup
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA.} Define the real scalar function \(\operatorname{sinc}_0(s)=\sin(s)/s\) for \(s\ne0\), with \(\operatorname{sinc}_0(0)=1\). The subscript distinguishes this unnormalized convention from \(\sin(\pi s)/(\pi s)\). Then
+\textbf{Step 5 --- ALGEBRA.} The real scalar function \(\operatorname{sinc}_0(s)=\sin(s)/s\) is defined for \(s\ne0\), with \(\operatorname{sinc}_0(0)=1\). The subscript distinguishes this unnormalized convention from \(\sin(\pi s)/(\pi s)\). Then
 
 \[
 A(\Delta;L)=L\exp(\mathrm{i}\Delta L/2)\operatorname{sinc}_0(\Delta L/2),\qquad
@@ -2332,7 +2393,7 @@ A(\Delta;L)=L\exp(\mathrm{i}\Delta L/2)\operatorname{sinc}_0(\Delta L/2),\qquad
 \endgroup
 \textbf{Step 6 --- CHECK.} The limiting value at zero is \(L\), and \(|A|\le L\) follows independently from the triangle inequality for the original integral. The exponential locates the phase center at the midpoint; when the real sinc factor is negative it contributes an additional phase of \(\pi\). At its zeros the amplitude is zero and its phase is undefined.
 
-\textbf{Recognition cue.} A quotient singularity introduced by a parameterized antiderivative may be removable even though the formula with division is undefined there. Phase still needs separate treatment at amplitude zeros.
+\textbf{Discussion.} A quotient singularity introduced by a parameterized antiderivative may be removable even though the formula with division is undefined there. Phase still needs separate treatment at amplitude zeros.
 
 \subsection{I3-005}
 
@@ -2367,7 +2428,7 @@ The ratio is positive for \(-1<a<1\).
 \endgroup
 \textbf{Step 5 --- CHECK.} At \(a=0\), the principal value is zero by odd symmetry. If instead \(\delta_-=\lambda\delta_+\) with a fixed real \(\lambda>0\), the coupled limit differs by \(\ln\lambda\). This shows why a limiting prescription matters. At \(a=1\) or \(a=-1\), only a one-sided endpoint divergence remains and the stated interior symmetric principal value is unavailable. A finite-part regularization would be another explicitly defined operation.
 
-\textbf{Recognition cue.} Cancellation of divergences is a prescription, not proof that an ordinary improper integral exists. Symmetry is useful only after the definition of the integral is fixed.
+\textbf{Discussion.} Cancellation of divergences is a prescription, not proof that an ordinary improper integral exists. Symmetry is useful only after the definition of the integral is fixed.
 
 \subsection{I3-006}
 
@@ -2421,7 +2482,7 @@ The square brackets here delimit endpoint evaluation, not a derivative operand o
 \textbf{Step 6 --- CHECK AND DOMAIN.} For small positive \(\rho/L\), the potential grows like \(2\ln(2L/\rho)\) and its derivative like \(-2/\rho\). At \(\rho=0\) the original kernel is \(1/|s|\) and its integral diverges. The positive-distance justification is not uniform through the line source. For large \(\rho/L\), \(P(\rho;L)\) behaves like \(2L/\rho\), as expected from the nearly constant kernel across the short source segment.
 
 \end{DomainStep}
-\textbf{Recognition cue.} A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
+\textbf{Discussion.} A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
 
 \subsection{I3-007}
 
@@ -2467,7 +2528,7 @@ No oscillatory or signed cancellation is available in this nonnegative example.
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} The transformed \(1/R\) integrand is bounded between \(1/\sqrt2\) and one on a unit square, so the answer lies between those numbers; \(\ln(1+\sqrt2)\) does. This vertex example illustrates the Duffy coordinate idea used in singular panel integration. More general CEM kernels, interior source positions, and vector testing functions require their own transformations and convergence analysis.
 
-\textbf{Recognition cue.} The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
+\textbf{Discussion.} The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
 
 \subsection{I3-008}
 
@@ -2531,7 +2592,7 @@ W(a,b,c)=abc\left(\pi^{3/2}\operatorname{erf}(1)-\frac{2\pi}{\exp(1)}\right).
 
 On the ellipsoid, \(0\le q\le1\), so the result must lie between \(4\pi abc/(3\exp(1))\) and the unweighted volume \(4\pi abc/3\). The dimensionless coefficient is approximately \(2.381\), within those bounds. A determinant without its absolute value would incorrectly make volume depend on orientation if a coordinate direction were reversed.
 
-\textbf{Recognition cue.} A nonlinear integrand can become radial after a linear geometric change. The Jacobian supplies the volume scale and the radial power; dropping either changes the problem.
+\textbf{Discussion.} A nonlinear integrand can become radial after a linear geometric change. The Jacobian supplies the volume scale and the radial power; dropping either changes the problem.
 
 \subsection{I3-009}
 
@@ -2580,7 +2641,7 @@ S(U;\ell)=2\pi\ell^2\left(T\sqrt{1+2T^2}+\frac{\operatorname{arsinh}(\sqrt2T)}{\
 \textbf{Step 7 --- CHECK AND DOMAIN.} Differentiation of \(B(t)\) with respect to \(t\) gives \(\sqrt{1+2t^2}\), verifying the primitive. At \(U=0\) the area is zero, and for small \(U\) it behaves as \(4\pi\ell^2U\). As \(U\to\infty\), \(T\to\infty\) and already \(T\sqrt{1+2T^2}\to\infty\), so the complete surface has infinite area. The finite-band calculation cannot supply a finite area for the unbounded surface by leaving off its limits.
 
 \end{DomainStep}
-\textbf{Recognition cue.} A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
+\textbf{Discussion.} A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
 
 \section{Application references}
 
@@ -2596,14 +2657,15 @@ The geometric measure conventions follow the change-of-variables framework in
 \chapter{Tricks and identities}
 \begingroup\color{TrickPurple}
 
-Alpha reference appendix. These are supporting identities, algebraic rewrites,
-and approximation tools to consult while working through problems. Main calculus
-methods such as substitution, integration by parts, and differentiation rules
-belong in the main chapters.
+An identity can change the form of a problem before any calculus is performed.
+A pair of trigonometric factors may become a sum of exponentials; a difference
+of radicals may become a well-behaved quotient; a local expansion may reveal the
+size of a term that is otherwise difficult to estimate. This appendix records
+such supporting tools, together with examples and their conditions of validity.
+The calculus methods themselves are collected in the introductory reference.
 
-\textbf{Purple identifies a supporting identity or approximation.} The label TRICK remains visible in grayscale.
-The main chapters use dark blue for algebra, black for calculus rules, and purple
-when invoking a supporting tool from this appendix.
+Supporting identities and approximations are marked in purple throughout the
+book. The label TRICK identifies the same passages in a monochrome copy.
 
 \section{Supporting tools and applicability}
 
@@ -2615,6 +2677,7 @@ T-002 Taylor expansions & A local approximation near a known input & A polynomia
 T-003 Binomial expansion & Powers of a sum & A finite exact expansion for nonnegative integer powers \\[5pt]
 T-004 Completing the square & A quadratic form requires translation or factorization & An exact shifted-square form \\[5pt]
 T-005 Rationalization & A difference of roots causes cancellation & An exact equivalent expression on a stated domain \\[5pt]
+T-007 Hyperbolic identities & Quadratic radicals and hyperbolic parametrizations & Exact identities with real inverse branches and root signs \\[5pt]
 T-006 Logarithm identities & Products, quotients, and powers inside a logarithm & Exact sums and differences under real positivity assumptions \\[5pt]
 \end{longtable}
 
@@ -2627,7 +2690,7 @@ angle, measured in radians. \(\mathrm i\) is the fixed imaginary scalar with
 The complex exponential \(\exp(z)\) is a scalar-valued function of a complex scalar
 input. Sine and cosine of real angles are real scalars.
 The usual notation \(e^z\) means the same function as \(\exp(z)\), where
-\(e=\exp(1)\) is the fixed real Euler constant. We use \(\exp(z)\) here to keep the
+\(e=\exp(1)\) is the base of the natural logarithm. The form \(\exp(z)\) keeps the
 input visible.
 
 \textbf{TRICK --- exact identities.}
@@ -2699,8 +2762,7 @@ sine formula gives \(0=2(1)(0)\). This checks one angle. The preceding exact
 identities establish the general result.
 
 \textbf{When it helps.} Converting trigonometric expressions into exponentials can
-make angle combinations easier to manipulate. Track real and imaginary parts
-explicitly when returning to a real-valued problem.
+make angle combinations easier to manipulate. The real and imaginary parts then recover the corresponding real identities.
 
 \section{T-002 Taylor expansions}
 
@@ -2711,7 +2773,7 @@ nonnegative integer polynomial degree. \(k\) is an integer summation index;
 evaluation. Both \(f(t)\) and \(f(x)\) are values of the same function at their
 displayed inputs. The factorial is \(k!=1\cdot2\cdots k\) for \(k\ge1\), with \(0!=1\).
 
-\textbf{TRICK --- Taylor polynomial.} Define the fixed scalar coefficients by
+\textbf{TRICK --- Taylor polynomial.} The fixed scalar coefficients are
 
 \[
 c_0=f(a),\qquad
@@ -2763,8 +2825,7 @@ throughout the intervening interval, then
 \]
 
 An infinite Taylor series equals \(f(x)\) only where the remainder tends to zero
-as \(N\) increases. Smoothness alone does not guarantee that equality. Keep a
-finite approximation marked \(\approx\) unless the remainder is included.
+as \(N\) increases. Smoothness alone does not guarantee that equality. A finite truncation is written with \(\approx\) when its remainder is omitted.
 See \href{https://openstax.org/books/calculus-volume-2/pages/6-3-taylor-and-maclaurin-series}{OpenStax, Calculus Volume 2, §6.3}.
 
 \subsection{Common infinite expansions and their valid inputs}
@@ -2796,13 +2857,26 @@ The geometric expansion has a narrower range of valid inputs:
 \]
 
 Although the function \(1/(1-x)\) exists at \(x=2\), this series does not converge
-there. Check the series' convergence range before replacing a function by a
-series. See \href{https://openstax.org/books/calculus-volume-2/pages/6-4-working-with-taylor-series}{OpenStax, Calculus Volume 2, §6.4}.
+there. The convergence interval is therefore part of the representation. See \href{https://openstax.org/books/calculus-volume-2/pages/6-4-working-with-taylor-series}{OpenStax, Calculus Volume 2, §6.4}.
+
+Two further expansions occur repeatedly in the nonlinear and parameter-integral
+problems. For a real scalar \(x\) with \(|x|<1\),
+
+\[
+\ln(1+x)=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}x^n}{n},
+\qquad
+\arctan(x)=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1}.
+\]
+
+Here \(n\) is an integer summation index. Both series converge uniformly on every
+closed interval \(|x|\le r<1\). Consequently, their first terms give
+\(\ln(1+x)=x+O(x^2)\) and \(\arctan(x)=x+O(x^3)\) as \(x\to0\). These local estimates
+are useful even when the full infinite series is not needed.
 
 \subsection{Worked use: approximate a sine with a stated error}
 
 \textbf{Step 1 --- SETUP.} \(f(x)=\sin(x)\) is a real scalar function, with real scalar
-angle \(x\) in radians. Use center \(a=0\) and degree \(N=4\). The target input is
+angle \(x\) in radians. The expansion has center \(a=0\) and order \(N=4\). The target input is
 \(x=1/10\) radians. There are no varying parameters.
 
 \textbf{Step 2 --- CALCULUS: list the derivatives used by the tool.}
@@ -2819,8 +2893,8 @@ f(t)&=\sin(t),\\
 \]
 
 At \(t=0\), the value and first four derivatives are respectively \(0,1,0,-1,0\).
-These trigonometric derivative rules are developed in the main calculus material;
-here their values supply the expansion coefficients.
+The derivative formulas are listed in the methods reference; here their values
+at zero supply the expansion coefficients.
 
 \begingroup\color{TrickPurple}
 \textbf{Step 3 --- ALGEBRA: build the polynomial and remove zero terms.}
@@ -2841,7 +2915,7 @@ fourth-order Taylor polynomial because its fourth-order coefficient is zero.
 \endgroup
 \begingroup\color{TrickPurple}
 \textbf{Step 4 --- APPROXIMATION: retain the fifth-derivative error bound.} Since
-\(|\cos(t)|\leq1\) for real \(t\), choose the fixed scalar bound \(M=1\):
+\(|\cos(t)|\leq1\) for real \(t\), the fixed scalar bound \(M=1\) is valid:
 
 \[
 \sin(x)=x-\frac{x^3}{6}+R_4(x;0),
@@ -2874,8 +2948,8 @@ P_4(1/10;0)
 =\frac1{12\,000\,000}.
 \]
 
-This rational bound applies to the exact rational approximation shown. If you
-round it to a decimal, include the additional rounding error in the reported bound.
+This bound applies to the exact rational approximation shown. A rounded decimal
+value introduces an additional error that is separate from the Taylor remainder.
 
 \endgroup
 \textbf{Step 7 --- CHECK.} The correction \(x^3/6\) is positive at \(x=1/10\), so the
@@ -2883,9 +2957,9 @@ polynomial estimate is slightly smaller than \(x\). Also, both the polynomial an
 the actual sine are zero at the expansion center. These plausibility checks
 supplement the theorem's error bound.
 
-\textbf{When it helps.} Expand around an input where function values and derivatives
-admit elementary evaluation. A polynomial without an error discussion is an incomplete numerical
-approximation.
+\textbf{When it helps.} An expansion is particularly useful near an input where the
+function and its derivatives are easy to evaluate. The remainder estimate
+determines how far the resulting polynomial can be trusted.
 
 \section{T-003 Binomial expansion}
 
@@ -2910,7 +2984,7 @@ requires a different, generally infinite expansion with convergence conditions.
 \subsection{Worked use: expand a shifted cubic}
 
 \textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar. \(h\) is a real scalar
-increment. Here take \(r=x\), \(s=h\), and \(n=3\).
+increment. The choices \(r=x\), \(s=h\), and \(n=3\) give the cubic expansion.
 
 \begingroup\color{TrickPurple}
 \textbf{Step 2 --- ALGEBRA: calculate the coefficients.}
@@ -2958,7 +3032,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+c-\frac{b^2}{4a}.
 
 \subsection{Worked use: expose a quadratic's shape}
 
-\textbf{Step 1 --- SETUP.} Let the real scalar function be \(q(x)=2x^2-8x+11\) for all
+\textbf{Step 1 --- SETUP.} The real scalar function is \(q(x)=2x^2-8x+11\) for all
 real \(x\). The coefficients \(2,-8,11\) are fixed.
 
 \begingroup\color{TrickPurple}
@@ -3001,8 +3075,7 @@ The square is nonnegative, so \(q(x)\geq3\), with equality at \(x=2\). The exact
 rewrite exposes that feature without requiring an optimization calculation.
 
 \textbf{When it helps.} A shifted-square denominator or root may reveal the right
-identity, domain, or later integration method. The rewrite itself does not choose
-the calculus method for you.
+identity, domain, or later integration method. The resulting form can suggest a substitution or make a sign restriction apparent.
 
 \section{T-005 Rationalization}
 
@@ -3020,7 +3093,7 @@ algebra context. Multiplying a fraction by \((r+s)/(r+s)\) preserves it only whe
 \subsection{Worked use: remove a root difference}
 
 \textbf{Step 1 --- SETUP.} \(x\) is an independent real scalar with \(x>-1\) and \(x\ne0\).
-Define the real scalar function
+The real scalar function under consideration is
 
 \[
 f(x)=\frac{\sqrt{1+x}-1}{x}.
@@ -3116,8 +3189,8 @@ of \(x^2+1\) on \(x\).
 
 For a version declared on \(x\ne0\), including negative inputs, the last expression
 would instead be \(3\ln(x^2+1)-2\ln(|x|)\). The absolute value keeps the real
-logarithm's input positive; the expression \(\ln(x)\) must not be carried into a
-negative-input domain.
+logarithm's input positive. The expression \(\ln(x)\) alone would exclude every
+negative input.
 
 \section{T-007 Hyperbolic identities and real branches}
 
@@ -3143,8 +3216,8 @@ operations in the main chapters.
 
 \subsection{Worked use: a square root with its sign accounted for}
 
-Let \(t\) be a real independent scalar, and let \(u\) be the real scalar coordinate
-related by \(t=\sinh(u)\). Then
+The independent real scalar \(t\) and the real coordinate \(u\) are related by
+\(t=\sinh(u)\). Thus
 
 \[
 \sqrt{1+t^2}=\sqrt{1+\sinh^2(u)}
@@ -3166,12 +3239,13 @@ not one-to-one on all real inputs. Its nonnegative inverse branch
 The expressions with inverse hyperbolic functions used in I3-006 and I3-009
 refer to these real conventions.
 
-\section{Use a trick deliberately}
+\section{Returning to the calculation}
 
-Identify the structure it matches, check its domain, show the exact replacement,
-and then return to the calculus problem. Keep an error term or error bound when
-using an approximation. If a trick makes the expression longer or obscures its
-dependencies, keep the original form and choose another approach.
+A useful identity changes the representation without losing the original
+conditions. An approximation also introduces an error that becomes part of the
+answer. In the worked problems, the supporting calculation is followed by a
+return to the derivative, integral, or limit for which it was needed. This makes
+it possible to see both why the tool was chosen and what it accomplished.
 \endgroup
 
 \chapter{D1: Scalar reference exercises}
@@ -3367,7 +3441,7 @@ formula gives \(12(0)^2-10(0)+7=7\). For a nonzero scalar increment \(h\),
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
-\textbf{Recognition cue.} Linearity preserves each signed coefficient.
+\textbf{Discussion.} Linearity preserves each signed coefficient.
 Constants and constant multiples are distinguished before rule application.
 
 \subsection{D1-002}
@@ -3447,7 +3521,7 @@ and \(-3/x^2\) becomes less negative as \(x\) increases. The derivative formula 
 retains the restriction \(x>0\). This sign check catches a likely sign mistake; it
 does not establish the exact magnitude by itself.
 
-\textbf{Recognition cue.} A power representation unifies the radical and reciprocal terms.
+\textbf{Discussion.} A power representation unifies the radical and reciprocal terms.
 Subtracting a term whose power-rule coefficient is negative produces a positive
 term; write the multiplication to see why.
 
@@ -3513,7 +3587,7 @@ matching the parameterized calculation. This consistency check applies because
 the parameters really are fixed. If \(a\) were replaced by a function \(a(x)\), the
 dependencies and required rules would change.
 
-\textbf{Recognition cue.} “Constant” is a relationship to the variable of
+\textbf{Discussion.} “Constant” is a relationship to the variable of
 differentiation, not a requirement that the symbol be a numeral.
 
 \subsection{D1-004}
@@ -3527,8 +3601,8 @@ domain, reducing the derivative calculation to a linear function.
 
 \end{ChoiceStep}
 \begingroup\color{TrickPurple}
-\textbf{Step 3 --- TRICK: difference of squares.} Use the identity in
-T-005. For scalar expressions \(r,s\),
+\textbf{Step 3 --- TRICK: difference of squares.} For scalar expressions \(r,s\),
+the identity from T-005 is
 
 \[
 r^2-s^2=(r-s)(r+s).
@@ -3590,7 +3664,7 @@ This verifies the derivative on the original domain and supplies no derivative
 at the excluded input. The student's claim confuses the function with its extension.
 
 \end{DomainStep}
-\textbf{Recognition cue.} Cancellation preserves the excluded point in the original domain.
+\textbf{Discussion.} Cancellation preserves the excluded point in the original domain.
 The reduced expression and its continuous extension represent different functions.
 
 \subsection{D1-005}
@@ -3612,7 +3686,7 @@ before its limit is taken. This ordering prevents division by zero.
 \]
 
 \begingroup\color{TrickPurple}
-\textbf{Step 4 --- TRICK: expand the shifted square.} Use
+\textbf{Step 4 --- TRICK: the shifted square.} The expansion is
 T-003. The scalar identity
 \((r+s)^2=r^2+2rs+s^2\), with \(r=x\) and \(s=h\), gives
 
@@ -3685,7 +3759,7 @@ expression \(-1\), whose zero derivative does not determine the derivative funct
 or justify evaluation of its slope. The agreement at this particular input is coincidental and does not validate
 that order of operations.
 
-\textbf{Recognition cue.} Parentheses preserve the subtraction of the complete
+\textbf{Discussion.} Parentheses preserve the subtraction of the complete
 reference value in the difference quotient. Increment cancellation is valid
 only before the limiting operation, while the increment is nonzero.
 
@@ -3798,7 +3872,7 @@ f(2+h)-f(2)&=5+8h+2h^2+\frac4{2+h}-7\\
 The last arithmetic is \textbf{ALGEBRA}. This independently verifies the requested
 slope at \(2\), while the differentiation rules supply the general formula.
 
-\textbf{Recognition cue.} Algebraic reduction can expose a sum of powers inside a rational
+\textbf{Discussion.} Algebraic reduction can expose a sum of powers inside a rational
 expression. Rule selection follows the reduced structure and its preserved domain.
 
 
@@ -3940,7 +4014,7 @@ Here \(u\) is an independent scalar input when defining and differentiating \(h(
 =4u^3.
 \]
 
-\textbf{Step 4 --- CALCULUS: differentiate the inner function.} Use the sum rule, constant-multiple rule, power rule, and derivative of a constant:
+\textbf{Step 4 --- CALCULUS: differentiate the inner function.} Linearity and the power rule give the inner derivative:
 
 \[
 \begin{aligned}
@@ -3952,7 +4026,7 @@ Here \(u\) is an independent scalar input when defining and differentiating \(h(
 \]
 
 \begingroup\color{AlgebraBlue}
-\textbf{Step 5 --- ALGEBRA.} Multiply the numerical factors and remove the zero:
+\textbf{Step 5 --- ALGEBRA.} Multiplication of the numerical factors and removal of the zero term give:
 
 \[
 3(2x)+0=(3\cdot2)x+0=6x+0=6x.
@@ -4007,7 +4081,7 @@ f(0)&=1,\\
 
 Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
 
-\textbf{Recognition cue.} A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
+\textbf{Discussion.} A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
 
 \subsection{D2-002}
 
@@ -4516,7 +4590,7 @@ Neither family defines an antiderivative across \(x=0\), where the integrand is 
 \endgroup
 \subsection{I1-003}
 
-\textbf{Step 1 --- SETUP.} Integrate the real scalar function \(q(x)=2x+3\) with respect
+\textbf{Step 1 --- SETUP.} The real scalar function \(q(x)=2x+3\) is integrated with respect
 to real scalar \(x\) from \(-1\) to \(2\). The endpoints are fixed and the output is a number.
 
 \begin{ChoiceStep}
@@ -4525,7 +4599,7 @@ fundamental theorem of calculus. Separate endpoint evaluation preserves the
 sign of the lower-endpoint contribution.
 
 \end{ChoiceStep}
-\textbf{Step 3 --- CALCULUS: find one antiderivative.} Choose the real scalar function
+\textbf{Step 3 --- CALCULUS: find one antiderivative.} One antiderivative is the real scalar function
 
 \[
 F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.
@@ -4874,7 +4948,7 @@ The exponent and denominator simplifications are \textbf{ALGEBRA}. A definite in
 \boxed{\int_{0}^{1} 2x(x^2+1)^3\,dx=\frac{15}{4}.}
 \]
 
-\textbf{Step 10 --- CHECK: differentiate the original-variable antiderivative.} Define the scalar-valued function \(Q(x)=(x^2+1)^4/4\). The constant-multiple and chain rules give
+\textbf{Step 10 --- CHECK: differentiate the original-variable antiderivative.} The candidate antiderivative is the scalar function \(Q(x)=(x^2+1)^4/4\). The constant-multiple and chain rules give
 
 \[
 \frac{d}{dx}\left(Q(x)\right)
@@ -4888,7 +4962,7 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 =\frac{2^4}{4}-\frac{1^4}{4}=\frac{15}{4}.
 \]
 
-\textbf{Recognition cue.} A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
+\textbf{Discussion.} A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
 
 \subsection{I2-002}
 
@@ -4990,7 +5064,7 @@ The numerical bounds happen to agree, but the variable and its meaning changed.
 answer is \(\exp(1)-1\). The notation \(e=\exp(1)\) denotes a fixed real constant.
 
 \endgroup
-\textbf{Step 7 --- CHECK.} Define the real scalar function \(F(x)=\exp(x^3)\).
+\textbf{Step 7 --- CHECK.} The proposed antiderivative is the real scalar function \(F(x)=\exp(x^3)\).
 Its derivative is \(\exp(x^3)(3x^2)=q(x)\). Also
 \(F(1)-F(0)=\exp(1)-1\). This verifies both the integrand match and endpoint result.
 
@@ -5080,45 +5154,50 @@ Preserve the endpoint order when mapping to the new variable.
 
 Reviewed October 5, 2026. Scope: selected introductory calculus textbook sections, a university matrix-calculus course, a matrix-calculus reference, a tensor survey, and continuum-mechanics notes. This is a targeted notation review, not an exhaustive survey or a study demonstrating that one notation improves learning for everyone.
 
-\section{Recommendation}
+\section{Conventions adopted in this book}
 
-Use established Leibniz operator notation with round grouping parentheses and complete function arguments. Pair it with local type declarations, dependency statements, and explicit held-fixed instructions. The symbols should transfer to other books; the extra explanation should reduce reliance on memory.
+The book uses Leibniz derivative operators with round parentheses and complete
+function arguments. Nearby definitions state the object types, dependencies, and
+quantities held fixed. These choices preserve familiar mathematical symbols while
+making less of their interpretation depend on memory or surrounding context.
 
-The recommendation is an editorial judgment tailored to this reader. The references establish usage and mathematical distinctions, not a uniquely “best” personal notation.
+The references document established usage and distinctions between mathematical
+objects. The choice among compatible conventions is editorial; there is no single
+notation that serves every discipline or every reader equally well.
 
 \section{Findings and decisions}
 
 \subsection{R1 --- Ordinary derivatives}
 
-OpenStax explicitly lists the operator form \(\frac{d}{dx}\left(f(x)\right)\) alongside prime and quotient-style notation. It also discusses higher derivatives. \textbf{Decision:} adopt that operator form; retain \(d^2/dx^2\) with an initial nested expansion. Prime and dot notation belong in a translation guide, not worked calculations. \href{https://openstax.org/books/calculus-volume-1/pages/3-2-the-derivative-as-a-function}{OpenStax, Calculus Volume 1, §3.2}.
+OpenStax explicitly lists the operator form \(\frac{d}{dx}\left(f(x)\right)\) alongside prime and quotient-style notation. It also discusses higher derivatives. The operator form is adopted here. Higher derivatives retain \(d^2/dx^2\), with a nested expansion at their first appearance. Worked calculations use this notation consistently in place of primes and dots. \href{https://openstax.org/books/calculus-volume-1/pages/3-2-the-derivative-as-a-function}{OpenStax, Calculus Volume 1, §3.2}.
 
 \subsection{R2 --- Partial derivatives}
 
-OpenStax defines partial derivatives by changing one coordinate while the other stays fixed, and uses both fraction and subscript notation. \textbf{Decision:} retain the standard partial symbol, show all function arguments, and state the held-fixed inputs in nearby text. Our insistence on repeating the instruction is a teaching convention. \href{https://openstax.org/books/calculus-volume-3/pages/4-3-partial-derivatives}{OpenStax, Calculus Volume 3, §4.3}.
+OpenStax defines partial derivatives by changing one coordinate while the other stays fixed, and uses both fraction and subscript notation. The book retains the partial derivative symbol, includes the function arguments, and states nearby which inputs are held fixed. Repeating that information makes each calculation easier to read independently. \href{https://openstax.org/books/calculus-volume-3/pages/4-3-partial-derivatives}{OpenStax, Calculus Volume 3, §4.3}.
 
 \subsection{R3 --- Dependencies and the chain rule}
 
-OpenStax's multivariable chain rule distinguishes independent, intermediate, and dependent variables and uses dependency trees. \textbf{Decision:} show \(z(t)=f(x(t),y(t))\) explicitly and show where each partial derivative is evaluated. A partial derivative in independent coordinates must not be confused with a derivative along a path. \href{https://openstax.org/books/calculus-volume-3/pages/4-5-the-chain-rule}{OpenStax, Calculus Volume 3, §4.5}.
+OpenStax's multivariable chain rule distinguishes independent, intermediate, and dependent variables and uses dependency trees. The dependence \(z(t)=f(x(t),y(t))\) and the evaluation points of the partial derivatives are displayed here. This distinguishes differentiation in an independent coordinate from differentiation along a path. \href{https://openstax.org/books/calculus-volume-3/pages/4-5-the-chain-rule}{OpenStax, Calculus Volume 3, §4.5}.
 
 \subsection{R4 --- Substitution and integrals}
 
-OpenStax uses ordinary integral bounds and differentials, supplies a definite-substitution theorem, and demonstrates changing endpoints. \textbf{Decision:} use conventional integral notation with an adjacent variable-and-bounds statement. Explain differential identities before using them. Our earlier blanket exclusion of differential notation was unnecessarily restrictive; fully explained notation can remain standard. \href{https://openstax.org/books/calculus-volume-1/pages/5-5-substitution}{OpenStax, Calculus Volume 1, §5.5}.
+OpenStax uses ordinary integral bounds and differentials, supplies a definite-substitution theorem, and demonstrates changing endpoints. Conventional integral bounds and differentials are retained here. The variable and bounds are described in the accompanying statement, and differential identities are explained when introduced. \href{https://openstax.org/books/calculus-volume-1/pages/5-5-substitution}{OpenStax, Calculus Volume 1, §5.5}.
 
 \subsection{R5 --- Gradients, Jacobians, and derivative maps}
 
-MIT's course treats derivatives as linear operators. For a map from \(n\) inputs to \(m\) outputs, the Jacobian is \(m\times n\). For a scalar output in Euclidean coordinates, the gradient is a column vector and the derivative is represented by its transpose. \textbf{Decision:} keep these objects distinct, explicitly state shapes, and introduce derivative maps for general matrix-valued functions. We choose \(\mathrm D\) instead of the course's prime notation, with round parentheses for the increment argument. \href{https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/pages/lecture-notes-and-readings/}{MIT 18.S096, Lecture Notes and Readings, Lecture 1}.
+MIT's course treats derivatives as linear operators. For a map from \(n\) inputs to \(m\) outputs, the Jacobian is \(m\times n\). For a scalar output in Euclidean coordinates, the gradient is a column vector and the derivative is represented by its transpose. The gradient, Jacobian, and derivative map are distinguished here by their definitions and shapes. The derivative map is denoted by \(\mathrm D\), with round parentheses around its increment argument. \href{https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/pages/lecture-notes-and-readings/}{MIT 18.S096, Lecture Notes and Readings, Lecture 1}.
 
 \subsection{R6 --- Matrix derivatives and constraints}
 
-The Matrix Cookbook defines a scalar function's matrix derivative through derivatives with respect to entries. Its structured-matrix section distinguishes constrained entries from independent entries. \textbf{Decision:} show entry derivatives first, specify the matrix-gradient shape, and name independent parameters for constrained matrices. Do not import an unexplained matrix derivative fraction from another source. \href{https://math.uwaterloo.ca/~hwolkowi/matrixcookbook}{Petersen and Pedersen, The Matrix Cookbook, November 15, 2012, §§2 and 2.8}.
+The Matrix Cookbook defines a scalar function's matrix derivative through derivatives with respect to entries. Its structured-matrix section distinguishes constrained entries from independent entries. Entry derivatives and the shape of the matrix gradient are stated before a compact matrix formula is used. When entries are constrained, the independent parameters are named separately. \href{https://math.uwaterloo.ca/~hwolkowi/matrixcookbook}{Petersen and Pedersen, The Matrix Cookbook, November 15, 2012, §§2 and 2.8}.
 
 \subsection{R7 --- Tensor typography and index meaning}
 
-Kolda and Bader use bold lowercase vectors, bold uppercase matrices, and bold script higher-order tensors, with ordinary scalar component symbols. They distinguish order from rank and note alternative conventions. \textbf{Decision:} adopt that visual distinction, using the available bold calligraphic font, while explicitly declaring tensor spaces and bases when discussing geometric tensors. Typography alone cannot explain the object. \href{https://www.kolda.net/publication/TensorReview.pdf}{Kolda and Bader, Tensor Decompositions and Applications, SIAM Review 51(3), 2009, §2}.
+Kolda and Bader use bold lowercase vectors, bold uppercase matrices, and bold script higher-order tensors, with ordinary scalar component symbols. They distinguish order from rank and note alternative conventions. The same visual distinction is adopted here with a bold calligraphic font. Geometric tensors also have declared spaces and bases, since typography alone does not specify the object. \href{https://www.kolda.net/publication/TensorReview.pdf}{Kolda and Bader, Tensor Decompositions and Applications, SIAM Review 51(3), 2009, §2}.
 
 \subsection{R8 --- Summation shorthand}
 
-Stanford continuum-mechanics notes place explicit sums beside their Einstein-convention equivalents and expand the component equations. \textbf{Decision:} retain explicit sums and limits in our solutions; teach the implicit convention only as a way to read outside references. This is an intentional accessibility choice within ordinary mathematics. \href{https://biomechanics.stanford.edu/me338/me338_n01.pdf}{Stanford ME338A, Continuum Mechanics, Lecture Notes 01, §1.1.1.1}.
+Stanford continuum-mechanics notes place explicit sums beside their Einstein-convention equivalents and expand the component equations. Worked solutions retain the summation signs and limits. This makes each contraction visible even to a reader who does not routinely use the Einstein convention. \href{https://biomechanics.stanford.edu/me338/me338_n01.pdf}{Stanford ME338A, Continuum Mechanics, Lecture Notes 01, §1.1.1.1}.
 
 \section{Delimiter and symbol policy}
 
@@ -5127,14 +5206,10 @@ These are editorial decisions informed by the review:
 \begin{itemize}
 \item Round parentheses group derivative operands. Square brackets display vectors and matrices. Closed intervals retain their conventional square brackets, with endpoint inequalities spelled out when introduced.
 \item Tensor components use declared indices. Square brackets are not a universal tensor marker.
-\item Ordinary integrands do not receive decorative wrappers. Group sums only where grouping clarifies the expression.
-\item Evaluation bars mean substitution at specified inputs. “Held fixed” appears in words, so those two instructions cannot be mistaken for one another.
-\item Use \(\arcsin(x)\) for the inverse sine and \(1/\sin(x)\) for its reciprocal. Use \((\sin(x))^2\) to expose a function power.
-\item Use \(\det(\mathbf A)\) for a determinant and absolute-value bars for scalar magnitude.
-\item A short translation guide will expose outside shorthand without changing the notation used in the book's worked steps.
+\item Ordinary integrands retain their usual notation. Parentheses group terms when needed to make the expression unambiguous.
+\item Evaluation bars mean substitution at specified inputs. The quantities held fixed are described in words, distinguishing that information from evaluation at a point.
+\item The inverse sine is \(\arcsin(x)\); the reciprocal of the sine is \(1/\sin(x)\). A square of the sine is written as \((\sin(x))^2\) or the conventional \(\sin^2(x)\).
+\item Determinants are written as \(\det(\mathbf A)\), while absolute-value bars denote scalar magnitude.
 
 \end{itemize}
-\section{Changes from version 0.1}
-
-Round derivative operands replace square operands; redundant parentheses around the operator are removed. Ordinary integral bounds replace variable-tagged bounds, with explicit endpoint statements retained in prose. Held-fixed prose replaces bulky operator subscripts. Higher-order operator notation is taught through expansion rather than excluded. Differential substitution notation is explained rather than treated as intrinsically suspect. The new standard also addresses inverse, norm, determinant, index, and shape ambiguities.
 \end{document}

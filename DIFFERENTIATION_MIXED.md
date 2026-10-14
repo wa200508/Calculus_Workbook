@@ -121,7 +121,7 @@ The error from the exponential, divided by $x$, is $O(|x|\ln^2|x|)\to0$. Thus th
 
 **Step 6 — CHECK.** For $x\ne0$, the original derivative formula divided by $f(x)$ is the derivative of $\ln(f(x))$. Its second term tends to two, while the first tends to $-\infty$, consistent with the endpoint analysis. A finite function limit does not supply differentiability.
 
-**Recognition cue.** Variable powers require both derivatives and an explicit positive-base domain. Extension of the value and extension of a finite derivative are separate questions.
+**Discussion.** Variable powers require both derivatives and an explicit positive-base domain. Extension of the value and extension of a finite derivative are separate questions.
 
 ### D4-002
 
@@ -156,7 +156,7 @@ $$
 
 **Step 7 — CHECK AND DOMAIN.** $\cosh x\ge1$ excludes finite denominator zeros. At $x=0$, the angle is $\pi/2$, its first derivative is $-1$, and its second derivative is zero. The angle decreases from a limit of $\pi$ to a limit of zero as $x$ increases; those limiting angles are not attained at finite inputs.
 
-**Recognition cue.** An inverse-function derivative can simplify considerably after the defining relation and branch sign are retained.
+**Discussion.** An inverse-function derivative can simplify considerably after the defining relation and branch sign are retained.
 
 ### D4-003
 
@@ -187,7 +187,7 @@ $$
 
 **Step 6 — TRICK AND CHECK.** The real inverse identity in [T-007](TRICKS_APPENDIX.md#t-007-hyperbolic-identities-and-real-branches) gives $f(x)=2\operatorname{arsinh}x$. For large positive $x$ this representation avoids the small difference in the original denominator. For negative $x$, oddness gives $f(x)=-2\ln(\sqrt{1+x^2}-x)$, avoiding cancellation in the other factor. The reciprocal factors also show $f(-x)=-f(x)$ directly.
 
-**Recognition cue.** Algebraic equivalence can improve both differentiation and numerical evaluation. The stable representation depends on the sign of the input.
+**Discussion.** Algebraic equivalence can improve both differentiation and numerical evaluation. The stable representation depends on the sign of the input.
 
 ### D4-004
 
@@ -226,7 +226,7 @@ $$
 
 **Step 7 — CHECK.** Direct substitution gives $g(x(t),y(t))=(1-\cos t)/2$, whose derivative agrees. Cancellation of the mixed path contributions is a consequence of this specific constraint, not permission to omit either coordinate derivative.
 
-**Recognition cue.** A complicated height formula may simplify on a constrained path. The graph domain and the path dependence are assessed separately.
+**Discussion.** A complicated height formula may simplify on a constrained path. The graph domain and the path dependence are assessed separately.
 
 ### D4-005
 
@@ -254,7 +254,7 @@ For $T\ge2\tau$ it is nonnegative everywhere, with equality at zero when $T=2\ta
 
 **Step 6 — CHECK.** The quotient rule or a complex logarithmic derivative gives $\frac{\partial}{\partial\omega}(H)/H=\mathrm{i}(2\tau/(1+\omega^2\tau^2)-T)$, a purely imaginary scalar consistent with constant magnitude. The negative derivative has units of time.
 
-**Recognition cue.** A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
+**Discussion.** A continuous phase representation separates parameter sensitivity from branch artifacts. A mathematical response formula alone does not impose additional physical constraints.
 
 ### D4-006
 
@@ -284,4 +284,4 @@ $$
 
 **Step 6 — RESULT AND CHECK.** The requested derivative is $\frac{d}{dt}(F(t))|_{t=0}=\pi/4-1/2$. Also $F(0)=\pi/4$. The first boundary contribution is positive at zero, while the interior contribution is negative; both are needed to obtain the stated slope. Independent finite differences of the original integral verify the value.
 
-**Recognition cue.** A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.
+**Discussion.** A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.

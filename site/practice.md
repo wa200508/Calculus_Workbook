@@ -1,17 +1,15 @@
 # Mixed problem sets
 
-These sets assume prior study of calculus. Their difficulty lies in choosing a
-representation, sustaining a calculation, and deciding where an operation is
-valid. The chapter headings identify the objects and settings; they do not
-prescribe a solution method. Three graduated hints and a complete worked solution
-are available separately for every problem.
+The problems below combine nonlinear functions, geometric constraints, parameter
+dependence, and convergence questions. Their statements specify the objects and
+the result sought; deciding how to reach that result is part of the work. Each
+problem has three hints and a complete solution that can be opened separately.
 
-The introductory [calculus methods reference](/generated/methods) collects
-operative formulas and their hypotheses. In the solutions, neutral CHOICE blocks
-record the reasoning behind a representation. Amber DOMAIN blocks locate branch
-restrictions, singularities, convergence conditions, and admissible interchanges.
-Dark-blue algebra preserves intermediate expressions as calculation checkpoints;
-supporting identities and approximations are purple.
+The [methods reference](/generated/methods) is available when a formula or its
+hypotheses need to be checked. Within a solution, the CHOICE passages explain why
+an approach is promising, while the amber DOMAIN passages examine where it is
+valid. Intermediate algebra is retained in blue, and supporting identities and
+approximations appear in purple.
 
 ## Selected problems
 

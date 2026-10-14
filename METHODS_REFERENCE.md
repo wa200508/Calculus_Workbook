@@ -1,10 +1,15 @@
 # Calculus methods reference
 
-This reference concludes the introduction. Each method is presented with its
-operative form, applicability conditions, and useful structural indicators.
-The subsequent chapters contain mixed problem sets; no single method is assigned
-to a chapter. Scalars are real unless complex values are declared explicitly.
-All fixed parameters are held fixed in the displayed operations.
+A difficult calculation rarely announces which method will make it manageable.
+This reference brings together the formulas and conditions most often needed in
+the worked problems. Each entry describes the mathematical structure that makes
+a method useful and the restrictions that remain after it has been applied.
+The examples in the following chapters combine these methods in different ways.
+
+Unless stated otherwise, the quantities in this reference are real scalars.
+Parameters described as fixed remain constant during the displayed operation.
+The distinction matters when a later step differentiates an answer with respect
+to one of those parameters.
 
 ## Differentiation and local representations
 
@@ -70,7 +75,7 @@ $$
 =\left.\frac{d}{dt}\left(h(t)\right)\right|_{t=g(x)}\frac{d}{dx}\left(g(x)\right).
 $$
 
-The inner value must lie in the differentiability domain of the outer function.
+The formula applies when the inner value lies in a domain where the outer function is differentiable.
 Factoring, polynomial division, or a different representation may reduce the
 number of rule applications. Cancellation preserves exclusions from the original
 domain. Several nested arguments may be represented by separately named functions.
@@ -179,7 +184,7 @@ This is useful when one factor simplifies under differentiation and another has
 an accessible primitive. Repeated applications can produce a recurrence for a
 family of integrals or an equation involving the original integral. On unbounded
 intervals, every boundary term and remainder integral requires its own limit.
-A boundary expression is not set to zero solely because the integrand decays.
+Decay of the integrand alone does not establish that a boundary term vanishes.
 
 ### Rational functions and partial fractions
 
@@ -281,8 +286,8 @@ measurable sequences. Tonelli's theorem permits rearrangement for nonnegative
 integrands; Fubini's theorem provides rearrangement under absolute integrability.
 Uniform convergence on a finite interval is a useful sufficient condition for
 termwise integration of a function series. Differentiation of a series requires
-additional control of the derivative series. A pointwise limit alone supplies
-none of these interchanges.
+additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
+can contribute to an integral even when they disappear at each fixed input.
 
 ### Series, asymptotics, and special functions
 
@@ -338,7 +343,7 @@ $$
 
 The real vector $\mathbf n(x,y,z)$ is the outward unit normal. A source singularity
 inside $V$ violates the classical regularity hypothesis. Excision introduces an
-additional inner boundary whose orientation and flux must be included. Boundary
+additional inner boundary, with its own orientation and flux. Boundary
 conditions and topology can therefore determine an answer before a lengthy
 coordinate integration is attempted.
 

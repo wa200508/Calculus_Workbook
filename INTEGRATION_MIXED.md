@@ -125,7 +125,7 @@ $$
 
 **Step 5 — CHECK.** $J(a,a)=0$ and $J(a,b)=-J(b,a)$. For $b>a$ the original integrand is nonnegative and the logarithm is positive. Differentiation with respect to $b>0$ gives $1/b$, also obtained directly by integrating $\exp(-bx)$.
 
-**Recognition cue.** Cancellation within an integrand can be essential to its existence. Separating the canceled terms before integration can create two undefined quantities.
+**Discussion.** Cancellation within an integrand can be essential to its existence. Separating the canceled terms before integration can create two undefined quantities.
 
 ### I4-002
 
@@ -158,7 +158,7 @@ with limiting kernel value $-1$ at zero. The coordinate $u=-ax$ gives $J(a)=-\op
 
 **Step 6 — DOMAIN AND CHECK.** At $a=-1$, the logarithmic endpoint is integrable: near $x=1$, $1/x$ is bounded and $|\ln(1-x)|$ has a finite integral. The series limit is $J(-1)=-\sum_{n=1}^\infty1/n^2$. However, $\ln(1+a)/a\to+\infty$ as $a\downarrow-1$. A finite function value does not provide a finite endpoint parameter derivative. The first series coefficient is one, agreeing with the derivative at zero. The dilogarithm convention follows [NIST DLMF 25.12](https://dlmf.nist.gov/25.12).
 
-**Recognition cue.** The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
+**Discussion.** The domain of an exact integral representation can exceed the convergence domain of its local series. Parameter differentiation can strengthen an endpoint singularity.
 
 ### I4-003
 
@@ -186,7 +186,7 @@ $$
 
 **Step 6 — CHECK.** Interchanging $b,c$ negates both the original integrand and the logarithmic answer. At equal frequencies both vanish. The logarithm's argument is positive for $a>0$, including zero frequencies.
 
-**Recognition cue.** A difference of oscillatory kernels can regularize one endpoint while damping controls the other. Each endpoint and each zero-frequency case has a separate convergence argument.
+**Discussion.** A difference of oscillatory kernels can regularize one endpoint while damping controls the other. Each endpoint and each zero-frequency case has a separate convergence argument.
 
 ### I4-004
 
@@ -226,7 +226,7 @@ Differentiation of this expression and multiplication by the conjugate of $1+\sq
 
 **Step 7 — CHECK.** Reflection $x\mapsto-x$ gives $J(-\lambda)=J(\lambda)$. The answer is even and vanishes at zero. Expansion gives $J(\lambda)=-\pi\lambda^2/4+O(\lambda^4)$, agreeing with the first nonzero term obtained by integrating the logarithm series against the even weight.
 
-**Recognition cue.** A geometric weight may identify a coordinate, while a parameter derivative identifies a second reduction. Existence of endpoint integrals does not establish endpoint derivative interchange.
+**Discussion.** A geometric weight may identify a coordinate, while a parameter derivative identifies a second reduction. Existence of endpoint integrals does not establish endpoint derivative interchange.
 
 ### I4-005
 
@@ -234,7 +234,7 @@ Differentiation of this expression and multiplication by the conjugate of $1+\sq
 
 **Step 2 — CHOICE.** The geometric placement of the excluded source determines whether the classical divergence theorem applies directly. Surface parameterization would introduce unnecessary algebra without resolving that regularity issue.
 
-**Step 3 — CALCULUS.** Let $R(x,y,z)=\sqrt{x^2+y^2+z^2}>0$. Coordinate differentiation gives
+**Step 3 — CALCULUS.** The distance from the origin is $R(x,y,z)=\sqrt{x^2+y^2+z^2}>0$. Coordinate differentiation gives
 
 $$
 \nabla\cdot\mathbf F(x,y,z)
@@ -254,7 +254,7 @@ The inner boundary has the negative radial orientation relative to the punctured
 
 **Step 5 — RESULT AND CHECK.** The flux is $4\pi$ for $|d|<a$ and zero for $|d|>a$. Consequently the limits at $d=a$ are $4\pi$ from below and zero from above. A continuous deformation preserving the source placement preserves the answer. At $d=a$ the source reaches the surface and the ordinary smooth-field hypotheses used above fail; this excluded case is not assigned either value by substitution. The point-source flux principle is documented in [MIT, Electrostatics and Potentials](https://ocw.mit.edu/ans7870/18/18.013a/textbook/HTML/chapter28/section04.html).
 
-**Recognition cue.** A zero classical divergence away from a source does not imply zero flux through a surface enclosing that source. Domain topology and orientation can replace a difficult explicit surface integral.
+**Discussion.** A zero classical divergence away from a source does not imply zero flux through a surface enclosing that source. Domain topology and orientation can replace a difficult explicit surface integral.
 
 ### I4-006
 
@@ -271,7 +271,7 @@ $$
 
 The lower radial endpoint contributes $h$, since $h>0$.
 
-**Step 4 — TRICK: hyperbolic representation.** Write $A=1+h^2$, a fixed positive scalar during integration in $v$. The coordinate $v=\sqrt A\sinh t$ gives
+**Step 4 — TRICK: hyperbolic representation.** The abbreviation $A=1+h^2$ denotes a positive scalar that is fixed during integration in $v$. The coordinate $v=\sqrt A\sinh t$ gives
 
 $$
 \frac{\sqrt{A+v^2}}{1+v^2}\,dv
@@ -306,4 +306,4 @@ $$
 
 **Step 7 — DOMAIN AND CHECK.** The extension has $K(0)=\ln(1+\sqrt2)$ and right derivative $-\pi/4$. At each positive $h$, differentiation under the original finite area integral is valid and its kernel derivative is $-h(x^2+y^2+h^2)^{-3/2}$. At every nonzero spatial point that derivative tends to zero as $h\downarrow0$. Passing that pointwise limit through the area integral would give zero, contradicting the established slope. No integrable domination uniform through the source limit is available. Direct quadrature at fixed positive distances verifies the closed form; the remainder bound verifies the endpoint derivative without differentiating an asymptotic error symbol.
 
-**Recognition cue.** Near-singular parameter limits can concentrate a derivative in an arbitrarily small spatial region. The coordinate reduction makes that contribution visible.
+**Discussion.** Near-singular parameter limits can concentrate a derivative in an arbitrarily small spatial region. The coordinate reduction makes that contribution visible.

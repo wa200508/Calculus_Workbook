@@ -16,7 +16,8 @@ REFERENCE_SETS = (("DIFFERENTIATION_SCALARS.md", "scalar-derivatives", "D1", "Sc
                   ("DIFFERENTIATION_RULES.md", "derivative-rules", "D2", "Composition reference exercises"),
                   ("INTEGRATION_SCALARS.md", "scalar-integrals", "I1", "Antiderivative reference exercises"),
                   ("INTEGRATION_SUBSTITUTION.md", "substitution", "I2", "Coordinate reference exercises"))
-SOURCES = {name: slug for name, slug, _ in INTRO_SOURCES}
+SOURCES = {"INTRODUCTION.md": "introduction"}
+SOURCES.update({name: slug for name, slug, _ in INTRO_SOURCES})
 SOURCES.update({name: slug for name, slug, _, _ in MAIN_SETS})
 SOURCES["TRICKS_APPENDIX.md"] = "tricks"
 SOURCES.update({name: slug for name, slug, _, _ in REFERENCE_SETS})
@@ -68,7 +69,7 @@ def step_style(text):
 
 
 def style_algebra(text):
-    chunks = re.split(r"(?=^\*\*(?:Step \d+|Result\.|Recognition cue\.))", text, flags=re.M)
+    chunks = re.split(r"(?=^\*\*(?:Step \d+|Result\.|(?:Recognition cue|Discussion)\.))", text, flags=re.M)
     styled = []
     for chunk in chunks:
         css_class = step_style(chunk)
@@ -183,7 +184,7 @@ def markdown_to_tex(text, algebra_color='AlgebraBlue'):
                 output.append(r"\clearpage")
             output.append("\\" + {2: "section", 3: "subsection", 4: "subsubsection"}[len(level)] + "{" + tex_inline(title) + "}")
             continue
-        if re.match(r"\*\*(?:Step \d+|Result\.|Recognition cue\.)", line):
+        if re.match(r"\*\*(?:Step \d+|Result\.|(?:Recognition cue|Discussion)\.)", line):
             end_list(); end_color()
             kind = re.match(r"\*\*Step \d+ — (ALGEBRA|IDENTITY|APPROXIMATION|TRICK)", line)
             if kind:
@@ -254,7 +255,7 @@ def build():
     for source, target in (("LICENSE", "MIT.txt"), ("LICENSES/CC-BY-SA-4.0.txt", "CC-BY-SA-4.0.txt")):
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
-    manuscript = preamble
+    manuscript = preamble.replace("% WORKBOOK_INTRODUCTION", markdown_to_tex(content["INTRODUCTION.md"]))
     for filename, _, title in INTRO_SOURCES:
         manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
     for filename, _, _, title in MAIN_SETS:
@@ -271,7 +272,8 @@ def build():
     (ROOT / "site/public/downloads/calculus-workbook.md").write_text(combined)
     book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
     book += '> **Alpha development.** This is the current manuscript, including all solutions. Content is CC BY-SA 4.0 and provided as-is.\n\n'
-    book += '[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.3.0-alpha.3) · [Practice with hidden solutions](/practice)\n\n'
+    version = json.loads((ROOT / 'package.json').read_text())['version']
+    book += f'[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v{version}) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
         chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
         chapter = style_algebra(site_links(chapter))

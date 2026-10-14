@@ -172,7 +172,7 @@ $$
 matching the derivative at zero. This checks one input; it is not an independent
 proof of the formula at every input.
 
-**Recognition cue.** Linearity preserves each signed coefficient.
+**Discussion.** Linearity preserves each signed coefficient.
 Constants and constant multiples are distinguished before rule application.
 
 ### D1-002
@@ -244,7 +244,7 @@ and $-3/x^2$ becomes less negative as $x$ increases. The derivative formula also
 retains the restriction $x>0$. This sign check catches a likely sign mistake; it
 does not establish the exact magnitude by itself.
 
-**Recognition cue.** A power representation unifies the radical and reciprocal terms.
+**Discussion.** A power representation unifies the radical and reciprocal terms.
 Subtracting a term whose power-rule coefficient is negative produces a positive
 term; write the multiplication to see why.
 
@@ -304,7 +304,7 @@ matching the parameterized calculation. This consistency check applies because
 the parameters really are fixed. If $a$ were replaced by a function $a(x)$, the
 dependencies and required rules would change.
 
-**Recognition cue.** “Constant” is a relationship to the variable of
+**Discussion.** “Constant” is a relationship to the variable of
 differentiation, not a requirement that the symbol be a numeral.
 
 ### D1-004
@@ -315,8 +315,8 @@ $f(x)=(x^2-9)/(x-3)$ is scalar. The original definition excludes $x=3$.
 **Step 2 — CHOICE.** The difference-of-squares factorization permits cancellation on the stated
 domain, reducing the derivative calculation to a linear function.
 
-**Step 3 — TRICK: difference of squares.** Use the identity in
-[T-005](TRICKS_APPENDIX.md#t-005-rationalization). For scalar expressions $r,s$,
+**Step 3 — TRICK: difference of squares.** For scalar expressions $r,s$,
+the identity from [T-005](TRICKS_APPENDIX.md#t-005-rationalization) is
 
 $$
 r^2-s^2=(r-s)(r+s).
@@ -371,7 +371,7 @@ $$
 This verifies the derivative on the original domain and supplies no derivative
 at the excluded input. The student's claim confuses the function with its extension.
 
-**Recognition cue.** Cancellation preserves the excluded point in the original domain.
+**Discussion.** Cancellation preserves the excluded point in the original domain.
 The reduced expression and its continuous extension represent different functions.
 
 ### D1-005
@@ -390,7 +390,7 @@ $$
 =\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
 $$
 
-**Step 4 — TRICK: expand the shifted square.** Use
+**Step 4 — TRICK: the shifted square.** The expansion is
 [T-003](TRICKS_APPENDIX.md#t-003-binomial-expansion). The scalar identity
 $(r+s)^2=r^2+2rs+s^2$, with $r=x$ and $s=h$, gives
 
@@ -456,7 +456,7 @@ expression $-1$, whose zero derivative does not determine the derivative functio
 or justify evaluation of its slope. The agreement at this particular input is coincidental and does not validate
 that order of operations.
 
-**Recognition cue.** Parentheses preserve the subtraction of the complete
+**Discussion.** Parentheses preserve the subtraction of the complete
 reference value in the difference quotient. Increment cancellation is valid
 only before the limiting operation, while the increment is nonzero.
 
@@ -557,6 +557,6 @@ $$
 The last arithmetic is **ALGEBRA**. This independently verifies the requested
 slope at $2$, while the differentiation rules supply the general formula.
 
-**Recognition cue.** Algebraic reduction can expose a sum of powers inside a rational
+**Discussion.** Algebraic reduction can expose a sum of powers inside a rational
 expression. Rule selection follows the reduced structure and its preserved domain.
 

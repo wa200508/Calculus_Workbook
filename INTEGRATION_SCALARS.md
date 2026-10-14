@@ -160,14 +160,14 @@ Neither family defines an antiderivative across $x=0$, where the integrand is un
 
 ### I1-003
 
-**Step 1 — SETUP.** Integrate the real scalar function $q(x)=2x+3$ with respect
+**Step 1 — SETUP.** The real scalar function $q(x)=2x+3$ is integrated with respect
 to real scalar $x$ from $-1$ to $2$. The endpoints are fixed and the output is a number.
 
 **Step 2 — CHOICE.** Continuity on the closed interval permits application of the
 fundamental theorem of calculus. Separate endpoint evaluation preserves the
 sign of the lower-endpoint contribution.
 
-**Step 3 — CALCULUS: find one antiderivative.** Choose the real scalar function
+**Step 3 — CALCULUS: find one antiderivative.** One antiderivative is the real scalar function
 
 $$
 F(x)=2\frac{x^{1+1}}{1+1}+3x=x^2+3x.

@@ -149,7 +149,7 @@ There is no finite right derivative at cutoff. Below cutoff the radicand is nega
 
 **Step 6 — CHECK.** The derivative has units of inverse velocity. The limits are $v_g(\omega)\to0$ as $\omega\downarrow\omega_c$ and $v_g(\omega)\to c$ as $\omega\to\infty$. Large sensitivity near cutoff is expected; a high-frequency approximation is unreliable there.
 
-**Recognition cue.** A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
+**Discussion.** A parameter-dependent square root often marks the boundary between regimes. Its endpoint is part of the function's domain without being part of the finite-derivative domain.
 
 ### D3-002
 
@@ -188,7 +188,7 @@ $$
 
 **Step 5 — CHECK.** For $k=0$, the Coulomb-kernel gradient is recovered. The displacement vector has magnitude $R(x,y,z)$, so the gradient magnitude behaves as $1/(4\pi R(x,y,z)^2)$ near the source. The kernel itself behaves as $1/(4\pi R(x,y,z))$. Neither formula defines a value at the source. A distributional source equation cannot be inferred by simply substituting $R=0$ into these classical derivatives.
 
-**Recognition cue.** A radial chain rule reduces component work, but it preserves the excluded source point. Differentiation strengthens the singularity and can change whether a later integral exists.
+**Discussion.** A radial chain rule reduces component work, but it preserves the excluded source point. Differentiation strengthens the singularity and can change whether a later integral exists.
 
 ### D3-003
 
@@ -217,7 +217,7 @@ A chart using $Y(\omega)\ne0$ gives the same expression. The expression therefor
 
 **Step 6 — DOMAIN AND CHECK.** The principal phase approaches $\pi$ from the left at $\omega=\pi$, but approaches $-\pi$ from the right. It is discontinuous there and has no derivative there. The unwrapped choice $\widetilde\phi(\omega)=\omega$ is smooth through that point, with derivative one. At a zero of $H(\omega)$, no phase is defined at all. A group-delay calculation based on phase differentiation depends on both a nonzero response and a consistent local phase choice.
 
-**Recognition cue.** A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
+**Discussion.** A finite algebraic derivative expression does not repair a discontinuity in the function being differentiated.
 
 ### D3-004
 
@@ -251,7 +251,7 @@ It points outward since $F$ increases away from the ellipsoid.
 
 **Step 5 — DOMAIN AND CHECK.** At the equator $z=0$, the $z$ partial derivative of $F$ vanishes, so the implicit-function theorem does not provide a height graph there. For example, at $(a,0,0)$ the $x$ partial derivative is $2/a\ne0$, and a smooth graph of $x$ in terms of $y,z$ is available. The full gradient could vanish only at $(0,0,0)$, which is not on the ellipsoid. The unit normal is defined at every surface point and has length one.
 
-**Recognition cue.** The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
+**Discussion.** The failure of one coordinate chart is not the failure of the underlying geometry. The denominator in implicit differentiation identifies which chart is available.
 
 ### D3-005
 
@@ -293,7 +293,7 @@ $$
 
 Its dot product with each tangent is zero; its length is one. At $u=0$ it is the horizontal radial unit vector. No finite $u,v$ makes the tangent cross product zero. Periodicity at the angular seam is a coordinate identification rather than a singularity.
 
-**Recognition cue.** The sign in an indefinite quadratic form changes the geometry, while normal orientation still depends on the order of a cross product.
+**Discussion.** The sign in an indefinite quadratic form changes the geometry, while normal orientation still depends on the order of a cross product.
 
 ### D3-006
 
@@ -325,7 +325,7 @@ $$
 
 **Step 7 — DOMAIN AND CHECK.** For $\mathbf Q=\mathbf I$, the expression becomes $-\mathbf x/\|\mathbf x\|^3$. For an indefinite symmetric $\mathbf Q$, the same real formula is valid only in the open set $q(\mathbf x)>0$; nonzero inputs on the cone $q(\mathbf x)=0$ are also singular. Inputs with $q(\mathbf x)<0$ do not define this real scalar field. Matrix symmetry simplifies differentiation; positive definiteness supplies a separate domain guarantee.
 
-**Recognition cue.** A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
+**Discussion.** A matrix property can justify a domain assumption, rather than merely make the algebra shorter.
 
 ### D3-007
 
@@ -368,7 +368,7 @@ $$
 
 **Step 5 — DOMAIN AND CHECK.** For $\mathbf b=[1,0]^{\mathsf T}$, the solution diverges at $t=1$, and the singular system there is inconsistent. For $\mathbf b=[1,1]^{\mathsf T}$, cancellation on $t\ne\pm1$ gives $\mathbf j(t)=[1,1]^{\mathsf T}/(1+t)$ and derivative $-[1,1]^{\mathsf T}/(1+t)^2$. This solution branch has a finite extension at $t=1$, but the matrix inverse still does not exist there; the singular system has infinitely many solutions. Substitution into the original nonsingular system verifies both component formulas.
 
-**Recognition cue.** The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
+**Discussion.** The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
 
 ## Application references
 

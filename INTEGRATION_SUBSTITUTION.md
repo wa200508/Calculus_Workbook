@@ -164,7 +164,7 @@ $$
 \boxed{\int_{0}^{1} 2x(x^2+1)^3\,dx=\frac{15}{4}.}
 $$
 
-**Step 10 — CHECK: differentiate the original-variable antiderivative.** Define the scalar-valued function $Q(x)=(x^2+1)^4/4$. The constant-multiple and chain rules give
+**Step 10 — CHECK: differentiate the original-variable antiderivative.** The candidate antiderivative is the scalar function $Q(x)=(x^2+1)^4/4$. The constant-multiple and chain rules give
 
 $$
 \frac{d}{dx}\left(Q(x)\right)
@@ -178,7 +178,7 @@ Q(1)-Q(0)=\frac{(1^2+1)^4}{4}-\frac{(0^2+1)^4}{4}
 =\frac{2^4}{4}-\frac{1^4}{4}=\frac{15}{4}.
 $$
 
-**Recognition cue.** A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
+**Discussion.** A derivative factor identifies a candidate coordinate substitution. A proportional match requires an explicit constant multiplier; an inverse-coordinate substitution additionally requires a valid branch.
 
 ### I2-002
 
@@ -270,7 +270,7 @@ $$
 **Step 6 — ALGEBRA: simplify the constant value.** Since $\exp(0)=1$, the
 answer is $\exp(1)-1$. The notation $e=\exp(1)$ denotes a fixed real constant.
 
-**Step 7 — CHECK.** Define the real scalar function $F(x)=\exp(x^3)$.
+**Step 7 — CHECK.** The proposed antiderivative is the real scalar function $F(x)=\exp(x^3)$.
 Its derivative is $\exp(x^3)(3x^2)=q(x)$. Also
 $F(1)-F(0)=\exp(1)-1$. This verifies both the integrand match and endpoint result.
 

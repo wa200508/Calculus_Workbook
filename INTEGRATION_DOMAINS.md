@@ -153,9 +153,9 @@ $$
 =2\lim_{b\uparrow1}\left(-\sqrt{1-b^2}+1\right)=2.
 $$
 
-**Step 5 — CHECK.** Direct integration gives $[-\cos x]_0^\pi=2$. Nonnegative area cannot vanish merely because a coordinate returns to its initial value. By contrast, $\int_0^\pi\sin x\cos x\,dx=0$ legitimately follows from the direct chain-rule substitution, which does not require an inverse map.
+**Step 5 — CHECK.** Direct integration gives $[-\cos x]_0^\pi=2$. The integral represents a positive area. The equal transformed endpoints arose because the coordinate map retraced its values, not because the two halves of the integral canceled. By contrast, $\int_0^\pi\sin x\cos x\,dx=0$ legitimately follows from the direct chain-rule substitution, which does not require an inverse map.
 
-**Recognition cue.** Equal transformed endpoints are meaningful only after the transformed integrand and the applicable substitution theorem have been identified. A folding coordinate map can conceal multiplicity and orientation.
+**Discussion.** Equal transformed endpoints are meaningful only after the transformed integrand and the applicable substitution theorem have been identified. A folding coordinate map can conceal multiplicity and orientation.
 
 ### I3-002
 
@@ -186,7 +186,7 @@ $$
 
 **Step 5 — CHECK.** With respect to the real endpoint $L$, the fundamental theorem gives $\frac{\partial}{\partial L}(J(k,L))=\sin(kL)/L$ for $L>0$. This agrees with the special-function expression. The integral is odd in $k$, and the approximation preserves that property. Small $|kL|$ controls the stated error; a small value of $k$ alone is insufficient when $L$ is large.
 
-**Recognition cue.** A familiar sine inside a ratio need not have an elementary antiderivative. A special-function definition and a controlled approximation are valid, distinct forms of a solution.
+**Discussion.** A familiar sine inside a ratio need not have an elementary antiderivative. A special-function definition and a controlled approximation are valid, distinct forms of a solution.
 
 ### I3-003
 
@@ -236,7 +236,7 @@ $$
 
 **Step 8 — CHECK: absolute convergence fails.** In the coordinate $u=kx$, each interval $[n\pi+\pi/6,n\pi+5\pi/6]$ has $|\sin u|\ge1/2$. For integers $n\ge1$, its contribution to $\int|\sin u|/u\,du$ is at least $1/[3(n+1)]$. The harmonic lower bound diverges. Thus the undamped integral is conditionally convergent. Its differentiated damping integral at $\epsilon=0$ would contain $\int_0^\infty\sin(kx)\,dx$, whose ordinary limit does not exist. The interchange valid for positive damping is not valid at the endpoint.
 
-**Recognition cue.** Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
+**Discussion.** Oscillatory cancellation can make an integral converge without absolute convergence. A limit at the edge of a parameter domain needs its own argument.
 
 ### I3-004
 
@@ -260,7 +260,7 @@ $$
 =2\mathrm{i}\exp(\mathrm{i}\Delta L/2)\sin(\Delta L/2).
 $$
 
-**Step 5 — ALGEBRA.** Define the real scalar function $\operatorname{sinc}_0(s)=\sin(s)/s$ for $s\ne0$, with $\operatorname{sinc}_0(0)=1$. The subscript distinguishes this unnormalized convention from $\sin(\pi s)/(\pi s)$. Then
+**Step 5 — ALGEBRA.** The real scalar function $\operatorname{sinc}_0(s)=\sin(s)/s$ is defined for $s\ne0$, with $\operatorname{sinc}_0(0)=1$. The subscript distinguishes this unnormalized convention from $\sin(\pi s)/(\pi s)$. Then
 
 $$
 A(\Delta;L)=L\exp(\mathrm{i}\Delta L/2)\operatorname{sinc}_0(\Delta L/2),\qquad
@@ -269,7 +269,7 @@ $$
 
 **Step 6 — CHECK.** The limiting value at zero is $L$, and $|A|\le L$ follows independently from the triangle inequality for the original integral. The exponential locates the phase center at the midpoint; when the real sinc factor is negative it contributes an additional phase of $\pi$. At its zeros the amplitude is zero and its phase is undefined.
 
-**Recognition cue.** A quotient singularity introduced by a parameterized antiderivative may be removable even though the formula with division is undefined there. Phase still needs separate treatment at amplitude zeros.
+**Discussion.** A quotient singularity introduced by a parameterized antiderivative may be removable even though the formula with division is undefined there. Phase still needs separate treatment at amplitude zeros.
 
 ### I3-005
 
@@ -300,7 +300,7 @@ The ratio is positive for $-1<a<1$.
 
 **Step 5 — CHECK.** At $a=0$, the principal value is zero by odd symmetry. If instead $\delta_-=\lambda\delta_+$ with a fixed real $\lambda>0$, the coupled limit differs by $\ln\lambda$. This shows why a limiting prescription matters. At $a=1$ or $a=-1$, only a one-sided endpoint divergence remains and the stated interior symmetric principal value is unavailable. A finite-part regularization would be another explicitly defined operation.
 
-**Recognition cue.** Cancellation of divergences is a prescription, not proof that an ordinary improper integral exists. Symmetry is useful only after the definition of the integral is fixed.
+**Discussion.** Cancellation of divergences is a prescription, not proof that an ordinary improper integral exists. Symmetry is useful only after the definition of the integral is fixed.
 
 ### I3-006
 
@@ -350,7 +350,7 @@ The square brackets here delimit endpoint evaluation, not a derivative operand o
 
 **Step 6 — CHECK AND DOMAIN.** For small positive $\rho/L$, the potential grows like $2\ln(2L/\rho)$ and its derivative like $-2/\rho$. At $\rho=0$ the original kernel is $1/|s|$ and its integral diverges. The positive-distance justification is not uniform through the line source. For large $\rho/L$, $P(\rho;L)$ behaves like $2L/\rho$, as expected from the nearly constant kernel across the short source segment.
 
-**Recognition cue.** A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
+**Discussion.** A near-source limit can invalidate interchange rules that are harmless at every fixed positive observation distance. Parameter-dependent transformed bounds cannot be treated as constants in a later derivative.
 
 ### I3-007
 
@@ -390,7 +390,7 @@ No oscillatory or signed cancellation is available in this nonnegative example.
 
 **Step 6 — CHECK.** The transformed $1/R$ integrand is bounded between $1/\sqrt2$ and one on a unit square, so the answer lies between those numbers; $\ln(1+\sqrt2)$ does. This vertex example illustrates the Duffy coordinate idea used in singular panel integration. More general CEM kernels, interior source positions, and vector testing functions require their own transformations and convergence analysis.
 
-**Recognition cue.** The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
+**Discussion.** The word singular does not determine integrability. The kernel, the dimension of the integration measure, and the coordinate Jacobian must be considered together.
 
 ### I3-008
 
@@ -450,7 +450,7 @@ $$
 
 On the ellipsoid, $0\le q\le1$, so the result must lie between $4\pi abc/(3\exp(1))$ and the unweighted volume $4\pi abc/3$. The dimensionless coefficient is approximately $2.381$, within those bounds. A determinant without its absolute value would incorrectly make volume depend on orientation if a coordinate direction were reversed.
 
-**Recognition cue.** A nonlinear integrand can become radial after a linear geometric change. The Jacobian supplies the volume scale and the radial power; dropping either changes the problem.
+**Discussion.** A nonlinear integrand can become radial after a linear geometric change. The Jacobian supplies the volume scale and the radial power; dropping either changes the problem.
 
 ### I3-009
 
@@ -491,7 +491,7 @@ $$
 
 **Step 7 — CHECK AND DOMAIN.** Differentiation of $B(t)$ with respect to $t$ gives $\sqrt{1+2t^2}$, verifying the primitive. At $U=0$ the area is zero, and for small $U$ it behaves as $4\pi\ell^2U$. As $U\to\infty$, $T\to\infty$ and already $T\sqrt{1+2T^2}\to\infty$, so the complete surface has infinite area. The finite-band calculation cannot supply a finite area for the unbounded surface by leaving off its limits.
 
-**Recognition cue.** A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
+**Discussion.** A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
 
 ## Application references
 

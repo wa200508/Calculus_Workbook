@@ -1,31 +1,32 @@
 # Notational conventions
 
-The notation in this book is based on established conventions of calculus and
-linear algebra. Function arguments, variable dependencies, object types, and
-operation domains are stated explicitly. A consistent selection of conventions
-is adopted throughout; uniform usage across all mathematical disciplines is
-not presumed. The literature underlying these choices is discussed in
-[the notation review](NOTATION_REVIEW.md).
+A mathematical expression is easier to follow when its notation carries the
+information needed to interpret it. In this book, function arguments remain
+visible, the variable of each operation is named, and the types of the quantities
+involved are stated alongside their definitions. The conventions are drawn from
+established calculus and linear algebra notation. Where several conventions are
+common, one is used consistently here. Their sources and the reasons for these
+choices are discussed in [the notation review](NOTATION_REVIEW.md).
 
 ## 1. Objects, domains, and dependencies
 
-Leibniz operator notation is used for derivatives, with complete function
-arguments and ordinary parentheses enclosing the operand. The type of each
-object is identified by both its notation and its accompanying definition.
+Derivatives are written as Leibniz operators followed by a parenthesized
+expression. The operator names the differentiation variable; the expression
+shows the function and its arguments. This makes a derivative readable without
+having to recover an omitted dependency from an earlier paragraph.
 
-Four kinds of information are provided in the statements and solutions of
-worked problems:
+A problem statement establishes four aspects of the calculation:
 
-1. **Objects and types:** scalar quantities; vectors with a specified dimension; matrices with specified dimensions; and tensors with a specified order, space, basis, and component shape.
-2. **Dependencies:** independent inputs, dependent outputs, intermediate functions, and fixed parameters.
-3. **Domains and assumptions:** admissible inputs, excluded values, and the regularity or sign conditions relevant to the calculation.
-4. **Operations and outputs:** the variable of differentiation or integration, quantities held fixed, and the type of the resulting object.
+1. **Objects and types.** A quantity may be a scalar, a vector of a stated dimension, a matrix of a stated shape, or a tensor whose space, basis, and component indices have been specified.
+2. **Dependencies.** Independent variables are distinguished from dependent quantities and fixed parameters. Intermediate functions are named when they make a long expression easier to follow.
+3. **Domains and assumptions.** The admissible inputs and excluded values are stated, together with relevant sign or regularity conditions.
+4. **Operations and outputs.** The variable of differentiation or integration is identified, as are the quantities held fixed and the type of the result.
 
-These declarations are repeated where a solution is presented independently
-of its problem statement. Function arguments remain explicit in calculus
-expressions. A vector or matrix may appear as a single argument when its
-components and dependencies have been defined locally. Lengthy expressions
-are presented as a sequence of fully defined intermediate expressions.
+The same information is repeated in a solution when it is needed to follow a
+particular step. A vector or matrix can serve as one function argument once its
+components and dependencies have been defined. This keeps the expressions
+manageable while preserving the distinction between a scalar input and a
+collection of inputs.
 
 ## 2. Delimiters and object typography
 
@@ -383,6 +384,21 @@ derivative is nonzero.
   by its validity conditions and an error estimate, or by a statement
   that no error bound has been established.
 
+### Remainders and limiting behavior
+
+The symbols $O$ and $o$ describe the size of an error in a stated limit. For real
+scalar functions $r(x),g(x)$, with $g(x)\ne0$ near the limiting point $a$ except
+possibly at $a$ itself, the statement $r(x)=O(g(x))$ as $x\to a$ means that
+$|r(x)|\le M|g(x)|$ near $a$ for some fixed finite constant $M$. The statement
+$r(x)=o(g(x))$ means that $r(x)/g(x)\to0$. In particular, $o(1)$ denotes a quantity
+that tends to zero. The domain determines whether a limit is two-sided or
+one-sided, and the direction is stated when it matters.
+
+An estimate such as $r(x)=O(x^2)$ controls values of the remainder; it does not,
+by itself, justify differentiating that estimate. Bounds on derivatives require
+additional information. When an actual numerical error is needed, an explicit
+constant and interval are given rather than an order symbol alone.
+
 ## 7. Labels and color conventions
 
 Numbered steps identify the successive operations in worked solutions.
@@ -411,6 +427,7 @@ or approximations. Algebra in the main chapters is denoted in dark blue.
 Substitution and integration by parts are classified as main calculus
 methods rather than supporting tricks.
 
-Each problem is identified by a stable code, such as D2-001. Its statement,
-hints, and complete solution are presented in separate sections. Numbered
+Each problem is identified by a stable code, such as D2-001. In the printed edition, its statement is followed immediately by the worked
+solution; hints are collected in an appendix. The website presents hints and
+solutions in separate disclosure panels. Numbered
 solution steps provide references to particular stages of the calculation.

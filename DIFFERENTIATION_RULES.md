@@ -119,7 +119,7 @@ $$
 =4u^3.
 $$
 
-**Step 4 — CALCULUS: differentiate the inner function.** Use the sum rule, constant-multiple rule, power rule, and derivative of a constant:
+**Step 4 — CALCULUS: differentiate the inner function.** Linearity and the power rule give the inner derivative:
 
 $$
 \begin{aligned}
@@ -130,7 +130,7 @@ $$
 \end{aligned}
 $$
 
-**Step 5 — ALGEBRA.** Multiply the numerical factors and remove the zero:
+**Step 5 — ALGEBRA.** Multiplication of the numerical factors and removal of the zero term give:
 
 $$
 3(2x)+0=(3\cdot2)x+0=6x+0=6x.
@@ -182,7 +182,7 @@ $$
 
 Each term tends to zero, so the limit is zero. This checks the answer at one input; it is not a separate proof of the derivative formula at every input.
 
-**Recognition cue.** A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
+**Discussion.** A composition is differentiated with respect to the outer function's argument before evaluation at the inner function. The chain-rule factor depends on the declared functional dependence, not the apparent complexity of the expression.
 
 ### D2-002
 
