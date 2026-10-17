@@ -123,7 +123,7 @@ def tex_inline(text):
     return "".join(result)
 
 
-def markdown_to_tex(text, algebra_color='AlgebraBlue'):
+def markdown_to_tex(text, algebra_color='AlgebraBlue', fixed_tables=False):
     lines = text.splitlines()[1:]
     output, index, in_math, list_kind, colored = [], 0, False, None, False
     box = None
@@ -168,13 +168,29 @@ def markdown_to_tex(text, algebra_color='AlgebraBlue'):
             count = len(cells[0])
             if any(len(row) != count for row in cells):
                 raise ValueError("Malformed Markdown table")
-            width = .90 / count
-            output.append(r"\begin{longtable}{@{}" + (r">{\raggedright\arraybackslash}p{" + f"{width:.3f}" + r"\textwidth}") * count + r"@{}}")
+            # Column widths account for every intercolumn gap and start flush left.
+            weights = [1 / count] * count
+            if cells[0][0] == 'Object':
+                weights = [.22, .29, .49]
+            elif cells[0][0] == 'Label':
+                weights = [.23, .39, .38]
+            elif cells[0][0] == 'Scalar expression':
+                weights = [.13, .27, .34, .26]
+            widths = [r"\dimexpr " + f"{w:.4f}" + r"\linewidth-" +
+                      f"{2 * (count - 1) * w:.4f}" + r"\tabcolsep\relax" for w in weights]
+            columns = ''.join(r">{\raggedright\arraybackslash}p{" + w + "}" for w in widths)
+            environment = 'tabular' if fixed_tables else 'longtable'
+            output.append(r"\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}")
+            output.append(r"\begin{" + environment + r"}{@{}" + columns + r"@{}}")
             for n, row in enumerate(cells):
-                output.append(" & ".join(tex_inline(x) for x in row) + r" \\[5pt]")
                 if n == 0:
-                    output.append(r"\hline\endhead")
-            output.append(r"\end{longtable}")
+                    rendered = [r'\textbf{' + tex_inline(cell) + '}' for cell in row]
+                else:
+                    rendered = [tex_inline(cell) for cell in row]
+                output.append(" & ".join(rendered) + r" \\[5pt]")
+                if n == 0:
+                    output.append(r"\hline" + ('' if fixed_tables else r"\endhead"))
+            output.append(r"\end{" + environment + r"}\endgroup")
             continue
         heading = re.match(r"^(#{2,4}) (.*)", line)
         if heading:
@@ -196,6 +212,10 @@ def markdown_to_tex(text, algebra_color='AlgebraBlue'):
                 if style in ('domain-step', 'choice-step'):
                     box = 'DomainStep' if style == 'domain-step' else 'ChoiceStep'
                     output.append(r"\begin{" + box + "}")
+        if list_kind and line.startswith('  ') and line.strip():
+            # Wrapped Markdown list paragraphs are one item, not separate paragraphs.
+            output[-1] += ' ' + tex_inline(line.strip())
+            continue
         item = re.match(r"^(- |\d+\. )(.*)", line)
         if item:
             kind = "itemize" if item[1] == "- " else "enumerate"
@@ -210,6 +230,30 @@ def markdown_to_tex(text, algebra_color='AlgebraBlue'):
     if in_math:
         raise ValueError("Unclosed display math")
     return "\n".join(output)
+
+
+# Page boundaries fall between complete concepts, never inside notation tables.
+NOTATION_PAGE_STARTS = (
+    '## 2. Delimiters and object typography',
+    '### Object typography',
+    '## 3. Derivatives',
+    '### Several independent scalar variables',
+    '### Vector and matrix outputs',
+    '### Matrix and tensor inputs',
+    '## 4. Integrals',
+    '## 5. Change-of-variable notation',
+    '## 6. Related symbols and distinctions',
+    '## 7. Labels and color conventions',
+)
+
+
+def notation_to_tex(text):
+    pages = []
+    for heading in reversed(NOTATION_PAGE_STARTS):
+        text, tail = text.split('\n' + heading + '\n', 1)
+        pages.insert(0, '# Notation page\n\n' + heading + '\n' + tail)
+    pages.insert(0, text)
+    return ('\n' + r'\clearpage' + '\n').join(markdown_to_tex(page, fixed_tables=True) for page in pages)
 
 
 def worked_chapter_to_tex(text):
@@ -295,7 +339,7 @@ def build():
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble.replace("% WORKBOOK_INTRODUCTION", markdown_to_tex(content["INTRODUCTION.md"]))
     for filename, _, title in INTRO_SOURCES:
-        manuscript += "\n\\chapter{" + title + "}\n" + markdown_to_tex(content[filename]) + "\n"
+        manuscript += "\n\\chapter{" + title + "}\n" + (notation_to_tex(content[filename]) if filename == 'NOTATION_STANDARD.md' else markdown_to_tex(content[filename])) + "\n"
     for filename, _, _, title in MAIN_SETS:
         manuscript += "\n\\chapter{" + title + "}\n\\markright{}\n" + worked_chapter_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\markright{}\n\\begingroup\\color{TrickPurple}\n"

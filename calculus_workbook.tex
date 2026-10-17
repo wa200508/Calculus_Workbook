@@ -7,6 +7,13 @@
 \usepackage{xcolor,array,longtable,enumitem}
 \usepackage[breakable,skins]{tcolorbox}
 \usepackage{fancyhdr}
+\usepackage{needspace}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 \usepackage{hyperref}
 \definecolor{AlgebraBlue}{HTML}{244A73}
 \definecolor{TrickPurple}{HTML}{6F398E}
@@ -136,21 +143,23 @@ particular step. A vector or matrix can serve as one function argument once its
 components and dependencies have been defined. This keeps the expressions
 manageable while preserving the distinction between a scalar input and a
 collection of inputs.
+\clearpage
 
 \section{2. Delimiters and object typography}
 
 \subsection{Delimiters}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Notation & Meaning in this book & Associated convention \\[5pt]
-\hline\endhead
+\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}@{}}
+\textbf{Notation} & \textbf{Meaning in this book} & \textbf{Associated convention} \\[5pt]
+\hline
 \(f(x,y)\) & Function value at the listed inputs & Parentheses immediately following a function name enclose its arguments \\[5pt]
 \((a+b)\) & Grouping & The complete operand of a derivative is enclosed in parentheses \\[5pt]
 A displayed bracketed column or rectangular array & Vector or matrix representation & The object's type and shape are stated with the array \\[5pt]
 \([a,b]\) & Closed interval & Its scalar input satisfies \(a\leq x\leq b\) \\[5pt]
 \(\{x:x>0\}\) & Set & Braces delimit a set rather than an ordinary algebraic group \\[5pt]
 \(A_{ij}(t)\), \(T_{ijk}(t)\) & Scalar components & The parent object, basis, index ranges, and dependencies are specified locally \\[5pt]
-\end{longtable}
+\end{tabular}\endgroup
 
 Square brackets have several established meanings, including closed intervals
 and array representations. They therefore do not, by themselves, identify a
@@ -158,18 +167,20 @@ tensor. In this book they are retained for arrays and closed intervals;
 parentheses are used for derivative operands and algebraic grouping. Nested
 groups are distinguished by parentheses of different sizes. Object type is
 established by a definition rather than by delimiters alone.
+\clearpage
 
 \subsection{Object typography}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Object & Convention & Example declaration \\[5pt]
-\hline\endhead
+\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2200\linewidth-0.8800\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2900\linewidth-1.1600\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4900\linewidth-1.9600\tabcolsep\relax}@{}}
+\textbf{Object} & \textbf{Convention} & \textbf{Example declaration} \\[5pt]
+\hline
 Scalar & Ordinary italic & \(x\in\mathbb R\): independent real scalar \\[5pt]
 Scalar-valued function & Ordinary mathematical type with explicit arguments & \(z=f(x,y)\in\mathbb R\): dependent scalar output \\[5pt]
 Vector & Bold lowercase & \(\mathbf r(t)\in\mathbb R^3\): column vector depending on scalar \(t\) \\[5pt]
 Matrix & Bold uppercase & \(\mathbf A(t)\in\mathbb R^{m\times n}\): matrix depending on scalar \(t\) \\[5pt]
 Tensor of order three or higher & Bold calligraphic uppercase & \(\boldsymbol{\mathcal T}(t)\): tensor with a specified space, order, basis, and component shape \\[5pt]
-\end{longtable}
+\end{tabular}\endgroup
 
 Scalar entries are denoted in ordinary type: \(r_i(t)\), \(A_{ij}(t)\), and
 \(T_{ijk}(t)\). Tensor order is distinguished from tensor rank, which has other
@@ -202,6 +213,7 @@ Here \(t\) is the independent real scalar parameter; \(x(t)\) and \(y(t)\) are
 dependent real scalar coordinates; and \(z(t)\) is the dependent real scalar
 output. The parenthesized coordinate pair represents a point and is
 separate from the bracketed column-vector representation.
+\clearpage
 
 \section{3. Derivatives}
 
@@ -242,6 +254,7 @@ Evaluation of the derivative at a fixed real scalar input \(a\) is denoted by
 The vertical bar denotes evaluation of the differentiated expression.
 Differentiation precedes substitution of the specified input. This
 operation differs from differentiation of the constant value \(f(a)\).
+\clearpage
 
 \subsection{Several independent scalar variables}
 
@@ -290,6 +303,7 @@ coordinate rate. The resulting path derivative is scalar-valued.
 Mixed partial derivatives are initially represented as nested operations,
 with their order stated in words. Equality after reversal of that order
 requires appropriate hypotheses and is not implied by the notation.
+\clearpage
 
 \subsection{Vector and matrix outputs}
 
@@ -345,6 +359,7 @@ Jacobian is the transpose of this gradient and is a one-row matrix. These
 objects are distinguished by their defined shapes rather than denoted by
 an ambiguous fraction with respect to a vector. The superscript
 \(\mathsf T\) denotes transpose.
+\clearpage
 
 \subsection{Matrix and tensor inputs}
 
@@ -372,6 +387,7 @@ lower indices have distinct meanings, which are defined with the objects.
 Summations are written explicitly. Component differentiation is initially
 represented in a fixed basis; variation of the basis introduces additional
 terms.
+\clearpage
 
 \section{4. Integrals}
 
@@ -425,6 +441,7 @@ surface, and volume integrals have specified domains, measures,
 parameterizations where applicable, and orientations where relevant.
 Arc-length measure \(ds\), surface-area measure \(dS\), and vector displacement
 are distinct objects and are defined separately.
+\clearpage
 
 \section{5. Change-of-variable notation}
 
@@ -460,61 +477,22 @@ relation \(u=g(x)=x^2+1\). The differential of \(u\) is the derivative of
 differential relation; cancellation of the symbols \(d\) and \(x\) is not
 its justification. Division by a derivative is valid only where that
 derivative is nonzero.
+\clearpage
 
 \section{6. Related symbols and distinctions}
 
 \begin{itemize}
-\item \textbf{Finite change and differential.} \(\Delta x\) denotes a finite real scalar
-\end{itemize}
-  increment. A differential represents the linear part of a change and
-  need not equal the exact finite change. The derivative-map expression
-  \(\mathrm Df(x,y)(\Delta x,\Delta y)\) is accompanied by its defining
-  partial-derivative formula.
-\begin{itemize}
-\item \textbf{Function inverse and reciprocal.} \(1/f(x)\) denotes a reciprocal where
-\end{itemize}
-  \(f(x)\ne0\). The expression \(f^{-1}(y)\) denotes a defined inverse function.
-  The inverse sine is written as \(\arcsin(x)\).
-\begin{itemize}
-\item \textbf{Function powers.} The square of a sine value is written as
-\end{itemize}
-  \((\sin(x))^2\). The function's input and the power applied to its value
-  are thereby displayed separately.
-\begin{itemize}
-\item \textbf{Matrix inverse and reciprocal.} \(\mathbf A^{-1}\) denotes a matrix
-\end{itemize}
-  inverse when it exists. Entrywise reciprocals are defined separately;
-  a matrix quotient is not part of the adopted notation.
-\begin{itemize}
-\item \textbf{Absolute value, determinant, and norm.} \(|s|\) denotes the absolute
-\end{itemize}
-  value of a scalar \(s\); \(\det(\mathbf A)\) denotes the determinant of a
-  square matrix; and \(\lVert\mathbf v\rVert\) denotes a specified norm of
-  a vector. The chosen norm is defined with its use.
-\begin{itemize}
-\item \textbf{Products.} Scalar multiplication, dot products, cross products,
-\end{itemize}
-  matrix products, tensor products, and contractions are identified
-  when introduced. The order of matrix factors is retained. Entrywise
-  products are explicitly identified.
-\begin{itemize}
-\item \textbf{Summations.} Summation signs and their limits are displayed, with
-\end{itemize}
-  stated ranges for free indices. Individual terms are expanded in
-  initial low-dimensional examples. Implicit Einstein summation is not
-  used in worked calculations.
-\begin{itemize}
-\item \textbf{Tensors and arrays.} Multilinear tensors and multidimensional data
-\end{itemize}
-  arrays are related through specified representations; they are not
-  treated as identical objects without a definition of that relation.
-\begin{itemize}
-\item \textbf{Equality and approximation.} The symbol \(=\) denotes exact equality;
-\end{itemize}
-  \(\approx\) denotes an approximation. An approximation is accompanied
-  by its validity conditions and an error estimate, or by a statement
-  that no error bound has been established.
+\item \textbf{Finite change and differential.} \(\Delta x\) denotes a finite real scalar increment. A differential represents the linear part of a change and need not equal the exact finite change. The derivative-map expression \(\mathrm Df(x,y)(\Delta x,\Delta y)\) is accompanied by its defining partial-derivative formula.
+\item \textbf{Function inverse and reciprocal.} \(1/f(x)\) denotes a reciprocal where \(f(x)\ne0\). The expression \(f^{-1}(y)\) denotes a defined inverse function. The inverse sine is written as \(\arcsin(x)\).
+\item \textbf{Function powers.} The square of a sine value is written as \((\sin(x))^2\). The function's input and the power applied to its value are thereby displayed separately.
+\item \textbf{Matrix inverse and reciprocal.} \(\mathbf A^{-1}\) denotes a matrix inverse when it exists. Entrywise reciprocals are defined separately; a matrix quotient is not part of the adopted notation.
+\item \textbf{Absolute value, determinant, and norm.} \(|s|\) denotes the absolute value of a scalar \(s\); \(\det(\mathbf A)\) denotes the determinant of a square matrix; and \(\lVert\mathbf v\rVert\) denotes a specified norm of a vector. The chosen norm is defined with its use.
+\item \textbf{Products.} Scalar multiplication, dot products, cross products, matrix products, tensor products, and contractions are identified when introduced. The order of matrix factors is retained. Entrywise products are explicitly identified.
+\item \textbf{Summations.} Summation signs and their limits are displayed, with stated ranges for free indices. Individual terms are expanded in initial low-dimensional examples. Implicit Einstein summation is not used in worked calculations.
+\item \textbf{Tensors and arrays.} Multilinear tensors and multidimensional data arrays are related through specified representations; they are not treated as identical objects without a definition of that relation.
+\item \textbf{Equality and approximation.} The symbol \(=\) denotes exact equality; \(\approx\) denotes an approximation. An approximation is accompanied by its validity conditions and an error estimate, or by a statement that no error bound has been established.
 
+\end{itemize}
 \subsection{Remainders and limiting behavior}
 
 The symbols \(O\) and \(o\) describe the size of an error in a stated limit. For real
@@ -529,15 +507,17 @@ An estimate such as \(r(x)=O(x^2)\) controls values of the remainder; it does no
 by itself, justify differentiating that estimate. Bounds on derivatives require
 additional information. When an actual numerical error is needed, an explicit
 constant and interval are given rather than an order symbol alone.
+\clearpage
 
 \section{7. Labels and color conventions}
 
 Numbered steps identify the successive operations in worked solutions.
 Their textual labels and colors distinguish the roles of those operations.
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Label & Meaning & Appearance \\[5pt]
-\hline\endhead
+\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-0.9200\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3900\linewidth-1.5600\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3800\linewidth-1.5200\tabcolsep\relax}@{}}
+\textbf{Label} & \textbf{Meaning} & \textbf{Appearance} \\[5pt]
+\hline
 SETUP & Types, dependencies, domain, and target & Ordinary text \\[5pt]
 CHOICE & The reason a method applies to the given expression & Neutral method-choice block \\[5pt]
 CALCULUS & A named derivative or integral rule & Ordinary mathematical text \\[5pt]
@@ -547,7 +527,7 @@ TRICK & A supporting identity, rewrite, or approximation from the tricks appendi
 APPROXIMATION & A replacement with stated validity conditions & Dark blue with an APPROXIMATION label \\[5pt]
 DOMAIN & Excluded points, branch choices, convergence, and conditions for an operation & Domain block with an amber margin \\[5pt]
 CHECK & Verification of the result, domain, dimensions, or plausibility & Ordinary text \\[5pt]
-\end{longtable}
+\end{tabular}\endgroup
 
 Color supplements the textual labels, which remain meaningful in grayscale.
 Calculus operations and algebraic simplifications are presented on separate
@@ -587,8 +567,9 @@ following formulas apply on the indicated real domains. Each primitive is
 understood on a connected interval of that domain; \(C\) is an arbitrary constant
 on that interval.
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}@{}}
-Scalar expression & Derivative with respect to \(x\) & Primitive with respect to \(x\) & Real-domain restriction \\[5pt]
+\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.1300\linewidth-0.7800\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2700\linewidth-1.6200\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3400\linewidth-2.0400\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2600\linewidth-1.5600\tabcolsep\relax}@{}}
+\textbf{Scalar expression} & \textbf{Derivative with respect to \(x\)} & \textbf{Primitive with respect to \(x\)} & \textbf{Real-domain restriction} \\[5pt]
 \hline\endhead
 \(x^p\) & \(\frac{d}{dx}(x^p)=px^{p-1}\) & \(\int x^p\,dx=\frac{x^{p+1}}{p+1}+C\), \(p\ne-1\) & \(x>0\) suffices for arbitrary real \(p\); integer powers may have larger domains \\[5pt]
 \(1/x\) & \(\frac{d}{dx}(1/x)=-1/x^2\) & \(\int (1/x)\,dx=\ln|x|+C\) & \(x\ne0\) \\[5pt]
@@ -600,7 +581,7 @@ Scalar expression & Derivative with respect to \(x\) & Primitive with respect to
 \(\sinh(x)\) & \(\frac{d}{dx}(\sinh(x))=\cosh(x)\) & \(\int\sinh(x)\,dx=\cosh(x)+C\) & All real \(x\) \\[5pt]
 \(\cosh(x)\) & \(\frac{d}{dx}(\cosh(x))=\sinh(x)\) & \(\int\cosh(x)\,dx=\sinh(x)+C\) & All real \(x\) \\[5pt]
 \(\tanh(x)\) & \(\frac{d}{dx}(\tanh(x))=1/\cosh^2(x)\) & \(\int\tanh(x)\,dx=\ln(\cosh(x))+C\) & All real \(x\) \\[5pt]
-\end{longtable}
+\end{longtable}\endgroup
 
 Inverse-function derivatives often identify a primitive more efficiently than
 algebraic expansion. With the standard real branches,
@@ -2541,8 +2522,9 @@ book. The label TRICK identifies the same passages in a monochrome copy.
 
 \section{Supporting tools and applicability}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}>{\raggedright\arraybackslash}p{0.300\textwidth}@{}}
-Tool & When to consider it & What it gives \\[5pt]
+\begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3333\linewidth-1.3333\tabcolsep\relax}@{}}
+\textbf{Tool} & \textbf{When to consider it} & \textbf{What it gives} \\[5pt]
 \hline\endhead
 T-001 Euler identities & Trigonometric products or oscillations & Exact conversions between complex exponentials and real trigonometric functions \\[5pt]
 T-002 Taylor expansions & A local approximation near a known input & A polynomial plus an error term; an infinite identity only when convergence is justified \\[5pt]
@@ -2551,7 +2533,7 @@ T-004 Completing the square & A quadratic form requires translation or factoriza
 T-005 Rationalization & A difference of roots causes cancellation & An exact equivalent expression on a stated domain \\[5pt]
 T-007 Hyperbolic identities & Quadratic radicals and hyperbolic parametrizations & Exact identities with real inverse branches and root signs \\[5pt]
 T-006 Logarithm identities & Products, quotients, and powers inside a logarithm & Exact sums and differences under real positivity assumptions \\[5pt]
-\end{longtable}
+\end{longtable}\endgroup
 
 \section{T-001 Euler identities}
 
