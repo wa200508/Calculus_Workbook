@@ -27,8 +27,10 @@ four-page quick reference condenses notation, calculus tools, and their conditio
 The full reading edition is published through GitHub Actions at
 https://wa200508.github.io/Calculus_Workbook/generated/book.html.
 Main-branch checkpoints build both the site and PDFs; alpha version tags publish
-fixed PDF prereleases. Edition 0.4.0-alpha.5 provides a 131-page book and a separate
-four-page quick reference, both downloadable from the release. Every printed
+fixed PDF prereleases. Edition 0.4.0-alpha.6 includes the four-page quick reference inside the main
+book, before the worked problem chapters. It also provides the standalone
+reference PDF. The book now has 135 pages; the embedded reference occupies
+printed pages 19–22 and has a table-of-contents entry. Every printed
 problem is immediately followed by its complete worked solution; hints retain
 reciprocal page references.
 
@@ -39,16 +41,18 @@ their explanations and conditions. The quick reference uses two columns and
 9-point body text, with full operator notation, visible dependencies, domain
 conditions, and purple supporting identities.
 
-Fifteen content tests and 141 independent numerical spot checks pass. Production
+Sixteen content tests and 141 independent numerical spot checks pass. Production
 checks cover 74 HTML pages, internal links, assets, anchors, and 5,950 rendered
 math expressions. Numerical spot checks do not replace analytical arguments.
-Site run 39042667325 and tagged PDF run 39042668752 completed successfully.
+The previous alpha.5 publication completed successfully. The alpha.6 build and
+publication workflow includes the new embedded-reference check.
 
-The actual release PDFs were downloaded and checked: the reference is exactly
-four pages; printable text bounds and notation-group checks pass. All notation
+The alpha.5 release PDFs were downloaded and checked. The alpha.6 PDFs were
+compiled and visually reviewed locally: the reference is exactly four pages in
+each edition; printable text bounds and notation-group checks pass. All notation
 and methods pages were inspected locally, together with all four reference
 pages. Production renders confirmed intact tables and reference-sheet layout.
-The PDF workflow now enforces reference length and printable margins on every
+The PDF workflow now enforces standalone and embedded reference length and printable margins on every
 build. The online reference has direct PDF access from navigation and practice.
 
 Layout, reference-sheet implementation, and release preparation were pushed as

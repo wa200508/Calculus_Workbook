@@ -14,6 +14,9 @@ the elementary table and inverse-function formulas form separate complete blocks
 CHEAT_SHEET.md is the content source. The generator creates the online reading
 page and standalone calculus_quick_reference.tex. Its own preamble uses US Letter,
 two columns, 9-point body text, 11-point leading, and explicit page boundaries.
+The same generated body is embedded before the main book's problem chapters,
+with a contents entry and continuous book page numbering. Temporary margins
+retain the standalone column width; the usual book layout resumes afterward.
 Each column is unbroken, so formulas cannot drift into the next column or page.
 The fourth page's supporting identities and expansions are purple.
 
@@ -46,7 +49,7 @@ listed in METHODS_REFERENCE.md and NOTATION_REVIEW.md.
 ## Verification
 
 The PDF workflow compiles both documents using pdfLaTeX. The local review also
-uses Tectonic. scripts/check_pdf_layout.py requires exactly four reference pages,
+uses Tectonic. scripts/check_pdf_layout.py requires exactly four standalone and four consecutive embedded reference pages,
 checks printable text bounds, and checks that the most vulnerable notation
 concepts and tables stay on one page. This supplements visual inspection of all
 introductory and reference-sheet pages; text bounds alone cannot detect every

@@ -6,8 +6,8 @@ The [complete book](/generated/book) contains the entire manuscript. Individual
 [practice pages](/practice) keep each hint and solution closed until it is opened.
 The [PDF edition](/downloads) is arranged for reading and working on paper.
 
-The [four-page quick reference](/generated/quick-reference) is available as a
-separate PDF for use beside the problems.
+The [four-page quick reference](/generated/quick-reference) appears before the
+problem chapters in the main book and is also available as a separate PDF.
 
 The [notation chapter](/generated/notation) explains the symbols used throughout;
 the [methods reference](/generated/methods) collects formulas and their conditions.

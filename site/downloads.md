@@ -7,10 +7,10 @@ import { withBase } from 'vitepress'
 These downloads are generated from the same manuscript used for the site.
 
 - [Read the complete current book on one HTML page](/generated/book)
-- [Download the compiled alpha PDF from GitHub](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.5/calculus_workbook.pdf)
-- [Download the four-page quick-reference PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.5/calculus_quick_reference.pdf)
+- [Download the compiled alpha PDF from GitHub](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.6/calculus_workbook.pdf)
+- [Download the four-page quick-reference PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.6/calculus_quick_reference.pdf)
 - [Read the quick reference online](/generated/quick-reference)
-- [Alpha release notes and files](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.5)
+- [Alpha release notes and files](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.6)
 - <a :href="withBase('/downloads/calculus-workbook.md')" download>Complete Markdown manuscript</a>
 - <a :href="withBase('/downloads/calculus_workbook.tex')" download>Standalone LaTeX source</a>
 - <a :href="withBase('/downloads/NOTATION_STANDARD.md')" download>Notation standard</a>
@@ -30,7 +30,8 @@ The original content is CC BY-SA 4.0. See [sharing and accuracy](/about).
 
 ## Quick reference
 
-The separate quick reference is four US Letter pages with two columns and
+The quick reference is included in the main book before the problem chapters,
+and its separate edition is four US Letter pages with two columns and
 9-point body text. It covers notation, elementary formulas, calculus methods,
 domain and convergence conditions, geometric measures, matrix and tensor
 operations, and selected supporting identities. It is arranged for printing at

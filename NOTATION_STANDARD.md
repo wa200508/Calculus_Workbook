@@ -432,5 +432,6 @@ solution; hints are collected in an appendix. The website presents hints and
 solutions in separate disclosure panels. Numbered
 solution steps provide references to particular stages of the calculation.
 
-A separate [four-page quick reference](CHEAT_SHEET.md) collects these conventions
-and the principal calculus tools for consultation beside the worked problems.
+The [four-page quick reference](CHEAT_SHEET.md) that follows the methods chapter
+collects these conventions and the principal calculus tools for consultation
+beside the worked problems. It is also available as a separate PDF.

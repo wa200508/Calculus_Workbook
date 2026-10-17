@@ -59,7 +59,7 @@ jobs:
           cat > notes.md <<'EOF'
           Complete current manuscript in a single compiled PDF. **Alpha development:** the material may contain errors, and mathematical correctness is not guaranteed.
 
-          A separate four-page calculus quick-reference PDF accompanies the book.
+          The four-page calculus quick reference is included in the main book before the problem chapters and is also provided as a separate PDF.
 
           Includes the notation standard, worked differentiation and integration chapters, supporting tricks appendix, and notation literature review. Every included practice problem has hints, a complete solution, and a check. Supporting tricks are purple; algebra in the main chapters is dark blue.
 

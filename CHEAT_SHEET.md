@@ -1,6 +1,7 @@
 # Calculus quick reference
 
-Four pages accompany the notation chapter and methods reference. Unless specified
+These four pages appear before the problem chapters in the main book and are
+also available as a separate PDF. Unless specified
 otherwise, all inputs, parameters, and function values are real scalars; parameters
 are fixed during the stated operation. Every primitive is defined on a connected
 interval of its domain. Independent coordinates are held fixed in partial
