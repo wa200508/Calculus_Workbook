@@ -40,6 +40,7 @@ export default defineConfig({
       { text: 'Full book', link: '/generated/book' },
       { text: 'Read', link: '/start' },
       { text: 'Practice', link: '/practice' },
+      { text: 'Quick reference', link: '/generated/quick-reference' },
       { text: 'Methods', link: '/generated/methods' },
       { text: 'Notation', link: '/generated/notation' },
       { text: 'Tricks', link: '/generated/tricks' },
@@ -49,6 +50,7 @@ export default defineConfig({
       { text: 'Begin here', items: [
         { text: 'About the workbook', link: '/start' },
         { text: 'Complete book · One page', link: '/generated/book' },
+        { text: 'Four-page quick reference', link: '/generated/quick-reference' },
         { text: 'Notation standard', link: '/generated/notation' },
         { text: 'Calculus methods reference', link: '/generated/methods' },
       ] },

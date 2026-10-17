@@ -93,6 +93,16 @@ class ContentTests(unittest.TestCase):
         self.assertIn(r'\(|x|\)', tex)
         self.assertEqual(tex.count(' & '), 2)
 
+    def test_wrapped_list_items_remain_single_paragraphs(self):
+        tex = content.markdown_to_tex('# Test\n\n- A long item\n  continues here.\n- Another item.\n')
+        self.assertEqual(tex.count(r'\begin{itemize}'), 1)
+        self.assertIn(r'\item A long item continues here.', tex)
+
+    def test_math_in_bold_table_headers_is_preserved(self):
+        tex = content.markdown_to_tex('# Test\n\n| Derivative in $x$ | Value |\n|---|---|\n| $x$ | $1$ |\n')
+        self.assertIn(r'\textbf{Derivative in \(x\)}', tex)
+        self.assertNotIn('**', tex)
+
     def test_derivative_delimiters_and_dependencies_survive_export(self):
         expression = r'\frac{d}{dx}\left(f(x)\right)'
         self.assertIn(expression, content.markdown_to_tex('# Test\n\n$$\n' + expression + '\n$$'))

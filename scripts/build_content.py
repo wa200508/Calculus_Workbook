@@ -18,6 +18,7 @@ REFERENCE_SETS = (("DIFFERENTIATION_SCALARS.md", "scalar-derivatives", "D1", "Sc
                   ("INTEGRATION_SUBSTITUTION.md", "substitution", "I2", "Coordinate reference exercises"))
 SOURCES = {"INTRODUCTION.md": "introduction"}
 SOURCES.update({name: slug for name, slug, _ in INTRO_SOURCES})
+SOURCES["CHEAT_SHEET.md"] = "quick-reference"
 SOURCES.update({name: slug for name, slug, _, _ in MAIN_SETS})
 SOURCES["TRICKS_APPENDIX.md"] = "tricks"
 SOURCES.update({name: slug for name, slug, _, _ in REFERENCE_SETS})
@@ -101,7 +102,7 @@ def collect_problems(content):
 def tex_escape(text):
     return re.sub(r"[&%$#_{}~^]", lambda m: {
         "~": r"\textasciitilde{}", "^": r"\textasciicircum{}"
-    }.get(m.group(), "\\" + m.group()), text).replace("©", r"\copyright{}")
+    }.get(m.group(), "\\" + m.group()), text).replace("©", r"\copyright{}").replace("“", "``").replace("”", "\'\'").replace("’", "\'").replace("‘", "`")
 
 
 def tex_inline(text):
@@ -256,6 +257,60 @@ def notation_to_tex(text):
     return ('\n' + r'\clearpage' + '\n').join(markdown_to_tex(page, fixed_tables=True) for page in pages)
 
 
+def methods_to_tex(text):
+    """Keep an operative formula and its hypotheses in a single print block."""
+    sections = re.split(r'(?=^## )', text, flags=re.M)
+    output = [markdown_to_tex(sections[0])]
+    for section in sections[1:]:
+        entries = re.split(r'(?=^### )', section, flags=re.M)
+        heading = markdown_to_tex('# Section\n' + entries[0])
+        if len(entries) == 1:
+            output.append(r'\Needspace{8\baselineskip}' + heading)
+        for i, entry in enumerate(entries[1:]):
+            blocks = entry.split('Inverse-function derivatives often', 1)
+            if len(blocks) == 2:
+                blocks[1] = 'Inverse-function derivatives often' + blocks[1]
+            for j, block in enumerate(blocks):
+                output.append(r'\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}')
+                if i == 0 and j == 0:
+                    output.append(heading)
+                output.append(markdown_to_tex('# Entry\n' + block, fixed_tables=True))
+                output.append(r'\end{minipage}\par')
+    return '\n'.join(output)
+
+
+def quick_reference_to_tex(text, version):
+    """Four deliberately paginated spreads, each with two unbroken columns."""
+    chunks = re.split(r'^## (.*)\n', text, flags=re.M)
+    if len(chunks) != 9:
+        raise ValueError('The quick reference requires exactly four pages')
+    preamble = (ROOT / 'scripts/quick-reference-preamble.tex').read_text()
+    pages = []
+    for i in range(1, len(chunks), 2):
+        title, body = chunks[i:i + 2]
+        columns = body.split('<!-- column -->')
+        if len(columns) != 2:
+            raise ValueError('Each quick-reference page requires exactly two columns')
+        page = [r'{\sffamily\large\bfseries ' + tex_inline(title) + r'\par}\vspace{5pt}']
+        for j, column in enumerate(columns):
+            rendered = markdown_to_tex('# Column\n' + column.strip())
+            rendered = re.sub(r'\\subsection\{([^}]+)\}', r'\\QuickHeading{\1}', rendered)
+            # Each column has a fixed top edge; formulas never cross a page or gutter.
+            page.append(r'\begin{minipage}[t]{0.485\textwidth}\vspace{0pt}')
+            if i == 1 and j == 0:
+                page.append(tex_inline(chunks[0].split('\n', 1)[1].strip()) + '\n')
+            if i == 7 and j == 1:
+                rendered = rendered.replace(r'\QuickHeading{Supporting identities and coordinates}',
+                                            r'\begingroup\color{TrickPurple}\QuickHeading{Supporting identities and coordinates}')
+                rendered += r'\endgroup'
+            page.append(rendered + '\n' + r'\end{minipage}' + ('%' if j == 0 else ''))
+            if j == 0:
+                page.append(r'\hfill%')
+        pages.append('\n'.join(page))
+    return preamble.replace('@VERSION@', version).replace('% QUICK_REFERENCE_PAGES',
+        ('\n' + r'\newpage' + '\n').join(pages))
+
+
 def worked_chapter_to_tex(text):
     """Keep each statement and its solution together in the printed edition."""
     groups = problem_sections(text)
@@ -293,6 +348,7 @@ def hints_to_tex(problems):
 
 
 def build():
+    version = json.loads((ROOT / 'package.json').read_text())['version']
     content = {name: (ROOT / name).read_text() for name in SOURCES}
     problems = collect_problems(content)
     for directory in ("site/generated", "site/problems", "site/public/downloads", "site/public/licenses"):
@@ -307,6 +363,8 @@ def build():
         text = site_links(content[name])
         first, rest = text.split("\n", 1)
         styled = style_algebra(rest)
+        if slug == 'quick-reference':
+            styled = f'[Download the four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf) · [Full methods reference](/generated/methods)\n\n' + styled
         if slug == 'tricks':
             styled = '<div class="tricks-appendix">\n\n' + styled + '\n\n</div>\n'
         (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + styled)
@@ -336,10 +394,13 @@ def build():
         (ROOT / 'site/generated' / target).write_text(table)
     for source, target in (("LICENSE", "MIT.txt"), ("LICENSES/CC-BY-SA-4.0.txt", "CC-BY-SA-4.0.txt")):
         shutil.copyfile(ROOT / source, ROOT / "site/public/licenses" / target)
+    sheet = quick_reference_to_tex(content['CHEAT_SHEET.md'], version)
+    (ROOT / 'calculus_quick_reference.tex').write_text(sheet)
+    shutil.copyfile(ROOT / 'calculus_quick_reference.tex', ROOT / 'site/public/downloads/calculus_quick_reference.tex')
     preamble = (ROOT / "scripts/book-preamble.tex").read_text()
     manuscript = preamble.replace("% WORKBOOK_INTRODUCTION", markdown_to_tex(content["INTRODUCTION.md"]))
     for filename, _, title in INTRO_SOURCES:
-        manuscript += "\n\\chapter{" + title + "}\n" + (notation_to_tex(content[filename]) if filename == 'NOTATION_STANDARD.md' else markdown_to_tex(content[filename])) + "\n"
+        manuscript += "\n\\chapter{" + title + "}\n" + (notation_to_tex(content[filename]) if filename == 'NOTATION_STANDARD.md' else methods_to_tex(content[filename])) + "\n"
     for filename, _, _, title in MAIN_SETS:
         manuscript += "\n\\chapter{" + title + "}\n\\markright{}\n" + worked_chapter_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\markright{}\n\\begingroup\\color{TrickPurple}\n"

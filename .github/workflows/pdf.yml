@@ -23,13 +23,19 @@ jobs:
       - name: Generate the book source
         run: python3 scripts/build_content.py
       - name: Install the TeX toolchain
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends latexmk lmodern texlive-latex-extra texlive-fonts-recommended
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends latexmk lmodern texlive-latex-extra texlive-fonts-recommended poppler-utils
       - name: Build PDF and fail on TeX errors
-        run: latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build calculus_workbook.tex
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build calculus_workbook.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build calculus_quick_reference.tex
+      - name: Check print layout and reference-sheet page count
+        run: python3 scripts/check_pdf_layout.py
       - uses: actions/upload-artifact@v4
         with:
           name: calculus-workbook-pdf
-          path: build/calculus_workbook.pdf
+          path: |
+            build/calculus_workbook.pdf
+            build/calculus_quick_reference.pdf
           if-no-files-found: error
 
   release:
@@ -53,12 +59,14 @@ jobs:
           cat > notes.md <<'EOF'
           Complete current manuscript in a single compiled PDF. **Alpha development:** the material may contain errors, and mathematical correctness is not guaranteed.
 
+          A separate four-page calculus quick-reference PDF accompanies the book.
+
           Includes the notation standard, worked differentiation and integration chapters, supporting tricks appendix, and notation literature review. Every included practice problem has hints, a complete solution, and a check. Supporting tricks are purple; algebra in the main chapters is dark blue.
 
           Educational content: CC BY-SA 4.0. Software: MIT. See the repository's licenses and accuracy notice.
           EOF
           if gh release view "$BOOK_TAG" > /dev/null 2>&1; then
-            gh release upload "$BOOK_TAG" book/calculus_workbook.pdf --clobber
+            gh release upload "$BOOK_TAG" book/calculus_workbook.pdf book/calculus_quick_reference.pdf --clobber
           else
-            gh release create "$BOOK_TAG" book/calculus_workbook.pdf --verify-tag --prerelease --title "Calculus Workbook $BOOK_TAG — Alpha" --notes-file notes.md
+            gh release create "$BOOK_TAG" book/calculus_workbook.pdf book/calculus_quick_reference.pdf --verify-tag --prerelease --title "Calculus Workbook $BOOK_TAG — Alpha" --notes-file notes.md
           fi

@@ -558,6 +558,7 @@ Parameters described as fixed remain constant during the displayed operation.
 The distinction matters when a later step differentiates an answer with respect
 to one of those parameters.
 
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \section{Differentiation and local representations}
 
 \subsection{Elementary derivatives and primitives}
@@ -568,9 +569,9 @@ understood on a connected interval of that domain; \(C\) is an arbitrary constan
 on that interval.
 
 \begingroup\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.15}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.1300\linewidth-0.7800\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2700\linewidth-1.6200\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3400\linewidth-2.0400\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2600\linewidth-1.5600\tabcolsep\relax}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.1300\linewidth-0.7800\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2700\linewidth-1.6200\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3400\linewidth-2.0400\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2600\linewidth-1.5600\tabcolsep\relax}@{}}
 \textbf{Scalar expression} & \textbf{Derivative with respect to \(x\)} & \textbf{Primitive with respect to \(x\)} & \textbf{Real-domain restriction} \\[5pt]
-\hline\endhead
+\hline
 \(x^p\) & \(\frac{d}{dx}(x^p)=px^{p-1}\) & \(\int x^p\,dx=\frac{x^{p+1}}{p+1}+C\), \(p\ne-1\) & \(x>0\) suffices for arbitrary real \(p\); integer powers may have larger domains \\[5pt]
 \(1/x\) & \(\frac{d}{dx}(1/x)=-1/x^2\) & \(\int (1/x)\,dx=\ln|x|+C\) & \(x\ne0\) \\[5pt]
 \(\exp(x)\) & \(\frac{d}{dx}(\exp(x))=\exp(x)\) & \(\int\exp(x)\,dx=\exp(x)+C\) & All real \(x\) \\[5pt]
@@ -581,8 +582,10 @@ on that interval.
 \(\sinh(x)\) & \(\frac{d}{dx}(\sinh(x))=\cosh(x)\) & \(\int\sinh(x)\,dx=\cosh(x)+C\) & All real \(x\) \\[5pt]
 \(\cosh(x)\) & \(\frac{d}{dx}(\cosh(x))=\sinh(x)\) & \(\int\cosh(x)\,dx=\sinh(x)+C\) & All real \(x\) \\[5pt]
 \(\tanh(x)\) & \(\frac{d}{dx}(\tanh(x))=1/\cosh^2(x)\) & \(\int\tanh(x)\,dx=\ln(\cosh(x))+C\) & All real \(x\) \\[5pt]
-\end{longtable}\endgroup
+\end{tabular}\endgroup
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 Inverse-function derivatives often identify a primitive more efficiently than
 algebraic expansion. With the standard real branches,
 
@@ -604,6 +607,8 @@ antiderivative of \(1/(1-x^2)\) also has real branches outside \((-1,1)\):
 Arguments such as \(g(x)\) require the corresponding chain factor or substitution;
 the displayed formulas do not remove that dependence.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Linearity, products, quotients, and compositions}
 
 For an independent real scalar \(x\), fixed scalars \(a,b\), and differentiable
@@ -630,6 +635,8 @@ Factoring, polynomial division, or a different representation may reduce the
 number of rule applications. Cancellation preserves exclusions from the original
 domain. Several nested arguments may be represented by separately named functions.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Logarithmic differentiation and variable powers}
 
 For differentiable real scalar \(f(x)>0\),
@@ -652,6 +659,8 @@ or when products and powers would otherwise generate many terms. For nonzero
 real \(f(x)\), \(\ln|f(x)|\) has the same logarithmic derivative on each connected
 component. Complex logarithms require a selected local branch.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Implicit differentiation and coordinate charts}
 
 For a continuously differentiable scalar level function \(F(x,y,z)\) and a local
@@ -669,6 +678,8 @@ The full gradient, rather than one coordinate partial derivative, tests regulari
 of the level surface. The same principle applies to implicit scalar relations
 \(F(x,y)=0\) and locally defined \(y=g(x)\).
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Paths, partial derivatives, and second derivatives}
 
 For a scalar field \(f(x,y)\) and a differentiable real path with components
@@ -686,6 +697,8 @@ expression, including every dependent factor. Interchanging mixed partials
 requires appropriate regularity, such as continuous second partial derivatives
 on a neighborhood of the point.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Inverse functions, phase, and endpoint limits}
 
 For a differentiable one-to-one scalar function \(g(x)\) with nonzero derivative,
@@ -703,6 +716,8 @@ examined separately. A continuous extension can exist without a finite derivativ
 Complex scalar outputs differentiated with respect to real parameters are
 handled componentwise; this does not assume complex analyticity.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \section{Antiderivatives and finite integrals}
 
 \subsection{Direct substitution and inverse-coordinate substitution}
@@ -721,6 +736,8 @@ factor \(\frac{d}{du}(\xi(u))\). A map with turning points may require partition
 into branches. Limits, orientation, integrand, and measure are transformed together.
 An unmatched derivative factor cannot be discarded.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Integration by parts and recurrences}
 
 For continuously differentiable scalar functions \(u(x),v(x)\) on a finite interval,
@@ -736,6 +753,8 @@ family of integrals or an equation involving the original integral. On unbounded
 intervals, every boundary term and remainder integral requires its own limit.
 Decay of the integrand alone does not establish that a boundary term vanishes.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Rational functions and partial fractions}
 
 Polynomial division separates a rational scalar function into a polynomial and
@@ -746,6 +765,8 @@ identity or evaluation at suitable inputs. The decomposition retains every
 excluded denominator zero. Logarithmic primitives carry absolute values on
 real connected components; irreducible quadratics commonly lead to arctangents.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Trigonometric and hyperbolic coordinates}
 
 Power reduction, angle addition, and conversion to exponentials can expose a
@@ -764,6 +785,8 @@ The identity \(\sqrt{q^2}=|q|\) for real \(q\) determines the sign of the transf
 root. Hyperbolic identities and their real inverse branches appear in
 T-007.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Symmetry, partition, and periodicity}
 
 On a symmetric finite interval, an integrable odd scalar function has zero
@@ -773,6 +796,8 @@ can reduce a long finite interval to complete periods and a remainder. For an
 improper integral, existence is established before symmetric cancellation is
 used. A principal-value prescription is a separately named operation.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Fundamental theorem and variable limits}
 
 For a continuous scalar \(q(x)\) and a fixed real base point \(a\),
@@ -792,6 +817,8 @@ Continuity of \(q\) and its parameter partial derivative on a neighborhood of th
 finite integration region is a sufficient local condition. The lower-endpoint
 term has a minus sign even when the bounds later reverse their order.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \section{Parameters, convergence, and representations}
 
 \subsection{Differentiation with respect to a parameter}
@@ -806,6 +833,8 @@ integrand. Integration back in the parameter introduces a constant independent
 of that parameter, which is fixed from a known value or limit. The required
 bound may hold near every interior parameter value and fail at its endpoint.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Improper integrals, comparison, and principal values}
 
 Endpoint and interior singularities are treated by independent one-sided limits.
@@ -816,6 +845,8 @@ integrals may converge conditionally. A Cauchy principal value specifies coupled
 exclusions; it need not equal an ordinary improper integral or exist under a
 different exclusion prescription.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Oscillatory integration and damping}
 
 Integration by parts against a bounded oscillatory primitive gives tail bounds
@@ -828,6 +859,8 @@ steepest descent are asymptotic methods with additional smoothness, contour,
 and stationary-point hypotheses; they do not provide exact finite-parameter
 identities.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Interchanging limits, sums, and integrals}
 
 Dominated convergence requires one integrable dominating function on the domain
@@ -839,6 +872,8 @@ termwise integration of a function series. Differentiation of a series requires
 additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
 can contribute to an integral even when they disappear at each fixed input.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Series, asymptotics, and special functions}
 
 Taylor polynomials retain a remainder estimate; infinite series retain their
@@ -850,6 +885,8 @@ analysis, and a usable error estimate. Definitions and branch conventions are
 stated locally when a special function first appears. Supporting expansions are
 collected in T-002.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \section{Fields, geometry, and multilinear objects}
 
 \subsection{Gradients, Jacobians, and constrained variations}
@@ -863,6 +900,8 @@ a tangent direction satisfying the constraint, rather than an arbitrary coordina
 variation. Lagrange multipliers express regular constrained stationary conditions;
 constraint regularity and boundary cases are examined independently.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Area, volume, and surface measures}
 
 For a one-to-one regular coordinate map in two or three dimensions, integration
@@ -879,6 +918,8 @@ Line integrals use the path tangent for vector work and its norm for scalar
 arc-length integration. Coordinate degeneracies at seams or poles may occupy
 sets of measure zero; many-to-one maps require partition or multiplicity accounting.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Integral theorems and excluded sources}
 
 Green's theorem, Stokes' theorem, and the divergence theorem replace suitable
@@ -897,6 +938,8 @@ additional inner boundary, with its own orientation and flux. Boundary
 conditions and topology can therefore determine an answer before a lengthy
 coordinate integration is attempted.
 
+\end{minipage}\par
+\par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Matrix systems and tensor components}
 
 For a differentiable invertible square matrix \(\mathbf A(t)\) and fixed column
@@ -917,7 +960,8 @@ A tensor representation in a varying basis additionally includes basis derivativ
 Near a singular matrix, sensitivity depends on the right-hand side and cannot
 be inferred from a canceled component formula alone.
 
-\section{Reference sources}
+\end{minipage}\par
+\Needspace{8\baselineskip}\section{Reference sources}
 
 These summaries state operative forms and hypotheses rather than reproduce a
 published problem sequence. Standard differentiation, integration, and vector
@@ -3357,7 +3401,7 @@ matching the parameterized calculation. This consistency check applies because
 the parameters really are fixed. If \(a\) were replaced by a function \(a(x)\), the
 dependencies and required rules would change.
 
-\textbf{Discussion.} “Constant” is a relationship to the variable of
+\textbf{Discussion.} \texttt{}Constant'' is a relationship to the variable of
 differentiation, not a requirement that the symbol be a numeral.
 \clearpage
 \section{D1-004 --- Cancellation and a removable singularity}
