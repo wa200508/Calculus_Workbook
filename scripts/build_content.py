@@ -301,7 +301,7 @@ def quick_reference_to_tex(text, version):
                 page.append(tex_inline(chunks[0].split('\n', 1)[1].strip()) + '\n')
             if i == 7 and j == 1:
                 rendered = rendered.replace(r'\QuickHeading{Supporting identities and coordinates}',
-                                            r'\begingroup\color{TrickPurple}\QuickHeading{Supporting identities and coordinates}')
+                                            r'\begingroup\colorlet{QuickHeadingColor}{TrickPurple}\color{TrickPurple}\QuickHeading{Supporting identities and coordinates}')
                 rendered += r'\endgroup'
             page.append(rendered + '\n' + r'\end{minipage}' + ('%' if j == 0 else ''))
             if j == 0:

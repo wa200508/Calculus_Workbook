@@ -5,18 +5,19 @@
 \usepackage[margin=0.45in,top=0.55in,bottom=0.5in,headheight=14pt,headsep=8pt,footskip=14pt]{geometry}
 \definecolor{AlgebraBlue}{HTML}{244A73}
 \definecolor{TrickPurple}{HTML}{6F398E}
+\colorlet{QuickHeadingColor}{AlgebraBlue}
 \hypersetup{colorlinks=true,urlcolor=AlgebraBlue,pdftitle={Calculus quick reference}}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\sffamily\bfseries Calculus Workbook | Quick reference}
 \fancyhead[R]{\sffamily\small\thepage/4}
 \fancyfoot[L]{\sffamily\fontsize{6.8}{8}\selectfont CC BY-SA 4.0 | Alpha development | Provided as-is; correctness is not guaranteed.}
-\fancyfoot[R]{\sffamily\fontsize{6.8}{8}\selectfont Version 0.4.0-alpha.4}
+\fancyfoot[R]{\sffamily\fontsize{6.8}{8}\selectfont Version 0.4.0-alpha.5}
 \renewcommand{\headrulewidth}{0.4pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{3pt}
 \setlength{\emergencystretch}{1em}
-\newcommand{\QuickHeading}[1]{\par\vspace{5pt}{\sffamily\bfseries\color{AlgebraBlue}#1\par}\nobreak\vspace{2pt}\nobreak}
+\newcommand{\QuickHeading}[1]{\par\vspace{5pt}{\sffamily\bfseries\color{QuickHeadingColor}#1\par}\nobreak\vspace{2pt}\nobreak}
 \begin{document}
 \fontsize{9}{11}\selectfont
 \setlength{\abovedisplayskip}{4pt}
@@ -465,7 +466,7 @@ In a fixed basis, tensor derivative and integral components are
 \(\frac{d}{dt}(T_{ijk}(t))\) and \(\int_a^bT_{ijk}(t)\,dt\); component indices range
 over the declared tensor shape. A changing basis adds its derivatives.
 
-\begingroup\color{TrickPurple}\QuickHeading{Supporting identities and coordinates}
+\begingroup\colorlet{QuickHeadingColor}{TrickPurple}\color{TrickPurple}\QuickHeading{Supporting identities and coordinates}
 
 For real scalar \(x\), fixed \(a>0\), and \(i^2=-1\),
 

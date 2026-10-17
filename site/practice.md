@@ -11,6 +11,9 @@ an approach is promising, while the amber DOMAIN passages examine where it is
 valid. Intermediate algebra is retained in blue, and supporting identities and
 approximations appear in purple.
 
+The [four-page quick reference](/generated/quick-reference) collects the notation,
+formulas, and applicability conditions used throughout these calculations.
+
 ## Selected problems
 
 - [A variable power near an excluded input](/problems/d4-001)
