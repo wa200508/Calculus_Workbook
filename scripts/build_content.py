@@ -317,6 +317,23 @@ def quick_reference_to_tex(text, version):
         ('\n' + r'\newpage' + '\n').join(pages))
 
 
+def quick_reference_for_book(sheet):
+    """Reuse the exact four-page companion body with the book's running folios."""
+    heading = next(line for line in sheet.splitlines() if line.startswith(r'\newcommand{\QuickHeading}'))
+    body = sheet.split(r'\begin{document}', 1)[1].split(r'\end{document}', 1)[0]
+    return '\n'.join([
+        r'\clearpage',
+        r'\newgeometry{left=0.45in,right=0.45in,top=0.55in,bottom=0.5in,headheight=14pt,headsep=8pt,footskip=14pt}',
+        r'\begingroup', r'\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}\setlength{\emergencystretch}{1em}',
+        r'\colorlet{QuickHeadingColor}{AlgebraBlue}', heading,
+        r'\pagestyle{BookQuickReference}', r'\markright{}',
+        r'\phantomsection', r'\addcontentsline{toc}{chapter}{Calculus quick reference}',
+        r'\label{quick-reference:start}', body,
+        r'\label{quick-reference:end}', r'\clearpage', r'\endgroup',
+        r'\restoregeometry', r'\pagestyle{fancy}',
+    ])
+
+
 def worked_chapter_to_tex(text):
     """Keep each statement and its solution together in the printed edition."""
     groups = problem_sections(text)
@@ -407,6 +424,7 @@ def build():
     manuscript = preamble.replace("% WORKBOOK_INTRODUCTION", markdown_to_tex(content["INTRODUCTION.md"]))
     for filename, _, title in INTRO_SOURCES:
         manuscript += "\n\\chapter{" + title + "}\n" + (notation_to_tex(content[filename]) if filename == 'NOTATION_STANDARD.md' else methods_to_tex(content[filename])) + "\n"
+    manuscript += '\n' + quick_reference_for_book(sheet) + '\n'
     for filename, _, _, title in MAIN_SETS:
         manuscript += "\n\\chapter{" + title + "}\n\\markright{}\n" + worked_chapter_to_tex(content[filename]) + "\n"
     manuscript += "\n\\appendix\n\\chapter{Tricks and identities}\n\\markright{}\n\\begingroup\\color{TrickPurple}\n"

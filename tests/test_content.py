@@ -93,6 +93,18 @@ class ContentTests(unittest.TestCase):
         self.assertIn(r'\(|x|\)', tex)
         self.assertEqual(tex.count(' & '), 2)
 
+    def test_quick_reference_is_in_the_book_before_the_problems(self):
+        content.build()
+        tex = (ROOT / 'calculus_workbook.tex').read_text()
+        start = tex.index(r'\label{quick-reference:start}')
+        end = tex.index(r'\label{quick-reference:end}')
+        self.assertLess(start, end)
+        self.assertLess(end, tex.index(r'\label{problem:D4-001}'))
+        standalone = (ROOT / 'calculus_quick_reference.tex').read_text()
+        body = standalone.split(r'\begin{document}', 1)[1].split(r'\end{document}', 1)[0]
+        self.assertIn(body, tex[start:end])
+        self.assertIn(r'\addcontentsline{toc}{chapter}{Calculus quick reference}', tex)
+
     def test_wrapped_list_items_remain_single_paragraphs(self):
         tex = content.markdown_to_tex('# Test\n\n- A long item\n  continues here.\n- Another item.\n')
         self.assertEqual(tex.count(r'\begin{itemize}'), 1)
