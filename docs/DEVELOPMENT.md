@@ -14,7 +14,9 @@ mathematical correctness.
 
 Root Markdown manuscript files are authoritative. `scripts/build_content.py`
 generates reference pages, practice pages with closed hints and solutions, offline
-Markdown, and `calculus_workbook.tex`. The generated `.tex` remains tracked for
+Markdown, and `calculus_workbook.tex`. CHEAT_SHEET.md also generates the online quick reference
+and standalone `calculus_quick_reference.tex`; its layout is in
+`scripts/quick-reference-preamble.tex`. Both generated `.tex` remains tracked for
 opening in a LaTeX editor. Keep content edits in Markdown and regenerate before
 committing. `scripts/book-preamble.tex` controls the typeset layout.
 
@@ -43,8 +45,10 @@ If built for `/repository-name/`, put the extracted files inside a directory nam
 `repository-name`, serve its parent, and open that path in the browser.
 
 The separate `pdf.yml` workflow regenerates the manuscript, installs the TeX
-compiler, builds the PDF, and provides a `calculus-workbook-pdf` artifact. Public
-PDF downloads will be added after a successful workflow run and layout review.
+compiler, builds the PDF, and provides a `calculus-workbook-pdf` artifact. The same artifact includes the four-page companion PDF. Both are attached to
+alpha prereleases. The workflow checks printable margins and the reference-sheet
+page count with Poppler after compilation. Layout changes still require visual
+inspection; see QUICK_REFERENCE_DESIGN.md.
 
 ## Routine work
 

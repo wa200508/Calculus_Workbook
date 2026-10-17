@@ -80,6 +80,12 @@ def style_algebra(text):
     return "\n".join(styled)
 
 
+def style_quick_reference(text):
+    marker = '### Supporting identities and coordinates'
+    before, after = text.split(marker, 1)
+    return before + '<div class="tricks-appendix">\n\n' + marker + after + '\n\n</div>\n'
+
+
 def site_links(text):
     for filename, slug in SOURCES.items():
         text = text.replace(f"]({filename})", f"](/generated/{slug})")
@@ -358,11 +364,11 @@ def build():
         (ROOT / obsolete).unlink(missing_ok=True)
     for name, slug in SOURCES.items():
         notice = '> **Alpha development.** Content is CC BY-SA 4.0, provided as-is without a guarantee of correctness.\n\n'
-        if name == 'INTRODUCTION.md':
+        if name in ('INTRODUCTION.md', 'CHEAT_SHEET.md'):
             notice = ''  # The site shell already displays the alpha notice.
         text = site_links(content[name])
         first, rest = text.split("\n", 1)
-        styled = style_algebra(rest)
+        styled = style_algebra(style_quick_reference(rest) if slug == 'quick-reference' else rest)
         if slug == 'quick-reference':
             styled = f'[Download the four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf) · [Full methods reference](/generated/methods)\n\n' + styled
         if slug == 'tricks':
@@ -419,7 +425,8 @@ def build():
     version = json.loads((ROOT / 'package.json').read_text())['version']
     book += f'[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v{version}) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
-        chapter = re.sub(r'^(#{1,5}) ', r'\1# ', content[filename], flags=re.M)
+        source = style_quick_reference(content[filename]) if slug == 'quick-reference' else content[filename]
+        chapter = re.sub(r'^(#{1,5}) ', r'\1# ', source, flags=re.M)
         chapter = style_algebra(site_links(chapter))
         if slug == 'tricks':
             chapter = '<div class="tricks-appendix">\n\n' + chapter + '\n\n</div>\n'
