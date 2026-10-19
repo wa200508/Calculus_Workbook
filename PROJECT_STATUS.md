@@ -2,6 +2,17 @@
 
 Updated October 18, 2026. Stage: alpha development; no stable release.
 
+## Next milestone: beta.1
+
+The user has directed the next substantive development push toward beta.
+[docs/BETA_PLAN.md](docs/BETA_PLAN.md) records the scope, priorities, and release
+criteria. The next task is a small complete matrix/tensor expansion batch,
+followed by broader challenging-problem coverage, a complete mathematical audit,
+and reader/usability validation. The planning target is roughly 40 challenging
+mixed problems plus 24 reference exercises. The current edition remains alpha.
+[docs/BETA_REVIEW.md](docs/BETA_REVIEW.md) tracks the audit; its initial pending
+entries do not claim that earlier spot checks constitute completed review.
+
 ## Current manuscript
 
 Notation conventions and an introductory calculus methods reference precede

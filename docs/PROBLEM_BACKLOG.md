@@ -1,5 +1,9 @@
 # Proposed expansion of the worked problem collection
 
+The next development milestone is beta.1; selection and acceptance criteria are
+recorded in [BETA_PLAN.md](BETA_PLAN.md), with audit progress in
+[BETA_REVIEW.md](BETA_REVIEW.md).
+
 These are 32 original problem proposals for later development, not additions to
 the current solved manuscript. They are organized for editorial planning only.
 Each needs a complete derivation, three hints, domain analysis, and independent

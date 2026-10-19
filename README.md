@@ -7,6 +7,13 @@ and explicit intermediate calculations. Prior study of calculus is assumed.
 28 problems in four mixed sets, 24 optional reference exercises, and a purple appendix of supporting tools. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
+## Next milestone
+
+Development is now directed toward beta.1: expansion of the challenging problem
+collection, a complete mathematical audit, and reader/usability validation.
+[Beta plan](docs/BETA_PLAN.md) · [Review ledger](docs/BETA_REVIEW.md) ·
+[Current project status](PROJECT_STATUS.md).
+
 ## Read and preview locally
 
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
