@@ -1,18 +1,21 @@
 # Calculus quick reference
 
-These four pages appear before the problem chapters in the main book and are
-also available as a separate PDF. Unless specified
-otherwise, all inputs, parameters, and function values are real scalars; parameters
-are fixed during the stated operation. Every primitive is defined on a connected
-interval of its domain. Independent coordinates are held fixed in partial
-derivatives unless a path dependence is displayed. The conditions stated below
-are sufficient conditions, rather than exhaustive versions of the theorems.
+This reference summarizes notation, calculus formulas, and their applicability
+conditions. Unless specified otherwise, inputs, parameters, and function values
+are real scalars; fixed parameters remain constant during an operation.
+Derivatives are evaluated where the indicated functions are differentiable.
+Primitives are defined on connected intervals of their domains. Independent
+coordinates are held fixed in partial derivatives unless a path dependence is
+shown. Angles are in radians; $\ln$ denotes the natural logarithm and
+$\exp(x)=e^x$. Vector norms are Euclidean unless another norm is specified.
+The stated theorem hypotheses are sufficient conditions, not exhaustive versions.
 
 ## 1. Notation and elementary formulas
 
 ### Objects and dependencies
 
 $x,t,u$: independent scalar inputs. $a,b,p$: fixed scalar parameters.
+$m,n$: positive integer dimensions.
 $z=f(x,y)$: dependent scalar value with independent coordinates $x,y$.
 $f(x;a)$: scalar function with fixed parameter $a$.
 $\mathbf r(t)\in\mathbb R^n$: dependent column vector.
@@ -83,8 +86,9 @@ $$
 \end{aligned}
 $$
 
-The power domain is as in the derivative table. Logarithmic primitives on
-disconnected intervals have independent constants.
+For arbitrary real $p$, the power primitive holds for $x>0$ and $p\ne-1$;
+integer powers can have larger domains. Logarithmic primitives on disconnected
+intervals have independent constants.
 
 ### Hyperbolic functions and inverse branches
 
@@ -172,15 +176,16 @@ $$
 +b(x)\frac{\frac{d}{dx}(a(x))}{a(x)}\right).
 $$
 
-For a nonzero complex scalar response $H(\omega)$, with real independent
-$\omega$ and $i^2=-1$, a differentiable local phase $\phi(\omega)$ satisfies
+For a differentiable nonzero complex scalar response $H(\omega)$, with real
+independent $\omega$ and $i^2=-1$, its differentiable local phase
+$\phi(\omega)$ satisfies
 
 $$
 \frac{d}{d\omega}(\phi(\omega))
 =\operatorname{Im}\left(\frac{\frac{d}{d\omega}(H(\omega))}{H(\omega)}\right).
 $$
 
-Zeros and phase jumps require separate treatment. Real-parameter complex
+$\operatorname{Im}$ denotes the imaginary part. Zeros and phase jumps require separate treatment. Real-parameter complex
 outputs are differentiated componentwise; complex analyticity is not assumed.
 
 <!-- column -->
@@ -483,4 +488,4 @@ $$
 $$
 
 These are local statements; integral or derivative interchange needs separate
-justification. Supporting identities and expansions are purple in the book.
+justification. Purple identifies supporting identities and local expansions.

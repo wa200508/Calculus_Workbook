@@ -387,7 +387,7 @@ def build():
         first, rest = text.split("\n", 1)
         styled = style_algebra(style_quick_reference(rest) if slug == 'quick-reference' else rest)
         if slug == 'quick-reference':
-            styled = f'[Download the four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf) · [Full methods reference](/generated/methods)\n\n' + styled
+            styled = f'[Download the four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf)\n\n' + styled
         if slug == 'tricks':
             styled = '<div class="tricks-appendix">\n\n' + styled + '\n\n</div>\n'
         (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + styled)
