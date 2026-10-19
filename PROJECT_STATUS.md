@@ -1,6 +1,6 @@
 # Project status
 
-Updated October 17, 2026. Stage: alpha development; no stable release.
+Updated October 18, 2026. Stage: alpha development; no stable release.
 
 ## Current manuscript
 
@@ -27,7 +27,7 @@ four-page quick reference condenses notation, calculus tools, and their conditio
 The full reading edition is published through GitHub Actions at
 https://wa200508.github.io/Calculus_Workbook/generated/book.html.
 Main-branch checkpoints build both the site and PDFs; alpha version tags publish
-fixed PDF prereleases. Edition 0.4.0-alpha.6 includes the four-page quick reference inside the main
+fixed PDF prereleases. Edition 0.4.0-alpha.7 includes the four-page quick reference inside the main
 book, before the worked problem chapters. It also provides the standalone
 reference PDF. The book now has 135 pages; the embedded reference occupies
 printed pages 19–22 and has a table-of-contents entry. Every printed
@@ -42,12 +42,12 @@ their explanations and conditions. The quick reference uses two columns and
 conditions, and purple supporting identities.
 
 Sixteen content tests and 141 independent numerical spot checks pass. Production
-checks cover 74 HTML pages, internal links, assets, anchors, and 5,950 rendered
+checks cover 74 HTML pages, internal links, assets, anchors, and rendered
 math expressions. Numerical spot checks do not replace analytical arguments.
-The previous alpha.5 publication completed successfully. The alpha.6 build and
-publication workflow includes the new embedded-reference check.
+The alpha.6 publication completed successfully. The alpha.7 workflow retains
+the standalone and embedded-reference layout checks.
 
-The alpha.5 release PDFs were downloaded and checked. The alpha.6 PDFs were
+The alpha.6 release PDFs were downloaded and checked. The alpha.7 PDFs were
 compiled and visually reviewed locally: the reference is exactly four pages in
 each edition; printable text bounds and notation-group checks pass. All notation
 and methods pages were inspected locally, together with all four reference
@@ -62,3 +62,12 @@ See docs/QUICK_REFERENCE_DESIGN.md for the layout rationale and source map,
 and docs/REVIEW_NOTES.md for the previous mathematical review.
 
 See docs/DEVELOPMENT.md and CONTRIBUTING.md for the development workflow.
+
+## Independent quick reference
+
+The quick-reference text contains no references to other parts of the workbook.
+Its introduction defines local conventions, including scalar defaults, fixed
+parameters, radians, natural logarithms, and Euclidean vector norms. Power-domain
+conditions are stated beside the primitives; the imaginary-part notation and
+purple text are explained locally. The standalone header identifies the document
+as a calculus quick reference. Both editions use the same generated body.

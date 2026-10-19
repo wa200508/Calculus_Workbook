@@ -32,8 +32,9 @@ The fourth page's supporting identities and expansions are purple.
 
 The sheet condenses both introductory chapters. Full function arguments,
 Leibniz operators, types, and local domain qualifications remain visible.
-The compact entries complement the fuller hypotheses and explanations in the
-methods reference; they do not replace them.
+The reference text is independent of the surrounding book: no chapter, appendix,
+or workbook references occur in its prose. Conventions and applicability
+conditions are stated locally in both editions.
 
 ## Layout references
 
