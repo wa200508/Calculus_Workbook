@@ -425,7 +425,7 @@ q(x(r,\theta,\varphi),y(r,\theta,\varphi),z(r,\theta,\varphi))
 =r^2\bigl(\sin^2\theta(\cos^2\varphi+\sin^2\varphi)+\cos^2\theta\bigr)=r^2.
 $$
 
-The coordinate singularities at the center, poles, and seam occupy sets of zero volume; the map is regular and one-to-one in the interior away from those sets.
+The Jacobian degenerates at the center and poles. The angular seam instead identifies the same spatial points at $\varphi=0$ and $\varphi=2\pi$; it does not make the Jacobian vanish away from the center and poles. These exceptional sets have zero volume, and the map is regular and one-to-one in the remaining coordinate interior.
 
 **Step 5 — CALCULUS.** The full transformed integral is
 

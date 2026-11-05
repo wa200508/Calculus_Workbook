@@ -67,8 +67,8 @@ $$
 \end{aligned}
 $$
 
-For $f(x)=h(g(x))$, with independent real scalar argument $t$ of the outer
-function $h(t)$, the chain rule is
+For differentiable scalar $g(x)$ and outer function $h(t)$ differentiable at
+$t=g(x)$, the composition $f(x)=h(g(x))$ satisfies the chain rule
 
 $$
 \frac{d}{dx}\left(f(x)\right)
@@ -121,8 +121,9 @@ $F(x,y)=0$ and locally defined $y=g(x)$.
 
 ### Paths, partial derivatives, and second derivatives
 
-For a scalar field $f(x,y)$ and a differentiable real path with components
-$x(t),y(t)$, the dependent scalar $p(t)=f(x(t),y(t))$ satisfies
+For a scalar field $f(x,y)$ differentiable at the path point and a
+differentiable real path with components $x(t),y(t)$, the dependent scalar
+$p(t)=f(x(t),y(t))$ satisfies
 
 $$
 \frac{d}{dt}\left(p(t)\right)
@@ -249,8 +250,9 @@ term has a minus sign even when the bounds later reverse their order.
 For a fixed domain $D$ and scalar $q(x,t)$, a bound on
 $|\frac{\partial}{\partial t}(q(x,t))|$ that is integrable over $D$ and valid
 uniformly in a neighborhood of the parameter value permits differentiation
-under the integral, provided the integral exists at one parameter value and
-the integrand has the required measurability and pointwise differentiability.
+under the integral, provided the integral exists at one parameter value in
+that neighborhood and the integrand is measurable and pointwise differentiable
+with respect to the parameter there.
 The new parameter derivative may have a simpler primitive than the original
 integrand. Integration back in the parameter introduces a constant independent
 of that parameter, which is fixed from a known value or limit. The required
@@ -284,9 +286,9 @@ Dominated convergence requires one integrable dominating function on the domain
 under consideration. Monotone convergence applies to increasing nonnegative
 measurable sequences. Tonelli's theorem permits rearrangement for nonnegative
 integrands; Fubini's theorem provides rearrangement under absolute integrability.
-Uniform convergence on a finite interval is a useful sufficient condition for
-termwise integration of a function series. Differentiation of a series requires
-additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
+Uniform convergence on a finite closed interval is a useful sufficient condition
+for termwise integration of a series of continuous functions. Differentiation of
+a series requires additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
 can contribute to an integral even when they disappear at each fixed input.
 
 ### Series, asymptotics, and special functions
@@ -306,8 +308,9 @@ collected in [T-002](TRICKS_APPENDIX.md#t-002-taylor-expansions).
 
 A scalar field's Euclidean gradient is a column vector of coordinate partial
 derivatives. A vector-valued map's Jacobian is the matrix of its component partials,
-with output index first and input index second. Along a path, multiplication of
-the Jacobian by the path tangent gives the vector derivative. A Hessian is the
+with output index first and input index second. For a differentiable vector map
+and differentiable path, multiplication of the Jacobian by the path tangent
+gives the vector derivative. A Hessian is the
 matrix of second scalar partials. A constrained directional derivative requires
 a tangent direction satisfying the constraint, rather than an arbitrary coordinate
 variation. Lagrange multipliers express regular constrained stationary conditions;
@@ -326,8 +329,9 @@ $$
 
 The oriented cross product, rather than its norm, supplies a flux measure.
 Line integrals use the path tangent for vector work and its norm for scalar
-arc-length integration. Coordinate degeneracies at seams or poles may occupy
-sets of measure zero; many-to-one maps require partition or multiplicity accounting.
+arc-length integration. Angular seams identify chart edges; coordinate
+degeneracies can occur at poles. These exceptional sets may have measure zero,
+but many-to-one coverage still requires partition or multiplicity accounting.
 
 ### Integral theorems and excluded sources
 

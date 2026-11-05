@@ -635,8 +635,8 @@ scalar functions \(u(x),v(x)\),
 \end{aligned}
 \]
 
-For \(f(x)=h(g(x))\), with independent real scalar argument \(t\) of the outer
-function \(h(t)\), the chain rule is
+For differentiable scalar \(g(x)\) and outer function \(h(t)\) differentiable at
+\(t=g(x)\), the composition \(f(x)=h(g(x))\) satisfies the chain rule
 
 \[
 \frac{d}{dx}\left(f(x)\right)
@@ -695,8 +695,9 @@ of the level surface. The same principle applies to implicit scalar relations
 \par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
 \subsection{Paths, partial derivatives, and second derivatives}
 
-For a scalar field \(f(x,y)\) and a differentiable real path with components
-\(x(t),y(t)\), the dependent scalar \(p(t)=f(x(t),y(t))\) satisfies
+For a scalar field \(f(x,y)\) differentiable at the path point and a
+differentiable real path with components \(x(t),y(t)\), the dependent scalar
+\(p(t)=f(x(t),y(t))\) satisfies
 
 \[
 \frac{d}{dt}\left(p(t)\right)
@@ -839,8 +840,9 @@ term has a minus sign even when the bounds later reverse their order.
 For a fixed domain \(D\) and scalar \(q(x,t)\), a bound on
 \(|\frac{\partial}{\partial t}(q(x,t))|\) that is integrable over \(D\) and valid
 uniformly in a neighborhood of the parameter value permits differentiation
-under the integral, provided the integral exists at one parameter value and
-the integrand has the required measurability and pointwise differentiability.
+under the integral, provided the integral exists at one parameter value in
+that neighborhood and the integrand is measurable and pointwise differentiable
+with respect to the parameter there.
 The new parameter derivative may have a simpler primitive than the original
 integrand. Integration back in the parameter introduces a constant independent
 of that parameter, which is fixed from a known value or limit. The required
@@ -880,9 +882,9 @@ Dominated convergence requires one integrable dominating function on the domain
 under consideration. Monotone convergence applies to increasing nonnegative
 measurable sequences. Tonelli's theorem permits rearrangement for nonnegative
 integrands; Fubini's theorem provides rearrangement under absolute integrability.
-Uniform convergence on a finite interval is a useful sufficient condition for
-termwise integration of a function series. Differentiation of a series requires
-additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
+Uniform convergence on a finite closed interval is a useful sufficient condition
+for termwise integration of a series of continuous functions. Differentiation of
+a series requires additional control of the derivative series. Pointwise convergence alone is insufficient: narrow peaks or slowly decaying tails
 can contribute to an integral even when they disappear at each fixed input.
 
 \end{minipage}\par
@@ -906,8 +908,9 @@ collected in T-002.
 
 A scalar field's Euclidean gradient is a column vector of coordinate partial
 derivatives. A vector-valued map's Jacobian is the matrix of its component partials,
-with output index first and input index second. Along a path, multiplication of
-the Jacobian by the path tangent gives the vector derivative. A Hessian is the
+with output index first and input index second. For a differentiable vector map
+and differentiable path, multiplication of the Jacobian by the path tangent
+gives the vector derivative. A Hessian is the
 matrix of second scalar partials. A constrained directional derivative requires
 a tangent direction satisfying the constraint, rather than an arbitrary coordinate
 variation. Lagrange multipliers express regular constrained stationary conditions;
@@ -928,8 +931,9 @@ real surface pair \(u,v\) and real vector map \(\mathbf r(u,v)\), the area facto
 
 The oriented cross product, rather than its norm, supplies a flux measure.
 Line integrals use the path tangent for vector work and its norm for scalar
-arc-length integration. Coordinate degeneracies at seams or poles may occupy
-sets of measure zero; many-to-one maps require partition or multiplicity accounting.
+arc-length integration. Angular seams identify chart edges; coordinate
+degeneracies can occur at poles. These exceptional sets may have measure zero,
+but many-to-one coverage still requires partition or multiplicity accounting.
 
 \end{minipage}\par
 \par\addvspace{8pt}\noindent\begin{minipage}{\linewidth}
@@ -1145,7 +1149,8 @@ from the original expression. Second derivatives act on the entire first derivat
 
 \QuickHeading{Compositions and inverse functions}
 
-\(f(x)=h(g(x))\); \(t\) is the independent scalar argument of \(h(t)\).
+\(g(x)\) is differentiable; \(h(t)\) is differentiable at \(t=g(x)\);
+\(f(x)=h(g(x))\).
 
 \[
 \frac{d}{dx}(f(x))
@@ -1164,7 +1169,7 @@ The denominator is nonzero and the inverse branch is specified.
 
 \QuickHeading{Logarithmic differentiation and variable powers}
 
-For \(f(x)\ne0\) on a real interval,
+For differentiable \(f(x)\ne0\) on a real interval,
 
 \[
 \frac{d}{dx}(\ln|f(x)|)=\frac{\frac{d}{dx}(f(x))}{f(x)}.
@@ -1194,7 +1199,7 @@ outputs are differentiated componentwise; complex analyticity is not assumed.
 \begin{minipage}[t]{0.485\textwidth}\vspace{0pt}
 \QuickHeading{Independent coordinates and paths}
 
-For differentiable scalar \(f(x,y)\) and scalar paths \(x(t),y(t)\),
+For differentiable scalar \(f(x,y)\) and differentiable paths \(x(t),y(t)\),
 \(p(t)=f(x(t),y(t))\) is scalar and \(t\) is independent:
 
 \[
@@ -1223,8 +1228,9 @@ height \(z=g(x,y)\) where \(F(x,y,g(x,y))=0\) and its \(z\) partial is nonzero:
 Here \(y\) is held fixed. A zero denominator can invalidate this height chart
 without making the level surface singular. A regular level surface has nonzero
 gradient. For scalar objective \(f(\mathbf x)\) and constraint \(c(\mathbf x)=0\),
-with independent vector \(\mathbf x\in\mathbb R^n\), regular constrained stationary
-points satisfy \(\nabla f(\mathbf x)=\lambda\nabla c(\mathbf x)\) for a scalar
+both continuously differentiable nearby, with \(\mathbf x\in\mathbb R^n\) and
+\(\nabla c(\mathbf x)\ne0\),
+constrained stationary points satisfy \(\nabla f(\mathbf x)=\lambda\nabla c(\mathbf x)\) for a scalar
 \(\lambda\). Feasible tangent vectors \(\mathbf v\) satisfy
 \(\nabla c(\mathbf x)\cdot\mathbf v=0\). Boundaries remain separate cases.
 
@@ -1321,7 +1327,7 @@ permits
 \]
 
 with measurability, pointwise differentiability in \(t\), and existence of the
-integral at one parameter value. Integration back in \(t\) introduces a constant
+integral at one value in that neighborhood. Integration back in \(t\) introduces a constant
 independent of \(t\), determined from a known value or limit. Endpoint parameter
 values may require a new bound.
 
@@ -1383,7 +1389,8 @@ H_{ij}(\mathbf x)&=\frac{\partial}{\partial x_j}
 \]
 
 The other coordinates are held fixed; \(1\le i\le m\) for \(J\), and
-\(1\le i,j\le n\) for \(H\). Along differentiable vector path \(\mathbf x(t)\),
+\(1\le i,j\le n\) for \(H\). For differentiable \(\mathbf F\) and differentiable
+path \(\mathbf x(t)\),
 
 \[
 \frac{d}{dt}(\mathbf F(\mathbf x(t)))
@@ -2250,7 +2257,7 @@ J(a,b)=\int_a^b\left(\int_0^\infty\exp(-sx)\,dx\right)ds
 \]
 
 \begin{DomainStep}
-\textbf{Step 4 --- DOMAIN.} As \(a\downarrow0\), the answer tends to \(+\infty\). At \(a=0,b>0\), the numerator tends to one at infinity, leaving a nonintegrable \(1/x\) tail. The positive-parameter interchange does not extend to that endpoint.
+\textbf{Step 4 --- DOMAIN.} As \(a\downarrow0\), the answer tends to \(+\infty\). At \(a=0,b>0\), the numerator tends to one at infinity, leaving a nonintegrable \(1/x\) tail. Tonelli's theorem still permits the interchange for this nonnegative kernel, but both iterated integrals have value \(+\infty\); it does not produce a finite integral at the endpoint.
 
 \end{DomainStep}
 \textbf{Step 5 --- CHECK.} \(J(a,a)=0\) and \(J(a,b)=-J(b,a)\). For \(b>a\) the original integrand is nonnegative and the logarithm is positive. Differentiation with respect to \(b>0\) gives \(1/b\), also obtained directly by integrating \(\exp(-bx)\).
@@ -2354,7 +2361,15 @@ K(a,b,c)=\int_b^c\frac{s}{a^2+s^2}\,ds
 \]
 
 \begin{DomainStep}
-\textbf{Step 5 --- DOMAIN.} For positive \(b,c\), the damping limit is \(\ln(c/b)\). The undamped ordinary integral also exists: integration by parts bounds each cosine tail divided by \(x\) by a constant times \(1/(bA)\) or \(1/(cA)\) beyond \(A>0\). The same bounds are uniform in \(a\ge0\) because \(\exp(-ax)/x\) decreases. Finite-interval convergence and these bounds justify the damping limit. If \(b=0<c\), the limit diverges to \(+\infty\); if \(c=0<b\), it diverges to \(-\infty\). If both vanish, the integral is identically zero.
+\textbf{Step 5 --- DOMAIN.} For positive \(b,c\), the damping limit is \(\ln(c/b)\). To identify it with the undamped ordinary integral, set \(f_a(x)=\exp(-ax)/x\) for \(x>0\), including \(a=0\). For a fixed positive frequency \(q\) and real cutoffs \(S>R>0\), integration by parts against \(\sin(qx)/q\) gives
+
+\[
+\left|\int_R^S f_a(x)\cos(qx)\,dx\right|
+\le\frac{f_a(R)+f_a(S)+\int_R^S\left|\frac{d}{dx}(f_a(x))\right|\,dx}{q}
+=\frac{2f_a(R)}{q}\le\frac{2}{qR}.
+\]
+
+The equality uses that \(f_a\) is decreasing. The bound applies uniformly in \(a\ge0\) and makes both positive-frequency tails small. On each finite interval, the cosine difference divided by \(x\) extends continuously to zero and is dominated independently of \(a\ge0\). Finite-interval dominated convergence and the tail bounds therefore identify the damping limit with the ordinary undamped integral. If \(b=0<c\), the limit diverges to \(+\infty\); if \(c=0<b\), it diverges to \(-\infty\). If both vanish, the integral is identically zero.
 
 \end{DomainStep}
 \textbf{Step 6 --- CHECK.} Interchanging \(b,c\) negates both the original integrand and the logarithmic answer. At equal frequencies both vanish. The logarithm's argument is positive for \(a>0\), including zero frequencies.
@@ -2481,7 +2496,7 @@ The inner boundary has the negative radial orientation relative to the punctured
 \markright{I4-006}
 {\small Hints: page~\pageref{hints:I4-006}.}\par\medskip
 
-\textbf{Objects and dependencies.} Independent real dimensionless coordinates satisfy \(0\le y\le x\le1\). The independent real observation parameter is \(h>0\). Evaluate the real scalar integral
+\textbf{Objects and dependencies.} Independent real dimensionless coordinates satisfy \(0\le y\le x\le1\). The independent real dimensionless observation parameter is \(h>0\). Evaluate the real scalar integral
 
 \[
 K(h)=\int_0^1\int_0^x\frac{1}{\sqrt{x^2+y^2+h^2}}\,dy\,dx.
@@ -2980,7 +2995,7 @@ q(x(r,\theta,\varphi),y(r,\theta,\varphi),z(r,\theta,\varphi))
 =r^2\bigl(\sin^2\theta(\cos^2\varphi+\sin^2\varphi)+\cos^2\theta\bigr)=r^2.
 \]
 
-The coordinate singularities at the center, poles, and seam occupy sets of zero volume; the map is regular and one-to-one in the interior away from those sets.
+The Jacobian degenerates at the center and poles. The angular seam instead identifies the same spatial points at \(\varphi=0\) and \(\varphi=2\pi\); it does not make the Jacobian vanish away from the center and poles. These exceptional sets have zero volume, and the map is regular and one-to-one in the remaining coordinate interior.
 
 \endgroup
 \textbf{Step 5 --- CALCULUS.} The full transformed integral is

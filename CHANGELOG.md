@@ -1,5 +1,12 @@
 # Development log
 
+## Unreleased — November 5, 2026
+
+- Analytically audit all 52 existing exercises and the introductory/supporting references, with per-problem evidence linked from the beta review ledger.
+- Correct Tonelli's applicability at an infinite endpoint, add missing sufficient hypotheses beside reference formulas, and distinguish angular seam identifications from Jacobian degeneracies.
+- Expand the uniform oscillatory-tail argument and make the panel observation parameter's units explicit.
+
+
 ## 0.4.0-alpha.4
 
 - Place each hint-page reference beside the problem heading so it cannot become a nearly empty continuation page after the solution.

@@ -168,7 +168,8 @@ from the original expression. Second derivatives act on the entire first derivat
 
 \QuickHeading{Compositions and inverse functions}
 
-\(f(x)=h(g(x))\); \(t\) is the independent scalar argument of \(h(t)\).
+\(g(x)\) is differentiable; \(h(t)\) is differentiable at \(t=g(x)\);
+\(f(x)=h(g(x))\).
 
 \[
 \frac{d}{dx}(f(x))
@@ -187,7 +188,7 @@ The denominator is nonzero and the inverse branch is specified.
 
 \QuickHeading{Logarithmic differentiation and variable powers}
 
-For \(f(x)\ne0\) on a real interval,
+For differentiable \(f(x)\ne0\) on a real interval,
 
 \[
 \frac{d}{dx}(\ln|f(x)|)=\frac{\frac{d}{dx}(f(x))}{f(x)}.
@@ -217,7 +218,7 @@ outputs are differentiated componentwise; complex analyticity is not assumed.
 \begin{minipage}[t]{0.485\textwidth}\vspace{0pt}
 \QuickHeading{Independent coordinates and paths}
 
-For differentiable scalar \(f(x,y)\) and scalar paths \(x(t),y(t)\),
+For differentiable scalar \(f(x,y)\) and differentiable paths \(x(t),y(t)\),
 \(p(t)=f(x(t),y(t))\) is scalar and \(t\) is independent:
 
 \[
@@ -246,8 +247,9 @@ height \(z=g(x,y)\) where \(F(x,y,g(x,y))=0\) and its \(z\) partial is nonzero:
 Here \(y\) is held fixed. A zero denominator can invalidate this height chart
 without making the level surface singular. A regular level surface has nonzero
 gradient. For scalar objective \(f(\mathbf x)\) and constraint \(c(\mathbf x)=0\),
-with independent vector \(\mathbf x\in\mathbb R^n\), regular constrained stationary
-points satisfy \(\nabla f(\mathbf x)=\lambda\nabla c(\mathbf x)\) for a scalar
+both continuously differentiable nearby, with \(\mathbf x\in\mathbb R^n\) and
+\(\nabla c(\mathbf x)\ne0\),
+constrained stationary points satisfy \(\nabla f(\mathbf x)=\lambda\nabla c(\mathbf x)\) for a scalar
 \(\lambda\). Feasible tangent vectors \(\mathbf v\) satisfy
 \(\nabla c(\mathbf x)\cdot\mathbf v=0\). Boundaries remain separate cases.
 
@@ -344,7 +346,7 @@ permits
 \]
 
 with measurability, pointwise differentiability in \(t\), and existence of the
-integral at one parameter value. Integration back in \(t\) introduces a constant
+integral at one value in that neighborhood. Integration back in \(t\) introduces a constant
 independent of \(t\), determined from a known value or limit. Endpoint parameter
 values may require a new bound.
 
@@ -406,7 +408,8 @@ H_{ij}(\mathbf x)&=\frac{\partial}{\partial x_j}
 \]
 
 The other coordinates are held fixed; \(1\le i\le m\) for \(J\), and
-\(1\le i,j\le n\) for \(H\). Along differentiable vector path \(\mathbf x(t)\),
+\(1\le i,j\le n\) for \(H\). For differentiable \(\mathbf F\) and differentiable
+path \(\mathbf x(t)\),
 
 \[
 \frac{d}{dt}(\mathbf F(\mathbf x(t)))

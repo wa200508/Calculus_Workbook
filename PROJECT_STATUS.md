@@ -1,6 +1,24 @@
 # Project status
 
-Updated October 18, 2026. Stage: alpha development; no stable release.
+Updated November 5, 2026. Stage: alpha development; no stable release.
+
+## November 5 analytical audit checkpoint
+
+All 52 existing problems and the notation, methods, quick-reference, and
+supporting-tools references received analytical agent review. Per-problem
+reasoning and findings are linked from [the review ledger](docs/BETA_REVIEW.md).
+The audit corrected the scope of Tonelli at a divergent endpoint, missing
+sufficient hypotheses in reference entries, and terminology about angular
+seams. The six audit notes distinguish analytical reasoning from supplementary
+numerical samples and external human review. Existing final answers were verified.
+
+The corrected sources pass the 16 content tests and 141 maintained numerical
+checks. The original 52-problem production site has 74 checked HTML pages.
+Both PDFs compile; the corrected book has 136 pages and the quick reference
+remains four pages both separately and inside the book. These are development
+changes after the fixed alpha.7 edition; no new release has been declared.
+Expansion and new-problem verification follow this correction checkpoint.
+Human reader trials and the remaining beta gates are still pending.
 
 ## Next milestone: beta.1
 

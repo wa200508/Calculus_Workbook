@@ -54,7 +54,7 @@ The independent spatial coordinates are real. The real vector field is $\mathbf 
 
 ### I4-006 — A panel kernel at positive observation distance
 
-**Objects and dependencies.** Independent real dimensionless coordinates satisfy $0\le y\le x\le1$. The independent real observation parameter is $h>0$. Evaluate the real scalar integral
+**Objects and dependencies.** Independent real dimensionless coordinates satisfy $0\le y\le x\le1$. The independent real dimensionless observation parameter is $h>0$. Evaluate the real scalar integral
 
 $$
 K(h)=\int_0^1\int_0^x\frac{1}{\sqrt{x^2+y^2+h^2}}\,dy\,dx.
@@ -121,7 +121,7 @@ J(a,b)=\int_a^b\left(\int_0^\infty\exp(-sx)\,dx\right)ds
 =\int_a^b\frac1s\,ds=\ln(b/a).
 $$
 
-**Step 4 — DOMAIN.** As $a\downarrow0$, the answer tends to $+\infty$. At $a=0,b>0$, the numerator tends to one at infinity, leaving a nonintegrable $1/x$ tail. The positive-parameter interchange does not extend to that endpoint.
+**Step 4 — DOMAIN.** As $a\downarrow0$, the answer tends to $+\infty$. At $a=0,b>0$, the numerator tends to one at infinity, leaving a nonintegrable $1/x$ tail. Tonelli's theorem still permits the interchange for this nonnegative kernel, but both iterated integrals have value $+\infty$; it does not produce a finite integral at the endpoint.
 
 **Step 5 — CHECK.** $J(a,a)=0$ and $J(a,b)=-J(b,a)$. For $b>a$ the original integrand is nonnegative and the logarithm is positive. Differentiation with respect to $b>0$ gives $1/b$, also obtained directly by integrating $\exp(-bx)$.
 
@@ -191,7 +191,15 @@ K(a,b,c)=\int_b^c\frac{s}{a^2+s^2}\,ds
 =\frac12\ln\left(\frac{a^2+c^2}{a^2+b^2}\right).
 $$
 
-**Step 5 — DOMAIN.** For positive $b,c$, the damping limit is $\ln(c/b)$. The undamped ordinary integral also exists: integration by parts bounds each cosine tail divided by $x$ by a constant times $1/(bA)$ or $1/(cA)$ beyond $A>0$. The same bounds are uniform in $a\ge0$ because $\exp(-ax)/x$ decreases. Finite-interval convergence and these bounds justify the damping limit. If $b=0<c$, the limit diverges to $+\infty$; if $c=0<b$, it diverges to $-\infty$. If both vanish, the integral is identically zero.
+**Step 5 — DOMAIN.** For positive $b,c$, the damping limit is $\ln(c/b)$. To identify it with the undamped ordinary integral, set $f_a(x)=\exp(-ax)/x$ for $x>0$, including $a=0$. For a fixed positive frequency $q$ and real cutoffs $S>R>0$, integration by parts against $\sin(qx)/q$ gives
+
+$$
+\left|\int_R^S f_a(x)\cos(qx)\,dx\right|
+\le\frac{f_a(R)+f_a(S)+\int_R^S\left|\frac{d}{dx}(f_a(x))\right|\,dx}{q}
+=\frac{2f_a(R)}{q}\le\frac{2}{qR}.
+$$
+
+The equality uses that $f_a$ is decreasing. The bound applies uniformly in $a\ge0$ and makes both positive-frequency tails small. On each finite interval, the cosine difference divided by $x$ extends continuously to zero and is dominated independently of $a\ge0$. Finite-interval dominated convergence and the tail bounds therefore identify the damping limit with the ordinary undamped integral. If $b=0<c$, the limit diverges to $+\infty$; if $c=0<b$, it diverges to $-\infty$. If both vanish, the integral is identically zero.
 
 **Step 6 — CHECK.** Interchanging $b,c$ negates both the original integrand and the logarithmic answer. At equal frequencies both vanish. The logarithm's argument is positive for $a>0$, including zero frequencies.
 
