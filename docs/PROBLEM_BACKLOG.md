@@ -217,8 +217,8 @@ transcriptions of source exercises.
 - [MIT 18.S096 lecture notes](https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/pages/lecture-notes-and-readings/):
   derivatives as linear maps, matrix calculus, and derivatives of matrix functions.
 
-The first expansion could develop proposals 1, 7, 8, 13, 19, 20, 22, 23, 25, 27,
-29, and 31. Together they add twelve substantially different decisions about
-representation, geometry, and domain, while extending the existing notation and
-application settings. The remaining proposals provide a second group with more
-asymptotic, constrained, and special-function work.
+The original October 18 selection suggested proposals 1, 7, 8, 13, 19, 20, 22,
+23, 25, 27, 29, and 31 as a first group. The November 5 promotion table above
+records the completed twenty-problem selection and its differences from that
+suggestion. The twelve unimplemented proposals remain available for later
+asymptotic, constrained, geometric, and special-function work.

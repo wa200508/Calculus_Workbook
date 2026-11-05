@@ -2,6 +2,10 @@
 
 Started October 18, 2026; updated November 5, 2026. See [BETA_PLAN.md](BETA_PLAN.md) for the review criteria.
 
+Reviewed expansion revision: `ca49cd07c95d0b8ef1ee031971db47e5abbac8b6`.
+[Integrated findings and verification](REVIEW_2026-11-05.md) records the original
+correction checkpoint, added coverage, checks, and remaining reader-review gates.
+
 **Pending** means no complete beta audit has yet been recorded. Existing
 solutions, CHECK steps, targeted editorial reviews, and numerical spot checks
 are not being relabelled as a full analytical audit. Add new problems to this

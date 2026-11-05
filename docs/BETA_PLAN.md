@@ -132,5 +132,7 @@ adding problems; retain checks that detect missing statements, hints, or solutio
 Update the review ledger and PROJECT_STATUS.md at substantive checkpoints.
 
 At handoff, state the latest pushed revision, problems added or audited, checks
-actually run, unresolved findings, and the next concrete task. The immediate next
-task is to select and fully solve the first matrix/tensor expansion batch.
+actually run, unresolved findings, and the next concrete task. The November 5
+expansion and analytical agent audit are complete. The immediate next task is
+the complete reader/pagination review and representative reader trials, followed
+by the remaining usability and beta publication gates.
