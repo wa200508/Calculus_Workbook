@@ -10,6 +10,11 @@ and MathJax rendering-error checks. Use `pnpm preview` to serve that production
 output. Inspect changed equations visually too; checks do not certify the book's
 mathematical correctness.
 
+The production build allows a 4 GiB Node heap for the expanded single-page book
+and its rendered mathematics. This allowance is part of `pnpm build`, so local
+checks and GitHub Actions use the same command. It is a heap ceiling rather
+than a reservation of that amount of memory.
+
 ## One manuscript, two presentations
 
 Root Markdown manuscript files are authoritative. `scripts/build_content.py`

@@ -7,8 +7,9 @@ solutions, CHECK steps, targeted editorial reviews, and numerical spot checks
 are not being relabelled as a full analytical audit. Add new problems to this
 ledger when they enter the manuscript.
 
-The original 52 problems have now received the analytical agent reviews linked below.
-The reference-formula audit is recorded separately. These reviews do not establish
+The original 52 problems have received the analytical agent reviews linked below.
+All 20 additions have author derivations and an independent second analytical
+agent review. The reference-formula audit is recorded separately. These reviews do not establish
 independent human review, reader feedback, or completion of every beta release gate.
 
 For each completed review, link an evidence note recording the reviewed revision,
@@ -25,6 +26,11 @@ fixes, and any remaining limitations. A correction can require re-review.
 | D4-004 | A coupled quadric and a constrained path | Analytical agent review complete | [Evidence](audit-d4.md) |
 | D4-005 | A complex response with a delay parameter | Analytical agent review complete | [Evidence](audit-d4.md) |
 | D4-006 | An integral with two moving endpoints | Analytical agent review complete | [Evidence](audit-d4.md) |
+| D4-007 | A finite value with an oscillating slope | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) |
+| D4-008 | A coupled exponential constraint | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) |
+| D4-009 | A response selected by a bounded maximum | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) |
+| D4-010 | A matrix exponential across a change of regime | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) |
+| D4-011 | A scalar response on symmetric positive matrices | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) |
 | D3-001 | Waveguide sensitivity at cutoff | Analytical agent review complete | [Evidence](audit-d3.md) |
 | D3-002 | Spatial gradient of a complex Green kernel | Analytical agent review complete | [Evidence](audit-d3.md) |
 | D3-003 | RF phase and the branch cut | Analytical agent review complete | [Evidence](audit-d3.md) |
@@ -32,12 +38,22 @@ fixes, and any remaining limitations. A correction can require re-review.
 | D3-005 | A one-sheet hyperboloid | Analytical agent review complete | [Evidence](audit-d3.md) |
 | D3-006 | A matrix-defined anisotropic scalar field | Analytical agent review complete | [Evidence](audit-d3.md) |
 | D3-007 | A coupled field response | Analytical agent review complete | [Evidence](audit-d3.md) |
+| D3-008 | A quadratic response near loss of invertibility | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) |
+| D3-009 | Energy carried by coupled tensor components | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) |
+| D3-010 | An anisotropic energy with turning principal directions | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) |
+| D3-011 | A direction traced by three competing components | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) |
+| D3-012 | A finite value left after a point-source subtraction | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) |
 | I4-001 | A difference of exponential kernels | Analytical agent review complete | [Evidence](audit-i4.md) |
 | I4-002 | A logarithmic kernel on a finite interval | Analytical agent review complete | [Evidence](audit-i4.md) |
 | I4-003 | A damped difference of oscillatory kernels | Analytical agent review complete | [Evidence](audit-i4.md) |
 | I4-004 | A weighted logarithm with limiting parameter values | Analytical agent review complete | [Evidence](audit-i4.md) |
 | I4-005 | Flux through a translated ellipsoid | Analytical agent review complete | [Evidence](audit-i4.md) |
 | I4-006 | A panel kernel at positive observation distance | Analytical agent review complete | [Evidence](audit-i4.md) |
+| I4-007 | An oblique ellipsoidal cap | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) |
+| I4-008 | Two nearby poles off the real axis | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) |
+| I4-009 | An accumulated matrix response | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) |
+| I4-010 | A Gaussian with a moving truncation | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) |
+| I4-011 | A circular aperture transform | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) |
 | I3-001 | Sine over a half-period | Analytical agent review complete | [Evidence](audit-i3.md) |
 | I3-002 | An oscillatory ratio on a finite interval | Analytical agent review complete | [Evidence](audit-i3.md) |
 | I3-003 | Damping a conditionally convergent oscillatory integral | Analytical agent review complete | [Evidence](audit-i3.md) |
@@ -47,6 +63,11 @@ fixes, and any remaining limitations. A correction can require re-review.
 | I3-007 | A weakly singular CEM panel integral | Analytical agent review complete | [Evidence](audit-i3.md) |
 | I3-008 | An ellipsoidal weighted volume | Analytical agent review complete | [Evidence](audit-i3.md) |
 | I3-009 | Finite and infinite surface area of a hyperboloid | Analytical agent review complete | [Evidence](audit-i3.md) |
+| I3-010 | A squared aperture kernel | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) |
+| I3-011 | A logarithmic moment at an endpoint | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) |
+| I3-012 | A shrinking layer and its parameter derivative | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) |
+| I3-013 | Two closed paths around an excluded axis | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) |
+| I3-014 | A source inside a triangular panel | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) |
 | D1-001 | Polynomial differentiation by linearity | Analytical agent review complete | [Evidence](audit-reference-exercises.md) |
 | D1-002 | Radicals and negative powers | Analytical agent review complete | [Evidence](audit-reference-exercises.md) |
 | D1-003 | Differentiation with fixed parameters | Analytical agent review complete | [Evidence](audit-reference-exercises.md) |
@@ -80,7 +101,7 @@ fixes, and any remaining limitations. A correction can require re-review.
 | Calculus methods reference | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
 | Four-page quick reference, standalone and embedded | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
 | Supporting tricks and identities | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
-| Complete-book editorial and pagination pass | Pending | Earlier introductory/selected-page reviews exist. |
+| Complete-book editorial and pagination pass | Partial | Automated margins, notation groups, and four-page reference checks pass at 185 pages. Eight selected new solution pages and revised reference pages inspected; a complete reader/pagination trial remains pending. |
 | Website mobile and keyboard usability | Pending beta review | Record actual devices, pages, and interactions tested. |
 | Grayscale printing and reference-sheet use | Pending beta review | Record actual pages and results. |
 | Representative external reader trials | Pending | No trial outcomes have been recorded. |

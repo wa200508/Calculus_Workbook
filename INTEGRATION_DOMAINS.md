@@ -74,6 +74,64 @@ $$
 
 Find the real scalar area $S(U;\ell)$ of this band on $x^2+y^2-z^2=\ell^2$. Determine whether the complete one-sheet hyperboloid has finite area. The angular seam is counted once.
 
+### I3-010 — A squared aperture kernel
+
+**Objects and dependencies.** $x\ge0$ is a real length coordinate and the integration variable. The independent real wavenumber $a$ makes $ax$ dimensionless. Define the real scalar
+
+$$
+Q(a)=\int_0^\infty\left(\frac{\sin(ax)}{x}\right)^2\,dx,
+$$
+
+with the integrand extended to $a^2$ at $x=0$. Evaluate $Q(a)$ for every real $a$, establish absolute convergence, and determine its differentiability in $a$. Assess the integral of the formally differentiated kernel both at nonzero $a$ and at zero. Give a bound for the error made by truncating the original integral at a finite positive length.
+
+### I3-011 — A logarithmic moment at an endpoint
+
+**Objects and dependencies.** $x\in(0,1]$ is a dimensionless real integration coordinate. The requested output is the real scalar improper integral
+
+$$
+M=\int_0^1\frac{\ln^2x}{1+x}\,dx.
+$$
+
+Evaluate $M$ in terms of a convergent series or a named constant whose definition is supplied. For each positive integer $N$, obtain an explicit error bound for a finite approximation with $N$ terms. Justify any interchange of an infinite sum and the improper integral, and give an independent integral representation with a controlled tail.
+
+### I3-012 — A shrinking layer and its parameter derivative
+
+**Objects and dependencies.** $x\in[0,1]$ is a dimensionless real integration coordinate and $a>0$ is an independent dimensionless real parameter. The real scalar function is
+
+$$
+F(a)=\int_0^1\frac{a}{x^2+a^2}\,dx.
+$$
+
+Determine $F(a)$, its derivative for positive $a$, and its limit as $a\downarrow0$. Compare that limit with integrating the almost-everywhere pointwise limit of the kernel. For fixed real $c>0$, quantify the contribution from $0\le x\le ca$ when $ca\le1$. Find a controlled expansion through the cubic term, and distinguish the continuous extension of $F$ from the value obtained by setting $a=0$ in the kernel before integration.
+
+### I3-013 — Two closed paths around an excluded axis
+
+**Objects and dependencies.** Independent real dimensionless Cartesian coordinates satisfy $x^2+y^2>0$. The real column vector field is
+
+$$
+\mathbf F(x,y,z)=\frac{1}{x^2+y^2}\begin{bmatrix}-y\\x\\0\end{bmatrix}.
+$$
+
+Fixed real parameters obey $A,B,R>0$, $d>R$, and $z_0\in\mathbb R$. Two closed curves, parameterized by the real angle $0\le\theta\le2\pi$, are
+
+$$
+\mathbf r_E(\theta)=\begin{bmatrix}A\cos\theta\\B\sin\theta\\z_0\end{bmatrix},
+\qquad
+\mathbf r_C(\theta)=\begin{bmatrix}d+R\cos\theta\\R\sin\theta\\z_0\end{bmatrix}.
+$$
+
+Both are counterclockwise as viewed from positive $z$. Evaluate their oriented circulations $\oint\mathbf F\cdot d\mathbf r$, compute the curl off the excluded axis, and determine why using that curl on the two spanning disks requires different conclusions. Verify each circulation by another calculation or a justified excision argument.
+
+### I3-014 — A source inside a triangular panel
+
+**Objects and dependencies.** Independent real dimensionless coordinates describe the triangle $T=\{(x,y):0\le y\le x\le1\}$. A fixed interior source is the real column vector $\mathbf p=[x_0,y_0]^{\mathsf T}$, with $0<y_0<x_0<1$. Evaluate the real scalar nonnegative improper integral
+
+$$
+K(x_0,y_0)=\iint_T\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}\,dx\,dy.
+$$
+
+Partition the panel around its source and specify a map, domain, and Jacobian for each part. Reduce the integral to nonsingular one-dimensional integrals and obtain an explicit real expression. Justify the treatment of the source and provide an independent check; merely applying the vertex map from I3-007 to the whole panel is insufficient.
+
 ## Hint ladders
 
 ### I3-001
@@ -129,6 +187,36 @@ Find the real scalar area $S(U;\ell)$ of this band on $x^2+y^2-z^2=\ell^2$. Dete
 1. The surface area measure is the length of the tangent cross product.
 2. The identity $\cosh^2u=1+\sinh^2u$ makes $t=\sinh u$ useful.
 3. The area becomes an integral of $\sqrt{1+2t^2}$ on a finite symmetric interval, whose size grows without bound as $U$ increases.
+
+### I3-010
+
+1. Near zero, $|\sin(ax)|\le|ax|$; at infinity, $|\sin(ax)|\le1$.
+2. Rescaling by $|a|$ separates the parameter. Integration by parts turns the remaining squared sine into a sine-over-coordinate integral.
+3. Away from zero the formal derivative is a conditionally convergent integral. At zero, compare the two difference quotients of the evaluated function.
+
+### I3-011
+
+1. A finite geometric identity for $1/(1+x)$ provides a remainder with a known sign.
+2. The substitution $x=\exp(-t)$ evaluates $\int_0^1x^n\ln^2x\,dx$ by two integrations by parts.
+3. The sum of the absolute integrals is finite. Separate even and odd indices to relate the answer to $\sum_{m=1}^\infty m^{-3}$.
+
+### I3-012
+
+1. The coordinate $u=x/a$ changes the upper bound to $1/a$ and removes $a$ from the integrand.
+2. The same coordinate gives the mass in $0\le x\le ca$. At every fixed positive $x$, the original kernel instead tends to zero.
+3. Differentiate at a fixed positive parameter before taking any limit. A finite expansion of $1/(1+t^2)$ controls the small-$a$ remainder.
+
+### I3-013
+
+1. On the centered ellipse, the line integrand becomes $AB/(A^2\cos^2\theta+B^2\sin^2\theta)$.
+2. The centered ellipse encloses the excluded axis, whereas the entire disk of the displaced circle stays at positive distance from it.
+3. Excise a small centered disk from the ellipse's interior. On the displaced circle, $x>0$ permits one continuous real angle throughout the path.
+
+### I3-014
+
+1. Join the source to the three vertices, using the counterclockwise oriented outer edges.
+2. On a source-edge subtriangle, use $\mathbf r(u,v)=\mathbf p+u(\mathbf a+v\mathbf e)$, where $\mathbf a$ runs from the source to the first edge vertex and $\mathbf e$ runs along that edge.
+3. Its Jacobian is $u\det(\mathbf a,\mathbf e)$. After cancellation of the kernel's radial factor, resolve the edge vector into tangential and perpendicular components.
 
 ## Complete solutions
 
@@ -492,6 +580,392 @@ $$
 **Step 7 — CHECK AND DOMAIN.** Differentiation of $B(t)$ with respect to $t$ gives $\sqrt{1+2t^2}$, verifying the primitive. At $U=0$ the area is zero, and for small $U$ it behaves as $4\pi\ell^2U$. As $U\to\infty$, $T\to\infty$ and already $T\sqrt{1+2T^2}\to\infty$, so the complete surface has infinite area. The finite-band calculation cannot supply a finite area for the unbounded surface by leaving off its limits.
 
 **Discussion.** A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
+
+### I3-010
+
+**Step 1 — SETUP.** The kernel is nonnegative and has the finite value $a^2$ at zero. Its two useful bounds are
+
+$$
+0\le\left(\frac{\sin(ax)}x\right)^2\le a^2,
+\qquad
+0\le\left(\frac{\sin(ax)}x\right)^2\le\frac1{x^2}\quad(x>0).
+$$
+
+The first controls the origin and the second controls infinity, so the integral is absolutely convergent for every fixed real $a$. The output has units of inverse length and is even in $a$. At $a=0$ its value is zero directly.
+
+**Step 2 — CHOICE.** For nonzero $a$, the coordinate $u=|a|x$ preserves orientation and gives
+
+$$
+Q(a)=|a|C,\qquad C=\int_0^\infty\frac{\sin^2u}{u^2}\,du.
+$$
+
+A parameter derivative is unnecessary for this reduction. Integration by parts converts the squared kernel to the already justified oscillatory integral in I3-003.
+
+**Step 3 — CALCULUS.** On a finite interval $0<\delta<R$, the derivative of $\sin^2u$ is $\sin(2u)$ and a primitive of $u^{-2}$ is $-u^{-1}$. Thus
+
+$$
+\int_\delta^R\frac{\sin^2u}{u^2}\,du
+=\left.-\frac{\sin^2u}{u}\right|_{u=\delta}^{u=R}
++\int_\delta^R\frac{\sin(2u)}u\,du.
+$$
+
+The upper boundary term has absolute value at most $1/R$. At the lower boundary, $\sin^2\delta/\delta\le\delta$. Both terms vanish in the corresponding limits. The ordinary sine integral, whose convergence follows from the uniform tail estimate in I3-003, is $\pi/2$. Therefore $C=\pi/2$.
+
+**Step 4 — RESULT AND ALGEBRA.** The complete answer and its derivatives away from zero are
+
+$$
+Q(a)=\frac\pi2|a|,\qquad
+\frac{d}{da}(Q(a))=
+\begin{cases}\pi/2,&a>0,\\-\pi/2,&a<0.\end{cases}
+$$
+
+The right difference quotient at zero is $\pi/2$ and the left one is $-\pi/2$. The function is continuous at zero but is not differentiable there.
+
+**Step 5 — DOMAIN: the parameter derivative.** For each fixed $x>0$, differentiation of the kernel gives $\sin(2ax)/x$, with limiting value $2a$ at $x=0$. If $a\ne0$, its ordinary improper integral is $\pi\operatorname{sgn}(a)/2$, agreeing with the evaluated derivative. Here $\operatorname{sgn}(a)$ equals one for positive $a$ and minus one for negative $a$.
+
+This derivative integral is conditionally, rather than absolutely, convergent. Nevertheless, differentiation can be justified locally away from zero. For $A>0$, integration by parts against a bounded cosine primitive gives
+
+$$
+\left|\int_A^\infty\frac{\sin(2ax)}x\,dx\right|
+\le\frac1{|a|A}.
+$$
+
+On a neighborhood of a fixed $a_0\ne0$, $|a|\ge|a_0|/2$, so these derivative tails converge uniformly. Finite-interval differentiation followed by this uniform tail limit is valid. At zero that argument fails: the pointwise kernel derivative is zero, but the integral has no two-sided derivative. There is also no integrable absolute domination of all derivative kernels near zero. For any fixed $b>0$ and $x\ge\pi/(4b)$, the admissible choice $a=\pi/(4x)$ gives $|\sin(2ax)|/x=1/x$.
+
+**Step 6 — CHECK.** For a finite positive cutoff $L$, positivity and the tail bound give the directly usable estimate
+
+$$
+0\le Q(a)-\int_0^L\left(\frac{\sin(ax)}x\right)^2\,dx\le\frac1L.
+$$
+
+As a separate finite-interval check, the expansion $\sin(ax)/x=a+O(a^3x^2)$ at fixed $L$ gives the truncated integral $a^2L+O(a^4L^3)$ as $a\to0$. It has zero slope at zero, while the full integral has a cusp. The missing behavior comes from lengths comparable to $1/|a|$, which leave every fixed finite integration interval.
+
+**Discussion.** Absolute convergence of an integral does not ensure absolute convergence of its parameter derivative. A nonzero-parameter interchange may be justified by oscillatory tails while failing at an exceptional parameter.
+
+### I3-011
+
+**Step 1 — SETUP.** The logarithm is real on $0<x\le1$, and the integrand is nonnegative. Its only unbounded endpoint is zero. Since $1/(1+x)\le1$, convergence follows from $\int_0^1\ln^2x\,dx=2$, evaluated below. No principal-value prescription is involved.
+
+**Step 2 — CHOICE.** A finite geometric expansion retains an exact remainder, so the endpoint and truncation error can be controlled before an infinite sum is introduced. For a positive integer $N$,
+
+$$
+\frac1{1+x}=\sum_{n=0}^{N-1}(-1)^nx^n+(-1)^N\frac{x^N}{1+x}.
+$$
+
+**Step 3 — CALCULUS.** For an integer $n\ge0$, put $x=\exp(-t)$, with inverse differential $dx=-\exp(-t)\,dt$. The bounds reverse from $t=\infty$ to zero, and
+
+$$
+\int_0^1x^n\ln^2x\,dx
+=\int_0^\infty t^2\exp(-(n+1)t)\,dt
+=\frac{2}{(n+1)^3}.
+$$
+
+For the last equality, integration by parts first replaces the integral by $2/(n+1)$ times $\int_0^\infty t\exp(-(n+1)t)\,dt$; a second integration by parts gives $1/(n+1)^2$. All boundary terms vanish because the exponential dominates these fixed powers of $t$.
+
+**Step 4 — ALGEBRA: exact remainder.** Multiplication of the finite identity by $\ln^2x$ and integration give
+
+$$
+M=S_N+(-1)^NR_N,\qquad
+S_N=2\sum_{m=1}^N\frac{(-1)^{m-1}}{m^3},\qquad
+R_N=\int_0^1\frac{x^N\ln^2x}{1+x}\,dx.
+$$
+
+The remainder is positive and has the explicit bound
+
+$$
+0<R_N\le\int_0^1x^N\ln^2x\,dx=\frac{2}{(N+1)^3}.
+$$
+
+Thus an even partial sum underestimates $M$ and an odd partial sum overestimates it. The displayed bound is valid for every positive integer $N$.
+
+**Step 5 — DOMAIN: sum and integral.** In the open interval $0<x<1$ the infinite geometric expansion converges pointwise. Its terms are absolutely summable after integration, because
+
+$$
+\sum_{n=0}^\infty\int_0^1|(-1)^nx^n\ln^2x|\,dx
+=2\sum_{m=1}^\infty\frac1{m^3}<\infty.
+$$
+
+The last series converges by comparison with $\int_1^\infty t^{-3}\,dt$. Absolute integrability of the term series justifies exchanging the sum and integral. The single endpoint $x=1$ does not affect that conclusion. Equivalently, the exact finite remainder tends to zero and establishes the same limit without an interchange theorem.
+
+Define the real constant $\zeta(3)=\sum_{m=1}^\infty m^{-3}$. The even terms of this positive series sum to $\zeta(3)/8$, and its odd terms sum to $7\zeta(3)/8$. Their difference yields
+
+$$
+M=2\sum_{m=1}^\infty\frac{(-1)^{m-1}}{m^3}
+=\frac32\zeta(3)\approx1.8030853547.
+$$
+
+**Step 6 — CHECK: a different integral.** The same coordinate $x=\exp(-t)$ applied directly to the original kernel, without expanding it, gives
+
+$$
+M=\int_0^\infty\frac{t^2}{\exp t+1}\,dt.
+$$
+
+This integrand is regular at zero and decays exponentially at infinity. For every real cutoff $T>0$ its omitted positive tail satisfies
+
+$$
+0\le\int_T^\infty\frac{t^2}{\exp t+1}\,dt
+\le\int_T^\infty t^2\exp(-t)\,dt
+=\exp(-T)(T^2+2T+2).
+$$
+
+Quadrature of this nonsingular representation agrees with the alternating sum within the stated errors. Independently, $1/2\le1/(1+x)\le1$ gives $1\le M\le2$, consistent with the answer.
+
+**Discussion.** A logarithmically singular endpoint need not prevent a useful series calculation. Integrating absolute term bounds or retaining a finite exact remainder supplies the justification that a formal geometric expansion alone lacks.
+
+### I3-012
+
+**Step 1 — SETUP.** For every fixed $a>0$, the real kernel is smooth and positive throughout the compact interval. Its value at the endpoint $x=0$ is $1/a$, which is finite for that fixed parameter but grows as $a\downarrow0$.
+
+**Step 2 — CHOICE.** The coordinate $u=x/a$ measures distance in units of the parameter. Its inverse is $x=au$, with positive derivative $a$ and transformed bounds zero to $1/a$.
+
+**Step 3 — CALCULUS.** Substitution gives
+
+$$
+F(a)=\int_0^{1/a}\frac1{1+u^2}\,du
+=\arctan(1/a)=\frac\pi2-\arctan a,\qquad a>0.
+$$
+
+The second identity uses the principal real arctangent and positivity of $a$. Therefore $\lim_{a\downarrow0}F(a)=\pi/2$.
+
+**Step 4 — DOMAIN: where the contribution lies.** At each fixed $x>0$, the original kernel tends to zero. Its almost-everywhere pointwise limit has integral zero; the unbounded value at the single endpoint does not supply a nonzero area. To see the concentration explicitly, for fixed $c>0$ and $ca\le1$,
+
+$$
+\int_0^{ca}\frac{a}{x^2+a^2}\,dx=\arctan c.
+$$
+
+As $a\downarrow0$ this shrinking interval retains the fraction $2\arctan(c)/\pi$ of the limiting total. For any fixed $0<\delta<1$, the complementary fixed interval obeys
+
+$$
+0\le\int_\delta^1\frac{a}{x^2+a^2}\,dx
+\le a\int_\delta^1\frac1{x^2}\,dx
+=a\left(\frac1\delta-1\right)\longrightarrow0.
+$$
+
+A fixed multiple $ca$ does not capture all the mass: the limiting remainder beyond it is $\pi/2-\arctan c$, which tends to zero only as $c\to\infty$. An integrable majorant independent of $a$ near zero is unavailable. For $0<x<b$, maximization over $0<a\le b$ includes $a=x$ and gives the nonintegrable envelope $1/(2x)$.
+
+**Step 5 — CALCULUS: differentiation at positive distance.** Around any fixed $a_0>0$, the kernel and its $a$ derivative are continuous on a compact rectangle with $a\ge a_0/2$. Differentiation under the integral is justified there:
+
+$$
+\begin{aligned}
+\frac{d}{da}(F(a))
+&=\int_0^1\frac{x^2-a^2}{(x^2+a^2)^2}\,dx\\
+&=\left.-\frac{x}{x^2+a^2}\right|_{x=0}^{x=1}
+=-\frac1{1+a^2}.
+\end{aligned}
+$$
+
+This agrees with differentiation of the arctangent form. For each fixed $x>0$ the derivative kernel tends to $1/x^2$, whose integral diverges. Interchanging this limit and integral would therefore fail as well, even though $\lim_{a\downarrow0}\frac{d}{da}(F(a))=-1$ is finite.
+
+**Step 6 — ALGEBRA: a controlled local expansion.** For $0\le t\le a$, the exact identity
+
+$$
+\frac1{1+t^2}=1-t^2+\frac{t^4}{1+t^2}
+$$
+
+gives
+
+$$
+F(a)=\frac\pi2-a+\frac{a^3}{3}+E(a),\qquad
+E(a)=-\int_0^a\frac{t^4}{1+t^2}\,dt,\qquad
+-\frac{a^5}{5}\le E(a)\le0.
+$$
+
+In particular this supplies a small-parameter approximation through the cubic term with an explicit error bound, rather than only a formal expansion.
+
+**Step 7 — CHECK AND EXTENSION.** The continuous scalar extension has $F(0)=\pi/2$ and right derivative $-1$, as the expansion shows. Assigning the kernel its pointwise value zero for $a=0$ and $x>0$ instead gives an integral equal to zero; any assigned value at $x=0$ leaves that integral unchanged. That assignment does not produce the continuous extension of the integrated function. At the ordinary parameter value $a=1$, the original integral and the formula both give $\pi/4$, while the derivative gives $-1/2$.
+
+**Discussion.** A parameter can move an order-one contribution into a region whose width tends to zero. The integrated function can have a smooth one-sided extension even when pointwise parameter substitution loses that contribution.
+
+### I3-013
+
+**Step 1 — SETUP.** The field is smooth wherever $x^2+y^2>0$. Both stated curves remain in that domain. The ellipse encloses the excluded axis; the displaced circle and its planar disk have $x\ge d-R>0$. Their positive boundary orientation corresponds to the upward normal $\mathbf e_z=[0,0,1]^{\mathsf T}$.
+
+**Step 2 — CHOICE.** Direct parameterization computes the ellipse's circulation without crossing the axis. The curl calculation then determines where Stokes' theorem can be used, while excision supplies a second argument for the path whose spanning disk meets the singularity.
+
+**Step 3 — CALCULUS: the centered ellipse.** Its tangent vector is $[-A\sin\theta,B\cos\theta,0]^{\mathsf T}$, so
+
+$$
+\mathbf F(\mathbf r_E(\theta))\cdot\frac{d}{d\theta}(\mathbf r_E(\theta))
+=\frac{AB}{A^2\cos^2\theta+B^2\sin^2\theta}.
+$$
+
+The four quadrant contributions are equal. In the first quadrant the real coordinate $t=\tan\theta$ has inverse derivative $1/(1+t^2)$ and bounds zero to infinity. Hence
+
+$$
+\begin{aligned}
+\oint_E\mathbf F\cdot d\mathbf r
+&=4\int_0^\infty\frac{AB}{A^2+B^2t^2}\,dt\\
+&=4\lim_{T\to\infty}\arctan\left(\frac BA T\right)
+=2\pi.
+\end{aligned}
+$$
+
+The apparent improper bound comes from the angular coordinate; the original line integrand is continuous and bounded.
+
+**Step 4 — ALGEBRA AND DOMAIN: the curl.** Write $D=x^2+y^2>0$. All $z$ derivatives vanish, and
+
+$$
+\frac{\partial}{\partial x}\left(\frac{x}{D}\right)
+=\frac{y^2-x^2}{D^2},\qquad
+\frac{\partial}{\partial y}\left(-\frac{y}{D}\right)
+=\frac{y^2-x^2}{D^2}.
+$$
+
+Consequently $\nabla\times\mathbf F=\mathbf0$ throughout its domain. The ellipse's full spanning disk contains a point on the excluded axis, so the field is not continuously differentiable on a neighborhood of that disk. Applying the classical Stokes theorem to that disk would violate its hypotheses.
+
+The displaced disk lies strictly in $x>0$, where those hypotheses hold. Its curl flux is zero, so
+
+$$
+\oint_C\mathbf F\cdot d\mathbf r=0.
+$$
+
+**Step 5 — CHECK: a single angle on the displaced path.** Direct parameterization gives
+
+$$
+\mathbf F(\mathbf r_C(\theta))\cdot\frac{d}{d\theta}(\mathbf r_C(\theta))
+=\frac{R^2+dR\cos\theta}{d^2+R^2+2dR\cos\theta}.
+$$
+
+Because $d+R\cos\theta>0$, one continuous real angle is
+
+$$
+\phi(\theta)=\arctan\left(\frac{R\sin\theta}{d+R\cos\theta}\right).
+$$
+
+The quotient inside it has derivative $(dR\cos\theta+R^2)/(d+R\cos\theta)^2$. Multiplication by the arctangent derivative gives exactly the displayed line integrand. Therefore its integral is $\phi(2\pi)-\phi(0)=0$, independently confirming the disk calculation.
+
+**Step 6 — CHECK: excision and orientation.** Choose a real radius $0<\rho<\min(A,B)$ and remove the centered disk of radius $\rho$ from the ellipse's interior at height $z_0$. On the remaining surface the field is smooth and its curl is zero. The induced boundary consists of the outer ellipse counterclockwise and the inner circle clockwise. Stokes' theorem gives
+
+$$
+0=\oint_E\mathbf F\cdot d\mathbf r
+-\oint_{\rho\text{ circle, counterclockwise}}\mathbf F\cdot d\mathbf r.
+$$
+
+On that centered circle the line integrand equals one, so its counterclockwise circulation is $2\pi$. This recovers the ellipse's value. Reversing either curve's orientation negates its circulation.
+
+**Discussion.** A zero curl is a local statement on the field's domain. Computing circulation from a spanning surface also requires that the entire surface avoid excluded sources, with every boundary component oriented consistently.
+
+### I3-014
+
+**Step 1 — SETUP AND DOMAIN.** The source is strictly inside the panel, and the integrand is nonnegative away from it. The portion of the panel inside a disk of real radius $\epsilon>0$ centered at the source contributes at most
+
+$$
+\int_0^{2\pi}\int_0^\epsilon\frac1r\,r\,dr\,d\theta=2\pi\epsilon.
+$$
+
+The area singularity is therefore locally integrable. Away from that disk the integrand is continuous on a compact set, so the complete integral is finite. Nonnegativity permits monotone exhaustions of the source, without a signed cancellation prescription.
+
+**Step 2 — CHOICE: a source-centered partition.** The counterclockwise vertices are
+
+$$
+\mathbf v_1=\begin{bmatrix}0\\0\end{bmatrix},\quad
+\mathbf v_2=\begin{bmatrix}1\\0\end{bmatrix},\quad
+\mathbf v_3=\begin{bmatrix}1\\1\end{bmatrix},\quad
+\mathbf v_4=\mathbf v_1.
+$$
+
+Joining $\mathbf p$ to these vertices creates three subtriangles with disjoint interiors. On subtriangle $j$, for $j=1,2,3$, define fixed real columns $\mathbf a_j=\mathbf v_j-\mathbf p$ and $\mathbf e_j=\mathbf v_{j+1}-\mathbf v_j$. Independent real coordinates $0<u\le1$, $0\le v\le1$ give the map
+
+$$
+\mathbf r_j(u,v)=\mathbf p+u(\mathbf a_j+v\mathbf e_j).
+$$
+
+The source corresponds to the collapsed edge $u=0$, while $u=1$ traces the outer edge. For $u>0$ the map is one-to-one in the subtriangle interior.
+
+**Step 3 — CALCULUS: all three Jacobians.** The two Jacobian columns are $\mathbf a_j+v\mathbf e_j$ and $u\mathbf e_j$. Define the fixed positive scalar $d_j=\det(\mathbf a_j,\mathbf e_j)$. Then
+
+$$
+\det\mathbf J_j(u,v)
+=u\det(\mathbf a_j+v\mathbf e_j,\mathbf e_j)=ud_j.
+$$
+
+The actual edge data and determinants are
+
+$$
+\begin{aligned}
+\mathbf a_1&=\begin{bmatrix}-x_0\\-y_0\end{bmatrix},&
+\mathbf e_1&=\begin{bmatrix}1\\0\end{bmatrix},&d_1&=y_0>0,\\
+\mathbf a_2&=\begin{bmatrix}1-x_0\\-y_0\end{bmatrix},&
+\mathbf e_2&=\begin{bmatrix}0\\1\end{bmatrix},&d_2&=1-x_0>0,\\
+\mathbf a_3&=\begin{bmatrix}1-x_0\\1-y_0\end{bmatrix},&
+\mathbf e_3&=\begin{bmatrix}-1\\-1\end{bmatrix},&d_3&=x_0-y_0>0.
+\end{aligned}
+$$
+
+Here $\mathbf J_j$ is a real $2\times2$ matrix. Positivity of all three determinants records that the source lies to the left of each oriented outer edge.
+
+**Step 4 — ALGEBRA: cancellation at the source.** Since $u>0$,
+
+$$
+\|\mathbf r_j(u,v)-\mathbf p\|=u\|\mathbf a_j+v\mathbf e_j\|.
+$$
+
+On a truncated subtriangle $u\ge\delta>0$, the ordinary change-of-variables theorem applies. Multiplication by its area Jacobian cancels the radial factor:
+
+$$
+K_j=\lim_{\delta\downarrow0}\int_\delta^1\int_0^1
+\frac{ud_j}{u\|\mathbf a_j+v\mathbf e_j\|}\,dv\,du
+=d_j\int_0^1\frac1{\|\mathbf a_j+v\mathbf e_j\|}\,dv.
+$$
+
+The removed sets shrink to the source, and the nonnegative integrals increase to the full subtriangle integrals. Boundaries shared by the pieces have zero area, so $K=K_1+K_2+K_3$.
+
+**Step 5 — CALCULUS: explicit nonsingular edge integrals.** Write the fixed positive edge length as $L_j=\|\mathbf e_j\|$ and the perpendicular source-to-edge distance as $h_j=d_j/L_j>0$. The tangential coordinate of the initial edge point is $t_j=\mathbf a_j\cdot\mathbf e_j/L_j$. Orthogonal decomposition gives
+
+$$
+\|\mathbf a_j+v\mathbf e_j\|
+=\sqrt{h_j^2+(t_j+L_jv)^2}.
+$$
+
+The real coordinate $s=t_j+L_jv$ has derivative $L_j>0$, so
+
+$$
+K_j=h_j\left(
+\operatorname{arsinh}\left(\frac{t_j+L_j}{h_j}\right)
+-\operatorname{arsinh}\left(\frac{t_j}{h_j}\right)\right).
+$$
+
+These formulas are real and finite because every $h_j$ is strictly positive. In fact $\|\mathbf a_j+v\mathbf e_j\|\ge h_j$, so each original edge integrand $d_j/\|\mathbf a_j+v\mathbf e_j\|$ is bounded above by $L_j$ on its closed interval.
+
+**Step 6 — RESULT.** Substituting the three edge data gives
+
+$$
+\begin{aligned}
+K_1&=y_0\left(\operatorname{arsinh}\left(\frac{1-x_0}{y_0}\right)
++\operatorname{arsinh}\left(\frac{x_0}{y_0}\right)\right),\\
+K_2&=(1-x_0)\left(\operatorname{arsinh}\left(\frac{1-y_0}{1-x_0}\right)
++\operatorname{arsinh}\left(\frac{y_0}{1-x_0}\right)\right).
+\end{aligned}
+$$
+
+For the diagonal edge define fixed real scalars $d=x_0-y_0>0$ and $s=x_0+y_0$. Its contribution is
+
+$$
+K_3=\frac d{\sqrt2}\left(\operatorname{arsinh}\left(\frac{s}{d}\right)
++\operatorname{arsinh}\left(\frac{2-s}{d}\right)\right),
+\qquad K(x_0,y_0)=K_1+K_2+K_3.
+$$
+
+The inverse hyperbolic sine here is its real branch, $\operatorname{arsinh}(w)=\ln(w+\sqrt{1+w^2})$. No complex branch choice is needed. The whole answer is positive and obeys $K\le L_1+L_2+L_3=2+\sqrt2$, from the edge-integrand bounds.
+
+**Step 7 — CHECK: independent Cartesian integration.** For every fixed $x\ne x_0$, direct integration in $y$ over $0\le y\le x$ gives
+
+$$
+G(x)=\operatorname{arsinh}\left(\frac{x-y_0}{|x-x_0|}\right)
++\operatorname{arsinh}\left(\frac{y_0}{|x-x_0|}\right).
+$$
+
+Thus $K=\int_0^1G(x)\,dx$. The logarithmic divergence at $x=x_0$ is integrable; it is not evaluated as a finite inner integral there. For stable numerical comparison, use $x=x_0-x_0t^2$ on the left and $x=x_0+(1-x_0)t^2$ on the right, with $0\le t\le1$. Both resulting integrands extend to zero at $t=0$, since $t|\ln t|\to0$. This Cartesian reduction is independent of the three source-edge maps and agrees with their answer.
+
+Reflection $(x,y)\mapsto(1-y,1-x)$ also preserves the triangle and distance, so $K(x_0,y_0)=K(1-y_0,1-x_0)$. The explicit formula exchanges $K_1,K_2$ and leaves $K_3$ unchanged under that reflection. At the centroid $(x_0,y_0)=(2/3,1/3)$ it simplifies to
+
+$$
+K\left(\frac23,\frac13\right)
+=\frac23\left(\operatorname{arsinh}(2)+\operatorname{arsinh}(1)\right)
++\frac{\sqrt2}{3}\operatorname{arsinh}(3).
+$$
+
+**Discussion.** An interior source requires several maps with the source at their common collapsed edge. Their positive Jacobians cancel the weak radial singularity while retaining the distinct geometry of each outer edge.
 
 ## Application references
 

@@ -50,6 +50,65 @@ $$
 
 Determine its derivative for finite real $t$ and evaluate it at zero. The integral is oriented if the endpoints reverse order. A general elementary closed form for $F(t)$ is not required.
 
+### D4-007 — A finite value with an oscillating slope
+
+**Objects and dependencies.** $x\ne0$ is an independent dimensionless real scalar. The dependent positive real scalar is
+
+$$
+f(x)=(1+x^2)^{\sin(1/x)},
+$$
+
+where the real power uses the logarithm of its positive base. Determine the continuous extension at zero, its derivative at zero, and whether the derivative of that extension is continuous there. Obtain an explicit derivative for $x\ne0$ and justify any limiting conclusions independently of differentiating an error term.
+
+### D4-008 — A coupled exponential constraint
+
+**Objects and dependencies.** $x$ is an independent dimensionless real scalar. Near $(x,y)=(0,1)$, the dependent dimensionless real scalar $y=g(x)$ satisfies
+
+$$
+x\exp(g(x))+g(x)\exp(x)=1,\qquad g(0)=1.
+$$
+
+Establish a unique smooth branch on some open interval containing zero. Determine its first two derivatives at zero and a quadratic approximation with a justified remainder as $x\to0$. Check the approximation in the original constraint; no global branch formula is required.
+
+### D4-009 — A response selected by a bounded maximum
+
+**Objects and dependencies.** $t\in\mathbb R$ is an independent dimensionless real scalar. The dimensionless real coordinate $x$ is restricted to $[0,1]$. Define the real scalar response
+
+$$
+M(t)=\max_{0\le x\le1}\bigl(tx-x^4\bigr).
+$$
+
+Determine the maximizing coordinate and a formula for $M(t)$ for every real $t$. Determine the first and second derivatives where they exist, and the orders of differentiability at every change in the maximizing coordinate's formula.
+
+### D4-010 — A matrix exponential across a change of regime
+
+**Objects and dependencies.** $t\in\mathbb R$ is an independent dimensionless real scalar. The dependent real $2\times2$ matrix and its real matrix exponential are
+
+$$
+\mathbf A(t)=\begin{bmatrix}0&1\\-t&0\end{bmatrix},\qquad
+\mathbf E(t)=\exp(\mathbf A(t))
+=\sum_{n=0}^{\infty}\frac{\mathbf A(t)^n}{n!}.
+$$
+
+Determine $\mathbf E(t)$ and $\frac{d}{dt}(\mathbf E(t))$ for positive, negative, and zero $t$. Establish the connection between the formulas at zero and decide whether the scalar-inspired expression $\exp(\mathbf A(t))\frac{d}{dt}(\mathbf A(t))$ gives the derivative.
+
+### D4-011 — A scalar response on symmetric positive matrices
+
+**Objects and dependencies.** $a,b,c$ are independent dimensionless real parameters restricted so that the real symmetric matrix
+
+$$
+\mathbf A(a,b,c)=\begin{bmatrix}a&b\\b&c\end{bmatrix}
+$$
+
+is positive definite. Define the dependent real scalar
+
+$$
+f(a,b,c)=\ln(\det(\mathbf A(a,b,c)))
++\operatorname{tr}(\mathbf A(a,b,c)^{-1}),
+$$
+
+where the trace is the sum of the diagonal entries. State its open parameter domain and compute its three partial derivatives. Compare them with the entry derivatives obtained by allowing all four entries of a general real $2\times2$ matrix to vary independently near $\mathbf A(a,b,c)$. Explain the off-diagonal contribution when symmetry is imposed.
+
 ## Hint ladders
 
 ### D4-001
@@ -87,6 +146,36 @@ Determine its derivative for finite real $t$ and evaluate it at zero. The integr
 1. The parameter enters the upper endpoint, lower endpoint, and integrand.
 2. The derivative therefore has two boundary terms and an integral term.
 3. At zero the remaining rational integral can be decomposed as $s^2/(1+s^2)=1-1/(1+s^2)$.
+
+### D4-007
+
+1. The logarithm of the function is a bounded oscillatory factor times $\ln(1+x^2)$.
+2. Estimate the function's difference quotient at zero before examining derivatives at nonzero inputs.
+3. In the nonzero derivative, $\ln(1+x^2)/x^2$ tends to one; choose sequences on which $\cos(1/x)$ equals one and minus one.
+
+### D4-008
+
+1. Evaluate the partial derivative of the defining level function with respect to its second input at $(0,1)$.
+2. Differentiate the full composition twice, retaining both mixed contributions on the second differentiation.
+3. Substitute $1+\alpha x+\beta x^2$ into the original constraint and match the coefficients of $x$ and $x^2$.
+
+### D4-009
+
+1. The derivative of the objective with respect to the bounded coordinate is $t-4x^3$.
+2. The critical coordinate lies inside $[0,1]$ only for a bounded range of the parameter; otherwise an endpoint maximizes.
+3. The first parameter derivative of the interior value simplifies because its coordinate satisfies the critical-point equation; examine one-sided derivatives at both transitions.
+
+### D4-010
+
+1. Compute $\mathbf A(t)^2$ and separate the even and odd powers in the exponential series.
+2. The two scalar coefficient series remain defined at zero even when their trigonometric or hyperbolic forms appear to divide by zero.
+3. Differentiate both scalar coefficients and the matrix factor; compare the actual derivative at zero with the proposed product there.
+
+### D4-011
+
+1. Write the determinant as $\Delta=ac-b^2$ and the trace of the inverse as $(a+c)/\Delta$.
+2. For a general matrix increment $\mathbf H$, differentiate the inverse identity before taking its trace.
+3. A change of $b$ changes both off-diagonal entries: its parameter derivative is the sum of two entry derivatives.
 
 ## Complete solutions
 
@@ -309,3 +398,384 @@ $$
 **Step 6 — RESULT AND CHECK.** The requested derivative is $\frac{d}{dt}(F(t))|_{t=0}=\pi/4-1/2$. Also $F(0)=\pi/4$. The first boundary contribution is positive at zero, while the interior contribution is negative; both are needed to obtain the stated slope. Independent finite differences of the original integral verify the value.
 
 **Discussion.** A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.
+
+### D4-007
+
+**Step 1 — SETUP.** The base $1+x^2$ is positive on the entire real line. For $x\ne0$, the exponent is real and the function is smooth on each component of the punctured line. The missing input is examined before the derivative is extended.
+
+**Step 2 — CHOICE.** The exponent oscillates without a limit, but it multiplies a small logarithm after taking the logarithm of the function. A bound on that product controls the value and its difference quotient without requiring a limit of the exponent.
+
+**Step 3 — ALGEBRA.** Define the real scalar $L(x)=\sin(1/x)\ln(1+x^2)$. The inequality $0\le\ln(1+x^2)\le x^2$ gives $|L(x)|\le x^2$. Since $f(x)=\exp(L(x))$ and $|\exp(u)-1|\le\exp(|u|)|u|$ for real $u$,
+
+$$
+|f(x)-1|\le\exp(x^2)x^2.
+$$
+
+Thus $f(x)\to1$ and the unique continuous extension $\widetilde f$ has $\widetilde f(0)=1$. Its difference quotient obeys
+
+$$
+\left|\frac{\widetilde f(x)-\widetilde f(0)}{x}\right|
+\le\exp(x^2)|x|\longrightarrow0.
+$$
+
+**Step 4 — CALCULUS.** The extension is differentiable at zero with derivative zero. At a nonzero input, product and chain differentiation instead give
+
+$$
+\frac{d}{dx}\left(L(x)\right)
+=-\frac{\cos(1/x)}{x^2}\ln(1+x^2)
++\sin(1/x)\frac{2x}{1+x^2},
+$$
+
+and therefore
+
+$$
+\frac{d}{dx}\left(f(x)\right)
+=f(x)\left(
+\frac{2x\sin(1/x)}{1+x^2}
+-\frac{\ln(1+x^2)}{x^2}\cos(1/x)\right),\qquad x\ne0.
+$$
+
+**Step 5 — DOMAIN.** The coefficient $\ln(1+x^2)/x^2$ tends to one, while $f(x)\to1$ and the other bracketed term tends to zero. For positive integers $n$, define $x_n=1/(2\pi n)$ and $y_n=1/((2n+1)\pi)$. Both tend to zero; their sine factors vanish and their cosine factors equal one and minus one respectively. The displayed derivative consequently tends to $-1$ along $x_n$ and to $1$ along $y_n$. The derivative of the extension is not continuous at zero.
+
+**Step 6 — CHECK.** The bound on the original difference quotient proves the zero derivative directly, whereas the two sequences use an exact derivative formula at nonzero inputs. These are different limits and are consistent: a function can be differentiable at a point without its nearby derivatives converging to that derivative. In particular, differentiating the value estimate $\widetilde f(x)=1+O(x^2)$ would not justify a derivative estimate here.
+
+### D4-008
+
+**Step 1 — SETUP.** Let $F(x,y)=x\exp(y)+y\exp(x)-1$ on $\mathbb R^2$. This real scalar function is smooth, $F(0,1)=0$, and
+
+$$
+\frac{\partial}{\partial y}\left(F(x,y)\right)=x\exp(y)+\exp(x),
+\qquad
+\left.\frac{\partial}{\partial y}\left(F(x,y)\right)\right|_{x=0,y=1}=1.
+$$
+
+The implicit function theorem therefore supplies a unique smooth branch $y=g(x)$ near $(0,1)$, with $g(0)=1$.
+
+**Step 2 — CHOICE.** The constraint need not be solved explicitly. Its first derivative determines the slope through a nonzero coefficient of the height derivative. Differentiating the same identity again determines the curvature, with each dependence of that coefficient retained.
+
+**Step 3 — CALCULUS.** With the other coordinate held fixed in each partial derivative,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial x}\left(F(x,y)\right)&=\exp(y)+y\exp(x),\\
+\frac{\partial^2}{\partial x^2}\left(F(x,y)\right)&=y\exp(x),\\
+\frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}\left(F(x,y)\right)\right)
+&=\exp(y)+\exp(x),\\
+\frac{\partial^2}{\partial y^2}\left(F(x,y)\right)&=x\exp(y).
+\end{aligned}
+$$
+
+The first composition derivative is
+
+$$
+0=\exp(g(x))+g(x)\exp(x)
++\bigl(x\exp(g(x))+\exp(x)\bigr)\frac{d}{dx}\left(g(x)\right).
+$$
+
+Evaluation at zero gives
+
+$$
+0=e+1+\left.\frac{d}{dx}\left(g(x)\right)\right|_{x=0},
+\qquad
+\left.\frac{d}{dx}\left(g(x)\right)\right|_{x=0}=-(e+1).
+$$
+
+**Step 4 — CALCULUS AND ALGEBRA.** A second differentiation of the composition includes two equal mixed terms. Writing them together gives
+
+$$
+\begin{aligned}
+0={}&g(x)\exp(x)
++2\bigl(\exp(g(x))+\exp(x)\bigr)\frac{d}{dx}\left(g(x)\right)\\
+&+x\exp(g(x))\left(\frac{d}{dx}\left(g(x)\right)\right)^2
++\bigl(x\exp(g(x))+\exp(x)\bigr)\frac{d^2}{dx^2}\left(g(x)\right).
+\end{aligned}
+$$
+
+At zero the coefficient of the squared slope vanishes and the coefficient of the second derivative is one. Hence
+
+$$
+\begin{aligned}
+0&=1-2(e+1)^2+\left.\frac{d^2}{dx^2}\left(g(x)\right)\right|_{x=0},\\
+\left.\frac{d^2}{dx^2}\left(g(x)\right)\right|_{x=0}&=2(e+1)^2-1.
+\end{aligned}
+$$
+
+**Step 5 — DOMAIN AND APPROXIMATION.** The smooth local branch has a bounded third derivative on a sufficiently small closed interval containing zero. Taylor's theorem on that interval gives
+
+$$
+g(x)=1-(e+1)x+\left((e+1)^2-\frac12\right)x^2+O(x^3),\qquad x\to0.
+$$
+
+The remainder statement concerns this local branch; no claim of global uniqueness or a globally nonzero height partial is needed.
+
+**Step 6 — CHECK.** Let $p(x)=1+\alpha x+\beta x^2$, where $\alpha=-(e+1)$ and $\beta=(e+1)^2-1/2$. Expanding the original constraint directly gives
+
+$$
+\begin{aligned}
+x\exp(p(x))&=ex+e\alpha x^2+O(x^3),\\
+p(x)\exp(x)&=1+(\alpha+1)x+(\beta+\alpha+1/2)x^2+O(x^3).
+\end{aligned}
+$$
+
+The coefficient of $x$ in their sum is $e+\alpha+1=0$, and the coefficient of $x^2$ is $(e+1)\alpha+\beta+1/2=0$. Thus $F(x,p(x))=O(x^3)$. By shrinking the neighborhood, the height partial stays at least $1/2$ on the segment between $p(x)$ and $g(x)$. The mean value theorem then also gives $|p(x)-g(x)|\le2|F(x,p(x))|=O(|x|^3)$, independently checking the approximation and its remainder order.
+
+### D4-009
+
+**Step 1 — SETUP.** For each fixed real $t$, the objective $q(x;t)=tx-x^4$ is continuous on the compact interval $[0,1]$, so a maximum exists. The optimizing coordinate may move or remain at a boundary as $t$ changes.
+
+**Step 2 — CHOICE.** The derivative in the bounded coordinate determines where the objective increases and decreases. Endpoint constraints must be imposed before the interior stationary coordinate is inserted into the value.
+
+**Step 3 — CALCULUS.** Holding $t$ fixed,
+
+$$
+\frac{\partial}{\partial x}\left(q(x;t)\right)=t-4x^3.
+$$
+
+For $t\le0$ this is nonpositive on $[0,1]$ and the unique maximum is at zero. For $t\ge4$ it is nonnegative there and the unique maximum is at one. When $0<t<4$, the derivative changes sign from positive to negative at $r(t)=(t/4)^{1/3}$, which lies strictly inside the interval. Consequently the maximizing coordinate is
+
+$$
+x_*(t)=
+\begin{cases}
+0,&t\le0,\\
+(t/4)^{1/3},&0<t<4,\\
+1,&t\ge4.
+\end{cases}
+$$
+
+**Step 4 — ALGEBRA.** In the interior regime, $t=4r(t)^3$, so $tr(t)-r(t)^4=3r(t)^4$. Including both constrained regimes gives
+
+$$
+M(t)=
+\begin{cases}
+0,&t\le0,\\
+3(t/4)^{4/3},&0<t<4,\\
+t-1,&t\ge4.
+\end{cases}
+$$
+
+The neighboring values agree at zero and at four, where they are zero and three respectively.
+
+**Step 5 — CALCULUS.** Direct differentiation on the open regimes gives
+
+$$
+\frac{d}{dt}\left(M(t)\right)=
+\begin{cases}
+0,&t<0,\\
+(t/4)^{1/3},&0<t<4,\\
+1,&t>4.
+\end{cases}
+$$
+
+At zero, the right difference quotient is $3h^{1/3}/4^{4/3}$ for $h>0$ and tends to zero, matching the left slope. At four, both one-sided slopes are one. Thus the first derivative exists everywhere, with values zero and one at the respective transitions, and is continuous.
+
+On the open regimes the second derivative is
+
+$$
+\frac{d^2}{dt^2}\left(M(t)\right)=
+\begin{cases}
+0,&t<0,\\
+\dfrac1{12}(t/4)^{-2/3},&0<t<4,\\
+0,&t>4.
+\end{cases}
+$$
+
+**Step 6 — DOMAIN.** At zero the right difference quotient of the first derivative equals $h^{-2/3}/4^{1/3}$ and diverges, while the left quotient is zero. At four the one-sided derivatives of the first derivative are $1/12$ and zero. Therefore $M$ is continuously differentiable on $\mathbb R$ but has no second derivative at either transition. It is smooth within each of the three open regimes.
+
+**Step 7 — CHECK.** Within the interior regime, differentiating the unsimplified maximizing value gives
+
+$$
+\frac{d}{dt}\left(tr(t)-r(t)^4\right)
+=r(t)+\bigl(t-4r(t)^3\bigr)\frac{d}{dt}\left(r(t)\right)=r(t).
+$$
+
+The coordinate-rate term cancels by the stationary equation. In the boundary regimes the same equality $\frac{d}{dt}(M(t))=x_*(t)$ follows by direct differentiation of the boundary values. This independent representation checks the slope and its nonnegative monotone behavior, consistent with a maximum of affine functions of $t$.
+
+### D4-010
+
+**Step 1 — SETUP.** Matrix multiplication gives $\mathbf A(t)^2=-t\mathbf I$, where $\mathbf I$ is the real $2\times2$ identity. Thus $\mathbf A(t)^{2n}=(-t)^n\mathbf I$ and $\mathbf A(t)^{2n+1}=(-t)^n\mathbf A(t)$ for every nonnegative integer $n$.
+
+**Step 2 — CHOICE.** Separating even and odd powers avoids choosing eigenvectors that change character at zero. The resulting two scalar series converge for every real parameter, so they also retain the limiting values needed to differentiate through the change of regime.
+
+**Step 3 — ALGEBRA.** Define real scalar coefficient functions
+
+$$
+C(t)=\sum_{n=0}^{\infty}\frac{(-t)^n}{(2n)!},\qquad
+S(t)=\sum_{n=0}^{\infty}\frac{(-t)^n}{(2n+1)!}.
+$$
+
+Then
+
+$$
+\mathbf E(t)=C(t)\mathbf I+S(t)\mathbf A(t)
+=\begin{bmatrix}C(t)&S(t)\\-tS(t)&C(t)\end{bmatrix}.
+$$
+
+For $t>0$, set $r=\sqrt t$; for $t<0$, set $r=\sqrt{-t}$. The scalar series give
+
+$$
+(C(t),S(t))=
+\begin{cases}
+(\cos(r),\sin(r)/r),&t>0,\\
+(1,1),&t=0,\\
+(\cosh(r),\sinh(r)/r),&t<0.
+\end{cases}
+$$
+
+In particular, $\mathbf E(0)=\begin{bmatrix}1&1\\0&1\end{bmatrix}$, also obtained by exponentiating the nilpotent matrix $\mathbf A(0)$ directly.
+
+**Step 4 — CALCULUS.** Termwise differentiation of the everywhere convergent scalar power series gives
+
+$$
+\frac{d}{dt}\left(C(t)\right)=-\frac{S(t)}2.
+$$
+
+For the other coefficient, let $V(t)=\frac{d}{dt}(S(t))$. Differentiating its trigonometric and hyperbolic forms, and using its series at zero, gives
+
+$$
+V(t)=
+\begin{cases}
+\dfrac{r\cos(r)-\sin(r)}{2r^3},&t>0,\quad r=\sqrt t,\\
+-1/6,&t=0,\\
+\dfrac{\sinh(r)-r\cosh(r)}{2r^3},&t<0,\quad r=\sqrt{-t}.
+\end{cases}
+$$
+
+For $t\ne0$ these expressions also satisfy $2tV(t)=C(t)-S(t)$. The product rule with its retained matrix order is
+
+$$
+\frac{d}{dt}\left(\mathbf E(t)\right)
+=-\frac{S(t)}2\mathbf I+V(t)\mathbf A(t)
++S(t)\begin{bmatrix}0&0\\-1&0\end{bmatrix}.
+$$
+
+Thus an explicit formula valid in all three regimes, with the piecewise scalar coefficients above, is
+
+$$
+\frac{d}{dt}\left(\mathbf E(t)\right)
+=\begin{bmatrix}
+-S(t)/2&V(t)\\
+-(C(t)+S(t))/2&-S(t)/2
+\end{bmatrix}.
+$$
+
+The lower-left equality uses $-S(t)-tV(t)=-(C(t)+S(t))/2$, which holds by continuity also at zero. Therefore
+
+$$
+\left.\frac{d}{dt}\left(\mathbf E(t)\right)\right|_{t=0}
+=\begin{bmatrix}-1/2&-1/6\\-1&-1/2\end{bmatrix}.
+$$
+
+**Step 5 — DOMAIN.** Both coefficient series are entire functions of the real parameter. The apparent divisions by $r$ or $t$ introduce no genuine singularity: $C(t)=1-t/2+O(t^2)$, $S(t)=1-t/6+O(t^2)$, and their differentiated series supply the stated limits. Trigonometric and hyperbolic representations describe the same smooth matrix function on different sides of zero.
+
+**Step 6 — CHECK: matrix order.** Direct multiplication gives
+
+$$
+\mathbf A(t)\frac{d}{dt}\left(\mathbf A(t)\right)
+=\begin{bmatrix}-1&0\\0&0\end{bmatrix},\qquad
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf A(t)
+=\begin{bmatrix}0&0\\0&-1\end{bmatrix}.
+$$
+
+The factors do not commute. At zero, the proposed scalar-inspired product is
+
+$$
+\mathbf E(0)\left.\frac{d}{dt}\left(\mathbf A(t)\right)\right|_{t=0}
+=\begin{bmatrix}-1&0\\-1&0\end{bmatrix},
+$$
+
+which differs from the actual derivative. An independent differentiation of the matrix power series has the ordered terms
+
+$$
+\frac{d}{dt}\left(\mathbf A(t)^n\right)
+=\sum_{j=0}^{n-1}\mathbf A(t)^j
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf A(t)^{n-1-j}.
+$$
+
+At zero, $\mathbf A(0)^2=\mathbf0$ leaves only the terms of degrees one, two, and three in the exponential derivative. They are respectively the derivative of $\mathbf A$, minus $\mathbf I/2$, and $\begin{bmatrix}0&-1/6\\0&0\end{bmatrix}$, reproducing the displayed derivative at zero. The identity $C(t)^2+tS(t)^2=1$ also checks $\det(\mathbf E(t))=1$ on both sides and at the transition.
+
+### D4-011
+
+**Step 1 — SETUP.** Write $\Delta(a,b,c)=ac-b^2$ and $s(a,b,c)=a+c$. The symmetric matrix is positive definite precisely on the open parameter domain
+
+$$
+\mathcal U=\{(a,b,c)\in\mathbb R^3:a>0,\ ac-b^2>0\}.
+$$
+
+These inequalities imply $c>0$. On this domain the real logarithm and the inverse both exist, and small independent changes of any one parameter remain admissible.
+
+**Step 2 — CHOICE.** The explicit inverse reduces the scalar response to two rational expressions and a logarithm. Comparing its derivatives with a matrix increment calculation then identifies exactly how the symmetry constraint combines entry derivatives.
+
+**Step 3 — ALGEBRA.** The inverse and scalar response are
+
+$$
+\mathbf A(a,b,c)^{-1}=\frac1\Delta\begin{bmatrix}c&-b\\-b&a\end{bmatrix},
+\qquad
+f(a,b,c)=\ln(\Delta)+\frac{s}{\Delta}.
+$$
+
+The scalar derivatives of $\Delta$ with respect to $a,b,c$ are $c,-2b,a$, and those of $s$ are $1,0,1$ respectively.
+
+**Step 4 — CALCULUS.** The logarithmic and quotient rules consequently give, with the other two parameters held fixed in each line,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial a}\left(f(a,b,c)\right)
+&=\frac c\Delta+\frac1\Delta-\frac{sc}{\Delta^2},\\
+\frac{\partial}{\partial b}\left(f(a,b,c)\right)
+&=-\frac{2b}\Delta+\frac{2bs}{\Delta^2},\\
+\frac{\partial}{\partial c}\left(f(a,b,c)\right)
+&=\frac a\Delta+\frac1\Delta-\frac{sa}{\Delta^2}.
+\end{aligned}
+$$
+
+For example, $\Delta-sc=ac-b^2-(a+c)c=-b^2-c^2$ simplifies the first result; the third simplifies in the corresponding way. Thus the real column parameter gradient is
+
+$$
+\nabla_{a,b,c}f(a,b,c)=
+\begin{bmatrix}
+c/\Delta-(c^2+b^2)/\Delta^2\\
+-2b/\Delta+2b(a+c)/\Delta^2\\
+a/\Delta-(a^2+b^2)/\Delta^2
+\end{bmatrix}.
+$$
+
+**Step 5 — CALCULUS: independent entry increments.** To compare with unconstrained entries, let $\mathbf B$ range over all real $2\times2$ matrices in a neighborhood of the given positive definite $\mathbf A$, with $\det(\mathbf B)>0$. The real scalar extension is $\phi(\mathbf B)=\ln(\det(\mathbf B))+\operatorname{tr}(\mathbf B^{-1})$. For a fixed real $2\times2$ increment $\mathbf H$, expansion of the determinant gives
+
+$$
+\det(\mathbf A+\epsilon\mathbf H)
+=\Delta+\epsilon(cH_{11}+aH_{22}-bH_{12}-bH_{21})+O(\epsilon^2).
+$$
+
+The coefficient divided by $\Delta$ is $\operatorname{tr}(\mathbf A^{-1}\mathbf H)$. For the inverse map $\mathbf R(\mathbf B)=\mathbf B^{-1}$, differentiating the identity $\mathbf B\mathbf R(\mathbf B)=\mathbf I$ along this increment gives $\mathrm D\mathbf R(\mathbf B)(\mathbf H)=-\mathbf B^{-1}\mathbf H\mathbf B^{-1}$. Hence the scalar increment derivative at $\mathbf A$ is
+
+$$
+\mathrm D\phi(\mathbf A)(\mathbf H)
+=\operatorname{tr}(\mathbf A^{-1}\mathbf H)
+-\operatorname{tr}(\mathbf A^{-1}\mathbf H\mathbf A^{-1})
+=\operatorname{tr}\bigl((\mathbf A^{-1}-\mathbf A^{-2})\mathbf H\bigr).
+$$
+
+The last equality uses cyclicity of the trace, retaining the order of the inverse derivative before taking that trace. The entry-gradient convention uses $\mathrm D\phi(\mathbf A)(\mathbf H)=\sum_{i,j=1}^2G_{ij}H_{ij}$. Since $\mathbf A$ and its inverse powers are symmetric here,
+
+$$
+\mathbf G=\mathbf A^{-1}-\mathbf A^{-2}
+=\frac1\Delta\begin{bmatrix}c&-b\\-b&a\end{bmatrix}
+-\frac1{\Delta^2}\begin{bmatrix}c^2+b^2&-b(a+c)\\-b(a+c)&a^2+b^2\end{bmatrix}.
+$$
+
+**Step 6 — DOMAIN AND ALGEBRA.** Independent entry variations of $\mathbf B$ need not remain symmetric; they are used only in the open set with positive determinant near $\mathbf A$. The actual parameter variations preserve symmetry and have increment
+
+$$
+\mathbf H=\begin{bmatrix}\delta a&\delta b\\\delta b&\delta c\end{bmatrix}.
+$$
+
+Substitution into the increment derivative yields
+
+$$
+\mathrm D\phi(\mathbf A)(\mathbf H)
+=G_{11}\delta a+(G_{12}+G_{21})\delta b+G_{22}\delta c.
+$$
+
+Therefore the parameter gradient is $(G_{11},2G_{12},G_{22})^{\mathsf T}$. One unconstrained off-diagonal entry derivative alone would miss half the contribution of changing $b$. Symmetry constrains the allowed increments, rather than changing the inverse derivative rule.
+
+**Step 7 — CHECK.** At $b=0$ the original response separates as $\ln(a)+\ln(c)+1/a+1/c$, whose partial derivatives are $1/a-1/a^2$, zero, and $1/c-1/c^2$. These agree with the formulas. Interchanging $a$ and $c$ interchanges the first and third derivatives and preserves the second. At $\mathbf A=\mathbf I$ all three derivatives vanish. Finally, direct scalar differentiation of $\ln(ac-b^2)+(a+c)/(ac-b^2)$ and the independent matrix increment calculation give the same off-diagonal coefficient even for nonzero $b$.

@@ -2,6 +2,8 @@
 
 ## Unreleased — November 5, 2026
 
+- Add 20 fully worked mixed problems, bringing the collection to 48 main problems plus 24 reference exercises, with matrix/tensor, geometric, oscillatory, and singular-integral coverage.
+- Add maintained independent numerical checks and preserve all existing problem IDs.
 - Analytically audit all 52 existing exercises and the introductory/supporting references, with per-problem evidence linked from the beta review ledger.
 - Correct Tonelli's applicability at an infinite endpoint, add missing sufficient hypotheses beside reference formulas, and distinguish angular seam identifications from Jacobian degeneracies.
 - Expand the uniform oscillatory-tail argument and make the panel observation parameter's units explicit.

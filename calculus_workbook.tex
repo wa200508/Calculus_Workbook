@@ -59,8 +59,8 @@
 \vfill
 {\sffamily\large Alpha development edition 0.4\par}
 \medskip
-Notation, methods reference, fifty-two worked problems, and supporting tools.\\
-Alpha edition 0.4.0-alpha.7, October 18, 2026.\\
+Notation, methods reference, seventy-two worked problems, and supporting tools.\\
+Development manuscript after 0.4.0-alpha.7, November 5, 2026.\\
 The four-page calculus quick reference is included before the problem chapters
 and is also available separately.
 \end{titlepage}
@@ -1829,6 +1829,484 @@ Determine its derivative for finite real \(t\) and evaluate it at zero. The inte
 \textbf{Step 6 --- RESULT AND CHECK.} The requested derivative is \(\frac{d}{dt}(F(t))|_{t=0}=\pi/4-1/2\). Also \(F(0)=\pi/4\). The first boundary contribution is positive at zero, while the interior contribution is negative; both are needed to obtain the stated slope. Independent finite differences of the original integral verify the value.
 
 \textbf{Discussion.} A derivative of an integral can be tractable even when its parameter-dependent antiderivative is not. Endpoint motion and interior dependence produce distinct terms.
+\clearpage
+\section{D4-007 --- A finite value with an oscillating slope}
+\label{problem:D4-007}
+\markright{D4-007}
+{\small Hints: page~\pageref{hints:D4-007}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(x\ne0\) is an independent dimensionless real scalar. The dependent positive real scalar is
+
+\[
+f(x)=(1+x^2)^{\sin(1/x)},
+\]
+
+where the real power uses the logarithm of its positive base. Determine the continuous extension at zero, its derivative at zero, and whether the derivative of that extension is continuous there. Obtain an explicit derivative for \(x\ne0\) and justify any limiting conclusions independently of differentiating an error term.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The base \(1+x^2\) is positive on the entire real line. For \(x\ne0\), the exponent is real and the function is smooth on each component of the punctured line. The missing input is examined before the derivative is extended.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The exponent oscillates without a limit, but it multiplies a small logarithm after taking the logarithm of the function. A bound on that product controls the value and its difference quotient without requiring a limit of the exponent.
+
+\end{ChoiceStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} Define the real scalar \(L(x)=\sin(1/x)\ln(1+x^2)\). The inequality \(0\le\ln(1+x^2)\le x^2\) gives \(|L(x)|\le x^2\). Since \(f(x)=\exp(L(x))\) and \(|\exp(u)-1|\le\exp(|u|)|u|\) for real \(u\),
+
+\[
+|f(x)-1|\le\exp(x^2)x^2.
+\]
+
+Thus \(f(x)\to1\) and the unique continuous extension \(\widetilde f\) has \(\widetilde f(0)=1\). Its difference quotient obeys
+
+\[
+\left|\frac{\widetilde f(x)-\widetilde f(0)}{x}\right|
+\le\exp(x^2)|x|\longrightarrow0.
+\]
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} The extension is differentiable at zero with derivative zero. At a nonzero input, product and chain differentiation instead give
+
+\[
+\frac{d}{dx}\left(L(x)\right)
+=-\frac{\cos(1/x)}{x^2}\ln(1+x^2)
++\sin(1/x)\frac{2x}{1+x^2},
+\]
+
+and therefore
+
+\[
+\frac{d}{dx}\left(f(x)\right)
+=f(x)\left(
+\frac{2x\sin(1/x)}{1+x^2}
+-\frac{\ln(1+x^2)}{x^2}\cos(1/x)\right),\qquad x\ne0.
+\]
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN.} The coefficient \(\ln(1+x^2)/x^2\) tends to one, while \(f(x)\to1\) and the other bracketed term tends to zero. For positive integers \(n\), define \(x_n=1/(2\pi n)\) and \(y_n=1/((2n+1)\pi)\). Both tend to zero; their sine factors vanish and their cosine factors equal one and minus one respectively. The displayed derivative consequently tends to \(-1\) along \(x_n\) and to \(1\) along \(y_n\). The derivative of the extension is not continuous at zero.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK.} The bound on the original difference quotient proves the zero derivative directly, whereas the two sequences use an exact derivative formula at nonzero inputs. These are different limits and are consistent: a function can be differentiable at a point without its nearby derivatives converging to that derivative. In particular, differentiating the value estimate \(\widetilde f(x)=1+O(x^2)\) would not justify a derivative estimate here.
+\clearpage
+\section{D4-008 --- A coupled exponential constraint}
+\label{problem:D4-008}
+\markright{D4-008}
+{\small Hints: page~\pageref{hints:D4-008}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(x\) is an independent dimensionless real scalar. Near \((x,y)=(0,1)\), the dependent dimensionless real scalar \(y=g(x)\) satisfies
+
+\[
+x\exp(g(x))+g(x)\exp(x)=1,\qquad g(0)=1.
+\]
+
+Establish a unique smooth branch on some open interval containing zero. Determine its first two derivatives at zero and a quadratic approximation with a justified remainder as \(x\to0\). Check the approximation in the original constraint; no global branch formula is required.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Let \(F(x,y)=x\exp(y)+y\exp(x)-1\) on \(\mathbb R^2\). This real scalar function is smooth, \(F(0,1)=0\), and
+
+\[
+\frac{\partial}{\partial y}\left(F(x,y)\right)=x\exp(y)+\exp(x),
+\qquad
+\left.\frac{\partial}{\partial y}\left(F(x,y)\right)\right|_{x=0,y=1}=1.
+\]
+
+The implicit function theorem therefore supplies a unique smooth branch \(y=g(x)\) near \((0,1)\), with \(g(0)=1\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The constraint need not be solved explicitly. Its first derivative determines the slope through a nonzero coefficient of the height derivative. Differentiating the same identity again determines the curvature, with each dependence of that coefficient retained.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} With the other coordinate held fixed in each partial derivative,
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial x}\left(F(x,y)\right)&=\exp(y)+y\exp(x),\\
+\frac{\partial^2}{\partial x^2}\left(F(x,y)\right)&=y\exp(x),\\
+\frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}\left(F(x,y)\right)\right)
+&=\exp(y)+\exp(x),\\
+\frac{\partial^2}{\partial y^2}\left(F(x,y)\right)&=x\exp(y).
+\end{aligned}
+\]
+
+The first composition derivative is
+
+\[
+0=\exp(g(x))+g(x)\exp(x)
++\bigl(x\exp(g(x))+\exp(x)\bigr)\frac{d}{dx}\left(g(x)\right).
+\]
+
+Evaluation at zero gives
+
+\[
+0=e+1+\left.\frac{d}{dx}\left(g(x)\right)\right|_{x=0},
+\qquad
+\left.\frac{d}{dx}\left(g(x)\right)\right|_{x=0}=-(e+1).
+\]
+
+\textbf{Step 4 --- CALCULUS AND ALGEBRA.} A second differentiation of the composition includes two equal mixed terms. Writing them together gives
+
+\[
+\begin{aligned}
+0={}&g(x)\exp(x)
++2\bigl(\exp(g(x))+\exp(x)\bigr)\frac{d}{dx}\left(g(x)\right)\\
+&+x\exp(g(x))\left(\frac{d}{dx}\left(g(x)\right)\right)^2
++\bigl(x\exp(g(x))+\exp(x)\bigr)\frac{d^2}{dx^2}\left(g(x)\right).
+\end{aligned}
+\]
+
+At zero the coefficient of the squared slope vanishes and the coefficient of the second derivative is one. Hence
+
+\[
+\begin{aligned}
+0&=1-2(e+1)^2+\left.\frac{d^2}{dx^2}\left(g(x)\right)\right|_{x=0},\\
+\left.\frac{d^2}{dx^2}\left(g(x)\right)\right|_{x=0}&=2(e+1)^2-1.
+\end{aligned}
+\]
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN AND APPROXIMATION.} The smooth local branch has a bounded third derivative on a sufficiently small closed interval containing zero. Taylor's theorem on that interval gives
+
+\[
+g(x)=1-(e+1)x+\left((e+1)^2-\frac12\right)x^2+O(x^3),\qquad x\to0.
+\]
+
+The remainder statement concerns this local branch; no claim of global uniqueness or a globally nonzero height partial is needed.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK.} Let \(p(x)=1+\alpha x+\beta x^2\), where \(\alpha=-(e+1)\) and \(\beta=(e+1)^2-1/2\). Expanding the original constraint directly gives
+
+\[
+\begin{aligned}
+x\exp(p(x))&=ex+e\alpha x^2+O(x^3),\\
+p(x)\exp(x)&=1+(\alpha+1)x+(\beta+\alpha+1/2)x^2+O(x^3).
+\end{aligned}
+\]
+
+The coefficient of \(x\) in their sum is \(e+\alpha+1=0\), and the coefficient of \(x^2\) is \((e+1)\alpha+\beta+1/2=0\). Thus \(F(x,p(x))=O(x^3)\). By shrinking the neighborhood, the height partial stays at least \(1/2\) on the segment between \(p(x)\) and \(g(x)\). The mean value theorem then also gives \(|p(x)-g(x)|\le2|F(x,p(x))|=O(|x|^3)\), independently checking the approximation and its remainder order.
+\clearpage
+\section{D4-009 --- A response selected by a bounded maximum}
+\label{problem:D4-009}
+\markright{D4-009}
+{\small Hints: page~\pageref{hints:D4-009}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(t\in\mathbb R\) is an independent dimensionless real scalar. The dimensionless real coordinate \(x\) is restricted to \([0,1]\). Define the real scalar response
+
+\[
+M(t)=\max_{0\le x\le1}\bigl(tx-x^4\bigr).
+\]
+
+Determine the maximizing coordinate and a formula for \(M(t)\) for every real \(t\). Determine the first and second derivatives where they exist, and the orders of differentiability at every change in the maximizing coordinate's formula.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} For each fixed real \(t\), the objective \(q(x;t)=tx-x^4\) is continuous on the compact interval \([0,1]\), so a maximum exists. The optimizing coordinate may move or remain at a boundary as \(t\) changes.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The derivative in the bounded coordinate determines where the objective increases and decreases. Endpoint constraints must be imposed before the interior stationary coordinate is inserted into the value.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} Holding \(t\) fixed,
+
+\[
+\frac{\partial}{\partial x}\left(q(x;t)\right)=t-4x^3.
+\]
+
+For \(t\le0\) this is nonpositive on \([0,1]\) and the unique maximum is at zero. For \(t\ge4\) it is nonnegative there and the unique maximum is at one. When \(0<t<4\), the derivative changes sign from positive to negative at \(r(t)=(t/4)^{1/3}\), which lies strictly inside the interval. Consequently the maximizing coordinate is
+
+\[
+x_*(t)=
+\begin{cases}
+0,&t\le0,\\
+(t/4)^{1/3},&0<t<4,\\
+1,&t\ge4.
+\end{cases}
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} In the interior regime, \(t=4r(t)^3\), so \(tr(t)-r(t)^4=3r(t)^4\). Including both constrained regimes gives
+
+\[
+M(t)=
+\begin{cases}
+0,&t\le0,\\
+3(t/4)^{4/3},&0<t<4,\\
+t-1,&t\ge4.
+\end{cases}
+\]
+
+The neighboring values agree at zero and at four, where they are zero and three respectively.
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} Direct differentiation on the open regimes gives
+
+\[
+\frac{d}{dt}\left(M(t)\right)=
+\begin{cases}
+0,&t<0,\\
+(t/4)^{1/3},&0<t<4,\\
+1,&t>4.
+\end{cases}
+\]
+
+At zero, the right difference quotient is \(3h^{1/3}/4^{4/3}\) for \(h>0\) and tends to zero, matching the left slope. At four, both one-sided slopes are one. Thus the first derivative exists everywhere, with values zero and one at the respective transitions, and is continuous.
+
+On the open regimes the second derivative is
+
+\[
+\frac{d^2}{dt^2}\left(M(t)\right)=
+\begin{cases}
+0,&t<0,\\
+\dfrac1{12}(t/4)^{-2/3},&0<t<4,\\
+0,&t>4.
+\end{cases}
+\]
+
+\begin{DomainStep}
+\textbf{Step 6 --- DOMAIN.} At zero the right difference quotient of the first derivative equals \(h^{-2/3}/4^{1/3}\) and diverges, while the left quotient is zero. At four the one-sided derivatives of the first derivative are \(1/12\) and zero. Therefore \(M\) is continuously differentiable on \(\mathbb R\) but has no second derivative at either transition. It is smooth within each of the three open regimes.
+
+\end{DomainStep}
+\textbf{Step 7 --- CHECK.} Within the interior regime, differentiating the unsimplified maximizing value gives
+
+\[
+\frac{d}{dt}\left(tr(t)-r(t)^4\right)
+=r(t)+\bigl(t-4r(t)^3\bigr)\frac{d}{dt}\left(r(t)\right)=r(t).
+\]
+
+The coordinate-rate term cancels by the stationary equation. In the boundary regimes the same equality \(\frac{d}{dt}(M(t))=x_*(t)\) follows by direct differentiation of the boundary values. This independent representation checks the slope and its nonnegative monotone behavior, consistent with a maximum of affine functions of \(t\).
+\clearpage
+\section{D4-010 --- A matrix exponential across a change of regime}
+\label{problem:D4-010}
+\markright{D4-010}
+{\small Hints: page~\pageref{hints:D4-010}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(t\in\mathbb R\) is an independent dimensionless real scalar. The dependent real \(2\times2\) matrix and its real matrix exponential are
+
+\[
+\mathbf A(t)=\begin{bmatrix}0&1\\-t&0\end{bmatrix},\qquad
+\mathbf E(t)=\exp(\mathbf A(t))
+=\sum_{n=0}^{\infty}\frac{\mathbf A(t)^n}{n!}.
+\]
+
+Determine \(\mathbf E(t)\) and \(\frac{d}{dt}(\mathbf E(t))\) for positive, negative, and zero \(t\). Establish the connection between the formulas at zero and decide whether the scalar-inspired expression \(\exp(\mathbf A(t))\frac{d}{dt}(\mathbf A(t))\) gives the derivative.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Matrix multiplication gives \(\mathbf A(t)^2=-t\mathbf I\), where \(\mathbf I\) is the real \(2\times2\) identity. Thus \(\mathbf A(t)^{2n}=(-t)^n\mathbf I\) and \(\mathbf A(t)^{2n+1}=(-t)^n\mathbf A(t)\) for every nonnegative integer \(n\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Separating even and odd powers avoids choosing eigenvectors that change character at zero. The resulting two scalar series converge for every real parameter, so they also retain the limiting values needed to differentiate through the change of regime.
+
+\end{ChoiceStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} Define real scalar coefficient functions
+
+\[
+C(t)=\sum_{n=0}^{\infty}\frac{(-t)^n}{(2n)!},\qquad
+S(t)=\sum_{n=0}^{\infty}\frac{(-t)^n}{(2n+1)!}.
+\]
+
+Then
+
+\[
+\mathbf E(t)=C(t)\mathbf I+S(t)\mathbf A(t)
+=\begin{bmatrix}C(t)&S(t)\\-tS(t)&C(t)\end{bmatrix}.
+\]
+
+For \(t>0\), set \(r=\sqrt t\); for \(t<0\), set \(r=\sqrt{-t}\). The scalar series give
+
+\[
+(C(t),S(t))=
+\begin{cases}
+(\cos(r),\sin(r)/r),&t>0,\\
+(1,1),&t=0,\\
+(\cosh(r),\sinh(r)/r),&t<0.
+\end{cases}
+\]
+
+In particular, \(\mathbf E(0)=\begin{bmatrix}1&1\\0&1\end{bmatrix}\), also obtained by exponentiating the nilpotent matrix \(\mathbf A(0)\) directly.
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} Termwise differentiation of the everywhere convergent scalar power series gives
+
+\[
+\frac{d}{dt}\left(C(t)\right)=-\frac{S(t)}2.
+\]
+
+For the other coefficient, let \(V(t)=\frac{d}{dt}(S(t))\). Differentiating its trigonometric and hyperbolic forms, and using its series at zero, gives
+
+\[
+V(t)=
+\begin{cases}
+\dfrac{r\cos(r)-\sin(r)}{2r^3},&t>0,\quad r=\sqrt t,\\
+-1/6,&t=0,\\
+\dfrac{\sinh(r)-r\cosh(r)}{2r^3},&t<0,\quad r=\sqrt{-t}.
+\end{cases}
+\]
+
+For \(t\ne0\) these expressions also satisfy \(2tV(t)=C(t)-S(t)\). The product rule with its retained matrix order is
+
+\[
+\frac{d}{dt}\left(\mathbf E(t)\right)
+=-\frac{S(t)}2\mathbf I+V(t)\mathbf A(t)
++S(t)\begin{bmatrix}0&0\\-1&0\end{bmatrix}.
+\]
+
+Thus an explicit formula valid in all three regimes, with the piecewise scalar coefficients above, is
+
+\[
+\frac{d}{dt}\left(\mathbf E(t)\right)
+=\begin{bmatrix}
+-S(t)/2&V(t)\\
+-(C(t)+S(t))/2&-S(t)/2
+\end{bmatrix}.
+\]
+
+The lower-left equality uses \(-S(t)-tV(t)=-(C(t)+S(t))/2\), which holds by continuity also at zero. Therefore
+
+\[
+\left.\frac{d}{dt}\left(\mathbf E(t)\right)\right|_{t=0}
+=\begin{bmatrix}-1/2&-1/6\\-1&-1/2\end{bmatrix}.
+\]
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN.} Both coefficient series are entire functions of the real parameter. The apparent divisions by \(r\) or \(t\) introduce no genuine singularity: \(C(t)=1-t/2+O(t^2)\), \(S(t)=1-t/6+O(t^2)\), and their differentiated series supply the stated limits. Trigonometric and hyperbolic representations describe the same smooth matrix function on different sides of zero.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK: matrix order.} Direct multiplication gives
+
+\[
+\mathbf A(t)\frac{d}{dt}\left(\mathbf A(t)\right)
+=\begin{bmatrix}-1&0\\0&0\end{bmatrix},\qquad
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf A(t)
+=\begin{bmatrix}0&0\\0&-1\end{bmatrix}.
+\]
+
+The factors do not commute. At zero, the proposed scalar-inspired product is
+
+\[
+\mathbf E(0)\left.\frac{d}{dt}\left(\mathbf A(t)\right)\right|_{t=0}
+=\begin{bmatrix}-1&0\\-1&0\end{bmatrix},
+\]
+
+which differs from the actual derivative. An independent differentiation of the matrix power series has the ordered terms
+
+\[
+\frac{d}{dt}\left(\mathbf A(t)^n\right)
+=\sum_{j=0}^{n-1}\mathbf A(t)^j
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf A(t)^{n-1-j}.
+\]
+
+At zero, \(\mathbf A(0)^2=\mathbf0\) leaves only the terms of degrees one, two, and three in the exponential derivative. They are respectively the derivative of \(\mathbf A\), minus \(\mathbf I/2\), and \(\begin{bmatrix}0&-1/6\\0&0\end{bmatrix}\), reproducing the displayed derivative at zero. The identity \(C(t)^2+tS(t)^2=1\) also checks \(\det(\mathbf E(t))=1\) on both sides and at the transition.
+\clearpage
+\section{D4-011 --- A scalar response on symmetric positive matrices}
+\label{problem:D4-011}
+\markright{D4-011}
+{\small Hints: page~\pageref{hints:D4-011}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(a,b,c\) are independent dimensionless real parameters restricted so that the real symmetric matrix
+
+\[
+\mathbf A(a,b,c)=\begin{bmatrix}a&b\\b&c\end{bmatrix}
+\]
+
+is positive definite. Define the dependent real scalar
+
+\[
+f(a,b,c)=\ln(\det(\mathbf A(a,b,c)))
++\operatorname{tr}(\mathbf A(a,b,c)^{-1}),
+\]
+
+where the trace is the sum of the diagonal entries. State its open parameter domain and compute its three partial derivatives. Compare them with the entry derivatives obtained by allowing all four entries of a general real \(2\times2\) matrix to vary independently near \(\mathbf A(a,b,c)\). Explain the off-diagonal contribution when symmetry is imposed.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Write \(\Delta(a,b,c)=ac-b^2\) and \(s(a,b,c)=a+c\). The symmetric matrix is positive definite precisely on the open parameter domain
+
+\[
+\mathcal U=\{(a,b,c)\in\mathbb R^3:a>0,\ ac-b^2>0\}.
+\]
+
+These inequalities imply \(c>0\). On this domain the real logarithm and the inverse both exist, and small independent changes of any one parameter remain admissible.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The explicit inverse reduces the scalar response to two rational expressions and a logarithm. Comparing its derivatives with a matrix increment calculation then identifies exactly how the symmetry constraint combines entry derivatives.
+
+\end{ChoiceStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} The inverse and scalar response are
+
+\[
+\mathbf A(a,b,c)^{-1}=\frac1\Delta\begin{bmatrix}c&-b\\-b&a\end{bmatrix},
+\qquad
+f(a,b,c)=\ln(\Delta)+\frac{s}{\Delta}.
+\]
+
+The scalar derivatives of \(\Delta\) with respect to \(a,b,c\) are \(c,-2b,a\), and those of \(s\) are \(1,0,1\) respectively.
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} The logarithmic and quotient rules consequently give, with the other two parameters held fixed in each line,
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial a}\left(f(a,b,c)\right)
+&=\frac c\Delta+\frac1\Delta-\frac{sc}{\Delta^2},\\
+\frac{\partial}{\partial b}\left(f(a,b,c)\right)
+&=-\frac{2b}\Delta+\frac{2bs}{\Delta^2},\\
+\frac{\partial}{\partial c}\left(f(a,b,c)\right)
+&=\frac a\Delta+\frac1\Delta-\frac{sa}{\Delta^2}.
+\end{aligned}
+\]
+
+For example, \(\Delta-sc=ac-b^2-(a+c)c=-b^2-c^2\) simplifies the first result; the third simplifies in the corresponding way. Thus the real column parameter gradient is
+
+\[
+\nabla_{a,b,c}f(a,b,c)=
+\begin{bmatrix}
+c/\Delta-(c^2+b^2)/\Delta^2\\
+-2b/\Delta+2b(a+c)/\Delta^2\\
+a/\Delta-(a^2+b^2)/\Delta^2
+\end{bmatrix}.
+\]
+
+\textbf{Step 5 --- CALCULUS: independent entry increments.} To compare with unconstrained entries, let \(\mathbf B\) range over all real \(2\times2\) matrices in a neighborhood of the given positive definite \(\mathbf A\), with \(\det(\mathbf B)>0\). The real scalar extension is \(\phi(\mathbf B)=\ln(\det(\mathbf B))+\operatorname{tr}(\mathbf B^{-1})\). For a fixed real \(2\times2\) increment \(\mathbf H\), expansion of the determinant gives
+
+\[
+\det(\mathbf A+\epsilon\mathbf H)
+=\Delta+\epsilon(cH_{11}+aH_{22}-bH_{12}-bH_{21})+O(\epsilon^2).
+\]
+
+The coefficient divided by \(\Delta\) is \(\operatorname{tr}(\mathbf A^{-1}\mathbf H)\). For the inverse map \(\mathbf R(\mathbf B)=\mathbf B^{-1}\), differentiating the identity \(\mathbf B\mathbf R(\mathbf B)=\mathbf I\) along this increment gives \(\mathrm D\mathbf R(\mathbf B)(\mathbf H)=-\mathbf B^{-1}\mathbf H\mathbf B^{-1}\). Hence the scalar increment derivative at \(\mathbf A\) is
+
+\[
+\mathrm D\phi(\mathbf A)(\mathbf H)
+=\operatorname{tr}(\mathbf A^{-1}\mathbf H)
+-\operatorname{tr}(\mathbf A^{-1}\mathbf H\mathbf A^{-1})
+=\operatorname{tr}\bigl((\mathbf A^{-1}-\mathbf A^{-2})\mathbf H\bigr).
+\]
+
+The last equality uses cyclicity of the trace, retaining the order of the inverse derivative before taking that trace. The entry-gradient convention uses \(\mathrm D\phi(\mathbf A)(\mathbf H)=\sum_{i,j=1}^2G_{ij}H_{ij}\). Since \(\mathbf A\) and its inverse powers are symmetric here,
+
+\[
+\mathbf G=\mathbf A^{-1}-\mathbf A^{-2}
+=\frac1\Delta\begin{bmatrix}c&-b\\-b&a\end{bmatrix}
+-\frac1{\Delta^2}\begin{bmatrix}c^2+b^2&-b(a+c)\\-b(a+c)&a^2+b^2\end{bmatrix}.
+\]
+
+\begin{DomainStep}
+\textbf{Step 6 --- DOMAIN AND ALGEBRA.} Independent entry variations of \(\mathbf B\) need not remain symmetric; they are used only in the open set with positive determinant near \(\mathbf A\). The actual parameter variations preserve symmetry and have increment
+
+\[
+\mathbf H=\begin{bmatrix}\delta a&\delta b\\\delta b&\delta c\end{bmatrix}.
+\]
+
+Substitution into the increment derivative yields
+
+\[
+\mathrm D\phi(\mathbf A)(\mathbf H)
+=G_{11}\delta a+(G_{12}+G_{21})\delta b+G_{22}\delta c.
+\]
+
+Therefore the parameter gradient is \((G_{11},2G_{12},G_{22})^{\mathsf T}\). One unconstrained off-diagonal entry derivative alone would miss half the contribution of changing \(b\). Symmetry constrains the allowed increments, rather than changing the inverse derivative rule.
+
+\end{DomainStep}
+\textbf{Step 7 --- CHECK.} At \(b=0\) the original response separates as \(\ln(a)+\ln(c)+1/a+1/c\), whose partial derivatives are \(1/a-1/a^2\), zero, and \(1/c-1/c^2\). These agree with the formulas. Interchanging \(a\) and \(c\) interchanges the first and third derivatives and preserves the second. At \(\mathbf A=\mathbf I\) all three derivatives vanish. Finally, direct scalar differentiation of \(\ln(ac-b^2)+(a+c)/(ac-b^2)\) and the independent matrix increment calculation give the same off-diagonal coefficient even for nonzero \(b\).
 
 \chapter{Fields and geometric constraints}
 \markright{}
@@ -2211,6 +2689,568 @@ The quotient rule and numerator expansion produce
 
 \end{DomainStep}
 \textbf{Discussion.} The sensitivity of a matrix solve depends on the right-hand side as well as proximity to a singular matrix. Cancellation in one solution does not extend the inverse operator.
+\clearpage
+\section{D3-008 --- A quadratic response near loss of invertibility}
+\label{problem:D3-008}
+\markright{D3-008}
+{\small Hints: page~\pageref{hints:D3-008}.}\par\medskip
+
+\textbf{Objects and dependencies.} The positive integer \(n\) is fixed. The real symmetric positive-definite matrix \(\mathbf A\in\mathbb R^{n\times n}\) and real column vectors \(\mathbf b,\mathbf u\in\mathbb R^n\) are fixed. The independent real scalar parameter is \(t\). Define
+
+\[
+\mathbf B(t)=\mathbf A+t\mathbf u\mathbf u^{\mathsf T},\qquad
+s(t)=\mathbf b^{\mathsf T}\mathbf B(t)^{-1}\mathbf b
+\]
+
+where the inverse exists. Determine the full real invertibility domain and the first two derivatives of the real scalar response. Include \(\mathbf u=\mathbf0\). For \(\mathbf u\ne\mathbf0\), determine exactly when the scalar response has a finite extension at the excluded parameter, and explain what that extension says about solutions of \(\mathbf B(t)\mathbf y=\mathbf b\) there.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The matrix \(\mathbf A\) is invertible and its inverse is symmetric positive definite. Define the fixed real vector and three real scalars
+
+\[
+\mathbf v=\mathbf A^{-1}\mathbf u,\qquad
+\alpha=\mathbf u^{\mathsf T}\mathbf A^{-1}\mathbf u,\qquad
+c=\mathbf u^{\mathsf T}\mathbf A^{-1}\mathbf b,\qquad
+\beta=\mathbf b^{\mathsf T}\mathbf A^{-1}\mathbf b.
+\]
+
+If \(\mathbf u=\mathbf0\), then \(\mathbf B(t)=\mathbf A\) for every \(t\), \(s(t)=\beta\), and both requested derivatives are zero. From now on \(\mathbf u\ne\mathbf0\), so \(\alpha>0\) and \(\mathbf v\ne\mathbf0\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Multiplication by the changing term depends on only one scalar projection. Indeed,
+
+\[
+\mathbf B(t)\mathbf v
+=\mathbf A\mathbf A^{-1}\mathbf u+t\mathbf u\mathbf u^{\mathsf T}\mathbf A^{-1}\mathbf u
+=(1+t\alpha)\mathbf u.
+\]
+
+This identifies \(t_*=-1/\alpha\) as a singular parameter and suggests correcting the original inverse only along \(\mathbf v\mathbf v^{\mathsf T}\).
+
+\end{ChoiceStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} For \(t\ne t_*\), put
+
+\[
+\mathbf M(t)=\mathbf A^{-1}-\frac{t}{1+t\alpha}\mathbf v\mathbf v^{\mathsf T}.
+\]
+
+Symmetry gives \(\mathbf u^{\mathsf T}\mathbf A^{-1}=\mathbf v^{\mathsf T}\). Direct multiplication, with matrix order retained, gives
+
+\[
+\begin{aligned}
+\mathbf B(t)\mathbf M(t)
+&=\mathbf I+t\mathbf u\mathbf v^{\mathsf T}
+-\frac{t}{1+t\alpha}\bigl(\mathbf B(t)\mathbf v\bigr)\mathbf v^{\mathsf T}\\
+&=\mathbf I+t\mathbf u\mathbf v^{\mathsf T}-t\mathbf u\mathbf v^{\mathsf T}
+=\mathbf I.
+\end{aligned}
+\]
+
+A square matrix with a right inverse is invertible. Thus the full domain is \(\mathbb R\setminus\{t_*\}\), and the displayed \(\mathbf M(t)\) is its inverse. At \(t=t_*\) the nonzero null vector \(\mathbf v\) proves that the exclusion is necessary.
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} Contracting the inverse with \(\mathbf b\) on both sides gives
+
+\[
+s(t)=\beta-\frac{tc^2}{1+t\alpha}.
+\]
+
+The quotient derivative has numerator \((1+t\alpha)-t\alpha=1\), so
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(s(t)\right)&=-\frac{c^2}{(1+t\alpha)^2},\\
+\frac{d^2}{dt^2}\left(s(t)\right)
+&=-c^2(-2)\alpha(1+t\alpha)^{-3}
+=\frac{2\alpha c^2}{(1+t\alpha)^3}.
+\end{aligned}
+\]
+
+Both expressions are valid on each component of the invertibility domain. The first derivative is nonpositive on both components; the second changes sign across \(t_*\) when \(c\ne0\).
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN.} Rewriting the response isolates its pole:
+
+\[
+s(t)=\beta-\frac{c^2}{\alpha}
++\frac{c^2}{\alpha(1+t\alpha)}
+=\beta-\frac{c^2}{\alpha}+\frac{c^2}{\alpha^2(t-t_*)}.
+\]
+
+Consequently a finite extension exists exactly when \(c=0\), in which case \(s(t)=\beta\) throughout its original domain. The scalar extension does not restore the matrix inverse. At \(t_*\), any solution of \(\mathbf B(t_*)\mathbf y=\mathbf b\) must satisfy
+\(\mathbf v^{\mathsf T}\mathbf b=(\mathbf B(t_*)\mathbf v)^{\mathsf T}\mathbf y=0\), which is precisely \(c=0\). When this condition holds, \(\mathbf y_0=\mathbf A^{-1}\mathbf b\) is a solution because
+
+\[
+\mathbf B(t_*)\mathbf y_0=\mathbf b+t_*\mathbf u c=\mathbf b.
+\]
+
+Every solution is \(\mathbf y_0+\lambda\mathbf v\) for a real scalar \(\lambda\): the kernel equation gives \(\mathbf y=-t_*\mathbf v(\mathbf u^{\mathsf T}\mathbf y)\), so its null space is exactly the span of \(\mathbf v\). All these solutions have \(\mathbf b^{\mathsf T}\mathbf y=\beta\) since \(\mathbf b^{\mathsf T}\mathbf v=c=0\). If \(c\ne0\), the singular system is inconsistent and the response has a genuine pole.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK.} Take \(\mathbf A=\operatorname{diag}(2,3)\) and \(\mathbf u=[1,1]^{\mathsf T}\). Direct two-by-two inversion gives
+
+\[
+\mathbf B(t)^{-1}=\frac{1}{6+5t}
+\begin{bmatrix}3+t&-t\\-t&2+t\end{bmatrix},\qquad t\ne-6/5.
+\]
+
+For \(\mathbf b=[1,0]^{\mathsf T}\), this gives \(s(t)=(3+t)/(6+5t)\), with derivatives \(-9/(6+5t)^2\) and \(90/(6+5t)^3\). The general formulas give the same values from \(\alpha=5/6\), \(c=1/2\), \(\beta=1/2\). For \(\mathbf b=[2,-3]^{\mathsf T}\), \(c=0\) and direct contraction gives the constant \(s(t)=5\), including its finite extension at \(-6/5\).
+
+\textbf{Discussion.} A single scalar projection decides whether a singular matrix direction reaches a measured response. The measured quantity can extend even when the underlying inverse cannot.
+\clearpage
+\section{D3-009 --- Energy carried by coupled tensor components}
+\label{problem:D3-009}
+\markright{D3-009}
+{\small Hints: page~\pageref{hints:D3-009}.}\par\medskip
+
+\textbf{Objects and dependencies.} Work in a fixed orthonormal basis of \(\mathbb R^3\). All indices \(i,j,k,l\) range independently from one to three; every sum is explicit. The fixed real fourth-order tensor has components satisfying
+
+\[
+C_{ijkl}=C_{jikl}=C_{ijlk},\qquad C_{ijkl}=C_{klij}.
+\]
+
+The independent real scalar is \(t\) in an open interval \(J\). The real symmetric matrix \(\mathbf E(t)\) has twice continuously differentiable components \(E_{ij}(t)=E_{ji}(t)\). Define the real scalar energy
+
+\[
+W(t)=\frac12\sum_{i=1}^3\sum_{j=1}^3\sum_{k=1}^3\sum_{l=1}^3
+C_{ijkl}E_{ij}(t)E_{kl}(t).
+\]
+
+Find its first two derivatives, showing which symmetry combines the product-rule terms and how off-diagonal entries are counted. Check the calculation for an anisotropic tensor whose nonzero entries are \(C_{1111}=2\), \(C_{2222}=3\), \(C_{3333}=5\), and the four entries generated by the minor symmetries from each of \(C_{1212}=7\), \(C_{1313}=11\), \(C_{2323}=13\). For that check take
+
+\[
+\mathbf E(t)=\begin{bmatrix}t^2&t&0\\t&t&0\\0&0&1\end{bmatrix}.
+\]
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} All components are in the stated fixed basis, so no basis derivatives enter. Twice continuous differentiability on \(J\) permits two ordinary derivatives of each finite product and finite sum. Define the symmetric stress-like matrix by its real scalar components
+
+\[
+S_{ij}(t)=\sum_{k=1}^3\sum_{l=1}^3 C_{ijkl}E_{kl}(t),\qquad 1\le i,j\le3.
+\]
+
+The first minor symmetry gives \(S_{ji}(t)=S_{ij}(t)\). No positive-definiteness assumption on the fourth-order tensor is needed to differentiate the energy.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Both occurrences of \(\mathbf E(t)\) vary. Their product-rule terms are first retained separately; the major symmetry can then combine them by exchanging the two index pairs. Minor symmetry has the separate role of organizing the off-diagonal entries.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} Differentiation term by term gives
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(W(t)\right)
+=\frac12\sum_{i=1}^3\sum_{j=1}^3\sum_{k=1}^3\sum_{l=1}^3 C_{ijkl}
+\left(
+\frac{d}{dt}\left(E_{ij}(t)\right)E_{kl}(t)
++E_{ij}(t)\frac{d}{dt}\left(E_{kl}(t)\right)
+\right).
+\end{aligned}
+\]
+
+In the second sum, rename its four dummy indices by \((i,j,k,l)\mapsto(k,l,i,j)\). Then \(C_{klij}=C_{ijkl}\), so the renamed sum equals the first sum. Therefore
+
+\[
+\frac{d}{dt}\left(W(t)\right)
+=\sum_{i=1}^3\sum_{j=1}^3\sum_{k=1}^3\sum_{l=1}^3
+C_{ijkl}\frac{d}{dt}\left(E_{ij}(t)\right)E_{kl}(t)
+=\sum_{i=1}^3\sum_{j=1}^3 S_{ij}(t)\frac{d}{dt}\left(E_{ij}(t)\right).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Symmetry of \(\mathbf S(t)\) and \(\mathbf E(t)\) makes the final contraction
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(W(t)\right)
+={}&S_{11}(t)\frac{d}{dt}\left(E_{11}(t)\right)
++S_{22}(t)\frac{d}{dt}\left(E_{22}(t)\right)
++S_{33}(t)\frac{d}{dt}\left(E_{33}(t)\right)\\
+&+2S_{12}(t)\frac{d}{dt}\left(E_{12}(t)\right)
++2S_{13}(t)\frac{d}{dt}\left(E_{13}(t)\right)
++2S_{23}(t)\frac{d}{dt}\left(E_{23}(t)\right).
+\end{aligned}
+\]
+
+Thus a symmetric off-diagonal component cannot be counted only once in a full matrix contraction. The major symmetry, rather than either minor symmetry alone, was what combined the two product-rule sums.
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} Differentiating the four-index first-derivative expression once more gives
+
+\[
+\begin{aligned}
+\frac{d^2}{dt^2}\left(W(t)\right)
+=\sum_{i=1}^3\sum_{j=1}^3\sum_{k=1}^3\sum_{l=1}^3 C_{ijkl}
+\left(
+\frac{d^2}{dt^2}\left(E_{ij}(t)\right)E_{kl}(t)
++\frac{d}{dt}\left(E_{ij}(t)\right)\frac{d}{dt}\left(E_{kl}(t)\right)
+\right).
+\end{aligned}
+\]
+
+Equivalently, the major symmetry moves the second derivative onto \(E_{kl}(t)\) in the first term. If the calculation starts from the original energy instead, its four second-derivative terms consist of two equal acceleration terms and two equal products of first derivatives; the original factor \(1/2\) gives exactly the two terms above.
+
+\textbf{Step 6 --- CHECK.} For the specified anisotropic tensor, the four entries associated with the \(12\) shear are \(C_{1212}=C_{1221}=C_{2112}=C_{2121}=7\). Since \(E_{21}(t)=E_{12}(t)\), these contribute \((1/2)\,4\,7E_{12}(t)^2=14E_{12}(t)^2\). Expanding every nonzero group gives
+
+\[
+\begin{aligned}
+W(t)={}&E_{11}(t)^2+\frac32E_{22}(t)^2+\frac52E_{33}(t)^2\\
+&+14E_{12}(t)^2+22E_{13}(t)^2+26E_{23}(t)^2.
+\end{aligned}
+\]
+
+For the stated path this becomes
+
+\[
+W(t)=t^4+\frac{31}{2}t^2+\frac52,\qquad
+\frac{d}{dt}\left(W(t)\right)=4t^3+31t,\qquad
+\frac{d^2}{dt^2}\left(W(t)\right)=12t^2+31.
+\]
+
+Independently, the nonzero stress entries are \(S_{11}(t)=2t^2\), \(S_{22}(t)=3t\), \(S_{33}(t)=5\), and \(S_{12}(t)=S_{21}(t)=14t\). The expanded first contraction gives \(2t^2(2t)+3t+2(14t)=4t^3+31t\). In the second derivative, the product of first derivatives contributes \(8t^2+31\) and the term containing the second derivative contributes \(4t^2\), agreeing with the polynomial result.
+
+\begin{DomainStep}
+\textbf{Step 7 --- DOMAIN.} These are identities for every \(t\in J\). The tensor is fixed and the sums are finite, so no convergence interchange is required. If the components were only once differentiable, the first formula would remain justified but the stated hypotheses would no longer guarantee the second. A varying tensor or a varying basis would introduce additional derivatives not present in this problem.
+
+\end{DomainStep}
+\textbf{Discussion.} Tensor symmetries reduce work only after the roles of their index pairs have been identified. Off-diagonal multiplicities survive even when a matrix path is symmetric.
+\clearpage
+\section{D3-010 --- An anisotropic energy with turning principal directions}
+\label{problem:D3-010}
+\markright{D3-010}
+{\small Hints: page~\pageref{hints:D3-010}.}\par\medskip
+
+\textbf{Objects and dependencies.} The independent dimensionless real angle is \(t\). In a fixed orthonormal laboratory basis of \(\mathbb R^2\), define
+
+\[
+\mathbf R(t)=\begin{bmatrix}\cos t&-\sin t\\\sin t&\cos t\end{bmatrix},\qquad
+\mathbf D=\begin{bmatrix}a&0\\0&b\end{bmatrix},\qquad
+\mathbf Q(t)=\mathbf R(t)\mathbf D\mathbf R(t)^{\mathsf T},
+\]
+
+where the real scalars \(a,b>0\) are fixed. The columns of \(\mathbf R(t)\) give the actively rotating principal directions in the fixed laboratory basis. A fixed real column vector \(\mathbf x=[x_1,x_2]^{\mathsf T}\) defines the real scalar energy \(V(t)=\mathbf x^{\mathsf T}\mathbf Q(t)\mathbf x\). Find the matrix derivative and the energy derivative, retaining all product-rule terms. Check the equal-eigenvalue case and verify the energy derivative independently using the components of \(\mathbf x\) in the rotating principal directions.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Both \(\mathbf R(t)\) and \(\mathbf Q(t)\) are real \(2\times2\) matrices; \(\mathbf Q(t)\) is symmetric positive definite for every real \(t\). The vector \(\mathbf x\) is held fixed in laboratory coordinates. Define the constant real matrix
+
+\[
+\mathbf J=\begin{bmatrix}0&-1\\1&0\end{bmatrix},\qquad
+\mathbf J^{\mathsf T}=-\mathbf J.
+\]
+
+Component differentiation gives
+
+\[
+\frac{d}{dt}\left(\mathbf R(t)\right)
+=\begin{bmatrix}-\sin t&-\cos t\\\cos t&-\sin t\end{bmatrix}
+=\mathbf J\mathbf R(t),\qquad
+\frac{d}{dt}\left(\mathbf R(t)^{\mathsf T}\right)
+=-\mathbf R(t)^{\mathsf T}\mathbf J.
+\]
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The tensor is represented in the fixed laboratory basis while its principal directions turn. Consequently both rotation factors must be differentiated, with the transpose factor kept on the right.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} The matrix product rule gives
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(\mathbf Q(t)\right)
+&=\mathbf J\mathbf R(t)\mathbf D\mathbf R(t)^{\mathsf T}
+-\mathbf R(t)\mathbf D\mathbf R(t)^{\mathsf T}\mathbf J\\
+&=\mathbf J\mathbf Q(t)-\mathbf Q(t)\mathbf J.
+\end{aligned}
+\]
+
+The order cannot be collapsed by moving \(\mathbf D\) through a rotation when \(a\ne b\).
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Multiplying the rotation matrices explicitly gives
+
+\[
+\mathbf Q(t)=\begin{bmatrix}
+a\cos^2t+b\sin^2t&(a-b)\sin t\cos t\\
+(a-b)\sin t\cos t&a\sin^2t+b\cos^2t
+\end{bmatrix}.
+\]
+
+The identities \(2\sin t\cos t=\sin(2t)\) and \(\cos^2t-\sin^2t=\cos(2t)\) then yield
+
+\[
+\frac{d}{dt}\left(\mathbf Q(t)\right)
+=(a-b)\begin{bmatrix}-\sin(2t)&\cos(2t)\\\cos(2t)&\sin(2t)\end{bmatrix}.
+\]
+
+It is symmetric, as required for the derivative of a symmetric matrix, and has zero trace, consistent with the fixed trace \(a+b\).
+
+\endgroup
+\textbf{Step 5 --- CALCULUS.} Since \(\mathbf x\) is fixed, the energy derivative is
+
+\[
+\begin{aligned}
+\frac{d}{dt}\left(V(t)\right)
+&=\mathbf x^{\mathsf T}\frac{d}{dt}\left(\mathbf Q(t)\right)\mathbf x\\
+&=(a-b)\left(\sin(2t)(x_2^2-x_1^2)+2\cos(2t)x_1x_2\right).
+\end{aligned}
+\]
+
+The cross term contains a factor two because the two off-diagonal entries both contribute to the scalar contraction.
+
+\textbf{Step 6 --- CHECK.} The principal-direction coordinates of the same fixed vector are
+
+\[
+\mathbf y(t)=\mathbf R(t)^{\mathsf T}\mathbf x
+=\begin{bmatrix}x_1\cos t+x_2\sin t\\-x_1\sin t+x_2\cos t\end{bmatrix}.
+\]
+
+Differentiating these components gives \(\frac{d}{dt}(y_1(t))=y_2(t)\) and \(\frac{d}{dt}(y_2(t))=-y_1(t)\). Therefore the independent energy representation \(V(t)=ay_1(t)^2+by_2(t)^2\) gives
+
+\[
+\frac{d}{dt}\left(V(t)\right)=2(a-b)y_1(t)y_2(t).
+\]
+
+Expansion of their product gives
+\(y_1(t)y_2(t)=\tfrac12\sin(2t)(x_2^2-x_1^2)+\cos(2t)x_1x_2\), reproducing the laboratory-coordinate result. For \(\mathbf x=[1,0]^{\mathsf T}\) at \(t=\pi/4\), direct differentiation of \(a\cos^2t+b\sin^2t\) gives \(b-a\), including its sign.
+
+\begin{DomainStep}
+\textbf{Step 7 --- DOMAIN.} All entries are smooth for every real angle; there is no singular orientation. If \(a=b\), then \(\mathbf Q(t)=a\mathbf I\) and both derivatives vanish. The same energy derivative is zero for \(\mathbf x=\mathbf0\). The chosen active rotation fixes the sign: the vector coordinates in the rotating directions evolve by \(-\mathbf J\), while those directions themselves evolve by \(\mathbf J\).
+
+\end{DomainStep}
+\textbf{Discussion.} A tensor can have constant eigenvalues and a changing energy for a fixed vector. The changing orientation and the fixed-coordinate convention determine the derivative.
+\clearpage
+\section{D3-011 --- A direction traced by three competing components}
+\label{problem:D3-011}
+\markright{D3-011}
+{\small Hints: page~\pageref{hints:D3-011}.}\par\medskip
+
+\textbf{Objects and dependencies.} The independent real scalar \(t\) is dimensionless. In a fixed orthonormal basis of \(\mathbb R^3\), the dependent real column vectors are
+
+\[
+\mathbf v(t)=\begin{bmatrix}\exp t\\\sin t\\t\end{bmatrix},\qquad
+\mathbf n(t)=\frac{\mathbf v(t)}{\|\mathbf v(t)\|},
+\]
+
+where the norm is Euclidean. Find the first two derivatives of \(\mathbf n(t)\) for every finite real \(t\). Verify the two identities obtained by differentiating \(\mathbf n(t)^{\mathsf T}\mathbf n(t)=1\) once and twice. Evaluate the vector and both derivatives at zero, and identify the component of the second derivative along \(\mathbf n(t)\).
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The first component \(\exp t\) is strictly positive, so \(\mathbf v(t)\ne\mathbf0\) for every finite real \(t\). Its first two derivatives are
+
+\[
+\frac{d}{dt}\left(\mathbf v(t)\right)
+=\begin{bmatrix}\exp t\\\cos t\\1\end{bmatrix},\qquad
+\frac{d^2}{dt^2}\left(\mathbf v(t)\right)
+=\begin{bmatrix}\exp t\\-\sin t\\0\end{bmatrix}.
+\]
+
+Introduce three real scalar functions to keep the normalization calculation readable:
+
+\[
+\begin{aligned}
+r(t)&=\sqrt{\exp(2t)+\sin^2t+t^2}>0,\\
+p(t)&=\mathbf v(t)^{\mathsf T}\frac{d}{dt}\left(\mathbf v(t)\right)
+=\exp(2t)+\sin t\cos t+t,\\
+z(t)&=\frac{d}{dt}\left(p(t)\right)
+=2\exp(2t)+\cos(2t)+1.
+\end{aligned}
+\]
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Differentiating \(r(t)^2=\mathbf v(t)^{\mathsf T}\mathbf v(t)\) supplies the normalization derivatives without expanding three separate quotients twice. The two appearances of the vector give
+
+\[
+2r(t)\frac{d}{dt}\left(r(t)\right)=2p(t),\qquad
+\frac{d}{dt}\left(r(t)\right)=\frac{p(t)}{r(t)}.
+\]
+
+One further derivative gives \(\frac{d^2}{dt^2}(r(t))=z(t)/r(t)-p(t)^2/r(t)^3\).
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} The first normalized derivative is
+
+\[
+\frac{d}{dt}\left(\mathbf n(t)\right)
+=\frac{1}{r(t)}\frac{d}{dt}\left(\mathbf v(t)\right)
+-\frac{p(t)}{r(t)^3}\mathbf v(t).
+\]
+
+For the second derivative, the derivative of the first term contributes
+\(r(t)^{-1}\frac{d^2}{dt^2}(\mathbf v(t))-p(t)r(t)^{-3}\frac{d}{dt}(\mathbf v(t))\).
+The derivative of the negative second term contributes
+
+\[
+-\frac{z(t)}{r(t)^3}\mathbf v(t)
+-\frac{p(t)}{r(t)^3}\frac{d}{dt}\left(\mathbf v(t)\right)
++\frac{3p(t)^2}{r(t)^5}\mathbf v(t).
+\]
+
+Combining the two equal vector-derivative terms gives the complete result
+
+\[
+\begin{aligned}
+\frac{d^2}{dt^2}\left(\mathbf n(t)\right)
+={}&\frac{1}{r(t)}\frac{d^2}{dt^2}\left(\mathbf v(t)\right)
+-\frac{2p(t)}{r(t)^3}\frac{d}{dt}\left(\mathbf v(t)\right)\\
+&-\frac{z(t)}{r(t)^3}\mathbf v(t)
++\frac{3p(t)^2}{r(t)^5}\mathbf v(t).
+\end{aligned}
+\]
+
+Together with the explicit \(r(t),p(t),z(t)\) and vector derivatives above, these formulas specify all three components without implicit dependencies.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} The first identity follows directly from contraction:
+
+\[
+\mathbf n(t)^{\mathsf T}\frac{d}{dt}\left(\mathbf n(t)\right)
+=\frac{p(t)}{r(t)^2}-\frac{p(t)r(t)^2}{r(t)^4}=0.
+\]
+
+It also follows by differentiating the unit-length identity once. Differentiating that zero contraction once more gives
+
+\[
+\mathbf n(t)^{\mathsf T}\frac{d^2}{dt^2}\left(\mathbf n(t)\right)
+=-\left\|\frac{d}{dt}\left(\mathbf n(t)\right)\right\|^2.
+\]
+
+To check the second identity directly, the first-derivative formula gives
+
+\[
+\left\|\frac{d}{dt}\left(\mathbf n(t)\right)\right\|^2
+=\frac{\left\|\frac{d}{dt}(\mathbf v(t))\right\|^2}{r(t)^2}
+-\frac{p(t)^2}{r(t)^4}.
+\]
+
+On contracting the second derivative with \(\mathbf n(t)\), the last three terms combine to
+
+\[
+\frac{\mathbf v(t)^{\mathsf T}\frac{d^2}{dt^2}(\mathbf v(t))-z(t)}{r(t)^2}
++\frac{p(t)^2}{r(t)^4}.
+\]
+
+The product rule for \(p(t)\) says
+\(z(t)=\|\frac{d}{dt}(\mathbf v(t))\|^2+\mathbf v(t)^{\mathsf T}\frac{d^2}{dt^2}(\mathbf v(t))\),
+so this is precisely the negative squared length above. The component of the second derivative along the unit vector is therefore
+\(-\|\frac{d}{dt}(\mathbf n(t))\|^2\mathbf n(t)\).
+
+\endgroup
+\textbf{Step 5 --- CHECK.} At zero, \(r(0)=1\), \(p(0)=1\), and \(z(0)=4\). Substitution gives
+
+\[
+\mathbf n(0)=\begin{bmatrix}1\\0\\0\end{bmatrix},\qquad
+\left.\frac{d}{dt}\left(\mathbf n(t)\right)\right|_{t=0}
+=\begin{bmatrix}0\\1\\1\end{bmatrix},\qquad
+\left.\frac{d^2}{dt^2}\left(\mathbf n(t)\right)\right|_{t=0}
+=\begin{bmatrix}-2\\-2\\-2\end{bmatrix}.
+\]
+
+The two identities give zero and \(-2\) respectively, with the latter equal to the negative squared length of \([0,1,1]^{\mathsf T}\). Independently, a Taylor expansion gives \(r(t)=1+t+3t^2/2+O(t^3)\) and
+\(\mathbf n(t)=[1-t^2,\ t-t^2,\ t-t^2]^{\mathsf T}+O(t^3)\) componentwise, confirming both derivative vectors.
+
+\begin{DomainStep}
+\textbf{Step 6 --- DOMAIN.} The formulas apply for all finite real \(t\) because the normalizing denominator never vanishes. They describe derivatives with respect to the given parameter, not arc length. The inward component of the second derivative is forced by the unit-sphere constraint; its remaining component depends on how the direction is traversed.
+
+\end{DomainStep}
+\textbf{Discussion.} Normalization couples all components through the changing norm. A unit vector can have a nonzero second derivative even though its length remains constant.
+\clearpage
+\section{D3-012 --- A finite value left after a point-source subtraction}
+\label{problem:D3-012}
+\markright{D3-012}
+{\small Hints: page~\pageref{hints:D3-012}.}\par\medskip
+
+\textbf{Objects and dependencies.} The real scalar wavenumber \(k\) is fixed. The independent real radial distance is \(r>0\), and the complex scalar function is
+
+\[
+q(r;k)=\frac{\exp(-\mathrm{i}kr)-1}{r},\qquad \mathrm{i}^2=-1.
+\]
+
+Determine its continuous extension to \(r=0\), its derivative for \(r>0\), and its right radial derivative at zero. Then let \(\mathbf x\in\mathbb R^3\) be an independent real column vector and define the complex scalar field \(Q(\mathbf x;k)=q(\|\mathbf x\|;k)\), including the extended value at the origin. Decide whether this field is differentiable at \(\mathbf x=\mathbf0\) as a function of three real coordinates. Treat \(k=0\) separately and quantify the local expansion used in the argument.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The radial output is complex, with differentiation performed in the real scalar \(r\). For fixed real \(k\), integration of the elementary exponential on the unit interval gives the identity
+
+\[
+q(r;k)=-\mathrm{i}k\int_0^1\exp(-\mathrm{i}krs)\,ds,
+\qquad r>0.
+\]
+
+It is valid also when \(k=0\), because both sides then vanish. The finite-interval representation has no singular denominator.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The integral representation determines the limit and right derivative at zero directly. A Taylor expansion then identifies the first spatial term introduced by replacing \(r\) with a norm. These operations ask different differentiability questions.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} Continuity of the exponential on the compact \(s\) interval gives
+
+\[
+q(0;k)=-\mathrm{i}k.
+\]
+
+The quotient rule for positive \(r\) gives
+
+\[
+\frac{\partial}{\partial r}\left(q(r;k)\right)
+=\frac{-\mathrm{i}kr\exp(-\mathrm{i}kr)-\exp(-\mathrm{i}kr)+1}{r^2}
+=\frac{1-(1+\mathrm{i}kr)\exp(-\mathrm{i}kr)}{r^2}.
+\]
+
+Differentiating the finite-interval representation instead gives
+
+\[
+\frac{\partial}{\partial r}\left(q(r;k)\right)
+=-k^2\int_0^1s\exp(-\mathrm{i}krs)\,ds.
+\]
+
+The integrand and its derivative are continuous on a compact rectangle around any finite real \(r\). Differentiation under this finite integral is justified, including for its extension to \(r=0\). Hence the right radial derivative there is \(-k^2\int_0^1s\,ds=-k^2/2\).
+
+\begingroup\color{TrickPurple}
+\textbf{Step 4 --- TRICK AND ALGEBRA.} Taylor's formula for the complex exponential along a real argument gives, for \(r\ge0\),
+
+\[
+q(r;k)=-\mathrm{i}k-\frac{k^2}{2}r+\frac{\mathrm{i}k^3}{6}r^2+\mathcal R(r;k),
+\qquad |\mathcal R(r;k)|\le\frac{|k|^4r^3}{24}.
+\]
+
+The bound follows from the integral remainder for the cubic exponential polynomial: its fourth derivative along the real argument has magnitude one. Division by \(r>0\) leaves the displayed cubic bound, and continuity includes \(r=0\). In particular,
+
+\[
+Q(\mathbf x;k)-Q(\mathbf0;k)
+=-\frac{k^2}{2}\|\mathbf x\|
++\frac{\mathrm{i}k^3}{6}\|\mathbf x\|^2
++\mathcal R(\|\mathbf x\|;k).
+\]
+
+\endgroup
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN.} Suppose \(k\ne0\). Along the signed first coordinate \(h\), the distance is \(|h|\), so
+
+\[
+\frac{Q([h,0,0]^{\mathsf T};k)-Q(\mathbf0;k)}{h}
+=-\frac{k^2}{2}\frac{|h|}{h}+O(|h|),\qquad h\to0.
+\]
+
+The right limit is \(-k^2/2\) and the left limit is \(k^2/2\). The first coordinate partial derivative therefore fails to exist; in particular there is no real-linear total derivative from \(\mathbb R^3\) to \(\mathbb C\) at the origin. For \(\mathbf x\ne\mathbf0\), the ordinary radial chain rule does apply:
+
+\[
+\nabla_{\mathbf x}Q(\mathbf x;k)
+=\left.\frac{\partial}{\partial r}\left(q(r;k)\right)\right|_{r=\|\mathbf x\|}
+\frac{\mathbf x}{\|\mathbf x\|}.
+\]
+
+Its limits along opposite spatial rays point in opposite directions, consistent with the failed partial derivative.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK.} For \(k=0\), both \(q(r;0)\) and \(Q(\mathbf x;0)\) are identically zero after extension, so all their derivatives exist and vanish. For \(k\ne0\), the real part supplies an independent check:
+
+\[
+\operatorname{Re}q(r;k)=\frac{\cos(kr)-1}{r}
+=-\frac{2\sin^2(kr/2)}{r}.
+\]
+
+Its leading term is \(-k^2r/2\), which becomes a nonzero multiple of \(-\|\mathbf x\|\) in space. By contrast, the imaginary part is \(-\sin(kr)/r=-k+k^3r^2/6+O(r^4)\); its leading correction is quadratic in the spatial coordinates. The real cusp is enough to obstruct differentiability of the complete complex field.
+
+\textbf{Discussion.} Removing an infinite kernel value can produce a continuous field with a finite radial derivative while leaving a spatial cusp. A radial derivative at a boundary does not supply a linear derivative in every spatial direction.
 
 \section{Application references}
 
@@ -2582,6 +3622,433 @@ E(h)&=\int_0^1\frac{h^2}{(1+v^2)(\sqrt{1+v^2+h^2}+\sqrt{1+v^2})}\,dv,\\
 
 \end{DomainStep}
 \textbf{Discussion.} Near-singular parameter limits can concentrate a derivative in an arbitrarily small spatial region. The coordinate reduction makes that contribution visible.
+\clearpage
+\section{I4-007 --- An oblique ellipsoidal cap}
+\label{problem:I4-007}
+\markright{I4-007}
+{\small Hints: page~\pageref{hints:I4-007}.}\par\medskip
+
+\textbf{Objects and dependencies.} Fixed positive real lengths \(a,b,c\) and a fixed nonzero dimensionless real column vector \(\mathbf n=[n_1,n_2,n_3]^{\mathsf T}\) define an ellipsoid. The independent real offset \(h\) has units of length. For independent Cartesian coordinates \(x,y,z\), determine the real scalar volume
+
+\[
+V(h)=\iiint_{\substack{x^2/a^2+y^2/b^2+z^2/c^2\le1\\n_1x+n_2y+n_3z\ge h}}dx\,dy\,dz.
+\]
+
+Give a formula for every real \(h\), including the full-volume and zero-volume cases. Determine its first derivative, including at the two tangent-plane offsets, and its relation to the area of the planar section. The vector \(\mathbf n\) is not assumed to be a unit vector.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The ellipsoid is compact, and its cap has finite nonnegative volume for every real \(h\). Define the fixed real diagonal matrix \(\mathbf D=\operatorname{diag}(a,b,c)\) and the real column vectors \(\mathbf x=[x,y,z]^{\mathsf T}\) and \(\mathbf u=[u_1,u_2,u_3]^{\mathsf T}\). The coordinate map \(\mathbf x=\mathbf D\mathbf u\) has positive volume Jacobian \(abc\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Scaling removes the unequal semiaxes, while an orthogonal rotation can then remove the obliquity of the plane. The plane normal must undergo the scaling along with the ellipsoid; using \(\|\mathbf n\|\) alone would lose the dependence on its direction relative to the semiaxes.
+
+\end{ChoiceStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 3 --- ALGEBRA.} In the scaled coordinates the region satisfies
+
+\[
+\|\mathbf u\|^2\le1,\qquad
+\mathbf m^{\mathsf T}\mathbf u\ge h,\qquad
+\mathbf m=\mathbf D\mathbf n,
+\qquad \rho=\|\mathbf m\|=\sqrt{a^2n_1^2+b^2n_2^2+c^2n_3^2}>0.
+\]
+
+An orthogonal change of coordinates takes \(s=\mathbf m^{\mathsf T}\mathbf u/\rho\) as its last coordinate. Its absolute Jacobian is one. At fixed \(s\in[-1,1]\), the other two coordinates fill a disk of area \(\pi(1-s^2)\), and the plane condition becomes \(s\ge\zeta\), where \(\zeta=h/\rho\).
+
+\endgroup
+\textbf{Step 4 --- CALCULUS.} For \(-1<\zeta<1\), Fubini's theorem applies to the bounded indicator of the cap and gives
+
+\[
+\begin{aligned}
+V(h)&=\pi abc\int_\zeta^1(1-s^2)\,ds\\
+&=\pi abc\left(\frac23-\zeta+\frac{\zeta^3}{3}\right)
+=\frac{\pi abc}{3}(1-\zeta)^2(2+\zeta).
+\end{aligned}
+\]
+
+The factored last form avoids subtracting nearly equal constant and linear terms when the cap is small. The full result is
+
+\[
+V(h)=\begin{cases}
+4\pi abc/3,&h\le-\rho,\\
+\displaystyle\frac{\pi abc}{3}(1-h/\rho)^2(2+h/\rho),&-\rho<h<\rho,\\
+0,&h\ge\rho.
+\end{cases}
+\]
+
+At \(h=\rho\) the cap consists of one tangent point and has zero volume. At \(h=-\rho\) the inequality includes the whole ellipsoid.
+
+\begin{DomainStep}
+\textbf{Step 5 --- CALCULUS AND DOMAIN.} Differentiating inside the middle interval gives
+
+\[
+\frac{d}{dh}(V(h))=-\frac{\pi abc}{\rho}\left(1-\frac{h^2}{\rho^2}\right),
+\qquad |h|<\rho.
+\]
+
+Outside this interval the derivative is zero. The factored formula shows that the disappearing cap volume is quadratic in the distance to the tangent offset; by reflection the missing volume at the opposite endpoint is also quadratic. Thus the derivative exists and equals zero at both \(h=\pm\rho\). It is continuous everywhere. The interior second derivative \(2\pi abc h/\rho^3\) has nonzero one-sided limits at those endpoints, whereas the exterior second derivative is zero; the volume function is not twice differentiable there.
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK: physical sections.} Let \(A_{\rm sec}(h)\) be the ordinary planar area of the section at \(\mathbf n^{\mathsf T}\mathbf x=h\) for \(|h|<\rho\). Its planes move a perpendicular distance \(dh/\|\mathbf n\|\) when their offsets increase by \(dh\). Resolving Euclidean volume into sections therefore gives
+
+\[
+-\frac{d}{dh}(V(h))=\frac{A_{\rm sec}(h)}{\|\mathbf n\|},
+\qquad
+A_{\rm sec}(h)=\frac{\pi abc\|\mathbf n\|}{\rho}\left(1-\frac{h^2}{\rho^2}\right).
+\]
+
+The normal-length factor is required because \(\mathbf n\) need not be a unit vector. Independently, central symmetry implies \(V(h)+V(-h)=4\pi abc/3\), which the formula satisfies. For a sphere of radius \(a=b=c=R\) with a unit normal and cap height \(H=R-h\), it reduces to \(\pi H^2(3R-H)/3\) on \(0\le H\le2R\).
+
+\textbf{Discussion.} A linear scaling changes both the integration measure and the plane normal. The tangent cases are best checked with the cap volume itself, rather than by extending a formula beyond the region that produced it.
+\clearpage
+\section{I4-008 --- Two nearby poles off the real axis}
+\label{problem:I4-008}
+\markright{I4-008}
+{\small Hints: page~\pageref{hints:I4-008}.}\par\medskip
+
+\textbf{Objects and dependencies.} The integration coordinate \(x\ge0\) and the parameters \(a,b>0\) are dimensionless real scalars. Determine
+
+\[
+J(a,b)=\int_0^\infty\frac{1}{(x^2+a^2)(x^2+b^2)}\,dx
+\]
+
+in a form that remains well conditioned when \(a\) and \(b\) are nearly equal. Evaluate the coincident case directly by a parameter derivative, find \(\frac{\partial}{\partial a}(J(a,b))\) with \(b\) fixed, and describe the behavior as \(a\downarrow0\) with positive \(b\) fixed.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} For positive \(a,b\) the integrand is continuous at zero with value \(1/(a^2b^2)\). For \(x\ge1\) it is bounded by \(x^{-4}\), so the improper integral converges absolutely. No pole lies on the real integration interval.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Partial fractions reduce the unequal-parameter case to two familiar convergent integrals. Their combined expression should be simplified before evaluating nearby parameters. A parameter derivative handles the repeated denominator without dividing by a small parameter difference.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} For \(a\ne b\),
+
+\[
+\frac{1}{(x^2+a^2)(x^2+b^2)}
+=\frac{1}{b^2-a^2}\left(\frac{1}{x^2+a^2}-\frac{1}{x^2+b^2}\right).
+\]
+
+The coordinate \(x=a u\) gives \(\int_0^\infty(x^2+a^2)^{-1}dx=\pi/(2a)\) by the arctangent primitive. Consequently,
+
+\[
+J(a,b)=\frac{\pi}{2(b^2-a^2)}\left(\frac1a-\frac1b\right).
+\]
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA.} Factoring before cancellation gives
+
+\[
+J(a,b)=\frac{\pi(b-a)}{2ab(b-a)(b+a)}
+=\frac{\pi}{2ab(a+b)},\qquad a\ne b.
+\]
+
+The last expression involves only positive sums and products and avoids the subtraction of nearly equal terms. Its continuous value at \(a=b\) is \(\pi/(4a^3)\).
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: the coincident case.} To verify that value directly, let \(P(a)=\int_0^\infty(x^2+a^2)^{-1}dx\). On a compact parameter neighborhood \(0<m\le a\le M\), its derivative kernel is bounded in magnitude by \(2M/(x^2+m^2)^2\), which is integrable. Therefore
+
+\[
+\frac{d}{da}(P(a))=-2a\int_0^\infty\frac{1}{(x^2+a^2)^2}\,dx
+=-\frac{\pi}{2a^2},
+\]
+
+and the repeated-denominator integral is \(J(a,a)=\pi/(4a^3)\). Thus the stable expression applies for every positive pair, including equality.
+
+\begin{DomainStep}
+\textbf{Step 6 --- CALCULUS AND DOMAIN.} Local positive lower bounds on both parameters also dominate the derivative of the original integrand. With \(b\) held fixed,
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial a}(J(a,b))
+&=-2a\int_0^\infty\frac{1}{(x^2+a^2)^2(x^2+b^2)}\,dx\\
+&=-\frac{\pi}{2ab(a+b)}\left(\frac1a+\frac{1}{a+b}\right).
+\end{aligned}
+\]
+
+For instance, on \(m\le a,b\le M\) the first derivative kernel is bounded by \(2M/(x^2+m^2)^3\). This justifies the displayed interchange locally. As \(a\downarrow0\) with \(b>0\) fixed, \(J(a,b)\) behaves as \(\pi/(2ab^2)\) and diverges. At \(a=0\) the original kernel has a nonintegrable \(x^{-2}\) singularity at zero; the positive-parameter domain is essential.
+
+\end{DomainStep}
+\textbf{Step 7 --- CHECK.} The formula is symmetric in \(a,b\) and decreases strictly as either parameter increases, in agreement with the positive integrand. Scaling both parameters by \(\lambda>0\) and setting \(x=\lambda u\) multiplies the integral by \(\lambda^{-3}\), which the result respects. At equality, the partial derivative with \(b\) held fixed is \(-3\pi/(8a^4)\). The derivative of \(J(a,a)=\pi/(4a^3)\) along the diagonal is twice that value, since both parameters then vary. Direct quadrature checks unequal and nearly coincident cases without using the partial-fraction subtraction.
+
+\textbf{Discussion.} A removable singularity in a derived expression may be numerically damaging even when the original integral is regular. Algebraic simplification and an independent parameter calculation resolve different parts of that issue.
+\clearpage
+\section{I4-009 --- An accumulated matrix response}
+\label{problem:I4-009}
+\markright{I4-009}
+{\small Hints: page~\pageref{hints:I4-009}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(n\) is a fixed positive integer, \(\mathbf I_n\) is the real \(n\times n\) identity, and \(\mathbf A\) is a real symmetric positive-definite \(n\times n\) matrix. The real coordinate \(s\ge0\) is integrated entrywise. All quantities are dimensionless. Determine the real matrix
+
+\[
+\mathbf M(\mathbf A)=\int_0^\infty(\mathbf A+s\mathbf I_n)^{-2}\,ds,
+\]
+
+where the power means the matrix product of two inverses. Next let \(\mathbf A(t)\) be a continuously differentiable symmetric positive-definite matrix on an open real interval. At a fixed input \(t_0\), set \(\mathbf A_0=\mathbf A(t_0)\) and \(\mathbf H=\left.\frac{d}{dt}(\mathbf A(t))\right|_{t=t_0}\). Determine \(\left.\frac{d}{dt}(\mathbf M(\mathbf A(t)))\right|_{t=t_0}\), justify differentiating through the improper integral, and retain the order of factors without assuming that \(\mathbf A_0\) and \(\mathbf H\) commute.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Positive definiteness gives a smallest eigenvalue \(m_0>0\). For every real \(s\ge0\), define the symmetric resolvent \(\mathbf R(s)=(\mathbf A+s\mathbf I_n)^{-1}\). The norm used here is the matrix operator norm induced by the Euclidean vector norm. The spectral theorem gives
+
+\[
+\|\mathbf R(s)\|\le\frac{1}{m_0+s},\qquad
+\|\mathbf R(s)^2\|\le\frac{1}{(m_0+s)^2}.
+\]
+
+The latter bound is integrable over the half-line and bounds every matrix entry. The improper matrix integral is therefore well defined entrywise and in this norm.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The square of the inverse is the derivative of a simpler resolvent in the scalar integration coordinate. This gives a matrix primitive without choosing eigenvectors that might vary with the later perturbation parameter.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} Differentiating \((\mathbf A+s\mathbf I_n)\mathbf R(s)=\mathbf I_n\) with \(\mathbf A\) held fixed gives
+
+\[
+\mathbf R(s)+(\mathbf A+s\mathbf I_n)\frac{d}{ds}(\mathbf R(s))=\mathbf0,
+\qquad \frac{d}{ds}(\mathbf R(s))=-\mathbf R(s)^2.
+\]
+
+Hence for a real cutoff \(S>0\),
+
+\[
+\int_0^S\mathbf R(s)^2\,ds
+=\mathbf A^{-1}-(\mathbf A+S\mathbf I_n)^{-1}.
+\]
+
+The last inverse has norm at most \(1/(m_0+S)\) and tends to zero. It follows that
+
+\[
+\mathbf M(\mathbf A)=\mathbf A^{-1}.
+\]
+
+\textbf{Step 4 --- CALCULUS: ordered perturbation terms.} For the stated matrix path, set \(\mathbf R(t,s)=(\mathbf A(t)+s\mathbf I_n)^{-1}\). The inverse identity, differentiated with \(s\) fixed, gives
+
+\[
+\frac{\partial}{\partial t}(\mathbf R(t,s))
+=-\mathbf R(t,s)\frac{d}{dt}(\mathbf A(t))\mathbf R(t,s).
+\]
+
+At \(t=t_0\), abbreviate \(\mathbf R_0(s)=\mathbf R(t_0,s)\). The product rule then gives two distinct ordered terms:
+
+\[
+\left.\frac{\partial}{\partial t}(\mathbf R(t,s)^2)\right|_{t=t_0}
+=-\mathbf R_0(s)\mathbf H\mathbf R_0(s)^2
+-\mathbf R_0(s)^2\mathbf H\mathbf R_0(s).
+\]
+
+Moving \(\mathbf H\) through either resolvent is not justified in general.
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN: interchange on a parameter neighborhood.} Let \(m_*>0\) be the smallest eigenvalue of \(\mathbf A_0\). Continuity of the symmetric matrix path supplies a neighborhood of \(t_0\) on which \(\|\mathbf A(t)-\mathbf A_0\|<m_*/2\). The quadratic-form bound then gives the fixed lower eigenvalue bound \(m=m_*/2>0\) throughout this neighborhood. Continuous differentiability also gives a bound \(\|\frac{d}{dt}(\mathbf A(t))\|\le K\) on a smaller closed neighborhood. Consequently,
+
+\[
+\left\|\frac{\partial}{\partial t}(\mathbf R(t,s)^2)\right\|
+\le\frac{2K}{(m+s)^3},\qquad
+\int_0^\infty\frac{2K}{(m+s)^3}\,ds=\frac{K}{m^2}<\infty.
+\]
+
+This uniform domination justifies differentiation through the entrywise improper integral at \(t_0\). The argument is local in the positive-definite region. At a zero eigenvalue the corresponding scalar integral contains \(s^{-2}\) at zero; at a negative eigenvalue it has a pole at positive \(s\). Those matrices are outside the stated domain.
+
+\end{DomainStep}
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA AND CALCULUS.} With \(\mathbf H\) fixed during integration in \(s\),
+
+\[
+\frac{d}{ds}(\mathbf R_0(s)\mathbf H\mathbf R_0(s))
+=-\mathbf R_0(s)^2\mathbf H\mathbf R_0(s)
+-\mathbf R_0(s)\mathbf H\mathbf R_0(s)^2.
+\]
+
+Its value tends to zero as \(s\to\infty\), by the bound \(\|\mathbf H\|/(m_*+s)^2\). Integrating the ordered derivative terms therefore gives
+
+\[
+\left.\frac{d}{dt}(\mathbf M(\mathbf A(t)))\right|_{t=t_0}
+=-\mathbf A_0^{-1}\mathbf H\mathbf A_0^{-1}.
+\]
+
+\endgroup
+\textbf{Step 7 --- CHECK.} Differentiating the independently established identity \(\mathbf A(t)\mathbf M(\mathbf A(t))=\mathbf I_n\) also yields this ordered formula. In a fixed eigenbasis of \(\mathbf A_0\) with positive eigenvalues \(\lambda_i\), write \(\widetilde{\mathbf H}\) for the perturbation in that basis. The derivative's \((i,j)\) entry is \(-\widetilde H_{ij}/(\lambda_i\lambda_j)\), which shows why replacing the product by \(-\mathbf A_0^{-2}\mathbf H\) would fail for a noncommuting perturbation. For \(n=1\) the answer reduces to the scalar derivative of \(1/A_0\).
+
+\textbf{Discussion.} A scalar integration parameter can provide a useful matrix primitive. A later perturbation requires ordered product rules and a uniform spectral gap; scalar division rules do not supply either condition.
+\clearpage
+\section{I4-010 --- A Gaussian with a moving truncation}
+\label{problem:I4-010}
+\markright{I4-010}
+{\small Hints: page~\pageref{hints:I4-010}.}\par\medskip
+
+\textbf{Objects and dependencies.} The independent input \(t\in\mathbb R\), fixed \(L>0\), and integration coordinate \(x\) are dimensionless real scalars. The real scalar response is the oriented integral
+
+\[
+G(t;L)=\int_{-L}^{t}\exp(-(x-t)^2)\,dx.
+\]
+
+Determine its first two derivatives for all real \(t\), its limits as \(t\to\pm\infty\), and a quantitative bound on the error in either limiting value. Verify the first derivative both in the original coordinate and after a coordinate shift. In particular, the definition retains its orientation when \(t<-L\).
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} Both bounds are finite at every finite \(t\). The smooth kernel gives a finite oriented integral even when \(t<-L\); in that case the response is negative. The parameter \(L\) stays fixed throughout differentiation in \(t\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} A coordinate following the Gaussian center transfers all parameter dependence to one integration endpoint. The original-coordinate Leibniz rule gives a separate check on the cancellation between boundary motion and kernel motion.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS: a relative coordinate.} Set \(u=t-x\) with \(t\) held fixed during integration. At \(x=-L\) the new coordinate is \(u=t+L\), and at \(x=t\) it is zero; the derivative \(dx/du=-1\) reverses the bounds. Thus, with orientation preserved for either sign of \(t+L\),
+
+\[
+G(t;L)=\int_0^{t+L}\exp(-u^2)\,du
+=\frac{\sqrt\pi}{2}\operatorname{erf}(t+L),
+\qquad
+\operatorname{erf}(v)=\frac{2}{\sqrt\pi}\int_0^v\exp(-u^2)\,du.
+\]
+
+The displayed integral defines the real error function locally. The fundamental theorem and chain rule give
+
+\[
+\frac{d}{dt}(G(t;L))=\exp(-(t+L)^2),\qquad
+\frac{d^2}{dt^2}(G(t;L))=-2(t+L)\exp(-(t+L)^2).
+\]
+
+\textbf{Step 4 --- CALCULUS AND ALGEBRA: the original coordinate.} The parameter derivative of the kernel, with \(x\) fixed, is \(2(x-t)\exp(-(x-t)^2)\). The moving upper endpoint contributes one, and the fixed lower endpoint contributes zero. Hence
+
+\[
+\begin{aligned}
+\frac{d}{dt}(G(t;L))
+&=1+\int_{-L}^t2(x-t)\exp(-(x-t)^2)\,dx\\
+&=1-\left.\exp(-(x-t)^2)\right|_{x=-L}^{x=t}\\
+&=1-1+\exp(-(t+L)^2).
+\end{aligned}
+\]
+
+On a compact neighborhood of any finite input, all integration bounds lie in one bounded \(x\) interval; the kernel and its parameter derivatives are continuous there. The Leibniz rule is therefore valid locally for every real \(t\), including \(t=-L\) and the negatively oriented cases.
+
+\textbf{Step 5 --- CALCULUS: the Gaussian mass.} Let \(I=\int_0^\infty\exp(-u^2)\,du\). The integral is finite, for example by comparison with \(\exp(-u)\) for \(u\ge1\). Tonelli's theorem for the nonnegative product and polar coordinates in the first quadrant give
+
+\[
+I^2=\int_0^{\pi/2}\int_0^\infty\exp(-r^2)r\,dr\,d\theta
+=\frac\pi2\cdot\frac12=\frac\pi4.
+\]
+
+Since \(I>0\), it equals \(\sqrt\pi/2\). Oddness of the oriented integral in its upper bound consequently gives
+
+\[
+\lim_{t\to+\infty}G(t;L)=\frac{\sqrt\pi}{2},\qquad
+\lim_{t\to-\infty}G(t;L)=-\frac{\sqrt\pi}{2}.
+\]
+
+\begin{DomainStep}
+\textbf{Step 6 --- DOMAIN: controlled limiting errors.} For a positive real \(T\),
+
+\[
+0<\int_T^\infty\exp(-u^2)\,du
+\le\frac1T\int_T^\infty u\exp(-u^2)\,du
+=\frac{\exp(-T^2)}{2T}.
+\]
+
+Taking \(T=|t+L|>0\) gives
+
+\[
+\left|G(t;L)-\frac{\sqrt\pi}{2}\operatorname{sgn}(t+L)\right|
+\le\frac{\exp(-(t+L)^2)}{2|t+L|}.
+\]
+
+Here \(\operatorname{sgn}(v)\) is one for \(v>0\) and minus one for \(v<0\). The bound describes either distant limit and is not asserted at \(t=-L\), where \(G(-L;L)=0\) exactly.
+
+\end{DomainStep}
+\textbf{Step 7 --- CHECK.} The first derivative is strictly positive, and the second derivative changes sign at \(t=-L\). Both facts agree with the shifted integral: as its upper endpoint increases it accumulates a positive Gaussian, with its largest slope at the Gaussian center. The identity \(G(-L+v;L)=-G(-L-v;L)\) and the value \(\frac{d}{dt}(G(t;L))|_{t=-L}=1\) check both orientation and translation. Direct original-coordinate quadrature and finite differences provide a separate numerical check.
+
+\textbf{Discussion.} A moving integration bound can reverse the sign of an integral without invalidating its definition. Moving the coordinate with the kernel reveals a derivative that is partly concealed by cancellation in the original coordinate.
+\clearpage
+\section{I4-011 --- A circular aperture transform}
+\label{problem:I4-011}
+\markright{I4-011}
+{\small Hints: page~\pageref{hints:I4-011}.}\par\medskip
+
+\textbf{Objects and dependencies.} The fixed radius \(a>0\) and integration coordinate \(r\in[0,a]\) are real lengths; the angle \(\theta\in[0,2\pi]\) is dimensionless. The independent real transverse wavenumber \(q\) has units of inverse length. Determine the complex scalar area transform
+
+\[
+F(q;a)=\int_0^a\int_0^{2\pi}\exp(\mathrm i q r\cos\theta)r\,d\theta\,dr,
+\qquad \mathrm i^2=-1.
+\]
+
+Give a Bessel-function representation with the required functions defined locally. Resolve the value at \(q=0\), the dependence on the sign of \(q\), and an explicit error bound for a quadratic small-\(q\) approximation.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The aperture domain is compact and the complex integrand has magnitude one. The integral exists absolutely and has units of area, with \(|F(q;a)|\le\pi a^2\). The angular reflection that reverses \(\cos\theta\) conjugates the exponential, so the imaginary parts cancel. Thus \(F(q;a)\) is real and even in real \(q\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The exponential series converges absolutely and uniformly for \(0\le r\le a\) and \(0\le\theta\le2\pi\) at each fixed \(q\). Its angular moments select only even powers. This identifies the special function while also producing a regular formula at zero.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS: angular moments.} Odd cosine moments vanish by reflection. For nonnegative integers \(m\), integration by parts gives the recurrence for even moments and its iterated value:
+
+\[
+\int_0^{2\pi}(\cos\theta)^{2m}\,d\theta
+=2\pi\frac{(2m)!}{2^{2m}(m!)^2}.
+\]
+
+For \(m\ge1\) the recurrence multiplies the preceding even moment by \((2m-1)/(2m)\), starting from \(2\pi\) at \(m=0\). Integrating the exponential series termwise therefore gives
+
+\[
+\int_0^{2\pi}\exp(\mathrm i z\cos\theta)\,d\theta
+=2\pi J_0(z),\qquad
+J_0(z)=\sum_{m=0}^\infty\frac{(-1)^m(z/2)^{2m}}{(m!)^2}.
+\]
+
+This defines the real order-zero Bessel function for real \(z\). The real order-one function needed below is defined by the everywhere convergent series
+
+\[
+J_1(z)=\sum_{m=0}^\infty\frac{(-1)^m(z/2)^{2m+1}}{m!(m+1)!}.
+\]
+
+The series definitions agree with the angular representation in \href{https://dlmf.nist.gov/10.9}{NIST DLMF 10.9}. Only the locally stated series and angular calculation are needed here.
+
+\textbf{Step 4 --- CALCULUS AND ALGEBRA: radial integration.} Uniform convergence on the finite radial interval also permits termwise integration there:
+
+\[
+\begin{aligned}
+F(q;a)&=2\pi\int_0^a r J_0(qr)\,dr\\
+&=2\pi\sum_{m=0}^\infty
+\frac{(-1)^m q^{2m}a^{2m+2}}{2^{2m}(m!)^2(2m+2)}\\
+&=\pi a^2\sum_{m=0}^\infty
+\frac{(-1)^m(qa)^{2m}}{4^m m!(m+1)!}.
+\end{aligned}
+\]
+
+For \(q\ne0\) this is \(2\pi aJ_1(qa)/q\). The complete expression, including zero, is
+
+\[
+F(q;a)=\begin{cases}
+2\pi aJ_1(qa)/q,&q\ne0,\\
+\pi a^2,&q=0.
+\end{cases}
+\]
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN.} The series gives \(J_1(z)=z/2+O(z^3)\) at zero, so the quotient has the stated removable limit. The oddness of \(J_1\) makes this quotient even in signed \(q\), as the original integral requires. No absolute value needs to be inserted into the signed denominator. The finite-domain integral and its series are smooth for every real \(q\); differentiating under the integral is locally dominated by bounded powers of \(r\).
+
+\end{DomainStep}
+\begingroup\color{TrickPurple}
+\textbf{Step 6 --- TRICK: an explicit small-wavenumber error.} For every real \(v\), the Taylor estimate for the cosine gives \(|\cos v-1+v^2/2|\le v^4/24\). Also \(\cos v\ge1-v^2/2\), so the same remainder is nonnegative. Applying these inequalities to \(v=qr\cos\theta\) and integrating yields
+
+\[
+F(q;a)=\pi a^2-\frac{\pi a^4q^2}{8}+E(q;a),
+\]
+
+because \(\int_0^{2\pi}(\cos\theta)^2d\theta=\pi\) and \(\int_0^a r^3dr=a^4/4\). The fourth moment and radial integral give the rigorous bound
+
+\[
+\begin{aligned}
+0\le E(q;a)
+&\le\frac{q^4}{24}\left(\int_0^a r^5\,dr\right)
+\left(\int_0^{2\pi}(\cos\theta)^4\,d\theta\right)\\
+&=\frac{q^4}{24}\cdot\frac{a^6}{6}\cdot\frac{3\pi}{4}
+=\frac{\pi a^6q^4}{192}.
+\end{aligned}
+\]
+
+The inequality holds for all real \(q\), while it is a useful small-parameter estimate when \(|qa|\) is small. Its error relative to the aperture area is at most \((qa)^4/192\).
+
+\endgroup
+\textbf{Step 7 --- CHECK.} At zero the original integrand is one, so the answer is the geometric disk area. Independently, differentiating the original integral twice at zero gives minus the disk's \(x\)-coordinate second moment, \(-\pi a^4/4\). This agrees with the quadratic coefficient above. Scaling \(r=a u\) gives \(F(q;a)=a^2F(qa;1)\), also respected by the Bessel formula and the error bound. Direct angular/radial quadrature checks both signs of \(q\) and the oscillatory cases.
+
+\textbf{Discussion.} A special-function quotient can be regular at a parameter value where its displayed denominator vanishes. A series identifies that value, while a direct Taylor estimate controls the approximation without relying on a formal truncation.
 
 \chapter{Oscillatory and singular integrals}
 \markright{}
@@ -3083,6 +4550,486 @@ S(U;\ell)=2\pi\ell^2\left(T\sqrt{1+2T^2}+\frac{\operatorname{arsinh}(\sqrt2T)}{\
 
 \end{DomainStep}
 \textbf{Discussion.} A regular surface can have infinite total area. Coordinate smoothness and convergence of an integral over a noncompact domain answer different questions.
+\clearpage
+\section{I3-010 --- A squared aperture kernel}
+\label{problem:I3-010}
+\markright{I3-010}
+{\small Hints: page~\pageref{hints:I3-010}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(x\ge0\) is a real length coordinate and the integration variable. The independent real wavenumber \(a\) makes \(ax\) dimensionless. Define the real scalar
+
+\[
+Q(a)=\int_0^\infty\left(\frac{\sin(ax)}{x}\right)^2\,dx,
+\]
+
+with the integrand extended to \(a^2\) at \(x=0\). Evaluate \(Q(a)\) for every real \(a\), establish absolute convergence, and determine its differentiability in \(a\). Assess the integral of the formally differentiated kernel both at nonzero \(a\) and at zero. Give a bound for the error made by truncating the original integral at a finite positive length.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The kernel is nonnegative and has the finite value \(a^2\) at zero. Its two useful bounds are
+
+\[
+0\le\left(\frac{\sin(ax)}x\right)^2\le a^2,
+\qquad
+0\le\left(\frac{\sin(ax)}x\right)^2\le\frac1{x^2}\quad(x>0).
+\]
+
+The first controls the origin and the second controls infinity, so the integral is absolutely convergent for every fixed real \(a\). The output has units of inverse length and is even in \(a\). At \(a=0\) its value is zero directly.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} For nonzero \(a\), the coordinate \(u=|a|x\) preserves orientation and gives
+
+\[
+Q(a)=|a|C,\qquad C=\int_0^\infty\frac{\sin^2u}{u^2}\,du.
+\]
+
+A parameter derivative is unnecessary for this reduction. Integration by parts converts the squared kernel to the already justified oscillatory integral in I3-003.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} On a finite interval \(0<\delta<R\), the derivative of \(\sin^2u\) is \(\sin(2u)\) and a primitive of \(u^{-2}\) is \(-u^{-1}\). Thus
+
+\[
+\int_\delta^R\frac{\sin^2u}{u^2}\,du
+=\left.-\frac{\sin^2u}{u}\right|_{u=\delta}^{u=R}
++\int_\delta^R\frac{\sin(2u)}u\,du.
+\]
+
+The upper boundary term has absolute value at most \(1/R\). At the lower boundary, \(\sin^2\delta/\delta\le\delta\). Both terms vanish in the corresponding limits. The ordinary sine integral, whose convergence follows from the uniform tail estimate in I3-003, is \(\pi/2\). Therefore \(C=\pi/2\).
+
+\textbf{Step 4 --- RESULT AND ALGEBRA.} The complete answer and its derivatives away from zero are
+
+\[
+Q(a)=\frac\pi2|a|,\qquad
+\frac{d}{da}(Q(a))=
+\begin{cases}\pi/2,&a>0,\\-\pi/2,&a<0.\end{cases}
+\]
+
+The right difference quotient at zero is \(\pi/2\) and the left one is \(-\pi/2\). The function is continuous at zero but is not differentiable there.
+
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN: the parameter derivative.} For each fixed \(x>0\), differentiation of the kernel gives \(\sin(2ax)/x\), with limiting value \(2a\) at \(x=0\). If \(a\ne0\), its ordinary improper integral is \(\pi\operatorname{sgn}(a)/2\), agreeing with the evaluated derivative. Here \(\operatorname{sgn}(a)\) equals one for positive \(a\) and minus one for negative \(a\).
+
+This derivative integral is conditionally, rather than absolutely, convergent. Nevertheless, differentiation can be justified locally away from zero. For \(A>0\), integration by parts against a bounded cosine primitive gives
+
+\[
+\left|\int_A^\infty\frac{\sin(2ax)}x\,dx\right|
+\le\frac1{|a|A}.
+\]
+
+On a neighborhood of a fixed \(a_0\ne0\), \(|a|\ge|a_0|/2\), so these derivative tails converge uniformly. Finite-interval differentiation followed by this uniform tail limit is valid. At zero that argument fails: the pointwise kernel derivative is zero, but the integral has no two-sided derivative. There is also no integrable absolute domination of all derivative kernels near zero. For any fixed \(b>0\) and \(x\ge\pi/(4b)\), the admissible choice \(a=\pi/(4x)\) gives \(|\sin(2ax)|/x=1/x\).
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK.} For a finite positive cutoff \(L\), positivity and the tail bound give the directly usable estimate
+
+\[
+0\le Q(a)-\int_0^L\left(\frac{\sin(ax)}x\right)^2\,dx\le\frac1L.
+\]
+
+As a separate finite-interval check, the expansion \(\sin(ax)/x=a+O(a^3x^2)\) at fixed \(L\) gives the truncated integral \(a^2L+O(a^4L^3)\) as \(a\to0\). It has zero slope at zero, while the full integral has a cusp. The missing behavior comes from lengths comparable to \(1/|a|\), which leave every fixed finite integration interval.
+
+\textbf{Discussion.} Absolute convergence of an integral does not ensure absolute convergence of its parameter derivative. A nonzero-parameter interchange may be justified by oscillatory tails while failing at an exceptional parameter.
+\clearpage
+\section{I3-011 --- A logarithmic moment at an endpoint}
+\label{problem:I3-011}
+\markright{I3-011}
+{\small Hints: page~\pageref{hints:I3-011}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(x\in(0,1]\) is a dimensionless real integration coordinate. The requested output is the real scalar improper integral
+
+\[
+M=\int_0^1\frac{\ln^2x}{1+x}\,dx.
+\]
+
+Evaluate \(M\) in terms of a convergent series or a named constant whose definition is supplied. For each positive integer \(N\), obtain an explicit error bound for a finite approximation with \(N\) terms. Justify any interchange of an infinite sum and the improper integral, and give an independent integral representation with a controlled tail.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The logarithm is real on \(0<x\le1\), and the integrand is nonnegative. Its only unbounded endpoint is zero. Since \(1/(1+x)\le1\), convergence follows from \(\int_0^1\ln^2x\,dx=2\), evaluated below. No principal-value prescription is involved.
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} A finite geometric expansion retains an exact remainder, so the endpoint and truncation error can be controlled before an infinite sum is introduced. For a positive integer \(N\),
+
+\[
+\frac1{1+x}=\sum_{n=0}^{N-1}(-1)^nx^n+(-1)^N\frac{x^N}{1+x}.
+\]
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} For an integer \(n\ge0\), put \(x=\exp(-t)\), with inverse differential \(dx=-\exp(-t)\,dt\). The bounds reverse from \(t=\infty\) to zero, and
+
+\[
+\int_0^1x^n\ln^2x\,dx
+=\int_0^\infty t^2\exp(-(n+1)t)\,dt
+=\frac{2}{(n+1)^3}.
+\]
+
+For the last equality, integration by parts first replaces the integral by \(2/(n+1)\) times \(\int_0^\infty t\exp(-(n+1)t)\,dt\); a second integration by parts gives \(1/(n+1)^2\). All boundary terms vanish because the exponential dominates these fixed powers of \(t\).
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: exact remainder.} Multiplication of the finite identity by \(\ln^2x\) and integration give
+
+\[
+M=S_N+(-1)^NR_N,\qquad
+S_N=2\sum_{m=1}^N\frac{(-1)^{m-1}}{m^3},\qquad
+R_N=\int_0^1\frac{x^N\ln^2x}{1+x}\,dx.
+\]
+
+The remainder is positive and has the explicit bound
+
+\[
+0<R_N\le\int_0^1x^N\ln^2x\,dx=\frac{2}{(N+1)^3}.
+\]
+
+Thus an even partial sum underestimates \(M\) and an odd partial sum overestimates it. The displayed bound is valid for every positive integer \(N\).
+
+\endgroup
+\begin{DomainStep}
+\textbf{Step 5 --- DOMAIN: sum and integral.} In the open interval \(0<x<1\) the infinite geometric expansion converges pointwise. Its terms are absolutely summable after integration, because
+
+\[
+\sum_{n=0}^\infty\int_0^1|(-1)^nx^n\ln^2x|\,dx
+=2\sum_{m=1}^\infty\frac1{m^3}<\infty.
+\]
+
+The last series converges by comparison with \(\int_1^\infty t^{-3}\,dt\). Absolute integrability of the term series justifies exchanging the sum and integral. The single endpoint \(x=1\) does not affect that conclusion. Equivalently, the exact finite remainder tends to zero and establishes the same limit without an interchange theorem.
+
+Define the real constant \(\zeta(3)=\sum_{m=1}^\infty m^{-3}\). The even terms of this positive series sum to \(\zeta(3)/8\), and its odd terms sum to \(7\zeta(3)/8\). Their difference yields
+
+\[
+M=2\sum_{m=1}^\infty\frac{(-1)^{m-1}}{m^3}
+=\frac32\zeta(3)\approx1.8030853547.
+\]
+
+\end{DomainStep}
+\textbf{Step 6 --- CHECK: a different integral.} The same coordinate \(x=\exp(-t)\) applied directly to the original kernel, without expanding it, gives
+
+\[
+M=\int_0^\infty\frac{t^2}{\exp t+1}\,dt.
+\]
+
+This integrand is regular at zero and decays exponentially at infinity. For every real cutoff \(T>0\) its omitted positive tail satisfies
+
+\[
+0\le\int_T^\infty\frac{t^2}{\exp t+1}\,dt
+\le\int_T^\infty t^2\exp(-t)\,dt
+=\exp(-T)(T^2+2T+2).
+\]
+
+Quadrature of this nonsingular representation agrees with the alternating sum within the stated errors. Independently, \(1/2\le1/(1+x)\le1\) gives \(1\le M\le2\), consistent with the answer.
+
+\textbf{Discussion.} A logarithmically singular endpoint need not prevent a useful series calculation. Integrating absolute term bounds or retaining a finite exact remainder supplies the justification that a formal geometric expansion alone lacks.
+\clearpage
+\section{I3-012 --- A shrinking layer and its parameter derivative}
+\label{problem:I3-012}
+\markright{I3-012}
+{\small Hints: page~\pageref{hints:I3-012}.}\par\medskip
+
+\textbf{Objects and dependencies.} \(x\in[0,1]\) is a dimensionless real integration coordinate and \(a>0\) is an independent dimensionless real parameter. The real scalar function is
+
+\[
+F(a)=\int_0^1\frac{a}{x^2+a^2}\,dx.
+\]
+
+Determine \(F(a)\), its derivative for positive \(a\), and its limit as \(a\downarrow0\). Compare that limit with integrating the almost-everywhere pointwise limit of the kernel. For fixed real \(c>0\), quantify the contribution from \(0\le x\le ca\) when \(ca\le1\). Find a controlled expansion through the cubic term, and distinguish the continuous extension of \(F\) from the value obtained by setting \(a=0\) in the kernel before integration.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} For every fixed \(a>0\), the real kernel is smooth and positive throughout the compact interval. Its value at the endpoint \(x=0\) is \(1/a\), which is finite for that fixed parameter but grows as \(a\downarrow0\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} The coordinate \(u=x/a\) measures distance in units of the parameter. Its inverse is \(x=au\), with positive derivative \(a\) and transformed bounds zero to \(1/a\).
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS.} Substitution gives
+
+\[
+F(a)=\int_0^{1/a}\frac1{1+u^2}\,du
+=\arctan(1/a)=\frac\pi2-\arctan a,\qquad a>0.
+\]
+
+The second identity uses the principal real arctangent and positivity of \(a\). Therefore \(\lim_{a\downarrow0}F(a)=\pi/2\).
+
+\begin{DomainStep}
+\textbf{Step 4 --- DOMAIN: where the contribution lies.} At each fixed \(x>0\), the original kernel tends to zero. Its almost-everywhere pointwise limit has integral zero; the unbounded value at the single endpoint does not supply a nonzero area. To see the concentration explicitly, for fixed \(c>0\) and \(ca\le1\),
+
+\[
+\int_0^{ca}\frac{a}{x^2+a^2}\,dx=\arctan c.
+\]
+
+As \(a\downarrow0\) this shrinking interval retains the fraction \(2\arctan(c)/\pi\) of the limiting total. For any fixed \(0<\delta<1\), the complementary fixed interval obeys
+
+\[
+0\le\int_\delta^1\frac{a}{x^2+a^2}\,dx
+\le a\int_\delta^1\frac1{x^2}\,dx
+=a\left(\frac1\delta-1\right)\longrightarrow0.
+\]
+
+A fixed multiple \(ca\) does not capture all the mass: the limiting remainder beyond it is \(\pi/2-\arctan c\), which tends to zero only as \(c\to\infty\). An integrable majorant independent of \(a\) near zero is unavailable. For \(0<x<b\), maximization over \(0<a\le b\) includes \(a=x\) and gives the nonintegrable envelope \(1/(2x)\).
+
+\end{DomainStep}
+\textbf{Step 5 --- CALCULUS: differentiation at positive distance.} Around any fixed \(a_0>0\), the kernel and its \(a\) derivative are continuous on a compact rectangle with \(a\ge a_0/2\). Differentiation under the integral is justified there:
+
+\[
+\begin{aligned}
+\frac{d}{da}(F(a))
+&=\int_0^1\frac{x^2-a^2}{(x^2+a^2)^2}\,dx\\
+&=\left.-\frac{x}{x^2+a^2}\right|_{x=0}^{x=1}
+=-\frac1{1+a^2}.
+\end{aligned}
+\]
+
+This agrees with differentiation of the arctangent form. For each fixed \(x>0\) the derivative kernel tends to \(1/x^2\), whose integral diverges. Interchanging this limit and integral would therefore fail as well, even though \(\lim_{a\downarrow0}\frac{d}{da}(F(a))=-1\) is finite.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 6 --- ALGEBRA: a controlled local expansion.} For \(0\le t\le a\), the exact identity
+
+\[
+\frac1{1+t^2}=1-t^2+\frac{t^4}{1+t^2}
+\]
+
+gives
+
+\[
+F(a)=\frac\pi2-a+\frac{a^3}{3}+E(a),\qquad
+E(a)=-\int_0^a\frac{t^4}{1+t^2}\,dt,\qquad
+-\frac{a^5}{5}\le E(a)\le0.
+\]
+
+In particular this supplies a small-parameter approximation through the cubic term with an explicit error bound, rather than only a formal expansion.
+
+\endgroup
+\textbf{Step 7 --- CHECK AND EXTENSION.} The continuous scalar extension has \(F(0)=\pi/2\) and right derivative \(-1\), as the expansion shows. Assigning the kernel its pointwise value zero for \(a=0\) and \(x>0\) instead gives an integral equal to zero; any assigned value at \(x=0\) leaves that integral unchanged. That assignment does not produce the continuous extension of the integrated function. At the ordinary parameter value \(a=1\), the original integral and the formula both give \(\pi/4\), while the derivative gives \(-1/2\).
+
+\textbf{Discussion.} A parameter can move an order-one contribution into a region whose width tends to zero. The integrated function can have a smooth one-sided extension even when pointwise parameter substitution loses that contribution.
+\clearpage
+\section{I3-013 --- Two closed paths around an excluded axis}
+\label{problem:I3-013}
+\markright{I3-013}
+{\small Hints: page~\pageref{hints:I3-013}.}\par\medskip
+
+\textbf{Objects and dependencies.} Independent real dimensionless Cartesian coordinates satisfy \(x^2+y^2>0\). The real column vector field is
+
+\[
+\mathbf F(x,y,z)=\frac{1}{x^2+y^2}\begin{bmatrix}-y\\x\\0\end{bmatrix}.
+\]
+
+Fixed real parameters obey \(A,B,R>0\), \(d>R\), and \(z_0\in\mathbb R\). Two closed curves, parameterized by the real angle \(0\le\theta\le2\pi\), are
+
+\[
+\mathbf r_E(\theta)=\begin{bmatrix}A\cos\theta\\B\sin\theta\\z_0\end{bmatrix},
+\qquad
+\mathbf r_C(\theta)=\begin{bmatrix}d+R\cos\theta\\R\sin\theta\\z_0\end{bmatrix}.
+\]
+
+Both are counterclockwise as viewed from positive \(z\). Evaluate their oriented circulations \(\oint\mathbf F\cdot d\mathbf r\), compute the curl off the excluded axis, and determine why using that curl on the two spanning disks requires different conclusions. Verify each circulation by another calculation or a justified excision argument.
+\subsection*{Worked solution}
+
+\textbf{Step 1 --- SETUP.} The field is smooth wherever \(x^2+y^2>0\). Both stated curves remain in that domain. The ellipse encloses the excluded axis; the displaced circle and its planar disk have \(x\ge d-R>0\). Their positive boundary orientation corresponds to the upward normal \(\mathbf e_z=[0,0,1]^{\mathsf T}\).
+
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE.} Direct parameterization computes the ellipse's circulation without crossing the axis. The curl calculation then determines where Stokes' theorem can be used, while excision supplies a second argument for the path whose spanning disk meets the singularity.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS: the centered ellipse.} Its tangent vector is \([-A\sin\theta,B\cos\theta,0]^{\mathsf T}\), so
+
+\[
+\mathbf F(\mathbf r_E(\theta))\cdot\frac{d}{d\theta}(\mathbf r_E(\theta))
+=\frac{AB}{A^2\cos^2\theta+B^2\sin^2\theta}.
+\]
+
+The four quadrant contributions are equal. In the first quadrant the real coordinate \(t=\tan\theta\) has inverse derivative \(1/(1+t^2)\) and bounds zero to infinity. Hence
+
+\[
+\begin{aligned}
+\oint_E\mathbf F\cdot d\mathbf r
+&=4\int_0^\infty\frac{AB}{A^2+B^2t^2}\,dt\\
+&=4\lim_{T\to\infty}\arctan\left(\frac BA T\right)
+=2\pi.
+\end{aligned}
+\]
+
+The apparent improper bound comes from the angular coordinate; the original line integrand is continuous and bounded.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA AND DOMAIN: the curl.} Write \(D=x^2+y^2>0\). All \(z\) derivatives vanish, and
+
+\[
+\frac{\partial}{\partial x}\left(\frac{x}{D}\right)
+=\frac{y^2-x^2}{D^2},\qquad
+\frac{\partial}{\partial y}\left(-\frac{y}{D}\right)
+=\frac{y^2-x^2}{D^2}.
+\]
+
+Consequently \(\nabla\times\mathbf F=\mathbf0\) throughout its domain. The ellipse's full spanning disk contains a point on the excluded axis, so the field is not continuously differentiable on a neighborhood of that disk. Applying the classical Stokes theorem to that disk would violate its hypotheses.
+
+The displaced disk lies strictly in \(x>0\), where those hypotheses hold. Its curl flux is zero, so
+
+\[
+\oint_C\mathbf F\cdot d\mathbf r=0.
+\]
+
+\endgroup
+\textbf{Step 5 --- CHECK: a single angle on the displaced path.} Direct parameterization gives
+
+\[
+\mathbf F(\mathbf r_C(\theta))\cdot\frac{d}{d\theta}(\mathbf r_C(\theta))
+=\frac{R^2+dR\cos\theta}{d^2+R^2+2dR\cos\theta}.
+\]
+
+Because \(d+R\cos\theta>0\), one continuous real angle is
+
+\[
+\phi(\theta)=\arctan\left(\frac{R\sin\theta}{d+R\cos\theta}\right).
+\]
+
+The quotient inside it has derivative \((dR\cos\theta+R^2)/(d+R\cos\theta)^2\). Multiplication by the arctangent derivative gives exactly the displayed line integrand. Therefore its integral is \(\phi(2\pi)-\phi(0)=0\), independently confirming the disk calculation.
+
+\textbf{Step 6 --- CHECK: excision and orientation.} Choose a real radius \(0<\rho<\min(A,B)\) and remove the centered disk of radius \(\rho\) from the ellipse's interior at height \(z_0\). On the remaining surface the field is smooth and its curl is zero. The induced boundary consists of the outer ellipse counterclockwise and the inner circle clockwise. Stokes' theorem gives
+
+\[
+0=\oint_E\mathbf F\cdot d\mathbf r
+-\oint_{\rho\text{ circle, counterclockwise}}\mathbf F\cdot d\mathbf r.
+\]
+
+On that centered circle the line integrand equals one, so its counterclockwise circulation is \(2\pi\). This recovers the ellipse's value. Reversing either curve's orientation negates its circulation.
+
+\textbf{Discussion.} A zero curl is a local statement on the field's domain. Computing circulation from a spanning surface also requires that the entire surface avoid excluded sources, with every boundary component oriented consistently.
+\clearpage
+\section{I3-014 --- A source inside a triangular panel}
+\label{problem:I3-014}
+\markright{I3-014}
+{\small Hints: page~\pageref{hints:I3-014}.}\par\medskip
+
+\textbf{Objects and dependencies.} Independent real dimensionless coordinates describe the triangle \(T=\{(x,y):0\le y\le x\le1\}\). A fixed interior source is the real column vector \(\mathbf p=[x_0,y_0]^{\mathsf T}\), with \(0<y_0<x_0<1\). Evaluate the real scalar nonnegative improper integral
+
+\[
+K(x_0,y_0)=\iint_T\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}\,dx\,dy.
+\]
+
+Partition the panel around its source and specify a map, domain, and Jacobian for each part. Reduce the integral to nonsingular one-dimensional integrals and obtain an explicit real expression. Justify the treatment of the source and provide an independent check; merely applying the vertex map from I3-007 to the whole panel is insufficient.
+\subsection*{Worked solution}
+
+\begin{DomainStep}
+\textbf{Step 1 --- SETUP AND DOMAIN.} The source is strictly inside the panel, and the integrand is nonnegative away from it. The portion of the panel inside a disk of real radius \(\epsilon>0\) centered at the source contributes at most
+
+\[
+\int_0^{2\pi}\int_0^\epsilon\frac1r\,r\,dr\,d\theta=2\pi\epsilon.
+\]
+
+The area singularity is therefore locally integrable. Away from that disk the integrand is continuous on a compact set, so the complete integral is finite. Nonnegativity permits monotone exhaustions of the source, without a signed cancellation prescription.
+
+\end{DomainStep}
+\begin{ChoiceStep}
+\textbf{Step 2 --- CHOICE: a source-centered partition.} The counterclockwise vertices are
+
+\[
+\mathbf v_1=\begin{bmatrix}0\\0\end{bmatrix},\quad
+\mathbf v_2=\begin{bmatrix}1\\0\end{bmatrix},\quad
+\mathbf v_3=\begin{bmatrix}1\\1\end{bmatrix},\quad
+\mathbf v_4=\mathbf v_1.
+\]
+
+Joining \(\mathbf p\) to these vertices creates three subtriangles with disjoint interiors. On subtriangle \(j\), for \(j=1,2,3\), define fixed real columns \(\mathbf a_j=\mathbf v_j-\mathbf p\) and \(\mathbf e_j=\mathbf v_{j+1}-\mathbf v_j\). Independent real coordinates \(0<u\le1\), \(0\le v\le1\) give the map
+
+\[
+\mathbf r_j(u,v)=\mathbf p+u(\mathbf a_j+v\mathbf e_j).
+\]
+
+The source corresponds to the collapsed edge \(u=0\), while \(u=1\) traces the outer edge. For \(u>0\) the map is one-to-one in the subtriangle interior.
+
+\end{ChoiceStep}
+\textbf{Step 3 --- CALCULUS: all three Jacobians.} The two Jacobian columns are \(\mathbf a_j+v\mathbf e_j\) and \(u\mathbf e_j\). Define the fixed positive scalar \(d_j=\det(\mathbf a_j,\mathbf e_j)\). Then
+
+\[
+\det\mathbf J_j(u,v)
+=u\det(\mathbf a_j+v\mathbf e_j,\mathbf e_j)=ud_j.
+\]
+
+The actual edge data and determinants are
+
+\[
+\begin{aligned}
+\mathbf a_1&=\begin{bmatrix}-x_0\\-y_0\end{bmatrix},&
+\mathbf e_1&=\begin{bmatrix}1\\0\end{bmatrix},&d_1&=y_0>0,\\
+\mathbf a_2&=\begin{bmatrix}1-x_0\\-y_0\end{bmatrix},&
+\mathbf e_2&=\begin{bmatrix}0\\1\end{bmatrix},&d_2&=1-x_0>0,\\
+\mathbf a_3&=\begin{bmatrix}1-x_0\\1-y_0\end{bmatrix},&
+\mathbf e_3&=\begin{bmatrix}-1\\-1\end{bmatrix},&d_3&=x_0-y_0>0.
+\end{aligned}
+\]
+
+Here \(\mathbf J_j\) is a real \(2\times2\) matrix. Positivity of all three determinants records that the source lies to the left of each oriented outer edge.
+
+\begingroup\color{AlgebraBlue}
+\textbf{Step 4 --- ALGEBRA: cancellation at the source.} Since \(u>0\),
+
+\[
+\|\mathbf r_j(u,v)-\mathbf p\|=u\|\mathbf a_j+v\mathbf e_j\|.
+\]
+
+On a truncated subtriangle \(u\ge\delta>0\), the ordinary change-of-variables theorem applies. Multiplication by its area Jacobian cancels the radial factor:
+
+\[
+K_j=\lim_{\delta\downarrow0}\int_\delta^1\int_0^1
+\frac{ud_j}{u\|\mathbf a_j+v\mathbf e_j\|}\,dv\,du
+=d_j\int_0^1\frac1{\|\mathbf a_j+v\mathbf e_j\|}\,dv.
+\]
+
+The removed sets shrink to the source, and the nonnegative integrals increase to the full subtriangle integrals. Boundaries shared by the pieces have zero area, so \(K=K_1+K_2+K_3\).
+
+\endgroup
+\textbf{Step 5 --- CALCULUS: explicit nonsingular edge integrals.} Write the fixed positive edge length as \(L_j=\|\mathbf e_j\|\) and the perpendicular source-to-edge distance as \(h_j=d_j/L_j>0\). The tangential coordinate of the initial edge point is \(t_j=\mathbf a_j\cdot\mathbf e_j/L_j\). Orthogonal decomposition gives
+
+\[
+\|\mathbf a_j+v\mathbf e_j\|
+=\sqrt{h_j^2+(t_j+L_jv)^2}.
+\]
+
+The real coordinate \(s=t_j+L_jv\) has derivative \(L_j>0\), so
+
+\[
+K_j=h_j\left(
+\operatorname{arsinh}\left(\frac{t_j+L_j}{h_j}\right)
+-\operatorname{arsinh}\left(\frac{t_j}{h_j}\right)\right).
+\]
+
+These formulas are real and finite because every \(h_j\) is strictly positive. In fact \(\|\mathbf a_j+v\mathbf e_j\|\ge h_j\), so each original edge integrand \(d_j/\|\mathbf a_j+v\mathbf e_j\|\) is bounded above by \(L_j\) on its closed interval.
+
+\textbf{Step 6 --- RESULT.} Substituting the three edge data gives
+
+\[
+\begin{aligned}
+K_1&=y_0\left(\operatorname{arsinh}\left(\frac{1-x_0}{y_0}\right)
++\operatorname{arsinh}\left(\frac{x_0}{y_0}\right)\right),\\
+K_2&=(1-x_0)\left(\operatorname{arsinh}\left(\frac{1-y_0}{1-x_0}\right)
++\operatorname{arsinh}\left(\frac{y_0}{1-x_0}\right)\right).
+\end{aligned}
+\]
+
+For the diagonal edge define fixed real scalars \(d=x_0-y_0>0\) and \(s=x_0+y_0\). Its contribution is
+
+\[
+K_3=\frac d{\sqrt2}\left(\operatorname{arsinh}\left(\frac{s}{d}\right)
++\operatorname{arsinh}\left(\frac{2-s}{d}\right)\right),
+\qquad K(x_0,y_0)=K_1+K_2+K_3.
+\]
+
+The inverse hyperbolic sine here is its real branch, \(\operatorname{arsinh}(w)=\ln(w+\sqrt{1+w^2})\). No complex branch choice is needed. The whole answer is positive and obeys \(K\le L_1+L_2+L_3=2+\sqrt2\), from the edge-integrand bounds.
+
+\textbf{Step 7 --- CHECK: independent Cartesian integration.} For every fixed \(x\ne x_0\), direct integration in \(y\) over \(0\le y\le x\) gives
+
+\[
+G(x)=\operatorname{arsinh}\left(\frac{x-y_0}{|x-x_0|}\right)
++\operatorname{arsinh}\left(\frac{y_0}{|x-x_0|}\right).
+\]
+
+Thus \(K=\int_0^1G(x)\,dx\). The logarithmic divergence at \(x=x_0\) is integrable; it is not evaluated as a finite inner integral there. For stable numerical comparison, use \(x=x_0-x_0t^2\) on the left and \(x=x_0+(1-x_0)t^2\) on the right, with \(0\le t\le1\). Both resulting integrands extend to zero at \(t=0\), since \(t|\ln t|\to0\). This Cartesian reduction is independent of the three source-edge maps and agrees with their answer.
+
+Reflection \((x,y)\mapsto(1-y,1-x)\) also preserves the triangle and distance, so \(K(x_0,y_0)=K(1-y_0,1-x_0)\). The explicit formula exchanges \(K_1,K_2\) and leaves \(K_3\) unchanged under that reflection. At the centroid \((x_0,y_0)=(2/3,1/3)\) it simplifies to
+
+\[
+K\left(\frac23,\frac13\right)
+=\frac23\left(\operatorname{arsinh}(2)+\operatorname{arsinh}(1)\right)
++\frac{\sqrt2}{3}\operatorname{arsinh}(3).
+\]
+
+\textbf{Discussion.} An interior source requires several maps with the source at their common collapsed edge. Their positive Jacobians cancel the weak radial singularity while retaining the distinct geometry of each outer edge.
 
 \section{Application references}
 
@@ -5477,6 +7424,51 @@ Problem and worked solution: page~\pageref{problem:D4-006}.
 \item The derivative therefore has two boundary terms and an integral term.
 \item At zero the remaining rational integral can be decomposed as \(s^2/(1+s^2)=1-1/(1+s^2)\).
 \end{enumerate}
+\subsection*{D4-007 --- A finite value with an oscillating slope}
+\label{hints:D4-007}
+Problem and worked solution: page~\pageref{problem:D4-007}.
+
+\begin{enumerate}
+\item The logarithm of the function is a bounded oscillatory factor times \(\ln(1+x^2)\).
+\item Estimate the function's difference quotient at zero before examining derivatives at nonzero inputs.
+\item In the nonzero derivative, \(\ln(1+x^2)/x^2\) tends to one; choose sequences on which \(\cos(1/x)\) equals one and minus one.
+\end{enumerate}
+\subsection*{D4-008 --- A coupled exponential constraint}
+\label{hints:D4-008}
+Problem and worked solution: page~\pageref{problem:D4-008}.
+
+\begin{enumerate}
+\item Evaluate the partial derivative of the defining level function with respect to its second input at \((0,1)\).
+\item Differentiate the full composition twice, retaining both mixed contributions on the second differentiation.
+\item Substitute \(1+\alpha x+\beta x^2\) into the original constraint and match the coefficients of \(x\) and \(x^2\).
+\end{enumerate}
+\subsection*{D4-009 --- A response selected by a bounded maximum}
+\label{hints:D4-009}
+Problem and worked solution: page~\pageref{problem:D4-009}.
+
+\begin{enumerate}
+\item The derivative of the objective with respect to the bounded coordinate is \(t-4x^3\).
+\item The critical coordinate lies inside \([0,1]\) only for a bounded range of the parameter; otherwise an endpoint maximizes.
+\item The first parameter derivative of the interior value simplifies because its coordinate satisfies the critical-point equation; examine one-sided derivatives at both transitions.
+\end{enumerate}
+\subsection*{D4-010 --- A matrix exponential across a change of regime}
+\label{hints:D4-010}
+Problem and worked solution: page~\pageref{problem:D4-010}.
+
+\begin{enumerate}
+\item Compute \(\mathbf A(t)^2\) and separate the even and odd powers in the exponential series.
+\item The two scalar coefficient series remain defined at zero even when their trigonometric or hyperbolic forms appear to divide by zero.
+\item Differentiate both scalar coefficients and the matrix factor; compare the actual derivative at zero with the proposed product there.
+\end{enumerate}
+\subsection*{D4-011 --- A scalar response on symmetric positive matrices}
+\label{hints:D4-011}
+Problem and worked solution: page~\pageref{problem:D4-011}.
+
+\begin{enumerate}
+\item Write the determinant as \(\Delta=ac-b^2\) and the trace of the inverse as \((a+c)/\Delta\).
+\item For a general matrix increment \(\mathbf H\), differentiate the inverse identity before taking its trace.
+\item A change of \(b\) changes both off-diagonal entries: its parameter derivative is the sum of two entry derivatives.
+\end{enumerate}
 \subsection*{D3-001 --- Waveguide sensitivity at cutoff}
 \label{hints:D3-001}
 Problem and worked solution: page~\pageref{problem:D3-001}.
@@ -5540,6 +7532,51 @@ Problem and worked solution: page~\pageref{problem:D3-007}.
 \item Multiplication by \(\mathbf A(t)^{-1}\) is on the left; the order of the matrices matters.
 \item The determinant is \(1-t^2\). A compatible right-hand side can cancel a pole in the solution, although the matrix remains singular at the excluded value.
 \end{enumerate}
+\subsection*{D3-008 --- A quadratic response near loss of invertibility}
+\label{hints:D3-008}
+Problem and worked solution: page~\pageref{problem:D3-008}.
+
+\begin{enumerate}
+\item The only changing matrix term has range contained in the span of \(\mathbf u\).
+\item Put \(\mathbf v=\mathbf A^{-1}\mathbf u\) and compute \(\mathbf B(t)\mathbf v\); then test an inverse of the form \(\mathbf A^{-1}-c(t)\mathbf v\mathbf v^{\mathsf T}\).
+\item The scalar \(\mathbf u^{\mathsf T}\mathbf A^{-1}\mathbf b\) controls whether the singular direction is present in the response.
+\end{enumerate}
+\subsection*{D3-009 --- Energy carried by coupled tensor components}
+\label{hints:D3-009}
+Problem and worked solution: page~\pageref{problem:D3-009}.
+
+\begin{enumerate}
+\item Differentiate both factors depending on \(t\) before combining any terms.
+\item Exchange the index pair \((i,j)\) with \((k,l)\) in one product-rule sum and use the major symmetry.
+\item A contraction of symmetric matrices includes each off-diagonal entry twice; the four equivalent tensor shear entries therefore all contribute to the energy.
+\end{enumerate}
+\subsection*{D3-010 --- An anisotropic energy with turning principal directions}
+\label{hints:D3-010}
+Problem and worked solution: page~\pageref{problem:D3-010}.
+
+\begin{enumerate}
+\item Both rotation factors depend on the angle, while \(\mathbf D\) is fixed.
+\item The constant matrix \(\mathbf J=\begin{bmatrix}0&-1\\1&0\end{bmatrix}\) satisfies \(\frac{d}{dt}(\mathbf R(t))=\mathbf J\mathbf R(t)\) and \(\mathbf J^{\mathsf T}=-\mathbf J\).
+\item For the independent check, the principal-direction components are \(\mathbf y(t)=\mathbf R(t)^{\mathsf T}\mathbf x\) and their derivative is \(-\mathbf J\mathbf y(t)\).
+\end{enumerate}
+\subsection*{D3-011 --- A direction traced by three competing components}
+\label{hints:D3-011}
+Problem and worked solution: page~\pageref{problem:D3-011}.
+
+\begin{enumerate}
+\item Differentiate the squared norm before the norm itself.
+\item Introduce the scalar dot products \(\mathbf v(t)^{\mathsf T}\frac{d}{dt}(\mathbf v(t))\) and its derivative to organize the second derivative.
+\item Differentiating the normalization identity twice produces both a second-derivative term and the squared length of the first derivative.
+\end{enumerate}
+\subsection*{D3-012 --- A finite value left after a point-source subtraction}
+\label{hints:D3-012}
+Problem and worked solution: page~\pageref{problem:D3-012}.
+
+\begin{enumerate}
+\item The constant and first few powers in the complex exponential determine different orders after division by \(r\).
+\item The identity \(q(r;k)=-\mathrm{i}k\int_0^1\exp(-\mathrm{i}krs)\,ds\) avoids a quotient at zero.
+\item Along a line through the spatial origin, the radial distance is the absolute value of the signed line parameter.
+\end{enumerate}
 \subsection*{I4-001 --- A difference of exponential kernels}
 \label{hints:I4-001}
 Problem and worked solution: page~\pageref{problem:I4-001}.
@@ -5593,6 +7630,51 @@ Problem and worked solution: page~\pageref{problem:I4-006}.
 \item The triangle-to-square coordinate \(x=u,y=uv\) separates the radial distance from direction.
 \item Integration in \(u\) leaves a one-dimensional integral involving \(\sqrt{1+v^2+h^2}\).
 \item The difference of square roots gives an explicit quadratic remainder bound and reveals the endpoint parameter slope.
+\end{enumerate}
+\subsection*{I4-007 --- An oblique ellipsoidal cap}
+\label{hints:I4-007}
+Problem and worked solution: page~\pageref{problem:I4-007}.
+
+\begin{enumerate}
+\item Scale the ellipsoid to a unit ball and transform the plane at the same time.
+\item A rotation aligns the transformed plane normal with one coordinate without changing volume.
+\item Integrate the circular sections from the normalized plane offset to one; the derivative includes the length of the original normal.
+\end{enumerate}
+\subsection*{I4-008 --- Two nearby poles off the real axis}
+\label{hints:I4-008}
+Problem and worked solution: page~\pageref{problem:I4-008}.
+
+\begin{enumerate}
+\item Unequal parameters allow partial fractions in \(x^2\).
+\item Combine the two integrated terms algebraically before taking a nearly coincident limit.
+\item Differentiating \(\int_0^\infty(x^2+a^2)^{-1}dx\) checks the repeated denominator directly.
+\end{enumerate}
+\subsection*{I4-009 --- An accumulated matrix response}
+\label{hints:I4-009}
+Problem and worked solution: page~\pageref{problem:I4-009}.
+
+\begin{enumerate}
+\item Differentiate the resolvent in the integration coordinate \(s\) first.
+\item The derivative of the square in the perturbation parameter has two ordered product terms.
+\item A uniform positive eigenvalue bound gives integrable domination; those two terms are also an \(s\) derivative of an ordered product.
+\end{enumerate}
+\subsection*{I4-010 --- A Gaussian with a moving truncation}
+\label{hints:I4-010}
+Problem and worked solution: page~\pageref{problem:I4-010}.
+
+\begin{enumerate}
+\item The relative coordinate \(u=t-x\) leaves only one moving bound.
+\item In the original coordinate, the boundary term and part of the integrand derivative cancel.
+\item The Gaussian half-line integral is evaluated by squaring it and using polar coordinates; compare a tail with \(u\exp(-u^2)\).
+\end{enumerate}
+\subsection*{I4-011 --- A circular aperture transform}
+\label{hints:I4-011}
+Problem and worked solution: page~\pageref{problem:I4-011}.
+
+\begin{enumerate}
+\item Reflection of the angular coordinate cancels the imaginary part and makes the answer even in \(q\).
+\item Integrate the exponential series in angle and radius on this compact domain.
+\item The angular moments define the relevant Bessel series; a Taylor bound on the real cosine gives a uniform approximation error.
 \end{enumerate}
 \subsection*{I3-001 --- Sine over a half-period}
 \label{hints:I3-001}
@@ -5674,6 +7756,51 @@ Problem and worked solution: page~\pageref{problem:I3-009}.
 \item The surface area measure is the length of the tangent cross product.
 \item The identity \(\cosh^2u=1+\sinh^2u\) makes \(t=\sinh u\) useful.
 \item The area becomes an integral of \(\sqrt{1+2t^2}\) on a finite symmetric interval, whose size grows without bound as \(U\) increases.
+\end{enumerate}
+\subsection*{I3-010 --- A squared aperture kernel}
+\label{hints:I3-010}
+Problem and worked solution: page~\pageref{problem:I3-010}.
+
+\begin{enumerate}
+\item Near zero, \(|\sin(ax)|\le|ax|\); at infinity, \(|\sin(ax)|\le1\).
+\item Rescaling by \(|a|\) separates the parameter. Integration by parts turns the remaining squared sine into a sine-over-coordinate integral.
+\item Away from zero the formal derivative is a conditionally convergent integral. At zero, compare the two difference quotients of the evaluated function.
+\end{enumerate}
+\subsection*{I3-011 --- A logarithmic moment at an endpoint}
+\label{hints:I3-011}
+Problem and worked solution: page~\pageref{problem:I3-011}.
+
+\begin{enumerate}
+\item A finite geometric identity for \(1/(1+x)\) provides a remainder with a known sign.
+\item The substitution \(x=\exp(-t)\) evaluates \(\int_0^1x^n\ln^2x\,dx\) by two integrations by parts.
+\item The sum of the absolute integrals is finite. Separate even and odd indices to relate the answer to \(\sum_{m=1}^\infty m^{-3}\).
+\end{enumerate}
+\subsection*{I3-012 --- A shrinking layer and its parameter derivative}
+\label{hints:I3-012}
+Problem and worked solution: page~\pageref{problem:I3-012}.
+
+\begin{enumerate}
+\item The coordinate \(u=x/a\) changes the upper bound to \(1/a\) and removes \(a\) from the integrand.
+\item The same coordinate gives the mass in \(0\le x\le ca\). At every fixed positive \(x\), the original kernel instead tends to zero.
+\item Differentiate at a fixed positive parameter before taking any limit. A finite expansion of \(1/(1+t^2)\) controls the small-\(a\) remainder.
+\end{enumerate}
+\subsection*{I3-013 --- Two closed paths around an excluded axis}
+\label{hints:I3-013}
+Problem and worked solution: page~\pageref{problem:I3-013}.
+
+\begin{enumerate}
+\item On the centered ellipse, the line integrand becomes \(AB/(A^2\cos^2\theta+B^2\sin^2\theta)\).
+\item The centered ellipse encloses the excluded axis, whereas the entire disk of the displaced circle stays at positive distance from it.
+\item Excise a small centered disk from the ellipse's interior. On the displaced circle, \(x>0\) permits one continuous real angle throughout the path.
+\end{enumerate}
+\subsection*{I3-014 --- A source inside a triangular panel}
+\label{hints:I3-014}
+Problem and worked solution: page~\pageref{problem:I3-014}.
+
+\begin{enumerate}
+\item Join the source to the three vertices, using the counterclockwise oriented outer edges.
+\item On a source-edge subtriangle, use \(\mathbf r(u,v)=\mathbf p+u(\mathbf a+v\mathbf e)\), where \(\mathbf a\) runs from the source to the first edge vertex and \(\mathbf e\) runs along that edge.
+\item Its Jacobian is \(u\det(\mathbf a,\mathbf e)\). After cancellation of the kernel's radial factor, resolve the edge vector into tangential and perpendicular components.
 \end{enumerate}
 \subsection*{D1-001 --- Polynomial differentiation by linearity}
 \label{hints:D1-001}

@@ -4,11 +4,26 @@ The next development milestone is beta.1; selection and acceptance criteria are
 recorded in [BETA_PLAN.md](BETA_PLAN.md), with audit progress in
 [BETA_REVIEW.md](BETA_REVIEW.md).
 
-These are 32 original problem proposals for later development, not additions to
-the current solved manuscript. They are organized for editorial planning only.
-Each needs a complete derivation, three hints, domain analysis, and independent
-verification before receiving a published problem ID. The next additions should
-be mixed among existing settings rather than grouped by a prescribed technique.
+This list records 32 original development proposals. Twenty were completed on
+November 5, 2026 and are now part of the solved manuscript under the stable IDs
+below. The remaining proposals are planning material, not published exercises;
+each still needs a complete derivation, three hints, domain analysis, and
+independent verification. Additions are mixed among existing settings rather
+than grouped by a prescribed technique.
+
+| Completed proposals | Published problem IDs | Evidence |
+|---|---|---|
+| 1, 3, 6, 25, 28 | D4-007–011 | [Derivations](expansion-d4.md) |
+| 27, 29, 31, 30, 22 | D3-008–012 | [Derivations](expansion-d3.md) |
+| 13, 8, 32, 11, 23 | I4-007–011 | [Derivations](expansion-i4.md) |
+| 7, 9, 10, 16, 20 | I3-010–014 | [Derivations](expansion-i3.md) |
+
+This batch exceeds the original twelve-problem scope target while extending
+matrix integration, constrained entries, and tensor calculations. The elliptic
+ring proposal 19 is deferred; the aperture and interior-panel problems provide
+complete new geometric/kernel calculations in this batch. Proposal 26 remains
+deferred because the constrained matrix response already develops determinant
+and trace variations more extensively. Twelve proposals remain unimplemented.
 
 Unless stated otherwise below, integration coordinates and varying parameters
 are real scalars. A symbol declared fixed remains fixed during the requested
@@ -16,7 +31,7 @@ operation. Matrix and vector shapes are specified where they occur.
 
 ## Nonlinear derivatives and limits
 
-1. **A smooth value with an oscillating slope.** For real $x\ne0$, the scalar
+1. **A finite value with an oscillating slope.** For real $x\ne0$, the scalar
    function is $f(x)=(1+x^2)^{\sin(1/x)}$. Determine the continuous extension at
    zero, its derivative there, and whether the derivative is continuous.
    The useful distinction is between a difference quotient and the limit of the

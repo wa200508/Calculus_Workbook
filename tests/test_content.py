@@ -32,7 +32,13 @@ class ContentTests(unittest.TestCase):
     def test_all_chapters_have_complete_problem_sets(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}
         groups = content.collect_problems(manuscripts)
-        self.assertEqual(len(groups['Problems']), 52)
+        self.assertEqual(len(groups['Problems']), 72)
+        counts = {'D4': 11, 'D3': 12, 'I4': 11, 'I3': 14,
+                  'D1': 6, 'D2': 7, 'I1': 6, 'I2': 5}
+        expected_ids = {f'{code}-{number:03d}'
+                        for code, count in counts.items()
+                        for number in range(1, count + 1)}
+        self.assertEqual(set(groups['Problems']), expected_ids)
         for identifier, (_, solution) in groups['Complete solutions'].items():
             self.assertIn('CHECK', solution, identifier)
             self.assertIn('SETUP', solution, identifier)
@@ -52,7 +58,7 @@ class ContentTests(unittest.TestCase):
                     reference_count += count
                 else:
                     main_count += count
-        self.assertEqual((main_count, reference_count), (28, 24))
+        self.assertEqual((main_count, reference_count), (48, 24))
         filenames = list(content.SOURCES)
         self.assertLess(filenames.index('METHODS_REFERENCE.md'), filenames.index(content.MAIN_SETS[0][0]))
         self.assertLess(filenames.index(content.MAIN_SETS[-1][0]), filenames.index('TRICKS_APPENDIX.md'))

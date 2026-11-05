@@ -387,7 +387,7 @@ def build():
         first, rest = text.split("\n", 1)
         styled = style_algebra(style_quick_reference(rest) if slug == 'quick-reference' else rest)
         if slug == 'quick-reference':
-            styled = f'[Download the four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf)\n\n' + styled
+            styled = f'[Download the last tagged four-page PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v{version}/calculus_quick_reference.pdf)\n\n' + styled
         if slug == 'tricks':
             styled = '<div class="tricks-appendix">\n\n' + styled + '\n\n</div>\n'
         (ROOT / "site/generated" / f"{slug}.md").write_text(first + "\n\n" + notice + styled)
@@ -441,7 +441,7 @@ def build():
     book = '---\noutline: 2\n---\n\n# Calculus: A Worked Review\n\n'
     book += '> **Alpha development.** This is the current manuscript, including all solutions. Content is CC BY-SA 4.0 and provided as-is.\n\n'
     version = json.loads((ROOT / 'package.json').read_text())['version']
-    book += f'[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v{version}) · [Practice with hidden solutions](/practice)\n\n'
+    book += f'[Download the last tagged alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v{version}) · [Practice with hidden solutions](/practice)\n\n'
     for filename, slug in SOURCES.items():
         source = style_quick_reference(content[filename]) if slug == 'quick-reference' else content[filename]
         chapter = re.sub(r'^(#{1,5}) ', r'\1# ', source, flags=re.M)

@@ -4,11 +4,14 @@ import { withBase } from 'vitepress'
 
 # Read offline or adapt the book
 
-These downloads are generated from the same manuscript used for the site.
+The Markdown and LaTeX downloads are generated from the current manuscript used
+for the site. The tagged alpha.7 PDFs preserve an earlier fixed edition; they
+precede the latest corrections and 20 additional worked problems. The repository's
+PDF workflow supplies the current compiled book and reference as build artifacts.
 
 - [Read the complete current book on one HTML page](/generated/book)
-- [Download the compiled alpha PDF from GitHub](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.7/calculus_workbook.pdf)
-- [Download the four-page quick-reference PDF](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.7/calculus_quick_reference.pdf)
+- [Download the last tagged book PDF (alpha.7)](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.7/calculus_workbook.pdf)
+- [Download the last tagged quick-reference PDF (alpha.7)](https://github.com/wa200508/Calculus_Workbook/releases/download/v0.4.0-alpha.7/calculus_quick_reference.pdf)
 - [Read the quick reference online](/generated/quick-reference)
 - [Alpha release notes and files](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.7)
 - <a :href="withBase('/downloads/calculus-workbook.md')" download>Complete Markdown manuscript</a>

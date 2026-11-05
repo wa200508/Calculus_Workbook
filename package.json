@@ -12,9 +12,9 @@
   "scripts": {
     "content": "python3 scripts/build_content.py",
     "dev": "pnpm content && vitepress dev site --host 127.0.0.1",
-    "build": "pnpm content && vitepress build site",
+    "build": "pnpm content && node --max-old-space-size=4096 node_modules/vitepress/bin/vitepress.js build site",
     "preview": "vitepress preview site --host 127.0.0.1",
-    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && python3 scripts/check_advanced_math.py",
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && python3 scripts/check_advanced_math.py && python3 scripts/check_differentiation_expansion.py && python3 scripts/check_integration_expansion.py",
     "check:site": "python3 scripts/check_site.py",
     "check": "pnpm test && pnpm build && pnpm check:site"
   },

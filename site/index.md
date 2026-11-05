@@ -26,12 +26,14 @@ features:
 ## Alpha development: a book we can keep improving
 
 The current edition contains notation conventions, a consolidated calculus methods
-reference, and 52 fully worked problems. Four mixed sets contain 28 main problems;
+reference, and 72 fully worked problems. Four mixed sets contain 48 main problems;
 24 simpler reference exercises appear in the appendices. The main sets include
 nonlinear functions, moving endpoints, complex responses, electromagnetic kernels,
-ellipsoids, hyperboloids, singularities, and convergence. Supporting tricks are purple.
+ellipsoids, hyperboloids, matrix functions, tensor contractions, singularities,
+and convergence. Supporting tricks are purple.
 This alpha workbook is provided as-is; mathematical correctness is not guaranteed.
 [Read the accuracy and sharing notice](/about).
 
-[Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.7)
+[Download the last tagged alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.7)
 or [read the entire current manuscript on one page](/generated/book).
+The current manuscript includes corrections and 20 problems added after that fixed PDF edition.

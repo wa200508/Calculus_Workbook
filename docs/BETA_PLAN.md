@@ -6,7 +6,7 @@ it does not declare the existing alpha manuscript ready for beta.
 
 ## Baseline and intended outcome
 
-The current edition is 0.4.0-alpha.7: 52 complete worked problems, comprising
+The October 18 planning baseline was 0.4.0-alpha.7: 52 complete worked problems, comprising
 28 challenging mixed problems and 24 simpler reference exercises. The book has
 135 pages, a stable notation chapter, a methods reference, and a four-page quick
 reference included in the book and also published separately. Site and PDF
@@ -17,6 +17,12 @@ Presentation and publishing are sufficiently established for beta preparation.
 The remaining gates are breadth of challenging practice, complete analytical
 review, and reader/usability validation. The design can support this work;
 necessary corrections and layout repairs remain part of it.
+
+A November 5 development batch adds 20 substantial problems, bringing the
+working manuscript to 48 main problems and 24 reference exercises. The baseline
+and new problems have analytical agent evidence in the review ledger. Human
+reader trials and the remaining layout, usability, and release gates continue
+to determine beta readiness; the larger count alone does not declare a beta.
 
 ## 1. Expand the challenging problem collection
 
@@ -52,7 +58,7 @@ backlog is available for later expansion and need not be exhausted before beta.
 ## 2. Audit every included solution and reference
 
 Maintain [BETA_REVIEW.md](BETA_REVIEW.md) as the audit record. Review all 52
-existing problems and every new addition. Previous targeted repairs are useful
+original problems and every new addition. Previous targeted repairs are useful
 evidence, but are not a completed whole-manuscript audit.
 
 For each problem, verify:
@@ -96,10 +102,11 @@ Reader/usability checks include:
 
 ## Beta release checklist
 
-- [ ] Roughly 40 substantial mixed problems plus the 24 reference exercises, with
+- [x] Roughly 40 substantial mixed problems plus the 24 reference exercises, with
   representative matrix/tensor, geometry, and oscillatory/singular coverage.
-- [ ] Every included problem has a completed analytical audit record.
-- [ ] Introductory references and supporting identities have been audited.
+- [x] Every included problem has a completed analytical agent audit record;
+  external human review is not claimed.
+- [x] Introductory references and supporting identities have analytical agent audits.
 - [ ] Editorial, full-book layout, and representative reader/usability reviews
   are recorded; blocking findings are resolved and remaining limitations listed.
 - [ ] Content tests, independent mathematical checks, production site checks,

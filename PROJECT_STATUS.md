@@ -1,102 +1,104 @@
 # Project status
 
-Updated November 5, 2026. Stage: alpha development; no stable release.
-
-## November 5 analytical audit checkpoint
-
-All 52 existing problems and the notation, methods, quick-reference, and
-supporting-tools references received analytical agent review. Per-problem
-reasoning and findings are linked from [the review ledger](docs/BETA_REVIEW.md).
-The audit corrected the scope of Tonelli at a divergent endpoint, missing
-sufficient hypotheses in reference entries, and terminology about angular
-seams. The six audit notes distinguish analytical reasoning from supplementary
-numerical samples and external human review. Existing final answers were verified.
-
-The corrected sources pass the 16 content tests and 141 maintained numerical
-checks. The original 52-problem production site has 74 checked HTML pages.
-Both PDFs compile; the corrected book has 136 pages and the quick reference
-remains four pages both separately and inside the book. These are development
-changes after the fixed alpha.7 edition; no new release has been declared.
-Expansion and new-problem verification follow this correction checkpoint.
-Human reader trials and the remaining beta gates are still pending.
-
-## Next milestone: beta.1
-
-The user has directed the next substantive development push toward beta.
-[docs/BETA_PLAN.md](docs/BETA_PLAN.md) records the scope, priorities, and release
-criteria. The next task is a small complete matrix/tensor expansion batch,
-followed by broader challenging-problem coverage, a complete mathematical audit,
-and reader/usability validation. The planning target is roughly 40 challenging
-mixed problems plus 24 reference exercises. The current edition remains alpha.
-[docs/BETA_REVIEW.md](docs/BETA_REVIEW.md) tracks the audit; its initial pending
-entries do not claim that earlier spot checks constitute completed review.
+Updated November 5, 2026. Stage: alpha development; no stable or beta release.
+The working manuscript contains changes after the fixed 0.4.0-alpha.7 edition.
 
 ## Current manuscript
 
-Notation conventions and an introductory calculus methods reference precede
-four mixed problem sets with 28 fully worked problems. The main chapters begin
-with problems rather than lessons on a selected technique. Appendices contain
-supporting tricks, 24 simpler reference exercises, and the notation literature
-review. All 40 previous problem IDs are preserved; 12 new problems bring the total
-to 52. Every problem has three hints, a complete solution, and a check. A separate
-four-page quick reference condenses notation, calculus tools, and their conditions.
+The book has **72 fully worked problems: 48 main mixed problems and 24 reference
+exercises**. Twenty substantial additions cover matrix exponentials and inverse
+responses, constrained matrix gradients, tensor contractions and rotations,
+nonlinear extensions, geometric accumulation, oscillatory limits, and singular
+kernels. All original problem IDs and complete solutions are retained.
+
+Each problem has three hints, a complete calculation, method-choice reasoning,
+domain analysis, and a check. Printed statements continue directly into their
+solutions, with hints in a separate page-referenced appendix. The website allows
+individual hints and solutions to be opened separately. The main book has
+185 pages. The shared quick reference remains four pages both inside the book
+and as a standalone document.
+
+## Mathematical review and corrections
+
+The November 5 review analytically rederived all 52 original problems and
+reviewed the notation chapter, methods reference, quick reference, and supporting
+identities. Existing final answers were verified. Corrections address Tonelli's
+scope at an infinite endpoint, missing sufficient hypotheses for reference
+formulas, and the distinction between angular seams and Jacobian degeneracies.
+The oscillatory-tail proof is now explicit, and the panel observation parameter's
+units are declared.
+
+Every new problem has an author derivation and an independent second analytical
+agent review. Integration review corrected a spectral-gap notation issue so
+that the perturbation bound uses the eigenvalue gap of the actual base matrix.
+Two misleading prose phrases were also corrected. The evidence distinguishes
+analytical arguments, numerical spot checks, selected visual inspection, and
+external reader feedback. No human peer review or reader trial is claimed.
+
+[The beta review ledger](docs/BETA_REVIEW.md) links evidence for all 72 problems
+and the references. [The backlog](docs/PROBLEM_BACKLOG.md) maps the 20 promoted
+proposals to stable IDs; twelve proposals remain unimplemented.
+
+## Validation
+
+- All 16 content/structure tests pass, including the 72-problem inventory,
+  stable IDs, matching statements/hints/solutions, and printed reading order.
+- All 492 maintained independent numerical checks pass: 141 original checks,
+  245 differentiation-expansion checks, and 106 integration-expansion checks.
+  Finite differences and quadratures supplement the analytical proofs.
+- Generation produces 14 reading pages and 72 individual practice pages, plus
+  downloads and both tracked LaTeX sources. The expanded mathematical site build
+  allows a 4 GiB Node heap so the single-page edition can compile reliably.
+- The production site checks pass for 94 HTML pages, internal links/assets,
+  anchors, and 8,858 rendered mathematical expressions. The build used the
+  repository's actual GitHub Pages base path.
+- Both PDFs compile. Automated checks pass for the 185-page book, printable
+  margins, notation groups, and exactly four standalone and four embedded
+  reference pages. No overfull-box warning is present in the final TeX logs.
+- Selected revised reference pages and eight new solution pages were inspected
+  visually, including matrix, tensor, Bessel, and interior-source formulas.
+  This is not a whole-book reader or pagination trial.
+
+## Publication
+
+The complete current reading edition is published from main through GitHub
+Actions at https://wa200508.github.io/Calculus_Workbook/generated/book.html.
+Main-branch PDF builds supply the current book and companion as workflow
+artifacts. The last tagged PDFs remain alpha.7; download labels distinguish
+that fixed edition from the current manuscript and source downloads. No new
+release has been tagged by this work.
+
+The original correction checkpoint is `606a472`; both of its GitHub workflows
+passed. The expansion and its verification are committed as subsequent tested
+checkpoints on main. The final handoff records the pushed revision and workflow
+results. Source Markdown is authoritative; the TeX documents and site are
+generated from it.
+
+## Next milestone: beta.1
+
+The 48-problem main collection exceeds the approximate 40-problem planning
+target, with matrix/tensor and geometric/singular coverage added. Analytical
+agent evidence is complete for the included problems and references. Remaining
+beta work is a full editorial/pagination and usability pass, representative
+external reader trials, grayscale and mobile/keyboard checks, and consistent
+beta release/tag metadata. The larger count and passing automated checks do not
+declare the book ready for beta.
+
+[The beta plan](docs/BETA_PLAN.md) preserves those release criteria. The next
+concrete task is the complete reader/pagination review and representative reader
+trials, rather than further content expansion solely to reach a count.
 
 ## Established decisions
 
-- Graduate workbook with complete worked calculations; prior calculus study is assumed.
-- Explicit Leibniz operators with round operands, full arguments, object types, and dependencies.
-- Difficulty arises from reasoning and calculation, with direct problem setups.
-- CHOICE blocks are neutral, DOMAIN blocks amber, algebra blue, and supporting tricks purple.
-- Root Markdown manuscripts generate VitePress pages and the complete LaTeX book.
-- Educational content: CC BY-SA 4.0. Software: MIT. Correctness is not guaranteed.
-- SSH remote: `git@github.com:wa200508/Calculus_Workbook.git`; incremental pushes on `main`.
+- Graduate workbook with complete calculations; prior calculus study is assumed.
+- Explicit Leibniz operators with round operands, full arguments, object types,
+  dependencies, and quantities held fixed.
+- Difficulty arises from method selection, reasoning, and calculation.
+- CHOICE blocks are neutral, DOMAIN blocks amber, algebra blue, and supporting
+  tricks purple; text labels retain meaning without color.
+- The quick reference is independently readable and shares its body between
+  the standalone and embedded four-page editions.
+- Educational content: CC BY-SA 4.0. Software: MIT.
+- Incremental tested commits and pushes on main; publication remains alpha.
 
-## Publication and verification
-
-The full reading edition is published through GitHub Actions at
-https://wa200508.github.io/Calculus_Workbook/generated/book.html.
-Main-branch checkpoints build both the site and PDFs; alpha version tags publish
-fixed PDF prereleases. Edition 0.4.0-alpha.7 includes the four-page quick reference inside the main
-book, before the worked problem chapters. It also provides the standalone
-reference PDF. The book now has 135 pages; the embedded reference occupies
-printed pages 19–22 and has a table-of-contents entry. Every printed
-problem is immediately followed by its complete worked solution; hints retain
-reciprocal page references.
-
-Chapter 1 now has deliberate boundaries between complete notation concepts.
-Tables are unbroken, left aligned, and proportioned to their contents. Wrapped
-list items remain single paragraphs. In the methods chapter, formulas stay with
-their explanations and conditions. The quick reference uses two columns and
-9-point body text, with full operator notation, visible dependencies, domain
-conditions, and purple supporting identities.
-
-Sixteen content tests and 141 independent numerical spot checks pass. Production
-checks cover 74 HTML pages, internal links, assets, anchors, and rendered
-math expressions. Numerical spot checks do not replace analytical arguments.
-The alpha.6 publication completed successfully. The alpha.7 workflow retains
-the standalone and embedded-reference layout checks.
-
-The alpha.6 release PDFs were downloaded and checked. The alpha.7 PDFs were
-compiled and visually reviewed locally: the reference is exactly four pages in
-each edition; printable text bounds and notation-group checks pass. All notation
-and methods pages were inspected locally, together with all four reference
-pages. Production renders confirmed intact tables and reference-sheet layout.
-The PDF workflow now enforces standalone and embedded reference length and printable margins on every
-build. The online reference has direct PDF access from navigation and practice.
-
-Layout, reference-sheet implementation, and release preparation were pushed as
-separate checkpoints (3196ed0, 335c7f0, d707baa). Publication remains alpha.
-The 32 candidates in docs/PROBLEM_BACKLOG.md await the next content expansion.
-See docs/QUICK_REFERENCE_DESIGN.md for the layout rationale and source map,
-and docs/REVIEW_NOTES.md for the previous mathematical review.
-
-See docs/DEVELOPMENT.md and CONTRIBUTING.md for the development workflow.
-
-## Independent quick reference
-
-The quick-reference text contains no references to other parts of the workbook.
-Its introduction defines local conventions, including scalar defaults, fixed
-parameters, radians, natural logarithms, and Euclidean vector norms. Power-domain
-conditions are stated beside the primitives; the imaginary-part notation and
-purple text are explained locally. The standalone header identifies the document
-as a calculus quick reference. Both editions use the same generated body.
+See [development](docs/DEVELOPMENT.md) and [contributing](CONTRIBUTING.md).
