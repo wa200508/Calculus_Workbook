@@ -10,7 +10,11 @@ checks=0
 
 def near(actual, expected, tol=2e-7):
     global checks
-    assert abs(actual-expected)<=tol*max(1,abs(expected)), (actual,expected)
+    if not (math.isfinite(abs(actual)) and math.isfinite(abs(expected))
+            and math.isfinite(tol) and tol >= 0):
+        raise AssertionError(f"Nonfinite comparison or invalid tolerance: {actual!r}, {expected!r}, {tol!r}")
+    if not abs(actual-expected)<=tol*max(1,abs(expected)):
+        raise AssertionError((actual,expected))
     checks+=1
 
 def derivative(f,x,h=1e-5):

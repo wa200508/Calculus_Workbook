@@ -1,4 +1,6 @@
+import ast
 import importlib.util
+import math
 from pathlib import Path
 import tempfile
 import unittest
@@ -83,10 +85,54 @@ class ContentTests(unittest.TestCase):
                 self.assertIn(solution, block)
                 self.assertLess(block.index(prompt), block.index(solution))
                 self.assertIn(r'\pageref{hints:' + identifier + '}', block)
-        hints = content.hints_to_tex(groups)
-        for identifier in groups['Problems']:
-            self.assertIn(r'\label{hints:' + identifier + '}', hints)
-            self.assertIn(r'\pageref{problem:' + identifier + '}', hints)
+            hints = content.hints_to_tex(groups)
+            for identifier in groups['Problems']:
+                self.assertIn(r'\label{hints:' + identifier + '}', hints)
+                self.assertIn(r'\pageref{problem:' + identifier + '}', hints)
+
+    def test_numeric_comparisons_reject_nonfinite_values(self):
+        # Load the actual comparison functions without executing each script's
+        # top-level numerical suite a second time during the unit-test run.
+        for filename in ('check_advanced_math.py', 'check_differentiation_expansion.py',
+                         'check_integration_expansion.py'):
+            path = ROOT / 'scripts' / filename
+            tree = ast.parse(path.read_text(), filename=str(path))
+            helpers = [node for node in tree.body
+                       if isinstance(node, ast.FunctionDef) and node.name in ('near', 'between')]
+            namespace = {'math': math, 'checks': 0}
+            exec(compile(ast.Module(body=helpers, type_ignores=[]), str(path), 'exec'), namespace)
+            prefix = () if filename == 'check_advanced_math.py' else ('regression',)
+            compare = namespace['near']
+            compare(*prefix, 1.0, 1.0)
+            compare(*prefix, 1+2j, 1+2j)
+            with self.assertRaises(AssertionError):
+                compare(*prefix, 1, 2)
+            for actual, expected in ((1, math.inf), (math.inf, 1),
+                                     (math.nan, 1), (1, math.nan),
+                                     (complex(1, math.inf), 1),
+                                     (complex(1, math.nan), 1),
+                                     (1, complex(1, math.inf)),
+                                     (1, complex(1, math.nan))):
+                with self.subTest(script=filename, actual=actual, expected=expected):
+                    with self.assertRaises(AssertionError):
+                        compare(*prefix, actual, expected)
+            for tolerance in (math.inf, math.nan, -1):
+                with self.subTest(script=filename, tolerance=tolerance):
+                    with self.assertRaises(AssertionError):
+                        compare(*prefix, 1, 1, tolerance)
+            if 'between' in namespace:
+                interval = namespace['between']
+                interval('regression', 1, 0, 2)
+                with self.assertRaises(AssertionError):
+                    interval('regression', 3, 0, 2)
+                for actual, lower, upper, slack in (
+                        (math.inf, 0, math.inf, 0), (1, 0, math.inf, 0),
+                        (1, -math.inf, 2, 0),
+                        (math.nan, 0, 2, 0), (1, math.nan, 2, 0),
+                        (1, 0, 2, math.inf), (1, 0, 2, -1), (1, 2, 0, 0)):
+                    with self.subTest(interval=(actual, lower, upper, slack)):
+                        with self.assertRaises(AssertionError):
+                            interval('regression', actual, lower, upper, slack)
 
     def test_duplicate_problem_ids_across_chapters_are_rejected(self):
         manuscripts = {name: (ROOT / name).read_text() for name in content.PROBLEM_SOURCES}

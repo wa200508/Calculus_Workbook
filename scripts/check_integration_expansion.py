@@ -16,17 +16,23 @@ checks = 0
 
 def near(label, actual, expected, tolerance=2e-7):
     global checks
+    if not (math.isfinite(abs(actual)) and math.isfinite(abs(expected))
+            and math.isfinite(tolerance) and tolerance >= 0):
+        raise AssertionError(f"{label}: nonfinite comparison or invalid tolerance")
     error = abs(actual - expected)
     allowed = tolerance * max(1, abs(expected))
-    assert error <= allowed, f"{label}: {actual!r} != {expected!r}; error {error:g} > {allowed:g}"
+    if not error <= allowed:
+        raise AssertionError(f"{label}: {actual!r} != {expected!r}; error {error:g} > {allowed:g}")
     checks += 1
 
 
 def between(label, actual, lower, upper, slack=2e-10):
     global checks
-    assert lower - slack <= actual <= upper + slack, (
-        f"{label}: {actual!r} outside [{lower!r}, {upper!r}]"
-    )
+    if not (all(math.isfinite(value) for value in (actual, lower, upper, slack))
+            and lower <= upper and slack >= 0):
+        raise AssertionError(f"{label}: nonfinite interval comparison or invalid bounds/slack")
+    if not lower - slack <= actual <= upper + slack:
+        raise AssertionError(f"{label}: {actual!r} outside [{lower!r}, {upper!r}]")
     checks += 1
 
 

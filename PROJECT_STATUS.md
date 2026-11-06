@@ -1,6 +1,6 @@
 # Project status
 
-Updated November 5, 2026. Stage: alpha development; no stable or beta release.
+Updated November 6, 2026. Stage: alpha development; no stable or beta release.
 The working manuscript contains changes after the fixed 0.4.0-alpha.7 edition.
 
 ## Current manuscript
@@ -39,9 +39,24 @@ external reader feedback. No human peer review or reader trial is claimed.
 and the references. [The backlog](docs/PROBLEM_BACKLOG.md) maps the 20 promoted
 proposals to stable IDs; twelve proposals remain unimplemented.
 
+## November 6 fresh recheck
+
+All 72 problems received another complete analytical pass, with main chapters
+assigned to different reviewers. Statements were independently recalculated,
+then every hint, solution step, result, and domain claim was compared. No new
+mathematical error was found. Fresh edge-case calculations supplement these
+arguments; [the recheck report](docs/RECHECK_2026-11-06.md) links per-problem evidence.
+
+Two actual verification defects were corrected: comparison helpers could accept
+an infinite expected value, and reciprocal printed hint links were checked only
+for the last chapter. Helpers now require finite inputs and valid tolerances;
+hint-link checks cover every chapter. A focused regression raises the unit/content
+total to 17; the maintained mathematical checks remain 492. The mathematical
+manuscript and both generated LaTeX documents are unchanged by this pass.
+
 ## Validation
 
-- All 16 content/structure tests pass, including the 72-problem inventory,
+- All 17 content/structure and verification tests pass, including the 72-problem inventory,
   stable IDs, matching statements/hints/solutions, and printed reading order.
 - All 492 maintained independent numerical checks pass: 141 original checks,
   245 differentiation-expansion checks, and 106 integration-expansion checks.

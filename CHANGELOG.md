@@ -1,5 +1,11 @@
 # Development log
 
+## Unreleased — November 6, 2026
+
+- Recheck all 72 problems analytically with fresh chapter assignments; no new mathematical error found. Record per-problem derivations, exceptional cases, and supplementary checks.
+- Reject nonfinite values and invalid tolerances in numerical verification, and check reciprocal printed hint links for every chapter. Add a focused regression for the comparison helpers.
+
+
 ## Unreleased — November 5, 2026
 
 - Add 20 fully worked mixed problems, bringing the collection to 48 main problems plus 24 reference exercises, with matrix/tensor, geometric, oscillatory, and singular-integral coverage.

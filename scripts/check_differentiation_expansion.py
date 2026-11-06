@@ -17,6 +17,9 @@ checks = 0
 
 def near(identifier, actual, expected, tol=2e-7):
     global checks
+    if not (math.isfinite(abs(actual)) and math.isfinite(abs(expected))
+            and math.isfinite(tol) and tol >= 0):
+        raise AssertionError(f"{identifier}: nonfinite comparison or invalid tolerance")
     if not abs(actual - expected) <= tol * max(1, abs(expected)):
         raise AssertionError(f"{identifier}: {actual!r} != {expected!r}")
     checks += 1
