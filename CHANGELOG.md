@@ -2,6 +2,10 @@
 
 ## Unreleased — November 6, 2026
 
+- Add another 20 complete mixed problems (92 total: 68 main problems and 24 reference exercises), completing the original proposal backlog and adding eight new subjects.
+- Add independent analytical reviews and maintained numerical checks for the second expansion, including matrix square roots, tensor transport, elliptic kernels, Gaussian moments, principal values, and Fresnel asymptotics.
+- Correct a new dilogarithm derivative endpoint qualification during review, align elliptic parameter conventions, and display the ellipse speed formula to preserve printable margins.
+
 - Recheck all 72 problems analytically with fresh chapter assignments; no new mathematical error found. Record per-problem derivations, exceptional cases, and supplementary checks.
 - Reject nonfinite values and invalid tolerances in numerical verification, and check reciprocal printed hint links for every chapter. Add a focused regression for the comparison helpers.
 

@@ -27,11 +27,14 @@ formulas, and applicability conditions used throughout these calculations.
 - [Energy carried by coupled tensor components](/problems/d3-009)
 - [An accumulated matrix response](/problems/i4-009)
 - [An interior-source triangular panel](/problems/i3-014)
+- [A positive matrix branch with coupled entries](/problems/d3-016)
+- [A logarithmic kernel with a moving interior pole](/problems/i3-015)
+- [A finite aperture with quadratic phase](/problems/i3-019)
 
-## Main sets: 48 worked problems
+## Main sets: 68 worked problems
 
 <!--@include: ./generated/practice-table.inc-->
 
 Another [24 optional reference exercises](/reference-exercises) retain simpler
 local examples of individual operations. The [complete manuscript](/generated/book)
-includes all 72 problems and solutions. This workbook remains in alpha development.
+includes all 92 problems and solutions. This workbook remains in alpha development.

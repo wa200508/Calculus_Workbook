@@ -132,6 +132,54 @@ $$
 
 Partition the panel around its source and specify a map, domain, and Jacobian for each part. Reduce the integral to nonsingular one-dimensional integrals and obtain an explicit real expression. Justify the treatment of the source and provide an independent check; merely applying the vertex map from I3-007 to the whole panel is insufficient.
 
+### I3-015 — A logarithmic kernel with a moving interior pole
+
+**Objects and dependencies.** $x\in(0,1]$ is a dimensionless real integration coordinate and the fixed real scalar pole location satisfies $0<a<1$. Define the real Cauchy principal value by equal coordinate exclusions,
+
+$$
+J(a)=\lim_{\delta\downarrow0}\left(
+\int_0^{a-\delta}\frac{\ln x}{x-a}\,dx
++\int_{a+\delta}^1\frac{\ln x}{x-a}\,dx\right),
+\qquad 0<\delta<\min(a,1-a).
+$$
+
+Determine whether the ordinary improper integral exists, evaluate $J(a)$ in terms of a real dilogarithm defined locally, and find both limits $a\downarrow0$ and $a\uparrow1$. Compare them with the ordinary endpoint integrals obtained by placing the pole exactly at zero or one. The logarithmic endpoint at $x=0$ is approached independently of the symmetric exclusion at the interior pole.
+
+### I3-016 — Surface area with three unequal semiaxes
+
+**Objects and dependencies.** Fixed real lengths satisfy $a>b>c>0$. The real ellipsoid is $x^2/a^2+y^2/b^2+z^2/c^2=1$. Its surface area $S(a,b,c)$ is a real scalar with units of length squared. Obtain an explicit bounded quadrature on a finite rectangle, deriving its surface measure from a parameterization. Account for the coordinate poles and angular seam. Give upper and lower bounds, verify the spherical limit, and supply an explicit rigorous error bound for a rectangular composite midpoint approximation so that a requested numerical accuracy can be checked.
+
+### I3-017 — A circular source observed away from its axis
+
+**Objects and dependencies.** The fixed real ring radius is $a>0$. The real observation parameters satisfy $\rho\ge0$ and $z\in\mathbb R$; $(\rho,z)=(a,0)$ is excluded. The integration coordinate is the dimensionless real angle $0\le\theta\le2\pi$. Evaluate the real scalar kernel integral
+
+$$
+P(\rho,z;a)=\int_0^{2\pi}\frac{1}{\sqrt{a^2+\rho^2+z^2-2a\rho\cos\theta}}\,d\theta
+$$
+
+using a complete elliptic integral whose convention is defined explicitly. Find the on-axis value and the leading logarithmic behavior, with its coefficient, as the distance $\sqrt{(\rho-a)^2+z^2}$ to the ring tends to zero. Distinguish the parameter of an elliptic integral from its modulus and justify the singular asymptotic used.
+
+### I3-018 — A panel with a linearly varying weight
+
+**Objects and dependencies.** Independent real dimensionless coordinates describe $T=\{(x,y):0\le y\le x\le1\}$. The real scalars $\alpha,\beta,\gamma$ are fixed and need not be positive. The independent real observation distance is $h\ge0$. Define the real scalar
+
+$$
+L(h;\alpha,\beta,\gamma)=\iint_T
+\frac{\alpha+\beta x+\gamma y}{\sqrt{x^2+y^2+h^2}}\,dx\,dy.
+$$
+
+At $h=0$ the origin is excluded and the integral is interpreted as an absolutely convergent improper integral when it exists. Evaluate all three zero-distance moments exactly. For positive $h$, reduce the calculation to nonsingular one-dimensional quadrature by performing the radial integrations explicitly. Determine the right derivative at zero and give a quantitative bound explaining how vanishing weight at the vertex changes the local regularity. State when taking a parameter derivative under the original area integral at zero is justified.
+
+### I3-019 — A finite aperture with quadratic phase
+
+**Objects and dependencies.** The fixed real half-length is $a>0$, the independent real parameter satisfies $k>0$ and has units of inverse length squared, and $x\in[-a,a]$ is a real integration coordinate. The complex scalar amplitude is
+
+$$
+I(k;a)=\int_{-a}^a\exp(\mathrm{i}kx^2)\,dx,\qquad \mathrm{i}^2=-1.
+$$
+
+Give an exact representation in terms of Fresnel functions defined locally. For fixed $a$ and large $k$, obtain the leading stationary contribution and the first endpoint contribution with an explicit error bound. Justify the ordinary oscillatory integral and any Gaussian-damping limit used in this derivation. An integration by parts that divides by $x$ across the stationary point $x=0$ is not valid. Check the exact representation in the small-$k$ limit as well.
+
 ## Hint ladders
 
 ### I3-001
@@ -217,6 +265,36 @@ Partition the panel around its source and specify a map, domain, and Jacobian fo
 1. Join the source to the three vertices, using the counterclockwise oriented outer edges.
 2. On a source-edge subtriangle, use $\mathbf r(u,v)=\mathbf p+u(\mathbf a+v\mathbf e)$, where $\mathbf a$ runs from the source to the first edge vertex and $\mathbf e$ runs along that edge.
 3. Its Jacobian is $u\det(\mathbf a,\mathbf e)$. After cancellation of the kernel's radial factor, resolve the edge vector into tangential and perpendicular components.
+
+### I3-015
+
+1. Subtract $\ln a$ from the numerator before treating the pole; the resulting quotient has a removable value at $x=a$.
+2. The coordinate $t=x/a$ turns the regularized numerator into $\ln t$. A primitive of $\ln t/(t-1)$ is a real dilogarithm with argument $1-t$.
+3. Differentiating suitable combinations of dilogarithms proves the identities needed to expose the endpoint limits without complex logarithms.
+
+### I3-016
+
+1. Apply the diagonal map with entries $a,b,c$ to the unit-sphere parameterization and calculate its tangent cross product.
+2. The angular factor is the norm of $\operatorname{diag}(bc,ac,ab)$ applied to a unit vector. Reflection symmetry reduces the sphere to one octant.
+3. Bound the first angular derivatives of that norm using its largest diagonal entry. The integral of distance from the center of an interval of width $\Delta$ is $\Delta^2/4$.
+
+### I3-017
+
+1. Rewrite the squared denominator using the half-angle identity and $(a+\rho)^2+z^2$.
+2. The elliptic parameter is $m=4a\rho/((a+\rho)^2+z^2)$, and its complementary quantity has a direct geometric meaning.
+3. The complete elliptic integral grows logarithmically as its complementary modulus tends to zero. Convert its convention before applying an asymptotic formula.
+
+### I3-018
+
+1. The map $x=u$, $y=uv$ makes the numerator affine in $u$ and contributes the area factor $u$.
+2. The two radial integrals have numerators $u$ and $u^2$ over $\sqrt{(1+v^2)u^2+h^2}$. The second involves an inverse hyperbolic sine.
+3. A nonzero constant weight contributes a term linear in $h$. The linear weights instead give a remainder bounded by a constant times $h^2\ln(1/h)$.
+
+### I3-019
+
+1. The phase is even. Rescale $x$ so that the exponent is $\mathrm{i}\pi t^2/2$ to identify the exact Fresnel convention.
+2. For the complete real-line integral, positive Gaussian damping permits a parameter differential equation. Uniform oscillatory tail bounds justify removing that damping.
+3. Subtract the two tails beyond $a$ from the complete integral. Integration by parts is then safe because $x$ is bounded away from zero, and a second tail estimate controls the error.
 
 ## Complete solutions
 
@@ -966,6 +1044,544 @@ K\left(\frac23,\frac13\right)
 $$
 
 **Discussion.** An interior source requires several maps with the source at their common collapsed edge. Their positive Jacobians cancel the weak radial singularity while retaining the distinct geometry of each outer edge.
+
+### I3-015
+
+**Step 1 — SETUP AND DOMAIN.** For a fixed interior $a$, the logarithm is integrable at zero because $x-a$ stays bounded away from zero there. At the pole the numerator tends to the nonzero number $\ln a<0$. The left one-sided integral diverges to $+\infty$ and the right one diverges to $-\infty$. The ordinary improper integral therefore does not exist. The equal-exclusion prescription in the statement is needed to assign a principal value.
+
+**Step 2 — CHOICE.** Subtract the pole's numerator value:
+
+$$
+\frac{\ln x}{x-a}
+=\frac{\ln a}{x-a}+\frac{\ln x-\ln a}{x-a}.
+$$
+
+The second quotient extends continuously to $1/a$ at $x=a$. Its only remaining unbounded endpoint is the integrable logarithm at zero. The first term has the elementary symmetric principal value
+
+$$
+\operatorname{PV}\int_0^1\frac{\ln a}{x-a}\,dx
+=\ln a\ln\left(\frac{1-a}{a}\right).
+$$
+
+Consequently
+
+$$
+J(a)=\ln a\ln\left(\frac{1-a}{a}\right)
++\int_0^1\frac{\ln x-\ln a}{x-a}\,dx.
+$$
+
+**Step 3 — CALCULUS: a real special function.** Define the real dilogarithm for $s\le1$ by
+
+$$
+\operatorname{Li}_2(s)=-\int_0^s\frac{\ln(1-t)}t\,dt.
+$$
+
+The integrand inside this definition has limiting value $-1$ at zero. For $s=1$ its logarithmic endpoint is integrable. Thus the definition involves no complex logarithm on its stated domain. For $s<1$, $s\ne0$, its derivative is $-\ln(1-s)/s$, with derivative one at zero by continuity. The value at $s=1$ is finite, but its left derivative diverges.
+
+In the regularized integral put $t=x/a$. Its bounds are zero and $1/a$, and the removable point becomes $t=1$:
+
+$$
+\int_0^1\frac{\ln x-\ln a}{x-a}\,dx
+=\int_0^{1/a}\frac{\ln t}{t-1}\,dt.
+$$
+
+The derivative of $-\operatorname{Li}_2(1-t)$ is $\ln t/(t-1)$. Endpoint evaluation therefore gives the exact real expression
+
+$$
+J(a)=\ln a\ln\left(\frac{1-a}{a}\right)
++\operatorname{Li}_2(1)-\operatorname{Li}_2\left(1-\frac1a\right).
+$$
+
+The last argument is negative, within the real domain just defined.
+
+**Step 4 — ALGEBRA: exposing the endpoint behavior.** Two identities remove the large negative argument. Direct differentiation with respect to $a\in(0,1)$ shows that
+
+$$
+\operatorname{Li}_2\left(1-\frac1a\right)
++\operatorname{Li}_2(1-a)+\frac12\ln^2a
+$$
+
+has derivative zero; its limit at $a\uparrow1$ is zero. Similarly, the derivative of
+
+$$
+\operatorname{Li}_2(a)+\operatorname{Li}_2(1-a)
++\ln a\ln(1-a)
+$$
+
+is zero, and its limit at $a\downarrow0$ is $\operatorname{Li}_2(1)$. Substituting these two identities in the previous answer yields
+
+$$
+J(a)=2\operatorname{Li}_2(1)-\operatorname{Li}_2(a)-\frac12\ln^2a.
+$$
+
+Here $\operatorname{Li}_2(1)=\sum_{m=1}^\infty m^{-2}=\pi^2/6$ is the standard Basel constant. The series follows by integrating the nonnegative geometric expansion in the defining integral; the integral definition already specifies the constant without requiring its closed value. Equivalently,
+
+$$
+J(a)=\frac{\pi^2}{3}-\operatorname{Li}_2(a)-\frac12\ln^2a.
+$$
+
+**Step 5 — DOMAIN: the two endpoint limits.** The defining integral gives $\operatorname{Li}_2(a)\to0$ as $a\downarrow0$ and $\operatorname{Li}_2(a)\to\operatorname{Li}_2(1)$ as $a\uparrow1$. Hence
+
+$$
+\lim_{a\downarrow0}J(a)=-\infty,\qquad
+\lim_{a\uparrow1}J(a)=\operatorname{Li}_2(1)=\frac{\pi^2}{6}.
+$$
+
+With the pole exactly at zero, the ordinary integral is $\int_0^1\ln x/x\,dx=-\infty$, by its primitive $\ln^2x/2$. With the pole at one, the quotient $\ln x/(x-1)$ has removable value one at $x=1$ and is integrable at zero. Its ordinary integral is
+
+$$
+\int_0^1\frac{-\ln x}{1-x}\,dx
+=\sum_{n=0}^\infty\int_0^1x^n(-\ln x)\,dx
+=\sum_{n=0}^\infty\frac1{(n+1)^2}
+=\frac{\pi^2}{6}.
+$$
+
+The nonnegative term series justifies this interchange by monotone convergence. Thus the endpoint at one changes the singularity itself: the numerator now vanishes at the pole.
+
+**Step 6 — CHECK.** The regularized quotient is positive on $(0,1)$ because $\ln x$ is strictly increasing. At $a=1/2$ the explicit principal-value logarithm is zero. Splitting the regularized integral at $x=1/2$ and substituting $t=x/a$ gives
+
+$$
+J(1/2)=\int_0^2\frac{\ln t}{t-1}\,dt
+=\operatorname{Li}_2(1)-\operatorname{Li}_2(-1)
+=\frac{\pi^2}{4}.
+$$
+
+For the last equality, the alternating series for $\operatorname{Li}_2(-1)$ separates its even and odd terms to give $-\operatorname{Li}_2(1)/2$. This checks the sign and constant independently of the simplified $a$-formula. Numerical integration of the nonsingular subtracted quotient supplies another check without balancing two large pole contributions.
+
+**Discussion.** Subtracting the numerator at a pole separates a prescribed principal value from an ordinary convergent calculation. A pole approaching an endpoint may retain its divergence or become removable, depending on the numerator.
+
+### I3-016
+
+**Step 1 — SETUP.** The ellipsoid is a compact smooth surface. Its level-set gradient cannot vanish on the surface, so any degeneracy in an angular parameterization must be distinguished from a surface singularity. Use independent real angles $0\le\theta\le\pi$ and $0\le\varphi<2\pi$ in
+
+$$
+\mathbf r(\theta,\varphi)=\begin{bmatrix}
+a\sin\theta\cos\varphi\\b\sin\theta\sin\varphi\\c\cos\theta
+\end{bmatrix}.
+$$
+
+The output is real scalar area, with no orientation sign.
+
+**Step 2 — CHOICE.** This parameterization is the diagonal linear scaling of a unit sphere. A tangent cross product, rather than a volume determinant, supplies its surface measure. Reflection in each coordinate plane reduces the area calculation to eight identical octants.
+
+**Step 3 — CALCULUS.** The two tangent columns are
+
+$$
+\frac{\partial}{\partial\theta}(\mathbf r)=
+\begin{bmatrix}a\cos\theta\cos\varphi\\b\cos\theta\sin\varphi\\-c\sin\theta\end{bmatrix},
+\qquad
+\frac{\partial}{\partial\varphi}(\mathbf r)=
+\begin{bmatrix}-a\sin\theta\sin\varphi\\b\sin\theta\cos\varphi\\0\end{bmatrix}.
+$$
+
+Their ordered cross product is
+
+$$
+\begin{bmatrix}
+bc\sin^2\theta\cos\varphi\\
+ac\sin^2\theta\sin\varphi\\
+ab\sin\theta\cos\theta
+\end{bmatrix}.
+$$
+
+Define the real unit column $\mathbf n=(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)^{\mathsf T}$ and fixed real matrix $\mathbf M=\operatorname{diag}(bc,ac,ab)$. On the full angular domain the cross-product length is $\sin\theta\,g(\theta,\varphi)$, where
+
+$$
+g(\theta,\varphi)=\|\mathbf M\mathbf n\|
+=\sqrt{b^2c^2\sin^2\theta\cos^2\varphi
++a^2c^2\sin^2\theta\sin^2\varphi+a^2b^2\cos^2\theta}.
+$$
+
+**Step 4 — RESULT AND ALGEBRA.** Put $\ell=\pi/2$ and $f(\theta,\varphi)=\sin\theta\,g(\theta,\varphi)$. The explicit finite quadrature is
+
+$$
+S(a,b,c)=8\int_0^\ell\int_0^\ell f(\theta,\varphi)\,d\varphi\,d\theta.
+$$
+
+Every value under the square root lies between $(bc)^2$ and $(ab)^2$, since $\mathbf n$ is a unit vector and $bc<ac<ab$. Thus $bc\le g\le ab$. In particular the formula is bounded and nonsingular on the closed rectangle. Integrating these bounds over the whole sphere yields
+
+$$
+4\pi bc\le S(a,b,c)\le4\pi ab.
+$$
+
+**Step 5 — DOMAIN: poles, seam, and limit.** At $\theta=0$ or $\pi$, the azimuthal tangent vanishes because all azimuths represent the same pole. The surface remains regular there in another chart. At $\varphi=0$ and $2\pi$ the same meridian is identified, but the cross product does not vanish away from the poles. These coordinate sets have zero surface area, and the angular seam is counted once.
+
+As $a,b,c$ tend to the same positive length $r$, the function $g$ tends uniformly to $r^2$. The area tends to $8r^2\int_0^\ell\int_0^\ell\sin\theta\,d\varphi\,d\theta=4\pi r^2$. The uniform bound above also supplies domination for this limiting calculation.
+
+**Step 6 — CALCULUS: a rigorous numerical error bound.** For positive integers $N,M$, let $\Delta\theta=\ell/N$, $\Delta\varphi=\ell/M$, and use the midpoint sum
+
+$$
+S_{N,M}=8\Delta\theta\Delta\varphi
+\sum_{i=0}^{N-1}\sum_{j=0}^{M-1}
+f\left((i+\tfrac12)\Delta\theta,(j+\tfrac12)\Delta\varphi\right).
+$$
+
+Since $g=\|\mathbf M\mathbf n\|>0$, differentiation of the norm and the Cauchy--Schwarz inequality give
+
+$$
+|\partial_\theta g|\le\|\mathbf M\partial_\theta\mathbf n\|\le ab,
+\qquad
+|\partial_\varphi g|\le\|\mathbf M\partial_\varphi\mathbf n\|\le ab\sin\theta.
+$$
+
+Here $\|\partial_\theta\mathbf n\|=1$ and $\|\partial_\varphi\mathbf n\|=\sin\theta$. On the octant rectangle it follows that
+
+$$
+|\partial_\theta f|\le ab(\sin\theta+\cos\theta)\le\sqrt2ab,
+\qquad |\partial_\varphi f|\le ab\sin^2\theta\le ab.
+$$
+
+Within a single cell, integrate the bound on the difference between $f$ and its midpoint value. The average distances from the midpoint in the two coordinate directions are $\Delta\theta/4$ and $\Delta\varphi/4$. Summing over the rectangle and multiplying by eight gives
+
+$$
+\begin{aligned}
+|S-S_{N,M}|
+&\le8\ell^2\left(\frac{\sqrt2ab\Delta\theta}{4}
++\frac{ab\Delta\varphi}{4}\right)\\
+&=\frac{\pi^3ab}{4}\left(\frac{\sqrt2}{N}+\frac1M\right).
+\end{aligned}
+$$
+
+This is a conservative absolute error bound in units of area. For a requested tolerance $\eta>0$, any $N,M$ making its right-hand side at most $\eta$ provide a certified quadrature enclosure. One explicit choice is $N=M\ge\pi^3ab(\sqrt2+1)/(4\eta)$, rounded up to a positive integer. Floating-point evaluation error, if material, is additional to this mathematical quadrature bound.
+
+**Step 7 — CHECK.** In the spherical case the integrand becomes $r^2\sin\theta$, and its exact integral recovers $4\pi r^2$ without an elliptic formula. Independently, exchanging two physical axes cannot change the area: the full-sphere norm expression is invariant under the corresponding permutation of the components of $\mathbf n$, even though a chosen octant parameterization looks different. Numerically refined midpoint sums can be compared using the explicit error bounds of both sums, rather than treating their agreement alone as proof of an error estimate.
+
+**Discussion.** An explicit bounded quadrature with a controlled error is a complete representation of a surface area. Coordinate degeneracies and approximation accuracy can be resolved without forcing an elementary antiderivative.
+
+### I3-017
+
+**Step 1 — SETUP.** Define two positive real lengths for an off-ring observation,
+
+$$
+d=\sqrt{(a+\rho)^2+z^2},\qquad
+\delta=\sqrt{(\rho-a)^2+z^2}>0.
+$$
+
+The original denominator lies between $\delta$ and $d$, so its integrand is positive and continuous over a compact angular interval. The output has units of inverse length.
+
+**Step 2 — CHOICE.** The half-angle identity gives
+
+$$
+a^2+\rho^2+z^2-2a\rho\cos\theta
+=d^2-4a\rho\cos^2(\theta/2).
+$$
+
+Define the dimensionless real elliptic parameter
+
+$$
+m=\frac{4a\rho}{d^2},\qquad
+1-m=\frac{\delta^2}{d^2}>0.
+$$
+
+Thus $0\le m<1$. The real modulus is $\kappa=\sqrt m$, whereas the complementary modulus is $\kappa'=\sqrt{1-m}=\delta/d$.
+
+**Step 3 — CALCULUS: the elliptic representation.** In this problem the complete elliptic integral is defined with its parameter as argument:
+
+$$
+K(m)=\int_0^{\pi/2}\frac1{\sqrt{1-m\sin^2u}}\,du,
+\qquad 0\le m<1.
+$$
+
+Put $u=\theta/2$ in the original integral and use reflection symmetry of $\cos^2u$ over $[0,\pi]$. A further replacement of $u$ by $\pi/2-u$ on a half interval gives
+
+$$
+P(\rho,z;a)=\frac4dK(m).
+$$
+
+This definition uses $m$ where a modulus-based convention writes $\kappa^2$. In particular, the NIST DLMF function denoted $K(\kappa)$ equals the present $K(\kappa^2)$.
+
+**Step 4 — ALGEBRA AND CHECK: the axis.** At $\rho=0$, the parameter is zero and $K(0)=\pi/2$, so
+
+$$
+P(0,z;a)=\frac{2\pi}{\sqrt{a^2+z^2}}.
+$$
+
+This also follows directly because the original integrand is constant on the ring. It is the continuous on-axis limit: in a neighborhood $0\le\rho\le a/2$, the original denominator is at least $a/2$, so finite-interval dominated convergence applies. The formula is even in $z$, as is the geometry.
+
+**Step 5 — DOMAIN: approaching the ring.** The complementary-modulus expansion in [NIST DLMF, Equation 19.12.1](https://dlmf.nist.gov/19.12.E1), whose constant is specified immediately after Equation 19.12.3, gives for positive $\varepsilon\downarrow0$
+
+$$
+K(1-\varepsilon^2)
+=\ln\left(\frac4\varepsilon\right)
++O\left(\varepsilon^2\ln\left(\frac1\varepsilon\right)\right).
+$$
+
+The DLMF argument is its modulus, so this is its expansion at $\kappa'=\varepsilon$, with $\kappa=\sqrt{1-\varepsilon^2}$. Its leading constant is $\ln4$; dropping that constant would lose the finite term in the ring asymptotic.
+
+With $\varepsilon=\delta/d$ the evaluated kernel becomes
+
+$$
+P(\rho,z;a)=\frac4d\left(
+\ln\left(\frac{4d}{\delta}\right)
++O\left(\frac{\delta^2}{d^2}\ln\left(\frac d\delta\right)\right)\right).
+$$
+
+For fixed $a>0$ and $\delta\downarrow0$, $\rho\to a$ and $d=2a+O(\delta)$. Replacing $d$ by $2a$ in the leading expression changes it by at most a constant times $\delta\ln(a/\delta)/a^2$, which tends to zero. Consequently the particularly simple geometric form is
+
+$$
+P(\rho,z;a)=\frac2a\ln\left(\frac{8a}{\delta}\right)+o(1),
+\qquad \delta=\sqrt{(\rho-a)^2+z^2}\downarrow0.
+$$
+
+Here $o(1)$ denotes an additive term tending to zero with the fixed physical units of $P$. All logarithm arguments are dimensionless. The coefficient of the logarithmic divergence is $2/a$.
+
+**Step 6 — CHECK: local singularity and global bounds.** At the excluded point itself the denominator is $2a|\sin(\theta/2)|$. Near $\theta=0$ it is asymptotic to $a\theta$, and near $2\pi$ it is asymptotic to $a(2\pi-\theta)$. These two ends describe the same local source neighborhood from its two sides; each supplies one logarithmic angular tail. Their combined coefficient agrees with $2/a$. At the exact source the positive angular integral diverges, so no principal value can make this positive singularity an ordinary finite potential.
+
+For every admissible observation, the original denominator bounds also give
+
+$$
+\frac{2\pi}{d}\le P(\rho,z;a)\le\frac{2\pi}{\delta}.
+$$
+
+The exact axis result lies within these bounds. Direct angular quadrature away from the ring provides an independent check on the elliptic normalization.
+
+**Discussion.** The same geometric distance that identifies the excluded source supplies the complementary elliptic modulus. Converting that convention correctly preserves both the logarithmic coefficient and its constant.
+
+### I3-018
+
+**Step 1 — SETUP AND DOMAIN.** On the compact triangle the weight has magnitude at most $|\alpha|+|\beta|+|\gamma|$. For $h\ge0$ and $(x,y)\ne(0,0)$,
+
+$$
+\frac{|\alpha+\beta x+\gamma y|}{\sqrt{x^2+y^2+h^2}}
+\le\frac{|\alpha|+|\beta|+|\gamma|}{\sqrt{x^2+y^2}}.
+$$
+
+The right-hand side has a finite area integral, as the vertex calculation in I3-007 establishes. Thus signed weights cause no ambiguity: the integral is absolutely convergent even at zero distance, and dominated convergence in $h$ is available for the values themselves.
+
+**Step 2 — CHOICE.** Use independent coordinates $0<u\le1$, $0\le v\le1$ with $x=u$, $y=uv$. The real Jacobian determinant is $u>0$. Define the positive scalar $c(v)=\sqrt{1+v^2}$, so the denominator becomes $\sqrt{c(v)^2u^2+h^2}$. The constant and linear weight parts require two different radial moments.
+
+**Step 3 — CALCULUS: radial primitives for positive distance.** For fixed $v$ abbreviate $c=c(v)>0$ and let
+
+$$
+A_0(v,h)=\int_0^1\frac{u}{\sqrt{c^2u^2+h^2}}\,du,
+\qquad
+A_1(v,h)=\int_0^1\frac{u^2}{\sqrt{c^2u^2+h^2}}\,du.
+$$
+
+For $h>0$, substitution of $s=\sqrt{c^2u^2+h^2}$ in the first gives
+
+$$
+A_0(v,h)=\frac{\sqrt{c^2+h^2}-h}{c^2}
+=\frac1{\sqrt{c^2+h^2}+h}.
+$$
+
+For the second, put $w=cu/h$. Then
+
+$$
+A_1(v,h)=\frac{h^2}{c^3}\int_0^{c/h}\frac{w^2}{\sqrt{1+w^2}}\,dw.
+$$
+
+The identity $w^2=(1+w^2)-1$ and one integration by parts give the primitive
+$\bigl(w\sqrt{1+w^2}-\operatorname{arsinh}(w)\bigr)/2$. Consequently
+
+$$
+A_1(v,h)=\frac{\sqrt{c^2+h^2}}{2c^2}
+-\frac{h^2}{2c^3}\operatorname{arsinh}\left(\frac ch\right).
+$$
+
+Here $\operatorname{arsinh}(s)=\ln(s+\sqrt{1+s^2})$ is the real inverse hyperbolic sine. The complete nonsingular one-dimensional representation is
+
+$$
+L(h;\alpha,\beta,\gamma)
+=\int_0^1\left(\alpha A_0(v,h)+(\beta+\gamma v)A_1(v,h)\right)\,dv,
+\qquad h>0.
+$$
+
+**Step 4 — ALGEBRA: the exact zero-distance moments.** At $h=0$, direct cancellation in the radial integrals gives $A_0(v,0)=1/c(v)$ and $A_1(v,0)=1/(2c(v))$. Therefore the three moments are
+
+$$
+\begin{aligned}
+\iint_T\frac1{\sqrt{x^2+y^2}}\,dx\,dy
+&=\int_0^1\frac1{\sqrt{1+v^2}}\,dv=\operatorname{arsinh}(1),\\
+\iint_T\frac{x}{\sqrt{x^2+y^2}}\,dx\,dy
+&=\frac12\operatorname{arsinh}(1),\\
+\iint_T\frac{y}{\sqrt{x^2+y^2}}\,dx\,dy
+&=\frac12\int_0^1\frac v{\sqrt{1+v^2}}\,dv
+=\frac{\sqrt2-1}{2}.
+\end{aligned}
+$$
+
+Their signed combination is
+
+$$
+L(0;\alpha,\beta,\gamma)
+=\left(\alpha+\frac\beta2\right)\operatorname{arsinh}(1)
++\frac\gamma2(\sqrt2-1).
+$$
+
+**Step 5 — CALCULUS: the right derivative and an explicit remainder.** Rationalization gives, for every $h>0$,
+
+$$
+0\le A_0(v,h)-\frac1c+\frac h{c^2}
+=\frac{h^2}{c^2(\sqrt{c^2+h^2}+c)}\le\frac{h^2}{2c^3}.
+$$
+
+The second radial integral decreases as $h$ increases. Its explicit formula therefore gives
+
+$$
+0\le\frac1{2c}-A_1(v,h)
+\le\frac{h^2}{2c^3}\operatorname{arsinh}\left(\frac ch\right)
+\le\frac{h^2}{2}\operatorname{arsinh}\left(\frac{\sqrt2}{h}\right),
+$$
+
+using $1\le c(v)\le\sqrt2$. Integration in $v$, including the signs of the fixed weights by absolute values, yields
+
+$$
+\begin{aligned}
+\left|L(h)-L(0)+\frac{\pi\alpha}{4}h\right|
+\le\frac{h^2}{2}\left(
+|\alpha|+(|\beta|+|\gamma|)\operatorname{arsinh}\left(\frac{\sqrt2}{h}\right)
+\right).
+\end{aligned}
+$$
+
+The suppressed arguments in $L(h)$ and $L(0)$ are the same fixed weights. Since $h\operatorname{arsinh}(\sqrt2/h)\to0$, the right derivative exists and is
+
+$$
+\left.\frac{\partial}{\partial h}L(h;\alpha,\beta,\gamma)\right|_{h=0^+}
+=-\frac{\pi\alpha}{4}.
+$$
+
+Only the weight at the vertex controls this derivative. If $\alpha=0$, the change in the integral is bounded by a constant times $h^2\ln(1/h)$ instead of having a nonzero term linear in $h$.
+
+**Step 6 — DOMAIN: when the area derivative can pass through zero.** At a fixed positive $h$, ordinary finite-domain differentiation is justified by a positive lower bound on the denominator. At $h=0$, the pointwise right derivative of the kernel at every nonzero panel point is zero. If $\alpha\ne0$, its area integral is zero while the evaluated right derivative is $-\pi\alpha/4$, so passing the derivative through the area integral fails.
+
+For $\alpha=0$ let $R=\sqrt{x^2+y^2}$ and $C=\sqrt{\beta^2+\gamma^2}$. Cauchy--Schwarz gives $|\beta x+\gamma y|\le CR$. For nonnegative $h$,
+
+$$
+\left|\frac{\partial}{\partial h}
+\left(\frac{\beta x+\gamma y}{\sqrt{R^2+h^2}}\right)\right|
+\le\frac{CRh}{(R^2+h^2)^{3/2}}
+\le\frac C R.
+$$
+
+The last function is area-integrable. Domination therefore justifies taking the right derivative under the area integral, with value zero. It also shows that this derivative tends continuously to zero from positive $h$. If the distance is extended to signed $h$ using the same squared denominator, a nonzero $\alpha$ produces a cusp, whereas a vanishing vertex weight gives a continuously differentiable even extension. No second-derivative claim follows from the logarithmic remainder bound alone.
+
+**Step 7 — CHECK.** An independent polar description of the triangle has $0\le\theta\le\pi/4$ and $0\le r\le\sec\theta$. The three zero-distance integrands after including the area measure are $1$, $r\cos\theta$, and $r\sin\theta$. Their radial integrals give respectively
+
+$$
+\int_0^{\pi/4}\sec\theta\,d\theta=\operatorname{arsinh}(1),\qquad
+\frac12\int_0^{\pi/4}\sec\theta\,d\theta,\qquad
+\frac12\int_0^{\pi/4}\frac{\sin\theta}{\cos^2\theta}\,d\theta,
+$$
+
+which reproduce all three moments. For the constant weight at positive $h$, the polar radial primitive gives
+$\int_0^{\pi/4}(\sqrt{\sec^2\theta+h^2}-h)\,d\theta$.
+Its right derivative at zero is $-\pi/4$, independently confirming the vertex coefficient.
+
+**Discussion.** A linear testing weight can remove the leading parameter cusp of a singular panel integral. Absolute convergence of the value and permission to differentiate at zero are separate questions, resolved here by different majorants.
+
+### I3-019
+
+**Step 1 — SETUP.** The phase is real, the output is complex, and the finite-interval integrand is continuous with magnitude one. The phase derivative $2kx$ vanishes at zero. A formula involving its reciprocal can be used only on intervals separated from that stationary point.
+
+**Step 2 — CHOICE AND EXACT REPRESENTATION.** Define real Fresnel functions for real $s$ by
+
+$$
+C(s)=\int_0^s\cos\left(\frac\pi2t^2\right)\,dt,
+\qquad
+S(s)=\int_0^s\sin\left(\frac\pi2t^2\right)\,dt.
+$$
+
+Evenness of the original phase and the coordinate $t=\sqrt{2k/\pi}\,x$ give, with $s=a\sqrt{2k/\pi}$,
+
+$$
+I(k;a)=\sqrt{\frac{2\pi}{k}}\bigl(C(s)+\mathrm{i}S(s)\bigr).
+$$
+
+For the large-parameter calculation, the complete real-line oscillatory integral supplies the stationary contribution; the two tails beyond $a$ supply the endpoint correction.
+
+**Step 3 — DOMAIN: convergence and a uniform damping bound.** For a real damping parameter $\epsilon\ge0$, consider a positive tail starting at $A>0$. On $x\ge A$ let $f_\epsilon(x)=\exp(-\epsilon x^2)/x$, a decreasing positive function tending to zero. Integration by parts against $\exp(\mathrm{i}kx^2)$ gives, for $B>A$,
+
+$$
+\begin{aligned}
+\left|\int_A^B\exp(-\epsilon x^2)\exp(\mathrm{i}kx^2)\,dx\right|
+&\le\frac{f_\epsilon(A)+f_\epsilon(B)+\int_A^B|\frac{d}{dx}(f_\epsilon(x))|\,dx}{2k}\\
+&=\frac{f_\epsilon(A)}k\le\frac1{kA}.
+\end{aligned}
+$$
+
+The formula uses $\frac{d}{dx}\exp(\mathrm{i}kx^2)=2\mathrm{i}kx\exp(\mathrm{i}kx^2)$ only where $x\ge A>0$. Applying the same bound from any later starting point proves the Cauchy criterion, including $\epsilon=0$. The negative tail has the same bound by evenness. The ordinary real-line integral therefore exists with its two tails converging separately. Its absolute integral diverges because the undamped integrand has magnitude one.
+
+On every finite interval, the damped integrands converge under bounded domination as $\epsilon\downarrow0$. The uniform tail bound then shows that their complete integrals tend to the ordinary oscillatory integral. This justifies the damping limit without an integrable absolute majorant on the whole line.
+
+**Step 4 — CALCULUS: the complete Gaussian-damped integral.** For fixed $\epsilon>0$, define the complex scalar
+
+$$
+G_\epsilon(k)=\int_{-\infty}^\infty
+\exp\left(-\left(\epsilon-\mathrm{i}k\right)x^2\right)\,dx.
+$$
+
+Differentiation in the real parameter $k$ is justified by the integrable bound $x^2\exp(-\epsilon x^2)$. Integrating the derivative of $x\exp(- (\epsilon-\mathrm{i}k)x^2)$ over the line, whose boundary terms vanish, gives
+
+$$
+\int_{-\infty}^\infty x^2\exp(- (\epsilon-\mathrm{i}k)x^2)\,dx
+=\frac{G_\epsilon(k)}{2(\epsilon-\mathrm{i}k)}.
+$$
+
+Consequently $\frac{d}{dk}G_\epsilon(k)=\mathrm{i}G_\epsilon(k)/(2(\epsilon-\mathrm{i}k))$. Its initial value is the real Gaussian integral $G_\epsilon(0)=\sqrt{\pi/\epsilon}$. Solving this scalar parameter equation with the square root chosen positive at $k=0$ gives
+
+$$
+G_\epsilon(k)=\frac{\sqrt\pi}{\sqrt{\epsilon-\mathrm{i}k}}
+=\frac{\sqrt\pi}{(\epsilon^2+k^2)^{1/4}}
+\exp\left(\frac{\mathrm{i}}2\arctan\left(\frac k\epsilon\right)\right).
+$$
+
+The real Gaussian initial value can itself be obtained by squaring its positive integral, using plane polar coordinates, and then scaling $x$ by $\sqrt\epsilon$. The displayed polar form specifies the complex square-root branch without ambiguity. The justified damping limit now yields
+
+$$
+G(k)=\int_{-\infty}^\infty\exp(\mathrm{i}kx^2)\,dx
+=\sqrt{\frac\pi k}\exp(\mathrm{i}\pi/4),\qquad k>0.
+$$
+
+**Step 5 — CALCULUS AND ALGEBRA: the endpoint term.** Let $T=\int_a^\infty\exp(\mathrm{i}kx^2)\,dx$. On this positive tail, integration by parts gives
+
+$$
+T=-\frac{\exp(\mathrm{i}ka^2)}{2\mathrm{i}ka}
++\frac1{2\mathrm{i}k}\int_a^\infty\frac{\exp(\mathrm{i}kx^2)}{x^2}\,dx.
+$$
+
+The boundary term at infinity vanishes because of its factor $1/x$. Subtracting both tails from $G(k)$ gives
+
+$$
+I(k;a)=\sqrt{\frac\pi k}\exp(\mathrm{i}\pi/4)
++\frac{\exp(\mathrm{i}ka^2)}{\mathrm{i}ka}+R(k;a),
+$$
+
+where
+
+$$
+R(k;a)=-\frac1{\mathrm{i}k}\int_a^\infty\frac{\exp(\mathrm{i}kx^2)}{x^2}\,dx.
+$$
+
+In particular, the endpoint term has factor $1/\mathrm{i}=-\mathrm{i}$, rather than the opposite phase sign.
+
+**Step 6 — DOMAIN AND ERROR BOUND.** Put $U=\int_a^\infty\exp(\mathrm{i}kx^2)/x^2\,dx$, which is already absolutely convergent. A further integration by parts, again away from zero, gives
+
+$$
+U=-\frac{\exp(\mathrm{i}ka^2)}{2\mathrm{i}ka^3}
++\frac3{2\mathrm{i}k}\int_a^\infty\frac{\exp(\mathrm{i}kx^2)}{x^4}\,dx.
+$$
+
+Bounding the last integral absolutely by $\int_a^\infty x^{-4}\,dx=1/(3a^3)$ proves
+
+$$
+|U|\le\frac1{ka^3},\qquad
+|R(k;a)|\le\frac1{k^2a^3}.
+$$
+
+The leading stationary term has order $k^{-1/2}$, the endpoint term has order $k^{-1}$, and the controlled remainder has order $k^{-2}$ for fixed positive $a$. Relative to the leading magnitude, the remainder is at most $1/(\sqrt\pi(ka^2)^{3/2})$, so the large-parameter regime is identified by the dimensionless quantity $ka^2$.
+
+**Step 7 — CHECK: the opposite parameter limit.** Taylor's formula for a real phase satisfies $|\exp(\mathrm{i}y)-1-\mathrm{i}y|\le y^2/2$. Integration over the finite aperture gives
+
+$$
+I(k;a)=2a+\frac{2\mathrm{i}ka^3}{3}+E(k;a),
+\qquad |E(k;a)|\le\frac{k^2a^5}{5}.
+$$
+
+This verifies the exact Fresnel scale as $k\downarrow0$ and shows why the large-$k$ representation must not be truncated as a small-parameter approximation. Independently, the original integral obeys $|I(k;a)|\le2a$ by the triangle inequality. Finite-interval complex quadrature checks both components of the exact answer and the sign of the endpoint correction.
+
+**Discussion.** A stationary point supplies a different scale from an ordinary endpoint. Splitting the complete integral and its tails preserves that distinction and places every division by a phase derivative in a region where it is valid.
 
 ## Application references
 

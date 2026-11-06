@@ -109,6 +109,58 @@ $$
 
 where the trace is the sum of the diagonal entries. State its open parameter domain and compute its three partial derivatives. Compare them with the entry derivatives obtained by allowing all four entries of a general real $2\times2$ matrix to vary independently near $\mathbf A(a,b,c)$. Explain the off-diagonal contribution when symmetry is imposed.
 
+### D4-012 — A folded angle and its continuous lift
+
+**Objects and dependencies.** $x\in\mathbb R\setminus\{-1,1\}$ is an independent dimensionless real scalar. The dependent real angle is
+
+$$
+f(x)=\arctan\left(\frac{2x}{1-x^2}\right),
+$$
+
+where the principal real arctangent takes values in $(-\pi/2,\pi/2)$. Determine the derivative and the exact relation between $f(x)$ and $2\arctan x$ on every connected component of its domain. Determine all one-sided limits at the excluded inputs. Construct a continuous real angle $\Theta(x)$ on the entire real line, with $\Theta(0)=0$, that differs from $f(x)$ by an integer multiple of $\pi$ wherever $f$ is defined, and find its derivative. Distinguish this lift from a continuous extension of $f$ itself.
+
+### D4-013 — A phase zero in a complex response
+
+**Objects and dependencies.** $\omega\in\mathbb R$ is an independent real angular frequency, and $\tau>0$ is a fixed real time. The dependent dimensionless complex scalar response is
+
+$$
+H(\omega;\tau)=1-\exp(-\mathrm i\omega\tau),\qquad \mathrm i^2=-1.
+$$
+
+Determine every real-frequency zero and the magnitude away from and near each zero. On every connected interval between zeros, find a continuous real phase $\phi(\omega;\tau)$ satisfying $H=|H|\exp(\mathrm i\phi)$ and its frequency derivative. Decide whether any choice of phase can be continuously extended through a zero while representing the response on both sides. Check the derivative using the complex logarithmic derivative with $\tau$ held fixed.
+
+### D4-014 — Constant determinant along a changing matrix response
+
+**Objects and dependencies.** $t\in\mathbb R$ is an independent dimensionless real scalar. Define the dependent real $2\times2$ matrix, real scalar, and inverse matrix
+
+$$
+\mathbf A(t)=\begin{bmatrix}1+t^2&t\\t&1\end{bmatrix},\qquad
+h(t)=\ln(\det(\mathbf A(t))),\qquad
+\mathbf R(t)=\mathbf A(t)^{-1}.
+$$
+
+Establish their domains and determine $\frac{d}{dt}(h(t))$ both directly and by a trace identity, explicitly accounting for the shared off-diagonal parameter. Derive ordered matrix formulas for the first two derivatives of $\mathbf R(t)$ and evaluate their entries. Determine the two eigenvalues of $\mathbf A(t)$ and its Euclidean operator-norm condition number $\kappa_2(\mathbf A(t))=\|\mathbf A(t)\|_2\|\mathbf A(t)^{-1}\|_2$, including their leading behavior as $|t|\to\infty$. Explain how a constant determinant coexists with the changing response $\mathbf j(t)=\mathbf R(t)\mathbf b$ for fixed real column $\mathbf b=[0,1]^{\mathsf T}$.
+
+### D4-015 — A cubic constraint at the edge of a branch
+
+**Objects and dependencies.** $x$ is an independent dimensionless real scalar. A dependent dimensionless real scalar $y=g(x)$ is required to satisfy
+
+$$
+g(x)^3-3g(x)=x,\qquad g(x)>1.
+$$
+
+Determine the complete real-input domain on which this requirement defines exactly one value, and its first two derivatives in terms of $g(x)$. Determine the continuous extension at the finite endpoint of that domain. Obtain an expansion there through the term linear in the endpoint distance, with a justified remainder, and determine the corresponding derivative blowup. Any assertion about a branch beyond a local neighborhood must be justified.
+
+### D4-016 — A smooth approximation to an absolute value
+
+**Objects and dependencies.** $x\in\mathbb R$ is an independent dimensionless real scalar. The real parameter $\epsilon>0$ is held fixed in $x$ derivatives. Define the dependent real scalar
+
+$$
+f_\epsilon(x)=\epsilon\ln\bigl(2\cosh(x/\epsilon)\bigr).
+$$
+
+Determine its first two $x$ derivatives and a uniform error bound for approximating $|x|$ on the entire real line. Analyze the limit of its first derivative both near and away from zero. For the second derivative, compute the total integral over $\mathbb R$, the integral over $[-c\epsilon,c\epsilon]$ for fixed real $c>0$, and an explicit tail bound outside a fixed interval $[-\delta,\delta]$, $\delta>0$. Use those results to justify its integral limit against any bounded continuous real function $\psi(x)$ as $\epsilon\downarrow0$.
+
 ## Hint ladders
 
 ### D4-001
@@ -176,6 +228,36 @@ where the trace is the sum of the diagonal entries. State its open parameter dom
 1. Write the determinant as $\Delta=ac-b^2$ and the trace of the inverse as $(a+c)/\Delta$.
 2. For a general matrix increment $\mathbf H$, differentiate the inverse identity before taking its trace.
 3. A change of $b$ changes both off-diagonal entries: its parameter derivative is the sum of two entry derivatives.
+
+### D4-012
+
+1. The double-angle identity determines the tangent of $2\arctan x$, but the principal arctangent selects only one interval of angles.
+2. Locate $2\arctan x$ relative to $-\pi/2$ and $\pi/2$ on each of the three input intervals.
+3. Derivative formulas ignore added constant multiples of $\pi$; one-sided function limits determine which multiples a continuous lift requires.
+
+### D4-013
+
+1. Factor the response around half its frequency-dependent angle.
+2. Between consecutive zeros, the sign of $\sin(\omega\tau/2)$ is constant and supplies a constant phase contribution.
+3. At a zero the leading response is $\mathrm i\tau$ times the signed frequency displacement; compare its normalized one-sided limits.
+
+### D4-014
+
+1. The matrix is a product of a real shear and its transpose. Its determinant and inverse can also be computed directly.
+2. Differentiate $\mathbf A(t)\mathbf R(t)=\mathbf I$ twice, retaining multiplication order. Both off-diagonal entries vary in the trace calculation.
+3. The positive eigenvalues have product one and sum $t^2+2$; find the smaller one by taking the reciprocal of the larger one.
+
+### D4-015
+
+1. Examine the range and monotonicity of $y^3-3y$ on the required interval $y>1$ before using implicit differentiation.
+2. At the finite endpoint write $y=1+u$; the input displacement becomes $u^2(3+u)$.
+3. The map $u\mapsto u\sqrt{3+u}$ has a nonzero derivative at zero. Its smooth local inverse supplies an expansion in the square root of the input displacement.
+
+### D4-016
+
+1. Rewrite $2\cosh(x/\epsilon)$ using the exponential of $|x|/\epsilon$ before comparing values.
+2. The first derivative is a hyperbolic tangent. The second derivative has a simple primitive, even when its peak becomes unbounded.
+3. Split a test-function integral into $|x|\le\delta$ and its complement. Continuity controls the first part and the explicit tail controls the second.
 
 ## Complete solutions
 
@@ -779,3 +861,455 @@ $$
 Therefore the parameter gradient is $(G_{11},2G_{12},G_{22})^{\mathsf T}$. One unconstrained off-diagonal entry derivative alone would miss half the contribution of changing $b$. Symmetry constrains the allowed increments, rather than changing the inverse derivative rule.
 
 **Step 7 — CHECK.** At $b=0$ the original response separates as $\ln(a)+\ln(c)+1/a+1/c$, whose partial derivatives are $1/a-1/a^2$, zero, and $1/c-1/c^2$. These agree with the formulas. Interchanging $a$ and $c$ interchanges the first and third derivatives and preserves the second. At $\mathbf A=\mathbf I$ all three derivatives vanish. Finally, direct scalar differentiation of $\ln(ac-b^2)+(a+c)/(ac-b^2)$ and the independent matrix increment calculation give the same off-diagonal coefficient even for nonzero $b$.
+
+### D4-012
+
+**Step 1 — SETUP.** The rational input to the principal arctangent is real on the three intervals $(-\infty,-1)$, $(-1,1)$, and $(1,\infty)$. The function is smooth separately on these intervals. Its angle range is fixed before differentiating or reconstructing it from a trigonometric identity.
+
+**Step 2 — CHOICE.** Let $\theta(x)=2\arctan x$, which ranges over $(-\pi,\pi)$. The double-angle identity gives $\tan(\theta(x))=2x/(1-x^2)$ at admissible inputs. Equality of tangents determines an angle only up to an integer multiple of $\pi$; the principal range determines which multiple occurs.
+
+**Step 3 — ALGEBRA.** When $x<-1$, the angle $\theta(x)$ lies in $(-\pi,-\pi/2)$, so adding $\pi$ selects the principal range. When $-1<x<1$, no adjustment is needed. When $x>1$, subtracting $\pi$ selects that range. Therefore
+
+$$
+f(x)=
+\begin{cases}
+2\arctan x+\pi,&x<-1,\\
+2\arctan x,&-1<x<1,\\
+2\arctan x-\pi,&x>1.
+\end{cases}
+$$
+
+**Step 4 — CALCULUS.** Direct differentiation also checks that the same derivative holds on all three components. For $u(x)=2x/(1-x^2)$,
+
+$$
+\frac{d}{dx}\left(u(x)\right)
+=\frac{2(1-x^2)+4x^2}{(1-x^2)^2}
+=\frac{2(1+x^2)}{(1-x^2)^2},
+$$
+
+while
+
+$$
+1+u(x)^2
+=\frac{(1-x^2)^2+4x^2}{(1-x^2)^2}
+=\frac{(1+x^2)^2}{(1-x^2)^2}.
+$$
+
+The arctangent chain rule consequently gives
+
+$$
+\frac{d}{dx}\left(f(x)\right)=\frac{2}{1+x^2},\qquad x\ne-1,1.
+$$
+
+**Step 5 — DOMAIN: the two jumps.** The exact piecewise relation supplies all four endpoint limits:
+
+$$
+\begin{aligned}
+\lim_{x\to-1^-}f(x)&=\pi/2,&
+\lim_{x\to-1^+}f(x)&=-\pi/2,\\
+\lim_{x\to1^-}f(x)&=\pi/2,&
+\lim_{x\to1^+}f(x)&=-\pi/2.
+\end{aligned}
+$$
+
+Each right-minus-left jump is $-\pi$. No assigned value at either excluded input can make the original function continuous there, even though its derivative formula has the same finite one-sided limit of one.
+
+**Step 6 — ALGEBRA AND CHECK: a continuous lift.** Define
+
+$$
+\Theta(x)=
+\begin{cases}
+f(x)-\pi,&x<-1,\\
+-\pi/2,&x=-1,\\
+f(x),&-1<x<1,\\
+\pi/2,&x=1,\\
+f(x)+\pi,&x>1.
+\end{cases}
+$$
+
+Then $\Theta(x)=2\arctan x$ for every real input. It is smooth, has $\Theta(0)=0$, and satisfies
+
+$$
+\frac{d}{dx}\left(\Theta(x)\right)=\frac{2}{1+x^2},\qquad x\in\mathbb R.
+$$
+
+On each connected interval, a continuous difference between two angles with the same tangent must be a fixed integer multiple of $\pi$. Continuity at the missing inputs and the normalization at zero select exactly the displayed multiples. The lift changes values on the outer intervals; it is not a continuous extension of the original principal-valued function. Its explicit expression and the separate quotient differentiation independently check the derivative.
+
+### D4-013
+
+**Step 1 — SETUP.** The response is a smooth complex function of every real frequency. Its zeros occur when $\exp(-\mathrm i\omega\tau)=1$, namely
+
+$$
+\omega_n=\frac{2\pi n}{\tau},\qquad n\in\mathbb Z.
+$$
+
+The nonzero-frequency components for phase calculations are the intervals $I_n=(\omega_n,\omega_{n+1})$.
+
+**Step 2 — CHOICE.** Factoring around half the angle separates a smooth exponential from a real sine. On each interval between zeros, the sign of that sine is fixed and can be included as a constant phase rather than discarded when taking a magnitude.
+
+**Step 3 — ALGEBRA.** With the dependent real angle $\theta(\omega;\tau)=\omega\tau/2$,
+
+$$
+\begin{aligned}
+H(\omega;\tau)
+&=\exp(-\mathrm i\theta)\bigl(\exp(\mathrm i\theta)-\exp(-\mathrm i\theta)\bigr)\\
+&=2\mathrm i\exp(-\mathrm i\theta)\sin\theta,\\
+|H(\omega;\tau)|&=2|\sin\theta|.
+\end{aligned}
+$$
+
+For $\omega\in I_n$, the sine has sign $(-1)^n$. One continuous real phase there is consequently
+
+$$
+\phi_n(\omega;\tau)=\frac\pi2-\frac{\omega\tau}{2}+n\pi,
+\qquad
+H(\omega;\tau)=|H(\omega;\tau)|\exp(\mathrm i\phi_n(\omega;\tau)).
+$$
+
+This choice lies in $(-\pi/2,\pi/2)$ on each interval. Every other continuous real phase on that same interval differs by a fixed multiple of $2\pi$.
+
+**Step 4 — CALCULUS.** Holding $\tau$ fixed gives
+
+$$
+\frac{\partial}{\partial\omega}\left(\phi_n(\omega;\tau)\right)=-\frac\tau2,
+\qquad \omega\in I_n.
+$$
+
+This derivative is asserted only where the response is nonzero. The derivative of the smooth complex response itself is
+
+$$
+\frac{\partial}{\partial\omega}\left(H(\omega;\tau)\right)
+=\mathrm i\tau\exp(-\mathrm i\omega\tau),
+$$
+
+which equals $\mathrm i\tau$ at every zero.
+
+**Step 5 — DOMAIN: approaching a zero.** Write $\omega=\omega_n+\delta$, with real displacement $\delta\to0$ and fixed $\tau$. Taylor expansion gives
+
+$$
+H(\omega_n+\delta;\tau)
+=\mathrm i\tau\delta+\frac{\tau^2\delta^2}{2}+O(\delta^3),
+\qquad
+|H(\omega_n+\delta;\tau)|=\tau|\delta|+O(|\delta|^3).
+$$
+
+Thus the magnitude vanishes linearly and has opposite one-sided slopes. The normalized response has opposite one-sided limits:
+
+$$
+\lim_{\delta\downarrow0}\frac{H(\omega_n+\delta;\tau)}{|H(\omega_n+\delta;\tau)|}=\mathrm i,
+\qquad
+\lim_{\delta\uparrow0}\frac{H(\omega_n+\delta;\tau)}{|H(\omega_n+\delta;\tau)|}=-\mathrm i.
+$$
+
+For the displayed phase choices the left limit is $-\pi/2$ and the right limit is $\pi/2$. Adding interval-dependent multiples of $2\pi$ cannot identify the two opposite unit-complex limits. No continuous real phase representing both sides can therefore be extended through the zero. This obstruction comes from a response zero, while the response itself remains smooth.
+
+**Step 6 — CHECK: the complex logarithmic derivative.** At a nonzero response, the preceding factorization gives
+
+$$
+\begin{aligned}
+\frac{\frac{\partial}{\partial\omega}\left(H(\omega;\tau)\right)}{H(\omega;\tau)}
+&=\frac{\mathrm i\tau\exp(-2\mathrm i\theta)}{2\mathrm i\exp(-\mathrm i\theta)\sin\theta}\\
+&=\frac\tau2\bigl(\cot\theta-\mathrm i\bigr).
+\end{aligned}
+$$
+
+Its imaginary part is the phase derivative $-\tau/2$. Its real part is the derivative of $\ln|H|$, which diverges like $1/\delta$ at a zero. The finite phase slope on each open interval consequently does not imply that a phase value exists at the excluded frequencies.
+
+### D4-014
+
+**Step 1 — SETUP.** Define the real shear matrix $\mathbf S(t)=\begin{bmatrix}1&t\\0&1\end{bmatrix}$. Then $\mathbf A(t)=\mathbf S(t)\mathbf S(t)^{\mathsf T}$. The shear is invertible for every real $t$, so $\mathbf v^{\mathsf T}\mathbf A(t)\mathbf v=\|\mathbf S(t)^{\mathsf T}\mathbf v\|^2>0$ for every nonzero real column $\mathbf v$. Thus $\mathbf A(t)$ is positive definite and all requested functions are defined on the entire real line.
+
+**Step 2 — CHOICE.** The determinant is simple enough to compute directly, but a trace calculation reveals how both constrained off-diagonal variations enter its derivative. The inverse identity supplies ordered derivatives without replacing matrix products by scalar quotients. Spectral quantities then measure behavior that the determinant alone does not describe.
+
+**Step 3 — ALGEBRA AND CALCULUS: the determinant.** Direct calculation gives
+
+$$
+\det(\mathbf A(t))=(1+t^2)-t^2=1,
+\qquad h(t)=0,\qquad \frac{d}{dt}\left(h(t)\right)=0.
+$$
+
+The explicit inverse and matrix derivatives are
+
+$$
+\begin{aligned}
+\mathbf R(t)&=\begin{bmatrix}1&-t\\-t&1+t^2\end{bmatrix},\\
+\frac{d}{dt}\left(\mathbf A(t)\right)&=\begin{bmatrix}2t&1\\1&0\end{bmatrix},&
+\frac{d^2}{dt^2}\left(\mathbf A(t)\right)&=\begin{bmatrix}2&0\\0&0\end{bmatrix}.
+\end{aligned}
+$$
+
+For an invertible matrix, differentiation of the logarithmic determinant gives the trace of the inverse times its derivative. Here its product is
+
+$$
+\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)
+=\begin{bmatrix}t&1\\1-t^2&-t\end{bmatrix},
+\qquad
+\frac{d}{dt}\left(h(t)\right)
+=\operatorname{tr}\left(\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\right)=t-t=0.
+$$
+
+In entry form the same contraction is $1\cdot2t+(-t)\cdot1+(-t)\cdot1+(1+t^2)\cdot0=0$. Changing $t$ changes both off-diagonal entries. Retaining only one of their contributions would give the incorrect value $t$.
+
+**Step 4 — CALCULUS: ordered inverse derivatives.** Differentiating $\mathbf A(t)\mathbf R(t)=\mathbf I$ and multiplying on the left by the inverse gives
+
+$$
+\frac{d}{dt}\left(\mathbf R(t)\right)
+=-\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t).
+$$
+
+A further product differentiation gives three terms before the first derivative is substituted:
+
+$$
+\begin{aligned}
+\frac{d^2}{dt^2}\left(\mathbf R(t)\right)
+={}&-\frac{d}{dt}\left(\mathbf R(t)\right)\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)\\
+&-\mathbf R(t)\frac{d^2}{dt^2}\left(\mathbf A(t)\right)\mathbf R(t)
+-\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\frac{d}{dt}\left(\mathbf R(t)\right)\\
+={}&2\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+-\mathbf R(t)\frac{d^2}{dt^2}\left(\mathbf A(t)\right)\mathbf R(t).
+\end{aligned}
+$$
+
+The two positive terms have exactly the same retained order; no commutation has been assumed.
+
+**Step 5 — ALGEBRA: evaluating the derivatives.** The products needed for the first derivative are
+
+$$
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+=\begin{bmatrix}t&1-t^2\\1&-t\end{bmatrix},
+\qquad
+\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+=\begin{bmatrix}0&1\\1&-2t\end{bmatrix}.
+$$
+
+The ordered products in the second derivative reduce to
+
+$$
+\begin{aligned}
+\mathbf R(t)\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+\frac{d}{dt}\left(\mathbf A(t)\right)\mathbf R(t)
+&=\mathbf R(t),\\
+\mathbf R(t)\frac{d^2}{dt^2}\left(\mathbf A(t)\right)\mathbf R(t)
+&=2\begin{bmatrix}1&-t\\-t&t^2\end{bmatrix}.
+\end{aligned}
+$$
+
+Consequently,
+
+$$
+\frac{d}{dt}\left(\mathbf R(t)\right)=\begin{bmatrix}0&-1\\-1&2t\end{bmatrix},
+\qquad
+\frac{d^2}{dt^2}\left(\mathbf R(t)\right)=\begin{bmatrix}0&0\\0&2\end{bmatrix}.
+$$
+
+**Step 6 — DOMAIN AND SPECTRAL BEHAVIOR.** The positive eigenvalues have sum $T(t)=t^2+2$ and product one, so
+
+$$
+\lambda_\pm(t)=\frac{t^2+2\pm|t|\sqrt{t^2+4}}2,
+\qquad
+\lambda_-(t)=\frac1{\lambda_+(t)}.
+$$
+
+The reciprocal formula for the smaller eigenvalue also avoids subtracting nearly equal large quantities. Both eigenvalues equal one at zero; the repeated eigenvalue introduces no singularity in the polynomial matrix or inverse entries. Positive definiteness gives $\|\mathbf A(t)\|_2=\lambda_+(t)$ and $\|\mathbf R(t)\|_2=1/\lambda_-(t)$. Hence
+
+$$
+\kappa_2(\mathbf A(t))=\lambda_+(t)^2.
+$$
+
+As $|t|\to\infty$, division of the formula for $\lambda_+$ by $t^2$ shows that its ratio to $t^2$ tends to one. Therefore
+
+$$
+\lambda_+(t)\sim t^2,\qquad
+\lambda_-(t)\sim t^{-2},\qquad
+\kappa_2(\mathbf A(t))\sim t^4.
+$$
+
+The determinant is their product, not a bound on either eigenvalue or their ratio.
+
+**Step 7 — CHECK: a changing response.** For the stated fixed vector,
+
+$$
+\mathbf j(t)=\begin{bmatrix}-t\\1+t^2\end{bmatrix},\qquad
+\frac{d}{dt}\left(\mathbf j(t)\right)=\begin{bmatrix}-1\\2t\end{bmatrix},\qquad
+\frac{d^2}{dt^2}\left(\mathbf j(t)\right)=\begin{bmatrix}0\\2\end{bmatrix}.
+$$
+
+Substitution gives $\mathbf A(t)\mathbf j(t)=\mathbf b$, and the response norm grows like $t^2$. Independently differentiating the polynomial entries of the explicit inverse reproduces both ordered inverse derivatives. The matrix and response can consequently become large and ill conditioned while the determinant remains exactly one.
+
+### D4-015
+
+**Step 1 — SETUP.** For a real scalar $y>1$, define $q(y)=y^3-3y$. Its derivative is $3(y^2-1)>0$, and its endpoint limits are $\lim_{y\downarrow1}q(y)=-2$ and $\lim_{y\to\infty}q(y)=\infty$. Continuity and strict monotonicity show that it maps $(1,\infty)$ bijectively onto $(-2,\infty)$. This proves the complete branch domain, rather than extending a local implicit solution without justification.
+
+**Step 2 — CHOICE.** On this branch the height derivative of the cubic constraint is nonzero, so implicit differentiation gives derivatives without an explicit cubic-root formula. At the finite boundary that derivative vanishes. A square-root input coordinate then resolves the branch's fold and permits a controlled endpoint expansion.
+
+**Step 3 — CALCULUS.** The inverse branch $g(x)>1$ is smooth on $x>-2$ by the inverse function theorem. Differentiating its defining identity once and twice gives
+
+$$
+\begin{aligned}
+3(g(x)^2-1)\frac{d}{dx}\left(g(x)\right)&=1,\\
+6g(x)\left(\frac{d}{dx}\left(g(x)\right)\right)^2
++3(g(x)^2-1)\frac{d^2}{dx^2}\left(g(x)\right)&=0.
+\end{aligned}
+$$
+
+Solving these equations in their stated order yields
+
+$$
+\frac{d}{dx}\left(g(x)\right)=\frac1{3(g(x)^2-1)},
+\qquad
+\frac{d^2}{dx^2}\left(g(x)\right)=-\frac{2g(x)}{9(g(x)^2-1)^3},\qquad x>-2.
+$$
+
+Thus the branch is increasing and strictly concave.
+
+**Step 4 — ALGEBRA: the endpoint relation.** As $x\downarrow-2$, monotonic inversion gives $g(x)\downarrow1$. The unique continuous endpoint value is $g(-2)=1$, with the strict inequality replaced by equality at that single extended input. For real $\delta=x+2>0$ and $u=g(x)-1>0$, the constraint becomes exactly
+
+$$
+\delta=3u^2+u^3=u^2(3+u).
+$$
+
+In particular, $u/\sqrt\delta=1/\sqrt{3+u}\to1/\sqrt3$. Inputs $x<-2$ admit no value $g(x)>1$, since the range proved in Step 1 excludes them.
+
+**Step 5 — CALCULUS AND APPROXIMATION.** Set the real local coordinate $s=\sqrt\delta>0$. The relation is $s=W(u)$, where $W(u)=u\sqrt{3+u}$ is smooth for $u$ near zero. Its first two derivatives at zero are
+
+$$
+\left.\frac{d}{du}\left(W(u)\right)\right|_{u=0}=\sqrt3,
+\qquad
+\left.\frac{d^2}{du^2}\left(W(u)\right)\right|_{u=0}=\frac1{\sqrt3}.
+$$
+
+The inverse function theorem supplies a smooth local inverse $u=V(s)$ with $V(0)=0$. Differentiating $W(V(s))=s$ gives
+
+$$
+\left.\frac{d}{ds}\left(V(s)\right)\right|_{s=0}=\frac1{\sqrt3},
+\qquad
+\left.\frac{d^2}{ds^2}\left(V(s)\right)\right|_{s=0}
+=-\frac{(1/\sqrt3)(1/\sqrt3)^2}{\sqrt3}=-\frac19.
+$$
+
+Its third derivative is bounded on a sufficiently small closed interval. Taylor's theorem consequently yields
+
+$$
+g(-2+\delta)=1+\frac{\sqrt\delta}{\sqrt3}-\frac{\delta}{18}
++O(\delta^{3/2}),\qquad \delta\downarrow0.
+$$
+
+This remainder is justified in the smooth coordinate $s$, even though the original branch has an unbounded $x$ derivative at the endpoint.
+
+**Step 6 — DOMAIN: derivative blowup.** The exact derivative formulas, rather than differentiation of the value remainder, give
+
+$$
+\frac{d}{dx}\left(g(-2+\delta)\right)=\frac1{3u(2+u)},
+\qquad
+\frac{d^2}{dx^2}\left(g(-2+\delta)\right)
+=-\frac{2(1+u)}{9u^3(2+u)^3}.
+$$
+
+Using $u/\sqrt\delta\to1/\sqrt3$ gives the precise one-sided limits
+
+$$
+\lim_{\delta\downarrow0}\sqrt\delta\,\frac{d}{dx}\left(g(x)\right)\bigg|_{x=-2+\delta}
+=\frac1{2\sqrt3},
+\qquad
+\lim_{\delta\downarrow0}\delta^{3/2}\,\frac{d^2}{dx^2}\left(g(x)\right)\bigg|_{x=-2+\delta}
+=-\frac1{4\sqrt3}.
+$$
+
+The continuous extension has no finite right derivative: its own difference quotient is $u/\delta=1/(u(3+u))\to\infty$. The leading coefficient in this difference quotient differs from that of the interior derivative, as expected for square-root behavior.
+
+**Step 7 — CHECK.** At $x=0$ the selected value is $g(0)=\sqrt3$, giving first derivative $1/6$ and second derivative $-\sqrt3/36$. For a separate endpoint check, put $u_0=\sqrt\delta/\sqrt3-\delta/18$ into $3u_0^2+u_0^3$. The terms of order $\delta^{3/2}$ cancel, leaving $\delta+O(\delta^2)$, consistent with the expansion in the regular square-root coordinate. Finally, strict monotonicity from Step 1 establishes that the selected branch cannot switch to another cubic root within its domain.
+
+### D4-016
+
+**Step 1 — SETUP.** For each fixed positive $\epsilon$, the quantity $2\cosh(x/\epsilon)$ is strictly positive at every real $x$. The function and all its $x$ derivatives are therefore smooth on $\mathbb R$. The joint formulas are smooth for $(x,\epsilon)\in\mathbb R\times(0,\infty)$; estimates that require a positive lower bound on $\epsilon$ need not persist when $\epsilon\downarrow0$.
+
+**Step 2 — CHOICE.** Factoring out the larger exponential separates the target absolute value from an explicit nonnegative error. For the derivative limits, closed forms and exact integral tails are more useful than differentiating a uniform bound on the values.
+
+**Step 3 — ALGEBRA: a uniform value bound.** The identity
+
+$$
+2\cosh(x/\epsilon)
+=\exp(|x|/\epsilon)\bigl(1+\exp(-2|x|/\epsilon)\bigr)
+$$
+
+gives
+
+$$
+f_\epsilon(x)=|x|+\epsilon\ln\bigl(1+\exp(-2|x|/\epsilon)\bigr).
+$$
+
+Since the exponential inside the logarithm lies between zero and one,
+
+$$
+0\le f_\epsilon(x)-|x|\le\epsilon\ln2,\qquad
+\sup_{x\in\mathbb R}\bigl|f_\epsilon(x)-|x|\bigr|=\epsilon\ln2.
+$$
+
+Equality in the upper bound occurs at zero. Thus the approximation is uniform on the entire real line.
+
+**Step 4 — CALCULUS.** With $\epsilon$ held fixed, the logarithmic chain rule gives
+
+$$
+\frac{d}{dx}\left(f_\epsilon(x)\right)
+=\epsilon\frac{(2/\epsilon)\sinh(x/\epsilon)}{2\cosh(x/\epsilon)}
+=\tanh(x/\epsilon).
+$$
+
+Differentiating once more and using $\cosh^2v-\sinh^2v=1$ gives
+
+$$
+\frac{d^2}{dx^2}\left(f_\epsilon(x)\right)
+=\frac1\epsilon\frac{\cosh^2(x/\epsilon)-\sinh^2(x/\epsilon)}{\cosh^2(x/\epsilon)}
+=\frac1{\epsilon\cosh^2(x/\epsilon)}.
+$$
+
+The function is strictly convex for every positive $\epsilon$.
+
+**Step 5 — DOMAIN: the first derivative limit.** For nonzero $x$, the first derivative tends to $\operatorname{sgn}(x)$ as $\epsilon\downarrow0$; at zero it equals zero for every positive $\epsilon$. Define $\operatorname{sgn}(0)=0$ for this pointwise limit only. For any fixed $\delta>0$,
+
+$$
+\left|\tanh(x/\epsilon)-\operatorname{sgn}(x)\right|
+=\frac2{\exp(2|x|/\epsilon)+1}
+\le2\exp(-2\delta/\epsilon),\qquad |x|\ge\delta.
+$$
+
+The convergence is uniform away from zero. It is not uniform on any fixed neighborhood of zero: for each positive $\epsilon$, taking nonzero $x\to0$ makes the difference tend to one. The pointwise derivative limit is discontinuous there, and $|x|$ itself has no derivative at zero. Uniform convergence of the original function values does not supply convergence of their derivatives at that input.
+
+**Step 6 — CALCULUS: the second derivative's mass.** Write the nonnegative real function $\rho_\epsilon(x)=1/(\epsilon\cosh^2(x/\epsilon))$. Its primitive is $\tanh(x/\epsilon)$, so
+
+$$
+\int_{-\infty}^{\infty}\rho_\epsilon(x)\,dx=2,
+\qquad
+\int_{-c\epsilon}^{c\epsilon}\rho_\epsilon(x)\,dx=2\tanh c,\qquad c>0.
+$$
+
+The omitted mass outside a fixed interval has the exact value and bound
+
+$$
+\int_{|x|>\delta}\rho_\epsilon(x)\,dx
+=2\bigl(1-\tanh(\delta/\epsilon)\bigr)
+=\frac4{\exp(2\delta/\epsilon)+1}
+\le4\exp(-2\delta/\epsilon).
+$$
+
+For each nonzero fixed $x$, $\rho_\epsilon(x)\to0$, while $\rho_\epsilon(0)=1/\epsilon$ diverges. The total integral remains two, concentrated near zero. There cannot be a single integrable majorant for this family near $\epsilon=0$: such a bound and the almost-everywhere zero limit would force the total integrals to tend to zero.
+
+**Step 7 — DOMAIN AND CHECK: an integral limit.** Let $\psi$ be any bounded continuous real function on $\mathbb R$, with $M=\sup_x|\psi(x)|<\infty$. Each integral of $\rho_\epsilon\psi$ is absolutely convergent. For a fixed $\delta>0$, define the local oscillation $\eta(\delta)=\sup_{|x|\le\delta}|\psi(x)-\psi(0)|$, which tends to zero as $\delta\downarrow0$. Splitting into the fixed inner interval and its complement gives
+
+$$
+\begin{aligned}
+\left|\int_{\mathbb R}\rho_\epsilon(x)\psi(x)\,dx-2\psi(0)\right|
+&\le2\eta(\delta)+2M\int_{|x|>\delta}\rho_\epsilon(x)\,dx\\
+&\le2\eta(\delta)+8M\exp(-2\delta/\epsilon).
+\end{aligned}
+$$
+
+First let $\epsilon\downarrow0$ with $\delta$ fixed, then let $\delta\downarrow0$. This proves
+
+$$
+\lim_{\epsilon\downarrow0}\int_{\mathbb R}
+\frac{\psi(x)}{\epsilon\cosh^2(x/\epsilon)}\,dx=2\psi(0).
+$$
+
+For the independent constant test $\psi(x)=1$, this is exactly the total mass calculation. An odd bounded continuous test has zero integral by symmetry for every $\epsilon$, consistent with its value at zero. The limit records the change of two between the left and right slopes of the absolute value, while its pointwise second derivative away from zero remains zero.

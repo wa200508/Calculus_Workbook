@@ -4,7 +4,7 @@ An open, graduate-oriented review book with explicit notation, method selection,
 and explicit intermediate calculations. Prior study of calculus is assumed.
 
 **Alpha development — no stable release:** notation conventions, a comprehensive calculus methods reference,
-48 problems in four mixed sets, 24 optional reference exercises, and a purple appendix of supporting tools. Material is
+68 problems in four mixed sets, 24 optional reference exercises, and a purple appendix of supporting tools. Material is
 provided as-is; mathematical correctness is not guaranteed. See [the accuracy notice](DISCLAIMER.md).
 
 ## Next milestone
@@ -19,7 +19,7 @@ collection, a complete mathematical audit, and reader/usability validation.
 [Read the complete current book online](https://wa200508.github.io/Calculus_Workbook/generated/book.html)
 on GitHub Pages. [Download the alpha PDF](https://github.com/wa200508/Calculus_Workbook/releases/tag/v0.4.0-alpha.7)
 for the last tagged, compiled edition. The current manuscript includes subsequent
-corrections and 20 additional problems; the PDF workflow provides the current
+corrections and 40 additional problems; the PDF workflow provides the current
 compiled book as a build artifact. Each printed problem is followed immediately by
 its worked solution, with hints and page references in a separate appendix.
 

@@ -4,12 +4,13 @@ The next development milestone is beta.1; selection and acceptance criteria are
 recorded in [BETA_PLAN.md](BETA_PLAN.md), with audit progress in
 [BETA_REVIEW.md](BETA_REVIEW.md).
 
-This list records 32 original development proposals. Twenty were completed on
-November 5, 2026 and are now part of the solved manuscript under the stable IDs
-below. The remaining proposals are planning material, not published exercises;
-each still needs a complete derivation, three hints, domain analysis, and
-independent verification. Additions are mixed among existing settings rather
-than grouped by a prescribed technique.
+This list records the original 32 development proposals and eight further
+proposals developed for the November 6 expansion. All forty are now represented
+in the solved manuscript under the stable IDs below. Every promoted problem has
+a complete derivation, three hints, domain analysis, and independent review.
+Additions are mixed among existing settings rather than grouped by a prescribed
+technique. The first twenty were completed on November 5; the second twenty
+complete the twelve remaining original proposals and the eight new ones.
 
 | Completed proposals | Published problem IDs | Evidence |
 |---|---|---|
@@ -17,13 +18,18 @@ than grouped by a prescribed technique.
 | 27, 29, 31, 30, 22 | D3-008–012 | [Derivations](expansion-d3.md) |
 | 13, 8, 32, 11, 23 | I4-007–011 | [Derivations](expansion-i4.md) |
 | 7, 9, 10, 16, 20 | I3-010–014 | [Derivations](expansion-i3.md) |
+| 2, 5, 26, 33, 34 | D4-012–016 | [Derivations](expansion-2-d4.md) |
+| 4, 35, 36, 37, 38 | D3-013–017 | [Derivations](expansion-2-d3.md) |
+| 18, 15, 17, 39, 40 | I4-012–016 | [Derivations](expansion-2-i4.md) |
+| 12, 14, 19, 21, 24 | I3-015–019 | [Derivations](expansion-2-i3.md) |
 
-This batch exceeds the original twelve-problem scope target while extending
-matrix integration, constrained entries, and tensor calculations. The elliptic
-ring proposal 19 is deferred; the aperture and interior-panel problems provide
-complete new geometric/kernel calculations in this batch. Proposal 26 remains
-deferred because the constrained matrix response already develops determinant
-and trace variations more extensively. Twelve proposals remain unimplemented.
+Both batches exceed the original twelve-problem scope target while extending
+matrix integration, constrained entries, tensor calculations, geometric measures,
+and singular or oscillatory kernels. Ring proposal 19 and determinant proposal 26
+were initially deferred and are now complete. Proposal 26 was strengthened with
+inverse sensitivities and conditioning, rather than stopping at a zero scalar
+derivative. The weighted-panel proposal includes positive observation distance
+and its limiting derivative. No listed proposal remains unimplemented.
 
 Unless stated otherwise below, integration coordinates and varying parameters
 are real scalars. A symbol declared fixed remains fixed during the requested
@@ -202,6 +208,47 @@ operation. Matrix and vector shapes are specified where they occur.
     the result changes under a differentiable symmetric perturbation of
     $\mathbf A$. Matrix multiplication order is retained throughout.
 
+## Further original proposals developed on November 6
+
+33. **A cubic branch at a fold.** For the branch $y>1$ of $y^3-3y=x$,
+    determine the inverse domain, first two derivatives, and a controlled
+    expansion at the finite endpoint. Distinguish that branch's endpoint from
+    the other cubic turning value.
+34. **A smooth absolute-value approximation.** For real $x$ and positive
+    $\varepsilon$, analyze $\varepsilon\ln(2\cosh(x/\varepsilon))$.
+    Obtain a uniform value error, derivative limits, and the mass and tails of
+    the concentrating second derivative.
+35. **A scale-invariant matrix response.** For fixed real symmetric $\mathbf A$
+    and nonzero real $\mathbf x$, differentiate
+    $\mathbf x^{\mathsf T}\mathbf A\mathbf x/(\mathbf x^{\mathsf T}\mathbf x)$
+    twice. Classify stationary directions, including repeated eigenvalues and
+    the distinction between radial and sphere-tangent variations.
+36. **A tensor transported by a changing map.** For differentiable real
+    $\mathbf F(t)\in\operatorname{GL}^{+}(3)$ and fixed positive-definite
+    $\mathbf C$, differentiate
+    $\det(\mathbf F(t))\mathbf F(t)^{-1}\mathbf C\mathbf F(t)^{-\mathsf T}$.
+    Retain all ordered factors and verify a map combining shear and volume
+    change in fixed coordinates.
+37. **A positive matrix square root.** Determine the first and second
+    derivatives of a principal positive-definite matrix square root along a
+    noncommuting affine path. Establish local differentiability, the full
+    positive-definite parameter domain in a two-dimensional example, and the
+    behavior of the derivative equation at repeated positive eigenvalues.
+38. **A radial nonlinear inverse.** For $\mathbf F(\mathbf x)=
+    (1+\lVert\mathbf x\rVert^2)\mathbf x$ on $\mathbb R^3$, establish a global
+    inverse and compute its local derivative. Separate the radial and
+    tangential scales, including the origin.
+39. **A Gaussian matrix moment.** For positive-definite real $\mathbf A$ and
+    fixed center $\mathbf m$, evaluate the matrix-valued integral of
+    $(\mathbf x-\mathbf m)(\mathbf x-\mathbf m)^{\mathsf T}
+    \exp(- (\mathbf x-\mathbf m)^{\mathsf T}\mathbf A(\mathbf x-\mathbf m))$
+    over $\mathbb R^3$. Relate it to normalization derivatives and preserve
+    matrix order under symmetric perturbations.
+40. **A two-parameter logarithmic quotient.** Evaluate
+    $\int_0^1(x^a-x^b)/\ln(x)\,dx$ for real $a,b>-1$ with justified
+    interchanges. Examine the partial derivatives, endpoint extensions, and
+    nonunique limits as both parameters approach $-1$.
+
 ## References for development
 
 These references support the mathematical methods and definitions behind the
@@ -220,5 +267,5 @@ transcriptions of source exercises.
 The original October 18 selection suggested proposals 1, 7, 8, 13, 19, 20, 22,
 23, 25, 27, 29, and 31 as a first group. The November 5 promotion table above
 records the completed twenty-problem selection and its differences from that
-suggestion. The twelve unimplemented proposals remain available for later
-asymptotic, constrained, geometric, and special-function work.
+suggestion. The November 6 batch completes the twelve remaining proposals and
+adds the eight further original problems recorded above.

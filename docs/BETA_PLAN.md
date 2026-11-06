@@ -24,6 +24,12 @@ and new problems have analytical agent evidence in the review ledger. Human
 reader trials and the remaining layout, usability, and release gates continue
 to determine beta readiness; the larger count alone does not declare a beta.
 
+At the user's subsequent request, a November 6 second batch adds another twenty
+fully worked problems, bringing the manuscript to 68 main problems and
+24 reference exercises. New problems receive their own author derivations and
+independent review; the earlier all-problem recheck applies to the 72-problem
+baseline. Reader trials and the other release gates remain required.
+
 ## 1. Expand the challenging problem collection
 
 The planning target is **about 12 additional substantial problems**, bringing

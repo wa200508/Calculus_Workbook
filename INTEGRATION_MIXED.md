@@ -113,6 +113,75 @@ $$
 
 Give a Bessel-function representation with the required functions defined locally. Resolve the value at $q=0$, the dependence on the sign of $q$, and an explicit error bound for a quadratic small-$q$ approximation.
 
+### I4-012 — A Gaussian on a rotated ellipsoid
+
+**Objects and dependencies.** The real column vector $\mathbf x=[x_1,x_2,x_3]^{\mathsf T}\in\mathbb R^3$ contains independent dimensionless Cartesian coordinates. The dimensionless real $3\times3$ matrix $\mathbf Q$ is symmetric positive definite. Determine the real scalar
+
+$$
+N(\mathbf Q)=\iiint_{\mathbf x^{\mathsf T}\mathbf Q\mathbf x\le1}
+\exp(-\mathbf x^{\mathsf T}\mathbf Q\mathbf x)\,d^3\mathbf x,
+\qquad d^3\mathbf x=dx_1\,dx_2\,dx_3.
+$$
+
+Use the positive matrix square root and account for the orientation and volume scale of the coordinate map. If $\mathbf Q(t)$ is a continuously differentiable positive-definite symmetric path, find the derivative of $N(\mathbf Q(t))$ at a fixed real input $t_0$, with $\mathbf Q_0=\mathbf Q(t_0)$ and $\mathbf H=\left.\frac{d}{dt}(\mathbf Q(t))\right|_{t=t_0}$. The integration domain moves with $t$. Check the result for the off-diagonal path
+
+$$
+\mathbf Q(t)=\begin{bmatrix}2&1+t&0\\1+t&2&0\\0&0&4\end{bmatrix}
+$$
+
+near zero, including its full positive-definite parameter interval.
+
+### I4-013 — A hyperboloidal shell
+
+**Objects and dependencies.** Fixed real lengths $a,c,H$ are positive, and $x,y,z$ are independent real Cartesian length coordinates. The bounded solid is
+
+$$
+V=\left\{(x,y,z):\frac{x^2+y^2}{a^2}-\frac{z^2}{c^2}\le1,
+\quad -H\le z\le H\right\}.
+$$
+
+Determine its volume and the outward flux of the real vector field $\mathbf F(x,y,z)=[x,y,z]^{\mathsf T}$ through its complete boundary. Calculate the lateral and two planar-cap contributions separately, with their outward normals, and verify the total by the divergence theorem. Describe the limit as $c\to\infty$ with $a,H$ fixed.
+
+### I4-014 — An ellipse with a nonuniform line weight
+
+**Objects and dependencies.** Fixed real lengths satisfy $a>b>0$. The dimensionless real angle $t\in[0,2\pi]$ parametrizes the closed ellipse by the real column vector $\mathbf r(t)=[a\cos t,b\sin t]^{\mathsf T}$. Determine the real scalar line integral
+
+$$
+W(a,b)=\oint_{\mathcal C}x^2\,ds,
+$$
+
+where $ds$ is Euclidean arc length, not oriented displacement. Give a representation using complete elliptic integrals defined locally with the parameter convention $m=1-b^2/a^2$. With $a$ fixed, obtain the nearly circular expansion through order $m^2$ and an explicit remainder bound uniform for $0\le m\le m_0<1$, where $m_0$ is fixed. Resolve the circular limit without subtracting nearly equal elliptic-integral terms.
+
+### I4-015 — A Gaussian matrix moment
+
+**Objects and dependencies.** The fixed real center $\mathbf m\in\mathbb R^3$ and independent real column coordinate $\mathbf x\in\mathbb R^3$ are dimensionless. The dimensionless real $3\times3$ matrix $\mathbf A$ is symmetric positive definite. Determine the real normalization scalar and real $3\times3$ centered moment matrix
+
+$$
+\begin{aligned}
+Z(\mathbf A)&=\iiint_{\mathbb R^3}
+\exp(-(\mathbf x-\mathbf m)^{\mathsf T}\mathbf A(\mathbf x-\mathbf m))\,d^3\mathbf x,\\
+\mathbf M(\mathbf A)&=\iiint_{\mathbb R^3}
+(\mathbf x-\mathbf m)(\mathbf x-\mathbf m)^{\mathsf T}
+\exp(-(\mathbf x-\mathbf m)^{\mathsf T}\mathbf A(\mathbf x-\mathbf m))\,d^3\mathbf x.
+\end{aligned}
+$$
+
+The matrix integral is taken entrywise. Identify the covariance of the density obtained by dividing the exponential by $Z(\mathbf A)$. For a continuously differentiable symmetric positive-definite path $\mathbf A(t)$, find the derivatives of $Z$, $\mathbf M$, and the covariance, with $\mathbf m$ held fixed, and justify passage through the unbounded integration domain. Retain matrix order. Check the off-diagonal covariance and its derivative at zero for
+
+$$
+\mathbf A(t)=\begin{bmatrix}3&1+t&0\\1+t&2&0\\0&0&4\end{bmatrix}.
+$$
+
+### I4-016 — A difference divided by a logarithm
+
+**Objects and dependencies.** The integration coordinate $x\in(0,1)$ and independent parameters $a,b>-1$ are dimensionless real scalars. Real powers are defined by $x^a=\exp(a\ln x)$. Determine the real scalar
+
+$$
+I(a,b)=\int_0^1\frac{x^a-x^b}{\ln x}\,dx.
+$$
+
+Establish absolute convergence, determine which endpoints have finite continuous kernel extensions, and evaluate the integral and both first parameter partial derivatives. Decide whether $I$ has a joint continuous extension as $(a,b)\to(-1,-1)$, and distinguish a simultaneous limit from cancellation along the diagonal $a=b$.
+
 ## Hint ladders
 
 ### I4-001
@@ -180,6 +249,36 @@ Give a Bessel-function representation with the required functions defined locall
 1. Reflection of the angular coordinate cancels the imaginary part and makes the answer even in $q$.
 2. Integrate the exponential series in angle and radius on this compact domain.
 3. The angular moments define the relevant Bessel series; a Taylor bound on the real cosine gives a uniform approximation error.
+
+### I4-012
+
+1. A positive-definite quadratic form becomes a squared Euclidean norm after a linear coordinate change.
+2. The positive square root fixes the sign of its determinant; a radial integral gives the remaining constant.
+3. Transform the domain for every parameter value before differentiating, and expand a determinant to first order without commuting matrices.
+
+### I4-013
+
+1. At fixed height $z$, the solid has a circular cross-section with a height-dependent radius.
+2. A lateral parameterization has a normal with both radial and axial components; orient its cross product outward.
+3. The two cap normals point in opposite directions, but their field-normal dot products have the same sign.
+
+### I4-014
+
+1. Compute the speed of the ellipse and use quadrant symmetry to reduce to a weighted elliptic integral.
+2. Integrating the derivative of $\sin\theta\cos\theta\sqrt{1-m\sin^2\theta}$ gives a relation among the needed moments.
+3. Expand the square root directly for the circular limit; bound its third derivative uniformly on $0\le m\le m_0$.
+
+### I4-015
+
+1. Translate the center and apply the positive square root of the quadratic form.
+2. Odd Gaussian moments vanish, while each diagonal second moment is a product of one-dimensional integrals.
+3. Differentiate both the normalization and the inverse matrix; a positive local spectral gap controls polynomial factors in the differentiated kernel.
+
+### I4-016
+
+1. Integrate $x^s$ in the parameter $s$ between $b$ and $a$ before integrating in $x$.
+2. A compact parameter interval above minus one supplies an integrable power bound, including when the endpoint kernel is unbounded.
+3. The final answer depends on the ratio of the distances of $a$ and $b$ from minus one, rather than those distances separately.
 
 ## Complete solutions
 
@@ -776,3 +875,437 @@ The inequality holds for all real $q$, while it is a useful small-parameter esti
 **Step 7 — CHECK.** At zero the original integrand is one, so the answer is the geometric disk area. Independently, differentiating the original integral twice at zero gives minus the disk's $x$-coordinate second moment, $-\pi a^4/4$. This agrees with the quadratic coefficient above. Scaling $r=a u$ gives $F(q;a)=a^2F(qa;1)$, also respected by the Bessel formula and the error bound. Direct angular/radial quadrature checks both signs of $q$ and the oscillatory cases.
 
 **Discussion.** A special-function quotient can be regular at a parameter value where its displayed denominator vanishes. A series identifies that value, while a direct Taylor estimate controls the approximation without relying on a formal truncation.
+
+### I4-012
+
+**Step 1 — SETUP.** The spectral theorem gives $\mathbf Q=\mathbf U\boldsymbol\Lambda\mathbf U^{\mathsf T}$, where $\mathbf U$ is a real orthogonal $3\times3$ matrix and $\boldsymbol\Lambda=\operatorname{diag}(\lambda_1,\lambda_2,\lambda_3)$ has strictly positive entries. Its unique symmetric positive-definite square root and inverse are
+
+$$
+\mathbf S=\mathbf Q^{1/2}
+=\mathbf U\operatorname{diag}(\sqrt{\lambda_1},\sqrt{\lambda_2},\sqrt{\lambda_3})\mathbf U^{\mathsf T},
+\qquad \mathbf S^{-1}=\mathbf Q^{-1/2}.
+$$
+
+The ellipsoid is bounded, and the positive integrand is continuous on it. The original integral is finite.
+
+**Step 2 — CHOICE.** The coordinate $\mathbf u=\mathbf S\mathbf x$ converts both the quadratic form and its sublevel domain to their Euclidean versions. This treats the rotation and unequal principal axes in one map, without presuming that the original coordinates are eigenvector coordinates.
+
+**Step 3 — CALCULUS: the volume scale.** Since $\mathbf S^{\mathsf T}\mathbf S=\mathbf Q$,
+
+$$
+\mathbf x^{\mathsf T}\mathbf Q\mathbf x=\|\mathbf u\|^2,
+\qquad
+\det\mathbf S=\prod_{j=1}^3\sqrt{\lambda_j}=\sqrt{\det\mathbf Q}>0,
+\qquad
+d^3\mathbf x=\frac{d^3\mathbf u}{\sqrt{\det\mathbf Q}}.
+$$
+
+The full positive-root map preserves orientation. An eigenvector matrix used to describe it may have determinant minus one, but its determinant appears twice in $\mathbf U\boldsymbol\Lambda^{1/2}\mathbf U^{\mathsf T}$ and causes no sign ambiguity. Spherical coordinates in the unit ball give
+
+$$
+N(\mathbf Q)=\frac{4\pi}{\sqrt{\det\mathbf Q}}\int_0^1r^2\exp(-r^2)\,dr.
+$$
+
+**Step 4 — ALGEBRA: the radial constant.** Integration by parts, using $\frac{d}{dr}(\exp(-r^2))=-2r\exp(-r^2)$, yields
+
+$$
+\begin{aligned}
+\int_0^1r^2\exp(-r^2)\,dr
+&=-\frac12\left.r\exp(-r^2)\right|_{r=0}^{r=1}
++\frac12\int_0^1\exp(-r^2)\,dr\\
+&=-\frac{1}{2\mathrm e}+\frac{\sqrt\pi}{4}\operatorname{erf}(1),
+\end{aligned}
+$$
+
+where $\mathrm e=\exp(1)$ and $\operatorname{erf}(v)=(2/\sqrt\pi)\int_0^v\exp(-u^2)\,du$ for real $v$. Define the positive dimensionless constant
+
+$$
+C=\pi^{3/2}\operatorname{erf}(1)-\frac{2\pi}{\mathrm e}.
+$$
+
+Then $N(\mathbf Q)=C/\sqrt{\det\mathbf Q}$. Positivity follows from its defining positive radial integral, even though the displayed evaluation is a difference of two terms.
+
+**Step 5 — CALCULUS: a moving domain.** For every $t$ in the positive-definite interval, the same coordinate construction gives $N(\mathbf Q(t))=C(\det\mathbf Q(t))^{-1/2}$. To differentiate the determinant without a commutation assumption, factor a small symmetric perturbation as
+
+$$
+\det(\mathbf Q_0+\epsilon\mathbf H)
+=\det\mathbf Q_0\det(\mathbf I_3+\epsilon\mathbf Q_0^{-1}\mathbf H)
+=\det\mathbf Q_0\left(1+\epsilon\operatorname{tr}(\mathbf Q_0^{-1}\mathbf H)+O(\epsilon^2)\right).
+$$
+
+The linear term in the determinant expansion is the trace, because the only first-order terms in its permutation formula choose one diagonal perturbation entry and all other identity entries. A differentiable path adds an $o(\epsilon)$ matrix remainder and leaves that first derivative unchanged. Therefore
+
+$$
+\left.\frac{d}{dt}(N(\mathbf Q(t)))\right|_{t=t_0}
+=-\frac{N(\mathbf Q_0)}{2}\operatorname{tr}(\mathbf Q_0^{-1}\mathbf H).
+$$
+
+This calculation includes domain motion by transforming the domain at every input. Differentiating only the exponential while holding the original ellipsoid fixed would omit that motion.
+
+**Step 6 — DOMAIN.** On a sufficiently small closed neighborhood of $t_0$, positive definiteness and continuous differentiability give a uniform lower eigenvalue bound $\mu>0$ and a bound on the path derivative. The determinant is then at least $\mu^3$, its reciprocal square root and derivative are bounded, and the transformed unit-ball integrand is bounded by a fixed integrable constant. Differentiating the transformed integral is therefore justified. A zero eigenvalue would produce an unbounded cylindrical sublevel set with no Gaussian decay in its null direction, giving an infinite integral; it is outside the domain used here.
+
+**Step 7 — CHECK: an off-diagonal path.** The stated matrix has eigenvalues $3+t$, $1-t$, and four, so its full positive-definite interval is $-3<t<1$. Directly,
+
+$$
+N(\mathbf Q(t))=\frac{C}{2\sqrt{4-(1+t)^2}},
+\qquad
+N(\mathbf Q(0))=\frac{C}{2\sqrt3},
+\qquad
+\left.\frac{d}{dt}(N(\mathbf Q(t)))\right|_{t=0}=\frac{C}{6\sqrt3}.
+$$
+
+At zero, the inverse has upper block $\frac13\begin{bmatrix}2&-1\\-1&2\end{bmatrix}$ and third diagonal entry $1/4$, whereas $\mathbf H$ has ones in positions $(1,2)$ and $(2,1)$ and zeros elsewhere. Hence $\operatorname{tr}(\mathbf Q_0^{-1}\mathbf H)=-2/3$, and the general derivative gives $N(\mathbf Q_0)/3$, agreeing with the direct calculation. For $\mathbf Q=q\mathbf I_3$ with $q>0$, the result scales as $q^{-3/2}$, as expected from a length scaling in three dimensions.
+
+**Discussion.** A matrix coordinate map can remove a moving geometric constraint as well as a nonradial exponent. The determinant records the change in volume, including changes caused by off-diagonal entries.
+
+### I4-013
+
+**Step 1 — SETUP.** At each height $z\in[-H,H]$, the solid has disk radius
+
+$$
+R(z)=a\sqrt{1+z^2/c^2}>0.
+$$
+
+The boundary consists of a smooth lateral band and two planar disks. Their joining circles have zero surface area, so they add no separate flux term. The field is smooth throughout the bounded solid and a neighborhood of its boundary.
+
+**Step 2 — CHOICE.** Circular sections give the volume directly. The lateral surface requires its own vector area element: its normal is not horizontal, and the field's axial component contributes to that flux. The cap normals are treated separately before the divergence theorem checks the total.
+
+**Step 3 — CALCULUS: the volume.** Integrating the cross-sectional areas gives
+
+$$
+\begin{aligned}
+\operatorname{Vol}(V)
+&=\int_{-H}^{H}\pi R(z)^2\,dz
+=\pi a^2\int_{-H}^{H}(1+z^2/c^2)\,dz\\
+&=2\pi a^2\left(H+\frac{H^3}{3c^2}\right).
+\end{aligned}
+$$
+
+**Step 4 — CALCULUS: an outward lateral normal.** Parameterize the lateral band by the real column vector
+
+$$
+\mathbf p(\theta,z)=\begin{bmatrix}R(z)\cos\theta\\R(z)\sin\theta\\z\end{bmatrix},
+\qquad 0\le\theta\le2\pi,\quad -H\le z\le H.
+$$
+
+The two tangent vectors and their ordered cross product are
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\theta}(\mathbf p(\theta,z))
+&=\begin{bmatrix}-R(z)\sin\theta\\R(z)\cos\theta\\0\end{bmatrix},\\
+\frac{\partial}{\partial z}(\mathbf p(\theta,z))
+&=\begin{bmatrix}\frac{d}{dz}(R(z))\cos\theta\\\frac{d}{dz}(R(z))\sin\theta\\1\end{bmatrix},\\
+\frac{\partial}{\partial\theta}(\mathbf p(\theta,z))\mathbin\times
+\frac{\partial}{\partial z}(\mathbf p(\theta,z))
+&=\begin{bmatrix}R(z)\cos\theta\\R(z)\sin\theta\\-R(z)\frac{d}{dz}(R(z))\end{bmatrix}.
+\end{aligned}
+$$
+
+Its radial component is positive, so it points out of the solid. The corresponding unit normal is $[\cos\theta,\sin\theta,-\frac{d}{dz}(R(z))]^{\mathsf T}/\sqrt{1+(\frac{d}{dz}(R(z)))^2}$. The derivative $\frac{d}{dz}(R(z))=a^2z/(c^2R(z))$ is finite throughout the band.
+
+**Step 5 — ALGEBRA AND CALCULUS: lateral flux.** At the surface the field equals $\mathbf p(\theta,z)$. Its dot product with the vector area factor is
+
+$$
+R(z)^2-zR(z)\frac{d}{dz}(R(z))
+=a^2(1+z^2/c^2)-\frac{a^2z^2}{c^2}=a^2.
+$$
+
+Consequently,
+
+$$
+\Phi_{\rm lateral}=\int_{-H}^{H}\int_0^{2\pi}a^2\,d\theta\,dz
+=4\pi a^2H.
+$$
+
+The cancellation depends on keeping the axial normal component. Retaining only a radial normal would give an extra incorrect $z^2$ contribution.
+
+**Step 6 — CALCULUS: cap fluxes.** Let $\mathbf e_3=[0,0,1]^{\mathsf T}$. The top disk has unit normal $\mathbf e_3$ and $\mathbf F\cdot\mathbf e_3=H$. The bottom disk has unit normal $-\mathbf e_3$ and $\mathbf F\cdot(-\mathbf e_3)=H$, because its height is $-H$. Both have radius $R(H)$ and area $\pi a^2(1+H^2/c^2)$. Thus each cap flux is $\pi a^2H(1+H^2/c^2)$, and
+
+$$
+\Phi_{\rm total}=4\pi a^2H+2\pi a^2H(1+H^2/c^2)
+=6\pi a^2H+\frac{2\pi a^2H^3}{c^2}.
+$$
+
+**Step 7 — CHECK AND DOMAIN.** The divergence is $\nabla\cdot\mathbf F=3$. The divergence theorem applies to the bounded solid with its piecewise smooth boundary and gives $\Phi_{\rm total}=3\operatorname{Vol}(V)$, agreeing with the separately integrated surfaces. All three fixed lengths are strictly positive; no singular field or excluded source is present. As $c\to\infty$, the radius tends uniformly to $a$ on the finite height band. The solid tends to a cylinder with volume $2\pi a^2H$, lateral flux $4\pi a^2H$, and total cap flux $2\pi a^2H$, matching the limits above.
+
+**Discussion.** A surface's increasing radius does not by itself determine its flux. The axial tilt of its outward normal can cancel part of the radial contribution, while the two cap orientations require separate sign checks.
+
+### I4-014
+
+**Step 1 — SETUP.** Differentiating the path with respect to its angle gives the speed
+
+$$
+\left\|\frac{d}{dt}\left(\mathbf r(t)\right)\right\|
+=\sqrt{a^2\sin^2t+b^2\cos^2t}\ge b>0.
+$$
+
+Thus the ellipse is regular. Arc length uses this positive speed regardless of traversal direction. With the dimensionless parameter $m=1-b^2/a^2\in(0,1)$,
+
+$$
+W(a,b)=a^3\int_0^{2\pi}(\cos t)^2\sqrt{1-m\cos^2t}\,dt
+=4a^3\int_0^{\pi/2}(\sin\theta)^2\sqrt{1-m\sin^2\theta}\,d\theta.
+$$
+
+The last equality uses quadrant symmetry and $\theta=\pi/2-t$ within one quadrant. The result has units of length cubed.
+
+**Step 2 — CHOICE.** The extra square of a coordinate leaves a weighted elliptic integral. A relation obtained by integrating a vanishing endpoint derivative reduces this weight to two basic complete elliptic integrals. The nearly circular limit is handled directly in the regular weighted integral, where no division by $m$ occurs.
+
+**Step 3 — SETUP: the parameter convention.** For real $0\le m<1$, define
+
+$$
+K(m)=\int_0^{\pi/2}\frac{1}{\sqrt{1-m\sin^2\theta}}\,d\theta,
+\qquad
+E(m)=\int_0^{\pi/2}\sqrt{1-m\sin^2\theta}\,d\theta.
+$$
+
+These are complete elliptic integrals with parameter $m$, rather than modulus $\sqrt m$; the two conventions differ in their arguments. For $j=0,1,2$ define the real auxiliary moments
+
+$$
+L_j(m)=\int_0^{\pi/2}\frac{(\sin\theta)^{2j}}{\sqrt{1-m\sin^2\theta}}\,d\theta.
+$$
+
+Thus $L_0=K$, $E=K-mL_1$, and the weighted integral needed for $W/(4a^3)$ is $L_1-mL_2$.
+
+**Step 4 — CALCULUS: a moment relation.** Let $D(\theta;m)=1-m\sin^2\theta>0$. The function $\sin\theta\cos\theta\sqrt{D(\theta;m)}$ vanishes at both integration endpoints. Differentiating it and writing all terms over its positive square root gives
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\theta}
+\left(\sin\theta\cos\theta\sqrt{D(\theta;m)}\right)
+&=\frac{(1-2\sin^2\theta)(1-m\sin^2\theta)
+-m\sin^2\theta(1-\sin^2\theta)}{\sqrt{D(\theta;m)}}\\
+&=\frac{1-2(1+m)\sin^2\theta+3m\sin^4\theta}{\sqrt{D(\theta;m)}}.
+\end{aligned}
+$$
+
+Integrating this derivative gives $K-2(1+m)L_1+3mL_2=0$.
+
+**Step 5 — ALGEBRA: reduction to complete integrals.** For $m>0$, use the two relations to eliminate the moments:
+
+$$
+\begin{aligned}
+L_1-mL_2
+&=L_1-\frac{2(1+m)L_1-K}{3}
+=\frac{K+(1-2m)L_1}{3}\\
+&=\frac{mK+(1-2m)(K-E)}{3m}
+=\frac{(1-m)K+(2m-1)E}{3m}.
+\end{aligned}
+$$
+
+It follows that
+
+$$
+W(a,b)=\frac{4a^3}{3m}\left((1-m)K(m)+(2m-1)E(m)\right),
+\qquad m=1-b^2/a^2\in(0,1).
+$$
+
+The numerator vanishes with $m$ near a circle, so this exact expression should not be evaluated by subtracting nearly equal terms when $m$ is very small.
+
+**Step 6 — TRICK: a uniform nearly circular expansion.** Let $m_0<1$ be fixed and assume $0\le m\le m_0$. For real $0\le z\le m_0$, Taylor's theorem gives
+
+$$
+\sqrt{1-z}=1-\frac z2-\frac{z^2}{8}+R_3(z),
+\qquad
+-\frac{z^3}{16(1-m_0)^{5/2}}\le R_3(z)\le0,
+$$
+
+since the third derivative is $-3/(8(1-z)^{5/2})$. The angular even moments follow by integration by parts from $\int_0^{\pi/2}1\,d\theta=\pi/2$; the values needed here are
+
+$$
+\int_0^{\pi/2}\sin^2\theta\,d\theta=\frac\pi4,\quad
+\int_0^{\pi/2}\sin^4\theta\,d\theta=\frac{3\pi}{16},\quad
+\int_0^{\pi/2}\sin^6\theta\,d\theta=\frac{5\pi}{32},\quad
+\int_0^{\pi/2}\sin^8\theta\,d\theta=\frac{35\pi}{256}.
+$$
+
+Substituting $z=m\sin^2\theta$ in the regular weighted integral gives
+
+$$
+W(a,b)=\pi a^3\left(1-\frac{3m}{8}-\frac{5m^2}{64}\right)+\mathcal R(m;a),
+$$
+
+with the explicit uniform error bound
+
+$$
+-\frac{35\pi a^3m^3}{1024(1-m_0)^{5/2}}
+\le\mathcal R(m;a)\le0.
+$$
+
+The bound includes the factor $\sin^2\theta$ from the coordinate weight; omitting it would change the remainder constant.
+
+**Step 7 — CHECK AND DOMAIN.** At $m=0$, the regular integral gives $W(a,a)=4a^3(\pi/4)=\pi a^3$, the direct value for a circle with $x=a\cos t$ and $ds=a\,dt$. The expansion approaches this value with a controlled error and avoids the removable $0/0$ form of the complete-integral expression. The original integrand also lies between $b\,a^2\cos^2t$ and $a^3\cos^2t$, so $\pi a^2b\le W(a,b)\le\pi a^3$. All differentiations and integrations in the reduction take place with a positive denominator on a compact angular interval. The uniform Taylor estimate requires $m_0<1$; it does not assert uniform accuracy as $b\downarrow0$.
+
+**Discussion.** A recurrence can express a weighted geometric integral in standard functions while introducing a removable parameter singularity. A direct expansion of the original regular integral is better suited to the nearly circular regime and supplies its own error estimate.
+
+### I4-015
+
+**Step 1 — SETUP.** Write $\mathbf y=\mathbf x-\mathbf m$. Translation has Jacobian one, and the whole-space domain is unchanged. If $\lambda>0$ is the smallest eigenvalue of $\mathbf A$, then $\mathbf y^{\mathsf T}\mathbf A\mathbf y\ge\lambda\|\mathbf y\|^2$. The normalization kernel is bounded by $\exp(-\lambda\|\mathbf y\|^2)$, and the norm of the moment kernel is at most $\|\mathbf y\|^2\exp(-\lambda\|\mathbf y\|^2)$. Both are integrable on $\mathbb R^3$, so every matrix entry is absolutely integrable. Neither answer depends on the fixed center.
+
+**Step 2 — CHOICE.** The positive square root $\mathbf S=\mathbf A^{1/2}$ turns the exponent into an isotropic Gaussian. The coordinate vectors in the moment transform along with the measure; transforming only the exponential would lose its anisotropic matrix structure.
+
+**Step 3 — CALCULUS: normalization.** Set $\mathbf u=\mathbf S\mathbf y$. As for any positive-definite square root, $\det\mathbf S=\sqrt{\det\mathbf A}>0$ and $\mathbf y=\mathbf S^{-1}\mathbf u$. Fubini's theorem for the absolutely integrable Gaussian gives
+
+$$
+Z(\mathbf A)=\frac{1}{\sqrt{\det\mathbf A}}
+\prod_{j=1}^3\left(\int_{-\infty}^{\infty}\exp(-u_j^2)\,du_j\right)
+=\frac{\pi^{3/2}}{\sqrt{\det\mathbf A}}.
+$$
+
+Here the one-dimensional integral equals $\sqrt\pi$: squaring its positive half-line version and using polar coordinates in the first quadrant gives $\pi/4$, so the full-line integral is twice $\sqrt\pi/2$.
+
+**Step 4 — CALCULUS AND ALGEBRA: the matrix moment.** For indices $i,j\in\{1,2,3\}$, the isotropic integral of $u_i u_j\exp(-\|\mathbf u\|^2)$ vanishes when $i\ne j$, by oddness in one coordinate and absolute integrability. Its diagonal entries use
+
+$$
+\int_{-\infty}^{\infty}u^2\exp(-u^2)\,du
+=-\frac12\left.u\exp(-u^2)\right|_{u=-\infty}^{u=\infty}
++\frac12\int_{-\infty}^{\infty}\exp(-u^2)\,du
+=\frac{\sqrt\pi}{2}.
+$$
+
+The other two coordinates each supply $\sqrt\pi$, giving the real matrix $\int\mathbf u\mathbf u^{\mathsf T}\exp(-\|\mathbf u\|^2)\,d^3\mathbf u=(\pi^{3/2}/2)\mathbf I_3$. Transforming both moment vectors therefore gives
+
+$$
+\begin{aligned}
+\mathbf M(\mathbf A)
+&=\frac{1}{\sqrt{\det\mathbf A}}\mathbf S^{-1}
+\left(\frac{\pi^{3/2}}2\mathbf I_3\right)\mathbf S^{-1}\\
+&=\frac{Z(\mathbf A)}2\mathbf A^{-1}.
+\end{aligned}
+$$
+
+The use of the same matrix on both sides is valid because $\mathbf S^{-1}$ is symmetric. In a general nonsymmetric coordinate map, the right factor would be its transpose.
+
+**Step 5 — CALCULUS: covariance and ordered perturbations.** The normalized density is $p(\mathbf x;\mathbf A)=\exp(-\mathbf y^{\mathsf T}\mathbf A\mathbf y)/Z(\mathbf A)$. Its mean is $\mathbf m$, since every first centered moment is odd after the square-root transformation. Its covariance is
+
+$$
+\boldsymbol\Sigma(\mathbf A)=\frac{\mathbf M(\mathbf A)}{Z(\mathbf A)}
+=\frac12\mathbf A^{-1}.
+$$
+
+At any fixed path input $t_0$, write $\mathbf A_0=\mathbf A(t_0)$, $Z_0=Z(\mathbf A_0)$, and $\mathbf H=\left.\frac{d}{dt}(\mathbf A(t))\right|_{t=t_0}$. The determinant expansion and the differentiated inverse identity give, respectively,
+
+$$
+\begin{aligned}
+\left.\frac{d}{dt}(Z(\mathbf A(t)))\right|_{t=t_0}
+&=-\frac{Z_0}{2}\operatorname{tr}(\mathbf A_0^{-1}\mathbf H),\\
+\left.\frac{d}{dt}(\mathbf M(\mathbf A(t)))\right|_{t=t_0}
+&=-\frac{Z_0}{4}\operatorname{tr}(\mathbf A_0^{-1}\mathbf H)\mathbf A_0^{-1}
+-\frac{Z_0}{2}\mathbf A_0^{-1}\mathbf H\mathbf A_0^{-1},\\
+\left.\frac{d}{dt}(\boldsymbol\Sigma(\mathbf A(t)))\right|_{t=t_0}
+&=-\frac12\mathbf A_0^{-1}\mathbf H\mathbf A_0^{-1}.
+\end{aligned}
+$$
+
+The first term in the moment derivative is the change of total Gaussian mass; normalization removes it from the covariance derivative. The factors containing $\mathbf H$ keep their order, so no assumption of simultaneous eigenvectors is needed.
+
+**Step 6 — DOMAIN: differentiating whole-space integrals.** Continuous positive definiteness supplies a fixed $\mu>0$ with $\mathbf A(t)\ge\mu\mathbf I_3$ on a sufficiently small closed neighborhood of $t_0$. Continuous differentiability also supplies $K$ with $\|\frac{d}{dt}(\mathbf A(t))\|\le K$ there, using the Euclidean operator norm. The normalization derivative kernel is bounded by $K\|\mathbf y\|^2\exp(-\mu\|\mathbf y\|^2)$, while the moment derivative kernel has matrix norm bounded by
+
+$$
+K\|\mathbf y\|^4\exp(-\mu\|\mathbf y\|^2).
+$$
+
+These are integrable: in spherical coordinates the latter bound has radial integral proportional to $\int_0^\infty r^6\exp(-\mu r^2)\,dr<\infty$. Differentiation under each integral is therefore justified. In particular,
+
+$$
+\left.\frac{d}{dt}(\mathbf M(\mathbf A(t)))\right|_{t=t_0}
+=-\iiint_{\mathbb R^3}\mathbf y\mathbf y^{\mathsf T}
+(\mathbf y^{\mathsf T}\mathbf H\mathbf y)\exp(-\mathbf y^{\mathsf T}\mathbf A_0\mathbf y)\,d^3\mathbf y.
+$$
+
+A zero eigenvalue would remove all Gaussian decay in its eigendirection, so the normalization and at least one second moment would diverge. A negative eigenvalue would instead cause exponential growth in an open cone. Those cases cannot be assigned the positive-definite formulas by substitution.
+
+**Step 7 — CHECK: a fourth-moment identity.** Comparing the differentiated integral with the explicit moment derivative gives the independently useful contraction
+
+$$
+\iiint_{\mathbb R^3}\mathbf y\mathbf y^{\mathsf T}
+(\mathbf y^{\mathsf T}\mathbf H\mathbf y)\exp(-\mathbf y^{\mathsf T}\mathbf A_0\mathbf y)\,d^3\mathbf y
+=\frac{Z_0}{4}\left(
+\operatorname{tr}(\mathbf A_0^{-1}\mathbf H)\mathbf A_0^{-1}
++2\mathbf A_0^{-1}\mathbf H\mathbf A_0^{-1}\right).
+$$
+
+For $\mathbf A_0=\alpha\mathbf I_3$ and $\mathbf H=\mathbf I_3$, taking the trace reduces this to a radial fourth moment, and the covariance derivative becomes $-\mathbf I_3/(2\alpha^2)$ as required by differentiating $\mathbf I_3/(2\alpha)$.
+
+**Step 8 — CHECK: off-diagonal covariance.** For the stated path, the full positive-definite interval is $|1+t|<\sqrt6$, since its upper block has first diagonal entry three and determinant $6-(1+t)^2$, and the third eigenvalue is four. Its off-diagonal covariance entry is
+
+$$
+\Sigma_{12}(t)=-\frac{1+t}{2(6-(1+t)^2)},
+\qquad
+\Sigma_{12}(0)=-\frac1{10},
+\qquad
+\left.\frac{d}{dt}(\Sigma_{12}(t))\right|_{t=0}=-\frac7{50}.
+$$
+
+At zero the inverse upper block is $\frac15\begin{bmatrix}2&-1\\-1&3\end{bmatrix}$ and $Z_0=\pi^{3/2}/(2\sqrt5)$. Thus $M_{12}(\mathbf A_0)=-Z_0/10$. With the off-diagonal perturbation $\mathbf H$, the $(1,2)$ entry of $\mathbf A_0^{-1}\mathbf H\mathbf A_0^{-1}$ is $7/25$, yielding the same covariance derivative. This off-diagonal moment would be lost by treating the matrix inverse as entrywise reciprocation.
+
+**Discussion.** A Gaussian's total mass and its normalized spread respond differently to a changing quadratic form. The centered matrix moment contains both effects; a uniform spectral gap justifies separating them through differentiation.
+
+### I4-016
+
+**Step 1 — SETUP.** For fixed $a,b>-1$ and $0<x<1$, the quotient is real and well defined. If $a=b$ its numerator is identically zero. Otherwise its sign is constant: it is positive when $a>b$ and negative when $a<b$, because real powers decrease with their exponent on this interval while $\ln x<0$.
+
+**Step 2 — CHOICE.** The apparent logarithmic denominator is removed by integrating in the exponent parameter. Keeping the difference intact also prevents the artificial endpoint divergences that would arise by separating its two terms near $x=1$.
+
+**Step 3 — CALCULUS: a parameter representation.** For fixed $x\in(0,1)$, differentiation in a real exponent $s$ gives $\frac{\partial}{\partial s}(x^s)=x^s\ln x$. Hence, with oriented parameter limits,
+
+$$
+\frac{x^a-x^b}{\ln x}=\int_b^a x^s\,ds.
+$$
+
+Set $\alpha=\min(a,b)>-1$. Since $x^s\le x^\alpha$ for every $s$ between $a$ and $b$,
+
+$$
+\left|\frac{x^a-x^b}{\ln x}\right|
+\le|a-b|x^\alpha,
+\qquad \int_0^1x^\alpha\,dx=\frac{1}{\alpha+1}<\infty.
+$$
+
+This proves absolute convergence and also the absolute integrability needed to interchange the two integrations. When $a=b$ both sides of the bound are zero, so the same conclusion applies directly.
+
+**Step 4 — CALCULUS AND ALGEBRA: exact evaluation.** Fubini's theorem and the power primitive give
+
+$$
+\begin{aligned}
+I(a,b)&=\int_b^a\left(\int_0^1x^s\,dx\right)ds
+=\int_b^a\frac{1}{s+1}\,ds\\
+&=\ln(a+1)-\ln(b+1)
+=\ln\left(\frac{a+1}{b+1}\right).
+\end{aligned}
+$$
+
+The oriented interval accounts for both signs of the answer. All logarithm arguments are positive on the stated parameter domain.
+
+**Step 5 — DOMAIN: endpoint kernel extensions.** At $x=1$, the parameter representation tends to $\int_b^a1\,ds=a-b$, giving a continuous extension for every admissible pair. To examine zero when $a\ne b$, set $\beta=\max(a,b)>\alpha$. The magnitude is
+
+$$
+\left|\frac{x^a-x^b}{\ln x}\right|
+=\frac{x^\alpha(1-x^{\beta-\alpha})}{|\ln x|}.
+$$
+
+If $\alpha\ge0$, this tends to zero, including the case $\alpha=0$; the kernel has continuous value zero at that endpoint. If $-1<\alpha<0$, it tends to positive infinity, because $x^\alpha/|\ln x|\to\infty$. The signed kernel then tends to $+\infty$ when $a>b$ and $-\infty$ when $a<b$, although the power bound above proves integrability. Along the diagonal $a=b$, the kernel is identically zero and has zero continuous values at both endpoints even for negative equal exponents.
+
+**Step 6 — CALCULUS: the first partial derivatives.** With the other exponent fixed, the derivatives of the quotient for $0<x<1$ are $x^a$ and $-x^b$. On a sufficiently small closed parameter neighborhood, both exponents are at least a fixed $\gamma>-1$, so their absolute values are bounded by the integrable function $x^\gamma$. Differentiation under the integral gives
+
+$$
+\frac{\partial}{\partial a}(I(a,b))=\int_0^1x^a\,dx=\frac1{a+1},
+\qquad
+\frac{\partial}{\partial b}(I(a,b))=-\int_0^1x^b\,dx=-\frac1{b+1}.
+$$
+
+These agree with differentiating the explicit logarithmic answer. Along a differentiable diagonal path both parameters vary, and the two partial contributions cancel; neither partial derivative alone is the derivative along that path.
+
+**Step 7 — DOMAIN: simultaneous approach to the boundary.** Let $\epsilon>0$ tend to zero. For any fixed real $c>0$, taking $a=-1+c\epsilon$ and $b=-1+\epsilon$ gives $I(a,b)=\ln c$. Every finite real limit can therefore be obtained by choosing $c$. Taking $a+1=\epsilon$, $b+1=\epsilon^2$ instead gives $I\to+\infty$; reversing the two parameters gives $I\to-\infty$. There is no joint continuous extension at $(-1,-1)$.
+
+On the exact diagonal, the unsplit numerator cancels for every interior $x$, even at the separately specified boundary pair $a=b=-1$, so that zero kernel would have integral zero. This single cancellation does not prescribe a joint limit. If just $a=-1<b$, the uncanceled kernel has a negative nonintegrable $1/(x|\ln x|)$ leading behavior at zero; with just $b=-1<a$ the divergence is positive. The local domination valid strictly above minus one cannot pass uniformly through these boundary limits.
+
+**Step 8 — CHECK.** Interchanging $a,b$ negates both the integrand and answer. Equality gives zero, and the answer increases in its first argument and decreases in its second, as its kernel does. The independent coordinate $x=\exp(-u)$, with bounds $u=\infty$ to zero and reversed differential, gives
+
+$$
+I(a,b)=\int_0^\infty
+\frac{\exp(-(b+1)u)-\exp(-(a+1)u)}{u}\,du.
+$$
+
+This is a convergent difference of positive-decay exponential kernels and has value $\ln((a+1)/(b+1))$, consistent with the parameter calculation. Separating its terms would again destroy the cancellation that ensures convergence at its zero endpoint.
+
+**Discussion.** An integrable kernel can be unbounded at an endpoint, and exact diagonal cancellation can coexist with a nonexistent joint parameter limit. A positive distance from the parameter boundary is part of the domination argument, not merely a condition on the final logarithm.

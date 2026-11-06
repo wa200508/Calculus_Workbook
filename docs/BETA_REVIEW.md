@@ -2,7 +2,7 @@
 
 Started October 18, 2026; updated November 6, 2026. See [BETA_PLAN.md](BETA_PLAN.md) for the review criteria.
 
-Reviewed expansion revision: `ca49cd07c95d0b8ef1ee031971db47e5abbac8b6`.
+Reviewed first-expansion revision: `ca49cd07c95d0b8ef1ee031971db47e5abbac8b6`.
 [Integrated findings and verification](REVIEW_2026-11-05.md) records the original
 correction checkpoint, added coverage, checks, and remaining reader-review gates.
 
@@ -24,6 +24,10 @@ fixes, and any remaining limitations. A correction can require re-review.
 again at baseline `1d2632c`, using different chapter reviewers and supplementary
 adversarial calculations. The last column links per-problem evidence.
 
+The subsequent twenty-problem second expansion brings the collection to 92.
+Its new rows link author derivations and independent reviews; they were added
+**after** that 72-problem recheck and are not being relabelled as part of it.
+
 ## Problem audit
 
 | ID | Title | Beta audit | Evidence / unresolved findings | Fresh recheck, Nov 6 |
@@ -39,6 +43,11 @@ adversarial calculations. The last column links per-problem evidence.
 | D4-009 | A response selected by a bounded maximum | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d4.md) |
 | D4-010 | A matrix exponential across a change of regime | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d4.md) |
 | D4-011 | A scalar response on symmetric positive matrices | Author and independent analytical agent reviews complete | [Derivation](expansion-d4.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d4.md) |
+| D4-012 | A folded angle and its continuous lift | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d4.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D4-013 | A phase zero in a complex response | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d4.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D4-014 | Constant determinant along a changing matrix response | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d4.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D4-015 | A cubic constraint at the edge of a branch | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d4.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D4-016 | A smooth approximation to an absolute value | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d4.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
 | D3-001 | Waveguide sensitivity at cutoff | Analytical agent review complete | [Evidence](audit-d3.md) | [Rechecked](recheck-2026-11-06-d3.md) |
 | D3-002 | Spatial gradient of a complex Green kernel | Analytical agent review complete | [Evidence](audit-d3.md) | [Rechecked](recheck-2026-11-06-d3.md) |
 | D3-003 | RF phase and the branch cut | Analytical agent review complete | [Evidence](audit-d3.md) | [Rechecked](recheck-2026-11-06-d3.md) |
@@ -51,6 +60,11 @@ adversarial calculations. The last column links per-problem evidence.
 | D3-010 | An anisotropic energy with turning principal directions | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d3.md) |
 | D3-011 | A direction traced by three competing components | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d3.md) |
 | D3-012 | A finite value left after a point-source subtraction | Author and independent analytical agent reviews complete | [Derivation](expansion-d3.md); [second review](expansion-differentiation-review.md) | [Rechecked](recheck-2026-11-06-d3.md) |
+| D3-013 | Two fixed foci and a distance response | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d3.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D3-014 | A scalar response unchanged by rescaling | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d3.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D3-015 | A changing tensor measured in fixed coordinates | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d3.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D3-016 | A positive matrix branch with coupled entries | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d3.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
+| D3-017 | A radial map with changing local scales | Author and independent analytical agent reviews complete | [Derivation](expansion-2-d3.md); [second review](expansion-2-differentiation-review.md) | Added after the 72-problem recheck. |
 | I4-001 | A difference of exponential kernels | Analytical agent review complete | [Evidence](audit-i4.md) | [Rechecked](recheck-2026-11-06-i4.md) |
 | I4-002 | A logarithmic kernel on a finite interval | Analytical agent review complete | [Evidence](audit-i4.md) | [Rechecked](recheck-2026-11-06-i4.md) |
 | I4-003 | A damped difference of oscillatory kernels | Analytical agent review complete | [Evidence](audit-i4.md) | [Rechecked](recheck-2026-11-06-i4.md) |
@@ -62,6 +76,11 @@ adversarial calculations. The last column links per-problem evidence.
 | I4-009 | An accumulated matrix response | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i4.md) |
 | I4-010 | A Gaussian with a moving truncation | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i4.md) |
 | I4-011 | A circular aperture transform | Author and independent analytical agent reviews complete | [Derivation](expansion-i4.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i4.md) |
+| I4-012 | A Gaussian on a rotated ellipsoid | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i4.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I4-013 | A hyperboloidal shell | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i4.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I4-014 | An ellipse with a nonuniform line weight | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i4.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I4-015 | A Gaussian matrix moment | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i4.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I4-016 | A difference divided by a logarithm | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i4.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
 | I3-001 | Sine over a half-period | Analytical agent review complete | [Evidence](audit-i3.md) | [Rechecked](recheck-2026-11-06-i3.md) |
 | I3-002 | An oscillatory ratio on a finite interval | Analytical agent review complete | [Evidence](audit-i3.md) | [Rechecked](recheck-2026-11-06-i3.md) |
 | I3-003 | Damping a conditionally convergent oscillatory integral | Analytical agent review complete | [Evidence](audit-i3.md) | [Rechecked](recheck-2026-11-06-i3.md) |
@@ -76,6 +95,11 @@ adversarial calculations. The last column links per-problem evidence.
 | I3-012 | A shrinking layer and its parameter derivative | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i3.md) |
 | I3-013 | Two closed paths around an excluded axis | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i3.md) |
 | I3-014 | A source inside a triangular panel | Author and independent analytical agent reviews complete | [Derivation](expansion-i3.md); [second review](expansion-integration-review.md) | [Rechecked](recheck-2026-11-06-i3.md) |
+| I3-015 | A logarithmic kernel with a moving interior pole | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i3.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I3-016 | Surface area with three unequal semiaxes | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i3.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I3-017 | A circular source observed away from its axis | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i3.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I3-018 | A panel with a linearly varying weight | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i3.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
+| I3-019 | A finite aperture with quadratic phase | Author and independent analytical agent reviews complete | [Derivation](expansion-2-i3.md); [second review](expansion-2-integration-review.md) | Added after the 72-problem recheck. |
 | D1-001 | Polynomial differentiation by linearity | Analytical agent review complete | [Evidence](audit-reference-exercises.md) | [Rechecked](recheck-2026-11-06-d1-d2.md) |
 | D1-002 | Radicals and negative powers | Analytical agent review complete | [Evidence](audit-reference-exercises.md) | [Rechecked](recheck-2026-11-06-d1-d2.md) |
 | D1-003 | Differentiation with fixed parameters | Analytical agent review complete | [Evidence](audit-reference-exercises.md) | [Rechecked](recheck-2026-11-06-d1-d2.md) |
@@ -110,7 +134,7 @@ adversarial calculations. The last column links per-problem evidence.
 | Calculus methods reference | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
 | Four-page quick reference, standalone and embedded | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
 | Supporting tricks and identities | Analytical agent review complete | [Evidence](audit-references.md); final rendering and usability are separate checks. |
-| Complete-book editorial and pagination pass | Partial | Automated margins, notation groups, and four-page reference checks pass at 185 pages. Eight selected new solution pages and revised reference pages inspected; a complete reader/pagination trial remains pending. |
+| Complete-book editorial and pagination pass | Partial | Automated margins, notation groups, and four-page reference checks pass at 244 pages. Selected new solution pages and revised reference pages inspected; a complete reader/pagination trial remains pending. |
 | Website mobile and keyboard usability | Pending beta review | Record actual devices, pages, and interactions tested. |
 | Grayscale printing and reference-sheet use | Pending beta review | Record actual pages and results. |
 | Representative external reader trials | Pending | No trial outcomes have been recorded. |

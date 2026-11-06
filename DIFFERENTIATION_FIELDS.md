@@ -135,6 +135,75 @@ $$
 
 Determine its continuous extension to $r=0$, its derivative for $r>0$, and its right radial derivative at zero. Then let $\mathbf x\in\mathbb R^3$ be an independent real column vector and define the complex scalar field $Q(\mathbf x;k)=q(\|\mathbf x\|;k)$, including the extended value at the origin. Decide whether this field is differentiable at $\mathbf x=\mathbf0$ as a function of three real coordinates. Treat $k=0$ separately and quantify the local expansion used in the argument.
 
+### D3-013 — Two fixed foci and a distance response
+
+**Objects and dependencies.** Work in a fixed orthonormal basis of $\mathbb R^3$ with first basis vector $\mathbf e_1=[1,0,0]^{\mathsf T}$. The real length $a>0$ is fixed and $\mathbf x=[x_1,x_2,x_3]^{\mathsf T}$ is an independent real spatial vector. Define the real scalar
+
+$$
+f(\mathbf x)=\|\mathbf x-a\mathbf e_1\|+\|\mathbf x+a\mathbf e_1\|,
+$$
+
+using the Euclidean norm. Find its gradient and Hessian away from the two foci, determine all stationary points there, and identify its global minimum on the whole space. Examine differentiability at both foci. Determine when the Hessian is positive definite and describe its axial and transverse action on the line through the foci.
+
+### D3-014 — A scalar response unchanged by rescaling
+
+**Objects and dependencies.** The positive integer $n$ is fixed. The dimensionless matrix $\mathbf A\in\mathbb R^{n\times n}$ is fixed and symmetric, and $\mathbf x\in\mathbb R^n\setminus\{\mathbf0\}$ is an independent dimensionless real column vector. Define the real scalar
+
+$$
+R(\mathbf x)=\frac{\mathbf x^{\mathsf T}\mathbf A\mathbf x}{\mathbf x^{\mathsf T}\mathbf x}.
+$$
+
+Find its gradient and full Hessian. Determine every stationary direction, including repeated eigenvalues, and classify them when the input is restricted to the unit sphere. Give the second variation in tangent directions at a stationary unit vector. Check the results for
+
+$$
+\mathbf A=\begin{bmatrix}2&1&0\\1&2&0\\0&0&5\end{bmatrix},
+$$
+
+including a nonstationary input and all three eigendirections.
+
+### D3-015 — A changing tensor measured in fixed coordinates
+
+**Objects and dependencies.** Fix orthonormal bases in two copies of $\mathbb R^3$, called reference and spatial space. On an open interval $I$, the independent dimensionless real parameter is $t$. The real matrix $\mathbf F(t)$ maps reference components to spatial components, has continuously differentiable entries, and satisfies $\det(\mathbf F(t))>0$. The real symmetric positive-definite matrix $\mathbf C$ is fixed in spatial coordinates. Define the reference-coordinate matrix and real scalar energy
+
+$$
+\begin{aligned}
+\mathbf Q(t)&=\det(\mathbf F(t))\mathbf F(t)^{-1}\mathbf C\mathbf F(t)^{-\mathsf T},\\
+E(t)&=\mathbf x^{\mathsf T}\mathbf Q(t)\mathbf x,
+\end{aligned}
+$$
+
+where $\mathbf F(t)^{-\mathsf T}=(\mathbf F(t)^{-1})^{\mathsf T}$ and the dimensionless reference vector $\mathbf x\in\mathbb R^3$ is fixed. Find both derivatives, retaining multiplication order and the determinant contribution. For the path
+
+$$
+\mathbf F(t)=\begin{bmatrix}\exp t&t&0\\0&1&t\\0&0&1\end{bmatrix},\qquad
+\mathbf C=\mathbf I,
+$$
+
+give every component of $\mathbf Q(t)$ and its derivative, and verify the energy calculation independently.
+
+### D3-016 — A positive matrix branch with coupled entries
+
+**Objects and dependencies.** Work in a fixed orthonormal basis of $\mathbb R^n$, where $n$ is a positive integer. The real symmetric positive-definite matrix $\mathbf A_0$ and real symmetric matrix $\mathbf H$ are fixed. For an independent dimensionless real scalar $t$ such that $\mathbf A(t)=\mathbf A_0+t\mathbf H$ remains positive definite, define $\mathbf S(t)$ to be its principal square root: the unique real symmetric positive-definite matrix satisfying $\mathbf S(t)^2=\mathbf A(t)$.
+
+Establish local differentiability of this branch and determine its first two derivatives by equations with unique symmetric solutions. Resolve those equations in an orthonormal eigenbasis at a fixed parameter value without assuming that $\mathbf A(t)$ commutes with $\mathbf H$. For
+
+$$
+\mathbf A_0=\begin{bmatrix}1&0\\0&4\end{bmatrix},\qquad
+\mathbf H=\begin{bmatrix}1&1\\1&2\end{bmatrix},
+$$
+
+find the full real positive-definite parameter domain and evaluate both square-root derivatives at zero. Test the scalar-inspired formula $\frac12\mathbf S(t)^{-1}\mathbf H$ for the first derivative.
+
+### D3-017 — A radial map with changing local scales
+
+**Objects and dependencies.** The independent dimensionless real vector is $\mathbf x\in\mathbb R^3$, in a fixed orthonormal basis. With the Euclidean norm, define the real vector-valued map
+
+$$
+\mathbf F(\mathbf x)=(1+\|\mathbf x\|^2)\mathbf x.
+$$
+
+Find its Jacobian, determinant, and component second derivatives. Prove that it has a unique inverse $\mathbf G:\mathbb R^3\to\mathbb R^3$ on the whole space, and determine the Jacobian of that inverse, including its radial and transverse eigenvalues and its value at the origin. An implicit scalar description of the inverse radius is sufficient. For fixed increments $\mathbf h,\mathbf k\in\mathbb R^3$, obtain a bilinear formula for $\mathrm D^2\mathbf G(\mathbf y)(\mathbf h,\mathbf k)$ and check the first two inverse derivatives at a nonzero input.
+
 ## Hint ladders
 
 ### D3-001
@@ -208,6 +277,36 @@ Determine its continuous extension to $r=0$, its derivative for $r>0$, and its r
 1. The constant and first few powers in the complex exponential determine different orders after division by $r$.
 2. The identity $q(r;k)=-\mathrm{i}k\int_0^1\exp(-\mathrm{i}krs)\,ds$ avoids a quotient at zero.
 3. Along a line through the spatial origin, the radial distance is the absolute value of the signed line parameter.
+
+### D3-013
+
+1. Differentiate each nonzero displacement norm first; its unit direction also depends on the observation point.
+2. The quadratic form of a single norm's Hessian vanishes only along that displacement direction. Compare the two directions before combining their null spaces.
+3. The triangle inequality bounds the sum below by the distance between the foci; examine equality and one-sided axial slopes at the foci.
+
+### D3-014
+
+1. Keep the quadratic numerator and squared-norm denominator separate through the first quotient derivative.
+2. For the Hessian, differentiate the scalar quotient appearing inside the gradient as well as the other scalar and vector factors.
+3. At a stationary unit vector, resolve a tangent increment into eigenspaces of the symmetric matrix; repeated eigenvalues leave flat directions.
+
+### D3-015
+
+1. Differentiate the inverse identity and its transpose before applying the product rule to the three changing factors in $\mathbf Q(t)$.
+2. The reference-coordinate matrix $\mathbf L(t)=\mathbf F(t)^{-1}\frac{d}{dt}(\mathbf F(t))$ organizes the ordered terms; its trace is the logarithmic derivative of the determinant.
+3. Independently write the energy using the spatial vector $\mathbf F(t)^{-\mathsf T}\mathbf x$ and expand its squared length in the concrete example.
+
+### D3-016
+
+1. Differentiate $\mathbf S(t)\mathbf S(t)=\mathbf A(t)$ without moving either derivative past the other factor.
+2. In an eigenbasis of a positive square root, the linear map $\mathbf K\mapsto\mathbf S\mathbf K+\mathbf K\mathbf S$ multiplies entry $(i,j)$ by a positive sum of two eigenvalues.
+3. Differentiate the first matrix equation again. The two products of first derivatives remain even though the affine matrix path has zero second derivative.
+
+### D3-017
+
+1. Separate the derivative parallel to $\mathbf x$ from derivatives orthogonal to it.
+2. The map preserves direction, while its output radius is $r+r^3$ for an input radius $r\ge0$; local invertibility alone does not prove a global inverse.
+3. Differentiate the identity $\mathbf F(\mathbf G(\mathbf y))=\mathbf y$ once and twice, keeping the two first-order inverse increments inside the second derivative of $\mathbf F$.
 
 ## Complete solutions
 
@@ -921,6 +1020,500 @@ $$
 Its leading term is $-k^2r/2$, which becomes a nonzero multiple of $-\|\mathbf x\|$ in space. By contrast, the imaginary part is $-\sin(kr)/r=-k+k^3r^2/6+O(r^4)$; its leading correction is quadratic in the spatial coordinates. The real cusp is enough to obstruct differentiability of the complete complex field.
 
 **Discussion.** Removing an infinite kernel value can produce a continuous field with a finite radial derivative while leaving a spatial cusp. A radial derivative at a boundary does not supply a linear derivative in every spatial direction.
+
+### D3-013
+
+**Step 1 — SETUP.** The value $f(\mathbf x)$ exists and is continuous on all of $\mathbb R^3$. Away from the two foci, define the nonzero displacement vectors, positive distances, and unit directions
+
+$$
+\begin{aligned}
+\mathbf d_+(\mathbf x)&=\mathbf x-a\mathbf e_1,&
+\mathbf d_-(\mathbf x)&=\mathbf x+a\mathbf e_1,\\
+r_+(\mathbf x)&=\|\mathbf d_+(\mathbf x)\|,&
+r_-(\mathbf x)&=\|\mathbf d_-(\mathbf x)\|,\\
+\mathbf u_+(\mathbf x)&=\mathbf d_+(\mathbf x)/r_+(\mathbf x),&
+\mathbf u_-(\mathbf x)&=\mathbf d_-(\mathbf x)/r_-(\mathbf x).
+\end{aligned}
+$$
+
+The gradient is a real $3\times1$ vector and the Hessian $\mathbf H_f(\mathbf x)$ is a real symmetric $3\times3$ matrix.
+
+**Step 2 — CHOICE.** Each norm is smooth where its displacement is nonzero. The Hessian of one distance penalizes changes transverse to its own displacement; whether the sum is strictly positive depends on whether the two displacements have a common direction.
+
+**Step 3 — CALCULUS.** For either sign, component differentiation in the fixed basis gives
+
+$$
+\frac{\partial}{\partial x_j}\left(r_\pm(\mathbf x)\right)
+=\frac{d_{\pm,j}(\mathbf x)}{r_\pm(\mathbf x)},\qquad
+\frac{\partial}{\partial x_j}\left(u_{\pm,i}(\mathbf x)\right)
+=\frac{\delta_{ij}}{r_\pm(\mathbf x)}
+-\frac{d_{\pm,i}(\mathbf x)d_{\pm,j}(\mathbf x)}{r_\pm(\mathbf x)^3},
+$$
+
+where $1\le i,j\le3$ and $\delta_{ij}$ is one when $i=j$ and zero otherwise. Hence
+
+$$
+\begin{aligned}
+\nabla_{\mathbf x}f(\mathbf x)&=\mathbf u_+(\mathbf x)+\mathbf u_-(\mathbf x),\\
+\mathbf H_f(\mathbf x)
+&=\frac{\mathbf I-\mathbf u_+(\mathbf x)\mathbf u_+(\mathbf x)^{\mathsf T}}{r_+(\mathbf x)}
++\frac{\mathbf I-\mathbf u_-(\mathbf x)\mathbf u_-(\mathbf x)^{\mathsf T}}{r_-(\mathbf x)}.
+\end{aligned}
+$$
+
+**Step 4 — ALGEBRA.** For a fixed real increment $\mathbf h$, the Hessian quadratic form is
+
+$$
+\begin{aligned}
+\mathbf h^{\mathsf T}\mathbf H_f(\mathbf x)\mathbf h
+={}&\frac{\|\mathbf h\|^2-(\mathbf u_+(\mathbf x)^{\mathsf T}\mathbf h)^2}{r_+(\mathbf x)}\\
+&+\frac{\|\mathbf h\|^2-(\mathbf u_-(\mathbf x)^{\mathsf T}\mathbf h)^2}{r_-(\mathbf x)}\ge0.
+\end{aligned}
+$$
+
+Each term vanishes precisely when $\mathbf h$ is parallel to its displacement. Off the focal axis the two displacements are not parallel, so their only common null increment is $\mathbf0$: the Hessian is positive definite there. On the axis, $\mathbf x=s\mathbf e_1$ with $s\ne\pm a$, it becomes
+
+$$
+\mathbf H_f(s\mathbf e_1)
+=\left(\frac1{|s-a|}+\frac1{|s+a|}\right)
+(\mathbf I-\mathbf e_1\mathbf e_1^{\mathsf T}).
+$$
+
+Thus its axial eigenvalue is zero, and its two transverse eigenvalues are the displayed positive coefficient. This holds both between and outside the foci.
+
+**Step 5 — DOMAIN AND STATIONARITY.** The gradient vanishes exactly when $\mathbf u_+(\mathbf x)=-\mathbf u_-(\mathbf x)$. The displacements must then be opposite parallel vectors. Since $\mathbf d_-(\mathbf x)-\mathbf d_+(\mathbf x)=2a\mathbf e_1$, the point lies on the focal axis, and their opposite signs require $-a<s<a$. These are all the differentiable stationary points. On the remaining axis the gradient is $2\mathbf e_1$ for $s>a$ and $-2\mathbf e_1$ for $s<-a$.
+
+The triangle inequality applied to $\mathbf d_-(\mathbf x)-\mathbf d_+(\mathbf x)$ gives $f(\mathbf x)\ge2a$. Equality holds precisely on the closed line segment $\{s\mathbf e_1:-a\le s\le a\}$. This closed segment is the complete set of global minimizers, including the two points where the derivative formulas do not apply.
+
+At the positive focus, for $|h|<2a$,
+
+$$
+f((a+h)\mathbf e_1)=|h|+|2a+h|=2a+h+|h|.
+$$
+
+Its left and right axial slopes are zero and two. At the negative focus the corresponding expression is $2a-h+|h|$, whose slopes are minus two and zero. Thus neither focus is differentiable, even though both minimize the continuous function.
+
+**Step 6 — CHECK.** At the midpoint, the Hessian is $(2/a)(\mathbf I-\mathbf e_1\mathbf e_1^{\mathsf T})$, consistent with a constant value along the minimizing segment. At $\mathbf x=[0,b,0]^{\mathsf T}$ with $b\ne0$, write $r=\sqrt{a^2+b^2}$. The formulas give
+
+$$
+\nabla_{\mathbf x}f(\mathbf x)=\begin{bmatrix}0\\2b/r\\0\end{bmatrix},\qquad
+\mathbf H_f(\mathbf x)=\operatorname{diag}\left(\frac{2b^2}{r^3},\frac{2a^2}{r^3},\frac2r\right).
+$$
+
+Independently, restricting to $\mathbf x=[0,b,0]^{\mathsf T}$ gives $f=2\sqrt{a^2+b^2}$, with first and second derivatives $2b/r$ and $2a^2/r^3$. Restricting instead to $[0,b,h]^{\mathsf T}$ gives $2\sqrt{a^2+b^2+h^2}$, whose second derivative at zero is $2/r$. These agree with the indicated transverse entries, all strictly positive off the axis.
+
+**Discussion.** A flat family of minimizers and a nonsmooth minimum can occur in the same convex distance problem. The direction of each displacement determines which second variations vanish.
+
+### D3-014
+
+**Step 1 — SETUP.** Put $s(\mathbf x)=\mathbf x^{\mathsf T}\mathbf x>0$ and $q(\mathbf x)=\mathbf x^{\mathsf T}\mathbf A\mathbf x$, so $R(\mathbf x)=q(\mathbf x)/s(\mathbf x)$. Symmetry gives $\nabla_{\mathbf x}q(\mathbf x)=2\mathbf A\mathbf x$ and $\nabla_{\mathbf x}s(\mathbf x)=2\mathbf x$. All derivatives below are in the fixed Euclidean basis on the open punctured space.
+
+**Step 2 — CHOICE.** The numerator and denominator both change with the input. Retaining the scalar quotient inside the gradient makes its stationary equation transparent, but that quotient must itself be differentiated when forming the Hessian.
+
+**Step 3 — CALCULUS.** The quotient rule gives
+
+$$
+\nabla_{\mathbf x}R(\mathbf x)
+=\frac{2}{s(\mathbf x)}\bigl(\mathbf A\mathbf x-R(\mathbf x)\mathbf x\bigr).
+$$
+
+For the full Hessian, its $(i,j)$ entry, with $1\le i,j\le n$, follows by differentiating $2(\mathbf A\mathbf x)_i/s(\mathbf x)-2q(\mathbf x)x_i/s(\mathbf x)^2$:
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial x_j}\left(\frac{\partial}{\partial x_i}(R(\mathbf x))\right)
+={}&\frac{2A_{ij}}{s(\mathbf x)}-\frac{2q(\mathbf x)\delta_{ij}}{s(\mathbf x)^2}\\
+&-\frac{4(\mathbf A\mathbf x)_i x_j+4x_i(\mathbf A\mathbf x)_j}{s(\mathbf x)^2}
++\frac{8q(\mathbf x)x_ix_j}{s(\mathbf x)^3}.
+\end{aligned}
+$$
+
+Here $\delta_{ij}$ is the identity-matrix entry. Thus, with the real vector $\mathbf v(\mathbf x)=\mathbf A\mathbf x-R(\mathbf x)\mathbf x$, the same symmetric Hessian is
+
+$$
+\mathbf H_R(\mathbf x)
+=\frac{2}{s(\mathbf x)}\bigl(\mathbf A-R(\mathbf x)\mathbf I\bigr)
+-\frac{4}{s(\mathbf x)^2}
+\bigl(\mathbf x\mathbf v(\mathbf x)^{\mathsf T}+\mathbf v(\mathbf x)\mathbf x^{\mathsf T}\bigr).
+$$
+
+The two outer products contain the terms arising from both varying scalar factors; deleting either would destroy the full Hessian.
+
+**Step 4 — ALGEBRA AND STATIONARITY.** The gradient vanishes exactly when $\mathbf A\mathbf x=R(\mathbf x)\mathbf x$. By the spectral theorem this means that $\mathbf x$ is any nonzero vector in one eigenspace of $\mathbf A$. In particular, a repeated eigenvalue permits every nonzero combination within its eigenspace, rather than only the chosen basis eigenvectors. At such a point with eigenvalue $\lambda$,
+
+$$
+\mathbf H_R(\mathbf x)=\frac{2}{\|\mathbf x\|^2}(\mathbf A-\lambda\mathbf I).
+$$
+
+The radial direction has zero second variation, consistent with $R(c\mathbf x)=R(\mathbf x)$ for every nonzero real $c$.
+
+**Step 5 — DOMAIN AND SPHERE CLASSIFICATION.** Let $\mathbf u$ be a stationary unit vector with eigenvalue $\lambda$. A tangent increment $\mathbf h$ satisfies $\mathbf u^{\mathsf T}\mathbf h=0$. The second derivative of the restriction to the sphere at that stationary point is
+
+$$
+2\mathbf h^{\mathsf T}(\mathbf A-\lambda\mathbf I)\mathbf h.
+$$
+
+For example, the spherical path $(\mathbf u+\epsilon\mathbf h)/\|\mathbf u+\epsilon\mathbf h\|$ has first derivative $\mathbf h$ at zero; its second-derivative contribution involving the ambient gradient vanishes because that gradient is zero.
+
+Choose an orthonormal eigenbasis $\mathbf w_1,\ldots,\mathbf w_n$ with eigenvalues $\lambda_1,\ldots,\lambda_n$. Writing $\mathbf h=\sum_{j=1}^n h_j\mathbf w_j$ makes this second variation
+
+$$
+2\sum_{j=1}^n(\lambda_j-\lambda)h_j^2.
+$$
+
+The smallest eigenvalue gives all global minima, and the largest gives all global maxima: for any unit $\mathbf z=\sum_{j=1}^n z_j\mathbf w_j$, the value $R(\mathbf z)=\sum_{j=1}^n\lambda_j z_j^2$ is a weighted average of the eigenvalues. An intermediate eigenvalue is a saddle, since directions into lower and higher eigenspaces give opposite signs. A repeated extremal eigenvalue leaves flat tangent directions within its eigenspace and a sphere of minimizers or maximizers. If the extremal eigenvalue is simple and $n>1$, the other tangent eigenvalues have a strict sign, so each of its two unit eigenvectors is a strict local extremum on the sphere. If every eigenvalue is equal, the response is constant and the Hessian vanishes, including when $n=1$.
+
+**Step 6 — CHECK.** In the specified three-dimensional example, the unit eigenvectors and eigenvalues are
+
+$$
+\frac{1}{\sqrt2}\begin{bmatrix}1\\-1\\0\end{bmatrix}\ (\lambda=1),\qquad
+\frac{1}{\sqrt2}\begin{bmatrix}1\\1\\0\end{bmatrix}\ (\lambda=3),\qquad
+\begin{bmatrix}0\\0\\1\end{bmatrix}\ (\lambda=5).
+$$
+
+The tangent Hessian eigenvalues are respectively $(4,8)$, $(-4,4)$, and $(-8,-4)$, giving a minimum, a saddle, and a maximum. At the nonstationary input $\mathbf x=[1,0,1]^{\mathsf T}$, direct evaluation gives $s(\mathbf x)=2$, $q(\mathbf x)=7$, and
+
+$$
+\nabla_{\mathbf x}R(\mathbf x)=\begin{bmatrix}-3/2\\1\\3/2\end{bmatrix},\qquad
+\mathbf H_R(\mathbf x)=\begin{bmatrix}3/2&0&0\\0&-3/2&-1\\0&-1&-3/2\end{bmatrix}.
+$$
+
+As an independent scaling check, differentiating $\nabla R(c\mathbf x)=c^{-1}\nabla R(\mathbf x)$ at $c=1$ requires $\mathbf H_R(\mathbf x)\mathbf x=-\nabla R(\mathbf x)$, which these explicit values satisfy. For a repeated-eigenvalue check, $\mathbf A=\operatorname{diag}(1,1,4)$ makes every unit vector in the plane spanned by the first two basis vectors a minimizer, with zero tangential curvature within that circle and curvature six toward the third direction.
+
+**Discussion.** Rescaling invariance removes one ambient direction of change, while repeated eigenvalues create additional flat directions. Classification on the sphere separates those effects from increases and decreases between different eigenspaces.
+
+### D3-015
+
+**Step 1 — SETUP.** Define the positive scalar, inverse matrix, and reference-coordinate rate matrix
+
+$$
+m(t)=\det(\mathbf F(t)),\qquad
+\mathbf K(t)=\mathbf F(t)^{-1},\qquad
+\mathbf L(t)=\mathbf K(t)\frac{d}{dt}\left(\mathbf F(t)\right).
+$$
+
+The two bases stay fixed during differentiation. The inverse maps spatial components back to reference components, so $\mathbf Q(t)=m(t)\mathbf K(t)\mathbf C\mathbf K(t)^{\mathsf T}$ has both indices in reference coordinates. It is symmetric positive definite: for any nonzero reference vector $\mathbf z$, its energy is $m(t)(\mathbf K(t)^{\mathsf T}\mathbf z)^{\mathsf T}\mathbf C(\mathbf K(t)^{\mathsf T}\mathbf z)>0$.
+
+**Step 2 — CHOICE.** Volume change and changes of both inverse factors contribute separately. The derivative of an inverse follows from the defining identity, while the determinant derivative follows by factoring out the current invertible matrix. Neither calculation requires commuting two matrix factors.
+
+**Step 3 — CALCULUS.** Differentiating $\mathbf F(t)\mathbf K(t)=\mathbf I$ gives
+
+$$
+\frac{d}{dt}\left(\mathbf K(t)\right)
+=-\mathbf K(t)\frac{d}{dt}\left(\mathbf F(t)\right)\mathbf K(t)
+=-\mathbf L(t)\mathbf K(t).
+$$
+
+Transposing the entire identity gives $\frac{d}{dt}(\mathbf K(t)^{\mathsf T})=-\mathbf K(t)^{\mathsf T}\mathbf L(t)^{\mathsf T}$. For a real increment $h\to0$, continuous differentiability gives
+
+$$
+\mathbf F(t+h)=\mathbf F(t)\bigl(\mathbf I+h\mathbf L(t)+o(h)\bigr).
+$$
+
+The first-order determinant expansion $\det(\mathbf I+h\mathbf L)=1+h\operatorname{tr}(\mathbf L)+O(h^2)$ therefore yields
+
+$$
+\frac{d}{dt}\left(m(t)\right)=m(t)\operatorname{tr}(\mathbf L(t)).
+$$
+
+**Step 4 — ALGEBRA.** Applying the product rule to the determinant and the two inverse factors gives
+
+$$
+\begin{aligned}
+\frac{d}{dt}\left(\mathbf Q(t)\right)
+={}&m(t)\operatorname{tr}(\mathbf L(t))\mathbf K(t)\mathbf C\mathbf K(t)^{\mathsf T}\\
+&-m(t)\mathbf L(t)\mathbf K(t)\mathbf C\mathbf K(t)^{\mathsf T}\\
+&-m(t)\mathbf K(t)\mathbf C\mathbf K(t)^{\mathsf T}\mathbf L(t)^{\mathsf T}\\
+={}&\operatorname{tr}(\mathbf L(t))\mathbf Q(t)
+-\mathbf L(t)\mathbf Q(t)-\mathbf Q(t)\mathbf L(t)^{\mathsf T}.
+\end{aligned}
+$$
+
+The last two terms are transposes of one another, preserving symmetry without requiring $\mathbf L(t)$ to be symmetric. Since $\mathbf x$ is fixed,
+
+$$
+\begin{aligned}
+\frac{d}{dt}\left(E(t)\right)
+&=\mathbf x^{\mathsf T}\frac{d}{dt}\left(\mathbf Q(t)\right)\mathbf x\\
+&=\operatorname{tr}(\mathbf L(t))E(t)
+-2\mathbf x^{\mathsf T}\mathbf L(t)\mathbf Q(t)\mathbf x.
+\end{aligned}
+$$
+
+Here the two ordered scalar contractions are equal by transposing the complete scalar; this does not imply equality of their matrix factors.
+
+**Step 5 — CALCULUS: the specified path.** For the upper-triangular example, direct multiplication verifies
+
+$$
+\begin{aligned}
+m(t)&=\exp t,\\
+\mathbf K(t)&=\begin{bmatrix}\exp(-t)&-t\exp(-t)&t^2\exp(-t)\\0&1&-t\\0&0&1\end{bmatrix},\\
+\mathbf L(t)&=\begin{bmatrix}1&\exp(-t)&-t\exp(-t)\\0&0&1\\0&0&0\end{bmatrix}.
+\end{aligned}
+$$
+
+In particular, $\operatorname{tr}(\mathbf L(t))=1$, consistent with the determinant derivative. Multiplying $m(t)\mathbf K(t)\mathbf K(t)^{\mathsf T}$ gives every component:
+
+$$
+\mathbf Q(t)=\begin{bmatrix}
+\exp(-t)(1+t^2+t^4)&-t-t^3&t^2\\
+-t-t^3&\exp(t)(1+t^2)&-t\exp t\\
+t^2&-t\exp t&\exp t
+\end{bmatrix}.
+$$
+
+Direct differentiation of those components yields
+
+$$
+\frac{d}{dt}\left(\mathbf Q(t)\right)=\begin{bmatrix}
+\exp(-t)(-1+2t-t^2+4t^3-t^4)&-1-3t^2&2t\\
+-1-3t^2&\exp(t)(1+2t+t^2)&-(1+t)\exp t\\
+2t&-(1+t)\exp t&\exp t
+\end{bmatrix}.
+$$
+
+At zero this is $\begin{bmatrix}-1&-1&0\\-1&1&-1\\0&-1&1\end{bmatrix}$, also obtained from $\mathbf Q(0)=\mathbf I$ and $\mathbf I-\mathbf L(0)-\mathbf L(0)^{\mathsf T}$.
+
+**Step 6 — CHECK.** Put $\mathbf y(t)=\mathbf K(t)^{\mathsf T}\mathbf x$, a spatial vector. For the example,
+
+$$
+\mathbf y(t)=\begin{bmatrix}
+\exp(-t)x_1\\
+x_2-t\exp(-t)x_1\\
+x_3-tx_2+t^2\exp(-t)x_1
+\end{bmatrix},\qquad E(t)=\exp(t)\|\mathbf y(t)\|^2.
+$$
+
+Expanding these three squares independently gives
+
+$$
+\begin{aligned}
+E(t)={}&\exp(-t)(1+t^2+t^4)x_1^2
++\exp(t)(1+t^2)x_2^2+\exp(t)x_3^2\\
+&-2(t+t^3)x_1x_2+2t^2x_1x_3-2t\exp(t)x_2x_3.
+\end{aligned}
+$$
+
+Its derivative consequently has diagonal terms $\frac{d}{dt}(Q_{ii}(t))x_i^2$ for $1\le i\le3$ and cross terms
+$-2(1+3t^2)x_1x_2+4tx_1x_3-2(1+t)\exp(t)x_2x_3$, exactly matching the full tensor derivative. At zero the energy slope is $-x_1^2+x_2^2+x_3^2-2x_1x_2-2x_2x_3$. A separate determinant check gives
+
+$$
+\det(\mathbf Q(t))=m(t)^3\det(\mathbf K(t))^2\det(\mathbf C)
+=m(t)\det(\mathbf C),
+$$
+
+which equals $\exp t$ in the example.
+
+**Step 7 — DOMAIN.** The general formula is valid throughout $I$ because positive determinant guarantees invertibility and the positive volume factor. Only first derivatives of $\mathbf F(t)$ are needed. The example has positive determinant for every finite real $t$, so no finite parameter is excluded. All coordinates and bases have been specified; there is no unrecorded derivative of a basis or of the fixed spatial tensor.
+
+**Discussion.** A volume factor changes the same energy as two ordered inverse-coordinate factors. Differentiating the congruence requires both sides even when the resulting matrix is symmetric.
+
+### D3-016
+
+**Step 1 — SETUP.** At every admissible parameter, the spectral theorem supplies a positive square root: if $\mathbf A(t)=\mathbf U\operatorname{diag}(\lambda_1,\ldots,\lambda_n)\mathbf U^{\mathsf T}$ with all $\lambda_i>0$, then its principal root is $\mathbf U\operatorname{diag}(\sqrt{\lambda_1},\ldots,\sqrt{\lambda_n})\mathbf U^{\mathsf T}$. We first justify differentiating this branch without assuming differentiable choices of eigenvectors.
+
+**Step 2 — CHOICE AND LOCAL EXISTENCE.** On the finite-dimensional space of real symmetric matrices, consider the smooth equation $\boldsymbol\Phi(\mathbf S,\mathbf A)=\mathbf S^2-\mathbf A=\mathbf0$. Its derivative in a symmetric increment $\mathbf K$ of the first input is
+
+$$
+\mathrm D_{\mathbf S}\boldsymbol\Phi(\mathbf S,\mathbf A)(\mathbf K)
+=\mathbf S\mathbf K+\mathbf K\mathbf S.
+$$
+
+At a positive root, choose an orthonormal eigenbasis of $\mathbf S$ with positive eigenvalues $\sigma_1,\ldots,\sigma_n$. In this basis the $(i,j)$ component of that linear map is $(\sigma_i+\sigma_j)K_{ij}$. Every multiplier is strictly positive, including for repeated eigenvalues. Division by these multipliers defines a unique symmetric solution for every symmetric right-hand side, so the derivative map is invertible.
+
+The implicit function theorem therefore supplies a smooth square-root branch near each positive-definite input. Its values remain positive definite after reducing the neighborhood because that set is open. Uniqueness of the principal positive root makes these local branches agree where they overlap. Thus $\mathbf S(t)$ is smooth throughout its positive-definite parameter domain, and two derivatives of the affine path are justified.
+
+**Step 3 — CALCULUS.** Define the real symmetric matrices $\mathbf K(t)=\frac{d}{dt}(\mathbf S(t))$ and $\mathbf T(t)=\frac{d^2}{dt^2}(\mathbf S(t))$. Differentiation of $\mathbf S(t)\mathbf S(t)=\mathbf A_0+t\mathbf H$ gives the ordered equation
+
+$$
+\mathbf S(t)\mathbf K(t)+\mathbf K(t)\mathbf S(t)=\mathbf H.
+$$
+
+Differentiating its left side produces four terms. The two first-derivative products coincide with $\mathbf K(t)^2$, so
+
+$$
+\mathbf S(t)\mathbf T(t)+\mathbf T(t)\mathbf S(t)=-2\mathbf K(t)^2.
+$$
+
+The same invertible linear map from Step 2 determines each derivative uniquely. The zero second derivative of the affine input does not remove the square of the first root derivative.
+
+**Step 4 — ALGEBRA.** At one fixed admissible parameter value, let $\mathbf U$ diagonalize its square root, and write $\widehat{\mathbf H}=\mathbf U^{\mathsf T}\mathbf H\mathbf U$, $\widehat{\mathbf K}=\mathbf U^{\mathsf T}\mathbf K\mathbf U$, and $\widehat{\mathbf T}=\mathbf U^{\mathsf T}\mathbf T\mathbf U$. With all indices from one to $n$,
+
+$$
+\widehat K_{ij}=\frac{\widehat H_{ij}}{\sigma_i+\sigma_j},\qquad
+\widehat T_{ij}=-\frac{2}{\sigma_i+\sigma_j}
+\sum_{k=1}^n\widehat K_{ik}\widehat K_{kj}.
+$$
+
+The original derivatives are $\mathbf U\widehat{\mathbf K}\mathbf U^{\mathsf T}$ and $\mathbf U\widehat{\mathbf T}\mathbf U^{\mathsf T}$. The eigenbasis is used to solve already differentiated fixed-basis equations at the chosen parameter; no differentiability of that basis is being assumed.
+
+**Step 5 — DOMAIN: the specified path.** Here
+
+$$
+\mathbf A(t)=\begin{bmatrix}1+t&t\\t&4+2t\end{bmatrix},\qquad
+\det(\mathbf A(t))=t^2+6t+4.
+$$
+
+Positive definiteness requires $1+t>0$ and $t^2+6t+4>0$. The determinant roots are $-3-\sqrt5$ and $-3+\sqrt5$. Intersecting its positive intervals with $t>-1$ leaves exactly
+
+$$
+t>-3+\sqrt5.
+$$
+
+At zero, $\mathbf S(0)=\operatorname{diag}(1,2)$. The three distinct equations for the first derivative are $2K_{11}(0)=1$, $3K_{12}(0)=1$, and $4K_{22}(0)=2$. Consequently
+
+$$
+\mathbf K(0)=\begin{bmatrix}1/2&1/3\\1/3&1/2\end{bmatrix},\qquad
+\mathbf K(0)^2=\begin{bmatrix}13/36&1/3\\1/3&13/36\end{bmatrix}.
+$$
+
+The second derivative equations give $2T_{11}(0)=-13/18$, $3T_{12}(0)=-2/3$, and $4T_{22}(0)=-13/18$, hence
+
+$$
+\mathbf T(0)=\begin{bmatrix}-13/36&-2/9\\-2/9&-13/72\end{bmatrix}.
+$$
+
+In contrast, the proposed scalar-inspired rule at zero gives
+
+$$
+\frac12\mathbf S(0)^{-1}\mathbf H
+=\begin{bmatrix}1/2&1/2\\1/4&1/2\end{bmatrix}.
+$$
+
+It is not even symmetric and differs from the unique root derivative. When $\mathbf S$ and $\mathbf H$ commute, their common diagonal representation does reduce the first equation to the scalar rule; the present example has no such commutation.
+
+**Step 6 — CHECK.** An independent two-by-two square-root expression follows from the characteristic equation. Set
+
+$$
+d(t)=\sqrt{t^2+6t+4},\qquad
+\mathbf B(t)=\frac{\mathbf A(t)+d(t)\mathbf I}{\sqrt{5+3t+2d(t)}}.
+$$
+
+On the full positive-definite domain, the numerator and scalar denominator are positive definite and positive respectively. The characteristic identity $\mathbf A(t)^2-(5+3t)\mathbf A(t)+d(t)^2\mathbf I=\mathbf0$ gives $\mathbf B(t)^2=\mathbf A(t)$, so uniqueness identifies $\mathbf B(t)=\mathbf S(t)$. Around zero, ordinary scalar Taylor expansions give
+
+$$
+d(t)=2+\frac32t-\frac5{16}t^2+O(t^3),\qquad
+\sqrt{5+3t+2d(t)}=3+t-\frac{13}{48}t^2+O(t^3).
+$$
+
+Substitution and scalar division yield, entrywise,
+
+$$
+\begin{aligned}
+\mathbf S(t)
+={}&\begin{bmatrix}1&0\\0&2\end{bmatrix}
++t\begin{bmatrix}1/2&1/3\\1/3&1/2\end{bmatrix}\\
+&+t^2\begin{bmatrix}-13/72&-1/9\\-1/9&-13/144\end{bmatrix}+O(t^3).
+\end{aligned}
+$$
+
+The linear coefficient is $\mathbf K(0)$ and twice the quadratic coefficient is $\mathbf T(0)$, independently confirming every derivative entry. The scalar expansions have bounded higher derivatives on a sufficiently small closed interval around zero; their remainder orders are therefore justified.
+
+**Discussion.** The positive branch makes an ordered linear matrix equation invertible. Off-diagonal sensitivities depend on sums of two root eigenvalues, even when the original matrix path is affine.
+
+### D3-017
+
+**Step 1 — SETUP.** Put $r(\mathbf x)=\|\mathbf x\|$. Although the norm itself needs care at zero, the map uses only its square $x_1^2+x_2^2+x_3^2$ and is polynomial on the whole space. Define its real $3\times3$ Jacobian by $J_{ij}(\mathbf x)=\frac{\partial}{\partial x_j}(F_i(\mathbf x))$, with $1\le i,j\le3$.
+
+**Step 2 — CHOICE.** A direction-preserving radial map can be analyzed on each ray, while its local derivative separates radial and transverse increments. The global inverse must be proved from the radius map as well as from the nonvanishing Jacobian.
+
+**Step 3 — CALCULUS.** Component differentiation gives
+
+$$
+J_{ij}(\mathbf x)=(1+r(\mathbf x)^2)\delta_{ij}+2x_ix_j,
+\qquad
+\mathbf J(\mathbf x)=(1+r(\mathbf x)^2)\mathbf I+2\mathbf x\mathbf x^{\mathsf T}.
+$$
+
+If $\mathbf x\ne\mathbf0$, multiplication by a transverse vector $\mathbf h$ with $\mathbf x^{\mathsf T}\mathbf h=0$ gives $(1+r(\mathbf x)^2)\mathbf h$, while multiplication by $\mathbf x$ gives $(1+3r(\mathbf x)^2)\mathbf x$. Thus
+
+$$
+\det(\mathbf J(\mathbf x))=(1+r(\mathbf x)^2)^2(1+3r(\mathbf x)^2)>0.
+$$
+
+At zero the Jacobian is $\mathbf I$, with the same determinant formula. A second component differentiation gives
+
+$$
+\frac{\partial}{\partial x_k}\left(\frac{\partial}{\partial x_j}(F_i(\mathbf x))\right)
+=2x_k\delta_{ij}+2x_j\delta_{ik}+2x_i\delta_{jk},\qquad 1\le i,j,k\le3.
+$$
+
+For fixed real increments $\mathbf u,\mathbf v$, contracting explicitly over the second and third indices yields
+
+$$
+\mathrm D^2\mathbf F(\mathbf x)(\mathbf u,\mathbf v)
+=2\bigl((\mathbf x^{\mathsf T}\mathbf v)\mathbf u
++(\mathbf x^{\mathsf T}\mathbf u)\mathbf v
++(\mathbf u^{\mathsf T}\mathbf v)\mathbf x\bigr).
+$$
+
+For example, its $i$th component is the finite sum of the displayed component derivative times $u_jv_k$, summed over $j=1,2,3$ and $k=1,2,3$ separately.
+
+**Step 4 — ALGEBRA AND GLOBAL INVERSION.** For an input radius $r\ge0$, the output radius is $\rho=r+r^3$. This scalar map has derivative $1+3r^2>0$, value zero at zero, and tends to infinity. It is therefore a continuous bijection from $[0,\infty)$ to itself. Moreover the factor $1+r^2$ is positive, so a nonzero vector and its image have exactly the same direction.
+
+For each $\mathbf y\ne\mathbf0$, let $\rho=\|\mathbf y\|$ and let $r\ge0$ be the unique solution of $r+r^3=\rho$. Then
+
+$$
+\mathbf G(\mathbf y)=\frac{r}{\rho}\mathbf y
+=\frac{1}{1+r^2}\mathbf y,\qquad \mathbf G(\mathbf0)=\mathbf0.
+$$
+
+This constructs an inverse and proves both existence and uniqueness on the whole space. The inverse function theorem applies at every input because the Jacobian is invertible there. Its smooth local inverses agree with the unique global inverse just constructed, making $\mathbf G$ smooth everywhere, including at zero.
+
+**Step 5 — CALCULUS: first inverse derivative.** In the remaining formulas, $\mathbf x=\mathbf G(\mathbf y)$ and $r=\|\mathbf x\|$. Differentiating the inverse identity gives
+
+$$
+\mathrm D\mathbf G(\mathbf y)=\mathbf J(\mathbf x)^{-1}
+=\frac{1}{1+r^2}\mathbf I
+-\frac{2}{(1+r^2)(1+3r^2)}\mathbf x\mathbf x^{\mathsf T}.
+$$
+
+Multiplication by $(1+r^2)\mathbf I+2\mathbf x\mathbf x^{\mathsf T}$ verifies the inverse: the coefficient of $\mathbf x\mathbf x^{\mathsf T}$ is
+
+$$
+\frac{2}{1+r^2}-\frac{2}{1+3r^2}
+-\frac{4r^2}{(1+r^2)(1+3r^2)}=0.
+$$
+
+For nonzero $\mathbf y$, its radial eigenvalue is $1/(1+3r^2)$ and its two transverse eigenvalues are $1/(1+r^2)$. At zero all three are one and $\mathrm D\mathbf G(\mathbf0)=\mathbf I$. Independently differentiating the scalar inverse radius gives $dr/d\rho=1/(1+3r^2)$; changing direction at fixed radius gives the factor $r/\rho=1/(1+r^2)$, confirming both local scales.
+
+**Step 6 — CALCULUS: second inverse derivative.** Define $\mathbf B=\mathbf J(\mathbf x)^{-1}$, $\mathbf u=\mathbf B\mathbf h$, and $\mathbf v=\mathbf B\mathbf k$ for the given fixed increments. Differentiating $\mathbf F(\mathbf G(\mathbf y))=\mathbf y$ twice, once in each increment, gives
+
+$$
+\mathbf J(\mathbf x)\mathrm D^2\mathbf G(\mathbf y)(\mathbf h,\mathbf k)
++\mathrm D^2\mathbf F(\mathbf x)(\mathbf u,\mathbf v)=\mathbf0.
+$$
+
+Multiplying by the inverse on the left therefore gives the explicit symmetric bilinear expression
+
+$$
+\mathrm D^2\mathbf G(\mathbf y)(\mathbf h,\mathbf k)
+=-2\mathbf B\bigl((\mathbf x^{\mathsf T}\mathbf v)\mathbf u
++(\mathbf x^{\mathsf T}\mathbf u)\mathbf v
++(\mathbf u^{\mathsf T}\mathbf v)\mathbf x\bigr).
+$$
+
+It vanishes at $\mathbf y=\mathbf0$, where $\mathbf x=\mathbf0$ and $\mathbf B=\mathbf I$. There is no singular norm derivative hidden in this formula.
+
+**Step 7 — CHECK.** For $\mathbf y=2\mathbf e_1$, the input radius is $r=1$ and $\mathbf x=\mathbf e_1$. Direct substitution gives
+
+$$
+\mathbf J(\mathbf e_1)=\operatorname{diag}(4,2,2),\qquad
+\mathrm D\mathbf G(2\mathbf e_1)=\operatorname{diag}(1/4,1/2,1/2),
+$$
+
+and the determinant of the forward Jacobian is sixteen. The second-derivative formula gives
+
+$$
+\mathrm D^2\mathbf G(2\mathbf e_1)(\mathbf e_1,\mathbf e_1)=-\frac3{32}\mathbf e_1,\qquad
+\mathrm D^2\mathbf G(2\mathbf e_1)(\mathbf e_2,\mathbf e_2)=-\frac18\mathbf e_1.
+$$
+
+For an independent radial check, differentiating $dr/d\rho=1/(1+3r^2)$ gives $d^2r/d\rho^2=-6r/(1+3r^2)^3$, whose value at $r=1$ is $-3/32$. For the transverse check, take $\mathbf y=[2,h,0]^{\mathsf T}$. Then $\rho=2+h^2/4+O(h^4)$ and $r=1+h^2/16+O(h^4)$, so $G_1(\mathbf y)=1-h^2/16+O(h^4)$ and its second derivative at zero is $-1/8$, as required.
+
+**Step 8 — DOMAIN.** Both the forward and inverse maps are defined and smooth on all of $\mathbb R^3$. Every scalar denominator in the derivative formulas is strictly positive. The implicit radius description selects a unique nonnegative root and needs neither additional algebraic branches nor an exclusion of the spatial origin.
+
+**Discussion.** A radial scalar equation establishes the global inverse, while radial and transverse local scales determine its derivatives. A nonzero Jacobian supplies the local step of that argument.
 
 ## Application references
 

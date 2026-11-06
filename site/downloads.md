@@ -6,7 +6,7 @@ import { withBase } from 'vitepress'
 
 The Markdown and LaTeX downloads are generated from the current manuscript used
 for the site. The tagged alpha.7 PDFs preserve an earlier fixed edition; they
-precede the latest corrections and 20 additional worked problems. The repository's
+precede the latest corrections and 40 additional worked problems. The repository's
 PDF workflow supplies the current compiled book and reference as build artifacts.
 
 - [Read the complete current book on one HTML page](/generated/book)
